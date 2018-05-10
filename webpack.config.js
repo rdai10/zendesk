@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+
 module.exports = {
 	entry: './src/index.js',
 	module: {
@@ -12,17 +13,29 @@ module.exports = {
 				loader: 'babel-loader'
 			},
 			{
-				test: /\.(hbs)$/,
+				test: /\.hbs$/,
 				use: [
 					{
 							loader: 'file-loader',
 							options: {
-								name: '[name].[ext]',
-								outputPath: '/templates'
+								name: 'templates/[name].[ext]'
 							}
 					}
 				]
 			},
+			{
+        test: /\manifest.json$/,
+        type: 'javascript/auto',
+        use: [
+          {
+						loader: 'file-loader',
+						options: {
+							name: '[name].[ext]'
+            }
+          }
+        ]
+      },
+			
 			{
 				test: /\.scss$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
