@@ -1,0 +1,32 @@
+{
+	"babel": {
+		"presets": [
+			[
+				"@babel/preset-env"
+			]
+		]
+	},
+	"browserslist": [
+		">0.25%",
+		"ie 11",
+		"not op_mini all"
+	],
+	"dependencies": {
+		"clay-css": "^2.0.2"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.0.0-beta.46",
+		"@babel/preset-env": "^7.0.0-beta.46",
+		"babel-loader": "^7.1.4",
+		"css-loader": "^0.28.11",
+		"imagemin-webpack": "^3.0.0",
+		"mini-css-extract-plugin": "^0.4.0",
+		"node-sass": "^4.9.0",
+		"optimize-css-assets-webpack-plugin": "^4.0.1",
+		"sass-loader": "^7.0.1",
+		"uglifyjs-webpack-plugin": "^1.2.5",
+		"webpack": "^4.8.1"
+	},
+	"name": "liferay-zendesk-theme",
+	"version": "1.0.0",
+}
