@@ -29,17 +29,7 @@ module.exports = {
 			new UglifyJsPlugin({
 				sourceMap: true
 			})
-		],
-		splitChunks: {
-			cacheGroups: {
-				styles: {
-					chunks: 'all',
-					enforce: true,
-					name: 'styles',
-					test: /\.(s)css$/
-				}
-			}
-		}
+		]
 	},
 	output: {
 		filename: 'script.js'
