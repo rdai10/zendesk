@@ -12,6 +12,18 @@ module.exports = {
 				loader: 'babel-loader'
 			},
 			{
+				test: /\.(hbs)$/,
+				use: [
+					{
+							loader: 'file-loader',
+							options: {
+								name: '[name].[ext]',
+								outputPath: '/templates'
+							}
+					}
+				]
+			},
+			{
 				test: /\.scss$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
 			}
