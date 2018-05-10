@@ -12,7 +12,7 @@ module.exports = {
 				loader: 'babel-loader'
 			},
 			{
-				test: /\.(s)css$/,
+				test: /\.scss$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
 			}
 		]
