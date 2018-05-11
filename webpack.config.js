@@ -20,6 +20,16 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
+							importLoaders: 2,
+							sourceMap: true
+						}
+					},
+					{
+						loader: 'postcss-loader',
+						options: {
+							plugins: () => [
+								require('autoprefixer')()
+							],
 							sourceMap: true
 						}
 					},
