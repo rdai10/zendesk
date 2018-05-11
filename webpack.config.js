@@ -1,5 +1,6 @@
 const clayCss = require('clay-css');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -44,6 +45,26 @@ module.exports = {
 			{from:'src/resources/manifest.json', to:''},
 			{from:'src/resources/thumbnail.png', to:''}
 		]),
+		new ImageminPlugin({
+			test: '/\.(jpe?g|png|gif|svg)$/i',
+			svgo: {
+				plugins: [
+					{cleanupAttrs: true},
+					{cleanupNumericValues: true},
+					{cleanupListOfValues: true},
+					{collapseGroups: true},
+					{mergePaths: true},
+					{removeDoctype: true},
+					{removeEditorsNSData: true},
+					{removeEmptyAttrs: true},
+					{removeEmptyContainers: true},
+					{removeEmptyText: true},
+					{removeUnusedNS: true},
+					{removeUselessStrokeAndFill: true},
+					{removeXMLProcInst: true}
+				]
+			}
+		}),
 		new MiniCssExtractPlugin(
 			{filename: 'style.css'}
 		)
