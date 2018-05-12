@@ -20,8 +20,7 @@ module.exports = {
 					{
 						loader: 'css-loader',
 						options: {
-							importLoaders: 2,
-							sourceMap: true
+							importLoaders: 2
 						}
 					},
 					{
@@ -29,15 +28,13 @@ module.exports = {
 						options: {
 							plugins: () => [
 								require('autoprefixer')()
-							],
-							sourceMap: true
+							]
 						}
 					},
 					{
 						loader: 'sass-loader',
 						options: {
-							includePaths: [clayCss.includePaths],
-							sourceMap: true
+							includePaths: [clayCss.includePaths]
 						}
 					}
 				]
@@ -52,9 +49,7 @@ module.exports = {
 					}
 				}
 			),
-			new UglifyJsPlugin({
-				sourceMap: true
-			})
+			new UglifyJsPlugin()
 		]
 	},
 	output: {
