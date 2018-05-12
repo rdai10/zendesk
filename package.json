@@ -32,7 +32,8 @@
 	"name": "liferay-zendesk-theme",
 	"private": true,
 	"scripts": {
-		"build": "webpack --mode=production"
+		"build": "webpack --mode=production",
+		"zip": "zip -r Custom.zip dist"
 	},
 	"version": "1.0.0"
 }
