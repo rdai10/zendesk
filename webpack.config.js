@@ -1,8 +1,11 @@
 const clayCss = require('clay-css');
+const glob = require('glob-all');
+const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PurifyCSSPlugin = require('purifycss-webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -86,6 +89,15 @@ module.exports = {
 		}),
 		new MiniCssExtractPlugin(
 			{filename: 'style.css'}
+		),
+		new PurifyCSSPlugin(
+			{
+				paths: glob.sync([
+					path.join(__dirname, 'src/resources/templates/*.hbs'),
+					path.join(__dirname, 'src/*.js')
+				]),
+				purifyOptions: {whitelist: []}
+			}
 		)
 	]
 };
