@@ -1,13 +1,12 @@
 const clayCss = require('clay-css');
+
 const glob = require('glob-all');
 const path = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 	entry: './src/index.js',
@@ -44,18 +43,6 @@ module.exports = {
 				]
 			}
 		]},
-	optimization: {
-		minimizer: [
-			new OptimizeCssAssetsPlugin(
-				{
-					cssProcessorOptions: {
-						discardComments: {removeAll: true}
-					}
-				}
-			),
-			new UglifyJsPlugin()
-		]
-	},
 	output: {
 		filename: 'script.js'
 	},
