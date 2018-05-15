@@ -30,12 +30,14 @@
 		"sass-loader": "^7.0.1",
 		"uglifyjs-webpack-plugin": "^1.2.5",
 		"webpack": "^4.8.1",
-		"webpack-cli": "^2.1.3"
+		"webpack-cli": "^2.1.3",
+		"webpack-merge": "^4.1.2"
 	},
 	"name": "liferay-zendesk-theme",
 	"private": true,
 	"scripts": {
-		"build": "webpack --mode=production",
+		"build": "webpack --mode=production --config webpack.prod.js",
+		"build:dev": "webpack --mode=development --config webpack.common.js",
 		"zip": "zip -r Custom.zip dist -x *.zat*"
 	},
 	"version": "1.0.0"
