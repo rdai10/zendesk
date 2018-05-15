@@ -1,6 +1,7 @@
 const clayCss = require('clay-css');
 const glob = require('glob-all');
 const path = require('path');
+
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
