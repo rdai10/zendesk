@@ -88,5 +88,6 @@ module.exports = {
 				purifyOptions: {whitelist: []}
 			}
 		)
-	]
+	],
+	watch: true
 };
