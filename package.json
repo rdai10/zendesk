@@ -38,7 +38,8 @@
 	"scripts": {
 		"build": "webpack --mode=production --config webpack.prod.js",
 		"build:dev": "webpack --mode=development --config webpack.common.js",
-		"zip": "zip -r Custom.zip dist -x *.zat*"
+		"zip": "zip -r Custom.zip dist -x *.zat*",
+		"zip:localization": "zip -r dynamic_content.zip dynamic_content -j"
 	},
 	"version": "1.0.0"
 }
