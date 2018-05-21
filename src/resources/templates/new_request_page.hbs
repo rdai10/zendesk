@@ -1,22 +1,17 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
-  </nav>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
 
-  <h1>
-    {{t 'submit_a_request'}}
-    {{#if follow_up}}
-      <span class="follow-up-hint">
-        {{follow_up}}
-      </span>
-    {{/if}}
-  </h1>
+	<div class="justify-content-sm-center row">
+		<div class="col-sm-6">
+			<h1>{{t 'submit_a_request'}}</h1>
 
-  <div class="form">
-    {{request_form}}
-  </div>
-
-  {{chat}}
+			<div class="request-form">
+					{{request_form}}
+			</div>
+		</div>
+	</div>
 </div>
