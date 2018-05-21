@@ -36,7 +36,7 @@
 	"private": true,
 	"scripts": {
 		"build": "webpack --mode=production",
-		"zip": "zip -r Custom.zip dist"
+		"zip": "zip -r Custom.zip dist -x *.zat*"
 	},
 	"version": "1.0.0"
 }
