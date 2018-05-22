@@ -1,6 +1,13 @@
 /* ---------- Variable overrides ---------- */
 
+$font-weight-semi-bold: 600 !default;
+
 $h1-font-size: 3rem !default; // 48px
+
+$input-label-font-size: 0.875rem !default; // 14px
+$input-label-font-weight: $font-weight-semi-bold !default;
+$input-padding-x: 1rem !default; // 16px
+$input-padding-y: 0.5rem !default; // 8px
 
 $table-cell-padding: 0.875rem !default; // 14px
 
