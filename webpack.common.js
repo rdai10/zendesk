@@ -85,7 +85,7 @@ module.exports = {
 					path.join(__dirname, 'src/resources/templates/*.hbs'),
 					path.join(__dirname, 'src/*.js')
 				]),
-				purifyOptions: {whitelist: []}
+				purifyOptions: {whitelist: ['nesty-input', 'upload-dropzone']}
 			}
 		)
 	],
