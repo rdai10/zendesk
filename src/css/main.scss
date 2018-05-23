@@ -1,5 +1,29 @@
-@import "atlas";
+/* ---------- Clay base-variables ---------- */
 
-@import "variables";
+@import "functions/_global-functions";
 
-@import "body";
+@import "_zendesk-variables";
+
+@import "variables/_bs4-variable-overwrites";
+
+@import "bootstrap/_functions";
+@import "bootstrap/_variables";
+@import "bootstrap/_mixins";
+
+@import "_variables";
+@import "_mixins";
+
+/* ---------- Clay base ---------- */
+
+@import "bootstrap/bootstrap-reboot";
+@import "bootstrap/bootstrap-grid";
+@import "bootstrap/_type";
+
+@import "components/_grid";
+@import "components/_utilities";
+
+@import "components/_tables";
+
+/* ---------- Custom ---------- */
+
+@import "_zendesk-body";
