@@ -1,5 +1,45 @@
-@import "atlas";
+/* ---------- Clay base-variables ---------- */
 
-@import "variables";
+@import "functions/_global-functions";
 
-@import "body";
+@import "_zendesk-variables";
+
+@import "variables/_bs4-variable-overwrites";
+
+@import "bootstrap/_functions";
+@import "bootstrap/_variables";
+@import "bootstrap/_mixins";
+
+@import "_variables";
+@import "_mixins";
+
+/* ---------- Clay base ---------- */
+
+@import "bootstrap/bootstrap-grid";
+@import "bootstrap/bootstrap-reboot";
+
+@import "bootstrap/_type";
+
+@import "components/_grid";
+@import "components/_utilities";
+
+/* ---------- Clay components ---------- */
+
+@import "bootstrap/_buttons";
+@import "bootstrap/_code";
+@import "bootstrap/_forms";
+@import "bootstrap/_nav";
+@import "bootstrap/_navbar";
+@import "bootstrap/_tables";
+
+@import "components/_buttons";
+@import "components/_forms";
+@import "components/_labels";
+@import "components/_navs";
+@import "components/_navbar";
+@import "components/_tables";
+
+/* ---------- Custom ---------- */
+
+@import "_zendesk-pagination";
+@import "_zendesk-requests-page";
