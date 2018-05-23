@@ -1,8 +1,12 @@
+
 /* ---------- Variable overrides ---------- */
 
 $font-weight-semi-bold: 600 !default;
 
 $h1-font-size: 3rem !default; // 48px
+
+$breadcrumb-active-color: null !default;
+$breadcrumb-divider-color: null !default;
 
 $input-label-font-size: 0.875rem !default; // 14px
 $input-label-font-weight: $font-weight-semi-bold !default;
@@ -12,3 +16,11 @@ $input-padding-y: 0.5rem !default; // 8px
 $table-cell-padding: 0.875rem !default; // 14px
 
 $navbar-padding-x: 0 !default;
+
+/* ---------- Custom variables ---------- */
+
+$breadcrumb-divider-svg-icon: clay-icon(angle-right, $breadcrumb-divider-color) !default;
+$breadcrumb-divider-svg-icon-height: 0.75em !default;
+$breadcrumb-divider-svg-icon-width: $breadcrumb-divider-svg-icon-height !default;
+$breadcrumb-font-size: null !default;
+$breadcrumb-font-weight: null !default;
