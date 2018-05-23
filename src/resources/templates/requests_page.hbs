@@ -15,19 +15,23 @@
 	</nav>
 
 	{{#form 'requests_filter'}}
-		<div class="form-row">
-			<div class="col-md-6 form-group form-group-item-label-spacer">
+		<div class="form-group-autofit">
+			<div class="form-group-item form-group-item-label-spacer">
 				{{input 'query' class='form-control' id='quick-search' type='text'}}
 			</div>
 
 			{{#if help_center.multiple_organizations_enabled}}
-				<div class="col-md-4 form-group">
+				<div class="form-group-item form-group-item-shrink">
 					{{label 'organization' for='request-organization-select'}}
 					{{select 'organization' class='form-control' id='request-organization-select'}}
 				</div>
+
+				<div class="form-group-item form-group-item-label-spacer form-group-item-shrink">
+					{{subscribe}}
+				</div>
 			{{/if}}
 
-			<div class="col-md-2 form-group">
+			<div class="form-group-item form-group-item-shrink">
 				{{label 'status' for='request-status-select'}}
 				{{select 'status' class='form-control' id='request-status-select'}}
 			</div>

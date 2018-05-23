@@ -1,5 +1,14 @@
-a[role="button"], input[type="submit"] {
-	@include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-line-height, $btn-border-radius);
+a[role="button"],
+input[type="submit"] {
+	border: $btn-border-width solid;
+
+	@include button-size(
+		$btn-padding-y,
+		$btn-padding-x,
+		$font-size-base,
+		$btn-line-height,
+		$btn-border-radius
+	);
 }
 
 a[role="button"] {
@@ -11,5 +20,5 @@ a[role="button"] {
 }
 
 input[type="submit"] {
-	border: $btn-border-width solid transparent;
+	border-color: transparent;
 }
