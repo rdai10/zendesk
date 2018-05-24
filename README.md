@@ -1,4 +1,4 @@
-# Zendesk Theme
+# Zendesk Theme for Liferay
 
 ## Getting Started
 1. [Install node](https://nodejs.org/en/).
@@ -6,22 +6,28 @@
 
 ### Setting up local theme preview
 Zendesk apps tools (ZAT) allows the capability to set up local theme preview. To get started:
-1. [Install ruby](https://www.ruby-lang.org/en/) version 2.0 or later.
-2. Install the same version of `ruby-dev` (ie: `ruby2.5-dev` if you are on version 2.5.0).
-3. [Install bundler](https://bundler.io/) via `gem install bundler`.
-4. In the root directory, run `bundle install`.
-5. To update to the latest version of ZAT, run `bundle update zendesk_apps_tools`.
-6. Enable API access in Zendesk Support account by going to *Admin > Channels > API*, make sure to save the auth token.
+1. [Install ruby](https://www.ruby-lang.org/en/) version 2.4 or later.
+  * On Linux, use package management system to install ruby and the corresponding version of `ruby-dev` (ie: `ruby2.5-dev` if you are on version 2.5.0).
+  * On OS X, use [rbenv](https://github.com/rbenv/rbenv/blob/master/README.md) to install and manage Ruby versions.
+  * On Windows machines, use [RubyInstaller](https://rubyinstaller.org).
+
+  Ruby's official site has a clear [instruction page](https://www.ruby-lang.org/en/documentation/installation/) as well.
+
+2. Once Ruby is successfully installed, [install bundler](https://bundler.io/)  next via `gem install bundler`.
+3. In the root directory of this project, run `bundle install`.
+4. To update to the latest version of ZAT, run `bundle update zendesk_apps_tools`.
+5. Enable API access in Zendesk Support account by going to *Admin > Channels > API*, make sure to save the auth token.
 
 ### Using local theme preview
-1. [Build](#build-&-zip), then run `zat theme preview` in the `dist` folder.
+1. [Build](#build-&-zip), then run `bundle exec zat theme preview` in the `dist` folder.
 2. At prompt, enter your Zendesk login email with the string `/token` for username. For example `joe.bloggs@client.com/token`. Use the actual API token for password.
 3. Follow the prompt and navigate to the `Ready` URL to see a local preview of the theme.
-4. Make changes in `src`,refresh the browser window to see your changes reflected.
+4. Make changes in `src` and run in conjunction with Webpack using the `build` command detailed below to see your live changes reflected.
 
 ## Build & Zip
 - `npm run build` to create a `dist` folder containing all the necessary minified theme files for Zendesk.
 - `npm run build:dev` is meant to be used for development purposes. It will not minify css and javascript for debugging purposes.
+- `npm run lint:css` to format css files.
 - `npm run zip` to zip the theme files, which can be imported into Zendesk.
 - `npm run zip:localization` to zip the csv files to be imported in Dynamic Content, which can be found in *Admin > Manage > Dynamic Content* of Zendesk.
 
