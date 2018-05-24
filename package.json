@@ -9,22 +9,24 @@
 		"ie 11",
 		"not op_mini all"
 	],
-	"dependencies": {
-		"clay-css": "^2.0.3"
-	},
 	"devDependencies": {
 		"autoprefixer": "^8.5.0",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.4",
 		"babel-preset-env": "^1.7.0",
+		"clay-css": "^2.0.3",
 		"copy-webpack-plugin": "^4.5.1",
 		"css-loader": "^0.28.11",
+		"eslint": "^4.19.1",
+		"eslint-config-prettier": "^2.9.0",
+		"eslint-plugin-prettier": "^2.6.0",
 		"glob-all": "^3.1.0",
 		"imagemin-webpack-plugin": "^2.1.5",
 		"mini-css-extract-plugin": "^0.4.0",
 		"node-sass": "^4.9.0",
 		"optimize-css-assets-webpack-plugin": "^4.0.1",
 		"postcss-loader": "^2.1.5",
+		"prettier": "^1.12.1",
 		"purify-css": "^1.2.5",
 		"purifycss-webpack": "^0.7.0",
 		"sass-loader": "^7.0.1",
@@ -33,11 +35,35 @@
 		"webpack-cli": "^2.1.3",
 		"webpack-merge": "^4.1.2"
 	},
+	"eslintConfig": {
+		"env": {
+			"browser": true,
+			"es6": true,
+			"node": true
+		},
+		"extends": ["plugin:prettier/recommended"],
+		"parserOptions": {
+			"ecmaVersion": 6,
+			"sourceType": "module"
+		},
+		"plugins": ["prettier"],
+		"rules": {
+			"indent": [2, "tab"],
+			"prefer-const": 2,
+			"prettier/prettier": 2,
+			"quotes": [2, "single", {"avoidEscape": true}]
+		}
+	},
 	"name": "liferay-zendesk-theme",
+	"prettier": {
+		"tabWidth": 4,
+		"useTabs": true
+	},
 	"private": true,
 	"scripts": {
 		"build": "webpack --mode=production --config webpack.prod.js",
 		"build:dev": "webpack --mode=development --config webpack.common.js",
+		"lint:css": "prettier --write 'src/css/*.scss'",
 		"zip": "zip -r Custom.zip dist -x *.zat*",
 		"zip:localization": "zip -r dynamic_content.zip dynamic_content -j"
 	},
