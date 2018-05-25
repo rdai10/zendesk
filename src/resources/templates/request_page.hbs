@@ -1,225 +1,223 @@
-<nav class="my-activities-nav collapsible-nav">
-	<ul class="collapsible-nav-list container">
-		<li aria-selected=true>{{t 'requests'}}</li>
-		<li>{{link 'contributions'}}</li>
-		<li>{{link 'subscriptions'}}</li>
-	</ul>
-</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
 
-<div class="container">
-	<div class="request-breadcrumbs">{{breadcrumbs}}</div>
+	<div class="row">
+		<div class="col-sm-8">
+			<h2>{{request.subject}}</h2>
 
-	<h2 class="request-title">{{request.subject}}</h2>
+			<section class="request-container">
+					<ul class="comment-list">
+						{{#each comments}}
+							<li id="{{anchor}}" class="comment">
+									<div class="comment-author">
+										<div class="avatar sticker sticker-circle sticker-primary">
+											<span class="sticker-overlay">
+												{{#link 'user_profile' id=author.id}}
+													<img src="{{author.avatar_url}}" alt="Avatar" class="sticker-img"/>
+												{{/link}}
+											</span>
+										</div>
 
-	<div class="request-container">
-		<section class="request-main">
-			{{satisfaction}}
-			<ul class="comment-list">
-				{{#each comments}}
-					<li id="{{anchor}}" class="comment">
-						<div class="comment-wrapper">
-							<div class="comment-info">
-								<div class="comment-author">
-									<div class="avatar comment-avatar">
-										{{#if author.agent}}
-											<span class="icon-agent"></span>
-										{{/if}}
-										<img src="{{author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+										<div class="comment-meta">
+											<div title="{{author.name}}">
+												{{#link 'user_profile' id=author.id}}
+													{{author.name}}
+												{{/link}}
+											</div>
+
+											<div class="meta-data">{{date created_at timeago=true}}</div>
+										</div>
 									</div>
 
-									<div class="comment-meta">
-										<span title="{{author.name}}">
-											{{#link 'user_profile' id=author.id}}
-												{{author.name}}
-											{{/link}}
-										</span>
+									<section class="comment-body">{{body}}</section>
 
-										<ul class="meta-group">
-											<li class="meta-data">{{date created_at timeago=true}}</li>
+									{{#if attachments}}
+										<ul class="attachments">
+											{{#each attachments}}
+												<li class="attachment-item">
+													<svg class="lexicon-icon lexicon-icon-paperclip">
+														<use xlink:href="#paperclip" />
+													</svg>
+
+													<a href="{{url}}" target="_blank">{{name}}</a>
+
+													<div class="attachment-meta">
+														<span class="meta-data">{{size}}</span>
+
+														<a href="{{url}}" target="_blank">{{t 'download'}}</a>
+													</div>
+												</li>
+											{{/each}}
 										</ul>
+									{{/if}}
+							</li>
+						{{/each}}
+					</ul>
+
+					{{pagination}}
+
+					{{#if comment_callout}}
+						<div class="request-follow-up">
+							{{comment_callout}}
+						</div>
+					{{/if}}
+
+					{{#form 'comment' class='request-comment-form' id='requestCommentForm'}}
+						<div class="avatar sticker sticker-circle sticker-primary">
+							<span class="sticker-overlay">
+								{{user_avatar class="sticker-img"}}
+							</span>
+						</div>
+
+						<div class="comment-container">
+							<div class="comment-fields {{#validate 'body'}}show{{/validate}}">
+								{{#if help_center.request_ccs_enabled}}
+									<div class="comment-ccs form-field">
+									 {{token_field 'ccs' class='ccs-input'}}
 									</div>
-								</div>
+								{{/if}}
 
-								<section class="comment-body">{{body}}</section>
+								{{textarea 'body' class="form-field"}}
 
-								{{#if attachments}}
-									<ul class="attachments">
-										{{#each attachments}}
-											<li class="attachment-item">
-												<a href="{{url}}" target="_blank">{{name}}</a>
-												<div class="attachment-meta meta-group">
-													<span class="attachment-meta-item meta-data">{{size}}</span>
-													<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
-												</div>
-											</li>
-										{{/each}}
-									</ul>
+								{{#if upload}}
+									<div class="comment-attachments form-field">
+										{{upload}}
+									</div>
 								{{/if}}
 							</div>
+
+							<div class="comment-form-controls">
+								{{checkbox 'mark_as_solved'}}
+
+								{{#if request.can_be_marked_as_solved}}
+									<a role="button" class="btn btn-light mark-as-solved"
+										data-solve-translation="{{t 'mark_as_solved'}}"
+										data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}">
+										{{t 'mark_as_solved'}}
+									</a>
+								{{/if}}
+
+								<span class="request-submit-comment {{#validate 'body'}}show{{/validate}}">
+									{{input type='submit'}}
+								</span>
+							</div>
 						</div>
-					</li>
-				{{/each}}
-			</ul>
+					{{/form}}
+				</section>
+		</div>
 
-			{{pagination}}
-
-			{{#if comment_callout}}
-				<div class="request-follow-up">
-					{{comment_callout}}
-				</div>
-			{{/if}}
-
-			{{#form 'comment' class='comment-form'}}
-				<div class="avatar comment-avatar">
-					{{user_avatar class='user-avatar'}}
-				</div>
-
-				<div class="comment-container">
-					<div class="comment-show-container {{#validate 'body'}}hidden{{/validate}}">
-						<span class="comment-show-container-content">
-							{{t 'add_to_conversation'}}
-						</span>
-					</div>
-
-					<div class="comment-fields {{#validate 'body'}}shown{{/validate}}">
-						{{#if help_center.request_ccs_enabled}}
-							<div class="comment-ccs form-field">
-							 {{token_field 'ccs' class='ccs-input'}}
-							</div>
-						{{/if}}
-
-						{{textarea 'body' rows='7'}}
-
-						{{#if upload}}
-							<div class="comment-attachments">
-								{{upload}}
-							</div>
-						{{/if}}
-					</div>
-
-					<div class="comment-form-controls">
-						{{checkbox 'mark_as_solved'}}
-
-						{{#if request.can_be_marked_as_solved}}
-							<a role="button" class="button-large button-secondary mark-as-solved"
-								data-solve-translation="{{t 'mark_as_solved'}}"
-								data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}">
-								{{t 'mark_as_solved'}}
-							</a>
-						{{/if}}
-
-						<span class="request-submit-comment {{#validate 'body'}}shown{{/validate}}">
-							{{input type='submit'}}
-						</span>
-					</div>
-				</div>
-			{{/form}}
-		</section>
-
-		<section class="request-sidebar collapsible-sidebar">
-			<h5 class="collapsible-sidebar-title">{{t 'ticket_details'}}</h5>
-			{{#if request.followup_source_id}}
+		<div class="col-sm-4">
+			<section class="request-sidebar collapsible-sidebar">
+				{{#if request.followup_source_id}}
+					<dl class="request-details">
+						<dt>{{t 'followup'}}</dt>
+						<dd>{{link 'request' id=request.followup_source_id}}</dd>
+					</dl>
+				{{/if}}
 				<dl class="request-details">
-					<dt>{{t 'followup'}}</dt>
-					<dd>{{link 'request' id=request.followup_source_id}}</dd>
+					<dt>{{t 'id'}}</dt>
+					<dd>#{{request.id}}</dd>
+
+					<dt>{{t 'status'}}</dt>
+					<dd>
+						<span class="label status-label status-label-{{request.status}}" title="{{request.status_description}}">
+							{{request.status_name}}
+						</span>
+					</dd>
+
+					<dt>{{t 'requester'}}</dt>
+					<dd>{{request.requester.name}}</dd>
+
+					<dt>{{t 'created'}}</dt>
+					<dd>{{date request.created_at}}</dd>
+
+					<dt>{{t 'last_activity'}}</dt>
+					<dd>{{date request.updated_at}}</dd>
+
+					{{#if collaborators}}
+						<dt>{{t 'ccs'}}</dt>
+						<dd>
+							<ul class="request-collaborators">
+								{{#each collaborators}}
+									<li title={{name}}>{{name}}</li>
+								{{/each}}
+							</ul>
+						</dd>
+					{{/if}}
 				</dl>
-			{{/if}}
-			<dl class="request-details">
-				<dt>{{t 'requester'}}</dt>
-				<dd>{{request.requester.name}}</dd>
 
-				<dt>{{t 'created'}}</dt>
-				<dd>{{date request.created_at}}</dd>
+				<dl class="request-details">
+					{{#if assignee}}
+						<dt>{{t 'assignee'}}</dt>
+						<dd>
+							{{assignee.name}}
+						</dd>
+					{{/if}}
 
-				<dt>{{t 'last_activity'}}</dt>
-				<dd>{{date request.updated_at}}</dd>
+					{{#form 'organization' id='request-organization'}}
+						<dt>{{t 'organization'}}</dt>
+						<dd>{{select 'organization'}}</dd>
+					{{/form}}
 
-				{{#if collaborators}}
-					<dt>{{t 'ccs'}}</dt>
-					<dd>
-						<ul class="request-collaborators">
-							{{#each collaborators}}
-								<li title={{name}}>{{name}}</li>
-							{{/each}}
-						</ul>
-					</dd>
-				{{/if}}
-			</dl>
+					{{#if group}}
+						<dt>{{t 'group'}}</dt>
+						<dd>
+							{{group.name}}
+						</dd>
+					{{/if}}
 
-			<dl class="request-details">
-				{{#if assignee}}
-					<dt>{{t 'assignee'}}</dt>
-					<dd>
-						{{assignee.name}}
-					</dd>
-				{{/if}}
+					{{#if request.type}}
+						<dt>{{t 'type'}}</dt>
+						<dd>
+							{{request.type_name}}
+							{{#is request.type 'task'}}
+								{{t 'task_due_date' due_date=request.due_date}}
+							{{/is}}
+						</dd>
+					{{/if}}
 
-				<dt>{{t 'id'}}</dt>
-				<dd>#{{request.id}}</dd>
+					{{#if request.priority}}
+						<dt>{{t 'priority'}}</dt>
+						<dd>
+							{{request.priority_name}}
+						</dd>
+					{{/if}}
 
-				{{#form 'organization' id='request-organization'}}
-					<dt>{{t 'organization'}}</dt>
-					<dd>{{select 'organization'}}</dd>
-				{{/form}}
-
-				{{#if group}}
-					<dt>{{t 'group'}}</dt>
-					<dd>
-						{{group.name}}
-					</dd>
-				{{/if}}
-
-				<dt>{{t 'status'}}</dt>
-				<dd>
-					<span class="status-label status-label-{{request.status}}" title="{{request.status_description}}">
-						{{request.status_name}}
-					</span>
-				</dd>
-
-				{{#if request.type}}
-					<dt>{{t 'type'}}</dt>
-					<dd>
-						{{request.type_name}}
-						{{#is request.type 'task'}}
-							{{t 'task_due_date' due_date=request.due_date}}
-						{{/is}}
-					</dd>
-				{{/if}}
-
-				{{#if request.priority}}
-					<dt>{{t 'priority'}}</dt>
-					<dd>
-						{{request.priority_name}}
-					</dd>
-				{{/if}}
-
-				{{#each custom_fields}}
-					<dt>{{title}}</dt>
-					<dd>
-						{{value}}
-					</dd>
-				{{/each}}
-			</dl>
-
-			{{#if attachments}}
-				<dl class="request-details request-attachments">
-					<dt>{{t 'attachments_heading'}}</dt>
-					<dd>
-						<ul class="attachments">
-							{{#each attachments}}
-								<li class="attachment-item">
-									<a href="{{url}}" target="_blank">{{name}}</a>
-									<div class="attachment-meta meta-group">
-										<span class="attachment-meta-item meta-data">{{size}}</span>
-										<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
-									</div>
-								</li>
-							{{/each}}
-						</ul>
-					</dd>
+					{{#each custom_fields}}
+						<dt>{{title}}</dt>
+						<dd>
+							{{value}}
+						</dd>
+					{{/each}}
 				</dl>
-			{{/if}}
-		</section>
+
+				{{#if attachments}}
+					<dl class="request-details request-attachments">
+						<dt>{{t 'attachments_heading'}}</dt>
+						<dd>
+							<ul class="attachments">
+								{{#each attachments}}
+									<li class="attachment-item">
+										<svg class="lexicon-icon lexicon-icon-paperclip">
+											<use xlink:href="#paperclip" />
+										</svg>
+
+										<a href="{{url}}" target="_blank">{{name}}</a>
+										<div class="attachment-meta meta-group">
+											<span class="attachment-meta-item meta-data">{{size}}</span>
+											<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+										</div>
+									</li>
+								{{/each}}
+							</ul>
+						</dd>
+					</dl>
+				{{/if}}
+			</section>
+		</div>
 	</div>
-	{{chat_about_my_ticket}}
 </div>

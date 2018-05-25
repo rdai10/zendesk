@@ -1,3 +1,96 @@
+#mark_as_solved {
+	display: none;
+}
+
+.attachment-meta {
+	padding-left: $lexicon-icon-width;
+}
+
+.attachments, .comment-list, .request-collaborators {
+	list-style: none;
+	padding-left: 0;
+}
+
+.comment-author, .comment-form {
+	display: flex;
+}
+
+.comment-body img, .comment-container {
+	width: 100%;
+}
+
+.comment-list {
+	.attachments, .comment-body {
+		padding-left: $sticker-size + $avatar-spacer-right;
+	}
+
+	.comment {
+		border-bottom: $border-width solid $input-border-color;
+
+		&:first-child {
+			border-top: $border-width solid $input-border-color;
+		}
+	}
+}
+
+.meta-data {
+	&:not(:last-child)::after {
+		content: "\00B7";
+		padding-left: $label-spacer-x;
+	}
+}
+
+.request-comment-form {
+		display: flex;
+}
+
+.request-comment-form, .request-form {
+	footer, .comment-form-controls {
+		float: right;
+	}
+
+	label {
+		color: $input-label-color;
+		font-size: $input-label-font-size;
+		font-weight: $input-label-font-weight;
+		margin-bottom: $input-label-margin-bottom;
+		max-width: 100%;
+		word-wrap: break-word;
+	}
+
+	textarea {
+		height: $input-textarea-height;
+	}
+
+	.form-field,
+	.suggestion-list .searchbox {
+		margin-bottom: $form-group-margin-bottom;
+	}
+}
+
+.request-details {
+	&:not(:last-child){
+		border-bottom: $border-width solid $input-border-color;
+	}
+
+	dd, dt {
+		display: inline-block;
+		font-size: $font-size-sm;
+		line-height: $line-height-sm;
+	}
+
+	dd {
+		width: 59%;
+	}
+
+	dt {
+		color: $secondary-text-color;
+		font-weight: $font-weight-normal;
+		vertical-align: top;
+		width: 40%;
+	}
+}
+
 .request-filter {
 	.organization {
 		max-width: 250px;
@@ -20,46 +113,8 @@
 	}
 }
 
-.request-form {
-	footer {
-		float: right;
-	}
-
-	input:not([type="submit"]),
-	select,
-	textarea,
-	.nesty-input,
-	.upload-dropzone {
-		background-clip: border-box;
-		background-color: $input-bg;
-		border: $input-border-width solid $input-border-color;
-		border-radius: $input-border-radius;
-		color: $input-color;
-		display: block;
-		font-size: $font-size-base;
-		height: auto;
-		line-height: $input-line-height;
-		padding: $input-padding-y $input-padding-x;
-		width: 100%;
-	}
-
-	label {
-		color: $input-label-color;
-		font-size: $input-label-font-size;
-		font-weight: $input-label-font-weight;
-		margin-bottom: $input-label-margin-bottom;
-		max-width: 100%;
-		word-wrap: break-word;
-	}
-
-	textarea {
-		height: $input-textarea-height;
-	}
-
-	.form-field,
-	.suggestion-list .searchbox {
-		margin-bottom: $form-group-margin-bottom;
-	}
+.request-sidebar {
+	background-color: $side-nav-background-color;
 }
 
 .status-label,
