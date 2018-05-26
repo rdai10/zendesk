@@ -1,3 +1,25 @@
+.request-filter {
+	.organization {
+		max-width: 250px;
+	}
+
+	.status {
+		max-width: 200px;
+	}
+
+	.subscribe {
+		max-width: 75px;
+	}
+
+	.organization,
+	.status,
+	.subscribe {
+		@include media-breakpoint-down(sm) {
+			max-width: none;
+		}
+	}
+}
+
 .request-form {
 	footer {
 		float: right;

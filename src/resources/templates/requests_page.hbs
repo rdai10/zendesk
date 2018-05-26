@@ -14,24 +14,24 @@
 		</ul>
 	</nav>
 
-	{{#form 'requests_filter'}}
+	{{#form 'requests_filter' class="request-filter"}}
 		<div class="form-group-autofit">
 			<div class="form-group-item form-group-item-label-spacer">
 				{{input 'query' class='form-control' id='quick-search' type='text'}}
 			</div>
 
 			{{#if help_center.multiple_organizations_enabled}}
-				<div class="form-group-item form-group-item-shrink">
+				<div class="form-group-item organization">
 					{{label 'organization' for='request-organization-select'}}
 					{{select 'organization' class='form-control' id='request-organization-select'}}
 				</div>
 
-				<div class="form-group-item form-group-item-label-spacer form-group-item-shrink">
+				<div class="form-group-item form-group-item-label-spacer subscribe">
 					{{subscribe}}
 				</div>
 			{{/if}}
 
-			<div class="form-group-item form-group-item-shrink">
+			<div class="form-group-item status">
 				{{label 'status' for='request-status-select'}}
 				{{select 'status' class='form-control' id='request-status-select'}}
 			</div>
