@@ -11,9 +11,7 @@
 		max-width: 75px;
 	}
 
-	.organization,
-	.status,
-	.subscribe {
+	.organization, .status, .subscribe {
 		@include media-breakpoint-down(sm) {
 			max-width: none;
 		}

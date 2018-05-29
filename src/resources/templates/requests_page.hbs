@@ -1,4 +1,3 @@
-
 <div class="container">
 	<h1>My Tickets</h1>
 
@@ -39,7 +38,7 @@
 	{{/form}}
 
 	{{#if query}}
-		<div class="requests-search-info meta-data">
+		<div class="meta-data requests-search-info">
 			{{t 'requests_search_results_info' count=requests.length query=query}}
 		</div>
 	{{else}}
@@ -73,7 +72,7 @@
 					{{#each requests}}
 						<tr {{#is status 'closed'}} class="request-closed" {{/is}}>
 							<td class="request-info requests-table-info">
-								<a href="{{url}}" class="striped-list-title" title="{{subject}}">
+								<a class="striped-list-title" href="{{url}}" title="{{subject}}">
 									{{#if subject}}
 										{{subject}}
 									{{else}}
