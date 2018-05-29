@@ -1,8 +1,8 @@
 # Zendesk Theme
 
 ## Getting Started
-1. [Install node](https://nodejs.org/en/)
-2. Install all dependencies with `npm install`
+1. [Install node](https://nodejs.org/en/).
+2. Install all dependencies with `npm install`.
 
 ### Setting up local theme preview
 Zendesk apps tools (ZAT) allows the capability to set up local theme preview. To get started:
