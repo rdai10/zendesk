@@ -1,9 +1,9 @@
 .breadcrumbs {
 	display: flex;
 	flex-wrap: wrap;
-	padding: $breadcrumb-padding-y $breadcrumb-padding-x;
-	margin-bottom: $breadcrumb-margin-bottom;
 	list-style: none;
+	margin-bottom: $breadcrumb-margin-bottom;
+	padding: $breadcrumb-padding-y $breadcrumb-padding-x;
 
 	li {
 		font-size: $breadcrumb-font-size;

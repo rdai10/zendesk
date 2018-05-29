@@ -1,8 +1,8 @@
 /* ---------- Clay base-variables ---------- */
 
-@import "functions/_global-functions";
-
 @import "_zendesk-variables";
+
+@import "functions/_global-functions";
 
 @import "variables/_bs4-variable-overwrites";
 
@@ -39,7 +39,7 @@
 @import "components/_navbar";
 @import "components/_tables";
 
-/* ---------- Custom ---------- */
+/* ---------- Custom components ---------- */
 
 @import "_zendesk-breadcrumb";
 @import "_zendesk-button";
