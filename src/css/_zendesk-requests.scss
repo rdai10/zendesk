@@ -11,7 +11,9 @@
 		max-width: 75px;
 	}
 
-	.organization, .status, .subscribe {
+	.organization,
+	.status,
+	.subscribe {
 		@include media-breakpoint-down(sm) {
 			max-width: none;
 		}
@@ -23,7 +25,11 @@
 		float: right;
 	}
 
-	input:not([type="submit"]), select, textarea, .nesty-input, .upload-dropzone {
+	input:not([type="submit"]),
+	select,
+	textarea,
+	.nesty-input,
+	.upload-dropzone {
 		background-clip: border-box;
 		background-color: $input-bg;
 		border: $input-border-width solid $input-border-color;
@@ -50,12 +56,14 @@
 		height: $input-textarea-height;
 	}
 
-	.form-field, .suggestion-list .searchbox {
+	.form-field,
+	.suggestion-list .searchbox {
 		margin-bottom: $form-group-margin-bottom;
 	}
 }
 
-.status-label, .suggestion-list label {
+.status-label,
+.suggestion-list label {
 	text-transform: uppercase;
 }
 

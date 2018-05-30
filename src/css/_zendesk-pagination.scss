@@ -2,7 +2,8 @@
 	font-size: $pagination-font-size;
 	margin: $pagination-margin-bottom 0;
 
-	a, span {
+	a,
+	span {
 		background-color: $pagination-bg;
 		border-radius: $border-radius;
 		border: $pagination-border-width solid $pagination-border-color;

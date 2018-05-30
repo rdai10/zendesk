@@ -22,7 +22,10 @@ $navbar-padding-x: 0 !default;
 
 /* ---------- Custom variables ---------- */
 
-$breadcrumb-divider-svg-icon: clay-icon(angle-right, $breadcrumb-divider-color) !default;
+$breadcrumb-divider-svg-icon: clay-icon(
+	angle-right,
+	$breadcrumb-divider-color
+) !default;
 $breadcrumb-divider-svg-icon-height: 0.75em !default;
 $breadcrumb-divider-svg-icon-width: $breadcrumb-divider-svg-icon-height !default;
 $breadcrumb-font-size: null !default;
