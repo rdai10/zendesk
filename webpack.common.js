@@ -88,6 +88,5 @@ module.exports = {
 				purifyOptions: {whitelist: ['nesty-input', '*suggestion-list*', 'upload-dropzone']}
 			}
 		)
-	],
-	watch: true
+	]
 };

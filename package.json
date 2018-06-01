@@ -62,7 +62,7 @@
 	"private": true,
 	"scripts": {
 		"build": "webpack --mode=production --config webpack.prod.js",
-		"build:dev": "webpack --mode=development --config webpack.common.js",
+		"build:dev": "webpack --mode=development --config webpack.common.js --watch",
 		"lint:css": "prettier --write 'src/css/*.scss'",
 		"zip": "zip -r Custom.zip dist -x *.zat*",
 		"zip:localization": "zip -r dynamic_content.zip dynamic_content -j"

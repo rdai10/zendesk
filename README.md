@@ -22,7 +22,7 @@ Zendesk apps tools (ZAT) allows the capability to set up local theme preview. To
 1. [Build](#build-&-zip), then run `bundle exec zat theme preview` in the `dist` folder.
 2. At prompt, enter your Zendesk login email with the string `/token` for username. For example `joe.bloggs@client.com/token`. Use the actual API token for password.
 3. Follow the prompt and navigate to the `Ready` URL to see a local preview of the theme.
-4. Make changes in `src` and run in conjunction with Webpack using the `build` command detailed below to see your live changes reflected.
+4. Make changes in `src` and run in conjunction with Webpack using the `npm run build:dev` command detailed below to see your live changes reflected.
 
 ## Build & Zip
 - `npm run build` to create a `dist` folder containing all the necessary minified theme files for Zendesk.
@@ -30,8 +30,6 @@ Zendesk apps tools (ZAT) allows the capability to set up local theme preview. To
 - `npm run lint:css` to format css files.
 - `npm run zip` to zip the theme files, which can be imported into Zendesk.
 - `npm run zip:localization` to zip the csv files to be imported in Dynamic Content, which can be found in *Admin > Manage > Dynamic Content* of Zendesk.
-
-Either of the build scripts will watch for changes and when used in conjunction with local theme preview, will reflect live updates.
 
 ## Browser Support
 - [Browser support list](http://browserl.ist/?q=>0.25%25%2C+ie+11%2C+not+op_mini+all).
