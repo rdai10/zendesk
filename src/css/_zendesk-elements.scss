@@ -1,11 +1,11 @@
 h1 {
-  font-size: $h1-font-size;
-  line-height: $h1-line-height;
+	font-size: $h1-font-size;
+	line-height: $h1-line-height;
 }
 
 h2 {
-  font-size: $h2-font-size;
-  line-height: $h2-line-height;
+	font-size: $h2-font-size;
+	line-height: $h2-line-height;
 }
 
 input:not([type="submit"]),
@@ -13,32 +13,32 @@ select,
 textarea,
 .nesty-input,
 .upload-dropzone {
-  background-clip: border-box;
-  background-color: $input-bg;
-  border: $input-border-width solid $input-border-color;
-  border-radius: $input-border-radius;
-  color: $input-color;
-  display: block;
-  font-size: $font-size-base;
-  height: auto;
-  line-height: $input-line-height;
-  padding: $input-padding-y $input-padding-x;
-  width: 100%;
+	background-clip: border-box;
+	background-color: $input-bg;
+	border: $input-border-width solid $input-border-color;
+	border-radius: $input-border-radius;
+	color: $input-color;
+	display: block;
+	font-size: $font-size-base;
+	height: auto;
+	line-height: $input-line-height;
+	padding: $input-padding-y $input-padding-x;
+	width: 100%;
 }
 
 .avatar {
-  margin-right: $avatar-spacer-right;
+	margin-right: $avatar-spacer-right;
 }
 
 .form-field {
-  margin-bottom: $form-group-margin-bottom;
+	margin-bottom: $form-group-margin-bottom;
 }
 
 .secondary-font {
-  font-size: $font-size-sm;
-  line-height: $line-height-sm;
+	font-size: $font-size-sm;
+	line-height: $line-height-sm;
 }
 
 .secondary-text-color {
-  color: $secondary-text-color;
+	color: $secondary-text-color;
 }

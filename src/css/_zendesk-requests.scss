@@ -6,21 +6,26 @@
 	padding-left: $lexicon-icon-width;
 }
 
-.attachments, .comment-list, .request-collaborators {
+.attachments,
+.comment-list,
+.request-collaborators {
 	list-style: none;
 	padding-left: 0;
 }
 
-.comment-author, .comment-form {
+.comment-author,
+.comment-form {
 	display: flex;
 }
 
-.comment-body img, .comment-container {
+.comment-body img,
+.comment-container {
 	width: 100%;
 }
 
 .comment-list {
-	.attachments, .comment-body {
+	.attachments,
+	.comment-body {
 		padding-left: $sticker-size + $avatar-spacer-right;
 	}
 
@@ -41,11 +46,13 @@
 }
 
 .request-comment-form {
-		display: flex;
+	display: flex;
 }
 
-.request-comment-form, .request-form {
-	footer, .comment-form-controls {
+.request-comment-form,
+.request-form {
+	footer,
+	.comment-form-controls {
 		float: right;
 	}
 
@@ -69,11 +76,12 @@
 }
 
 .request-details {
-	&:not(:last-child){
+	&:not(:last-child) {
 		border-bottom: $border-width solid $input-border-color;
 	}
 
-	dd, dt {
+	dd,
+	dt {
 		display: inline-block;
 		font-size: $font-size-sm;
 		line-height: $line-height-sm;
