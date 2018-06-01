@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: './src/js/index.js',
 	module: {
 		rules: [
 			{
