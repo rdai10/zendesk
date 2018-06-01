@@ -2,108 +2,147 @@
  * jQuery v1.9.1 included
  */
 
-$(document).ready(function() {
+$(document).ready(
+	function() {
+		function search() {
+			window.location.search = $.param(
+				{
+					organization_id: $('#request-organization-select').val(),
+					query: $('#quick-search').val(),
+					status: $('#request-status-select').val()
+				}
+			);
+		}
 
-  // social share popups
-  $(".share a").click(function(e) {
-    e.preventDefault();
-    window.open(this.href, "", "height = 500, width = 500");
-  });
+		function setExpanded(node) {
+			var isExpanded = node.getAttribute('aria-expanded') === 'true';
 
-  // show form controls when the textarea receives focus or backbutton is used and value exists
-  var $commentContainerTextarea = $(".comment-container textarea"),
-    $commentContainerFormControls = $(".comment-form-controls, .comment-ccs");
+			node.setAttribute('aria-expanded', !isExpanded);
+		}
 
-  $commentContainerTextarea.one("focus", function() {
-    $commentContainerFormControls.show();
-  });
+		var commentContainerFormControls = $('.comment-form-controls, .comment-ccs');
+		var commentContainerTextarea = $('.comment-container textarea');
 
-  if ($commentContainerTextarea.val() !== "") {
-    $commentContainerFormControls.show();
-  }
+		commentContainerTextarea.one(
+			'focus',
+			function() {
+				commentContainerFormControls.show();
+			}
+		);
 
-  // Expand Request comment form when Add to conversation is clicked
-  var $showRequestCommentContainerTrigger = $(".request-container .comment-container .comment-show-container"),
-    $requestCommentFields = $(".request-container .comment-container .comment-fields"),
-    $requestCommentSubmit = $(".request-container .comment-container .request-submit-comment");
+		if (commentContainerTextarea.val() !== '') {
+			commentContainerFormControls.show();
+		}
 
-  $showRequestCommentContainerTrigger.on("click", function() {
-    $showRequestCommentContainerTrigger.hide();
-    $requestCommentFields.show();
-    $requestCommentSubmit.show();
-    $commentContainerTextarea.focus();
-  });
+		var requestContainer = $('.request-container');
 
-  // Mark as solved button
-  var $requestMarkAsSolvedButton = $(".request-container .mark-as-solved:not([data-disabled])"),
-    $requestMarkAsSolvedCheckbox = $(".request-container .comment-container input[type=checkbox]"),
-    $requestCommentSubmitButton = $(".request-container .comment-container input[type=submit]");
+		var commentContainer = requestContainer.find('.comment-container');
+;
+		var showRequestCommentContainerTrigger = commentContainer.find('.comment-show-container');
 
-  $requestMarkAsSolvedButton.on("click", function () {
-    $requestMarkAsSolvedCheckbox.attr("checked", true);
-    $requestCommentSubmitButton.prop("disabled", true);
-    $(this).attr("data-disabled", true).closest("form").submit();
-  });
+		showRequestCommentContainerTrigger.on(
+			'click',
+			function() {
+				commentcontainer.find('.comment-fields').show();
+				commentContainer.find('.request-submit-comment').show();
 
-  // Change Mark as solved text according to whether comment is filled
-  var $requestCommentTextarea = $(".request-container .comment-container textarea");
+				showRequestCommentContainerTrigger.hide();
 
-  $requestCommentTextarea.on("keyup", function() {
-    if ($requestCommentTextarea.val() !== "") {
-      $requestMarkAsSolvedButton.text($requestMarkAsSolvedButton.data("solve-and-submit-translation"));
-      $requestCommentSubmitButton.prop("disabled", false);
-    } else {
-      $requestMarkAsSolvedButton.text($requestMarkAsSolvedButton.data("solve-translation"));
-      $requestCommentSubmitButton.prop("disabled", true);
-    }
-  });
+				commentContainerTextarea.focus();
+			}
+		);
 
-  // Disable submit button if textarea is empty
-  if ($requestCommentTextarea.val() === "") {
-    $requestCommentSubmitButton.prop("disabled", true);
-  }
+		var requestCommentSubmitButton = commentContainer.find('input[type=submit]');
 
-  // Submit requests filter form in the request list page
-  $("#request-status-select, #request-organization-select")
-    .on("change", function() {
-      search();
-    });
+		var requestMarkAsSolvedButton = requestContainer.find('.mark-as-solved:not([data-disabled])');
 
-  // Submit requests filter form in the request list page
-  $("#quick-search").on("keypress", function(e) {
-    if (e.which === 13) {
-      search();
-    }
-  });
+		requestMarkAsSolvedButton.on(
+			'click',
+			function () {
+				$('.request-container .comment-container input[type=checkbox]').attr('checked', true);
 
-  function search() {
-    window.location.search = $.param({
-      query: $("#quick-search").val(),
-      status: $("#request-status-select").val(),
-      organization_id: $("#request-organization-select").val()
-    });
-  }
+				requestCommentSubmitButton.prop('disabled', true);
 
-  $(".header .icon-menu").on("click", function(e) {
-    e.stopPropagation();
-    var menu = document.getElementById("user-nav");
-    var isExpanded = menu.getAttribute("aria-expanded") === "true";
-    menu.setAttribute("aria-expanded", !isExpanded);
-  });
+				$(this).attr('data-disabled', true).closest('form').submit();
+			}
+		);
 
-  if ($("#user-nav").children().length === 0) {
-    $(".header .icon-menu").hide();
-  }
+		var requestCommentTextarea = requestContainer.find('.comment-container textarea');
 
-  // Submit organization form in the request page
-  $("#request-organization select").on("change", function() {
-    this.form.submit();
-  });
+		requestCommentTextarea.on(
+			'keyup',
+			function() {
+				var text = requestMarkAsSolvedButton.data('solve-translation');
 
-  // Toggles expanded aria to collapsible elements
-  $(".collapsible-nav, .collapsible-sidebar").on("click", function(e) {
-    e.stopPropagation();
-    var isExpanded = this.getAttribute("aria-expanded") === "true";
-    this.setAttribute("aria-expanded", !isExpanded);
-  });
-});
+				var hasText = requestCommentTextarea.val() !== '';
+
+				if (hasText) {
+					text = requestMarkAsSolvedButton.data('solve-and-submit-translation');
+				}
+
+				requestCommentSubmitButton.prop('disabled', !hasText);
+
+				requestMarkAsSolvedButton.text(text);
+			}
+		);
+
+		if (requestCommentTextarea.val() === '') {
+			requestCommentSubmitButton.prop('disabled', true);
+		}
+
+		$('.collapsible-nav, .collapsible-sidebar').on(
+			'click',
+			function(event) {
+				event.stopPropagation();
+
+				setExpanded(this);
+			}
+		);
+
+		$('.header .icon-menu').on(
+			'click',
+			function(event) {
+				event.stopPropagation();
+
+				var userNav = document.getElementById('user-nav');
+
+				setExpanded(userNav);
+			}
+		);
+
+		$('.share a').click(
+			function(event) {
+				event.preventDefault();
+
+				window.open(this.href, '', 'height=500, width=500');
+			}
+		);
+
+		$('#quick-search').on(
+			'keypress',
+			function(event) {
+				if (event.which === 13) {
+					search();
+				}
+			}
+		);
+
+		$('#request-organization select').on(
+			'change',
+			function() {
+				this.form.submit();
+			}
+		);
+
+		$('#request-status-select, #request-organization-select').on(
+			'change',
+			function() {
+				search();
+			}
+		);
+
+		if ($('#user-nav').children().length === 0) {
+			$('.header .icon-menu').hide();
+		}
+	}
+);
