@@ -1,6 +1,6 @@
 .footer {
 	.copyright {
-		border-top: 1px solid $color-grey;
+		border-top: 1px solid $side-nav-background-color;
 		font-size: 0.6rem;
 		margin-top: 2rem;
 		padding: 2rem 0;
@@ -14,7 +14,7 @@
 	}
 
 	.social-links {
-		background-color: $color-grey;
+		background-color: $side-nav-background-color;
 		border-radius: 50%;
 		display: inline-block;
 		height: 1.5rem;

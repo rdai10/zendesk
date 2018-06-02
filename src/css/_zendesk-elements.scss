@@ -31,17 +31,21 @@ h3 {
 	letter-spacing: $h3-letter-spacing;
 }
 
-h3, h4 {
+h3,
+h4 {
 	font-size: $h3-font-size;
 	font-weight: $font-weight-semi-bold;
 	line-height: $line-height-base;
 }
 
-h3, h4, h5 {
+h3,
+h4,
+h5 {
 	font-weight: $font-weight-semi-bold;
 }
 
-h3, h5 {
+h3,
+h5 {
 	text-transform: uppercase;
 }
 
@@ -84,4 +88,8 @@ textarea,
 
 .secondary-text-color {
 	color: $secondary-text-color;
+}
+
+.semibold {
+	font-weight: $font-weight-semi-bold;
 }

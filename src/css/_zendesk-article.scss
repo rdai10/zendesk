@@ -1,0 +1,66 @@
+.article-author,
+.meta-group {
+	display: flex;
+}
+
+.article-label {
+	background-color: $side-nav-background-color;
+	border-width: 0;
+	font-weight: normal;
+	margin: $article-label-spacer-y 0;
+}
+
+.article-relatives {
+	@include media-breakpoint-down(sm) {
+		display: flex;
+		margin: 0;
+
+		.recent-articles,
+		.related-articles {
+			width: 50%;
+		}
+	}
+
+	@include media-breakpoint-down(xs) {
+		display: block;
+	}
+}
+
+.article-vote {
+	&:after {
+		content: attr(title);
+	}
+}
+
+.article-votes-controls {
+	padding: $article-votes-control-spacer-y 0;
+}
+
+.article-votes-question {
+	font-style: italic;
+}
+
+.meta-group {
+	list-style: none;
+	padding: 0;
+}
+
+.recent-articles,
+.related-articles {
+	h3 {
+		font-size: $h5-font-size;
+		letter-spacing: $h5-letter-spacing;
+		line-height: $h5-line-height;
+	}
+
+	ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	li {
+		font-size: $font-size-sm;
+		line-height: $line-height-sm;
+		padding-bottom: $related-article-padding-y;
+	}
+}

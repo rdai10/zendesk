@@ -35,7 +35,6 @@ $color-primary-action: #0B5FFF !default;
 $color-success: #287D3C !default;
 $color-warning: #B95000 !default;
 
-$color-grey: #F7F8FA !default;
 $color-white: #FFF !default;
 
 $secondary-text-color: #6B6C7E !default;
@@ -62,6 +61,9 @@ $h5-letter-spacing: 1 !default;
 
 $avatar-spacer-right: 1rem !default; // 16px
 
+$article-label-spacer-y: 3rem !default; //48px
+$article-votes-control-spacer-y: 1rem !default; //16px
+
 $breadcrumb-divider-svg-icon: clay-icon(
 	angle-right,
 	$breadcrumb-divider-color
@@ -71,6 +73,8 @@ $breadcrumb-divider-svg-icon-width: $breadcrumb-divider-svg-icon-height !default
 
 $breadcrumb-font-size: null !default;
 $breadcrumb-font-weight: null !default;
+
+$related-article-padding-y: 1rem !default; // 16px
 
 $suggestion-list-font-color: null !default;
 $suggestion-list-line-height: 2 !default;
