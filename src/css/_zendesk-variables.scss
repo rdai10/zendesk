@@ -43,24 +43,24 @@ $side-nav-background-color: #F7F8FA !default;
 
 $h1-display-font-size: 3.5rem !default; // 56px
 $h1-display-line-height: 1.29 !default;
-$h1-line-height: 1.4 !default;
 
 $h2-display-font-size: 1.75rem !default; // 28px
 $h2-display-letter-spacing: 0.5 !default;
-$h2-semibold-font-size: 1.25rem !default; // 20px
-
 $h2-display-line-height: 1.57 !default;
-$h2-line-height: 1.34 !default;
+
+$h2-semibold-font-size: 1.25rem !default; // 20px
 $h2-semibold-line-height: 1.4 !default;
 
-$h3-letter-spacing: 0.75 !default;
-
-$h5-letter-spacing: 1 !default;
+$h1-line-height: 1.4 !default;
+$h2-line-height: 1.34 !default;
 $h5-line-height: $h2-line-height !default;
 
 $line-height-sm: 1.429 !default;
 
-$avatar-spacer-right: 1rem !default; //16px
+$h3-letter-spacing: 0.75 !default;
+$h5-letter-spacing: 1 !default;
+
+$avatar-spacer-right: 1rem !default; // 16px
 
 $breadcrumb-divider-svg-icon: clay-icon(
 	angle-right,
@@ -68,9 +68,10 @@ $breadcrumb-divider-svg-icon: clay-icon(
 ) !default;
 $breadcrumb-divider-svg-icon-height: 0.75em !default;
 $breadcrumb-divider-svg-icon-width: $breadcrumb-divider-svg-icon-height !default;
+
 $breadcrumb-font-size: null !default;
 $breadcrumb-font-weight: null !default;
 
-$suggestion-list-line-height: 2 !default;
 $suggestion-list-font-color: null !default;
-$suggestion-list-padding: 1.5rem !default; //24px
+$suggestion-list-line-height: 2 !default;
+$suggestion-list-padding: 1.5rem !default; // 24px
