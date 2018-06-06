@@ -5,101 +5,105 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<h1 class="article-title col-md-7" title="{{article.title}}">
-			{{article.title}}
+	{{#each article.labels}}
+		{{#is identifier 'kbArticle'}}
+			{{#with ../article}}
+				<div class="row">
+					<h1 class="article-title col-md-7" title="{{title}}">
+						{{title}}
 
-			{{#if article.internal}}
-				<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
-					<use xlink:href="#lock" />
-				</svg>
-			{{/if}}
-		</h1>
-	</div>
-
-	<div class="row">
-		<div class="col-md-7">
-			<div class="article-author">
-				<div class="avatar sticker sticker-circle sticker-primary">
-					<span class="sticker-overlay">
-						<img alt="{{article.author.name}}" class="sticker-img" src="{{article.author.avatar_url}}" />
-					</span>
+						{{#if internal}}
+							<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+								<use xlink:href="#lock" />
+							</svg>
+						{{/if}}
+					</h1>
 				</div>
 
-				<div class="article-meta">
-					{{#link 'user_profile' id=article.author.id}}
-						<div class="secondary-font semibold">
-							{{article.author.name}}
-						</div>
-					{{/link}}
+				<div class="row">
+					<div class="col-md-7">
+						<div class="article-author">
+							<div class="avatar sticker sticker-circle sticker-primary">
+								<span class="sticker-overlay">
+									<img alt="Avatar" class="sticker-img" src="{{author.avatar_url}}" />
+								</span>
+							</div>
 
-					<ul class="meta-group secondary-text-color small">
-						<li class="meta-data">
-							{{#is article.created_at article.edited_at}}
-								{{date article.created_at timeago=true}}
-							{{else}}
-								{{t 'updated'}} {{date article.edited_at timeago=true}}
-							{{/is}}
-						</li>
-					</ul>
-				</div>
-			</div>
-
-			<section class="article-info">
-				<div class="article-content">
-					<div class="article-body">
-						{{article.body}}
-					</div>
-
-					<div class="article-attachments">
-						<ul class="attachments">
-							{{#each attachments}}
-								<li class="attachment-item">
-									<a href="{{url}}" target="_blank">{{name}}</a>
-
-									<div class="attachment-meta meta-group">
-										<span class="attachment-meta-item meta-data">{{size}}</span>
-
-										<a class="attachment-meta-item meta-data" href="{{url}}" target="_blank">{{t 'download'}}</a>
+							<div class="article-meta">
+								{{#link 'user_profile' id=author.id}}
+									<div class="secondary-font semibold">
+										{{author.name}}
 									</div>
-								</li>
-							{{/each}}
-						</ul>
-					</div>
-				</div>
-			</section>
+								{{/link}}
 
-			<footer class="article-footer">
-				{{#each article.labels}}
-					<span class="article-label label">
-						<span class="label-item label-item-expand">{{identifier}}</span>
-					</span>
-				{{/each}}
-
-				{{#with article}}
-					<div class="article-votes">
-						<span class="article-votes-question">{{t 'was_this_article_helpful'}}</span>
-
-						<div class="article-votes-controls" role='radiogroup'>
-							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-outline-primary'}}
-							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-outline-primary'}}
+								<ul class="meta-group secondary-text-color small">
+									<li class="meta-data">
+										{{#is created_at edited_at}}
+											{{date created_at timeago=true}}
+										{{else}}
+											{{t 'updated'}} {{date edited_at timeago=true}}
+										{{/is}}
+									</li>
+								</ul>
+							</div>
 						</div>
 
-						<small class="article-votes-count">
-							{{vote 'label' class='article-vote-label'}}
-						</small>
+						<section class="article-info">
+							<div class="article-content">
+								<div class="article-body">
+									{{body}}
+								</div>
+
+								<div class="article-attachments">
+									<ul class="attachments">
+										{{#each ../../attachments}}
+											<li class="attachment-item">
+												<a href="{{url}}" target="_blank">{{name}}</a>
+
+												<div class="attachment-meta meta-group">
+													<span class="attachment-meta-item meta-data">{{size}}</span>
+
+													<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+												</div>
+											</li>
+										{{/each}}
+									</ul>
+								</div>
+							</div>
+						</section>
+
+						<footer class="article-footer">
+							{{#each labels}}
+								<span class="article-label label">
+									<span class="label-item label-item-expand">{{identifier}}</span>
+								</span>
+							{{/each}}
+
+							<div class="article-votes">
+								<span class="article-votes-question">{{t 'was_this_article_helpful'}}</span>
+
+								<div class="article-votes-controls" role='radiogroup'>
+									{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-outline-primary'}}
+									{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-outline-primary'}}
+								</div>
+
+								<small class="article-votes-count">
+									{{vote 'label' class='article-vote-label'}}
+								</small>
+							</div>
+
+							<div class="article-more-questions">
+								{{../../request_callout}}
+							</div>
+						</footer>
 					</div>
-				{{/with}}
 
-				<div class="article-more-questions">
-					{{request_callout}}
+					<div class="article-relatives col-md-4 offset-sm-1">
+						{{../../related_articles}}
+						{{../../recent_articles}}
+					</div>
 				</div>
-			</footer>
-		</div>
-
-		<div class="article-relatives col-md-4 offset-sm-1">
-			{{related_articles}}
-			{{recent_articles}}
-		</div>
-	</div>
+			{{/with}}
+		{{/is}}
+	{{/each}}
 </div>
