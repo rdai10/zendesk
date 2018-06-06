@@ -22,7 +22,7 @@
 			<div class="article-author">
 				<div class="avatar sticker sticker-circle sticker-primary">
 					<span class="sticker-overlay">
-						<img src="{{article.author.avatar_url}}" alt="Avatar" class="sticker-img"/>
+						<img alt="{{article.author.name}}" class="sticker-img" src="{{article.author.avatar_url}}" />
 					</span>
 				</div>
 
@@ -34,27 +34,33 @@
 					{{/link}}
 
 					<ul class="meta-group secondary-text-color small">
-						{{#is article.created_at article.edited_at}}
-							<li class="meta-data">{{date article.created_at timeago=true}}</li>
-						{{else}}
-							<li class="meta-data">{{t 'updated'}} {{date article.edited_at timeago=true}}</li>
-						{{/is}}
+						<li class="meta-data">
+							{{#is article.created_at article.edited_at}}
+								{{date article.created_at timeago=true}}
+							{{else}}
+								{{t 'updated'}} {{date article.edited_at timeago=true}}
+							{{/is}}
+						</li>
 					</ul>
 				</div>
 			</div>
 
 			<section class="article-info">
 				<div class="article-content">
-					<div class="article-body">{{article.body}}</div>
+					<div class="article-body">
+						{{article.body}}
+					</div>
 
 					<div class="article-attachments">
 						<ul class="attachments">
 							{{#each attachments}}
 								<li class="attachment-item">
 									<a href="{{url}}" target="_blank">{{name}}</a>
+
 									<div class="attachment-meta meta-group">
 										<span class="attachment-meta-item meta-data">{{size}}</span>
-										<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+
+										<a class="attachment-meta-item meta-data" href="{{url}}" target="_blank">{{t 'download'}}</a>
 									</div>
 								</li>
 							{{/each}}
@@ -71,17 +77,19 @@
 				{{/each}}
 
 				{{#with article}}
-          <div class="article-votes">
-            <span class="article-votes-question">{{t 'was_this_article_helpful'}}</span>
-            <div class="article-votes-controls" role='radiogroup'>
-              {{vote 'up' role='radio' class='article-vote article-vote-up btn btn-outline-primary'}}
-              {{vote 'down' role='radio' class='article-vote article-vote-down btn btn-outline-primary'}}
-            </div>
-            <small class="article-votes-count">
-              {{vote 'label' class='article-vote-label'}}
-            </small>
-          </div>
-        {{/with}}
+					<div class="article-votes">
+						<span class="article-votes-question">{{t 'was_this_article_helpful'}}</span>
+
+						<div class="article-votes-controls" role='radiogroup'>
+							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-outline-primary'}}
+							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-outline-primary'}}
+						</div>
+
+						<small class="article-votes-count">
+							{{vote 'label' class='article-vote-label'}}
+						</small>
+					</div>
+				{{/with}}
 
 				<div class="article-more-questions">
 					{{request_callout}}
