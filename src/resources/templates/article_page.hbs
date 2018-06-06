@@ -58,12 +58,16 @@
 									<ul class="attachments">
 										{{#each ../../attachments}}
 											<li class="attachment-item">
+												<svg class="lexicon-icon lexicon-icon-paperclip">
+													<use xlink:href="#paperclip" />
+												</svg>
+
 												<a href="{{url}}" target="_blank">{{name}}</a>
 
-												<div class="attachment-meta meta-group">
-													<span class="attachment-meta-item meta-data">{{size}}</span>
+												<div class="attachment-meta">
+													<span class="meta-data">{{size}}</span>
 
-													<a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+													<a href="{{url}}" target="_blank">Download</a>
 												</div>
 											</li>
 										{{/each}}
@@ -103,6 +107,50 @@
 						{{../../recent_articles}}
 					</div>
 				</div>
+			{{/with}}
+		{{/is}}
+
+		{{#is identifier 'Official Docs'}}
+			{{#with ../article}}
+				<div class="row">
+					<section class="article-info col-md-7">
+						<h1 class="article-title" title="{{title}}">
+							{{title}}
+
+							{{#if internal}}
+								<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+									<use xlink:href="#lock" />
+								</svg>
+							{{/if}}
+						</h1>
+
+						<div class="article-content">
+							<div class="article-body">
+								{{body}}
+							</div>
+						</div>
+
+						<footer class="article-footer">
+							{{#each labels}}
+								<span class="article-label label">
+									<span class="label-item label-item-expand">{{identifier}}</span>
+								</span>
+							{{/each}}
+
+							<div class="article-votes">
+								<span class="article-votes-question">{{t 'was_this_article_helpful'}}</span>
+
+								<div class="article-votes-controls" role='radiogroup'>
+									{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-outline-primary'}}
+									{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-outline-primary'}}
+								</div>
+
+								<small class="article-votes-count">
+									{{vote 'label' class='article-vote-label'}}
+								</small>
+							</div>
+						</footer>
+					</section>
 			{{/with}}
 		{{/is}}
 	{{/each}}
