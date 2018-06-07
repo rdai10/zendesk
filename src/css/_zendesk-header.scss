@@ -1,0 +1,35 @@
+.header {
+	align-items: center;
+	display: flex;
+
+	.logo, .user-avatar {
+		max-height: 2rem;
+	}
+
+	.search-form {
+		.search {
+			input[type="submit"] {
+				display: none;
+			}
+
+			input:not([type="submit"]) {
+				padding: 0.5rem;
+			}
+		}
+	}
+
+	.site-name {
+		display: inline-block;
+		vertical-align: sub;
+	}
+
+	.user {
+		#user #user-name, .dropdown-toggle:after {
+			display: none;
+		}
+
+		.user-avatar {
+			border-radius: 50%;
+		}
+	}
+}
