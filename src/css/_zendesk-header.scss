@@ -13,7 +13,7 @@
 			}
 
 			input:not([type="submit"]) {
-				padding: 0.5rem;
+				padding: $input-padding-y;
 			}
 		}
 	}

@@ -19,7 +19,7 @@
 <header class="header">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-3">
 				{{#link 'help_center'}}
 					<img alt="{{help_center.name}}" class="logo" src="{{settings.logo}}" />
 				{{/link}}
@@ -31,11 +31,11 @@
 				</h2>
 			</div>
 
-			<div class="col-md-3 offset-md-4 search-form">
+			<div class="col-3 offset-sm-4 search-form">
 				{{search submit=true}}
 			</div>
 
-			<div class="col-md-2 user">
+			<div class="col-2 user">
 				{{#if signed_in}}
 					{{user_info}}
 				{{else}}
@@ -47,15 +47,3 @@
 		</div>
 	</div>
 </header>
-
-
-<!--
-		<div class="nav-wrapper">
-			<span class="icon-menu"></span>
-			<nav class="user-nav" id="user-nav">
-				{{link 'community'}}
-				{{link 'new_request' class='submit-a-request'}}
-			</nav>
-			{{user_info}}
-		</div>
--->
