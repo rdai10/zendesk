@@ -26,6 +26,12 @@
 	}
 }
 
+.article-sidenav {
+	.nav-item {
+		padding: $article-sidenav-spacer-y 0;
+	}
+}
+
 .article-vote {
 	&:after {
 		content: attr(title);

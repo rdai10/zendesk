@@ -113,7 +113,25 @@
 		{{#is identifier 'Official Docs'}}
 			{{#with ../article}}
 				<div class="row">
-					<section class="article-info col-md-7">
+					<div class="article-sidenav col-md-3 secondary-font">
+						<div class="sidenav-title">{{t 'articles_in_section'}}</div>
+
+						{{#with ../../section}}
+							<ul class="nav nav-nested">
+								{{#each articles}}
+									<li class="nav-item">
+										<a href="{{url}}" class="{{#is id ../id}}active semibold{{/is}} sidenav-item ">{{title}}</a>
+									</li>
+								{{/each}}
+							</ul>
+
+							{{#if more_articles}}
+								<a href="{{url}}" class="sidenav-item">{{t 'see_more'}}</a>
+							{{/if}}
+						{{/with}}
+					</div>
+
+					<div class="article-info col-md-7">
 						<h1 class="article-title" title="{{title}}">
 							{{title}}
 
@@ -125,9 +143,9 @@
 						</h1>
 
 						<div class="article-content">
-							<div class="article-body">
+							<section class="article-body">
 								{{body}}
-							</div>
+							</section>
 						</div>
 
 						<footer class="article-footer">
@@ -150,7 +168,8 @@
 								</small>
 							</div>
 						</footer>
-					</section>
+					</div>
+				</div>
 			{{/with}}
 		{{/is}}
 	{{/each}}
