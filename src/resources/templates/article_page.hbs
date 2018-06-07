@@ -120,13 +120,13 @@
 							<ul class="nav nav-nested">
 								{{#each articles}}
 									<li class="nav-item">
-										<a href="{{url}}" class="{{#is id ../id}}active semibold{{/is}} sidenav-item ">{{title}}</a>
+										<a class="{{#is id ../id}}active semibold{{/is}} sidenav-item" href="{{url}}">{{title}}</a>
 									</li>
 								{{/each}}
 							</ul>
 
 							{{#if more_articles}}
-								<a href="{{url}}" class="sidenav-item">{{t 'see_more'}}</a>
+								<a class="sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
 							{{/if}}
 						{{/with}}
 					</div>
