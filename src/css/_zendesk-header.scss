@@ -1,9 +1,15 @@
 .header {
-	align-items: center;
-	display: flex;
+	.analytics-cloud-logo {
+		height: 2.5rem;
+		padding-right: $header-spacer-x;
+		vertical-align: middle;
+		width: 2.5rem;
+	}
 
-	.logo, .user-avatar {
-		max-height: 2rem;
+	.help-center-detail {
+		@include media-breakpoint-down(sm) {
+			display: none;
+		}
 	}
 
 	.search-form {
@@ -20,7 +26,7 @@
 
 	.site-name {
 		display: inline-block;
-		vertical-align: sub;
+		padding-left: $header-spacer-x;
 	}
 
 	.user {
@@ -30,6 +36,7 @@
 
 		.user-avatar {
 			border-radius: 50%;
+			max-height: 2rem;
 		}
 	}
 }
