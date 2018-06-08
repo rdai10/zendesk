@@ -4,13 +4,9 @@
 
 	a,
 	span {
-		background-color: $pagination-bg;
-		border-radius: $border-radius;
-		border: $pagination-border-width solid $pagination-border-color;
-		color: $pagination-color;
+		color: $color-default;
 		display: block;
 		line-height: $pagination-line-height;
-		margin-left: -$pagination-border-width;
 		padding: $pagination-padding-y $pagination-padding-x;
 		position: relative;
 	}
@@ -22,12 +18,8 @@
 		list-style: none;
 	}
 
-	.pagination-current {
-		border-color: $pagination-active-border-color;
-
-		span {
-			background-color: $pagination-active-bg;
-			color: $pagination-active-color;
-		}
+	.pagination-current span {
+		background-color: $color-active;
+		color: $color-primary;
 	}
 }
