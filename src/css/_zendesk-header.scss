@@ -12,26 +12,13 @@
 		}
 	}
 
-	.site-name {
-		display: inline-block;
-		margin: 0;
-		padding-left: $header-spacer-x;
-		vertical-align: middle;
-
-		@include media-breakpoint-down(sm) {
+	.nav-search {
+		input[type="submit"] {
 			display: none;
 		}
-	}
 
-	.search-form {
-		.search {
-			input[type="submit"] {
-				display: none;
-			}
-
-			input:not([type="submit"]) {
-				padding: $input-padding-y;
-			}
+		input:not([type="submit"]) {
+			padding: $input-padding-y;
 		}
 	}
 
@@ -39,6 +26,17 @@
 		border-right: 1px solid $color-default;
 		display: inline-block;
 		height: 25%;
+
+		@include media-breakpoint-down(sm) {
+			display: none;
+		}
+	}
+
+	.site-name {
+		display: inline-block;
+		margin: 0;
+		padding-left: $header-spacer-x;
+		vertical-align: middle;
 
 		@include media-breakpoint-down(sm) {
 			display: none;

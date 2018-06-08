@@ -1,69 +1,69 @@
-<section class="section hero">
-	<div class="hero-inner">
-		{{search submit=false instant=true class='search search-full'}}
+<style>
+	.nav-search {
+		display: none;
+	}
+</style>
+
+<div class="container homepage">
+	<div class="banner row">
+		<div class="col-12">
+			<h1 class="display">
+				{{dc 'how_can_we_help'}}
+			</h1>
+
+			{{search class="homepage-search"}}
+		</div>
 	</div>
-</section>
 
-<div class="container">
-	<section class="section knowledge-base">
-		<section class="categories blocks">
-			<ul class="blocks-list">
-				{{#each categories}}
-					{{#if ../has_multiple_categories}}
-						<li class="blocks-item">
-							<a href='{{url}}' class="blocks-item-link">
-								<h4 class="blocks-item-title">{{name}}</h4>
-								<p class="blocks-item-description">{{excerpt description}}</p>
-							</a>
-						</li>
-					{{else}}
-						{{#each sections}}
-							<li class="blocks-item {{#if internal}}blocks-item-internal{{/if}}">
-								<a href='{{url}}' class="blocks-item-link">
-									<h4 class="blocks-item-title">
-										{{name}}
-										{{#if internal}}
-											<span class="icon-lock" title="{{t 'internal'}}"></span>
-										{{/if}}
-									</h4>
-									<p class="blocks-item-description">{{excerpt description}}</p>
+	<section class="row suggested-topics">
+		<h2 class="col-12 display">
+			{{dc 'suggested_topics'}}
+		</h2>
+
+		{{#each categories}}
+			{{#is name 'Product Documentation'}}
+				{{#each sections}}
+					{{#is name 'Getting Started'}}
+						<div class="col-sm-6 topic">
+							<h2>
+								{{dc 'getting_started'}}
+							</h2>
+
+							{{#each articles}}
+								<a href='{{url}}'>
+									<p class="secondary-text">{{title}}</p>
 								</a>
-							</li>
-						{{/each}}
-					{{/if}}
+							{{/each}}
+
+							{{#if more_articles}}
+								<a href="{{url}}">
+									{{dc 'view_all'}}
+								</a>
+							{{/if}}
+						</div>
+					{{/is}}
+
+					{{#is name 'Administering Liferay Analytics Cloud'}}
+						<div class="col-sm-6 topic">
+							<h2>
+								{{dc 'administering_liferay_analytics_cloud'}}
+							</h2>
+
+							{{#each articles}}
+								<a href='{{url}}'>
+									<p class="secondary-text">{{title}}</p>
+								</a>
+							{{/each}}
+
+							{{#if more_articles}}
+								<a href="{{url}}">
+									{{dc 'view_all'}}
+								</a>
+							{{/if}}
+						</div>
+					{{/is}}
 				{{/each}}
-			</ul>
-			{{pagination}}
-		</section>
-
-		{{#if promoted_articles}}
-			<section class="articles">
-				<h3>{{t 'promoted_articles'}}</h3>
-				<ul class="article-list promoted-articles">
-					{{#each promoted_articles}}
-						<li class="promoted-articles-item">
-							<a href="{{url}}">
-								{{title}}
-							</a>
-						</li>
-					{{/each}}
-				</ul>
-			</section>
-		{{/if}}
-	</section>
-
-	{{#if help_center.community_enabled}}
-		<section class="section community">
-			<h2>{{t 'community'}}</h2>
-			{{#link 'community' class='community-link'}}
-				{{t 'join_conversation'}}
-			{{/link}}
-
-			<div class="community-image"></div>
-		</section>
-	{{/if}}
-
-	<section class="section activity">
-		{{recent_activity}}
+			{{/is}}
+		{{/each}}
 	</section>
 </div>

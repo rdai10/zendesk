@@ -1,0 +1,40 @@
+.homepage {
+	.banner {
+		align-items: center;
+		display: flex;
+
+		.display {
+			margin-bottom: 1rem;
+		}
+
+		.homepage-search {
+			@include media-breakpoint-up(md) {
+				max-width: 50%;
+			}
+
+			input[type="search"] {
+				height: 3.5rem;
+				width: 90%;
+			}
+
+			input[type="submit"] {
+				display: none;
+			}
+		}
+	}
+
+	.suggested-topics {
+		padding-bottom: 4rem;
+		padding-top: 1rem;
+
+		.display {
+			padding-bottom: 3rem;
+		}
+
+		.topic {
+			h2, p {
+				margin-bottom: 1.5rem;
+			}
+		}
+	}
+}
