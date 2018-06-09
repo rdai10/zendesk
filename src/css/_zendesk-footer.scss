@@ -1,9 +1,15 @@
 .footer {
+	.analytics-cloud-logo {
+		height: 64px;
+		width: 118px;
+	}
+
 	.copyright {
 		border-top: 1px solid $color-grey;
 		font-size: 0.6rem;
 		margin-top: 2rem;
-		padding: 2rem 0;
+		padding-bottom: 2rem;
+		padding-top: 2rem;
 		text-transform: uppercase;
 	}
 
