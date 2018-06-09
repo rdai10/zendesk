@@ -1,12 +1,23 @@
 .header {
-	.analytics-cloud-logo {
+	.analytics-cloud-link {
+		display: inline-block;
 		height: 2.5rem;
 		padding-right: $header-spacer-x;
 		vertical-align: middle;
 		width: 2.5rem;
+
+		.analytics-cloud-logo {
+			height: 100%;
+			width: 100%;
+		}
 	}
 
-	.help-center-detail {
+	.site-name {
+		display: inline-block;
+		margin: 0;
+		padding-left: $header-spacer-x;
+		vertical-align: middle;
+
 		@include media-breakpoint-down(sm) {
 			display: none;
 		}
@@ -24,12 +35,21 @@
 		}
 	}
 
-	.site-name {
+	.separator {
+		border-right: 1px solid $color-default;
 		display: inline-block;
-		padding-left: $header-spacer-x;
+		height: 25%;
+
+		@include media-breakpoint-down(sm) {
+			display: none;
+		}
 	}
 
 	.user {
+		.btn {
+			padding: 0.375rem 0;
+		}
+
 		#user #user-name,
 		.dropdown-toggle:after {
 			display: none;

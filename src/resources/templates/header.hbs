@@ -25,22 +25,24 @@
 <header class="container-fluid header">
 	<div class="row">
 		<div class="col-3">
-			{{#link 'help_center'}}
+			{{#link 'help_center' class="analytics-cloud-link"}}
 				<svg alt="{{help_center.name}}" class="analytics-cloud-logo">
 					<use xlink:href="#analytics-cloud-logo" />
 				</svg>
+			{{/link}}
 
-				<span class="help-center-detail"> |
-					<h5 class="site-name">{{help_center.name}}</h5>
-				</span>
+			<div class="separator"></div>
+
+			{{#link 'help_center'}}
+				<h5 class="site-name">{{help_center.name}}</h5>
 			{{/link}}
 		</div>
 
-		<div class="col-3 offset-sm-4 search-form">
+		<div class="col-4 col-md-3 offset-3 offset-md-5 search-form">
 			{{search submit=true}}
 		</div>
 
-		<div class="col-2 user">
+		<div class="col-2 col-md-1 user">
 			{{#if signed_in}}
 				{{user_info}}
 			{{else}}
