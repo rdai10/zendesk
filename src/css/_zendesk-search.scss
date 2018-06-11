@@ -1,0 +1,16 @@
+.search-results {
+	margin-top: 2.5rem;
+
+	.search-results-list {
+		list-style: none;
+
+		.search-result {
+			margin-bottom: 2rem;
+
+			.search-result-link {
+				display: block;
+				margin-bottom: 0.25rem;
+			}
+		}
+	}
+}
