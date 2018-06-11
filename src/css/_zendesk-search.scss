@@ -1,8 +1,17 @@
 .search-results {
-	margin-top: 2.5rem;
+	section {
+		margin-top: 2.5rem;
+	}
+
+	.search-results-searchbox {
+		input {
+			height: 4rem;
+		}
+	}
 
 	.search-results-list {
 		list-style: none;
+		padding: 0;
 
 		.search-result {
 			margin-bottom: 2rem;

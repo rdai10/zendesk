@@ -1,48 +1,44 @@
-<div class="container-divider"></div>
-
-<div class="container-fluid">
+<div class="container search-results">
 	<nav class="sub-nav">
 		{{breadcrumbs}}
 	</nav>
 
 	<div class="col-md-8 offset-md-2">
 		<header>
-			<h1 class="page-header-description">
+			<h2 class="page-header-description">
 				{{t 'results' query=query count=results_count}}
-			</h1>
+			</h2>
 
-			{{search submit=false}}
+			{{search class="search-results-searchbox" submit=false}}
 		</header>
 
-		<div class="search-results">
-			<section class="search-results-column">
-				{{#if article_results}}
-					<ul class="search-results-list">
-						{{#each article_results}}
-							<li class="search-result">
-								<a class="search-result-link" href="{{url}}">{{title}}</a>
+		<section>
+			{{#if article_results}}
+				<ul class="search-results-list">
+					{{#each article_results}}
+						<li class="search-result">
+							<a class="search-result-link" href="{{url}}">{{title}}</a>
 
-								<div class="search-result-description">
-									{{text}}
-								</div>
+							<div class="search-result-description">
+								{{text}}
+							</div>
 
-								<div class="meta-group">
-									{{meta}}
-								</div>
-							</li>
-						{{/each}}
-					</ul>
-				{{else}}
-					<div>
-						{{t 'no_results' query=query}}
+							<div class="meta-group">
+								{{meta}}
+							</div>
+						</li>
+					{{/each}}
+				</ul>
+			{{else}}
+				<div>
+					{{t 'no_results' query=query}}
 
-						{{#link 'help_center'}}
-							{{t 'browse_knowledge_base'}}
-						{{/link}}
-					</div>
-				{{/if}}
-			</section>
-		</div>
+					{{#link 'help_center'}}
+						{{t 'browse_knowledge_base'}}
+					{{/link}}
+				</div>
+			{{/if}}
+		</section>
 
 		{{pagination}}
 	</div>
