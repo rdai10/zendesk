@@ -3,6 +3,10 @@
 	display: flex;
 }
 
+.article-footer {
+	padding-bottom: 6rem;
+}
+
 .article-label {
 	background-color: $color-grey;
 	border-width: 0;
@@ -49,6 +53,26 @@
 .meta-group {
 	list-style: none;
 	padding: 0;
+}
+
+.need-help {
+	border-top: 1px solid $color-grey;
+	padding-bottom: 7.25rem;
+	padding-top: 6rem;
+
+	.display {
+		padding-bottom: 2.875rem;
+	}
+
+	.lexicon-icon-ticket {
+		height: 2rem;
+		width: 2rem;
+	}
+
+	.new-request-link {
+		padding-left: 1rem;
+		padding-right: 2rem;
+	}
 }
 
 .recent-articles,

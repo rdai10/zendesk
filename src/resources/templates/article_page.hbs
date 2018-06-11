@@ -173,4 +173,22 @@
 			{{/with}}
 		{{/is}}
 	{{/each}}
+
+	<section class="col-12 need-help">
+		<h2 class="display">
+			{{dc 'still_need_help'}}
+		</h2>
+
+		<svg class="lexicon-icon lexicon-icon-ticket">
+			<use xlink:href="#ticket" />
+		</svg>
+
+		<a class="new-request-link" href="{{page_path 'new_request'}}">
+			{{dc 'open_a_ticket'}}
+		</a>
+
+		<span class="secondary-text secondary-text-color">
+			{{dc 'receive_help_on_bugs_and_issues_available_to_subscription_customers'}}
+		</span>
+	</section>
 </div>
