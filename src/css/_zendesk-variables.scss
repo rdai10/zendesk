@@ -32,6 +32,8 @@ $color-active: #F3F7FF !default;
 $color-default: #272833 !default;
 $color-disabled: #B3CDFF !default;
 $color-error: #DA1414 !default;
+$color-error-border: #F48989 !default;
+$color-error-background: #FEEFEF !default;
 $color-focus: #EBF0FA !default;
 $color-hover: #F0F5FF !default;
 $color-info: #2E5AAC !default;
@@ -80,6 +82,8 @@ $breadcrumb-font-size: null !default;
 $breadcrumb-font-weight: null !default;
 
 $header-spacer-x: 0.75rem !default; // 12px
+
+$notification-font-size: 0.875rem !default; //14px
 
 $related-article-padding-y: 1rem !default; // 16px
 

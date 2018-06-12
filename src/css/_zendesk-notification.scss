@@ -1,0 +1,18 @@
+.notification {
+	font-size: $notification-font-size;
+}
+
+.notification-error {
+	background-color: $color-error-background;
+	border-color: $color-error-border;
+	color: $color-error;
+}
+
+.notification-inline {
+	font-family: inherit;
+	font-weight: $font-weight-normal;
+	line-height: $line-height-base;
+	padding: $input-padding-y $input-padding-x;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
