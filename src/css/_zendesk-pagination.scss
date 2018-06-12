@@ -1,3 +1,8 @@
+%active {
+	background-color: $color-active;
+	color: $color-primary;
+}
+
 .pagination {
 	font-size: $pagination-font-size;
 	margin: $pagination-margin-bottom 0;
@@ -9,6 +14,23 @@
 		line-height: $pagination-line-height;
 		padding: $pagination-padding-y $pagination-padding-x;
 		position: relative;
+		text-decoration: none;
+
+		&:active, &:focus, &:hover {
+			border-radius: 10%;
+		}
+
+		&:active {
+			@extend %active;
+		}
+
+		&:hover {
+			background-color: $color-hover;
+		}
+
+		&:focus {
+			background-color: $color-focus;
+		}
 	}
 
 	ul {
@@ -19,7 +41,6 @@
 	}
 
 	.pagination-current span {
-		background-color: $color-active;
-		color: $color-primary;
+		@extend %active;
 	}
 }
