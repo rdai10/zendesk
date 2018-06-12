@@ -16,7 +16,9 @@
 		position: relative;
 		text-decoration: none;
 
-		&:active, &:focus, &:hover {
+		&:active,
+		&:focus,
+		&:hover {
 			border-radius: 10%;
 		}
 
