@@ -49,7 +49,6 @@ module.exports = {
 	plugins: [
 		new CopyWebpackPlugin([
 			{from:'src/resources/.zat', to:''},
-			{from:'src/resources/assets', to:'assets'},
 			{from:'src/resources/settings', to:'settings'},
 			{from:'src/resources/templates', to:'templates'},
 			{from:'src/resources/translations', to:'translations'},
