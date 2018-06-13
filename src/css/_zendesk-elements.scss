@@ -55,6 +55,10 @@ h5 {
 	line-height: $h5-line-height;
 }
 
+input[type="search"] {
+	box-sizing: border-box;
+}
+
 input:not([type="submit"]),
 select,
 textarea,
