@@ -14,7 +14,8 @@
 }
 
 .comment-author,
-.comment-form {
+.comment-form,
+.request-comment-form {
 	display: flex;
 }
 
@@ -45,8 +46,48 @@
 	}
 }
 
-.request-comment-form {
-	display: flex;
+.my-activities {
+	margin-bottom: 4rem;
+
+	h1 {
+		margin-top: 3rem;
+	}
+
+	table {
+		td:not([class]),
+		th {
+			font-size: $font-size-sm;
+			line-height: $line-height-sm;
+		}
+
+		th {
+			font-weight: $font-weight-normal;
+
+			&,
+			&:first-child,
+			&:last-child,
+			&:only-child {
+				box-shadow: none;
+			}
+			&,
+			a {
+				color: $secondary-text-color;
+			}
+		}
+	}
+
+	.navbar {
+		border-bottom: 1px solid $color-grey;
+		margin-bottom: 1.5rem;
+
+		.nav-link {
+			color: $secondary-text-color;
+
+			&.active {
+				color: $color-default;
+			}
+		}
+	}
 }
 
 .request-comment-form,
@@ -59,7 +100,6 @@
 	label {
 		color: $input-label-color;
 		font-size: $input-label-font-size;
-		font-weight: $input-label-font-weight;
 		margin-bottom: $input-label-margin-bottom;
 		max-width: 100%;
 		word-wrap: break-word;
@@ -100,6 +140,10 @@
 }
 
 .request-filter {
+	label {
+		color: $secondary-text-color;
+	}
+
 	.organization {
 		max-width: 250px;
 	}
@@ -127,6 +171,7 @@
 
 .status-label,
 .suggestion-list label {
+	font-weight: $font-weight-semi-bold;
 	text-transform: uppercase;
 }
 
@@ -154,7 +199,6 @@
 	.searchbox {
 		border: $input-border-width solid $input-border-color;
 		border-radius: $input-border-radius;
-		color: $suggestion-list-font-color;
 		padding: $suggestion-list-padding;
 	}
 }

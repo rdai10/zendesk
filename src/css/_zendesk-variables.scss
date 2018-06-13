@@ -32,14 +32,14 @@ $h5-font-size: 0.75rem !default; // 12px
 
 $breadcrumb-active-color: null !default;
 $breadcrumb-divider-color: null !default;
-$breadcrumb-margin-bottom: 3rem !default;
+$breadcrumb-margin-bottom: 3rem !default; //48px
 
 $body-color: $color-default !default;
 
+$form-group-autofit-margin-bottom: 1.5rem !default; //24px
 $form-group-item-label-spacer: 1.875rem !default; // 30px
 
 $input-label-font-size: 0.875rem !default; // 14px
-$input-label-font-weight: $font-weight-semi-bold !default;
 $input-padding-x: 1rem !default; // 16px
 $input-padding-y: 0.5rem !default; // 8px
 
@@ -48,6 +48,9 @@ $lexicon-icon-width: 1rem !default; //16px
 $link-color: $color-primary !default;
 
 $table-cell-padding: 0.875rem !default; // 14px
+$table-list-border-radius: 0 !default;
+$table-list-border-x-width: 0 !default;
+$table-responsive-margin-bottom: 3rem !default; //48px
 
 $navbar-height: 4rem !default;
 $navbar-padding-x: 0 !default;
@@ -95,6 +98,5 @@ $notification-font-size: 0.875rem !default; //14px
 
 $related-article-padding-y: 1rem !default; // 16px
 
-$suggestion-list-font-color: null !default;
 $suggestion-list-line-height: 2 !default;
 $suggestion-list-padding: 1.5rem !default; // 24px
