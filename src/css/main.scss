@@ -1,7 +1,3 @@
-/* ---------- Custom variables ---------- */
-
-@import "_zendesk-variables";
-
 /* ---------- Clay base-variables ---------- */
 
 @import "functions/_global-functions";
@@ -14,6 +10,10 @@
 
 @import "_variables";
 @import "_mixins";
+
+/* ---------- Custom variables ---------- */
+
+@import "_zendesk-variables";
 
 /* ---------- Clay base ---------- */
 
