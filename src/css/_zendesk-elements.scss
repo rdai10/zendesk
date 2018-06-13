@@ -2,6 +2,7 @@ h1 {
 	font-size: $h1-font-size;
 	font-weight: $font-weight-light;
 	line-height: $h1-line-height;
+	margin-bottom: $h1-margin-bottom;
 
 	&.display {
 		font-size: $h1-display-font-size;
@@ -29,6 +30,7 @@ h2 {
 
 h3 {
 	letter-spacing: $h3-letter-spacing;
+	margin-bottom: $h3-margin-bottom;
 }
 
 h3,
