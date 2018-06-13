@@ -78,8 +78,7 @@ $breadcrumb-divider-svg-icon: clay-icon(
 $breadcrumb-divider-svg-icon-height: 0.75em !default;
 $breadcrumb-divider-svg-icon-width: $breadcrumb-divider-svg-icon-height !default;
 
-$breadcrumb-font-size: null !default;
-$breadcrumb-font-weight: null !default;
+$breadcrumb-font-size: 0.75rem !default; //12px
 
 $header-spacer-x: 0.75rem !default; // 12px
 

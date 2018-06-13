@@ -23,9 +23,13 @@
 								{{text}}
 							</div>
 
-							<div class="meta-group">
-								{{meta}}
-							</div>
+							<ol class="breadcrumbs">
+								{{#each path_steps}}
+									<li title="{{name}}">
+										<a href="{{url}}">{{name}}</a>
+									</li>
+								{{/each}}
+							</ol>
 						</li>
 					{{/each}}
 				</ul>

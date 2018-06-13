@@ -3,11 +3,10 @@
 	flex-wrap: wrap;
 	list-style: none;
 	margin-bottom: $breadcrumb-margin-bottom;
-	padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+	padding: $breadcrumb-padding-y $breadcrumb-padding-x $breadcrumb-padding-y 0;
 
 	li {
 		font-size: $breadcrumb-font-size;
-		font-weight: $breadcrumb-font-weight;
 		margin-right: 0.5em;
 		position: relative;
 
