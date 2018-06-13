@@ -1,6 +1,10 @@
-/* ---------- Clay base-variables ---------- */
-
 @import "functions/_global-functions";
+
+/* ---------- Custom variables ---------- */
+
+@import "_zendesk-variables";
+
+/* ---------- Clay base-variables ---------- */
 
 @import "variables/_bs4-variable-overwrites";
 
@@ -10,10 +14,6 @@
 
 @import "_variables";
 @import "_mixins";
-
-/* ---------- Custom variables ---------- */
-
-@import "_zendesk-variables";
 
 /* ---------- Clay base ---------- */
 
