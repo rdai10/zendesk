@@ -41,17 +41,30 @@
 			"es6": true,
 			"node": true
 		},
-		"extends": ["plugin:prettier/recommended"],
+		"extends": [
+			"plugin:prettier/recommended"
+		],
 		"parserOptions": {
 			"ecmaVersion": 6,
 			"sourceType": "module"
 		},
-		"plugins": ["prettier"],
+		"plugins": [
+			"prettier"
+		],
 		"rules": {
-			"indent": [2, "tab"],
+			"indent": [
+				2,
+				"tab"
+			],
 			"prefer-const": 2,
 			"prettier/prettier": 2,
-			"quotes": [2, "single", {"avoidEscape": true}]
+			"quotes": [
+				2,
+				"single",
+				{
+					"avoidEscape": true
+				}
+			]
 		}
 	},
 	"name": "liferay-zendesk-theme",
