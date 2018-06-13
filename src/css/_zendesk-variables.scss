@@ -1,3 +1,23 @@
+/* ---------- Color variables ---------- */
+
+$color-active: #F3F7FF !default;
+$color-default: #272833 !default;
+$color-disabled: #B3CDFF !default;
+$color-error: #DA1414 !default;
+$color-error-background: #FEEFEF !default;
+$color-error-border: #F48989 !default;
+$color-focus: #EBF0FA !default;
+$color-hover: #F0F5FF !default;
+$color-info: #2E5AAC !default;
+$color-primary: #0B5FFF !default;
+$color-success: #287D3C !default;
+$color-warning: #B95000 !default;
+
+$color-grey: #F7F8FA !default;
+$color-white: #FFF !default;
+
+$secondary-text-color: #6B6C7E !default;
+
 /* ---------- Variable overrides ---------- */
 
 $font-family-base: -apple-system, BlinkMacSystemFont, "Source Sans Pro",
@@ -23,30 +43,14 @@ $input-padding-y: 0.5rem !default; // 8px
 
 $lexicon-icon-width: 1rem !default; //16px
 
+$link-color: $color-primary !default;
+
 $table-cell-padding: 0.875rem !default; // 14px
 
 $navbar-height: 4rem !default;
 $navbar-padding-x: 0 !default;
 
 /* ---------- Custom variables ---------- */
-
-$color-active: #F3F7FF !default;
-$color-default: #272833 !default;
-$color-disabled: #B3CDFF !default;
-$color-error: #DA1414 !default;
-$color-error-border: #F48989 !default;
-$color-error-background: #FEEFEF !default;
-$color-focus: #EBF0FA !default;
-$color-hover: #F0F5FF !default;
-$color-info: #2E5AAC !default;
-$color-primary: #0B5FFF !default;
-$color-success: #287D3C !default;
-$color-warning: #B95000 !default;
-
-$color-white: #FFF !default;
-$color-grey: #F7F8FA !default;
-
-$secondary-text-color: #6B6C7E !default;
 
 $line-height-sm: 1.429 !default;
 
