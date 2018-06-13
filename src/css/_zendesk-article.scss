@@ -31,8 +31,17 @@
 }
 
 .article-sidenav {
-	.nav-item {
+	padding-right: 2.5rem;
+
+	.nav-item,
+	.sidenav-title {
 		padding: $article-sidenav-spacer-y 0;
+	}
+
+	.sidenav-inner {
+		background-color: $color-grey;
+		border-radius: $input-border-radius;
+		padding: 1.25rem 1.5rem;
 	}
 }
 

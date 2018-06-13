@@ -114,21 +114,23 @@
 			{{#with ../article}}
 				<div class="row">
 					<div class="article-sidenav col-md-3 secondary-font">
-						<div class="sidenav-title">{{t 'articles_in_section'}}</div>
+						<div class="sidenav-inner">
+							<div class="sidenav-title">{{t 'articles_in_section'}}</div>
 
-						{{#with ../../section}}
-							<ul class="nav nav-nested">
-								{{#each articles}}
-									<li class="nav-item">
-										<a class="{{#is id ../id}}active semibold{{/is}} sidenav-item" href="{{url}}">{{title}}</a>
-									</li>
-								{{/each}}
-							</ul>
+							{{#with ../../section}}
+								<ul class="nav nav-nested">
+									{{#each articles}}
+										<li class="nav-item">
+											<a class="{{#is id ../id}}active semibold{{/is}} sidenav-item" href="{{url}}">{{title}}</a>
+										</li>
+									{{/each}}
+								</ul>
 
-							{{#if more_articles}}
-								<a class="sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
-							{{/if}}
-						{{/with}}
+								{{#if more_articles}}
+									<a class="sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
+								{{/if}}
+							{{/with}}
+						</div>
 					</div>
 
 					<div class="article-info col-md-7">

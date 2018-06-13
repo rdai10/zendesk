@@ -1,9 +1,11 @@
-<div class="container search-results">
-	<nav class="sub-nav">
-		{{breadcrumbs}}
-	</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
 
-	<div class="col-md-8 offset-md-2">
+	<div class="col-md-8 offset-md-2 search-results">
 		<header>
 			<h2 class="page-header-description">
 				{{t 'results' query=query count=results_count}}
