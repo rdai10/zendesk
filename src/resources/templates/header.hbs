@@ -22,9 +22,9 @@
 	</symbol>
 </svg>
 
-<header class="container-fluid header">
+<header class="container header">
 	<div class="row">
-		<div class="col-3">
+		<div class="col-3 header-content">
 			{{#link 'help_center' class="analytics-cloud-link"}}
 				<svg alt="{{help_center.name}}" class="analytics-cloud-logo">
 					<use xlink:href="#analytics-cloud-logo" />
@@ -39,10 +39,10 @@
 		</div>
 
 		<div class="col-4 col-md-3 offset-3 offset-md-5">
-			{{search class="nav-search" submit=true}}
+			{{search class="header-content nav-search" submit=true}}
 		</div>
 
-		<div class="col-2 col-md-1 user">
+		<div class="col-2 col-md-1 header-content user">
 			{{#if signed_in}}
 				{{user_info}}
 			{{else}}
