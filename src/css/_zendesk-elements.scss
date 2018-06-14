@@ -87,6 +87,10 @@ textarea,
 	margin-bottom: $form-group-margin-bottom;
 }
 
+.main-content {
+	margin-top: $navbar-height;
+}
+
 .secondary-font {
 	font-size: $font-size-sm;
 	line-height: $line-height-sm;
