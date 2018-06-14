@@ -1,6 +1,5 @@
 h1 {
 	font-size: $h1-font-size;
-	font-weight: $font-weight-light;
 	line-height: $h1-line-height;
 	margin-bottom: $h1-margin-bottom;
 
@@ -10,51 +9,43 @@ h1 {
 	}
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: $font-weight-semi-bold;
+}
+
 h2 {
 	font-size: $h2-font-size;
 	line-height: $h2-line-height;
-
-	&.display {
-		font-size: $h2-display-font-size;
-		font-weight: $font-weight-light;
-		letter-spacing: $h2-display-letter-spacing;
-		line-height: $h2-display-line-height;
-	}
-
-	&.semibold {
-		font-size: $h2-semibold-font-size;
-		font-weight: $font-weight-semi-bold;
-		line-height: $h2-semibold-line-height;
-	}
 }
 
 h3 {
-	letter-spacing: $h3-letter-spacing;
 	margin-bottom: $h3-margin-bottom;
 }
 
 h3,
 h4 {
-	font-size: $h3-font-size;
-	font-weight: $font-weight-semi-bold;
 	line-height: $line-height-base;
 }
 
 h3,
-h4,
-h5 {
-	font-weight: $font-weight-semi-bold;
-}
-
-h3,
-h5 {
+h6 {
 	text-transform: uppercase;
 }
 
 h5 {
 	font-size: $h5-font-size;
-	letter-spacing: $h5-letter-spacing;
 	line-height: $h5-line-height;
+}
+
+h6 {
+	font-size: $h6-font-size;
+	letter-spacing: $h6-letter-spacing;
+	line-height: $h6-line-height;
 }
 
 input[type="search"] {
@@ -93,7 +84,7 @@ textarea,
 
 .secondary-font {
 	font-size: $font-size-sm;
-	line-height: $line-height-sm;
+	line-height: $secondary-text-line-height;
 }
 
 .secondary-text-color {
@@ -104,6 +95,6 @@ textarea,
 	font-weight: $font-weight-semi-bold;
 }
 
-.subtitle {
-	font-weight: $font-weight-light;
+.small {
+	line-height: $line-height-sm;
 }
