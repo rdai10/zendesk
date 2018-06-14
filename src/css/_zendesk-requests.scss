@@ -46,51 +46,6 @@
 	}
 }
 
-.my-activities {
-	margin-bottom: 4rem;
-
-	h1 {
-		margin-top: 3rem;
-	}
-
-	table {
-		td:not([class]),
-		th {
-			font-size: $font-size-sm;
-			line-height: $line-height-sm;
-		}
-
-		th {
-			font-weight: $font-weight-normal;
-
-			&,
-			&:first-child,
-			&:last-child,
-			&:only-child {
-				box-shadow: none;
-			}
-
-			&,
-			a {
-				color: $secondary-text-color;
-			}
-		}
-	}
-
-	.navbar {
-		border-bottom: 1px solid $color-grey;
-		margin-bottom: 1.5rem;
-
-		.nav-link {
-			color: $secondary-text-color;
-
-			&.active {
-				color: $color-default;
-			}
-		}
-	}
-}
-
 .request-comment-form,
 .request-form {
 	footer,
@@ -207,5 +162,50 @@
 .upload-dropzone {
 	span {
 		font-size: $small-font-size;
+	}
+}
+
+.user-activity {
+	margin-bottom: 4rem;
+
+	h1 {
+		margin-top: 3rem;
+	}
+
+	table {
+		td:not([class]),
+		th {
+			font-size: $font-size-sm;
+			line-height: $line-height-sm;
+		}
+
+		th {
+			font-weight: $font-weight-normal;
+
+			&,
+			&:first-child,
+			&:last-child,
+			&:only-child {
+				box-shadow: none;
+			}
+
+			&,
+			a {
+				color: $secondary-text-color;
+			}
+		}
+	}
+
+	.navbar {
+		border-bottom: 1px solid $color-grey;
+		margin-bottom: 1.5rem;
+
+		.nav-link {
+			color: $secondary-text-color;
+
+			&.active {
+				color: $color-default;
+			}
+		}
 	}
 }
