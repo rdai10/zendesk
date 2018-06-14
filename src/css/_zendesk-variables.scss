@@ -27,13 +27,15 @@ $font-family-base: -apple-system, BlinkMacSystemFont, "Source Sans Pro",
 
 $font-weight-semi-bold: 600 !default;
 
-$h1-font-size: 2rem !default; //32px
+$normal-font-size: 1rem !default; // 16px
+$small-font-size: 0.75rem !default; // 12px
+
+$h1-font-size: 2rem !default; // 32px
 $h2-font-size: 1.5rem !default; // 24px
-$h3-font-size: 1rem !default; // 16px
-$h4-font-size: 1rem !default; // 16px
+$h3-font-size: $normal-font-size !default; // 16px
+$h4-font-size: $normal-font-size !default; // 16px
 $h5-font-size: 0.875rem !default; // 14px
-$h6-font-size: 0.75rem !default; //12px
-$small-font-size: 0.75rem !default; //12px
+$h6-font-size: $small-font-size !default; // 12px
 
 $line-height-sm: 1.333 !default;
 
@@ -66,19 +68,22 @@ $navbar-padding-x: 0 !default;
 
 $h1-display-font-size: 3rem !default; // 48px
 $h1-display-line-height: 1.17 !default;
+
 $h1-line-height: 1.25 !default;
-$h1-margin-bottom: 1.5rem !default; // 24px
-
 $h2-line-height: 1.67 !default;
-
-$h3-margin-bottom: 1rem !default; //16px
-
 $h5-line-height: 1.43 !default;
-
-$h6-letter-spacing: 1px !default;
 $h6-line-height: 1.34 !default;
 
+$h1-margin-bottom: 1.5rem !default; // 24px
+$h3-margin-bottom: 1rem !default; // 16px
+
+$h6-letter-spacing: 1px !default;
+
+$breadcrumb-font-size: 0.75rem !default; // 12px
+$notification-font-size: 0.875rem !default; // 14px
+
 $secondary-text-line-height: 1.429 !default;
+$suggestion-list-line-height: 2 !default;
 
 $avatar-spacer-right: 1rem !default; // 16px
 
@@ -93,13 +98,8 @@ $breadcrumb-divider-svg-icon: clay-icon(
 $breadcrumb-divider-svg-icon-height: 0.75em !default;
 $breadcrumb-divider-svg-icon-width: $breadcrumb-divider-svg-icon-height !default;
 
-$breadcrumb-font-size: 0.75rem !default; //12px
-
 $header-spacer-x: 0.75rem !default; // 12px
-
-$notification-font-size: 0.875rem !default; //14px
 
 $related-article-padding-y: 1rem !default; // 16px
 
-$suggestion-list-line-height: 2 !default;
 $suggestion-list-padding: 1.5rem !default; // 24px
