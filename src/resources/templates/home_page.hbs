@@ -14,7 +14,9 @@
 			{{search class="homepage-search"}}
 		</div>
 
-		<div class="col-4"></div>
+		<div class="col-4">
+			{{asset 'homepage-placeholder.png'}}
+		</div>
 	</div>
 
 	<section class="row suggested-topics">
@@ -71,5 +73,23 @@
 				{{/each}}
 			{{/is}}
 		{{/each}}
+	</section>
+
+	<section class="col-12 need-help">
+		<h2>
+			{{dc 'still_need_help'}}
+		</h2>
+
+		<svg class="lexicon-icon lexicon-icon-ticket">
+			<use xlink:href="#ticket" />
+		</svg>
+
+		<a class="new-request-link" href="{{page_path 'new_request'}}">
+			{{t 'submit_a_request'}}
+		</a>
+
+		<span class="secondary-text secondary-text-color">
+			{{dc 'receive_help_on_bugs_and_issues_available_to_subscription_customers'}}
+		</span>
 	</section>
 </div>
