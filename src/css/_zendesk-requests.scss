@@ -57,8 +57,8 @@
 	}
 
 	footer {
-		margin-top: 3rem;
 		margin-bottom: 6rem;
+		margin-top: 3rem;
 	}
 
 	textarea {
@@ -172,8 +172,8 @@
 	border-radius: $input-border-radius;
 
 	a {
-		line-height: $suggestion-list-line-height;
 		font-size: $h5-font-size;
+		line-height: $suggestion-list-line-height;
 		text-decoration: none;
 	}
 
@@ -190,8 +190,8 @@
 
 	ul {
 		list-style: none;
-		padding-left: 2rem;
 		margin: 0;
+		padding-left: 2rem;
 	}
 
 	.searchbox {
