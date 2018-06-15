@@ -9,7 +9,7 @@
 		<div class="col-md-6">
 			{{#with section}}
 				<header>
-					<h1>
+					<h1 class="section-heading">
 						{{name}}
 
 						{{#if internal}}
@@ -35,9 +35,7 @@
 						{{/each}}
 					</ul>
 				{{else}}
-					<a href="{{url}}">
-						<em>{{t 'empty'}}</em>
-					</a>
+					<p class="secondary-font secondary-text-color">{{dc 'no_articles_in_section'}}</p>
 				{{/if}}
 			{{/with}}
 		</div>

@@ -5,7 +5,7 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="categories-landing-page row">
 		<div class="category-heading col-12">
 			<h1>
 				{{category.name}}
@@ -22,7 +22,7 @@
 			{{#each sections}}
 				<div class="col-md-6 section">
 					<a href="{{url}}">
-						<h2>
+						<h2 class="section-name">
 							{{name}}
 
 							{{#if internal}}
@@ -34,7 +34,7 @@
 					</a>
 
 					{{#if articles}}
-						<ul class="article-list">
+						<ul class="article-list secondary-font">
 							{{#each articles}}
 								<li class="article-list-item {{#if promoted}}promoted{{/if}}">
 									<a href="{{url}}">{{title}}</a>
@@ -43,20 +43,22 @@
 						</ul>
 
 						{{#if more_articles}}
-							<a href="{{url}}">
+							<a class="secondary-font" href="{{url}}">
 								{{dc 'view_all'}}
+
+								<svg class="lexicon-icon lexicon-icon-arrow-right" >
+									<use xlink:href="#arrow-right" />
+								</svg>
 							</a>
 						{{/if}}
 					{{else}}
-						<a href="{{url}}">
-							<em>{{dc 'this_section_contains_no_article_click_here_to_add_one'}}</em>
-						</a>
+						<p class="secondary-font secondary-text-color">{{dc 'no_articles_in_section'}}</p>
 					{{/if}}
 				</div>
 			{{/each}}
 		{{else}}
 			<div class="col-12">
-				<em>{{t 'empty'}}</em>
+				<p class="secondary-font secondary-text-color">{{dc 'no_section_in_category'}}</p>
 			</div>
 		{{/if}}
 	</div>

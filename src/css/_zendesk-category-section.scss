@@ -8,15 +8,25 @@
 	}
 }
 
-.category-heading {
-	padding-bottom: 3rem;
-}
+.categories-landing-page {
+	margin-bottom: 6rem;
 
-.section {
-	margin-bottom: 2rem;
+	.category-heading {
+		padding-bottom: 1.5rem;
+	}
+
+	.section {
+		margin-bottom: 3rem;
+	}
+
+	.section-name {
+		color: $color-default;
+	}
 }
 
 .section-content {
+	margin-bottom: 6rem;
+
 	header {
 		margin-bottom: 2.5rem;
 	}

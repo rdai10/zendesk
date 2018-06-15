@@ -64,8 +64,12 @@
 							{{/each}}
 
 							{{#if more_articles}}
-								<a href="{{url}}">
+								<a class="secondary-font" href="{{url}}">
 									{{dc 'view_all'}}
+
+									<svg class="lexicon-icon lexicon-icon-arrow-right" >
+										<use xlink:href="#arrow-right" />
+									</svg>
 								</a>
 							{{/if}}
 						</div>
