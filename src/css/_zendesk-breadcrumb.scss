@@ -2,8 +2,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	list-style: none;
-	margin-bottom: $breadcrumb-margin-bottom;
-	margin-top: $breadcrumb-padding-y;
+	margin: $breadcrumb-margin-bottom 0;
 	padding: 0;
 
 	li {

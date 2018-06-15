@@ -1,6 +1,7 @@
 .search-results {
 	.breadcrumbs {
-		margin-bottom: 1rem;
+		margin-bottom: $breadcrumb-padding-y;
+		margin-top: $breadcrumb-padding-y;
 	}
 
 	section {
