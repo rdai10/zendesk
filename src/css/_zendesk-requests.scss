@@ -48,11 +48,6 @@
 
 .request-comment-form,
 .request-form {
-	footer,
-	.comment-form-controls {
-		float: right;
-	}
-
 	label {
 		color: $input-label-color;
 		font-size: $input-label-font-size;
@@ -61,13 +56,34 @@
 		word-wrap: break-word;
 	}
 
+	footer {
+		margin-top: 3rem;
+		margin-bottom: 6rem;
+	}
+
 	textarea {
 		height: $input-textarea-height;
+	}
+
+	#request_description_hint {
+		color: $secondary-text-color;
+		font-size: $small-font-size;
+	}
+
+	.comment-form-controls {
+		float: right;
 	}
 
 	.form-field,
 	.suggestion-list .searchbox {
 		margin-bottom: $form-group-margin-bottom;
+	}
+
+	.form-field {
+		> label::after {
+			color: $color-error;
+			content: " *";
+		}
 	}
 }
 
@@ -125,8 +141,13 @@
 	background-color: $color-grey;
 }
 
-.status-label,
-.suggestion-list label {
+.requests-link {
+	.requests-sort-symbol {
+		padding-left: 0.25rem;
+	}
+}
+
+.status-label {
 	font-weight: $font-weight-semi-bold;
 	text-transform: uppercase;
 }
@@ -147,21 +168,49 @@
 }
 
 .suggestion-list {
+	background-color: $color-active;
+	border-radius: $input-border-radius;
+
 	a {
 		line-height: $suggestion-list-line-height;
+		font-size: $h5-font-size;
 		text-decoration: none;
 	}
 
+	label {
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg%20width='20'%20height='20'%20viewBox='0%200%2020%2020'%20xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle%20fill='%232E5AAC'%20cx='10'%20cy='10'%20r='10'/%3E%3Cpath%20d='M11.562%2013.61v.546c0%20.104-.029.196-.087.274a.543.543%200%200%201-.225.175v.176c0%20.13-.046.241-.137.332a.452.452%200%200%201-.332.137H9.22a.452.452%200%200%201-.332-.137.452.452%200%200%201-.137-.332v-.176a.543.543%200%200%201-.225-.175.443.443%200%200%201-.088-.274v-.547c0-.065.023-.12.069-.166a.226.226%200%200%201%20.166-.068h2.656c.065%200%20.12.023.166.068.046.046.068.101.068.166zm-2.792-.86a.481.481%200%200%201-.274-.078.374.374%200%200%201-.156-.215%205.496%205.496%200%200%200-.508-.996%208.252%208.252%200%200%200-.488-.664c-.274-.339-.462-.612-.567-.82-.143-.339-.215-.769-.215-1.29%200-.624.153-1.2.46-1.728a3.386%203.386%200%200%201%201.25-1.25A3.383%203.383%200%200%201%2010%205.25c.625%200%201.201.153%201.729.459.527.306.944.723%201.25%201.25.305.527.458%201.104.458%201.729%200%20.52-.071.95-.214%201.289-.105.208-.293.481-.567.82-.208.26-.37.482-.488.664-.195.3-.365.631-.508.996a.374.374%200%200%201-.156.215.481.481%200%200%201-.274.078H8.77zm-.333-4.062c0-.43.153-.798.46-1.104A1.505%201.505%200%200%201%2010%207.125c.091%200%20.166-.03.225-.088a.304.304%200%200%200%20.087-.224.304.304%200%200%200-.087-.225A.304.304%200%200%200%2010%206.5c-.39%200-.755.098-1.094.293a2.148%202.148%200%200%200-.8.8%202.152%202.152%200%200%200-.294%201.095c0%20.09.03.166.088.224A.304.304%200%200%200%208.125%209c.091%200%20.166-.03.225-.088a.304.304%200%200%200%20.087-.224z'%20fill='%23FFF'/%3E%3C/svg%3E");
+		background-position: left 0 center;
+		background-repeat: no-repeat;
+		background-size: 1em auto;
+		color: $color-info;
+		font-size: $normal-font-size;
+		font-weight: $font-weight-semi-bold;
+		padding-left: 2rem;
+	}
+
+	ul {
+		list-style: none;
+		padding-left: 2rem;
+		margin: 0;
+	}
+
 	.searchbox {
-		border: $input-border-width solid $input-border-color;
-		border-radius: $input-border-radius;
 		padding: $suggestion-list-padding;
 	}
 }
 
 .upload-dropzone {
+	a,
 	span {
-		font-size: $small-font-size;
+		font-size: $input-label-font-size;
+	}
+
+	a:not([href]):not([tabindex]) {
+		color: $color-primary;
+	}
+
+	span {
+		color: $color-default;
 	}
 }
 
