@@ -23,7 +23,7 @@
 				<div class="row">
 					<div class="col-md-7">
 						<div class="article-author">
-							<div class="avatar sticker sticker-circle sticker-primary">
+							<div class="avatar sticker sticker-circle sticker-lg sticker-primary">
 								<span class="sticker-overlay">
 									<img alt="Avatar" class="sticker-img" src="{{author.avatar_url}}" />
 								</span>
@@ -31,12 +31,12 @@
 
 							<div class="article-meta">
 								{{#link 'user_profile' id=author.id}}
-									<div class="secondary-font semibold">
+									<h4 class="author-name">
 										{{author.name}}
-									</div>
+									</h4>
 								{{/link}}
 
-								<ul class="meta-group secondary-text-color small">
+								<ul class="meta-group secondary-font secondary-text-color">
 									<li class="meta-data">
 										{{#is created_at edited_at}}
 											{{date created_at timeago=true}}
@@ -111,8 +111,6 @@
 				<div class="row">
 					<div class="article-sidenav col-md-3 secondary-font">
 						<div class="sidenav-inner">
-							<div class="sidenav-title">{{t 'articles_in_section'}}</div>
-
 							{{#with ../../section}}
 								<ul class="nav nav-nested">
 									{{#each articles}}

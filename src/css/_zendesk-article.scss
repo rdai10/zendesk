@@ -3,6 +3,14 @@
 	display: flex;
 }
 
+.article-author {
+	margin-bottom: 1.5rem;
+
+	.author-name {
+		margin: 0;
+	}
+}
+
 .article-footer {
 	padding-bottom: 6rem;
 }
@@ -86,11 +94,11 @@
 
 .recent-articles,
 .related-articles {
-	margin-bottom: 2rem;
+	margin-bottom: 3rem;
 
 	h3 {
-		font-size: $h5-font-size;
-		line-height: $h5-line-height;
+		font-size: $h6-font-size;
+		line-height: $h6-line-height;
 	}
 
 	ul {
