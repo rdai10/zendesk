@@ -5,13 +5,13 @@
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-sm-8">
-			<h2>
+	<div class="individual-request row">
+		<div class="col-sm-8 request-container">
+			<h2 class="request-subject">
 				{{request.subject}}
 			</h2>
 
-			<section class="request-container">
+			<section class="request-container-inner">
 				<ul class="comment-list">
 					{{#each comments}}
 						<li class="comment" id="{{anchor}}">
@@ -31,7 +31,7 @@
 										{{/link}}
 									</div>
 
-									<div class="meta-data">{{date created_at timeago=true}}</div>
+									<div class="meta-data secondary-text-color small">{{date created_at timeago=true}}</div>
 								</div>
 							</div>
 
@@ -110,8 +110,8 @@
 			</section>
 		</div>
 
-		<div class="col-sm-4">
-			<section class="collapsible-sidebar request-sidebar">
+		<div class="col-sm-4 request-sidebar">
+			<section class="collapsible-sidebar sidebar-container">
 				{{#if request.followup_source_id}}
 					<dl class="request-details">
 						<dt>{{t 'followup'}}</dt>
