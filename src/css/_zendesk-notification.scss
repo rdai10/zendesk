@@ -1,18 +1,60 @@
 .notification {
+	@include border-radius(0);
+
+	border-width: 0 0 1px 0;
+	font-family: inherit;
 	font-size: $notification-font-size;
+	position: fixed;
+	top: 4.125rem;
+
+	.notification-icon {
+		&:before {
+			line-height: 1.125rem;
+		}
+	}
+
+	.notification-text {
+		ul {
+			list-style: none;
+			padding-left: 1rem;
+			margin: 0;
+		}
+	}
 }
 
 .notification-error {
 	background-color: $color-error-background;
 	border-color: $color-error-border;
 	color: $color-error;
+
+	.notification-dismiss {
+		&:before {
+			color: $color-error;
+		}
+	}
 }
 
 .notification-inline {
+	@include border-radius($border-radius);
+
 	font-family: inherit;
 	font-weight: $font-weight-normal;
 	line-height: $line-height-base;
-	padding: $input-padding-y $input-padding-x;
 	margin-bottom: 1rem;
 	margin-top: 1rem;
+	padding: $input-padding-y $input-padding-x;
+	position: relative;
+	top: 0;
+}
+
+.notification-notice {
+	background-color: $color-info-background;
+	border-color: $color-info-border;
+	color: $color-info;
+
+	.notification-dismiss {
+		&:before {
+			color: $color-info;
+		}
+	}
 }
