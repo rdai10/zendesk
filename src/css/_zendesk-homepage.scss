@@ -10,6 +10,14 @@
 		.homepage-search {
 			input[type="search"] {
 				height: 3.5rem;
+				background-image: clay-icon(
+					search,
+					$color-primary
+				);
+				background-position: right 1.5rem center;
+				background-repeat: no-repeat;
+				background-size: 1rem;
+				padding-right: 2.8rem;
 			}
 
 			input[type="submit"] {
