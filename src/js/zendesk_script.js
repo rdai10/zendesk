@@ -37,7 +37,7 @@ $(document).ready(
 		var requestContainer = $('.request-container');
 
 		var commentContainer = requestContainer.find('.comment-container');
-;
+
 		var showRequestCommentContainerTrigger = commentContainer.find('.comment-show-container');
 
 		showRequestCommentContainerTrigger.on(
