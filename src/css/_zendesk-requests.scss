@@ -68,6 +68,7 @@
 	#request_description_hint {
 		color: $secondary-text-color;
 		font-size: $small-font-size;
+		margin-top: 0.25rem;
 	}
 
 	.comment-form-controls {
@@ -209,6 +210,7 @@
 
 	a:not([href]):not([tabindex]) {
 		color: $color-primary;
+		font-weight: 600;
 	}
 
 	span {
