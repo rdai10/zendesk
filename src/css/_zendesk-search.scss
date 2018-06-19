@@ -9,8 +9,16 @@
 	}
 
 	.search-results-searchbox {
-		input {
+		input[type="search"] {
+			background-image: clay-icon(
+				search,
+				$color-primary
+			);
+			background-position: right 1rem center;
+			background-repeat: no-repeat;
+			background-size: 1rem;
 			height: 4rem;
+			padding-right: 2.5rem;
 		}
 	}
 
