@@ -6,7 +6,7 @@
 	</div>
 
 	{{#each article.labels}}
-		{{#is identifier 'kbArticle'}}
+		{{#is identifier 'Knowledge Base'}}
 			{{#with ../article}}
 				<div class="row">
 					<h1 class="article-title col-md-7" title="{{title}}">
@@ -106,7 +106,7 @@
 			{{/with}}
 		{{/is}}
 
-		{{#is identifier 'Official Docs'}}
+		{{#is identifier 'Official Documentation'}}
 			{{#with ../article}}
 				<div class="row">
 					<div class="article-sidenav col-md-3 secondary-font">
