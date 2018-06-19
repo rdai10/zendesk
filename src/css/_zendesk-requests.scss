@@ -210,7 +210,7 @@
 
 	a:not([href]):not([tabindex]) {
 		color: $color-primary;
-		font-weight: 600;
+		font-weight: $font-weight-semi-bold;
 	}
 
 	span {
