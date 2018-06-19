@@ -31,7 +31,9 @@
 										{{/link}}
 									</div>
 
-									<div class="meta-data secondary-text-color small">{{date created_at timeago=true}}</div>
+									<div class="meta-data secondary-text-color small">
+										{{date created_at timeago=true}}
+									</div>
 								</div>
 							</div>
 
@@ -96,7 +98,7 @@
 							{{checkbox 'mark_as_solved'}}
 
 							{{#if request.can_be_marked_as_solved}}
-								<a role="button" class="btn btn-light mark-as-solved" data-solve-translation="{{t 'mark_as_solved'}}" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}">
+								<a class="btn btn-light mark-as-solved" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}" data-solve-translation="{{t 'mark_as_solved'}}" role="button" >
 									{{t 'mark_as_solved'}}
 								</a>
 							{{/if}}

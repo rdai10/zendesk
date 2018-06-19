@@ -1,7 +1,7 @@
 .notification {
 	@include border-radius(0);
 
-	border-width: 0 0 1px 0;
+	border-width: 0 0 1px;
 	font-family: inherit;
 	font-size: $notification-font-size;
 	position: fixed;
