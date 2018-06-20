@@ -23,9 +23,9 @@
 								{{title}}
 							</a>
 
-							<div class="search-result-description">
+							<h5 class="search-result-description">
 								{{text}}
-							</div>
+							</h5>
 
 							<ol class="breadcrumbs">
 								{{#each path_steps}}
@@ -40,12 +40,19 @@
 					{{/each}}
 				</ul>
 			{{else}}
-				<div>
-					{{t 'no_results' query=query}}
+				<div class="no-results">
+					<img alt="{{t 'oops'}}" class="img" src="{{asset 'telescope_scene.png'}}" />
 
-					{{#link 'help_center'}}
-						{{t 'browse_knowledge_base'}}
-					{{/link}}
+					<div class="no-results-msg">
+						<h4>
+							{{dc 'sorry_we_searched_far_into_outer_space_but_couldnt_find'}}
+							"{{query}}"
+						</h4>
+
+						{{#link 'help_center' class="secondary-font"}}
+							{{t 'browse_knowledge_base'}}
+						{{/link}}
+					</div>
 				</div>
 			{{/if}}
 		</section>
