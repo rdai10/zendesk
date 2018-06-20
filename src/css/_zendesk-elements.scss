@@ -1,7 +1,6 @@
 h1 {
 	font-size: $h1-font-size;
 	line-height: $h1-line-height;
-	margin-bottom: $h1-margin-bottom;
 
 	&.display {
 		font-size: $h1-display-font-size;
@@ -16,6 +15,7 @@ h4,
 h5,
 h6 {
 	font-weight: $font-weight-semi-bold;
+	margin-bottom: $header-margin;
 }
 
 h3,
@@ -31,10 +31,11 @@ h6 {
 h2 {
 	font-size: $h2-font-size;
 	line-height: $h2-line-height;
+	margin-top: $header-margin;
 }
 
 h3 {
-	margin-bottom: $h3-margin-bottom;
+	margin-top: $h3-margin-top;
 }
 
 h5 {
@@ -48,8 +49,8 @@ h6 {
 	line-height: $h6-line-height;
 }
 
-dd {
-	margin-bottom: 1.5rem;
+dd, p {
+	margin-bottom: $header-margin;
 }
 
 input[type="search"] {

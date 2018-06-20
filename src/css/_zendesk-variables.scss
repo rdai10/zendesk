@@ -3,6 +3,7 @@
 $color-active: #F3F7FF !default;
 $color-default: #09101D !default;
 $color-disabled: #B3CDFF !default;
+$color-body: #2A303E !default;
 $color-border: #E9EBF0 !default;
 $color-error: #DA1414 !default;
 $color-error-background: #FEEFEF !default;
@@ -77,8 +78,9 @@ $h2-line-height: 1.67 !default;
 $h5-line-height: 1.43 !default;
 $h6-line-height: 1.34 !default;
 
-$h1-margin-bottom: 1.5rem !default; // 24px
-$h3-margin-bottom: 1rem !default; // 16px
+$header-margin: 1.5rem !default; // 24px
+
+$h3-margin-top: 0.75rem !default; // 12px
 
 $h6-letter-spacing: 1px !default;
 
@@ -89,10 +91,6 @@ $secondary-text-line-height: 1.429 !default;
 $suggestion-list-line-height: 2 !default;
 
 $avatar-spacer-right: 1rem !default; // 16px
-
-$article-label-spacer-y: 3rem !default; // 48px
-$article-sidenav-spacer-y: 0.75rem !default; // 12px
-$article-votes-control-spacer-y: 1rem !default; // 16px
 
 $breadcrumb-divider-svg-icon: clay-icon(
 	angle-right,
