@@ -14,7 +14,10 @@
 			padding-left: 1em;
 
 			&::before {
-				background-image: clay-icon(angle-right, $breadcrumb-divider-color);
+				background-image: clay-icon(
+					angle-right,
+					$breadcrumb-divider-color
+				);
 				background-repeat: no-repeat;
 				background-size: 100%;
 				content: "";
