@@ -1,11 +1,15 @@
 h1 {
 	font-size: $h1-font-size;
-	line-height: $h1-line-height;
 
 	&.display {
 		font-size: $h1-display-font-size;
 		line-height: $h1-display-line-height;
 	}
+}
+
+h1,
+h2 {
+	line-height: $h1-line-height;
 }
 
 h1,
@@ -30,7 +34,6 @@ h6 {
 
 h2 {
 	font-size: $h2-font-size;
-	line-height: $h2-line-height;
 	margin-top: $margin-default;
 }
 
