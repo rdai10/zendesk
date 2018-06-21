@@ -34,7 +34,7 @@
 
 	.comment {
 		border-bottom: $border-width solid $input-border-color;
-		padding: 1rem 0;
+		padding: 0.25rem 0 0.5rem 0;
 
 		&:first-child {
 			border-top: $border-width solid $input-border-color;
@@ -52,13 +52,14 @@
 	.request-details {
 		&:not(:last-child) {
 			border-bottom: $border-width solid $input-border-color;
+			margin-bottom: 1.5rem;
 		}
 
 		dd,
 		dt {
 			display: inline-block;
 			font-size: $font-size-sm;
-			line-height: $line-height-sm;
+			line-height: $secondary-text-line-height;
 		}
 
 		dd {
@@ -68,7 +69,6 @@
 		dt {
 			color: $secondary-text-color;
 			font-weight: $font-weight-normal;
-			vertical-align: top;
 			width: 40%;
 		}
 	}

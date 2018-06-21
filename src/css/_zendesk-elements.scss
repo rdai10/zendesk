@@ -66,13 +66,23 @@ textarea,
 	background-color: $input-bg;
 	border: $input-border-width solid $input-border-color;
 	border-radius: $input-border-radius;
-	color: $input-color;
 	display: block;
 	font-size: $font-size-base;
 	height: auto;
 	line-height: $input-line-height;
 	padding: $input-padding-y $input-padding-x;
 	width: 100%;
+}
+
+input:not([type="submit"]),
+select,
+textarea,
+.nesty-input {
+	color: $input-color;
+}
+
+.upload-dropzone {
+	color: $secondary-text-color;
 }
 
 .article-content {
