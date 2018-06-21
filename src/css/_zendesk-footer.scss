@@ -31,6 +31,7 @@
 
 	.social-links {
 		display: flex;
+		justify-content: flex-end;
 
 		.social-icon {
 			align-items: center;
@@ -40,7 +41,7 @@
 			flex-direction: row;
 			height: 2rem;
 			justify-content: center;
-			margin-right: 1.5rem;
+			margin-left: 1.5rem;
 			width: 2rem;
 
 			a {
