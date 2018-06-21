@@ -25,7 +25,7 @@
 }
 
 .comment-list {
-	margin-bottom: 1.5rem;
+	margin-bottom: $margin-default;
 
 	.attachments,
 	.comment-body {
@@ -52,7 +52,7 @@
 	.request-details {
 		&:not(:last-child) {
 			border-bottom: $border-width solid $input-border-color;
-			margin-bottom: 1.5rem;
+			margin-bottom: $margin-default;
 		}
 
 		dd,
@@ -79,12 +79,12 @@
 		.sidebar-container {
 			background-color: $color-grey;
 			border-radius: $border-radius;
-			padding: 1.5rem;
+			padding: $padding-default;
 		}
 	}
 
 	.request-subject {
-		margin-bottom: 1.5rem;
+		margin-bottom: $margin-default;
 	}
 }
 
@@ -126,7 +126,7 @@
 
 	.form-field,
 	.suggestion-list .searchbox {
-		margin-bottom: 1.5rem;
+		margin-bottom: $margin-default;
 	}
 
 	.form-field {
@@ -211,7 +211,7 @@
 
 	a {
 		font-size: $h5-font-size;
-		line-height: $suggestion-list-line-height;
+		line-height: 2;
 		text-decoration: none;
 	}
 
@@ -235,7 +235,7 @@
 	}
 
 	.searchbox {
-		padding: $suggestion-list-padding;
+		padding: $padding-default;
 	}
 }
 
@@ -288,7 +288,7 @@
 
 	.navbar {
 		border-bottom: 1px solid $color-border;
-		margin-bottom: 1.5rem;
+		margin-bottom: $margin-default;
 
 		.nav-link {
 			color: $secondary-text-color;

@@ -15,7 +15,7 @@ h4,
 h5,
 h6 {
 	font-weight: $font-weight-semi-bold;
-	margin-bottom: $header-margin;
+	margin-bottom: $margin-default;
 }
 
 h3,
@@ -31,11 +31,11 @@ h6 {
 h2 {
 	font-size: $h2-font-size;
 	line-height: $h2-line-height;
-	margin-top: $header-margin;
+	margin-top: $margin-default;
 }
 
 h3 {
-	margin-top: $h3-margin-top;
+	margin-top: 0.75rem;
 }
 
 h5 {
@@ -45,12 +45,12 @@ h5 {
 
 h6 {
 	font-size: $h6-font-size;
-	letter-spacing: $h6-letter-spacing;
+	letter-spacing: 1px;
 	line-height: $h6-line-height;
 }
 
 dd, p {
-	margin-bottom: $header-margin;
+	margin-bottom: $margin-default;
 }
 
 input[type="search"] {
