@@ -6,6 +6,7 @@
 	font-size: $notification-font-size;
 	position: fixed;
 	top: 4.125rem;
+	z-index: 1;
 
 	.notification-icon {
 		&:before {
