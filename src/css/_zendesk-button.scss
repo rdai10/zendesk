@@ -1,7 +1,5 @@
 a[role="button"],
 input[type="submit"] {
-	border: $btn-border-width solid;
-
 	@include button-size(
 		$btn-padding-y,
 		$btn-padding-x,
@@ -9,6 +7,27 @@ input[type="submit"] {
 		$btn-line-height,
 		$btn-border-radius
 	);
+}
+
+a[role="button"],
+input[type="submit"],
+.btn-primary {
+	background-color: $color-primary;
+	border: $btn-border-width solid;
+	color: $color-white;
+	font-weight: $font-weight-semi-bold;
+
+	&:focus {
+		background-color: $color-primary-focus;
+	}
+
+	&:hover {
+		background-color: $color-primary-hover;
+	}
+
+	&[disabled="true"] {
+		background-color: $color-primary-disabled;
+	}
 }
 
 a[role="button"] {
@@ -21,4 +40,13 @@ a[role="button"] {
 
 input[type="submit"] {
 	border-color: transparent;
+}
+
+.btn-outline-primary {
+	border-color: $color-primary;
+
+	&[disabled="true"] {
+		border-color: $color-default-disabled;
+		color: $color-default-disabled;
+	}
 }
