@@ -98,7 +98,7 @@
 
 						<div class="autofit-col autofit-col-expand">
 							<div class="autofit-section">
-								<div class="comment-fields {{#validate 'body'}}show{{/validate}}">
+								<div class="comment-fields">
 									{{#if help_center.request_ccs_enabled}}
 										<div class="comment-ccs form-field">
 											{{token_field 'ccs' class='ccs-input'}}
@@ -123,9 +123,7 @@
 										</a>
 									{{/if}}
 
-									<div class="{{#validate 'body'}}show{{/validate}}">
-										{{input class="btn btn-primary request-submit-comment" type='submit'}}
-									</div>
+									{{input class="btn btn-primary request-submit-comment" type='submit'}}
 								</div>
 							</div>
 						</div>
