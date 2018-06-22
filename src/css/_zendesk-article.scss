@@ -4,7 +4,7 @@
 }
 
 .article-author {
-	margin-bottom: 1.5rem;
+	margin-bottom: $margin-default;
 
 	.author-name {
 		margin: 0;
@@ -85,7 +85,7 @@
 	.sidenav-inner {
 		background-color: $color-grey;
 		border-radius: $input-border-radius;
-		padding: 1.25rem 1.5rem;
+		padding: 1.25rem $padding-default;
 	}
 }
 
@@ -100,7 +100,7 @@
 	padding-top: 6rem;
 
 	h2 {
-		margin-bottom: 1.5rem;
+		margin-bottom: $margin-default;
 	}
 
 	.lexicon-icon-ticket {
@@ -110,7 +110,7 @@
 
 	.new-request-link {
 		padding-left: 1rem;
-		padding-right: 1.5rem;
+		padding-right: $padding-default;
 	}
 }
 
@@ -131,6 +131,6 @@
 	li {
 		font-size: $font-size-sm;
 		line-height: $line-height-sm;
-		padding-bottom: $related-article-padding-y;
+		padding-bottom: $padding-default;
 	}
 }

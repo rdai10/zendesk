@@ -13,10 +13,10 @@
 		margin-bottom: 10rem;
 
 		.no-results-msg {
-			padding-left: 1.5rem;
+			padding-left: $padding-default;
 
 			h4 {
-				margin-bottom: 1.5rem;
+				margin-bottom: $margin-default;
 				margin-top: 0.25rem;
 			}
 		}
@@ -42,7 +42,7 @@
 			background-size: 1rem;
 			box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
 			height: 4rem;
-			padding-left: 1.5rem;
+			padding-left: $padding-default;
 			padding-right: 2.5rem;
 		}
 	}
