@@ -18,6 +18,7 @@ $color-info-border: #89A7E0 !default;
 $color-primary: #0B5FFF !default;
 $color-primary-disabled: #B3CDFF !default;
 $color-primary-focus: #004AD7 !default;
+$color-primary-focus-border: #71A2FF !default;
 $color-primary-hover: #0053F0 !default;
 $color-success: #287D3C !default;
 $color-warning: #B95000 !default;
@@ -62,6 +63,7 @@ $form-group-autofit-margin-bottom: 2rem !default; // 32px
 $form-group-item-label-spacer: 1.875rem !default; // 30px
 
 $input-border-color: $color-border !default;
+$input-disabled-bg: $color-divider !default;
 $input-height: 2.5rem !default; // 40px
 $input-height-lg: 4rem !default; //64px
 $input-label-font-size: 0.875rem !default; // 14px

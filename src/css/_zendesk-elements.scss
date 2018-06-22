@@ -74,13 +74,25 @@ textarea,
 	line-height: $input-line-height;
 	padding: $input-padding-y $input-padding-x;
 	width: 100%;
+
+	&:disabled,
+	&[readonly] {
+		background-color: $input-disabled-bg;
+		color: $color-default-disabled;
+	}
 }
 
 input:not([type="submit"]),
 select,
+select.form-control,
 textarea,
 .nesty-input {
 	color: $input-color;
+
+	&:focus {
+		border-color: $color-primary-focus-border;
+		box-shadow: none;
+	}
 }
 
 input:not([type="submit"]),
