@@ -84,6 +84,10 @@ textarea,
 	color: $input-color;
 }
 
+main {
+	border-bottom: 	1px solid $color-border;
+}
+
 .upload-dropzone {
 	color: $secondary-text-color;
 }
