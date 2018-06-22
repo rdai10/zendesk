@@ -43,10 +43,24 @@ input[type="submit"] {
 }
 
 .btn-outline-primary {
-	border-color: $color-primary;
+	&,
+	&:focus,
+	&:hover {
+		border-color: $color-primary;
+		color: $color-primary;
+	}
 
 	&[disabled="true"] {
 		border-color: $color-default-disabled;
 		color: $color-default-disabled;
+	}
+
+	&:focus {
+		background-color: $color-focus;
+		box-shadow: none;
+	}
+
+	&:hover {
+		background-color: $color-active;
 	}
 }
