@@ -10,6 +10,7 @@
 .comment-list,
 .request-collaborators {
 	list-style: none;
+	margin-top: 0.5rem;
 	padding-left: 0;
 }
 
@@ -22,7 +23,7 @@
 
 	.comment {
 		border-bottom: $border-width solid $input-border-color;
-		padding: 0.25rem 0 0.5rem 0;
+		padding-top: 0.25rem;
 
 		&:first-child {
 			border-top: $border-width solid $input-border-color;
@@ -31,6 +32,10 @@
 
 	.comment-body {
 		padding-top: 1rem;
+
+		p {
+			margin: 0;
+		}
 	}
 }
 
