@@ -71,7 +71,6 @@ textarea,
 	border-radius: $input-border-radius;
 	display: block;
 	font-size: $font-size-base;
-	height: auto;
 	line-height: $input-line-height;
 	padding: $input-padding-y $input-padding-x;
 	width: 100%;
@@ -84,8 +83,19 @@ textarea,
 	color: $input-color;
 }
 
+input:not([type="submit"]),
+select,
+.nesty-input {
+	height: $input-height;
+}
+
 main {
 	border-bottom: 1px solid $color-border;
+}
+
+textarea,
+.upload-dropzone {
+	height: auto;
 }
 
 .upload-dropzone {
@@ -108,6 +118,34 @@ main {
 
 .main-content {
 	margin-top: $navbar-height;
+}
+
+.search-lg,
+.search-nav {
+	input[type="search"] {
+		background-image: clay-icon(
+			search,
+			$color-primary
+		);
+		background-position: right 1.5rem center;
+		background-repeat: no-repeat;
+		background-size: 1rem;
+		box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
+	}
+}
+
+.search-lg {
+	input[type="search"] {
+		height: $input-height-lg;
+		padding-left: $padding-default;
+		padding-right: 2.8rem;
+	}
+}
+
+.search-nav {
+	input[type="search"] {
+		height: 2.25rem;
+	}
 }
 
 .secondary-font {

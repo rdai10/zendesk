@@ -24,24 +24,6 @@
 			}
 		}
 
-		&.nav-search {
-			input[type="submit"] {
-				display: none;
-			}
-
-			input[type="search"] {
-				padding: $input-padding-y;
-				background-image: clay-icon(
-					search,
-					$color-primary
-				);
-				background-position: right 1rem center;
-				background-repeat: no-repeat;
-				background-size: 1rem;
-				padding-right: 2.5rem;
-			}
-		}
-
 		.separator {
 			border-right: 1px solid $color-default;
 			height: 25%;

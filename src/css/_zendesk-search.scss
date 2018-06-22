@@ -31,22 +31,6 @@
 		margin-bottom: 0;
 	}
 
-	.search-results-searchbox {
-		input[type="search"] {
-			background-image: clay-icon(
-				search,
-				$color-primary
-			);
-			background-position: right 1rem center;
-			background-repeat: no-repeat;
-			background-size: 1rem;
-			box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
-			height: 4rem;
-			padding-left: $padding-default;
-			padding-right: 2.5rem;
-		}
-	}
-
 	.search-results-list {
 		list-style: none;
 		margin-bottom: 3rem;
