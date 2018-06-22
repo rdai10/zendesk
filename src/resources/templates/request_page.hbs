@@ -15,49 +15,63 @@
 				<ul class="comment-list">
 					{{#each comments}}
 						<li class="comment" id="{{anchor}}">
-							<div class="comment-author">
-								<div class="avatar sticker sticker-circle sticker-primary">
-									<span class="sticker-overlay">
-										{{#link 'user_profile' id=author.id}}
-											<img alt="{{dc 'avatar'}}" class="sticker-img" src="{{author.avatar_url}}" />
-										{{/link}}
-									</span>
+							<div class="autofit-row autofit-padded">
+								<div class="autofit-col">
+									<div class="autofit-section">
+										<div class="avatar sticker sticker-circle sticker-primary">
+											<span class="sticker-overlay">
+												{{#link 'user_profile' id=author.id}}
+													<img alt="{{dc 'avatar'}}" class="sticker-img" src="{{author.avatar_url}}" />
+												{{/link}}
+											</span>
+										</div>
+									</div>
 								</div>
 
-								<div class="comment-meta">
-									<div title="{{author.name}}">
-										{{#link 'user_profile' id=author.id}}
-											{{author.name}}
-										{{/link}}
-									</div>
+								<div class="autofit-col autofit-col-expand">
+									<div class="autofit-section">
+										<div class="comment-meta">
+											<div title="{{author.name}}">
+												{{#link 'user_profile' id=author.id}}
+													{{author.name}}
+												{{/link}}
+											</div>
 
-									<div class="meta-data secondary-text-color small">
-										{{date created_at timeago=true}}
+											<div class="meta-data secondary-text-color small">
+												{{date created_at timeago=true}}
+											</div>
+										</div>
+
+										<div class="comment-body">
+											{{body}}
+										</div>
+
+										{{#if attachments}}
+											<ul class="attachments">
+												{{#each attachments}}
+													<li class="attachment-item">
+														<svg class="lexicon-icon lexicon-icon-paperclip">
+															<use xlink:href="#paperclip" />
+														</svg>
+
+														<a href="{{url}}" target="_blank">
+															{{name}}
+														</a>
+
+														<div class="attachment-meta">
+															<span class="meta-data">{{size}}</span>
+
+															<a href="{{url}}" target="_blank">
+																{{t 'download'}}
+															</a>
+														</div>
+													</li>
+												{{/each}}
+											</ul>
+										{{/if}}
 									</div>
 								</div>
 							</div>
-
-							<section class="comment-body">{{body}}</section>
-
-							{{#if attachments}}
-								<ul class="attachments">
-									{{#each attachments}}
-										<li class="attachment-item">
-											<svg class="lexicon-icon lexicon-icon-paperclip">
-												<use xlink:href="#paperclip" />
-											</svg>
-
-											<a href="{{url}}" target="_blank">{{name}}</a>
-
-											<div class="attachment-meta">
-												<span class="meta-data">{{size}}</span>
-
-												<a href="{{url}}" target="_blank">{{t 'download'}}</a>
-											</div>
-										</li>
-									{{/each}}
-								</ul>
-							{{/if}}
 						</li>
 					{{/each}}
 				</ul>
@@ -71,41 +85,49 @@
 				{{/if}}
 
 				{{#form 'comment' class='request-comment-form' id='requestCommentForm'}}
-					<div class="avatar sticker sticker-circle sticker-primary">
-						<span class="sticker-overlay">
-							{{user_avatar class="sticker-img"}}
-						</span>
-					</div>
-
-					<div class="comment-container">
-						<div class="comment-fields {{#validate 'body'}}show{{/validate}}">
-							{{#if help_center.request_ccs_enabled}}
-								<div class="comment-ccs form-field">
-									{{token_field 'ccs' class='ccs-input'}}
+					<div class="autofit-row autofit-padded">
+						<div class="autofit-col">
+							<div class="autofit-section">
+								<div class="avatar sticker sticker-circle sticker-primary">
+									<span class="sticker-overlay">
+										{{user_avatar class="sticker-img"}}
+									</span>
 								</div>
-							{{/if}}
-
-							{{textarea 'body' class="form-field"}}
-
-							{{#if upload}}
-								<div class="comment-attachments form-field">
-									{{upload}}
-								</div>
-							{{/if}}
+							</div>
 						</div>
 
-						<div class="comment-form-controls">
-							{{checkbox 'mark_as_solved'}}
+						<div class="autofit-col autofit-col-expand">
+							<div class="autofit-section">
+								<div class="comment-fields {{#validate 'body'}}show{{/validate}}">
+									{{#if help_center.request_ccs_enabled}}
+										<div class="comment-ccs form-field">
+											{{token_field 'ccs' class='ccs-input'}}
+										</div>
+									{{/if}}
 
-							{{#if request.can_be_marked_as_solved}}
-								<a class="btn btn-light mark-as-solved" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}" data-solve-translation="{{t 'mark_as_solved'}}" role="button" >
-									{{t 'mark_as_solved'}}
-								</a>
-							{{/if}}
+									{{textarea 'body' class="form-field"}}
 
-							<span class="btn btn-primary request-submit-comment {{#validate 'body'}}show{{/validate}}">
-								{{input type='submit'}}
-							</span>
+									{{#if upload}}
+										<div class="comment-attachments form-field">
+											{{upload}}
+										</div>
+									{{/if}}
+								</div>
+
+								<div class="comment-form-controls">
+									{{checkbox 'mark_as_solved'}}
+
+									{{#if request.can_be_marked_as_solved}}
+										<a class="btn btn-light mark-as-solved" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}" data-solve-translation="{{t 'mark_as_solved'}}" role="button" >
+											{{t 'mark_as_solved'}}
+										</a>
+									{{/if}}
+
+									<span class="btn btn-primary request-submit-comment {{#validate 'body'}}show{{/validate}}">
+										{{input type='submit'}}
+									</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				{{/form}}
@@ -120,6 +142,7 @@
 						<dd>{{link 'request' id=request.followup_source_id}}</dd>
 					</dl>
 				{{/if}}
+
 				<dl class="request-details">
 					<dt>{{t 'id'}}</dt>
 					<dd>#{{request.id}}</dd>
@@ -208,10 +231,15 @@
 											<use xlink:href="#paperclip" />
 										</svg>
 
-										<a href="{{url}}" target="_blank">{{name}}</a>
+										<a href="{{url}}" target="_blank">
+											{{name}}
+										</a>
+
 										<div class="attachment-meta meta-group">
 											<span class="attachment-meta-item meta-data">{{size}}</span>
-											<a class="attachment-meta-item meta-data" href="{{url}}" target="_blank">{{t 'download'}}</a>
+											<a class="attachment-meta-item meta-data" href="{{url}}" target="_blank">
+												{{t 'download'}}
+											</a>
 										</div>
 									</li>
 								{{/each}}

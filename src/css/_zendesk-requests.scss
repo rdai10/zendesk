@@ -13,24 +13,12 @@
 	padding-left: 0;
 }
 
-.comment-author,
-.comment-form,
-.request-comment-form {
-	display: flex;
-}
-
-.comment-body img,
-.comment-container {
+.comment-body img {
 	width: 100%;
 }
 
 .comment-list {
 	margin-bottom: $margin-default;
-
-	.attachments,
-	.comment-body {
-		padding-left: $sticker-size + $avatar-spacer-right;
-	}
 
 	.comment {
 		border-bottom: $border-width solid $input-border-color;
