@@ -139,15 +139,23 @@ textarea,
 			search,
 			$color-primary
 		);
-		background-position: right 1.5rem center;
 		background-repeat: no-repeat;
-		background-size: 1rem;
 		box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
+
+		&:focus {
+			background-image: clay-icon(
+				times,
+				$color-default
+			);
+			background-size: 0.625rem;
+		}
 	}
 }
 
 .search-lg {
 	input[type="search"] {
+		background-position: right 1.5rem center;
+		background-size: 1rem;
 		height: $input-height-lg;
 		padding-left: $padding-default;
 		padding-right: 2.8rem;
@@ -155,8 +163,14 @@ textarea,
 }
 
 .search-nav {
+	max-width: 232px;
+
 	input[type="search"] {
+		background-position: right 0.7rem center;
+		background-size: 0.75rem;
 		height: 2.25rem;
+		font-size: $h5-font-size;
+		padding-right: 1.25rem;
 	}
 }
 
