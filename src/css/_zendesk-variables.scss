@@ -34,6 +34,7 @@ $font-family-base: -apple-system, BlinkMacSystemFont, "Source Sans Pro",
 	"Source Serif Pro", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif,
 	"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 
+$font-weight-light: 200 !default;
 $font-weight-semi-bold: 600 !default;
 
 $normal-font-size: 1rem !default; // 16px
@@ -103,5 +104,3 @@ $breadcrumb-divider-svg-icon: clay-icon(
 ) !default;
 $breadcrumb-divider-svg-icon-height: 0.75em !default;
 $breadcrumb-divider-svg-icon-width: $breadcrumb-divider-svg-icon-height !default;
-
-$header-spacer-x: 0.75rem !default; // 12px

@@ -32,7 +32,7 @@
 </svg>
 
 <header class="container header">
-	<div class="row">
+	<div class="header-inner row">
 		<div class="col-3 header-content">
 			{{#link 'help_center' class="analytics-cloud-link"}}
 				<svg alt="{{help_center.name}}" class="analytics-cloud-logo">
@@ -40,25 +40,23 @@
 				</svg>
 			{{/link}}
 
-			<div class="separator"></div>
-
 			{{#link 'help_center'}}
-				<h5 class="site-name">{{help_center.name}}</h5>
+				<h4 class="site-name">{{dc 'analytics_cloud'}} <span>{{dc 'help'}}</span></h4>
 			{{/link}}
 		</div>
 
-		<div class="col-4 col-md-3 offset-3 offset-md-5">
-			{{search class="header-content search-nav" submit=false}}
-		</div>
+		<div class="col-6 header-content user-wrapper">
+			{{search class="search-nav" submit=false}}
 
-		<div class="col-2 col-md-1 header-content user">
-			{{#if signed_in}}
-				{{user_info}}
-			{{else}}
-				{{#link 'sign_in' class="btn btn-primary"}}
-					Sign In
-				{{/link}}
-			{{/if}}
+			<div class="user">
+				{{#if signed_in}}
+					{{user_info}}
+				{{else}}
+					{{#link 'sign_in' class="btn btn-primary"}}
+						Sign In
+					{{/link}}
+				{{/if}}
+			</div>
 		</div>
 	</div>
 </header>
