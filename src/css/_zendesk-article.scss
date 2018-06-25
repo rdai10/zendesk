@@ -94,26 +94,6 @@
 	padding: 0;
 }
 
-.need-help {
-	border-top: 1px solid $color-divider;
-	padding-bottom: 7.25rem;
-	padding-top: 6rem;
-
-	h2 {
-		margin-bottom: $margin-default;
-	}
-
-	.lexicon-icon-ticket {
-		height: 2rem;
-		width: 2rem;
-	}
-
-	.new-request-link {
-		padding-left: 1rem;
-		padding-right: $padding-default;
-	}
-}
-
 .recent-articles,
 .related-articles {
 	margin-bottom: 3rem;
