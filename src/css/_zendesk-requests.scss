@@ -90,6 +90,8 @@
 
 .request-comment-form,
 .request-form {
+	padding-bottom: $padding-default;
+
 	label {
 		color: $input-label-color;
 		font-size: $input-label-font-size;
