@@ -32,6 +32,10 @@
 		display: flex;
 		justify-content: flex-end;
 
+		@include media-breakpoint-down(sm) {
+			justify-content: left;
+		}
+
 		.social-icon {
 			align-items: center;
 			background-color: $color-grey;
@@ -40,8 +44,11 @@
 			flex-direction: row;
 			height: 2rem;
 			justify-content: center;
-			margin-left: $margin-default;
 			width: 2rem;
+
+			&:not(:first-child) {
+				margin-left: $margin-default;
+			}
 
 			a {
 				color: $color-default;
