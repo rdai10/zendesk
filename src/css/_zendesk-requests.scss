@@ -262,6 +262,12 @@
 			line-height: $line-height-sm;
 		}
 
+		td.request-info,
+		th,
+		th:first-child {
+			padding-left: 0;
+		}
+
 		th {
 			font-weight: $font-weight-normal;
 
