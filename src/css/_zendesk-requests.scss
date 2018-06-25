@@ -140,10 +140,7 @@
 	}
 
 	input[type="text"] {
-		background-image: clay-icon(
-			search,
-			$color-primary
-		);
+		background-image: clay-icon(search, $color-primary);
 		background-position: right 1rem center;
 		background-repeat: no-repeat;
 		background-size: 1rem;

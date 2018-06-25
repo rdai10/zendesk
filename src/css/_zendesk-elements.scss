@@ -52,7 +52,8 @@ h6 {
 	line-height: $h6-line-height;
 }
 
-dd, p {
+dd,
+p {
 	margin-bottom: $margin-default;
 }
 
@@ -135,18 +136,12 @@ textarea,
 .search-lg,
 .search-nav {
 	input[type="search"] {
-		background-image: clay-icon(
-			search,
-			$color-primary
-		);
+		background-image: clay-icon(search, $color-primary);
 		background-repeat: no-repeat;
 		box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
 
 		&:focus {
-			background-image: clay-icon(
-				times,
-				$color-default
-			);
+			background-image: clay-icon(times, $color-default);
 			background-size: 0.625rem;
 		}
 	}
