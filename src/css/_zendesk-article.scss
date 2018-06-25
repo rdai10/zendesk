@@ -81,15 +81,17 @@
 .article-sidenav {
 	padding-right: 2.5rem;
 
-	.nav-item,
-	.sidenav-title {
-		padding: 0.75rem 0;
+	.nav-item {
+		padding: $padding-default $padding-default 0 $padding-default;
+
+		&:last-child {
+			padding-bottom: $padding-default;
+		}
 	}
 
 	.sidenav-inner {
-		background-color: $color-grey;
 		border-radius: $input-border-radius;
-		padding: 1.25rem $padding-default;
+		background-color: $color-grey;
 	}
 }
 
