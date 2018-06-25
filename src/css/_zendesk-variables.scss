@@ -90,6 +90,13 @@ $h1-display-font-size: 3rem !default; // 48px
 
 $h6-line-height: 16px !default;
 
+$label-sm: (
+	font-size: 0.625rem, // 10px
+	height: 1rem, // 16px
+	padding-x: 0.375rem, // 6px
+	padding-y: 0.2rem //3.2px
+) !default;
+
 $secondary-text-line-height: 1.429 !default;
 
 $margin-default: 1.5rem !default; // 24px
