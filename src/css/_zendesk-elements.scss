@@ -129,6 +129,10 @@ textarea,
 	margin-bottom: $form-group-margin-bottom;
 }
 
+.label-sm {
+	@include clay-label-size($label-sm);
+}
+
 .main-content {
 	margin-top: $navbar-height;
 }
