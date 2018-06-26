@@ -23,6 +23,7 @@ input[type="submit"],
 
 	&:hover {
 		background-color: $color-primary-hover;
+		box-shadow: 0 0.125px 0.375px 0 rgba(2, 19, 51, 0.36);
 	}
 
 	&[disabled="true"] {
@@ -62,5 +63,6 @@ input[type="submit"] {
 
 	&:hover {
 		background-color: $color-active;
+		box-shadow: 0 0.125px 0.375px 0 rgba(2, 19, 51, 0.15);
 	}
 }
