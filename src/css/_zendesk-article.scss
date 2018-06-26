@@ -6,6 +6,10 @@
 .article-author {
 	margin-bottom: $margin-default;
 
+	.avatar {
+		margin-right: $avatar-spacer-right;
+	}
+
 	.author-name {
 		margin: 0;
 	}

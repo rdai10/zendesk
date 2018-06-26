@@ -23,11 +23,14 @@
 
 	.comment {
 		border-bottom: $border-width solid $input-border-color;
-		padding-top: 0.25rem;
 
 		&:first-child {
 			border-top: $border-width solid $input-border-color;
 		}
+	}
+
+	.comment-author {
+		font-weight: $font-weight-semi-bold;
 	}
 
 	.comment-body {
@@ -134,6 +137,14 @@
 
 .request-container {
 	padding-right: 6rem;
+
+	.autofit-col-expand {
+		padding-left: 0;
+	}
+
+	.autofit-padded > .autofit-col {
+		padding-top: 1rem;
+	}
 }
 
 .request-filter {

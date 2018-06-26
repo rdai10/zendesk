@@ -31,7 +31,7 @@
 								<div class="autofit-col autofit-col-expand">
 									<div class="autofit-section">
 										<div class="comment-meta">
-											<div title="{{author.name}}">
+											<div class="comment-author" title="{{author.name}}">
 												{{#link 'user_profile' id=author.id}}
 													{{author.name}}
 												{{/link}}
@@ -118,7 +118,7 @@
 									{{checkbox 'mark_as_solved'}}
 
 									{{#if request.can_be_marked_as_solved}}
-										<a class="btn btn-light mark-as-solved" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}" data-solve-translation="{{t 'mark_as_solved'}}" role="button" >
+										<a class="btn-outline-primary mark-as-solved" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}" data-solve-translation="{{t 'mark_as_solved'}}" role="button" >
 											{{t 'mark_as_solved'}}
 										</a>
 									{{/if}}
