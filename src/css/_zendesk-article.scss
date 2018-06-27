@@ -62,10 +62,6 @@
 	}
 }
 
-.article-info {
-	margin-left: $margin-default;
-}
-
 .article-relatives {
 	@include media-breakpoint-down(sm) {
 		display: flex;
