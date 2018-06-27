@@ -1,4 +1,5 @@
-.categories-main {
+.categories-main,
+.section-content {
 	margin-bottom: 6rem;
 
 	.article-list {
@@ -22,13 +23,5 @@
 	.section-name {
 		color: $color-default;
 		margin-bottom: $margin-default;
-	}
-}
-
-.section-content {
-	margin-bottom: 6rem;
-
-	header {
-		margin-bottom: 2.5rem;
 	}
 }
