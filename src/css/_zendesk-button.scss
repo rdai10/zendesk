@@ -27,7 +27,7 @@ input[type="submit"],
 	}
 
 	&[disabled="true"] {
-		background-color: $color-primary-disabled;
+		background-color: $color-disabled;
 	}
 }
 
