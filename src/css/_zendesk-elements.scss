@@ -116,6 +116,28 @@ textarea,
 }
 
 .article-content {
+	code,
+	pre {
+		border-radius: $border-radius;
+		font-family: "Roboto Mono", SFMono-Regular, monospace;
+	}
+
+	code {
+		background-color: $code-background-color;
+		padding: 0.25rem;
+	}
+
+	pre {
+		background-color: $color-body;
+		color: $pre-color;
+		padding: 1rem 1.25rem;
+
+		code {
+			background-color: inherit;
+			font-weight: $font-weight-light;
+		}
+	}
+
 	img {
 		width: 100%;
 	}
