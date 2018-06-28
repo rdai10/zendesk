@@ -6,12 +6,24 @@
 
 		.display {
 			margin-bottom: 1rem;
+
+			@include media-breakpoint-down(sm) {
+				margin-top: 6rem;
+			}
 		}
 
-		.img {
-			margin-top: 3.125rem;
-			max-height: 100%;
-			max-width: 100%;
+		.banner-img-container {
+			padding-left: 4.5rem;
+
+			.img {
+				margin-top: 3.125rem;
+				max-height: 100%;
+				max-width: 100%;
+			}
+
+			@include media-breakpoint-down(sm) {
+				display: none;
+			}
 		}
 	}
 
