@@ -123,13 +123,13 @@ textarea,
 	}
 
 	code {
-		background-color: $code-background-color;
+		background-color: $code-text-background-color;
 		padding: 0.25rem;
 	}
 
 	pre {
 		background-color: $color-body;
-		color: $pre-color;
+		color: $pre-text-color;
 		padding: 1rem 1.25rem;
 
 		code {
