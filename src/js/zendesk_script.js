@@ -43,7 +43,7 @@ $(document).ready(
 		showRequestCommentContainerTrigger.on(
 			'click',
 			function() {
-				commentcontainer.find('.comment-fields').show();
+				commentContainer.find('.comment-fields').show();
 				commentContainer.find('.request-submit-comment').show();
 
 				showRequestCommentContainerTrigger.hide();
