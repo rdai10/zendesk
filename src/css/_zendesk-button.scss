@@ -52,6 +52,8 @@ input[type="submit"] {
 	&:not([href]):not([tabindex]):hover {
 		border-color: $color-primary;
 		color: $color-primary;
+		cursor: pointer;
+		font-weight: $font-weight-semi-bold;
 	}
 
 	&[disabled="true"] {
