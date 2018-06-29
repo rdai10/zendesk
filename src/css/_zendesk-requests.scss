@@ -1,4 +1,6 @@
-#mark_as_solved {
+#mark_as_solved,
+.comment-fields,
+.request-submit-comment {
 	display: none;
 }
 
@@ -91,7 +93,7 @@
 	}
 }
 
-.request-comment-form,
+.comment-form,
 .request-form {
 	padding-bottom: $padding-default;
 
@@ -119,7 +121,16 @@
 	}
 
 	.comment-form-controls {
+		display: flex;
 		float: right;
+
+		.request-submit-comment {
+			margin-left: 1rem;
+		}
+	}
+
+	.comment-show-container {
+		margin-bottom: $margin-default;
 	}
 
 	.form-field,

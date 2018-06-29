@@ -84,7 +84,7 @@
 					</div>
 				{{/if}}
 
-				{{#form 'comment' class='request-comment-form' id='requestCommentForm'}}
+				{{#form 'comment' class='comment-form' id='requestCommentForm'}}
 					<div class="autofit-padded autofit-row">
 						<div class="autofit-col">
 							<div class="autofit-section">
@@ -96,8 +96,10 @@
 							</div>
 						</div>
 
-						<div class="autofit-col autofit-col-expand">
+						<div class="autofit-col autofit-col-expand comment-container">
 							<div class="autofit-section">
+								{{input class='comment-show-container'}}
+
 								<div class="comment-fields">
 									{{#if help_center.request_ccs_enabled}}
 										<div class="comment-ccs form-field">
