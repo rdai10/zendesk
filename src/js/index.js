@@ -1,3 +1,4 @@
 import '../css/main.scss';
 
-import './zendesk_script.js';
+import './documentation-side-nav.js'
+import './zendesk-script.js';
