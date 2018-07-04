@@ -44,7 +44,9 @@ module.exports = {
 			}
 		]},
 	output: {
-		filename: 'script.js'
+		filename: 'script.js',
+		library: 'Liferay',
+		libraryTarget: 'window'
 	},
 	plugins: [
 		new CopyWebpackPlugin([
@@ -85,7 +87,7 @@ module.exports = {
 					path.join(__dirname, 'src/resources/templates/*.hbs'),
 					path.join(__dirname, 'src/*.js')
 				]),
-				purifyOptions: {whitelist: ['*code*', 'nesty-input', 'notification-dismiss', 'notification-notice', '*pre*', '*request_description_hint*', 'status-label-answered', '*suggestion-list*', 'upload-dropzone']}
+				purifyOptions: {whitelist: ['*code*', '*loading-animation*', 'nesty-input', 'notification-dismiss', 'notification-notice', '*pre*', '*request_description_hint*', 'status-label-answered', '*suggestion-list*', 'upload-dropzone']}
 			}
 		)
 	]

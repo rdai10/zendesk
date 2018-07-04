@@ -81,17 +81,49 @@
 .article-sidenav {
 	padding-right: 2.5rem;
 
+	a {
+		color: $color-body;
+	}
+
 	.nav-item {
-		padding: $padding-default $padding-default 0 $padding-default;
+		padding: $padding-small $padding-default;
+
+		&:first-child {
+			margin-top: $margin-small;
+		}
 
 		&:last-child {
-			padding-bottom: $padding-default;
+			margin-bottom: $margin-small;
 		}
 	}
 
 	.sidenav {
 		background-color: $color-grey;
 		border-radius: $input-border-radius;
+	}
+
+	.sidenav-fallback {
+		display: none;
+
+		&.show {
+			display: block;
+		}
+	}
+
+	.sidenav-tree {
+		a {
+			text-decoration: none;
+		}
+
+		.nav-item {
+			&:hover {
+				background-image: clay-icon(angle-down, $color-body);
+				background-position: right 0.6rem center;
+				background-repeat: no-repeat;
+				background-size: 0.75rem;
+				font-weight: $font-weight-semi-bold;
+			}
+		}
 	}
 }
 
