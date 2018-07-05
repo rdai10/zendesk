@@ -1,18 +1,20 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://liferaysupport1528999723.zendesk.com/api/v2/help_center/';
+const httpRequest = axios.create({
+	baseURL: 'https://liferaysupport1528999723.zendesk.com/api/v2/help_center/'
+});
 
 export function getArticlesBySectionId(id) {
-	return axios.get(axios.defaults.baseURL + 'sections/' + id + '/articles.json');
+	return httpRequest.get('sections/' + id + '/articles.json');
 }
 
 export function getSectionsCategories() {
-	return axios(
+	return httpRequest(
 		{
 			params: {
 				include: 'categories'
 			},
-			url: axios.defaults.baseURL + 'sections.json'
+			url: 'sections.json'
 		}
 	);
 }
