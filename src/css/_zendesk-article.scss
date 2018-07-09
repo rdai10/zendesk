@@ -111,17 +111,44 @@
 	}
 
 	.sidenav-tree {
+		max-height: 75vh;
+		overflow: auto;
+
 		a {
 			text-decoration: none;
 		}
 
 		.nav-item {
-			&:hover {
+			&:hover, &.active {
 				background-image: clay-icon(angle-down, $color-body);
-				background-position: right 0.6rem center;
+				background-position: right 0.8rem top 1rem;
 				background-repeat: no-repeat;
-				background-size: 0.75rem;
+				background-size: 0.65rem;
 				font-weight: $font-weight-semi-bold;
+			}
+		}
+
+		.nav-nested {
+			.nav > li {
+				font-weight: normal;
+				margin-left: -$margin-small;
+				padding: $padding-small 0;
+
+				&:hover {
+					background: none;
+					font-weight: $font-weight-semi-bold;
+				}
+			}
+
+			.nav > li > a {
+				border-left: 2.5px solid $color-primary-focus;
+				display: block;
+				margin-left: -$margin-small;
+				padding-left: 2.25rem;
+
+				&:hover {
+					color: $color-primary-focus;
+				}
 			}
 		}
 	}
