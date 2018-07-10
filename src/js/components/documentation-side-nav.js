@@ -13,7 +13,7 @@ class DisplayArticles extends preact.Component {
 	}
 
 	componentDidMount() {
-		apiHelpers.getArticlesBySectionId(this.props.id)
+		apiHelpers.getArticlesBySectionId(this.props.locale, this.props.id)
 		.then(
 			({data}) => {this.setState({
 				items: data,
@@ -45,8 +45,8 @@ class DisplayArticles extends preact.Component {
 }
 
 export default class DocSideNav extends preact.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			active: false,
@@ -58,7 +58,7 @@ export default class DocSideNav extends preact.Component {
 	}
 
 	componentDidMount() {
-		apiHelpers.getSectionsCategories()
+		apiHelpers.getSectionsCategories(this.props.locale)
 		.then(
 			({data}) => {
 			let productDocCategory = data.categories.find(item => item.name === "Product Documentation");
@@ -104,7 +104,7 @@ export default class DocSideNav extends preact.Component {
 							<a class="sidenav-item" href="javascript:;" onClick={this.handleClick.bind(this)}>{item.name}</a>
 
 							{this.state.showArticles ?
-								<DisplayArticles id={item.id} /> :
+								<DisplayArticles id={item.id} locale={this.props.locale} /> :
 								null
 							}
 						</li>

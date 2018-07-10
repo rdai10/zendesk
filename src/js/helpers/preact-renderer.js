@@ -1,5 +1,5 @@
 import preact from 'preact';
 
-export default function preactRenderer(Component, containerNode, replaceNode) {
-	return preact.render(<Component />, containerNode, replaceNode);
+export default function preactRenderer(Component, props = {}, containerNode, replaceNode) {
+	return preact.render(<Component {...props} />, containerNode, replaceNode);
 }
