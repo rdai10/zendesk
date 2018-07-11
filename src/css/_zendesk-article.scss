@@ -119,7 +119,7 @@
 		}
 
 		.nav-item {
-			&:hover, &.active {
+			&:hover {
 				background-image: clay-icon(angle-down, $color-body);
 				background-position: right 0.8rem top 1rem;
 				background-repeat: no-repeat;
@@ -141,12 +141,12 @@
 			}
 
 			.nav > li > a {
-				border-left: 2.5px solid $color-primary-focus;
 				display: block;
 				margin-left: -$margin-small;
 				padding-left: 2.25rem;
 
 				&:hover {
+					border-left: 2.5px solid $color-primary-focus;
 					color: $color-primary-focus;
 				}
 			}
