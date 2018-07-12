@@ -119,12 +119,16 @@
 		}
 
 		.nav-item {
+			&:focus {
+				background-color: $color-grey-focus;
+			}
+
 			&:hover {
 				background-image: clay-icon(angle-down, $color-body);
+				background-color: $color-grey-hover;
 				background-position: right 0.8rem top 1rem;
 				background-repeat: no-repeat;
 				background-size: 0.65rem;
-				font-weight: $font-weight-semi-bold;
 			}
 		}
 
@@ -135,8 +139,11 @@
 				padding: $padding-small 0;
 
 				&:hover {
-					background: none;
-					font-weight: $font-weight-semi-bold;
+					background-image: none;
+				}
+
+				&:last-child {
+					margin-bottom: 0;
 				}
 			}
 
@@ -149,6 +156,12 @@
 					border-left: 2.5px solid $color-primary-focus;
 					color: $color-primary-focus;
 				}
+			}
+		}
+
+		.sidenav-item {
+			&:focus {
+				font-weight: $font-weight-semi-bold;
 			}
 		}
 	}
