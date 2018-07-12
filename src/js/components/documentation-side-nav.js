@@ -1,6 +1,7 @@
 import preact from 'preact';
 
 import * as apiHelpers from '../helpers/api-helpers.js';
+import LoadingIndicator from './loading-indicator.js'
 
 class ArticlesList extends preact.Component {
 	constructor(props) {
@@ -60,12 +61,7 @@ class ArticlesList extends preact.Component {
 					</ul>
 				}
 
-				{loading &&
-					<span
-						aria-hidden="true"
-						class="loading-animation loading-animation-sm"
-					/>
-				}
+				{loading && <LoadingIndicator />}
 
 			</div>
 		);
@@ -117,10 +113,7 @@ export default class DocSideNav extends preact.Component {
 	render({locale}, {items, loading}) {
 		if (loading) {
 			return (
-				<span
-					aria-hidden="true"
-					class="loading-animation loading-animation-sm"
-				/>
+				<LoadingIndicator />
 			);
 		}
 		else {
