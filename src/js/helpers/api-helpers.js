@@ -1,7 +1,11 @@
 import axios from 'axios';
 
+const baseURL = process.env.NODE_ENV === 'production' ?
+	'https://help.liferay.com/api/v2/help_center/' :
+	'https://liferaysupport1528999723.zendesk.com/api/v2/help_center/';
+
 const httpRequest = axios.create({
-	baseURL: 'https://liferaysupport1528999723.zendesk.com/api/v2/help_center/'
+	baseURL: baseURL
 });
 
 export function getArticlesBySectionId(locale, id) {
