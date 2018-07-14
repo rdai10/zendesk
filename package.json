@@ -1,7 +1,12 @@
 {
 	"babel": {
 		"plugins": [
-			["transform-react-jsx", { "pragma":"preact.h" }]
+			[
+				"transform-react-jsx",
+				{
+					"pragma": "preact.h"
+				}
+			]
 		],
 		"presets": [
 			"env"
@@ -17,6 +22,7 @@
 		"axios": "^0.18.0",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^7.1.4",
+		"babel-plugin-transform-react-jsx": "^6.24.1",
 		"babel-preset-env": "^1.7.0",
 		"clay-css": "^2.0.3",
 		"copy-webpack-plugin": "^4.5.1",
