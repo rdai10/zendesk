@@ -27,7 +27,7 @@ Zendesk apps tools (ZAT) allows the capability to set up local theme preview. To
 ## Build & Zip
 - `npm run build` to create a `dist` folder containing all the necessary minified theme files for Zendesk.
 - `npm run build:dev` is meant to be used for development purposes. It will not minify css and javascript for debugging purposes.
-- `npm run lint:css` to format css files.
+- `npm run format` to format files.
 - `npm run zip` to zip the theme files, which can be imported into Zendesk.
 
 ## Browser Support

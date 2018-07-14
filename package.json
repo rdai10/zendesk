@@ -80,14 +80,15 @@
 	},
 	"name": "liferay-zendesk-theme",
 	"prettier": {
-		"tabWidth": 4,
+		"bracketSpacing": false,
+		"singleQuote": true,
 		"useTabs": true
 	},
 	"private": true,
 	"scripts": {
 		"build": "webpack --mode=production --config webpack.prod.js",
 		"build:dev": "webpack --mode=development --config webpack.common.js --watch",
-		"lint:css": "prettier --write 'src/css/*.scss'",
+		"format": "prettier --write 'src/js/**/*.js'",
 		"zip": "zip -r Custom.zip dist -x *.zat*"
 	},
 	"version": "1.0.0"
