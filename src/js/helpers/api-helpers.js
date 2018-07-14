@@ -9,12 +9,10 @@ export function getArticlesBySectionId(locale, id) {
 }
 
 export function getSectionsCategories(locale) {
-	return httpRequest(
-		{
-			params: {
-				include: 'categories'
-			},
-			url: locale + '/sections.json'
-		}
-	);
+	return httpRequest({
+		params: {
+			include: 'categories'
+		},
+		url: locale + '/sections.json'
+	});
 }

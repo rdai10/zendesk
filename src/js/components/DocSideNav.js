@@ -1,7 +1,7 @@
 import preact from 'preact';
 
 import * as apiHelpers from '../helpers/api-helpers.js';
-import LoadingIndicator from './LoadingIndicator.js'
+import LoadingIndicator from './LoadingIndicator.js';
 
 class ArticlesList extends preact.Component {
 	constructor(props) {
@@ -13,7 +13,7 @@ class ArticlesList extends preact.Component {
 			expanded: false,
 			items: [],
 			loading: false
-		}
+		};
 	}
 
 	getArticles() {
@@ -21,7 +21,8 @@ class ArticlesList extends preact.Component {
 
 		this.setState({loading: true});
 
-		apiHelpers.getArticlesBySectionId(locale, id)
+		apiHelpers
+			.getArticlesBySectionId(locale, id)
 			.then(({data}) => {
 				this.setState({
 					items: data,
@@ -50,19 +51,23 @@ class ArticlesList extends preact.Component {
 					{name}
 				</a>
 
-				{expanded && !loading &&
-					<ul class="nav nav-nested">
-						{items.articles.map(item => (
-							<li class="nav-item" key={item.id}>
-								<a class="sidenav-item" href={item.html_url}>{item.name}</a>
-							</li>
-							)
-						)}
-					</ul>
-				}
+				{expanded &&
+					!loading && (
+						<ul class="nav nav-nested">
+							{items.articles.map(item => (
+								<li class="nav-item" key={item.id}>
+									<a
+										class="sidenav-item"
+										href={item.html_url}
+									>
+										{item.name}
+									</a>
+								</li>
+							))}
+						</ul>
+					)}
 
 				{loading && <LoadingIndicator />}
-
 			</div>
 		);
 	}
@@ -81,42 +86,39 @@ export default class DocSideNav extends preact.Component {
 	componentDidMount() {
 		const {locale} = this.props;
 
-		apiHelpers.getSectionsCategories(locale)
-			.then(
-				({data}) => {
-					let productDocCategory = data.categories.find(
-						item => item.name === "Analytics Cloud Documentation"
+		apiHelpers
+			.getSectionsCategories(locale)
+			.then(({data}) => {
+				let productDocCategory = data.categories.find(
+					item => item.name === 'Analytics Cloud Documentation'
+				);
+
+				if (productDocCategory.id) {
+					let productDocSections = data.sections.filter(
+						item => item.category_id === productDocCategory.id
 					);
 
-					if (productDocCategory.id) {
-						let productDocSections = data.sections.filter(
-							item => item.category_id === productDocCategory.id
-						);
-
-						this.setState({
-							items: productDocSections,
-							loading: false
-						});
-					}
+					this.setState({
+						items: productDocSections,
+						loading: false
+					});
 				}
-			)
+			})
 			.catch(err => {
-				const sidenavFallback = document.getElementById('sidenavFallback');
+				const sidenavFallback = document.getElementById(
+					'sidenavFallback'
+				);
 
 				this.setState({loading: false});
 
 				sidenavFallback.classList.add('show');
-			}
-		);
+			});
 	}
 
 	render({locale}, {items, loading}) {
 		if (loading) {
-			return (
-				<LoadingIndicator />
-			);
-		}
-		else {
+			return <LoadingIndicator />;
+		} else {
 			return (
 				<ul class="nav nav-nested">
 					{items.map(item => (
@@ -127,8 +129,7 @@ export default class DocSideNav extends preact.Component {
 								name={item.name}
 							/>
 						</li>
-						)
-					)}
+					))}
 				</ul>
 			);
 		}
