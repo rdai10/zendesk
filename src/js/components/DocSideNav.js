@@ -1,7 +1,7 @@
 import preact from 'preact';
 
 import * as apiHelpers from '../helpers/api-helpers.js';
-import LoadingIndicator from './loading-indicator.js'
+import LoadingIndicator from './LoadingIndicator.js'
 
 class ArticlesList extends preact.Component {
 	constructor(props) {
