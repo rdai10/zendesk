@@ -1,7 +1,9 @@
 import '../css/main.scss';
 
-import './components/DocSideNav.js';
-import './vendor/zendesk-script.js';
+import './components/DocSideNav';
+import './vendor/zendesk-script';
 
-export {default as render} from './helpers/preact-renderer.js';
-export {default as DocSideNav} from './components/DocSideNav.js';
+export {default as render} from './helpers/preact-renderer';
+
+export {default as DocSideNav} from './components/DocSideNav';
+export {default as MegaMenu} from './components/MegaMenu';

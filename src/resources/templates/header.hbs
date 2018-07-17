@@ -90,108 +90,257 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</symbol>
 </svg>
 
-<header class="header">
-	<div class="container-fluid container-fluid-max-xl">
-		<div class="header-inner row">
-			<div class="col-4 header-content">
-				{{#link 'help_center' class="header-link"}}
-					<svg alt="{{help_center.name}}" class="header-logo">
-						<use xlink:href="#liferay-waffle" />
-					</svg>
-				{{/link}}
+<header class="container-fluid container-fluid-max-xl header">
+	<div class="header-inner row">
+		<div class="col-3 header-content">
+			{{#link 'help_center' class="header-link"}}
+				<svg alt="{{help_center.name}}" class="header-logo">
+					<use xlink:href="#liferay-waffle" />
+				</svg>
+			{{/link}}
 
-				{{#link 'help_center'}}
-					<h4 class="site-name">{{dc 'help_center'}}</h4>
-				{{/link}}
+			{{#link 'help_center'}}
+				<h4 class="site-name">{{dc 'help_center'}}</h4>
+			{{/link}}
+		</div>
+
+		<div class="col-5 header-content header-menu-list secondary-text-color">
+			<div class="list-item">
+				<h5>{{dc 'products'}}</h5>
+
+				<div class="header-menu" id="products"></div>
 			</div>
 
-			<div class="col-4 header-content header-menu-list secondary-text-color">
-				<div class="list-item">
-					<h5>{{dc 'products'}}</h5>
-				</div>
+			<div class="list-item">
+				<h5>{{dc 'resources'}}</h5>
 
-				<div class="list-item">
-					<h5>{{dc 'resources'}}</h5>
-				</div>
-
-				<div class="list-item">
-					<h5>{{dc 'security'}}</h5>
-				</div>
-
-				<div class="list-item">
-					<h5>{{dc 'support'}}</h5>
-				</div>
+				<div class="header-menu" id="resources"></div>
 			</div>
 
-			<div class="col-4 header-content user-wrapper">
-				{{search class="search-nav" submit=false}}
+			<div class="list-item">
+				<h5>{{dc 'security'}}</h5>
 
-				<div class="user">
-					{{#if signed_in}}
-						{{user_info}}
-					{{else}}
-						{{#link 'sign_in' class="btn btn-primary"}}
-							Sign In
-						{{/link}}
-					{{/if}}
-				</div>
+				<div class="header-menu" id="security"></div>
+			</div>
+
+			<div class="list-item">
+				<h5>{{dc 'support'}}</h5>
+
+				<div class="header-menu" id="support"></div>
 			</div>
 		</div>
-	</div>
 
-	<div class="header-menu">
-		<div class="container-fluid container-fluid-max-xl">
-			<div class="header-menu-content row">
-				<div class="col-9 menu-body">
-					<h6 class="secondary-text-color">
-						{{dc 'support'}}
-					</h6>
-				</div>
+		<div class="col-4 header-content user-wrapper">
+			{{search class="search-nav" submit=false}}
 
-				<div class="col-3 menu-subsection">
-					<div class="highlighted-links">
-						<svg class="lexicon-icon lexicon-icon-ticket">
-							<use xlink:href="#ticket" />
-						</svg>
-						
-						<a class="new-request-link" href="{{page_path 'new_request'}}">
-							{{dc 'submit_a_ticket'}}
-						</a>
-					</div>
-
-					<div class="highlighted-links">
-						<svg class="lexicon-icon lexicon-icon-contact">
-							<use xlink:href="#contact" />
-						</svg>
-
-						<a class="contact-link" href="#">
-							{{dc 'contact_us'}}
-						</a>
-					</div>
-
-					<div class="account-links">
-						<a href="{{page_path 'requests'}}">
-							{{t 'my_requests'}}
-						</a>
-
-						<a href="">
-							{{dc 'project_details'}}
-						</a>
-					</div>
-
-					{{#if alternative_locales}}
-						<div class="language-selection">
-							<svg class="lexicon-icon lexicon-icon-language">
-								<use xlink:href="#language" />
-							</svg>
-
-							<a class="current-language">
-								{{current_locale.name}}
-							</a>
-						</div>
-					{{/if}}
-				</div>
+			<div class="user">
+				{{#if signed_in}}
+					{{user_info}}
+				{{else}}
+					{{#link 'sign_in' class="btn btn-primary"}}
+						Sign In
+					{{/link}}
+				{{/if}}
 			</div>
 		</div>
 	</div>
 </header>
+
+<script>
+	Liferay.render(Liferay.MegaMenu,
+		{
+			accountLinks: {
+				className: "account-links",
+				configs: [
+					{
+						name: "{{t 'my_requests'}}",
+						url: "{{page_path 'requests'}}"
+					},
+					{
+						name: "{{dc 'project_details'}}",
+						url: ""
+					}
+				]
+			},
+			cardMenuItems: {
+				className: "card-menu",
+				configs: [
+					{
+						name: "DXP 7.1",
+						svgId: "#dxp-logo", 
+						url: ""
+					},
+					{
+						svgId: "#7-0-logo", 
+						name: "DXP 7.0",
+						url: ""
+					},
+					{
+						name: "{{dc 'commerce'}}",
+						svgId: "#commerce-logo", 
+						url: ""
+					},
+					{
+						name: "{{dc 'analytics_cloud'}}",
+						svgId: "#analytics-cloud-logo",
+						url: "https://analytics.liferay.com"
+					},
+					{
+						name: "{{dc 'portal'}} 6.2",
+						svgId: "#6-2-logo", 
+						url: ""
+					},
+					{
+						name: "{{dc 'portal'}} 6.1",
+						svgId: "#6-1-logo", 
+						url: ""
+					},
+					{
+						name: "{{dc 'portal'}} 6.0",
+						svgId: "#6-0-logo", 
+						url: ""
+					},
+					{
+						name: "{{dc 'portal'}} 5.2",
+						svgId: "#5-2-logo", 
+						url: ""
+					}
+				]
+			},
+			highlightedLinks: {
+				className: "highlighted",
+				configs: [
+					{
+						name: "{{dc 'submit_a_ticket'}}",
+						svgId: "#ticket",
+						url: "{{page_path 'new_request'}}"
+					},
+					{
+						name: "{{dc 'contact_us'}}",
+						svgId: "#contact",
+						url: ""
+					}
+				]
+			},
+			name: "{{dc 'products'}}"
+		},
+		document.getElementById('products')
+	);
+
+	Liferay.render(Liferay.MegaMenu,
+		{
+			accountLinks: {
+				className: "account-links",
+				configs: [
+					{
+						name: "{{t 'my_requests'}}",
+						url: "{{page_path 'requests'}}"
+					},
+					{
+						name: "{{dc 'project_details'}}",
+						url: ""
+					}
+				]
+			},
+			cardMenuItems: {
+				className: "card-menu",
+				configs: []
+			},
+			highlightedLinks: {
+				className: "highlighted",
+				configs: [
+					{
+						name: "{{dc 'submit_a_ticket'}}",
+						svgId: "#ticket",
+						url: "{{page_path 'new_request'}}"
+					},
+					{
+						name: "{{dc 'contact_us'}}",
+						svgId: "#contact",
+						url: ""
+					}
+				]
+			},
+			name: "{{dc 'resources'}}"
+		},
+		document.getElementById('resources')
+	);
+
+	Liferay.render(Liferay.MegaMenu,
+		{
+			accountLinks: {
+				className: "account-links",
+				configs: [
+					{
+						name: "{{t 'my_requests'}}",
+						url: "{{page_path 'requests'}}"
+					},
+					{
+						name: "{{dc 'project_details'}}",
+						url: ""
+					}
+				]
+			},
+			cardMenuItems: {
+				className: "card-menu",
+				configs: []
+			},
+			highlightedLinks: {
+				className: "highlighted",
+				configs: [
+					{
+						name: "{{dc 'submit_a_ticket'}}",
+						svgId: "#ticket",
+						url: "{{page_path 'new_request'}}"
+					},
+					{
+						name: "{{dc 'contact_us'}}",
+						svgId: "#contact",
+						url: ""
+					}
+				]
+			},
+			name: "{{dc 'security'}}"
+		},
+		document.getElementById('security')
+	);
+
+	Liferay.render(Liferay.MegaMenu,
+		{
+			accountLinks: {
+				className: "account-links",
+				configs: [
+					{
+						name: "{{t 'my_requests'}}",
+						url: "{{page_path 'requests'}}"
+					},
+					{
+						name: "{{dc 'project_details'}}",
+						url: ""
+					}
+				]
+			},
+			cardMenuItems: {
+				className: "card-menu",
+				configs: []
+			},
+			highlightedLinks: {
+				className: "highlighted",
+				configs: [
+					{
+						name: "{{dc 'submit_a_ticket'}}",
+						svgId: "#ticket",
+						url: "{{page_path 'new_request'}}"
+					},
+					{
+						name: "{{dc 'contact_us'}}",
+						svgId: "#contact",
+						url: ""
+					}
+				]
+			},
+			name: "{{dc 'support'}}"
+		},
+		document.getElementById('support')
+	);
+</script>
