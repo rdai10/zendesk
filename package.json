@@ -86,7 +86,7 @@
 	},
 	"private": true,
 	"scripts": {
-		"build": "webpack --mode=production --config webpack.prod.js",
+		"build": "webpack --config webpack.prod.js",
 		"build:dev": "webpack --mode=development --config webpack.common.js --watch",
 		"format": "prettier --write 'src/js/**/*.js'",
 		"zip": "zip -r Custom.zip dist -x *.zat*"
