@@ -91,5 +91,5 @@
 		"format": "prettier --write 'src/js/**/*.js'",
 		"zip": "zip -r Custom.zip dist -x *.zat*"
 	},
-	"version": "1.0.0"
+	"version": "1.0.1"
 }
