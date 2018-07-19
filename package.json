@@ -90,7 +90,7 @@
 		"build": "webpack --config webpack.prod.js",
 		"build:dev": "webpack --mode=development --config webpack.common.js --watch",
 		"format": "prettier --write 'src/js/**/*.js'",
-		"zip": "zip -r Custom.zip dist -x *.zat*"
+		"zip": "zip -r Liferay-Help-Center.zip dist -x *.zat*"
 	},
 	"version": "1.0.1"
 }
