@@ -1,11 +1,6 @@
 .footer {
 	padding-top: 6rem;
 
-	.analytics-cloud-logo {
-		height: 64px;
-		width: 118px;
-	}
-
 	.copyright {
 		border-top: 1px solid $color-divider;
 		margin-top: 6.5rem;
@@ -26,6 +21,11 @@
 				color: $secondary-text-color;
 			}
 		}
+	}
+
+	.liferay-logo {
+		height: 64px;
+		width: 118px;
 	}
 
 	.social-links {
