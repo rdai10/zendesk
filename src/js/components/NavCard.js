@@ -1,7 +1,11 @@
 import preact from 'preact';
 
-export default ({description, name, svgId, url}) => (
-	<a class="autofit-row autofit-row-center nav-card" href={url}>
+export default ({description, name, onClick, svgId, url}) => (
+	<a
+		class="autofit-row autofit-row-center nav-card"
+		href={url}
+		onClick={onClick}
+	>
 		{svgId && (
 			<div class="autofit-col">
 				<svg class="icon">

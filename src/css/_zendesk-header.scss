@@ -56,7 +56,7 @@
 				flex-wrap: wrap;
 
 				.nav-card {
-					padding: 1.25rem 1.5rem 1rem;
+					padding: 1.25rem $padding-default 1rem;
 					margin-bottom: 0.25rem;
 	
 					&:hover {
@@ -84,6 +84,29 @@
 			.submenu {
 				border-left: 1px solid $color-divider;
 
+				&.language-selection {
+					padding: 0 2rem;
+
+					svg {
+						height: 2.5rem;
+						width: 2.5rem;
+					}
+					
+					.available-languages {
+						padding: 0 1rem;
+
+						a {
+							color: $secondary-text-color;
+							display: block;
+							padding: 0.5rem 0;
+						}
+
+						.current {
+							color: $color-default;
+						}
+					}
+				}
+
 				.account-links {
 					padding: $padding-default 1rem 2.5rem;  
 
@@ -95,10 +118,10 @@
 						}
 					}
 				}
-
+				
 				.highlighted {
 					padding: 0 1rem;
-	
+
 					svg {
 						background-color: $color-grey;
 						border-radius: 50%;
@@ -110,10 +133,19 @@
 					}
 				}
 
-				.language-selection {
-					svg {
-						margin-left: 1rem;
-						margin-right: 0.5rem;
+				.language {
+					padding: 0 $padding-default;
+
+					.nav-card {
+						padding: 1rem;
+
+						svg {
+							width: 0.875rem;
+						}
+	
+						.title {
+							color: $secondary-text-color;
+						}
 					}
 				}
 			}

@@ -147,6 +147,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <script>
+	const locale = {
+		currentLocale: {
+			name: {{json_stringify current_locale.name}},
+			url: {{json_stringify current_locale.url}}
+		},
+		alternativeLocales: [
+			{{#each alternative_locales}}
+				{
+					name: {{json_stringify name}},
+					url: {{json_stringify url}}
+				},
+			{{/each}}
+		]
+	};
+
 	Liferay.render(Liferay.MegaMenu,
 		{
 			accountLinks: {
@@ -222,6 +237,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					}
 				]
 			},
+			locale: locale,
 			name: "{{dc 'products'}}"
 		},
 		document.getElementById('products')
@@ -261,6 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					}
 				]
 			},
+			locale: locale,
 			name: "{{dc 'resources'}}"
 		},
 		document.getElementById('resources')
@@ -300,6 +317,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					}
 				]
 			},
+			locale: locale,
 			name: "{{dc 'security'}}"
 		},
 		document.getElementById('security')
@@ -339,6 +357,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					}
 				]
 			},
+			locale: locale,
 			name: "{{dc 'support'}}"
 		},
 		document.getElementById('support')
