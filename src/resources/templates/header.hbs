@@ -90,57 +90,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</symbol>
 </svg>
 
-<header class="container-fluid container-fluid-max-xl header">
-	<div class="header-inner row">
-		<div class="col-3 header-content">
-			{{#link 'help_center' class="header-link"}}
-				<svg alt="{{help_center.name}}" class="header-logo">
-					<use xlink:href="#liferay-waffle" />
-				</svg>
-			{{/link}}
+<header class="header" id="header">
+	<div class="container-fluid container-fluid-max-xl">
+		<div class="header-inner row">
+			<div class="col-3 header-content">
+				{{#link 'help_center' class="header-link"}}
+					<svg alt="{{help_center.name}}" class="header-logo">
+						<use xlink:href="#liferay-waffle" />
+					</svg>
+				{{/link}}
 
-			{{#link 'help_center'}}
-				<h4 class="site-name">{{dc 'help_center'}}</h4>
-			{{/link}}
-		</div>
-
-		<div class="col-5 header-content header-menu-list secondary-text-color">
-			<div class="list-item">
-				<h5>{{dc 'products'}}</h5>
-
-				<div class="header-menu" id="products"></div>
+				{{#link 'help_center'}}
+					<h4 class="site-name">{{dc 'help_center'}}</h4>
+				{{/link}}
 			</div>
 
-			<div class="list-item">
-				<h5>{{dc 'resources'}}</h5>
+			<div class="col-5 header-content header-menu-list secondary-text-color">
+				<div class="list-item">
+					<h5>{{dc 'products'}}</h5>
 
-				<div class="header-menu" id="resources"></div>
+					<div class="header-menu" id="products"></div>
+				</div>
+
+				<div class="list-item">
+					<h5>{{dc 'resources'}}</h5>
+
+					<div class="header-menu" id="resources"></div>
+				</div>
+
+				<div class="list-item">
+					<h5>{{dc 'security'}}</h5>
+
+					<div class="header-menu" id="security"></div>
+				</div>
+
+				<div class="list-item">
+					<h5>{{dc 'support'}}</h5>
+
+					<div class="header-menu" id="support"></div>
+				</div>
 			</div>
 
-			<div class="list-item">
-				<h5>{{dc 'security'}}</h5>
+			<div class="col-4 header-content user-wrapper">
+				{{search class="search-nav" submit=false}}
 
-				<div class="header-menu" id="security"></div>
-			</div>
-
-			<div class="list-item">
-				<h5>{{dc 'support'}}</h5>
-
-				<div class="header-menu" id="support"></div>
-			</div>
-		</div>
-
-		<div class="col-4 header-content user-wrapper">
-			{{search class="search-nav" submit=false}}
-
-			<div class="user">
-				{{#if signed_in}}
-					{{user_info}}
-				{{else}}
-					{{#link 'sign_in' class="btn btn-primary"}}
-						Sign In
-					{{/link}}
-				{{/if}}
+				<div class="user">
+					{{#if signed_in}}
+						{{user_info}}
+					{{else}}
+						{{#link 'sign_in' class="btn btn-primary"}}
+							Sign In
+						{{/link}}
+					{{/if}}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -362,4 +364,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		},
 		document.getElementById('support')
 	);
+
+	const onNavScroll = () => {
+		const header = document.getElementById('header');
+
+		if (window.scrollY >= 64) {
+			header.classList.add('scroll-shadow');
+		}
+		else {
+			header.classList.remove('scroll-shadow');
+		}
+	}
+
+	window.addEventListener('scroll', Liferay.throttle(onNavScroll, 100));
 </script>

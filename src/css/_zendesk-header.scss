@@ -7,6 +7,10 @@
 	top: 0;
 	z-index: 1;
 
+	&.scroll-shadow {
+		box-shadow: 0 15px 30px -15px rgba(9, 16, 29, 0.07);
+	}
+
 	.header-content {
 		align-items: center;
 		display: flex;
