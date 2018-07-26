@@ -49,45 +49,115 @@ module.exports = {
 		libraryTarget: 'window'
 	},
 	plugins: [
-		new CopyWebpackPlugin([
-			{from:'src/resources/.zat', to:''},
-			{from:'src/resources/assets', to:'assets'},
-			{from:'src/resources/settings', to:'settings'},
-			{from:'src/resources/templates', to:'templates'},
-			{from:'src/resources/translations', to:'translations'},
-			{from:'src/resources/manifest.json', to:''},
-			{from:'src/resources/thumbnail.png', to:''}
-		]),
-		new ImageminPlugin({
-			test: '/\.(jpe?g|png|gif|svg)$/i',
-			svgo: {
-				plugins: [
-					{cleanupAttrs: true},
-					{cleanupNumericValues: true},
-					{cleanupListOfValues: true},
-					{collapseGroups: true},
-					{mergePaths: true},
-					{removeDoctype: true},
-					{removeEditorsNSData: true},
-					{removeEmptyAttrs: true},
-					{removeEmptyContainers: true},
-					{removeEmptyText: true},
-					{removeUnusedNS: true},
-					{removeUselessStrokeAndFill: true},
-					{removeXMLProcInst: true}
-				]
+		new CopyWebpackPlugin(
+			[
+				{
+					from: 'src/resources/.zat',
+					to: ''
+				},
+				{
+					from: 'src/resources/assets',
+					to: 'assets'
+				},
+				{
+					from: 'src/resources/settings',
+					to: 'settings'
+				},
+				{
+					from: 'src/resources/templates',
+					to: 'templates'
+				},
+				{
+					from: 'src/resources/translations',
+					to: 'translations'
+				},
+				{
+					from: 'src/resources/manifest.json',
+					to: ''
+				},
+				{
+					from: 'src/resources/thumbnail.png',
+					to: ''
+				}
+			]
+		),
+		new ImageminPlugin(
+			{
+				svgo: {
+					plugins: [
+						{
+							cleanupAttrs: true
+						},
+						{
+							cleanupNumericValues: true
+						},
+						{
+							cleanupListOfValues: true
+						},
+						{
+							collapseGroups: true
+						},
+						{
+							mergePaths: true
+						},
+						{
+							removeDoctype: true
+						},
+						{
+							removeEditorsNSData: true
+						},
+						{
+							removeEmptyAttrs: true
+						},
+						{
+							removeEmptyContainers: true
+						},
+						{
+							removeEmptyText: true
+						},
+						{
+							removeUnusedNS: true
+						},
+						{
+							removeUselessStrokeAndFill: true
+						},
+						{
+							removeXMLProcInst: true
+						}
+					]
+				},
+				test: '/\.(jpe?g|png|gif|svg)$/i'
 			}
-		}),
+		),
 		new MiniCssExtractPlugin(
-			{filename: 'style.css'}
+			{
+				filename: 'style.css'
+			}
 		),
 		new PurifyCSSPlugin(
 			{
-				paths: glob.sync([
-					path.join(__dirname, 'src/resources/templates/*.hbs'),
-					path.join(__dirname, 'src/*.js')
-				]),
-				purifyOptions: {whitelist: ['*code*', '*loading-animation*', 'nav-card', 'nesty-input', 'notification-dismiss', 'notification-notice', '*pre*', '*request_description_hint*', 'status-label-answered', '*submenu*', '*suggestion-list*', 'upload-dropzone']}
+				paths: glob.sync(
+					[
+						path.join(__dirname, 'src/resources/templates/*.hbs'),
+						path.join(__dirname, 'src/*.js')
+					]
+				),
+				purifyOptions: {
+					whitelist: [
+						'*code*',
+						'*loading-animation*',
+						'nav-card',
+						'nesty-input',
+						'notification-dismiss',
+						'notification-notice',
+						'*pre*',
+						'*request_description_hint*',
+						'status-label-answered',
+						'*submenu*',
+						'*suggestion-list*',
+						'upload-dropzone'
+					]
+				}
 			}
 		)
 	]

@@ -51,18 +51,18 @@
 		position: fixed;
 		top: $navbar-height;
 		width: 100%;
-	
+
 		.header-menu-content {
 			padding: 3rem 0;
-			
+
 			.card-menu {
 				display: flex;
 				flex-wrap: wrap;
 
 				.nav-card {
-					padding: 1.25rem $padding-default 1rem;
 					margin-bottom: 0.25rem;
-	
+					padding: 1.25rem $padding-default 1rem;
+
 					&:hover {
 						background-color: $color-grey;
 						color: $secondary-text-color;
@@ -70,6 +70,7 @@
 					}
 				}
 			}
+
 			.card-menu-container {
 				margin: 0 auto;
 				width: 60%;
@@ -95,7 +96,7 @@
 						height: 2.5rem;
 						width: 2.5rem;
 					}
-					
+
 					.available-languages {
 						padding: 0 1rem;
 
@@ -112,17 +113,17 @@
 				}
 
 				.account-links {
-					padding: $padding-default 1rem 2.5rem;  
+					padding: $padding-default 1rem 2.5rem;
 
 					.nav-card {
 						padding: $padding-small $padding-default;
-	
+
 						.title {
 							font-weight: $font-weight-normal;
 						}
 					}
 				}
-				
+
 				.highlighted {
 					padding: 0 1rem;
 
@@ -131,9 +132,9 @@
 						border-radius: 50%;
 						margin: 1rem;
 					}
-					
+
 					.title {
-						color: $color-primary;		
+						color: $color-primary;
 					}
 				}
 
@@ -146,7 +147,7 @@
 						svg {
 							width: 0.875rem;
 						}
-	
+
 						.title {
 							color: $secondary-text-color;
 						}
@@ -176,12 +177,12 @@
 				right: 50%;
 				top: calc(100% - 2px);
 				transition: all 0.3s ease;
-			  }
-		
+			}
+
 			&:hover {
-				cursor: pointer;
 				color: $color-body;
-  
+				cursor: pointer;
+
 				.header-menu {
 					box-shadow: 0 4px 15px 0 rgba(9, 16, 24, 0.03), 0 20px 40px 0 rgba(9, 16, 29, 0.09);
 					display: block;

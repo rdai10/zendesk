@@ -17,23 +17,41 @@ class ArticlesList extends preact.Component {
 	}
 
 	getArticles() {
-		const {locale, id} = this.props;
+		const {id, locale} = this.props;
 
-		this.setState({loading: true});
+		this.setState(
+			{
+				loading: true
+			}
+		);
 
 		apiHelpers
 			.getArticlesBySectionId(locale, id)
-			.then(({data}) => {
-				this.setState({
-					items: data,
-					loading: false
-				});
-			})
-			.catch(err => this.setState({loading: false}));
+			.then(
+				({data}) => {
+					this.setState(
+						{
+							items: data,
+							loading: false
+						}
+					);
+				}
+			)
+			.catch(
+				err => this.setState(
+					{
+						loading: false
+					}
+				)
+			);
 	}
 
 	handleClick() {
-		this.setState({expanded: !this.state.expanded});
+		this.setState(
+			{
+				expanded: !this.state.expanded
+			}
+		);
 
 		if (!this.state.items.length) {
 			this.getArticles();
@@ -51,10 +69,10 @@ class ArticlesList extends preact.Component {
 					{name}
 				</a>
 
-				{expanded &&
-					!loading && (
-						<ul class="nav nav-nested">
-							{items.articles.map(item => (
+				{expanded && !loading && (
+					<ul class="nav nav-nested">
+						{items.articles.map(
+							item => (
 								<li class="nav-item" key={item.id}>
 									<a
 										class="sidenav-item"
@@ -63,9 +81,10 @@ class ArticlesList extends preact.Component {
 										{item.name}
 									</a>
 								</li>
-							))}
-						</ul>
-					)}
+							)
+						)}
+					</ul>
+				)}
 
 				{loading && <LoadingIndicator />}
 			</div>
@@ -88,40 +107,50 @@ export default class DocSideNav extends preact.Component {
 
 		apiHelpers
 			.getSectionsCategories(locale)
-			.then(({data}) => {
-				let productDocCategory = data.categories.find(
-					item => item.name === 'Analytics Cloud Documentation'
-				);
-
-				if (productDocCategory.id) {
-					let productDocSections = data.sections.filter(
-						item => item.category_id === productDocCategory.id
+			.then(
+				({data}) => {
+					let productDocCategory = data.categories.find(
+						item => item.name === 'Analytics Cloud Documentation'
 					);
 
-					this.setState({
-						items: productDocSections,
-						loading: false
-					});
+					if (productDocCategory.id) {
+						let productDocSections = data.sections.filter(
+							item => item.category_id === productDocCategory.id
+						);
+
+						this.setState(
+							{
+								items: productDocSections,
+								loading: false
+							}
+						);
+					}
 				}
-			})
-			.catch(err => {
-				const sidenavFallback = document.getElementById(
-					'sidenavFallback'
-				);
+			)
+			.catch(
+				err => {
+					const sidenavFallback = document.getElementById(
+						'sidenavFallback'
+					);
 
-				this.setState({loading: false});
+					this.setState(
+						{
+							loading: false
+						}
+					);
 
-				sidenavFallback.classList.add('show');
-			});
+					sidenavFallback.classList.add('show');
+				}
+			);
 	}
 
 	render({locale}, {items, loading}) {
-		if (loading) {
-			return <LoadingIndicator />;
-		} else {
-			return (
-				<ul class="nav nav-nested">
-					{items.map(item => (
+		return loading ? (
+			<LoadingIndicator />
+		) : (
+			<ul class="nav nav-nested">
+				{items.map(
+					item => (
 						<li class="nav-item" key={item.id}>
 							<ArticlesList
 								id={item.id}
@@ -129,9 +158,9 @@ export default class DocSideNav extends preact.Component {
 								name={item.name}
 							/>
 						</li>
-					))}
-				</ul>
-			);
-		}
+					)
+				)}
+			</ul>
+		);
 	}
 }

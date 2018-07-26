@@ -4,14 +4,16 @@ import NavCard from './NavCard.js';
 
 const CardMenu = ({className, configs}) => (
 	<div class={className}>
-		{configs.map(config => (
-			<NavCard
-				description={config.description}
-				name={config.name}
-				svgId={config.svgId}
-				url={config.url}
-			/>
-		))}
+		{configs.map(
+			config => (
+				<NavCard
+					description={config.description}
+					name={config.name}
+					svgId={config.svgId}
+					url={config.url}
+				/>
+			)
+		)}
 	</div>
 );
 
@@ -21,11 +23,17 @@ class Submenu extends preact.Component {
 
 		this.handleClick = this.handleClick.bind(this);
 
-		this.state = {selectLanguage: false};
+		this.state = {
+			selectLanguage: false
+		};
 	}
 
 	handleClick() {
-		this.setState({selectLanguage: !this.state.selectLanguage});
+		this.setState(
+			{
+				selectLanguage: !this.state.selectLanguage
+			}
+		);
 	}
 
 	render({accountLinks, highlightedLinks, locale}, {selectLanguage}) {
@@ -44,11 +52,13 @@ class Submenu extends preact.Component {
 						{locale.currentLocale.name}
 					</a>
 
-					{locale.alternativeLocales.map(alternativeLocale => (
-						<a href={alternativeLocale.url} rel="nofollow">
-							{alternativeLocale.name}
-						</a>
-					))}
+					{locale.alternativeLocales.map(
+						alternativeLocale => (
+							<a href={alternativeLocale.url} rel="nofollow">
+								{alternativeLocale.name}
+							</a>
+						)
+					)}
 				</div>
 			</div>
 		) : (
@@ -76,17 +86,21 @@ class Submenu extends preact.Component {
 	}
 }
 
-export default ({
-	accountLinks,
-	cardMenuItems,
-	highlightedLinks,
-	locale,
-	name
-}) => (
+export default (
+	{
+		accountLinks,
+		cardMenuItems,
+		highlightedLinks,
+		locale,
+		name
+	}
+) => (
 	<div class="container-fluid container-fluid-max-xl">
 		<div class="header-menu-content row">
 			<div class="col-9 menu-body">
-				<h6 class="secondary-text-color">{name}</h6>
+				<h6 class="secondary-text-color">
+					{name}
+				</h6>
 
 				<div class="card-menu-container">
 					<CardMenu
