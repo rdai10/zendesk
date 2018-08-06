@@ -4,7 +4,6 @@ const glob = require('glob-all');
 const path = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
 
@@ -29,9 +28,7 @@ module.exports = {
 					{
 						loader: 'postcss-loader',
 						options: {
-							plugins: () => [
-								require('autoprefixer')()
-							]
+							plugins: () => [require('autoprefixer')()]
 						}
 					},
 					{
@@ -42,123 +39,68 @@ module.exports = {
 					}
 				]
 			}
-		]},
+		]
+	},
 	output: {
 		filename: 'script.js',
 		library: 'Liferay',
 		libraryTarget: 'window'
 	},
 	plugins: [
-		new CopyWebpackPlugin(
-			[
-				{
-					from: 'src/resources/.zat',
-					to: ''
-				},
-				{
-					from: 'src/resources/assets',
-					to: 'assets'
-				},
-				{
-					from: 'src/resources/settings',
-					to: 'settings'
-				},
-				{
-					from: 'src/resources/templates',
-					to: 'templates'
-				},
-				{
-					from: 'src/resources/translations',
-					to: 'translations'
-				},
-				{
-					from: 'src/resources/manifest.json',
-					to: ''
-				},
-				{
-					from: 'src/resources/thumbnail.png',
-					to: ''
-				}
-			]
-		),
-		new ImageminPlugin(
+		new CopyWebpackPlugin([
 			{
-				svgo: {
-					plugins: [
-						{
-							cleanupAttrs: true
-						},
-						{
-							cleanupNumericValues: true
-						},
-						{
-							cleanupListOfValues: true
-						},
-						{
-							collapseGroups: true
-						},
-						{
-							mergePaths: true
-						},
-						{
-							removeDoctype: true
-						},
-						{
-							removeEditorsNSData: true
-						},
-						{
-							removeEmptyAttrs: true
-						},
-						{
-							removeEmptyContainers: true
-						},
-						{
-							removeEmptyText: true
-						},
-						{
-							removeUnusedNS: true
-						},
-						{
-							removeUselessStrokeAndFill: true
-						},
-						{
-							removeXMLProcInst: true
-						}
-					]
-				},
-				test: '/\.(jpe?g|png|gif|svg)$/i'
-			}
-		),
-		new MiniCssExtractPlugin(
+				from: 'src/resources/.zat',
+				to: ''
+			},
 			{
-				filename: 'style.css'
-			}
-		),
-		new PurifyCSSPlugin(
+				from: 'src/resources/assets',
+				to: 'assets'
+			},
 			{
-				paths: glob.sync(
-					[
-						path.join(__dirname, 'src/resources/templates/*.hbs'),
-						path.join(__dirname, 'src/*.js')
-					]
-				),
-				purifyOptions: {
-					whitelist: [
-						'*code*',
-						'*loading-animation*',
-						'nav-card',
-						'nesty-input',
-						'notification-dismiss',
-						'notification-notice',
-						'*pre*',
-						'*request_description_hint*',
-						'status-label-answered',
-						'*submenu*',
-						'*suggestion-list*',
-						'upload-dropzone'
-					]
-				}
+				from: 'src/resources/settings',
+				to: 'settings'
+			},
+			{
+				from: 'src/resources/templates',
+				to: 'templates'
+			},
+			{
+				from: 'src/resources/translations',
+				to: 'translations'
+			},
+			{
+				from: 'src/resources/manifest.json',
+				to: ''
+			},
+			{
+				from: 'src/resources/thumbnail.png',
+				to: ''
 			}
-		)
+		]),
+		new MiniCssExtractPlugin({
+			filename: 'style.css'
+		}),
+		new PurifyCSSPlugin({
+			paths: glob.sync([
+				path.join(__dirname, 'src/resources/templates/*.hbs'),
+				path.join(__dirname, 'src/*.js')
+			]),
+			purifyOptions: {
+				whitelist: [
+					'*code*',
+					'*loading-animation*',
+					'nav-card',
+					'nesty-input',
+					'notification-dismiss',
+					'notification-notice',
+					'*pre*',
+					'*request_description_hint*',
+					'status-label-answered',
+					'*submenu*',
+					'*suggestion-list*',
+					'upload-dropzone'
+				]
+			}
+		})
 	]
 };
