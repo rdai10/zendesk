@@ -4,6 +4,11 @@
 	display: none;
 }
 
+#request_organization_id:disabled {
+	color: #CCC;
+	cursor: not-allowed;
+}
+
 .attachment-meta {
 	padding-left: $lexicon-icon-width;
 }
@@ -42,6 +47,10 @@
 			margin: 0;
 		}
 	}
+}
+
+.hide {
+	display: none;
 }
 
 .individual-request {

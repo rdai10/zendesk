@@ -1,6 +1,7 @@
 import '../css/main.scss';
 
-import './vendor/zendesk-script';
+import './vendor/zendesk-default-script';
+import './vendor/zendesk-watcher-customization';
 
 export {default as render} from './helpers/preact-renderer';
 export {default as throttle} from 'lodash.throttle';
