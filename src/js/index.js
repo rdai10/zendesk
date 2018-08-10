@@ -1,6 +1,5 @@
 import '../css/main.scss';
 
-import './components/DocSideNav';
 import './vendor/zendesk-script';
 
 export {default as render} from './helpers/preact-renderer';
