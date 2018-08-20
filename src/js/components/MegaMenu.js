@@ -3,7 +3,7 @@ import preact from 'preact';
 import NavCard from './NavCard.js';
 
 const CardMenu = ({className, configs}) => (
-	<div className={className}>
+	<div class={className}>
 		{configs.map(
 			config => (
 				<NavCard
@@ -38,14 +38,14 @@ class Submenu extends preact.Component {
 
 	render({accountLinks, highlightedLinks, locale}, {selectLanguage}) {
 		return selectLanguage ? (
-			<div className="col-3 language-selection submenu">
-				<svg className="icon" onClick={this.handleClick}>
+			<div class="col-3 language-selection submenu">
+				<svg class="icon" onClick={this.handleClick}>
 					<use xlinkHref="#arrow-left" />
 				</svg>
 
-				<div className="available-languages">
+				<div class="available-languages">
 					<a
-						className="current"
+						class="current"
 						href={locale.currentLocale.url}
 						rel="nofollow"
 					>
@@ -62,7 +62,7 @@ class Submenu extends preact.Component {
 				</div>
 			</div>
 		) : (
-			<div className="col-3 submenu">
+			<div class="col-3 submenu">
 				<CardMenu
 					className={highlightedLinks.className}
 					configs={highlightedLinks.configs}
@@ -73,7 +73,7 @@ class Submenu extends preact.Component {
 					configs={accountLinks.configs}
 				/>
 
-				<div className="language">
+				<div class="language">
 					<NavCard
 						name={locale.currentLocale.name}
 						svgId="#language"
@@ -95,14 +95,14 @@ export default (
 		name
 	}
 ) => (
-	<div className="container-fluid container-fluid-max-xl">
-		<div className="header-menu-content row">
-			<div className="col-9 menu-body">
-				<h6 className="secondary-text-color">
+	<div class="container-fluid container-fluid-max-xl">
+		<div class="header-menu-content row">
+			<div class="col-9 menu-body">
+				<h6 class="secondary-text-color">
 					{name}
 				</h6>
 
-				<div className="card-menu-container">
+				<div class="card-menu-container">
 					<CardMenu
 						className={cardMenuItems.className}
 						configs={cardMenuItems.configs}

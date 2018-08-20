@@ -62,7 +62,7 @@ class ArticlesList extends preact.Component {
 		return (
 			<div>
 				<a
-					className="sidenav-item"
+					class="sidenav-item"
 					href="javascript:;"
 					onClick={this.handleClick}
 				>
@@ -70,12 +70,12 @@ class ArticlesList extends preact.Component {
 				</a>
 
 				{expanded && !loading && (
-					<ul className="nav nav-nested">
+					<ul class="nav nav-nested">
 						{items.articles.map(
 							item => (
-								<li className="nav-item" key={item.id}>
+								<li class="nav-item" key={item.id}>
 									<a
-										className="sidenav-item"
+										class="sidenav-item"
 										href={item.html_url}
 									>
 										{item.name}
@@ -148,10 +148,10 @@ export default class DocSideNav extends preact.Component {
 		return loading ? (
 			<LoadingIndicator />
 		) : (
-			<ul className="nav nav-nested">
+			<ul class="nav nav-nested">
 				{items.map(
 					item => (
-						<li className="nav-item" key={item.id}>
+						<li class="nav-item" key={item.id}>
 							<ArticlesList
 								id={item.id}
 								locale={locale}
