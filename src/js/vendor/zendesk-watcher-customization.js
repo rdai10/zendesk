@@ -3,7 +3,7 @@ $(document).ready(function() {
 		getDevOrgs();
 		var allowedUserOrgs = HelpCenter.user.allowedOrgs;
 		var allowedOrgsByName = HelpCenter.user.allowedOrgsByName;
-		var form = $('h1.watcher-message').next('div');
+		var form = $('div.watcher-message').next('div');
 		var key = Object.keys(allowedUserOrgs)[0];
 		var value = Object.values(allowedUserOrgs)[0];
 		if (value) {
@@ -20,10 +20,10 @@ $(document).ready(function() {
 				});
 			}
 			$('.watcher-message').remove();
-			$(form).removeClass('hide');
+			$(form).removeClass('d-none');
 		} else {
 			$(form).remove();
-			$('.watcher-message').removeClass('hide');
+			$('.watcher-message').removeClass('d-none');
 		}
 		$('.request_organization_id a.nesty-input').on('click', function() {
 			var option = this;

@@ -5,7 +5,7 @@
 }
 
 #request_organization_id:disabled {
-	color: #CCC;
+	color: $color-default-disabled;
 	cursor: not-allowed;
 }
 
@@ -47,10 +47,6 @@
 			margin: 0;
 		}
 	}
-}
-
-.hide {
-	display: none;
 }
 
 .individual-request {

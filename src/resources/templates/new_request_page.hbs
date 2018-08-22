@@ -1,23 +1,26 @@
-<h1 class="container-fluid container-fluid-max-xl main-content watcher-message hide">
-	To access the help request form, please reach out to our support team by phone for more information or chat with a
-representative on our main site.
-</h1>
-
-<div class="container-fluid container-fluid-max-xl hide main-content">
-	<div class="row">
-		<div class="col-sm-12">
-			{{breadcrumbs}}
-		</div>
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="d-none justify-content-sm-center row watcher-message">
+		<h1 class="col-sm-6">
+			{{dc 'we_are_sorry_but_you_do_not_have_access_to_submit_a_support_ticket'}}
+		</h1>
 	</div>
 
-	<div class="justify-content-sm-center row">
-		<div class="col-sm-6">
-			<h1>
-				{{t 'submit_a_request'}}
-			</h1>
+	<div class="d-none">
+		<div class="row">
+			<div class="col-sm-12">
+				{{breadcrumbs}}
+			</div>
+		</div>
 
-			<div class="request-form">
-					{{request_form}}
+		<div class="justify-content-sm-center row">
+			<div class="col-sm-6">
+				<h1>
+					{{t 'submit_a_request'}}
+				</h1>
+
+				<div class="request-form">
+						{{request_form}}
+				</div>
 			</div>
 		</div>
 	</div>
