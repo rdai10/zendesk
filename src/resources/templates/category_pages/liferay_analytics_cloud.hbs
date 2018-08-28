@@ -1,0 +1,21 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	<div class="categories-main row">
+		<div class="category-heading col-md-12">
+			<h1>
+				{{category.name}}
+			</h1>
+
+			{{#if category.description}}
+				<p class="secondary-font secondary-text-color">
+					{{category.description}}
+				</p>
+			{{/if}}
+		</div>
+	</div>
+</div>
