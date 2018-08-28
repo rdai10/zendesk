@@ -25,3 +25,14 @@
 		margin-bottom: $margin-default;
 	}
 }
+
+.dxp-cloud-products {
+	display: flex;
+	flex-wrap: wrap;
+
+	.product-card {
+		display: flex;
+		flex: 1 0 auto;
+		width: 30%;
+	}
+}

@@ -6,7 +6,7 @@
 	</div>
 
 	<div class="categories-main row">
-		<div class="category-heading col-12">
+		<div class="category-heading col-md-12">
 			<h1>
 				{{category.name}}
 			</h1>
@@ -17,5 +17,55 @@
 				</p>
 			{{/if}}
 		</div>
+
+		<div id="dxpCloudProductPage"></div>
 	</div>
 </div>
+
+<script>
+	Liferay.render(
+		Liferay.CardMenu,
+		{
+			className: 'dxp-cloud-products col-md-12',
+			configs: [
+				{
+					description: 'Morbi eget dapibus augue, ut varius felis. Integer hendrerit risus nec tristique dignissim. Sed consequat quis ligula sit amet cursus. Aenean eleifend arcu at sem mollis, fringilla sagittis est convallis. Nunc eros nibh, pharetra vitae lacus sed, interdum malesuada dolor. Fusce maximus aliquam nisi venenatis porta. Vivamus efficitur velit sit amet est iaculis, sit amet vulputate orci tempus.',
+					name: '{{dc 'development_guide'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Morbi eget dapibus augue, ut varius felis.',
+					name: '{{dc 'development_guide'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Morbi eget dapibus augue, ut varius felis. Integer hendrerit risus nec tristique dignissim. Sed consequat quis ligula sit amet cursus.Nunc eros nibh, pharetra vitae lacus sed, interdum malesuada dolor. Fusce maximus aliquam nisi venenatis porta. Vivamus efficitur velit sit amet est iaculis, sit amet vulputate orci tempus.',
+					name: '{{dc 'development_guide'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Morbi eget dapibus augue, ut varius felis. Integer hendrerit risus nec tristique dignissim. Sed consequat quis ligula sit amet cursus.',
+					name: '{{dc 'development_guide'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Morbi eget dapibus augue, ut varius felis. Aenean eleifend arcu at sem mollis, fringilla sagittis est convallis. Nunc eros nibh, pharetra vitae lacus sed, interdum malesuada dolor. Fusce maximus aliquam nisi venenatis porta. Vivamus efficitur velit sit amet est iaculis, sit amet vulputate orci tempus.',
+					name: '{{dc 'development_guide'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Integer hendrerit risus nec tristique dignissim. Sed consequat quis ligula sit amet cursus.',
+					name: '{{dc 'development_guide'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				}
+			]
+		},
+		document.getElementById('dxpCloudProductPage')
+	);
+</script>

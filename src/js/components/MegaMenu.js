@@ -1,27 +1,8 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
-import NavCard from './NavCard.js';
-
-const CardMenu = ({className, configs}) => (
-	<div class={className}>
-		{configs.map(
-			config => (
-				<NavCard
-					description={config.description}
-					name={config.name}
-					svgId={config.svgId}
-					url={config.url}
-				/>
-			)
-		)}
-	</div>
-);
-
-CardMenu.propTypes = {
-	className: PropTypes.string,
-	configs: PropTypes.object
-};
+import Card from './Card';
+import CardMenu from './CardMenu';
 
 class Submenu extends preact.Component {
 	constructor(props) {
@@ -72,17 +53,20 @@ class Submenu extends preact.Component {
 				<CardMenu
 					className={highlightedLinks.className}
 					configs={highlightedLinks.configs}
+					type="nav"
 				/>
 
 				<CardMenu
 					className={accountLinks.className}
 					configs={accountLinks.configs}
+					type="nav"
 				/>
 
 				<div class="language">
-					<NavCard
+					<Card
 						name={locale.currentLocale.name}
 						svgId="#language"
+						type="nav"
 						onClick={this.handleClick}
 						url="javascript:;"
 					/>
@@ -118,6 +102,7 @@ const MegaMenu = (
 					<CardMenu
 						className={cardMenuItems.className}
 						configs={cardMenuItems.configs}
+						type="nav"
 					/>
 				</div>
 			</div>

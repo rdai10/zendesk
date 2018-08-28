@@ -1,10 +1,18 @@
 .nav-card,
 .product-card {
 	border-radius: $border-radius;
-	color: $secondary-text-color;
+
+	a {
+		color: $secondary-text-color;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
 
 	.description {
 		font-size: $h5-font-size;
+		margin-bottom: 0;
 		margin-top: 0.25rem;
 	}
 
@@ -29,20 +37,19 @@
 	border: 1px solid $color-border;
 	box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
 	margin-right: $margin-default;
+	margin-top: $margin-default;
 	padding: 1.25rem $padding-default;
-	transition: all 0.2s ease;
+	transition: transform 0.2s ease;
 
 	&:hover {
 		border-bottom: 3px solid $color-primary;
 		box-shadow: 0 6px 11px 0 rgba(9, 16, 29, 0.09);
 		margin-bottom: -3px;
-		text-decoration: none;
 		transform: translateY(-4px);
 	}
 
 	.lexicon-icon-arrow-right {
 		color: $color-primary;
-		float: right;
 		height: 2rem;
 		padding: 0.625rem;
 		width: 2rem;
