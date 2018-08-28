@@ -1,4 +1,5 @@
 import preact from 'preact';
+import PropTypes from 'prop-types';
 
 import * as apiHelpers from '../helpers/api-helpers.js';
 import LoadingIndicator from './LoadingIndicator.js';
@@ -92,7 +93,13 @@ class ArticlesList extends preact.Component {
 	}
 }
 
-export default class DocSideNav extends preact.Component {
+ArticlesList.PropTypes = {
+	id: PropTypes.string,
+	locale: PropTypes.string,
+	name: PropTypes.string
+}
+
+class DocSideNav extends preact.Component {
 	constructor(props) {
 		super(props);
 
@@ -164,3 +171,9 @@ export default class DocSideNav extends preact.Component {
 		);
 	}
 }
+
+DocSideNav.PropTypes = {
+	locale: PropTypes.string
+}
+
+export default DocSideNav;

@@ -1,6 +1,7 @@
 import preact from 'preact';
+import PropTypes from 'prop-types';
 
-export default ({description, name, onClick, svgId, url}) => (
+const NavCard = ({description, name, onClick, svgId, url}) => (
 	<a
 		class="autofit-row autofit-row-center nav-card"
 		href={url}
@@ -20,3 +21,13 @@ export default ({description, name, onClick, svgId, url}) => (
 		</div>
 	</a>
 );
+
+NavCard.propTypes = {
+	description: PropTypes.string,
+	name: PropTypes.string,
+	onClick: PropTypes.func,
+	svgId: PropTypes.string,
+	url: PropTypes.string
+};
+
+export default NavCard;

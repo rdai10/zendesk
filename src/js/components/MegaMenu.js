@@ -1,4 +1,5 @@
 import preact from 'preact';
+import PropTypes from 'prop-types';
 
 import NavCard from './NavCard.js';
 
@@ -16,6 +17,11 @@ const CardMenu = ({className, configs}) => (
 		)}
 	</div>
 );
+
+CardMenu.propTypes = {
+	className: PropTypes.string,
+	configs: PropTypes.object
+}
 
 class Submenu extends preact.Component {
 	constructor(props) {
@@ -86,7 +92,13 @@ class Submenu extends preact.Component {
 	}
 }
 
-export default (
+Submenu.propTypes = {
+	accountLinks: PropTypes.object, 
+	highlightedLinks: PropTypes.object, 
+	locale: PropTypes.object
+}
+
+const MegaMenu = (
 	{
 		accountLinks,
 		cardMenuItems,
@@ -118,3 +130,13 @@ export default (
 		</div>
 	</div>
 );
+
+MegaMenu.propTypes = {
+	accountLinks: PropTypes.object,
+	cardMenuItems: PropTypes.object,
+	highlightedLinks: PropTypes.object, 
+	locale: PropTypes.object,
+	name: PropTypes.string
+}
+
+export default MegaMenu;
