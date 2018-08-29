@@ -1,22 +1,49 @@
-.nav-card {
-	border: 0;
+.nav-card,
+.product-card {
 	border-radius: $border-radius;
 	color: $secondary-text-color;
-	flex-basis: 50%;
-
+	
 	.description {
 		font-size: $h5-font-size;
-		margin: 0;
+		margin-top: 0.25rem;
 	}
-
+	
 	.icon {
 		height: 2rem;
 		margin-right: 1rem;
 		width: 2rem;
 	}
-
+	
 	.title {
 		color: $color-default;
-		margin-bottom: 0.25rem;
+		margin: 0;
+	}
+}
+
+.nav-card {
+	border: 0;
+	flex-basis: 50%;
+}
+
+.product-card {
+	border: 1px solid $color-border;
+	box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
+	margin-right: $margin-default;
+	padding: 1.25rem $padding-default;
+	transition: all 0.2s ease;
+
+	&:hover {
+		border-bottom: 3px solid $color-primary;
+		box-shadow: 0 6px 11px 0 rgba(9, 16, 29, 0.09);
+		margin-top: -3px;
+		transform: translateY(-4px);
+	}
+
+	.lexicon-icon-arrow-right {
+		color: $color-primary;
+		float: right;
+		height: 2rem;
+		padding: 0.625rem;
+		width: 2rem;
 	}
 }

@@ -15,68 +15,50 @@
 		</div>
 
 		<div class="banner-img-container col-md-6">
-			<img alt="{{dc 'how_can_we_help'}}" class="img" src="{{asset 'analytics_cloud.svg'}}" />
+			<img alt="{{dc 'how_can_we_help'}}" class="img" src="{{asset 'homepage.svg'}}" />
 		</div>
 	</section>
 
 	<section class="row suggested-topics">
 		<h2 class="col-12">
-			{{dc 'analytics_cloud_documentation'}}
+			{{dc 'browse_by_product'}}
 		</h2>
 
-		{{#each categories}}
-			{{#is name 'Analytics Cloud Documentation'}}
-				{{#each sections}}
-					{{#is name 'Getting Started'}}
-						<div class="col-sm-4 topic">
-							<h3>
-								{{dc 'getting_started'}}
-							</h3>
+		<a class="autofit-row autofit-row-center col-md-3 product-card" href="/hc/categories/360000869112">
+			<div class="autofit-col">
+				<svg class="icon">
+					<use xlink:href="#analytics-cloud-logo" />
+				</svg>
+			</div>
 
-							{{#each articles}}
-								<p class="secondary-text">
-									<a href='{{url}}'>
-										{{title}}
-									</a>
-								</p>
-							{{/each}}
+			<div class="autofit-col autofit-col-expand">
+				<h4 class="title">
+					{{dc 'analytics_cloud'}}
 
-							{{#if more_articles}}
-								<a href="{{url}}">
-									{{dc 'view_all'}}
-								</a>
-							{{/if}}
-						</div>
-					{{/is}}
+					<svg class="lexicon-icon lexicon-icon-arrow-right">
+						<use xlink:href="#arrow-right" />
+					</svg>
+				</h4>
+			</div>
+		</a>
 
-					{{#is name 'Administering Liferay Analytics Cloud'}}
-						<div class="col-sm-4 topic">
-							<h3>
-								{{dc 'administering_liferay_analytics_cloud'}}
-							</h3>
+		<a class="autofit-row autofit-row-center col-md-3 product-card" href="/hc/categories/360000869252">
+			<div class="autofit-col">
+				<svg class="icon">
+					<use xlink:href="#analytics-cloud-logo" />
+				</svg>
+			</div>
 
-							{{#each articles}}
-								<p class="secondary-text">
-									<a href='{{url}}'>
-										{{title}}
-									</a>
-								</p>
-							{{/each}}
+			<div class="autofit-col autofit-col-expand">
+				<h4 class="title">
+					{{dc 'dxp_cloud'}}
 
-							{{#if more_articles}}
-								<a class="secondary-font view-all" href="{{url}}">
-									{{dc 'view_all'}}
-
-									<svg class="lexicon-icon lexicon-icon-arrow-right" >
-										<use xlink:href="#arrow-right" />
-									</svg>
-								</a>
-							{{/if}}
-						</div>
-					{{/is}}
-				{{/each}}
-			{{/is}}
-		{{/each}}
+					<svg class="lexicon-icon lexicon-icon-arrow-right">
+						<use xlink:href="#arrow-right" />
+					</svg>
+				</h4>
+			</div>
+		</a>
 	</section>
 
 	<section class="col-12 need-help">
