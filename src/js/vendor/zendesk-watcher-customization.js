@@ -68,17 +68,17 @@ Array.prototype.subtract = function(arr) {
 	);
 };
 
-// filter user tags to obtain IDs of tags with the _watcher suffix
+// filter user tags to obtain IDs of tags with the osb_[id]_watcher suffix
 
 function getUserWatcherTags(userTags) {
 	return userTags.filter(
 		function(tag) {
-			return tag.match(/(\d*)_watcher/);
+			return tag.match(/osb_(\d*)_watcher/);
 		}
 	)
 	.map(
 		function(tag) {
-			return tag.split('_')[0];
+			return tag.split('_')[1];
 		}
 	);
 }
