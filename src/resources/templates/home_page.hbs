@@ -14,51 +14,55 @@
 			{{search class="search-lg" submit=false}}
 		</div>
 
-		<div class="banner-img-container col-md-6">
+		<div class="banner-img-container col-md-5 offset-md-1">
 			<img alt="{{dc 'how_can_we_help'}}" class="img" src="{{asset 'homepage.svg'}}" />
 		</div>
 	</section>
 
 	<section class="row suggested-topics">
-		<h2 class="col-12">
+		<h2 class="col-md-12">
 			{{dc 'browse_by_product'}}
 		</h2>
 
-		<a class="autofit-row autofit-row-center col-md-3 product-card" href="/hc/categories/360000869112">
-			<div class="autofit-col">
-				<svg class="icon">
-					<use xlink:href="#analytics-cloud-logo" />
-				</svg>
-			</div>
-
-			<div class="autofit-col autofit-col-expand">
-				<h4 class="title">
-					{{dc 'analytics_cloud'}}
-
-					<svg class="lexicon-icon lexicon-icon-arrow-right">
-						<use xlink:href="#arrow-right" />
+		<div class="col-md-3">
+			<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869112">
+				<div class="autofit-col">
+					<svg class="icon">
+						<use xlink:href="#analytics-cloud-logo" />
 					</svg>
-				</h4>
-			</div>
-		</a>
+				</div>
 
-		<a class="autofit-row autofit-row-center col-md-3 product-card" href="/hc/categories/360000869252">
-			<div class="autofit-col">
-				<svg class="icon">
-					<use xlink:href="#analytics-cloud-logo" />
-				</svg>
-			</div>
+				<div class="autofit-col autofit-col-expand">
+					<h4 class="title">
+						{{dc 'analytics_cloud'}}
 
-			<div class="autofit-col autofit-col-expand">
-				<h4 class="title">
-					{{dc 'dxp_cloud'}}
+						<svg class="lexicon-icon lexicon-icon-arrow-right">
+							<use xlink:href="#arrow-right" />
+						</svg>
+					</h4>
+				</div>
+			</a>
+		</div>
 
-					<svg class="lexicon-icon lexicon-icon-arrow-right">
-						<use xlink:href="#arrow-right" />
+		<div class="col-md-3">
+			<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869252">
+				<div class="autofit-col">
+					<svg class="icon">
+						<use xlink:href="#analytics-cloud-logo" />
 					</svg>
-				</h4>
-			</div>
-		</a>
+				</div>
+
+				<div class="autofit-col autofit-col-expand">
+					<h4 class="title">
+						{{dc 'dxp_cloud'}}
+
+						<svg class="lexicon-icon lexicon-icon-arrow-right">
+							<use xlink:href="#arrow-right" />
+						</svg>
+					</h4>
+				</div>
+			</a>
+		</div>
 	</section>
 
 	<section class="col-12 need-help">
