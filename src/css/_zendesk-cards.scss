@@ -2,18 +2,18 @@
 .product-card {
 	border-radius: $border-radius;
 	color: $secondary-text-color;
-	
+
 	.description {
 		font-size: $h5-font-size;
 		margin-top: 0.25rem;
 	}
-	
+
 	.icon {
 		height: 2rem;
 		margin-right: 1rem;
 		width: 2rem;
 	}
-	
+
 	.title {
 		color: $color-default;
 		margin: 0;
@@ -21,7 +21,7 @@
 }
 
 .nav-card {
-	border: 0;
+	border-width: 0;
 	flex-basis: 50%;
 }
 

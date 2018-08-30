@@ -21,7 +21,7 @@ const CardMenu = ({className, configs}) => (
 CardMenu.propTypes = {
 	className: PropTypes.string,
 	configs: PropTypes.object
-}
+};
 
 class Submenu extends preact.Component {
 	constructor(props) {
@@ -93,10 +93,10 @@ class Submenu extends preact.Component {
 }
 
 Submenu.propTypes = {
-	accountLinks: PropTypes.object, 
-	highlightedLinks: PropTypes.object, 
+	accountLinks: PropTypes.object,
+	highlightedLinks: PropTypes.object,
 	locale: PropTypes.object
-}
+};
 
 const MegaMenu = (
 	{
@@ -134,9 +134,9 @@ const MegaMenu = (
 MegaMenu.propTypes = {
 	accountLinks: PropTypes.object,
 	cardMenuItems: PropTypes.object,
-	highlightedLinks: PropTypes.object, 
+	highlightedLinks: PropTypes.object,
 	locale: PropTypes.object,
 	name: PropTypes.string
-}
+};
 
 export default MegaMenu;

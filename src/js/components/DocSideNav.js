@@ -97,7 +97,7 @@ ArticlesList.PropTypes = {
 	id: PropTypes.string,
 	locale: PropTypes.string,
 	name: PropTypes.string
-}
+};
 
 class DocSideNav extends preact.Component {
 	constructor(props) {
@@ -174,6 +174,6 @@ class DocSideNav extends preact.Component {
 
 DocSideNav.PropTypes = {
 	locale: PropTypes.string
-}
+};
 
 export default DocSideNav;
