@@ -20,8 +20,8 @@ const CardMenu = ({className, configs, type}) => (
 );
 
 CardMenu.defaultProps = {
-	type: "product"
-}
+	type: 'product'
+};
 
 CardMenu.propTypes = {
 	className: PropTypes.string,

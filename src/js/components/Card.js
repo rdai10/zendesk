@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 const Card = ({description, name, onClick, svgId, type, url}) => {
 	return (
 		<div class={`${type}-card`}>
-			<a
-				class="autofit-row autofit-row-center"
-				href={url}
-				onClick={onClick}
-			>
+			<a class="autofit-row autofit-row-center" href={url} onClick={onClick}>
 				{svgId && (
 					<div class="autofit-col">
 						<svg class="icon">
@@ -30,7 +26,10 @@ const Card = ({description, name, onClick, svgId, type, url}) => {
 							)}
 						</h4>
 					)}
-					{description && <p class="description">{description}</p>}
+
+					{description && (
+						<p class="description">{description}</p>
+					)}
 				</div>
 			</a>
 		</div>
