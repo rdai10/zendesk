@@ -178,21 +178,19 @@
 		{{/is}}
 	{{/each}}
 
-	<section class="col-12 need-help">
-		<h2>
-			{{dc 'still_need_help'}}
-		</h2>
-
-		<svg class="lexicon-icon lexicon-icon-ticket">
-			<use xlink:href="#ticket" />
-		</svg>
-
-		<a class="new-request-link" href="{{page_path 'new_request'}}">
-			{{dc 'submit_a_ticket'}}
-		</a>
-
-		<span class="new-request-message secondary-text secondary-text-color">
-			{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}
-		</span>
-	</section>
+	<section class="col-12 need-help" id="stillNeedHelp"></section>
 </div>
+
+<script type="text/javascript">
+	Liferay.render(
+		Liferay.CallToAction,
+		{
+			iconId: '#ticket',
+			link: '{{page_path 'new_request'}}',
+			message: `{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}`,
+			name: '{{dc 'submit_a_ticket'}}',
+			sectionHeading: '{{dc 'still_need_help'}}'
+		},
+		document.getElementById('stillNeedHelp')
+	);
+</script>

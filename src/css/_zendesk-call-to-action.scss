@@ -7,17 +7,17 @@
 		margin-bottom: $margin-default;
 	}
 
-	.lexicon-icon-ticket {
+	.icon {
 		height: 2rem;
 		width: 2rem;
 	}
 
-	.new-request-link {
+	.link {
 		padding-left: 1rem;
 		padding-right: $padding-default;
 	}
 
-	.new-request-message {
+	.message {
 		@include media-breakpoint-down(xs) {
 			display: block;
 		}
