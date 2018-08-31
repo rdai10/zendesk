@@ -1,8 +1,8 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
-const CallToAction = ({iconId, link, message, name, sectionHeading}) => (
-	<div>
+const CallToAction = ({className, iconId, link, message, name, sectionHeading}) => (
+	<div className={className}>
 		{sectionHeading && <h2>{sectionHeading}</h2>}
 
 		{iconId && (
@@ -24,6 +24,7 @@ const CallToAction = ({iconId, link, message, name, sectionHeading}) => (
 );
 
 CallToAction.propTypes = {
+	className: PropTypes.string,
 	iconId: PropTypes.string,
 	link: PropTypes.string.isRequired,
 	message: PropTypes.string,

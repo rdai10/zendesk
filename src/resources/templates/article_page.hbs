@@ -178,19 +178,33 @@
 		{{/is}}
 	{{/each}}
 
-	<section class="col-12 need-help" id="stillNeedHelp"></section>
+	<section class="col-12" id="stillNeedHelp"></section>
 </div>
 
 <script type="text/javascript">
-	Liferay.render(
-		Liferay.CallToAction,
-		{
-			iconId: '#ticket',
-			link: '{{page_path 'new_request'}}',
-			message: `{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}`,
-			name: '{{dc 'submit_a_ticket'}}',
-			sectionHeading: '{{dc 'still_need_help'}}'
-		},
-		document.getElementById('stillNeedHelp')
+	$(
+		function() {
+			const userTags = window.HelpCenter.user.tags;
+
+			if (
+				userTags &&
+				userTags.some(
+					tag => tag === 'osb_customer' || tag === 'osb_partner'
+				)
+			) {
+				Liferay.render(
+					Liferay.CallToAction,
+					{
+						className: 'need-help',
+						iconId: '#ticket',
+						link: '{{page_path 'new_request'}}',
+						message: `{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}`,
+						name: '{{dc 'submit_a_ticket'}}',
+						sectionHeading: '{{dc 'still_need_help'}}'
+					},
+					document.getElementById('stillNeedHelp')
+				);
+			}
+		}
 	);
 </script>
