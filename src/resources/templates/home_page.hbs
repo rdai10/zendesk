@@ -98,12 +98,7 @@
 		function() {
 			const userTags = window.HelpCenter.user.tags;
 
-			if (
-				userTags &&
-				userTags.some(
-					tag => tag === 'osb_customer' || tag === 'osb_partner'
-				)
-			) {
+			if (Liferay.hasCreateTicketPermission(userTags)) {
 				Liferay.render(
 					Liferay.CallToAction,
 					{

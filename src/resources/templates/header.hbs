@@ -185,21 +185,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			const userTags = window.HelpCenter.user.tags;
 
-			if (
-				userTags &&
-				userTags.some(
-					tag => tag === 'osb_customer' || tag === 'osb_partner'
-				)
-			) {
-				highlightedLinksConfigs.push(
+			if (Liferay.hasCreateTicketPermission(userTags)) {
+				highlightedLinksConfigs.unshift(
 					{
 						name: '{{dc 'submit_a_ticket'}}',
 						svgId: '#ticket',
 						url: '{{page_path 'new_request'}}'
 					}
 				);
-
-				highlightedLinksConfigs.reverse();
 			}
 
 			const highlightedLinks = {
