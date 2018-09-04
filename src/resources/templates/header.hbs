@@ -159,6 +159,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <script>
+	const accountLinks = {
+		className: 'account-links',
+		configs: [
+			{
+				name: '{{t 'my_requests'}}',
+				url: '{{page_path 'requests'}}'
+			},
+			{
+				name: '{{dc 'project_details'}}',
+				url: ''
+			}
+		]
+	};
+
+	const highlightedLinks = {
+		className: 'highlighted',
+		configs: [
+			{
+				name: '{{dc 'submit_a_ticket'}}',
+				svgId: '#ticket',
+				url: '{{page_path 'new_request'}}'
+			},
+			{
+				name: '{{dc 'contact_us'}}',
+				svgId: '#contact',
+				url: ''
+			}
+		]
+	};
+
 	const locale = {
 		currentLocale: {
 			name: {{json_stringify current_locale.name}},
@@ -177,19 +207,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	Liferay.render(
 		Liferay.MegaMenu,
 		{
-			accountLinks: {
-				className: 'account-links',
-				configs: [
-					{
-						name: '{{t 'my_requests'}}',
-						url: '{{page_path 'requests'}}'
-					},
-					{
-						name: '{{dc 'project_details'}}',
-						url: ''
-					}
-				]
-			},
+			accountLinks: accountLinks,
 			cardMenuItems: {
 				className: 'card-menu',
 				configs: [
@@ -235,21 +253,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					}
 				]
 			},
-			highlightedLinks: {
-				className: 'highlighted',
-				configs: [
-					{
-						name: '{{dc 'submit_a_ticket'}}',
-						svgId: '#ticket',
-						url: '{{page_path 'new_request'}}'
-					},
-					{
-						name: '{{dc 'contact_us'}}',
-						svgId: '#contact',
-						url: ''
-					}
-				]
-			},
+			highlightedLinks: highlightedLinks,
 			locale: locale,
 			name: '{{dc 'products'}}'
 		},
@@ -259,38 +263,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	Liferay.render(
 		Liferay.MegaMenu,
 		{
-			accountLinks: {
-				className: 'account-links',
-				configs: [
-					{
-						name: '{{t 'my_requests'}}',
-						url: '{{page_path 'requests'}}'
-					},
-					{
-						name: '{{dc 'project_details'}}',
-						url: ''
-					}
-				]
-			},
+			accountLinks: accountLinks,
 			cardMenuItems: {
 				className: 'card-menu',
 				configs: []
 			},
-			highlightedLinks: {
-				className: 'highlighted',
-				configs: [
-					{
-						name: '{{dc 'submit_a_ticket'}}',
-						svgId: '#ticket',
-						url: '{{page_path 'new_request'}}'
-					},
-					{
-						name: '{{dc 'contact_us'}}',
-						svgId: '#contact',
-						url: ''
-					}
-				]
-			},
+			highlightedLinks: highlightedLinks,
 			locale: locale,
 			name: '{{dc 'resources'}}'
 		},
@@ -300,38 +278,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	Liferay.render(
 		Liferay.MegaMenu,
 		{
-			accountLinks: {
-				className: 'account-links',
-				configs: [
-					{
-						name: '{{t 'my_requests'}}',
-						url: '{{page_path 'requests'}}'
-					},
-					{
-						name: '{{dc 'project_details'}}',
-						url: ''
-					}
-				]
-			},
+			accountLinks: accountLinks,
 			cardMenuItems: {
 				className: 'card-menu',
 				configs: []
 			},
-			highlightedLinks: {
-				className: 'highlighted',
-				configs: [
-					{
-						name: '{{dc 'submit_a_ticket'}}',
-						svgId: '#ticket',
-						url: '{{page_path 'new_request'}}'
-					},
-					{
-						name: '{{dc 'contact_us'}}',
-						svgId: '#contact',
-						url: ''
-					}
-				]
-			},
+			highlightedLinks: highlightedLinks,
 			locale: locale,
 			name: '{{dc 'security'}}'
 		},
@@ -341,38 +293,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	Liferay.render(
 		Liferay.MegaMenu,
 		{
-			accountLinks: {
-				className: 'account-links',
-				configs: [
-					{
-						name: '{{t 'my_requests'}}',
-						url: '{{page_path 'requests'}}'
-					},
-					{
-						name: '{{dc 'project_details'}}',
-						url: ''
-					}
-				]
-			},
+			accountLinks: accountLinks,
 			cardMenuItems: {
 				className: 'card-menu',
 				configs: []
 			},
-			highlightedLinks: {
-				className: 'highlighted',
-				configs: [
-					{
-						name: '{{dc 'submit_a_ticket'}}',
-						svgId: '#ticket',
-						url: '{{page_path 'new_request'}}'
-					},
-					{
-						name: '{{dc 'contact_us'}}',
-						svgId: '#contact',
-						url: ''
-					}
-				]
-			},
+			highlightedLinks: highlightedLinks,
 			locale: locale,
 			name: '{{dc 'support'}}'
 		},
