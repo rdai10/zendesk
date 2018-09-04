@@ -175,20 +175,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				]
 			};
 
-			const highlightedLinks = {
-				className: 'highlighted',
-				configs: [
+			const highlightedLinksConfigs = [
+				{
+					name: '{{dc 'contact_us'}}',
+					svgId: '#contact',
+					url: ''
+				}
+			];
+
+			const userTags = window.HelpCenter.user.tags;
+
+			if (
+				userTags &&
+				userTags.some(
+					tag => tag === 'osb_customer' || tag === 'osb_partner'
+				)
+			) {
+				highlightedLinksConfigs.push(
 					{
 						name: '{{dc 'submit_a_ticket'}}',
 						svgId: '#ticket',
 						url: '{{page_path 'new_request'}}'
-					},
-					{
-						name: '{{dc 'contact_us'}}',
-						svgId: '#contact',
-						url: ''
 					}
-				]
+				);
+
+				highlightedLinksConfigs.reverse();
+			}
+
+			const highlightedLinks = {
+				className: 'highlighted',
+				configs: highlightedLinksConfigs
 			};
 
 			const locale = {
