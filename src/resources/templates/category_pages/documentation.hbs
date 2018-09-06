@@ -8,7 +8,7 @@
 	<div class="categories-main row">
 		<div class="category-heading col-12">
 			<h1>
-				{{category.name}}
+				{{dc 'mega_menu-documentation'}}
 			</h1>
 
 			{{#if category.description}}
@@ -18,52 +18,244 @@
 			{{/if}}
 		</div>
 
-		{{#if sections}}
-			{{#each sections}}
-				<div class="col-md-6 section">
-					<a href="{{url}}">
-						<h2 class="section-name">
-							{{name}}
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc 'mega_menu-dxp_7_1'}}
+			</h2>
 
-							{{#if internal}}
-								<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
-									<use xlink:href="#lock" />
-								</svg>
-							{{/if}}
-						</h2>
-					</a>
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-help_topics_card'}}</a>
+				</li>
 
-					{{#if articles}}
-						<ul class="article-list">
-							{{#each articles}}
-								<li class="article-list-item {{#if promoted}}promoted{{/if}}">
-									<a href="{{url}}">{{title}}</a>
-								</li>
-							{{/each}}
-						</ul>
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-upgrading_card'}}</a>
+				</li>
 
-						{{#if more_articles}}
-							<a class="secondary-font view-all" href="{{url}}">
-								{{dc 'view_all'}}
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-deployment_guide_card'}}</a>
+				</li>
 
-								<svg class="lexicon-icon lexicon-icon-arrow-right" >
-									<use xlink:href="#arrow-right" />
-								</svg>
-							</a>
-						{{/if}}
-					{{else}}
-						<p class="secondary-font secondary-text-color">
-							{{dc 'no_articles_in_section'}}
-						</p>
-					{{/if}}
-				</div>
-			{{/each}}
-		{{else}}
-			<div class="col-12">
-				<p class="secondary-font secondary-text-color">
-					{{dc 'no_section_in_category'}}
-				</p>
-			</div>
-		{{/if}}
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-development_tutorials_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-development_reference_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-configuration_reference_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-whitepapers_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc 'mega_menu-dxp_7_0'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-help_topics_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-upgrading_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-deployment_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-development_tutorials_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-development_reference_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-configuration_reference_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-whitepapers_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc '7_1-components_tab'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-liferay_connected_services_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-mobile_experience_platform_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-developer_tools_and_frameworks_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-liferay_sync_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-liferay_enterprise_search_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc 'mega_menu-commerce'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc 'mega_menu-analytics_cloud'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc 'mega_menu-dxp_cloud'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc '6_2-page_heading'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-deployment_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-development_tutorials_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-development_reference_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-configuration_reference_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-whitepapers_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc '6_1-page_heading'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-deployment_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-development_tutorials_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-development_reference_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-configuration_reference_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-whitepapers_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc '6_0-page_heading'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-whitepapers_card'}}</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="col-md-6 section">
+			<h2 class="section-name">
+				{{dc '5_2-page_heading'}}
+			</h2>
+
+			<ul class="article-list">
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-admin_guide_card'}}</a>
+				</li>
+
+				<li class="article-list-item">
+					<a href="">{{dc '7_1-whitepapers_card'}}</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 </div>
