@@ -2,22 +2,29 @@
 <div class="container main-content">
 	 <nav class="sub-nav">
 		{{breadcrumbs}}
+
 		{{search scoped=true submit=false}}
 	</nav>
 
 	<header class="page-header">
 		<h1>
 			{{topic.name}}
+
 			{{#if topic.internal}}
 				<span class="icon-lock" title="{{t 'internal'}}"></span>
 			{{/if}}
 		</h1>
+
 		<span class="post-to-community page-header-item">
 			{{link 'new_post' role='button' topic_id=topic.id class='button button-large'}}
 		</span>
 	</header>
+
 	<div class="community-header">
-		<p class="page-header-description">{{topic.description}}</p>
+		<p class="page-header-description">
+			{{topic.description}}
+		</p>
+
 		<div class="community-follow">
 			{{subscribe}}
 		</div>
@@ -26,26 +33,18 @@
 	<div class="topic-header">
 		<span class="topic-filters">
 			<span class="dropdown">
-				<span class="dropdown-toggle">
-					{{current_filter.label}}
-				</span>
+				<span class="dropdown-toggle">{{current_filter.label}}</span>
 				<span class="dropdown-menu" role="menu">
 					{{#each filters}}
-						<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
-							{{name}}
-						</a>
+						<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">{{name}}</a>
 					{{/each}}
 				</span>
 			</span>
 			<span class="dropdown">
-				<span class="dropdown-toggle">
-					{{current_sorter.label}}
-				</span>
+				<span class="dropdown-toggle">{{current_sorter.label}}</span>
 				<span class="dropdown-menu" role="menu">
 					{{#each sorters}}
-						<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
-							{{name}}
-						</a>
+						<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">{{name}}</a>
 					{{/each}}
 				</span>
 			</span>
@@ -75,11 +74,18 @@
 
 						<ul class="meta-group">
 							<li class="meta-data">{{author.name}}</li>
+
 							{{#if editor}}
-								<li class="meta-data">{{date edited_at timeago=true}}</li>
-								<li class="meta-data">{{t 'edited'}}</li>
+								<li class="meta-data">
+									{{date edited_at timeago=true}}
+								</li>
+								<li class="meta-data">
+									{{t 'edited'}}
+								</li>
 							{{else}}
-								<li class="meta-data">{{date created_at timeago=true}}</li>
+								<li class="meta-data">
+									{{date created_at timeago=true}}
+								</li>
 							{{/if}}
 						</ul>
 					</span>
@@ -87,10 +93,12 @@
 					<div class="post-overview-count striped-list-count">
 						<span class="striped-list-count-item">
 							<span class="striped-list-number">{{vote_sum}}</span>
+
 							{{t 'vote' count=vote_sum}}
 						</span>
 						<span class="striped-list-count-item">
 							<span class="striped-list-number">{{comment_count}}</span>
+
 							{{t 'comment' count=comment_count}}
 						</span>
 					</div>
@@ -98,10 +106,14 @@
 			</li>
 		{{/each}}
 	</ul>
+
 	{{pagination}}
 </div>
 
 <section class="container community-footer">
-	<h4>{{t 'suggest_new_post'}}</h4>
+	<h4>
+		{{t 'suggest_new_post'}}
+	</h4>
+
 	{{link 'new_post' role='button' class='button-large'}}
 </section>

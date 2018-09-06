@@ -54,16 +54,12 @@
 															<use xlink:href="#paperclip" />
 														</svg>
 
-														<a href="{{url}}" target="_blank">
-															{{name}}
-														</a>
+														<a href="{{url}}" target="_blank">{{name}}</a>
 
 														<div class="attachment-meta">
 															<span class="meta-data">{{size}}</span>
 
-															<a href="{{url}}" target="_blank">
-																{{t 'download'}}
-															</a>
+															<a href="{{url}}" target="_blank">{{t 'download'}}</a>
 														</div>
 													</li>
 												{{/each}}
@@ -89,9 +85,7 @@
 						<div class="autofit-col">
 							<div class="autofit-section">
 								<div class="avatar sticker sticker-circle sticker-primary">
-									<span class="sticker-overlay">
-										{{user_avatar class="sticker-img"}}
-									</span>
+									<span class="sticker-overlay">{{user_avatar class="sticker-img"}}</span>
 								</div>
 							</div>
 						</div>
@@ -138,37 +132,61 @@
 			<section class="collapsible-sidebar sidebar-container">
 				{{#if request.followup_source_id}}
 					<dl class="request-details">
-						<dt>{{t 'followup'}}</dt>
-						<dd>{{link 'request' id=request.followup_source_id}}</dd>
+						<dt>
+							{{t 'followup'}}
+						</dt>
+						<dd>
+							{{link 'request' id=request.followup_source_id}}
+						</dd>
 					</dl>
 				{{/if}}
 
 				<dl class="request-details">
-					<dt>{{t 'id'}}</dt>
-					<dd>#{{request.id}}</dd>
-
-					<dt>{{t 'status'}}</dt>
+					<dt>
+						{{t 'id'}}
+					</dt>
 					<dd>
-						<span class="label status-label status-label-{{request.status}}" title="{{request.status_description}}">
-							{{request.status_name}}
-						</span>
+						#{{request.id}}
 					</dd>
 
-					<dt>{{t 'requester'}}</dt>
-					<dd>{{request.requester.name}}</dd>
+					<dt>
+						{{t 'status'}}
+					</dt>
+					<dd>
+						<span class="label status-label status-label-{{request.status}}" title="{{request.status_description}}">{{request.status_name}}</span>
+					</dd>
 
-					<dt>{{t 'created'}}</dt>
-					<dd>{{date request.created_at}}</dd>
+					<dt>
+						{{t 'requester'}}
+					</dt>
+					<dd>
+						{{request.requester.name}}
+					</dd>
 
-					<dt>{{t 'last_activity'}}</dt>
-					<dd>{{date request.updated_at}}</dd>
+					<dt>
+						{{t 'created'}}
+					</dt>
+					<dd>
+						{{date request.created_at}}
+					</dd>
+
+					<dt>
+						{{t 'last_activity'}}
+					</dt>
+					<dd>
+						{{date request.updated_at}}
+					</dd>
 
 					{{#if collaborators}}
-						<dt>{{t 'ccs'}}</dt>
+						<dt>
+							{{t 'ccs'}}
+						</dt>
 						<dd>
 							<ul class="request-collaborators">
 								{{#each collaborators}}
-									<li title={{name}}>{{name}}</li>
+									<li title={{name}}>
+										{{name}}
+									</li>
 								{{/each}}
 							</ul>
 						</dd>
@@ -177,28 +195,39 @@
 
 				<dl class="request-details">
 					{{#if assignee}}
-						<dt>{{t 'assignee'}}</dt>
+						<dt>
+							{{t 'assignee'}}
+						</dt>
 						<dd>
 							{{assignee.name}}
 						</dd>
 					{{/if}}
 
 					{{#form 'organization' id='request-organization'}}
-						<dt>{{t 'organization'}}</dt>
-						<dd>{{select 'organization'}}</dd>
+						<dt>
+							{{t 'organization'}}
+						</dt>
+						<dd>
+							{{select 'organization'}}
+						</dd>
 					{{/form}}
 
 					{{#if group}}
-						<dt>{{t 'group'}}</dt>
+						<dt>
+							{{t 'group'}}
+						</dt>
 						<dd>
 							{{group.name}}
 						</dd>
 					{{/if}}
 
 					{{#if request.type}}
-						<dt>{{t 'type'}}</dt>
+						<dt>
+							{{t 'type'}}
+						</dt>
 						<dd>
 							{{request.type_name}}
+
 							{{#is request.type 'task'}}
 								{{t 'task_due_date' due_date=request.due_date}}
 							{{/is}}
@@ -206,14 +235,18 @@
 					{{/if}}
 
 					{{#if request.priority}}
-						<dt>{{t 'priority'}}</dt>
+						<dt>
+							{{t 'priority'}}
+						</dt>
 						<dd>
 							{{request.priority_name}}
 						</dd>
 					{{/if}}
 
 					{{#each custom_fields}}
-						<dt>{{title}}</dt>
+						<dt>
+							{{title}}
+						</dt>
 						<dd>
 							{{value}}
 						</dd>
@@ -222,7 +255,9 @@
 
 				{{#if attachments}}
 					<dl class="request-attachments request-details">
-						<dt>{{t 'attachments_heading'}}</dt>
+						<dt>
+							{{t 'attachments_heading'}}
+						</dt>
 						<dd>
 							<ul class="attachments">
 								{{#each attachments}}
@@ -231,15 +266,11 @@
 											<use xlink:href="#paperclip" />
 										</svg>
 
-										<a href="{{url}}" target="_blank">
-											{{name}}
-										</a>
+										<a href="{{url}}" target="_blank">{{name}}</a>
 
 										<div class="attachment-meta meta-group">
 											<span class="attachment-meta-item meta-data">{{size}}</span>
-											<a class="attachment-meta-item meta-data" href="{{url}}" target="_blank">
-												{{t 'download'}}
-											</a>
+											<a class="attachment-meta-item meta-data" href="{{url}}" target="_blank">{{t 'download'}}</a>
 										</div>
 									</li>
 								{{/each}}

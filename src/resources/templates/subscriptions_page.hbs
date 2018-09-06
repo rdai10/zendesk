@@ -1,28 +1,33 @@
 <nav class="my-activities-nav collapsible-nav">
 	<ul class="collapsible-nav-list container">
 		{{#if help_center.request_management_enabled}}
-			<li>{{link 'requests'}}</li>
+			<li>
+				{{link 'requests'}}
+			</li>
 		{{/if}}
-		<li>{{link 'contributions'}}</li>
-		<li aria-selected=true>{{t 'following'}}</li>
+
+		<li>
+			{{link 'contributions'}}
+		</li>
+		<li aria-selected=true>
+			{{t 'following'}}
+		</li>
 	</ul>
 </nav>
 
 <div class="container">
 	<header class="my-activities-header">
-		<h1>{{t 'following'}}</h1>
+		<h1>
+			{{t 'following'}}
+		</h1>
 	</header>
 
 	<div class="my-activities-following-header">
 		<span class="dropdown">
-			<span class="dropdown-toggle">
-				{{current_filter.label}}
-			</span>
+			<span class="dropdown-toggle">{{current_filter.label}}</span>
 			<span class="dropdown-menu" role="menu">
 				{{#each filters}}
-					<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
-						{{name}}
-					</a>
+					<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">{{name}}</a>
 				{{/each}}
 			</span>
 		</span>
@@ -33,9 +38,15 @@
 			<table class="table my-activities-table subscriptions-table">
 				<thead>
 					<tr>
-						<th>{{t 'title'}}</th>
-						<th>{{t 'type'}}</th>
-						<th>{{t 'subscription'}}</th>
+						<th>
+							{{t 'title'}}
+						</th>
+						<th>
+							{{t 'type'}}
+						</th>
+						<th>
+							{{t 'subscription'}}
+						</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -44,23 +55,29 @@
 						<tr>
 							<td>
 								{{#is type 'user'}}
-									<img class="user-avatar" src="{{avatar_url}}" alt="Avatar">
+									<img class="user-avatar" src="{{avatar_url}}" alt="Avatar" />
 								{{/is}}
-								<a href="{{url}}" title="{{title}}" class="striped-list-title">
-									{{excerpt title characters=60}}
-								</a>
+								<a href="{{url}}" title="{{title}}" class="striped-list-title">{{excerpt title characters=60}}</a>
 							</td>
-							<td>{{name}}</td>
-							<td>{{subscribe}}</td>
-							<td class="subscriptions-unsubscribe">{{unsubscribe}}</td>
+							<td>
+								{{name}}
+							</td>
+							<td>
+								{{subscribe}}
+							</td>
+							<td class="subscriptions-unsubscribe">
+								{{unsubscribe}}
+							</td>
 						</tr>
 					{{/each}}
 				</tbody>
 			</table>
 
-		{{pagination}}
+			{{pagination}}
 		{{else}}
-			<p class="no-activities">{{t 'not_following'}}</p>
+			<p class="no-activities">
+				{{t 'not_following'}}
+			</p>
 		{{/if}}
 	</div>
 </div>

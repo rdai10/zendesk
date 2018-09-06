@@ -1,7 +1,9 @@
 <div class="container-divider"></div>
+
 <div class="container main-content">
 	<nav class="sub-nav">
 		{{breadcrumbs}}
+
 		{{search submit=false}}
 	</nav>
 
@@ -13,7 +15,9 @@
 		{{#form 'post' class='new_community_post'}}
 			<div class="form-field {{#required 'title'}} required {{/required}}">
 				{{label 'title'}}
+
 				{{input 'title' autofocus=true}}
+
 				{{#validate 'title'}}
 					<div class="notification notification-error notification-inline">
 						{{error 'title'}}
@@ -25,7 +29,9 @@
 
 			<div class="form-field {{#required 'details'}} required {{/required}}">
 				{{label 'details'}}
+
 				{{wysiwyg 'details'}}
+
 				{{#validate 'details'}}
 					<div class="notification notification-error notification-inline">
 						{{error 'details'}}
@@ -35,7 +41,9 @@
 
 			<div class="form-field {{#required 'topic'}} required {{/required}}">
 				{{label 'topic'}}
+
 				{{select 'topic'}}
+
 				{{#validate 'topic'}}
 					<div class="notification notification-error notification-inline">
 						{{error 'topic'}}
@@ -43,7 +51,9 @@
 				{{/validate}}
 			</div>
 
-			<footer>{{input type='submit'}}</footer>
+			<footer>
+				{{input type='submit'}}
+			</footer>
 		{{/form}}
 	</div>
 </div>

@@ -12,45 +12,38 @@
 	<header class="page-header community-header">
 		<span class="dropdown">
 			<span class="dropdown-toggle">
-				<h4>{{t 'all_posts'}}</h4>
+				<h4>
+					{{t 'all_posts'}}
+				</h4>
 			</span>
 			<span class="dropdown-menu" role="menu">
 				{{#link 'topics' role='menuitem'}}
 					{{t 'show_topics'}}
 				{{/link}}
+
 				{{#link 'posts' role='menuitem' selected='true'}}
 					{{t 'show_all_posts'}}
 				{{/link}}
 			</span>
 		</span>
-		<span class="post-to-community">
-			{{link 'new_post' role='button' class='button-large'}}
-		</span>
+		<span class="post-to-community">{{link 'new_post' role='button' class='button-large'}}</span>
 	</header>
 
 	<div class="topic-header">
 		<span class="topic-filters">
 			<span class="dropdown">
-				<span class="dropdown-toggle">
-					{{current_filter.label}}
-				</span>
+				<span class="dropdown-toggle">{{current_filter.label}}</span>
 				<span class="dropdown-menu" role="menu">
 					{{#each filters}}
-						<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
-							{{name}}
-						</a>
+						<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">{{name}}</a>
 					{{/each}}
 				</span>
 			</span>
 			<span class="dropdown">
-				<span class="dropdown-toggle">
-					{{current_sorter.label}}
-				</span>
+				<span class="dropdown-toggle">{{current_sorter.label}}</span>
 				<span class="dropdown-menu" role="menu">
 					{{#each sorters}}
-						<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
-							{{name}}
-						</a>
+						<a href="{{url}}" aria-selected="{{selected}}" role="menuitem">{{name}}</a>
 					{{/each}}
 				</span>
 			</span>
@@ -85,6 +78,7 @@
 
 						<ul class="meta-group">
 							<li class="meta-data">{{author.name}}</li>
+
 							{{#if editor}}
 								<li class="meta-data">{{date edited_at timeago=true}}</li>
 								<li class="meta-data">{{t 'edited'}}</li>
@@ -97,10 +91,12 @@
 					<div class="post-overview-count striped-list-count">
 						<span class="striped-list-count-item">
 							<span class="striped-list-number">{{vote_sum}}</span>
+
 							{{t 'vote' count=vote_sum}}
 						</span>
 						<span class="striped-list-count-item">
 							<span class="striped-list-number">{{comment_count}}</span>
+
 							{{t 'comment' count=comment_count}}
 						</span>
 					</div>
@@ -113,13 +109,14 @@
 
 	{{#if featured_posts}}
 		<section class="section community-featured-posts">
-			<h3>{{t 'featured_posts'}}</h3>
+			<h3>
+				{{t 'featured_posts'}}
+			</h3>
+
 			<ul class="promoted-articles">
 				{{#each featured_posts}}
 					<li class="promoted-articles-item">
-						<a href="{{url}}">
-							{{title}}
-						</a>
+						<a href="{{url}}">{{title}}</a>
 					</li>
 				{{/each}}
 			</ul>
@@ -133,7 +130,10 @@
 	</section>
 
 	<section class="container community-footer">
-		<h4>{{t 'suggest_new_post'}}</h4>
+		<h4>
+			{{t 'suggest_new_post'}}
+		</h4>
+
 		{{link 'new_post' role='button' class='button-large'}}
 	</section>
 </div>

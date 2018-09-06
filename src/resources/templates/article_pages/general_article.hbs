@@ -64,8 +64,7 @@
 
 										<div class="attachment-meta">
 											<span class="meta-data">{{size}}</span>
-
-											<a href="{{url}}" target="_blank">Download</a>
+											<a href="{{url}}" target="_blank">{{t 'download'}}</a>
 										</div>
 									</li>
 								{{/each}}
@@ -80,6 +79,7 @@
 
 						<div class="article-votes-controls" role='radiogroup'>
 							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-outline-primary btn-sm'}}
+
 							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-outline-primary btn-sm'}}
 						</div>
 
@@ -92,6 +92,7 @@
 
 			<div class="article-relatives col-md-4 offset-sm-1">
 				{{../related_articles}}
+
 				{{../recent_articles}}
 			</div>
 		</div>
@@ -100,25 +101,23 @@
 	<section class="col-12" id="stillNeedHelp"></section>
 </div>
 
-<script type="text/javascript">
-	$(
-		function() {
-			const userTags = window.HelpCenter.user.tags;
+<script>
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
 
-			if (Liferay.hasCreateTicketPermission(userTags)) {
-				Liferay.render(
-					Liferay.CallToAction,
-					{
-						className: 'need-help',
-						iconId: '#ticket',
-						link: '{{page_path 'new_request'}}',
-						message: `{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}`,
-						name: '{{dc 'submit_a_ticket'}}',
-						sectionHeading: '{{dc 'still_need_help'}}'
-					},
-					document.getElementById('stillNeedHelp')
-				);
-			}
+		if (Liferay.hasCreateTicketPermission(userTags)) {
+			Liferay.render(
+				Liferay.CallToAction,
+				{
+					className: 'need-help',
+					iconId: '#ticket',
+					link: '{{page_path 'new_request'}}',
+					message: `{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}`,
+					name: '{{dc 'submit_a_ticket'}}',
+					sectionHeading: '{{dc 'still_need_help'}}'
+				},
+				document.getElementById('stillNeedHelp')
+			);
 		}
-	);
+	});
 </script>
