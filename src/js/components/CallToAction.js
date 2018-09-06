@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 const CallToAction = ({className, iconId, link, message, name, sectionHeading}) => (
 	<div className={className}>
-		{sectionHeading && <h2>{sectionHeading}</h2>}
+		{sectionHeading && (
+			<h2>
+				{sectionHeading}
+			</h2>
+		)}
 
 		{iconId && (
 			<svg class="lexicon-icon lexicon-icon-ticket icon">

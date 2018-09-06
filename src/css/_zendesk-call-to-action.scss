@@ -17,8 +17,8 @@
 		padding-right: $padding-default;
 	}
 
-	.message {
-		@include media-breakpoint-down(xs) {
+	@include media-breakpoint-down(xs) {
+		.message {
 			display: block;
 		}
 	}

@@ -159,175 +159,173 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <script>
-	$(
-		function() {
-			const accountLinks = {
-				className: 'account-links',
-				configs: [
-					{
-						name: '{{t 'my_requests'}}',
-						url: '{{page_path 'requests'}}'
-					},
-					{
-						name: '{{dc 'project_details'}}',
-						url: ''
-					}
-				]
-			};
-
-			const highlightedLinksConfigs = [
+	$(function() {
+		const accountLinks = {
+			className: 'account-links',
+			configs: [
 				{
-					name: '{{dc 'contact_us'}}',
-					svgId: '#contact',
+					name: '{{t 'my_requests'}}',
+					url: '{{page_path 'requests'}}'
+				},
+				{
+					name: '{{dc 'project_details'}}',
 					url: ''
 				}
-			];
+			]
+		};
 
-			const userTags = window.HelpCenter.user.tags;
-
-			if (Liferay.hasCreateTicketPermission(userTags)) {
-				highlightedLinksConfigs.unshift(
-					{
-						name: '{{dc 'submit_a_ticket'}}',
-						svgId: '#ticket',
-						url: '{{page_path 'new_request'}}'
-					}
-				);
+		const highlightedLinksConfigs = [
+			{
+				name: '{{dc 'contact_us'}}',
+				svgId: '#contact',
+				url: ''
 			}
+		];
 
-			const highlightedLinks = {
-				className: 'highlighted',
-				configs: highlightedLinksConfigs
-			};
+		const userTags = window.HelpCenter.user.tags;
 
-			const locale = {
-				currentLocale: {
-					name: {{json_stringify current_locale.name}},
-					url: {{json_stringify current_locale.url}}
-				},
-				alternativeLocales: [
-					{{#each alternative_locales}}
-						{
-							name: {{json_stringify name}},
-							url: {{json_stringify url}}
-						},
-					{{/each}}
-				]
-			};
-
-			Liferay.render(
-				Liferay.MegaMenu,
+		if (Liferay.hasCreateTicketPermission(userTags)) {
+			highlightedLinksConfigs.unshift(
 				{
-					accountLinks: accountLinks,
-					cardMenuItems: {
-						className: 'card-menu',
-						configs: [
-							{
-								name: 'DXP 7.1',
-								svgId: '#dxp-logo',
-								url: ''
-							},
-							{
-								name: 'DXP 7.0',
-								svgId: '#7-0-logo',
-								url: ''
-							},
-							{
-								name: '{{dc 'commerce'}}',
-								svgId: '#commerce-logo',
-								url: ''
-							},
-							{
-								name: '{{dc 'analytics_cloud'}}',
-								svgId: '#analytics-cloud-logo',
-								url: 'https://analytics.liferay.com'
-							},
-							{
-								name: '{{dc 'portal'}} 6.2',
-								svgId: '#6-2-logo',
-								url: ''
-							},
-							{
-								name: '{{dc 'portal'}} 6.1',
-								svgId: '#6-1-logo',
-								url: ''
-							},
-							{
-								name: '{{dc 'portal'}} 6.0',
-								svgId: '#6-0-logo',
-								url: ''
-							},
-							{
-								name: '{{dc 'portal'}} 5.2',
-								svgId: '#5-2-logo',
-								url: ''
-							}
-						]
-					},
-					highlightedLinks: highlightedLinks,
-					locale: locale,
-					name: '{{dc 'products'}}'
-				},
-				document.getElementById('products')
-			);
-
-			Liferay.render(
-				Liferay.MegaMenu,
-				{
-					accountLinks: accountLinks,
-					cardMenuItems: {
-						className: 'card-menu',
-						configs: []
-					},
-					highlightedLinks: highlightedLinks,
-					locale: locale,
-					name: '{{dc 'resources'}}'
-				},
-				document.getElementById('resources')
-			);
-
-			Liferay.render(
-				Liferay.MegaMenu,
-				{
-					accountLinks: accountLinks,
-					cardMenuItems: {
-						className: 'card-menu',
-						configs: []
-					},
-					highlightedLinks: highlightedLinks,
-					locale: locale,
-					name: '{{dc 'security'}}'
-				},
-				document.getElementById('security')
-			);
-
-			Liferay.render(
-				Liferay.MegaMenu,
-				{
-					accountLinks: accountLinks,
-					cardMenuItems: {
-						className: 'card-menu',
-						configs: []
-					},
-					highlightedLinks: highlightedLinks,
-					locale: locale,
-					name: '{{dc 'support'}}'
-				},
-				document.getElementById('support')
-			);
-
-			const onNavScroll = () => {
-				const header = document.getElementById('header');
-
-				if (window.scrollY >= 64) {
-					header.classList.add('scroll-shadow');
+					name: '{{dc 'submit_a_ticket'}}',
+					svgId: '#ticket',
+					url: '{{page_path 'new_request'}}'
 				}
-				else {
-					header.classList.remove('scroll-shadow');
-				}
-			}
-
-			window.addEventListener('scroll', Liferay.throttle(onNavScroll, 100));
+			);
 		}
-	);
+
+		const highlightedLinks = {
+			className: 'highlighted',
+			configs: highlightedLinksConfigs
+		};
+
+		const locale = {
+			currentLocale: {
+				name: {{json_stringify current_locale.name}},
+				url: {{json_stringify current_locale.url}}
+			},
+			alternativeLocales: [
+				{{#each alternative_locales}}
+					{
+						name: {{json_stringify name}},
+						url: {{json_stringify url}}
+					},
+				{{/each}}
+			]
+		};
+
+		Liferay.render(
+			Liferay.MegaMenu,
+			{
+				accountLinks: accountLinks,
+				cardMenuItems: {
+					className: 'card-menu',
+					configs: [
+						{
+							name: 'DXP 7.1',
+							svgId: '#dxp-logo',
+							url: ''
+						},
+						{
+							name: 'DXP 7.0',
+							svgId: '#7-0-logo',
+							url: ''
+						},
+						{
+							name: '{{dc 'commerce'}}',
+							svgId: '#commerce-logo',
+							url: ''
+						},
+						{
+							name: '{{dc 'analytics_cloud'}}',
+							svgId: '#analytics-cloud-logo',
+							url: 'https://analytics.liferay.com'
+						},
+						{
+							name: '{{dc 'portal'}} 6.2',
+							svgId: '#6-2-logo',
+							url: ''
+						},
+						{
+							name: '{{dc 'portal'}} 6.1',
+							svgId: '#6-1-logo',
+							url: ''
+						},
+						{
+							name: '{{dc 'portal'}} 6.0',
+							svgId: '#6-0-logo',
+							url: ''
+						},
+						{
+							name: '{{dc 'portal'}} 5.2',
+							svgId: '#5-2-logo',
+							url: ''
+						}
+					]
+				},
+				highlightedLinks: highlightedLinks,
+				locale: locale,
+				name: '{{dc 'products'}}'
+			},
+			document.getElementById('products')
+		);
+
+		Liferay.render(
+			Liferay.MegaMenu,
+			{
+				accountLinks: accountLinks,
+				cardMenuItems: {
+					className: 'card-menu',
+					configs: []
+				},
+				highlightedLinks: highlightedLinks,
+				locale: locale,
+				name: '{{dc 'resources'}}'
+			},
+			document.getElementById('resources')
+		);
+
+		Liferay.render(
+			Liferay.MegaMenu,
+			{
+				accountLinks: accountLinks,
+				cardMenuItems: {
+					className: 'card-menu',
+					configs: []
+				},
+				highlightedLinks: highlightedLinks,
+				locale: locale,
+				name: '{{dc 'security'}}'
+			},
+			document.getElementById('security')
+		);
+
+		Liferay.render(
+			Liferay.MegaMenu,
+			{
+				accountLinks: accountLinks,
+				cardMenuItems: {
+					className: 'card-menu',
+					configs: []
+				},
+				highlightedLinks: highlightedLinks,
+				locale: locale,
+				name: '{{dc 'support'}}'
+			},
+			document.getElementById('support')
+		);
+
+		const onNavScroll = () => {
+			const header = document.getElementById('header');
+
+			if (window.scrollY >= 64) {
+				header.classList.add('scroll-shadow');
+			}
+			else {
+				header.classList.remove('scroll-shadow');
+			}
+		}
+
+		window.addEventListener('scroll', Liferay.throttle(onNavScroll, 100));
+	});
 </script>
