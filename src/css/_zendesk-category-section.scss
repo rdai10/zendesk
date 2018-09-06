@@ -4,11 +4,14 @@
 
 	.article-list {
 		margin: 0;
-		padding: 0;
+		padding-left: 0;
+		padding-right: $padding-default;
 
 		.article-list-item {
+			border-bottom: 1px solid $color-border;
 			list-style: none;
-			padding-bottom: $padding-default;
+			margin-bottom: 1rem;
+			padding-bottom: 1rem;
 		}
 	}
 
@@ -17,7 +20,7 @@
 	}
 
 	.section {
-		margin-bottom: 3rem;
+		margin-bottom: $margin-default;
 	}
 
 	.section-name {

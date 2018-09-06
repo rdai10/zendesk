@@ -34,7 +34,7 @@
 					</a>
 
 					{{#if articles}}
-						<ul class="article-list secondary-font">
+						<ul class="article-list">
 							{{#each articles}}
 								<li class="article-list-item {{#if promoted}}promoted{{/if}}">
 									<a href="{{url}}">{{title}}</a>
@@ -43,7 +43,7 @@
 						</ul>
 
 						{{#if more_articles}}
-							<a class="secondary-font view-all" href="{{url}}">
+							<a class="secondary-font semibold view-all" href="{{url}}">
 								{{dc 'view_all'}}
 
 								<svg class="lexicon-icon lexicon-icon-arrow-right" >
