@@ -124,11 +124,11 @@
 			}
 
 			&:hover {
+				background-color: $color-grey-hover;
 				background-image: clay-icon(
 					angle-down,
 					$color-body
 				);
-				background-color: $color-grey-hover;
 				background-position: right 0.8rem top 1rem;
 				background-repeat: no-repeat;
 				background-size: 0.65rem;
