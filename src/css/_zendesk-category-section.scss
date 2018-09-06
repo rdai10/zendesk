@@ -10,8 +10,8 @@
 		.article-list-item {
 			border-bottom: 1px solid $color-border;
 			list-style: none;
-			margin-bottom: 1rem;
-			padding-bottom: 1rem;
+			margin-bottom: $margin-medium;
+			padding-bottom: $padding-medium;
 		}
 	}
 

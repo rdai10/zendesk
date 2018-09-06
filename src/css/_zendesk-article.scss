@@ -43,7 +43,7 @@
 
 	.article-votes {
 		.article-votes-controls {
-			padding: 1rem 0;
+			padding: $padding-medium 0;
 		}
 
 		.article-votes-question {
@@ -52,7 +52,7 @@
 		}
 
 		.article-vote {
-			margin-right: 1rem;
+			margin-right: $margin-medium;
 			width: 6rem;
 
 			&:after {

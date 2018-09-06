@@ -131,7 +131,7 @@ textarea,
 	pre {
 		background-color: $color-body;
 		color: $pre-text-color;
-		padding: 1rem 1.25rem;
+		padding: $padding-medium 1.25rem;
 
 		code {
 			background-color: inherit;

@@ -61,7 +61,7 @@
 
 				.nav-card {
 					margin-bottom: 0.25rem;
-					padding: 1.25rem $padding-default 1rem;
+					padding: 1.25rem $padding-default $padding-medium;
 
 					&:hover {
 						background-color: $color-grey;
@@ -98,7 +98,7 @@
 					}
 
 					.available-languages {
-						padding: 0 1rem;
+						padding: 0 $padding-medium;
 
 						a {
 							color: $secondary-text-color;
@@ -113,7 +113,7 @@
 				}
 
 				.account-links {
-					padding: $padding-default 1rem 2.5rem;
+					padding: $padding-default $padding-medium 2.5rem;
 
 					.nav-card {
 						padding: $padding-small $padding-default;
@@ -125,12 +125,12 @@
 				}
 
 				.highlighted {
-					padding: 0 1rem;
+					padding: 0 $padding-medium;
 
 					svg {
 						background-color: $color-grey;
 						border-radius: 50%;
-						margin: 1rem;
+						margin: $margin-medium;
 					}
 
 					.title {
@@ -142,7 +142,7 @@
 					padding: 0 $padding-default;
 
 					.nav-card {
-						padding: 1rem;
+						padding: $padding-medium;
 
 						svg {
 							width: 0.875rem;
@@ -166,7 +166,7 @@
 		}
 
 		.list-item {
-			padding: 1.375rem 1rem;
+			padding: 1.375rem $padding-medium;
 			position: relative;
 
 			&:after {
@@ -198,7 +198,7 @@
 	}
 
 	.user {
-		padding-left: 1rem;
+		padding-left: $padding-medium;
 
 		.btn.dropdown-toggle {
 			padding: 0;

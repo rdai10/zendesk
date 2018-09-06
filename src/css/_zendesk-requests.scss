@@ -41,7 +41,7 @@
 	}
 
 	.comment-body {
-		padding-top: 1rem;
+		padding-top: $padding-medium;
 
 		p {
 			margin: 0;
@@ -130,7 +130,7 @@
 		float: right;
 
 		.request-submit-comment {
-			margin-left: 1rem;
+			margin-left: $margin-medium;
 		}
 	}
 
@@ -159,7 +159,7 @@
 	}
 
 	.autofit-padded > .autofit-col {
-		padding-top: 1rem;
+		padding-top: $padding-medium;
 	}
 }
 
