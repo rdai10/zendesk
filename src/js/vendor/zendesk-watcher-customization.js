@@ -3,8 +3,8 @@ $(document).ready(
 		if (location.pathname.indexOf('/requests/new') > -1) {
 			getDevOrgs();
 
-			var allowedUserOrgs = HelpCenter.user.allowedOrgs;
 			var allowedOrgsByName = HelpCenter.user.allowedOrgsByName;
+			var allowedUserOrgs = HelpCenter.user.allowedOrgs;
 
 			var form = $('div.watcher-message').next('div');
 
@@ -40,8 +40,6 @@ $(document).ready(
 			$('.request_organization_id a.nesty-input').on(
 				'click',
 				function() {
-					var option = this;
-
 					$('#request_organization_id option').each(
 						function(option) {
 							var id = $(this).val();

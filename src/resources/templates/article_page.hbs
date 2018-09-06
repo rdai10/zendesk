@@ -173,7 +173,13 @@
 			{{/with}}
 
 			<script>
-				Liferay.render(Liferay.DocSideNav, {locale: document.documentElement.lang.toLowerCase()}, document.getElementById('sidenavTree'));
+				Liferay.render(
+					Liferay.DocSideNav,
+					{
+						locale: document.documentElement.lang.toLowerCase()
+					},
+					document.getElementById('sidenavTree')
+				);
 			</script>
 		{{/is}}
 	{{/each}}
