@@ -1,0 +1,124 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-sm-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	{{#with article}}
+		<div class="row">
+			<h1 class="article-title col-md-7" title="{{title}}">
+				{{title}}
+
+				{{#if internal}}
+					<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+						<use xlink:href="#lock" />
+					</svg>
+				{{/if}}
+			</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-md-7">
+				<div class="article-author">
+					<div class="avatar sticker sticker-circle sticker-lg sticker-primary">
+						<span class="sticker-overlay">
+							<img alt="Avatar" class="sticker-img" src="{{author.avatar_url}}" />
+						</span>
+					</div>
+
+					<div class="article-meta">
+						{{#link 'user_profile' id=author.id}}
+							<h4 class="author-name">
+								{{author.name}}
+							</h4>
+						{{/link}}
+
+						<ul class="meta-group secondary-font secondary-text-color">
+							<li class="meta-data">
+								{{#is created_at edited_at}}
+									{{date created_at timeago=true}}
+								{{else}}
+									{{t 'updated'}} {{date edited_at timeago=true}}
+								{{/is}}
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<section class="article-info">
+					<div class="article-content">
+						<div class="article-body">
+							{{body}}
+						</div>
+
+						<div class="article-attachments">
+							<ul class="attachments">
+								{{#each ../attachments}}
+									<li class="attachment-item">
+										<svg class="lexicon-icon lexicon-icon-paperclip">
+											<use xlink:href="#paperclip" />
+										</svg>
+
+										<a href="{{url}}" target="_blank">{{name}}</a>
+
+										<div class="attachment-meta">
+											<span class="meta-data">{{size}}</span>
+
+											<a href="{{url}}" target="_blank">Download</a>
+										</div>
+									</li>
+								{{/each}}
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<footer class="article-footer">
+					<div class="article-votes">
+						<span class="article-votes-question">{{t 'was_this_article_helpful'}}</span>
+
+						<div class="article-votes-controls" role='radiogroup'>
+							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-outline-primary btn-sm'}}
+							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-outline-primary btn-sm'}}
+						</div>
+
+						<small class="article-votes-count">
+							{{vote 'label' class='article-vote-label'}}
+						</small>
+					</div>
+				</footer>
+			</div>
+
+			<div class="article-relatives col-md-4 offset-sm-1">
+				{{../related_articles}}
+				{{../recent_articles}}
+			</div>
+		</div>
+	{{/with}}
+
+	<section class="col-12" id="stillNeedHelp"></section>
+</div>
+
+<script type="text/javascript">
+	$(
+		function() {
+			const userTags = window.HelpCenter.user.tags;
+
+			if (Liferay.hasCreateTicketPermission(userTags)) {
+				Liferay.render(
+					Liferay.CallToAction,
+					{
+						className: 'need-help',
+						iconId: '#ticket',
+						link: '{{page_path 'new_request'}}',
+						message: `{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}`,
+						name: '{{dc 'submit_a_ticket'}}',
+						sectionHeading: '{{dc 'still_need_help'}}'
+					},
+					document.getElementById('stillNeedHelp')
+				);
+			}
+		}
+	);
+</script>
