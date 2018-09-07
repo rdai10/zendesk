@@ -117,7 +117,7 @@ class DocSideNav extends preact.Component {
 			.then(
 				({data}) => {
 					let productDocCategory = data.categories.find(
-						item => item.name === 'Analytics Cloud Documentation'
+						item => item.name === 'Liferay Analytics Cloud'
 					);
 
 					if (productDocCategory.id) {
