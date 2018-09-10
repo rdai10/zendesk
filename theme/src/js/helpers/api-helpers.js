@@ -8,17 +8,14 @@ const httpRequest = axios.create(
 	}
 );
 
-export function getArticlesBySectionId(locale, id) {
+export function getArticlesBySectionId(id, locale) {
 	return httpRequest.get(locale + '/sections/' + id + '/articles.json');
 }
 
-export function getSectionsCategories(locale) {
-	return httpRequest(
-		{
-			params: {
-				include: 'categories'
-			},
-			url: locale + '/sections.json'
-		}
-	);
+export function getSectionBySectionId(id, locale) {
+	return httpRequest.get(locale + '/sections/' + id + '.json');
+}
+
+export function getSectionsByCategoryId(id, locale) {
+	return httpRequest.get(locale + '/categories/' + id + '/sections.json');
 }

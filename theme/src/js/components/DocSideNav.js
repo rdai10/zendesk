@@ -26,20 +26,19 @@ class ArticlesList extends preact.Component {
 			}
 		);
 
-		apiHelpers
-			.getArticlesBySectionId(locale, id)
+		apiHelpers.getArticlesBySectionId(id, locale)
 			.then(
 				({data}) => {
 					this.setState(
 						{
-							items: data,
+							items: data.articles,
 							loading: false
 						}
 					);
 				}
 			)
 			.catch(
-				err => this.setState(
+				() => this.setState(
 					{
 						loading: false
 					}
@@ -72,7 +71,7 @@ class ArticlesList extends preact.Component {
 
 				{expanded && !loading && (
 					<ul class="nav nav-nested">
-						{items.articles.map(
+						{items.map(
 							item => (
 								<li class="nav-item" key={item.id}>
 									<a
@@ -94,9 +93,9 @@ class ArticlesList extends preact.Component {
 }
 
 ArticlesList.PropTypes = {
-	id: PropTypes.string,
-	locale: PropTypes.string,
-	name: PropTypes.string
+	id: PropTypes.string.isRequired,
+	locale: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired
 };
 
 class DocSideNav extends preact.Component {
@@ -110,41 +109,36 @@ class DocSideNav extends preact.Component {
 	}
 
 	componentDidMount() {
-		const {locale} = this.props;
+		const {locale, sectionId} = this.props;
 
 		apiHelpers
-			.getSectionsCategories(locale)
+			.getSectionBySectionId(sectionId, locale)
+			.then(
+				({data}) =>
+				apiHelpers.getSectionsByCategoryId(
+					data.section.category_id,
+					locale
+				)
+			)
 			.then(
 				({data}) => {
-					let productDocCategory = data.categories.find(
-						item => item.name === 'Liferay Analytics Cloud'
+					this.setState(
+						{
+							items: data.sections,
+							loading: false
+						}
 					);
-
-					if (productDocCategory.id) {
-						let productDocSections = data.sections.filter(
-							item => item.category_id === productDocCategory.id
-						);
-
-						this.setState(
-							{
-								items: productDocSections,
-								loading: false
-							}
-						);
-					}
 				}
 			)
 			.catch(
-				err => {
+				() => {
 					const sidenavFallback = document.getElementById(
 						'sidenavFallback'
 					);
 
-					this.setState(
-						{
-							loading: false
-						}
-					);
+					this.setState({
+						loading: false
+					});
 
 					sidenavFallback.classList.add('show');
 				}
@@ -173,7 +167,8 @@ class DocSideNav extends preact.Component {
 }
 
 DocSideNav.PropTypes = {
-	locale: PropTypes.string
+	locale: PropTypes.string.isRequired,
+	sectionId: PropTypes.string.isRequired
 };
 
 export default DocSideNav;
