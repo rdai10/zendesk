@@ -91,7 +91,8 @@
 	Liferay.render(
 		Liferay.DocSideNav,
 		{
-			locale: document.documentElement.lang.toLowerCase()
+			locale: document.documentElement.lang.toLowerCase(),
+			sectionId: '{{section.id}}'
 		},
 		document.getElementById('sidenavTree')
 	);
