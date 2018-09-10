@@ -13,13 +13,10 @@
 	.description {
 		font-size: $h5-font-size;
 		margin-bottom: 0;
-		margin-top: 0.25rem;
 	}
 
 	.icon {
-		height: 2rem;
 		margin-right: $margin-medium;
-		width: 2rem;
 	}
 
 	.title {
@@ -31,6 +28,15 @@
 .nav-card {
 	border-width: 0;
 	flex-basis: 50%;
+
+	.description {
+		margin-top: 0.25rem;
+	}
+
+	.icon {
+		height: 2rem;
+		width: 2rem;
+	}
 }
 
 .product-card {
@@ -38,7 +44,7 @@
 	box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
 	margin-right: $margin-default;
 	margin-top: $margin-default;
-	padding: 1.25rem $padding-default;
+	padding: $padding-medium $padding-default $padding-default;
 	transition: transform 0.2s ease;
 
 	&:hover {
@@ -46,6 +52,11 @@
 		box-shadow: 0 6px 11px 0 rgba(9, 16, 29, 0.09);
 		margin-bottom: -3px;
 		transform: translateY(-4px);
+	}
+
+	.icon {
+		height: 3.5rem;
+		width: 3.5rem;
 	}
 
 	.lexicon-icon-arrow-right {
