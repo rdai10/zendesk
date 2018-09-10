@@ -25,7 +25,7 @@
 	}
 }
 
-.dxp-cloud-products {
+.products-landing {
 	display: flex;
 	flex-wrap: wrap;
 
@@ -33,5 +33,13 @@
 		display: flex;
 		flex: 1 0 auto;
 		width: 30%;
+	}
+}
+
+@include media-breakpoint-down(sm) {
+	.products-landing {
+		.product-card {
+			width: 100%;
+		}
 	}
 }
