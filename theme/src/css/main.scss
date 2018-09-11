@@ -27,6 +27,7 @@
 
 /* ---------- Clay components ---------- */
 
+@import "bootstrap/_alert";
 @import "bootstrap/_buttons";
 @import "bootstrap/_code";
 @import "bootstrap/_forms";
@@ -34,6 +35,7 @@
 @import "bootstrap/_navbar";
 @import "bootstrap/_tables";
 
+@import "components/_alerts";
 @import "components/_aspect-ratio";
 @import "components/_forms";
 @import "components/_grid";
