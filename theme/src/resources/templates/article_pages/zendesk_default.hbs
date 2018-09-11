@@ -6,26 +6,24 @@
 	</div>
 
 	{{#with article}}
-		<div class="row" id="docsArticle">
+		<div class="row">
 			<div class="article-sidenav col-md-3 secondary-font">
 				<div class="sidenav">
-					<div class="sidenav-tree" id="sidenavTree"></div>
+					{{#with ../section}}
+						<ul class="nav nav-nested">
+							{{#each articles}}
+								<li class="nav-item">
+									<a class="{{#is id ../id}}active semibold{{/is}} sidenav-item" href="{{url}}">{{title}}</a>
+								</li>
+							{{/each}}
+						</ul>
 
-					<div class="sidenav-fallback" id="sidenavFallback">
-						{{#with ../section}}
-							<ul class="nav nav-nested">
-								{{#each articles}}
-									<li class="nav-item">
-										<a class="{{#is id ../id}}active semibold{{/is}} sidenav-item" href="{{url}}">{{title}}</a>
-									</li>
-								{{/each}}
-							</ul>
-
-							{{#if more_articles}}
+						{{#if more_articles}}
+							<div class="nav-item">
 								<a class="sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
-							{{/if}}
-						{{/with}}
-					</div>
+							</div>
+						{{/if}}
+					{{/with}}
 				</div>
 			</div>
 
@@ -87,13 +85,4 @@
 			);
 		}
 	});
-
-	Liferay.render(
-		Liferay.DocSideNav,
-		{
-			locale: document.documentElement.lang.toLowerCase(),
-			sectionId: '{{section.id}}'
-		},
-		document.getElementById('sidenavTree')
-	);
 </script>
