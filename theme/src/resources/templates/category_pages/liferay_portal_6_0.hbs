@@ -21,3 +21,14 @@
 		<div id="portal60ProductPage"></div>
 	</div>
 </div>
+
+<script>
+	Liferay.render(
+		Liferay.Alert,
+		{
+			children: '{{dc '6_0-info_banner'}}',
+			leadingText: '{{dc '6_2-info'}}'
+		},
+		document.getElementById('portal60ProductPage')
+	);
+</script>

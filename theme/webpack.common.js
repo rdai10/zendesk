@@ -87,6 +87,7 @@ module.exports = {
 			]),
 			purifyOptions: {
 				whitelist: [
+					'*alert*',
 					'*code*',
 					'*loading-animation*',
 					'nav-card',
