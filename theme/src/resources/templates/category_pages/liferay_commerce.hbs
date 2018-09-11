@@ -18,6 +18,48 @@
 			{{/if}}
 		</div>
 
-		<div id="commerceProductPage"></div>
+		<div class="col-md-12" id="commerceProductPage"></div>
 	</div>
 </div>
+
+<script>
+	Liferay.render(
+		Liferay.CardMenu,
+		{
+			className: 'products-landing',
+			configs: [
+				{
+					description: 'Learn how to start adding and managing your data sources for Liferay Analytics Cloud.',
+					name: '{{dc 'getting_started'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Access a collection of articles on best practices, how-tos, and FAQs for Liferay Analytics Cloud.',
+					name: '{{dc 'knowledge_base'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Reference existing known issues for Liferay Analytics Cloud.',
+					name: '{{dc 'known_issues'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Learn how to use all the features in Liferay Analytics Cloud.',
+					name: '{{dc 'admin_guide'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+				{
+					description: 'Learn more about what is supported for Liferay Analytics Cloud.',
+					name: '{{dc 'support_information'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				}
+			]
+		},
+		document.getElementById('commerceProductPage')
+	);
+</script>
