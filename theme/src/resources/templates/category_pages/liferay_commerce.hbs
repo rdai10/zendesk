@@ -8,7 +8,7 @@
 	<div class="categories-main row">
 		<div class="category-heading col-md-12">
 			<h1>
-				{{dc 'commerce'}}
+				{{dc 'commerce-page_heading'}}
 			</h1>
 
 			{{#if category.description}}
@@ -29,14 +29,14 @@
 			className: 'products-landing',
 			configs: [
 				{
-					description: 'Learn how to start adding and managing your data sources for Liferay Analytics Cloud.',
-					name: '{{dc 'getting_started'}}',
+					description: '{{dc 'commerce-latest_release_card_description'}}',
+					name: '{{dc '7_1-latest_release_card'}}',
 					svgId: '#dxp-logo',
 					url: ''
 				},
 				{
-					description: 'Access a collection of articles on best practices, how-tos, and FAQs for Liferay Analytics Cloud.',
-					name: '{{dc 'knowledge_base'}}',
+					description: '{{dc 'commerce-compatibility_matrix_card_description'}}',
+					name: '{{dc 'mega_menu-compatibility_matrix'}}',
 					svgId: '#dxp-logo',
 					url: ''
 				},
@@ -47,14 +47,20 @@
 					url: ''
 				},
 				{
-					description: 'Learn how to use all the features in Liferay Analytics Cloud.',
-					name: '{{dc 'admin_guide'}}',
+					description: '{{dc 'commerce-service_life_description'}}',
+					name: '{{dc 'mega_menu-service_life'}}',
 					svgId: '#dxp-logo',
 					url: ''
 				},
 				{
-					description: 'Learn more about what is supported for Liferay Analytics Cloud.',
-					name: '{{dc 'support_information'}}',
+					description: '{{dc 'commerce-admin_guide_card_description'}}',
+					name: '{{dc '7_1-admin_guide_card'}}',
+					svgId: '#dxp-logo',
+					url: ''
+				},
+  			{
+					description: '{{dc 'commerce-support_coverage_card_description'}}',
+					name: '{{dc 'mega_menu-support_coverage'}}',
 					svgId: '#dxp-logo',
 					url: ''
 				}
