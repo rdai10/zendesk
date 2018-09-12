@@ -152,6 +152,12 @@ textarea,
 	@include clay-label-size($label-sm);
 }
 
+.lexicon-icon-arrow-right {
+	height: 0.5rem;
+	margin-left: 0.25rem;
+	width: 0.625rem;
+}
+
 .main-content {
 	margin-top: $navbar-height;
 }
@@ -207,11 +213,4 @@ textarea,
 
 .small {
 	line-height: $line-height-sm;
-}
-
-.view-all {
-	.lexicon-icon-arrow-right {
-		height: 0.5rem;
-		width: 0.625rem;
-	}
 }
