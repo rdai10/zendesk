@@ -79,6 +79,15 @@
 	.request-sidebar {
 		padding: 0;
 
+		.file-attachment {
+			margin-top: $margin-default;
+			text-align: center;
+
+			.lexicon-icon-paperclip {
+				margin-right: 0.25rem;
+			}
+		}
+
 		.sidebar-container {
 			background-color: $color-grey;
 			border-radius: $border-radius;
