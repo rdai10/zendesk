@@ -19,6 +19,6 @@ export function hasWatcherPermission(userTags, id, callback) {
 			}
 		})
 		.catch(err => {
-			process.env.NODE_ENV === 'production' && console.log(err);
+			process.env.NODE_ENV === 'development' && console.log(err);
 		});
 }
