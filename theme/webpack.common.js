@@ -88,14 +88,18 @@ module.exports = {
 			purifyOptions: {
 				whitelist: [
 					'*alert*',
+					'button-unstyled',
 					'*code*',
 					'*loading-animation*',
 					'nav-card',
+					'nav-stacked',
 					'nesty-input',
 					'notification-dismiss',
 					'notification-notice',
 					'*pre*',
 					'products-landing',
+					'products-landing-tab-content',
+					'products-landing-tablist',
 					'*request_description_hint*',
 					'sidenav-fallback',
 					'sidenav-tree',

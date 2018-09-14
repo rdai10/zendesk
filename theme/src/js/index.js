@@ -15,3 +15,4 @@ export {default as CallToAction} from './components/CallToAction';
 export {default as CardMenu} from './components/CardMenu';
 export {default as DocSideNav} from './components/DocSideNav';
 export {default as MegaMenu} from './components/MegaMenu';
+export {default as ProductTabs} from './components/ProductTabs';

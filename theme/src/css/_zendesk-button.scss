@@ -77,3 +77,16 @@ input[type="submit"] {
 		box-shadow: 0 0.125rem 0.375rem 0 rgba(2, 19, 51, 0.15);
 	}
 }
+
+.btn-unstyled {
+	background-color: rgba(0, 0, 0, 0.001);
+	border-width: 0;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	max-width: 100%;
+	padding: 0;
+	text-align: left;
+	text-transform: inherit;
+	vertical-align: baseline;
+}

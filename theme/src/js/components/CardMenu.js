@@ -6,9 +6,10 @@ import Card from './Card';
 const CardMenu = ({className, configs, type}) => (
 	<div class={className}>
 		{configs.map(
-			config => (
+			(config, index) => (
 				<Card
 					description={config.description}
+					key={index}
 					name={config.name}
 					svgId={config.svgId}
 					type={type}
@@ -25,7 +26,7 @@ CardMenu.defaultProps = {
 
 CardMenu.propTypes = {
 	className: PropTypes.string,
-	configs: PropTypes.object,
+	configs: PropTypes.arrayOf(PropTypes.object),
 	type: PropTypes.oneOf(['nav', 'product'])
 };
 
