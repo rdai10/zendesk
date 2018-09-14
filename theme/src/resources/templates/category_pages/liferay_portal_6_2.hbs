@@ -18,6 +18,19 @@
 			{{/if}}
 		</div>
 
-		<div id="portal62ProductPage"></div>
+		<div class="col-md-12" id="portal62ProductPageAlert"></div>
+
+		<div class="col-md-12" id="portal62ProductPage"></div>
 	</div>
 </div>
+
+<script>
+	Liferay.render(
+		Liferay.Alert,
+		{
+			children: '{{dc '6_2-info_banner'}}',
+			leadingText: '{{dc '6_2-info'}}'
+		},
+		document.getElementById('portal62ProductPageAlert')
+	);
+</script>
