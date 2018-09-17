@@ -114,11 +114,12 @@ class DocSideNav extends preact.Component {
 		apiHelpers
 			.getSectionBySectionId(sectionId, locale)
 			.then(
-				({data}) =>
-				apiHelpers.getSectionsByCategoryId(
-					data.section.category_id,
-					locale
-				)
+				({data}) => {
+					apiHelpers.getSectionsByCategoryId(
+						data.section.category_id,
+						locale
+					);
+				}
 			)
 			.then(
 				({data}) => {
@@ -136,9 +137,11 @@ class DocSideNav extends preact.Component {
 						'sidenavFallback'
 					);
 
-					this.setState({
-						loading: false
-					});
+					this.setState(
+						{
+							loading: false
+						}
+					);
 
 					sidenavFallback.classList.add('show');
 				}
