@@ -9,16 +9,22 @@ export function hasCreateTicketPermission(userTags) {
 
 export function hasWatcherPermission(userTags, id, callback) {
 	getRequestById(id)
-		.then(({data}) => {
-			const orgWatcherArray = userTags.filter(tag =>
-				tag.match(data.request.organization_id)
-			);
+		.then(
+			({data}) => {
+				const orgWatcherArray = userTags.filter(
+					tag => tag.match(data.request.organization_id)
+				);
 
-			if (!!!orgWatcherArray.length) {
-				callback();
+				if (!orgWatcherArray.length) {
+					callback();
+				}
 			}
-		})
-		.catch(err => {
-			process.env.NODE_ENV === 'development' && console.log(err);
-		});
+		)
+		.catch(
+			err => {
+				if (process.env.NODE_ENV === 'development') {
+					console.log(err);
+				}
+			}
+		);
 }
