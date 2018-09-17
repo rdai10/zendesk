@@ -19,10 +19,10 @@ Array.prototype.subtract = function(arr) {
 function getUserWatcherTags(userTags) {
 	return userTags
 		.filter(function(tag) {
-			return tag.match(/(\d*)_watcher/);
+			return tag.match(/osb_(\d*)_watcher/);
 		})
 		.map(function(tag) {
-			return tag.split('_')[0];
+			return tag.split('_')[1];
 		});
 }
 
