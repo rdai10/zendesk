@@ -30,10 +30,12 @@ function getUserWatcherTags(userTags) {
 function getDevOrgs() {
 	var orgs = {};
 	var orgOptions = $('#request_organization_id option');
+
 	if ($(orgOptions).length > 0) {
 		$(orgOptions).each(function(option) {
 			orgs[$(this).val()] = $(this).text();
 		});
+
 		assignOrgs(orgs);
 	} else if (HelpCenter.user.organizations.length > 0) {
 		$.ajax('/api/v2/users/me')
@@ -42,6 +44,7 @@ function getDevOrgs() {
 					orgs[data.user.organization_id] =
 						HelpCenter.user.organizations[0].name;
 				}
+
 				assignOrgs(orgs);
 			})
 			.fail(function(error) {
@@ -68,6 +71,7 @@ function assignOrgs(orgs) {
 
 	var key = Object.keys(allowedOrgsByName)[0];
 	var value = Object.values(allowedOrgsByName)[0];
+
 	if (value) {
 		// if the default org is a watched org, select the next dev to be default
 		if (
@@ -88,8 +92,10 @@ function assignOrgs(orgs) {
 	} else {
 		showWatcherMessage();
 	}
+
 	$('.request_organization_id a.nesty-input').on('click', function() {
 		var option = this;
+
 		$('#request_organization_id option').each(function(option) {
 			var id = $(this).val();
 			if (!allowedOrgsById[id]) {
@@ -103,13 +109,15 @@ function showWatcherMessage() {
 	$('.watcher-message')
 		.next('div')
 		.remove();
-	$('.watcher-message').removeClass('hide');
+
+	$('.watcher-message').removeClass('d-none');
 }
 
 function showForm() {
 	$('.watcher-message')
 		.next('div')
-		.removeClass('hide');
+		.removeClass('d-none');
+
 	$('.watcher-message').remove();
 }
 
@@ -121,6 +129,7 @@ function getRequestOrg() {
 		.done(function(data) {
 			if (data.request) {
 				var requestOrgId = data.request.organization_id;
+
 				customizeRequestPage(requestOrgId);
 			}
 		})
