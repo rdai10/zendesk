@@ -121,10 +121,12 @@ class DocSideNav extends preact.Component {
 			.getSectionBySectionId(sectionId, locale)
 			.then(
 				({data}) => {
-					apiHelpers.getSectionsByCategoryId(
-						data.section.category_id,
-						locale
-					);
+					return (
+						apiHelpers.getSectionsByCategoryId(
+							data.section.category_id,
+							locale
+						)
+					)
 				}
 			)
 			.then(
