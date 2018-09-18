@@ -38,11 +38,17 @@ class ArticlesList extends preact.Component {
 				}
 			)
 			.catch(
-				() => this.setState(
-					{
-						loading: false
+				(err) => {
+					this.setState(
+						{
+							loading: false
+						}
+					)
+
+					if (process.env.NODE_ENV === 'development') {
+						console.log(err);
 					}
-				)
+				}
 			);
 	}
 
@@ -132,7 +138,7 @@ class DocSideNav extends preact.Component {
 				}
 			)
 			.catch(
-				() => {
+				(err) => {
 					const sidenavFallback = document.getElementById(
 						'sidenavFallback'
 					);
@@ -144,6 +150,10 @@ class DocSideNav extends preact.Component {
 					);
 
 					sidenavFallback.classList.add('show');
+					
+					if (process.env.NODE_ENV === 'development') {
+						console.log(err);
+					}
 				}
 			);
 	}
