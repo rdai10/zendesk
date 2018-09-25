@@ -88,15 +88,14 @@ module.exports = {
 			purifyOptions: {
 				whitelist: [
 					'*alert*',
+					'*article-content*',
 					'button-unstyled',
-					'*code*',
 					'*loading-animation*',
 					'nav-card',
 					'nav-stacked',
 					'nesty-input',
 					'notification-dismiss',
 					'notification-notice',
-					'*pre*',
 					'products-landing',
 					'products-landing-tab-content',
 					'products-landing-tablist',

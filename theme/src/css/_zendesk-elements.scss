@@ -112,38 +112,6 @@ textarea,
 	height: auto;
 }
 
-.upload-dropzone {
-	color: $secondary-text-color;
-}
-
-.article-content {
-	code,
-	pre {
-		border-radius: $border-radius;
-		font-family: "Roboto Mono", SFMono-Regular, monospace;
-	}
-
-	code {
-		background-color: $code-text-background-color;
-		padding: 0.25rem;
-	}
-
-	pre {
-		background-color: $color-body;
-		color: $pre-text-color;
-		padding: $padding-medium 1.25rem;
-
-		code {
-			background-color: inherit;
-			font-weight: $font-weight-light;
-		}
-	}
-
-	img {
-		max-width: 100%;
-	}
-}
-
 .form-field {
 	margin-bottom: $form-group-margin-bottom;
 }
@@ -213,4 +181,8 @@ textarea,
 
 .small {
 	line-height: $line-height-sm;
+}
+
+.upload-dropzone {
+	color: $secondary-text-color;
 }
