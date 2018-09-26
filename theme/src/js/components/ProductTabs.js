@@ -1,6 +1,8 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
+import getCN from 'classnames';
+
 import CardMenu from './CardMenu';
 
 const TabContent = ({content}) => (
@@ -32,6 +34,7 @@ class TabList extends preact.Component {
 		this.setContent = this.setContent.bind(this);
 
 		this.state = {
+			activeId: 'tab-0',
 			content: {}
 		};
 
@@ -45,6 +48,7 @@ class TabList extends preact.Component {
 	handleClick(event) {
 		this.setState(
 			{
+				activeId: event.target.id,
 				content: this.setContent(event.target.id)
 			}
 		);
@@ -56,19 +60,30 @@ class TabList extends preact.Component {
 		);
 	}
 
-	render({tabList}, {content}) {
+	render({tabList}, {activeId, content}) {
 		return (
 			<div class="row">
 				<div class="col-md-3 products-landing-tablist">
 					<ul class="nav nav-stacked" role="tablist">
 						{tabList.map(
-							tab => (
-								<li class="nav-item" key={tab.id} role="presentation">
-									<button class="btn btn-unstyled nav-link" id={tab.id} onClick={this.handleClick} role="tab" type="button">
-										{tab.name}
-									</button>
-								</li>
-							)
+							tab => {
+								const className = getCN(
+									{
+										'active': tab.id === activeId
+									},
+									'btn',
+									'btn-unstyled',
+									'nav-link'
+								);
+
+								return (
+									<li class="nav-item" key={tab.id} role="presentation">
+										<button class={className} id={tab.id} onClick={this.handleClick} role="tab" type="button">
+											{tab.name}
+										</button>
+									</li>
+								);
+							}
 						)}
 					</ul>
 				</div>
