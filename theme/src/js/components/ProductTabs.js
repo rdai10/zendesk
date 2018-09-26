@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 import CardMenu from './CardMenu';
 
 const TabContent = ({content}) => (
-	<section
-		aria-labelledby={content.ariaLabelledby}
-		class="col-md-9"
-		role="tabpanel"
-	>
+	<section aria-labelledby={content.ariaLabelledby} class="col-md-9" role="tabpanel">
 		<CardMenu
 			className="products-landing-tab-content"
 			configs={content.configs}
@@ -41,9 +37,9 @@ class TabList extends preact.Component {
 
 		this.setState(
 			{
-				content: this.setContent("tab-0")
+				content: this.setContent('tab-0')
 			}
-		)
+		);
 	}
 
 	handleClick(event) {
@@ -67,18 +63,8 @@ class TabList extends preact.Component {
 					<ul class="nav nav-stacked" role="tablist">
 						{tabList.map(
 							tab => (
-								<li
-									key={tab.id}
-									class="nav-item"
-									role="presentation"
-								>
-									<button
-										class="btn btn-unstyled nav-link"
-										id={tab.id}
-										onClick={this.handleClick}
-										role="tab"
-										type="button"
-									>
+								<li class="nav-item" key={tab.id} role="presentation">
+									<button class="btn btn-unstyled nav-link" id={tab.id} onClick={this.handleClick} role="tab" type="button">
 										{tab.name}
 									</button>
 								</li>
@@ -87,7 +73,9 @@ class TabList extends preact.Component {
 					</ul>
 				</div>
 
-				<TabContent content={content} />
+				<TabContent
+					content={content}
+				/>
 			</div>
 		);
 	}
@@ -126,7 +114,10 @@ const ProductTabs = ({productItems}) => {
 		)
 	);
 
-	return <TabList contentArray={contentArray} tabList={tabList} />;
+	return <TabList
+		contentArray={contentArray}
+		tabList={tabList}
+	/>;
 };
 
 ProductTabs.PropTypes = {
@@ -134,8 +125,8 @@ ProductTabs.PropTypes = {
 		PropTypes.objectOf(
 			PropTypes.shape(
 				{
-					name: PropTypes.string,
-					configs: PropTypes.object
+					configs: PropTypes.object,
+					name: PropTypes.string
 				}
 			)
 		)
