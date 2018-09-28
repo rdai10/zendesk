@@ -56,12 +56,11 @@
 			padding: 3rem 0;
 
 			.card-menu {
-				display: flex;
-				flex-wrap: wrap;
-
 				.nav-card {
+					display: inline-block;
 					margin-bottom: 0.25rem;
 					padding: 1.25rem $padding-default $padding-medium;
+					width: 50%;
 
 					&:hover {
 						background-color: $color-grey;

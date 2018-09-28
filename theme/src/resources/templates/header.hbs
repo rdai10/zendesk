@@ -360,16 +360,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			document.getElementById('support')
 		);
 
-		const onNavScroll = () => {
+		const onNavScroll = function() {
 			const header = document.getElementById('header');
 
 			if (window.scrollY >= 64) {
 				header.classList.add('scroll-shadow');
-			}
-			else {
+			} else {
 				header.classList.remove('scroll-shadow');
 			}
-		}
+		};
 
 		window.addEventListener(
 			'scroll',
