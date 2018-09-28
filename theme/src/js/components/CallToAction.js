@@ -16,7 +16,7 @@ const CallToAction = (
 			<h2>
 				{sectionHeading}
 			</h2>
-		}
+		)}
 
 		{iconId && (
 			<svg class="lexicon-icon lexicon-icon-ticket icon">
