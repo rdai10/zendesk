@@ -9,7 +9,7 @@
 			]
 		],
 		"presets": [
-			"env"
+			"@babel/preset-env"
 		]
 	},
 	"browserslist": [
@@ -18,12 +18,12 @@
 		"not op_mini all"
 	],
 	"devDependencies": {
+		"@babel/core": "^7.1.2",
+		"@babel/preset-env": "^7.1.0",
 		"autoprefixer": "^8.5.0",
 		"axios": "^0.18.0",
-		"babel-core": "^6.26.3",
-		"babel-loader": "^7.1.4",
+		"babel-loader": "^8.0.4",
 		"babel-plugin-transform-react-jsx": "^6.24.1",
-		"babel-preset-env": "^1.7.0",
 		"clay-css": "^2.0.3",
 		"copy-webpack-plugin": "^4.5.1",
 		"css-loader": "^0.28.11",
@@ -95,6 +95,7 @@
 	},
 	"version": "1.0.1",
 	"dependencies": {
-		"classnames": "^2.2.6"
+		"classnames": "^2.2.6",
+		"es6-promise": "^4.2.5"
 	}
 }
