@@ -70,7 +70,7 @@ function assignOrgs(orgs) {
 	});
 
 	var key = Object.keys(allowedOrgsByName)[0];
-	var value = Object.values(allowedOrgsByName)[0];
+	var value = allowedOrgsByName[key];
 
 	if (value) {
 		// if the default org is a watched org, select the next dev to be default
