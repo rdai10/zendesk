@@ -25,3 +25,49 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	$(function() {
+		const productInput = document.getElementById('request_custom_fields_360006041192');
+
+		const matchValueToTags = function matchValueToTags(value, tags) {
+			return tags.some(function(tag) {
+				return !!value.match(tag);
+			});
+		};
+
+		$('.nesty-panel').on('DOMNodeInserted', function() {
+			const currentTarget =  $(this);
+
+			const currentOrgName = document.querySelector('[aria-describedby="request_organization_id_hint"]').text;
+
+			const currentOrg = HelpCenter.user.organizations.find(
+				function(org) {
+					return org.name === currentOrgName
+				}
+			);
+
+			const currentOrgTags = currentOrg.tags;
+
+			const productInputDataset = JSON.parse(productInput.dataset.tagger);
+
+			const productInputValues = productInputDataset.map(function(input) {
+				if (input.value === undefined) {
+					return input.label.toLowerCase().replace(' ', '_');
+				} else {
+					return input.value;
+				}
+			});
+
+			productInputValues.shift();
+
+			const removeTags = productInputValues.filter(function(value) {
+				return !matchValueToTags(value, currentOrgTags);
+			});
+
+			removeTags.forEach(function(tag) {
+				currentTarget.children('ul').children().remove('#' + tag);
+			});
+		});
+	});
+</script>
