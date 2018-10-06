@@ -41,11 +41,11 @@
 
 			const currentOrgName = document.querySelector('[aria-describedby="request_organization_id_hint"]').text;
 
-			const currentOrg = HelpCenter.user.organizations.find(
+			const currentOrg = HelpCenter.user.organizations.filter(
 				function(org) {
 					return org.name === currentOrgName
 				}
-			);
+			)[0];
 
 			const currentOrgTags = currentOrg.tags;
 
