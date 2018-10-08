@@ -31,43 +31,62 @@
 		const productInput = document.getElementById('request_custom_fields_360006041192');
 
 		const matchValueToTags = function matchValueToTags(value, tags) {
-			return tags.some(function(tag) {
-				return !!value.match(tag);
-			});
+			return tags.some(
+				function(tag) {
+					return !!value.match(tag);
+				}
+			);
 		};
 
-		$('.nesty-panel').on('DOMNodeInserted', function() {
-			const currentTarget =  $(this);
+		$('.nesty-panel').on(
+			'DOMNodeInserted',
+			function() {
+				const currentTarget = $(this);
 
-			const currentOrgName = document.querySelector('[aria-describedby="request_organization_id_hint"]').text;
+				const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]').text;
 
-			const currentOrg = HelpCenter.user.organizations.filter(
-				function(org) {
-					return org.name === currentOrgName
+				let currentOrgName;
+
+				if (currentOrgId) {
+					currentOrgName = currentOrgId.text;
 				}
-			)[0];
 
-			const currentOrgTags = currentOrg.tags;
+				const currentOrg = HelpCenter.user.organizations.filter(
+					function(org) {
+						return org.name === currentOrgName;
+					}
+				)[0];
 
-			const productInputDataset = JSON.parse(productInput.dataset.tagger);
+				const currentOrgTags = currentOrg.tags;
 
-			const productInputValues = productInputDataset.map(function(input) {
-				if (input.value === undefined) {
-					return input.label.toLowerCase().replace(' ', '_');
-				} else {
-					return input.value;
-				}
-			});
+				const productInputDataset = JSON.parse(productInput.dataset.tagger);
 
-			productInputValues.shift();
+				const productInputValues = productInputDataset.map(
+					function(input) {
+						let val = input.value;
 
-			const removeTags = productInputValues.filter(function(value) {
-				return !matchValueToTags(value, currentOrgTags);
-			});
+						if (val === undefined) {
+							val = input.label.toLowerCase().replace(' ', '_');
+						}
 
-			removeTags.forEach(function(tag) {
-				currentTarget.children('ul').children().remove('#' + tag);
-			});
-		});
+						return val;
+					}
+				);
+
+				productInputValues.shift();
+
+				const removeTags = productInputValues.filter(
+					function(value) {
+						return !matchValueToTags(value, currentOrgTags);
+					}
+				);
+
+				removeTags.forEach(
+					function(tag) {
+						currentTarget.children('ul').children().remove('#' + tag);
+					}
+				);
+			}
+		);
 	});
 </script>
