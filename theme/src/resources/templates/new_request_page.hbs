@@ -43,9 +43,9 @@
 			function() {
 				const currentTarget = $(this);
 
-				const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]').text;
+				const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
 
-				let currentOrgName;
+				var currentOrgName;
 
 				if (currentOrgId) {
 					currentOrgName = currentOrgId.text;
@@ -63,7 +63,7 @@
 
 				const productInputValues = productInputDataset.map(
 					function(input) {
-						let val = input.value;
+						var val = input.value;
 
 						if (val === undefined) {
 							val = input.label.toLowerCase().replace(' ', '_');
