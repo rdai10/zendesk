@@ -53,6 +53,10 @@ module.exports = merge(
 						files: ['new_request_page.hbs'],
 						rules: [
 							{
+								replace: '360011506832',
+								search: '360011314571'
+							},
+							{
 								replace: '360006076471',
 								search: '360006041192'
 							}

@@ -28,11 +28,116 @@
 
 <script>
 	$(function() {
+		const componentInput = document.getElementById('request_custom_fields_360011314571');
 		const productInput = document.getElementById('request_custom_fields_360006041192');
+
+		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
 
 		var currentOrgTags = HelpCenter.user.organizations[0].tags;
 
-		const matchValueToTags = function matchValueToTags(value, tags) {
+		const productComponentsMapping = [
+			{
+				product: 'liferay_commerce',
+				components: [
+					'apis_integrations_and_extension_points',
+					'commerce_insights',
+					'configuration_and_settings',
+					'connectors',
+					'digital_merchandise_management',
+					'digital_store_management',
+					'shopping_experience'
+				]
+			},
+			{
+				product: 'liferay_dxp',
+				components: [
+					'activation_key_project_administration',
+					'apio_architect',
+					'application_display_templates',
+					'audience_targeting',
+					'authentication',
+					'caching_clustering',
+					'calendar',
+					'collaboration_suite',
+					'deployment__environments',
+					'document_management',
+					'dynamic_data_mapping_data_lists',
+					'forms',
+					'liferay_api',
+					'localization',
+					'performance',
+					'portal_configuration',
+					'recycle_bin',
+					'reporting',
+					'search_indexing',
+					'search_engine_optimization_analytics',
+					'security',
+					'site_management',
+					'social_networking',
+					'staging_export_import',
+					'ui_infrastructure_accessibility',
+					'upgrade',
+					'user__membership__role_management',
+					'web_content',
+					'workflow_workflow_forms'
+				]
+			},
+			{
+				product: 'liferay_dxp_cloud',
+				components: [
+					'backup_/_recovery',
+					'connectivity',
+					'networking',
+					'system_availability',
+					'vpn'
+				]
+			},
+			{
+				product: 'liferay_portal',
+				components: [
+					'activation_key_project_administration',
+					'authentication',
+					'caching_clustering',
+					'calendar',
+					'collaboration_suite',
+					'deployment__environments',
+					'portal_developer_tools',
+					'document_management',
+					'liferay_api',
+					'liferay_sync',
+					'localization',
+					'patch_management',
+					'search_indexing',
+					'security',
+					'staging_export_import',
+					'ui_infrastructure_accessibility',
+					'upgrade',
+					'user__membership__role_management',
+					'web_content',
+					'workflow_workflow_forms'
+				]
+			}
+		];
+
+		function mapInputValues(dataset) {
+			const inputValues = dataset.map(
+				function(input) {
+					var val = input.value;
+
+					if (val === undefined) {
+						val = input.label.toLowerCase().replace(' ', '_');
+					}
+
+					return val;
+				}
+			);
+
+			inputValues.shift();
+
+			return inputValues;
+		};
+
+		function matchValueToTags(value, tags) {
 			return tags.some(
 				function(tag) {
 					return !!value.match(tag);
@@ -45,47 +150,28 @@
 			function() {
 				const currentTarget = $(this);
 
-				const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
-
-				var currentOrgName;
-
 				if (currentOrgId) {
-					currentOrgName = currentOrgId.text;
-				}
+					const currentOrg = HelpCenter.user.organizations.filter(
+						function(org) {
+							return org.name === currentOrgId.text;
+						}
+					)[0];
 
-				const currentOrg = HelpCenter.user.organizations.filter(
-					function(org) {
-						return org.name === currentOrgName;
-					}
-				)[0];
-
-				if (currentOrg) {
 					currentOrgTags = currentOrg.tags;
 				}
 
+				const componentInputDataset = JSON.parse(componentInput.dataset.tagger);
 				const productInputDataset = JSON.parse(productInput.dataset.tagger);
 
-				const productInputValues = productInputDataset.map(
-					function(input) {
-						var val = input.value;
+				const productInputValues = mapInputValues(productInputDataset);
 
-						if (val === undefined) {
-							val = input.label.toLowerCase().replace(' ', '_');
-						}
-
-						return val;
-					}
-				);
-
-				productInputValues.shift();
-
-				const removeTags = productInputValues.filter(
+				const removeProductTags = productInputValues.filter(
 					function(value) {
 						return !matchValueToTags(value, currentOrgTags);
 					}
 				);
 
-				removeTags.forEach(
+				removeProductTags.forEach(
 					function(tag) {
 						currentTarget.children('ul').children().remove('#' + tag);
 					}
