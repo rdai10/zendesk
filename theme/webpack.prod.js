@@ -26,6 +26,16 @@ module.exports = merge(
 				[
 					{
 						dir: 'dist/templates',
+						files: ['document_head.hbs'],
+						rules: [
+							{
+								replace: 'var cfaRules = [{"fieldType":"tagger","field":360006076471,"value":"liferay_dxp_cloud","select":[360011715231,360011607612,360009953451],"formId":360000179191,"requireds":[]}];',
+								search: 'var cfaRules = [{"fieldType":"tagger","field":360006041192,"value":"liferay_commerce","select":[360009627572],"formId":360000077272,"requireds":[360009627572]},{"fieldType":"tagger","field":360006041192,"value":"liferay_dxp","select":[360006075611,360009385592],"formId":360000077272,"requireds":[360009385592,360006075611]},{"fieldType":"tagger","field":360006041192,"value":"liferay_dxp_cloud","select":[360010378011],"formId":360000077272,"requireds":[360010378011]},{"fieldType":"tagger","field":360006041192,"value":"liferay_portal","select":[360009601071,360009385592],"formId":360000077272,"requireds":[360009601071,360009385592]}];'
+							}
+						]
+					},
+					{
+						dir: 'dist/templates',
 						files: ['home_page.hbs'],
 						rules: [
 							{
