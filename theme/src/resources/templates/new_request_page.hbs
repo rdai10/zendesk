@@ -30,6 +30,8 @@
 	$(function() {
 		const productInput = document.getElementById('request_custom_fields_360006041192');
 
+		var currentOrgTags = HelpCenter.user.organizations[0].tags;
+
 		const matchValueToTags = function matchValueToTags(value, tags) {
 			return tags.some(
 				function(tag) {
@@ -57,7 +59,9 @@
 					}
 				)[0];
 
-				const currentOrgTags = currentOrg.tags;
+				if (currentOrg) {
+					currentOrgTags = currentOrg.tags;
+				}
 
 				const productInputDataset = JSON.parse(productInput.dataset.tagger);
 
