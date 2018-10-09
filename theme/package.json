@@ -94,7 +94,7 @@
 		"format": "prettier --write 'src/js/**/*.js'",
 		"zip": "zip -r Liferay-Help-Center.zip dist -x *.zat*"
 	},
-	"version": "1.0.1",
+	"version": "1.1.1",
 	"dependencies": {
 		"classnames": "^2.2.6",
 		"es6-promise": "^4.2.5"
