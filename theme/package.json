@@ -41,6 +41,7 @@
 		"prop-types": "^15.6.2",
 		"purify-css": "^1.2.5",
 		"purifycss-webpack": "^0.7.0",
+		"replace-in-file-webpack-plugin": "^1.0.6",
 		"sass-loader": "^7.0.1",
 		"uglifyjs-webpack-plugin": "^1.2.5",
 		"webpack": "^4.8.1",
