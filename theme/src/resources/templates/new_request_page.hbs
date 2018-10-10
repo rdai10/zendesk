@@ -28,12 +28,10 @@
 
 <script>
 	$(function() {
-		const componentInput = document.getElementById('request_custom_fields_360011314571');
-		const productInput = document.getElementById('request_custom_fields_360006041192');
+		const componentInputField = document.getElementById('request_custom_fields_360011314571');
+		const productInputField = document.getElementById('request_custom_fields_360006041192');
 
 		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
-
-		var currentOrgTags = HelpCenter.user.organizations[0].tags;
 
 		const productComponentsMapping = [
 			{
@@ -119,7 +117,17 @@
 			}
 		];
 
-		function mapInputValues(dataset) {
+		/** When a user doesn't belong to any organization */
+		var currentOrgTags = '';
+
+		/** When a user belongs to only one organization */
+		if (HelpCenter.user.organizations.length) {
+			var currentOrgTags = HelpCenter.user.organizations[0].tags;
+		}
+
+		function mapInputValuesFromField(field) {
+			const dataset = JSON.parse(field.dataset.tagger);
+
 			const inputValues = dataset.map(
 				function(input) {
 					var val = input.value;
@@ -137,6 +145,25 @@
 			return inputValues;
 		};
 
+		function matchProductComponents(product) {
+			var productMatch = productComponentsMapping.filter(
+				function(value) {
+					return product.match(value.product);
+				}
+			);
+
+			/** Match again if more than one match was found */
+			if (productMatch.length > 1) {
+				productMatch = productMatch.filter(
+					function(value) {
+						return value.product.match(product);
+					}
+				);
+			}
+
+			return productMatch[0];
+		};
+
 		function matchValueToTags(value, tags) {
 			return tags.some(
 				function(tag) {
@@ -150,6 +177,7 @@
 			function() {
 				const currentTarget = $(this);
 
+				/** When a user belongs to multiple organizations */
 				if (currentOrgId) {
 					const currentOrg = HelpCenter.user.organizations.filter(
 						function(org) {
@@ -160,22 +188,43 @@
 					currentOrgTags = currentOrg.tags;
 				}
 
-				const componentInputDataset = JSON.parse(componentInput.dataset.tagger);
-				const productInputDataset = JSON.parse(productInput.dataset.tagger);
+				const productInputValues = mapInputValuesFromField(productInputField);
 
-				const productInputValues = mapInputValues(productInputDataset);
-
-				const removeProductTags = productInputValues.filter(
+				const removeProductDropdowns = productInputValues.filter(
 					function(value) {
 						return !matchValueToTags(value, currentOrgTags);
 					}
 				);
 
-				removeProductTags.forEach(
-					function(tag) {
-						currentTarget.children('ul').children().remove('#' + tag);
+				removeProductDropdowns.forEach(
+					function(dropdown) {
+						currentTarget.children('ul').children().remove('#' + dropdown);
 					}
 				);
+
+				const currentProduct = productInputField.value;
+
+				if (currentProduct) {
+					const match = matchProductComponents(currentProduct);
+
+					if (match) {
+						const componentOptions = match.components;
+
+						const componentInputValues = mapInputValuesFromField(componentInputField);
+
+						const removeComponentDropdowns = componentInputValues.filter(
+							function(value) {
+								return !matchValueToTags(value, componentOptions);
+							}
+						);
+
+						removeComponentDropdowns.forEach(
+							function(dropdown) {
+								currentTarget.children('ul').children().remove('#' + dropdown);
+							}
+						);
+					}
+				}
 			}
 		);
 	});
