@@ -200,7 +200,7 @@
 
 .request-form {
 	.form-field {
-		> label::after {
+		> label[for]::after {
 			color: $color-error;
 			content: " *";
 		}
