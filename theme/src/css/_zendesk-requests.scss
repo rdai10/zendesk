@@ -147,16 +147,8 @@
 		margin-bottom: $margin-default;
 	}
 
-	.form-field,
-	.suggestion-list .searchbox {
-		margin-bottom: $margin-default;
-	}
-
 	.form-field {
-		> label::after {
-			color: $color-error;
-			content: " *";
-		}
+		margin-bottom: $margin-default;
 	}
 }
 
@@ -203,6 +195,19 @@
 		@include media-breakpoint-down(sm) {
 			max-width: none;
 		}
+	}
+}
+
+.request-form {
+	.form-field {
+		> label::after {
+			color: $color-error;
+			content: " *";
+		}
+	}
+
+	.suggestion-list {
+		display: none;
 	}
 }
 
