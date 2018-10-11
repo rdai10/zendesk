@@ -20,32 +20,6 @@
 
 		<div class="row">
 			<div class="col-md-7">
-				<div class="article-author">
-					<div class="avatar sticker sticker-circle sticker-lg sticker-primary">
-						<span class="sticker-overlay">
-							<img alt="Avatar" class="sticker-img" src="{{author.avatar_url}}" />
-						</span>
-					</div>
-
-					<div class="article-meta">
-						{{#link 'user_profile' id=author.id}}
-							<h4 class="author-name">
-								{{author.name}}
-							</h4>
-						{{/link}}
-
-						<ul class="meta-group secondary-font secondary-text-color">
-							<li class="meta-data">
-								{{#is created_at edited_at}}
-									{{date created_at timeago=true}}
-								{{else}}
-									{{t 'updated'}} {{date edited_at timeago=true}}
-								{{/is}}
-							</li>
-						</ul>
-					</div>
-				</div>
-
 				<section class="article-info">
 					<div class="article-content">
 						<div class="article-body">
@@ -88,12 +62,6 @@
 						</small>
 					</div>
 				</footer>
-			</div>
-
-			<div class="article-relatives col-md-4 offset-sm-1">
-				{{../related_articles}}
-
-				{{../recent_articles}}
 			</div>
 		</div>
 	{{/with}}
