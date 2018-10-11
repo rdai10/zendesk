@@ -168,7 +168,7 @@
 		function matchValueToTags(value, tags) {
 			return tags.some(
 				function(tag) {
-					return !!value.match(tag);
+					return (value === tag);
 				}
 			);
 		};
