@@ -1,6 +1,8 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
+import getCN from 'classnames';
+
 import * as apiHelpers from '../helpers/api-helpers';
 import LoadingIndicator from './LoadingIndicator';
 
@@ -8,13 +10,26 @@ class ArticlesList extends preact.Component {
 	constructor(props) {
 		super(props);
 
-		this.handleClick = this.handleClick.bind(this);
+		this.getArticles = this.getArticles.bind(this);
 
 		this.state = {
-			expanded: false,
 			items: [],
 			loading: false
 		};
+	}
+
+	componentDidMount() {
+		if (this.props.expanded) {
+			this.getArticles();
+		}
+	}
+
+	componentDidUpdate(prevProp) {
+		const {expanded} = this.props;
+
+		if (prevProp.expanded != expanded && expanded) {
+			this.getArticles();
+		}
 	}
 
 	getArticles() {
@@ -52,42 +67,28 @@ class ArticlesList extends preact.Component {
 			);
 	}
 
-	handleClick() {
-		this.setState(
-			{
-				expanded: !this.state.expanded
-			}
-		);
-
-		if (!this.state.items.length) {
-			this.getArticles();
-		}
-	}
-
-	render({name}, {expanded, items, loading}) {
+	render({currentArticleId, expanded}, {items, loading}) {
 		return (
 			<div>
-				<a
-					class="sidenav-item"
-					href="javascript:;"
-					onClick={this.handleClick}
-				>
-					{name}
-				</a>
-
 				{expanded && !loading && (
-					<ul class="nav nav-nested">
+					<ul class="expanded nav nav-nested" role="menu">
 						{items.map(
-							item => (
-								<li class="nav-item" key={item.id}>
-									<a
-										class="sidenav-item"
-										href={item.html_url}
-									>
-										{item.name}
-									</a>
-								</li>
-							)
+							item => {
+								const className = getCN(
+									{
+										'active': item.id === parseInt(currentArticleId)
+									},
+									'nav-item'
+								);
+
+								return (
+									<li class={className} key={item.id} id={item.id} role="none">
+										<a class="sidenav-item" href={item.html_url} role="menuitem">
+											{item.name}
+										</a>
+									</li>
+								)
+							}
 						)}
 					</ul>
 				)}
@@ -99,23 +100,27 @@ class ArticlesList extends preact.Component {
 }
 
 ArticlesList.PropTypes = {
+	currentArticleId: PropTypes.string.isRequired,
+	expanded: PropTypes.bool.isRequired,
 	id: PropTypes.string.isRequired,
-	locale: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired
+	locale: PropTypes.string.isRequired
 };
 
 class DocSideNav extends preact.Component {
 	constructor(props) {
 		super(props);
 
+		this.handleClick = this.handleClick.bind(this);
+
 		this.state = {
+			expandedItemId: parseInt(this.props.sectionId),
 			items: [],
 			loading: true
 		};
 	}
 
 	componentDidMount() {
-		const {locale, sectionId} = this.props;
+		const {sectionId, locale} = this.props;
 
 		apiHelpers
 			.getSectionBySectionId(sectionId, locale)
@@ -160,7 +165,15 @@ class DocSideNav extends preact.Component {
 			);
 	}
 
-	render({locale}, {items, loading}) {
+	handleClick(event) {
+		this.setState(
+			{
+				expandedItemId: parseInt(event.target.id)
+			}
+		)
+	}
+
+	render({currentArticleId, locale}, {expandedItemId, items, loading}) {
 		return loading ? (
 			<LoadingIndicator />
 		) : (
@@ -168,10 +181,15 @@ class DocSideNav extends preact.Component {
 				{items.map(
 					item => (
 						<li class="nav-item" key={item.id}>
+							<button aria-haspopup="true" id={item.id} onClick={this.handleClick} type="button">
+								{item.name}
+							</button>
+
 							<ArticlesList
+								currentArticleId={currentArticleId}
+								expanded={expandedItemId === item.id}
 								id={item.id}
 								locale={locale}
-								name={item.name}
 							/>
 						</li>
 					)
@@ -182,6 +200,7 @@ class DocSideNav extends preact.Component {
 }
 
 DocSideNav.PropTypes = {
+	currentArticleId: PropTypes.string.isRequired,
 	locale: PropTypes.string.isRequired,
 	sectionId: PropTypes.string.isRequired
 };
