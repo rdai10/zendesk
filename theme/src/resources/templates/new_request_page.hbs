@@ -28,14 +28,8 @@
 
 <script>
 	$(function() {
-		const componentInputField = document.getElementById('request_custom_fields_360011314571');
-		const productInputField = document.getElementById('request_custom_fields_360006041192');
-
-		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
-
 		const productComponentsMapping = [
 			{
-				product: 'liferay_commerce',
 				components: [
 					'activation_key_project_administration',
 					'apis_integrations_and_extension_points',
@@ -45,10 +39,10 @@
 					'digital_merchandise_management',
 					'digital_store_management',
 					'shopping_experience'
-				]
+				],
+				product: 'liferay_commerce'
 			},
 			{
-				product: 'liferay_dxp',
 				components: [
 					'activation_key_project_administration',
 					'apio_architect',
@@ -79,20 +73,20 @@
 					'user_membership_role_management',
 					'web_content',
 					'workflow_workflow_forms'
-				]
+				],
+				product: 'liferay_dxp'
 			},
 			{
-				product: 'liferay_dxp_cloud',
 				components: [
 					'backup_recovery',
 					'connectivity',
 					'networking',
 					'system_availability',
 					'vpn'
-				]
+				],
+				product: 'liferay_dxp_cloud'
 			},
 			{
-				product: 'liferay_portal',
 				components: [
 					'activation_key_project_administration',
 					'authentication',
@@ -114,16 +108,19 @@
 					'user_membership_role_management',
 					'web_content',
 					'workflow_workflow_forms'
-				]
+				],
+				product: 'liferay_portal'
 			}
 		];
 
 		/** When a user doesn't belong to any organization */
+
 		var currentOrgTags = '';
 
 		/** When a user belongs to only one organization */
+
 		if (HelpCenter.user.organizations.length) {
-			var currentOrgTags = HelpCenter.user.organizations[0].tags;
+			currentOrgTags = HelpCenter.user.organizations[0].tags;
 		}
 
 		function mapInputValuesFromField(field) {
@@ -144,7 +141,7 @@
 			inputValues.shift();
 
 			return inputValues;
-		};
+		}
 
 		function matchProductComponents(product) {
 			var productMatch = productComponentsMapping.filter(
@@ -154,6 +151,7 @@
 			);
 
 			/** Match again if more than one match was found */
+
 			if (productMatch.length > 1) {
 				productMatch = productMatch.filter(
 					function(value) {
@@ -163,7 +161,7 @@
 			}
 
 			return productMatch[0];
-		};
+		}
 
 		function matchValueToTags(value, tags) {
 			return tags.some(
@@ -171,7 +169,12 @@
 					return (value === tag);
 				}
 			);
-		};
+		}
+
+		const componentInputField = document.getElementById('request_custom_fields_360011314571');
+		const productInputField = document.getElementById('request_custom_fields_360006041192');
+
+		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
 
 		$('.nesty-panel').on(
 			'DOMNodeInserted',
@@ -179,6 +182,7 @@
 				const currentTarget = $(this);
 
 				/** When a user belongs to multiple organizations */
+
 				if (currentOrgId) {
 					const currentOrg = HelpCenter.user.organizations.filter(
 						function(org) {
