@@ -29,6 +29,11 @@
 	.search-result-description {
 		font-weight: $font-weight-normal;
 		margin-bottom: 0;
+
+		em {
+			font-style: initial;
+			font-weight: $font-weight-semi-bold;
+		}
 	}
 
 	.search-results-list {
