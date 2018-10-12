@@ -28,6 +28,68 @@
 
 <script>
 	$(function() {
+		/** When a user doesn't belong to any organizations they cannot create tickets */
+
+		if (!HelpCenter.user.organizations.length) {
+			return;
+		}
+
+		function mapInputValuesFromField(field) {
+			const dataset = JSON.parse(field.dataset.tagger);
+
+			const inputValues = dataset.map(
+				function(input) {
+					var val = input.value;
+
+					if (val === undefined) {
+						val = input.label.toLowerCase().replace(' ', '_');
+					}
+
+					return val;
+				}
+			);
+
+			inputValues.shift();
+
+			return inputValues;
+		}
+
+		function matchProductComponents(product) {
+			var productMatch = productComponentsMapping.filter(
+				function(value) {
+					return product.match(value.product);
+				}
+			);
+
+			/** Match again if more than one match was found */
+
+			if (productMatch.length > 1) {
+				productMatch = productMatch.filter(
+					function(value) {
+						return value.product.match(product);
+					}
+				);
+			}
+
+			return productMatch[0];
+		}
+
+		function matchValueToTags(value, tags) {
+			return tags.some(
+				function(tag) {
+					return (value === tag);
+				}
+			);
+		}
+
+		function removeDropdownOptions(options, target) {
+			options.forEach(
+				function(option) {
+					target.children().remove('li#' + option);
+				}
+			)
+		}
+
 		const productComponentsMapping = [
 			{
 				components: [
@@ -113,75 +175,21 @@
 			}
 		];
 
-		/** When a user doesn't belong to any organization */
-
-		var currentOrgTags = '';
-
-		/** When a user belongs to only one organization */
-
-		if (HelpCenter.user.organizations.length) {
-			currentOrgTags = HelpCenter.user.organizations[0].tags;
-		}
-
-		function mapInputValuesFromField(field) {
-			const dataset = JSON.parse(field.dataset.tagger);
-
-			const inputValues = dataset.map(
-				function(input) {
-					var val = input.value;
-
-					if (val === undefined) {
-						val = input.label.toLowerCase().replace(' ', '_');
-					}
-
-					return val;
-				}
-			);
-
-			inputValues.shift();
-
-			return inputValues;
-		}
-
-		function matchProductComponents(product) {
-			var productMatch = productComponentsMapping.filter(
-				function(value) {
-					return product.match(value.product);
-				}
-			);
-
-			/** Match again if more than one match was found */
-
-			if (productMatch.length > 1) {
-				productMatch = productMatch.filter(
-					function(value) {
-						return value.product.match(product);
-					}
-				);
-			}
-
-			return productMatch[0];
-		}
-
-		function matchValueToTags(value, tags) {
-			return tags.some(
-				function(tag) {
-					return (value === tag);
-				}
-			);
-		}
-
 		const componentInputField = document.getElementById('request_custom_fields_360011314571');
 		const productInputField = document.getElementById('request_custom_fields_360006041192');
 
 		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
 
+		/** When a user belongs to only one organization */
+
+		var currentOrgTags = HelpCenter.user.organizations[0].tags;
+
 		$('.nesty-panel').on(
 			'DOMNodeInserted',
-			function() {
-				const currentTarget = $(this);
+			function(event) {
+				const currentTarget = $(event.target);
 
-				/** When a user belongs to multiple organizations */
+				/** When a user belongs to multiple organizations, retrieve tags from the currently selected organization */
 
 				if (currentOrgId) {
 					const currentOrg = HelpCenter.user.organizations.filter(
@@ -201,11 +209,7 @@
 					}
 				);
 
-				removeProductDropdowns.forEach(
-					function(dropdown) {
-						currentTarget.children('ul').children().remove('#' + dropdown);
-					}
-				);
+				removeDropdownOptions(removeProductDropdowns, currentTarget);
 
 				const currentProduct = productInputField.value;
 
@@ -223,11 +227,7 @@
 							}
 						);
 
-						removeComponentDropdowns.forEach(
-							function(dropdown) {
-								currentTarget.children('ul').children().remove('#' + dropdown);
-							}
-						);
+						removeDropdownOptions(removeComponentDropdowns, currentTarget);
 					}
 				}
 			}
