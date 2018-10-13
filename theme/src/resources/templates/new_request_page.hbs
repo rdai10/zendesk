@@ -230,7 +230,7 @@
 				removeProductDropdowns.forEach(
 					function(option) {
 						removeNestedDropdownOptions(option, currentTarget);
-					}				
+					}
 				);
 
 				const currentProduct = productInputField.value;
@@ -254,5 +254,17 @@
 				}
 			}
 		);
+
+		const orgSelectField = document.getElementById('request_organization_id');
+
+		if (orgSelectField) {
+			const productNestyInput = document.querySelector('.request_custom_fields_360006041192 .nesty-input');
+
+			$(orgSelectField).change(
+				function(event) {
+					productNestyInput.textContent = '-';
+				}
+			)
+		}
 	});
 </script>
