@@ -28,7 +28,7 @@
 
 <script>
 	$(function() {
-		/** When a user doesn't belong to any organizations they cannot create tickets */
+		// When a user does not belong to any organizations they cannot create tickets
 
 		if (!HelpCenter.user.organizations.length) {
 			return;
@@ -61,7 +61,7 @@
 				}
 			);
 
-			/** Match again if more than one match was found */
+			// Match again if more than one match was found
 
 			if (productMatch.length > 1) {
 				productMatch = productMatch.filter(
@@ -87,7 +87,7 @@
 				function(option) {
 					target.children().remove('li#' + option);
 				}
-			)
+			);
 		}
 
 		function removeNestedDropdownOptions(option, target) {
@@ -95,7 +95,7 @@
 				function(index, item) {
 					var id = item.id;
 
-					/** Check for Nested Fields whose id is null */
+					// Check for Nested Fields whose id is null
 
 					if (id === 'null') {
 						id = item.innerText.toLowerCase().replace(' ', '_');
@@ -105,7 +105,7 @@
 						$(item).hide();
 					}
 				}
-			)
+			);
 		}
 
 		const productComponentsMapping = [
@@ -198,7 +198,7 @@
 
 		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
 
-		/** When a user belongs to only one organization */
+		// When a user belongs to only one organization
 
 		var currentOrgTags = HelpCenter.user.organizations[0].tags;
 
@@ -207,7 +207,7 @@
 			function(event) {
 				const currentTarget = $(event.target);
 
-				/** When a user belongs to multiple organizations, retrieve tags from the currently selected organization */
+				// When a user belongs to multiple organizations, retrieve tags from the currently selected organization
 
 				if (currentOrgId) {
 					const currentOrg = HelpCenter.user.organizations.filter(
@@ -264,7 +264,7 @@
 				function(event) {
 					productNestyInput.textContent = '-';
 				}
-			)
+			);
 		}
 	});
 </script>
