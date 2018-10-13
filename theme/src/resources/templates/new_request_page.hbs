@@ -90,6 +90,24 @@
 			)
 		}
 
+		function removeNestedDropdownOptions(option, target) {
+			target.children().each(
+				function(index, item) {
+					var id = item.id;
+
+					/** Check for Nested Fields whose id is null */
+
+					if (id === 'null') {
+						id = item.innerText.toLowerCase().replace(' ', '_');
+					}
+
+					if (id === option) {
+						$(item).hide();
+					}
+				}
+			)
+		}
+
 		const productComponentsMapping = [
 			{
 				components: [
@@ -209,7 +227,11 @@
 					}
 				);
 
-				removeDropdownOptions(removeProductDropdowns, currentTarget);
+				removeProductDropdowns.forEach(
+					function(option) {
+						removeNestedDropdownOptions(option, currentTarget);
+					}				
+				);
 
 				const currentProduct = productInputField.value;
 
