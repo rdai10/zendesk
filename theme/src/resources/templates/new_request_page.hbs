@@ -34,6 +34,14 @@
 			return;
 		}
 
+		function addPrefixToOrgTags(tags) {
+			return tags.map(
+				function(tag) {
+					return 'prd_' + tag;
+				}
+			)
+		}
+
 		function mapInputValuesFromField(field) {
 			const dataset = JSON.parse(field.dataset.tagger);
 
@@ -42,7 +50,7 @@
 					var val = input.value;
 
 					if (val === undefined) {
-						val = input.label.toLowerCase().replace(' ', '_');
+						val = 'prd_' + input.label.toLowerCase().replace(' ', '_');
 					}
 
 					return val;
@@ -66,7 +74,7 @@
 			if (productMatch.length > 1) {
 				productMatch = productMatch.filter(
 					function(value) {
-						return value.product.match(product);
+						return ('prd_' + value.product) === product;
 					}
 				);
 			}
@@ -98,7 +106,7 @@
 					// Check for Nested Fields whose id is null
 
 					if (id === 'null') {
-						id = item.innerText.toLowerCase().replace(' ', '_');
+						id = 'prd_' + item.innerText.toLowerCase().replace(' ', '_');
 					}
 
 					if (id === option) {
@@ -219,11 +227,13 @@
 					currentOrgTags = currentOrg.tags;
 				}
 
+				const prefixedOrgTags = addPrefixToOrgTags(currentOrgTags);
+
 				const productInputValues = mapInputValuesFromField(productInputField);
 
 				const removeProductDropdowns = productInputValues.filter(
 					function(value) {
-						return !matchValueToTags(value, currentOrgTags);
+						return !matchValueToTags(value, prefixedOrgTags);
 					}
 				);
 
