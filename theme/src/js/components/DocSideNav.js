@@ -71,7 +71,7 @@ class ArticlesList extends preact.Component {
 		return (
 			<div>
 				{expanded && !loading && (
-					<ul class="expanded nav nav-nested" role="menu">
+					<ul class="nav nav-nested" role="menu">
 						{items.map(
 							item => {
 								const className = getCN(
@@ -179,20 +179,32 @@ class DocSideNav extends preact.Component {
 		) : (
 			<ul class="nav nav-nested">
 				{items.map(
-					item => (
-						<li class="nav-item" key={item.id}>
-							<button aria-haspopup="true" id={item.id} onClick={this.handleClick} type="button">
-								{item.name}
-							</button>
+					item => {
+						const expanded = expandedItemId === item.id;
 
-							<ArticlesList
-								currentArticleId={currentArticleId}
-								expanded={expandedItemId === item.id}
-								id={item.id}
-								locale={locale}
-							/>
-						</li>
-					)
+						const className = getCN(
+							{
+								'expanded': expanded
+							},
+							'btn-unstyled',
+							'sidenav-item'
+						);
+
+						return (
+							<li class="nav-item" key={item.id}>
+								<button aria-haspopup="true" class={className} id={item.id} onClick={this.handleClick} type="button">
+									{item.name}
+								</button>
+
+								<ArticlesList
+									currentArticleId={currentArticleId}
+									expanded={expanded}
+									id={item.id}
+									locale={locale}
+								/>
+							</li>
+						)
+					}
 				)}
 			</ul>
 		);

@@ -90,6 +90,7 @@ module.exports = {
 					'*alert*',
 					'*article-content*',
 					'button-unstyled',
+					'expanded',
 					'*loading-animation*',
 					'nav-card',
 					'nav-stacked',
