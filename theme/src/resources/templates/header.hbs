@@ -152,39 +152,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				{{/link}}
 			</div>
 
-			{{!-- <div class="col-5 header-content header-menu-list secondary-text-color">
-				<div class="list-item">
-					<h5>
-						{{dc 'products'}}
-					</h5>
+			{{!--
+				<div class="col-5 header-content header-menu-list secondary-text-color">
+					<div class="list-item">
+						<h5>
+							{{dc 'products'}}
+						</h5>
 
-					<div class="header-menu" id="products"></div>
+						<div class="header-menu" id="products"></div>
+					</div>
+
+					<div class="list-item">
+						<h5>
+							{{dc 'resources'}}
+						</h5>
+
+						<div class="header-menu" id="resources"></div>
+					</div>
+
+					<div class="list-item">
+						<h5>
+							{{dc 'security'}}
+						</h5>
+
+						<div class="header-menu" id="security"></div>
+					</div>
+
+					<div class="list-item">
+						<h5>
+							{{dc 'support'}}
+						</h5>
+
+						<div class="header-menu" id="support"></div>
+					</div>
 				</div>
-
-				<div class="list-item">
-					<h5>
-						{{dc 'resources'}}
-					</h5>
-
-					<div class="header-menu" id="resources"></div>
-				</div>
-
-				<div class="list-item">
-					<h5>
-						{{dc 'security'}}
-					</h5>
-
-					<div class="header-menu" id="security"></div>
-				</div>
-
-				<div class="list-item">
-					<h5>
-						{{dc 'support'}}
-					</h5>
-
-					<div class="header-menu" id="support"></div>
-				</div>
-			</div> --}}
+			--}}
 
 			<div class="col-4 header-content user-wrapper">
 				{{search class="search-nav" instant=true submit=false}}
@@ -203,177 +205,179 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	</div>
 </header>
 
-{{!-- <script>
-	$(function() {
-		const accountLinks = {
-			className: 'account-links',
-			configs: [
+{{!--
+	<script>
+		$(function() {
+			const accountLinks = {
+				className: 'account-links',
+				configs: [
+					{
+						name: '{{t 'my_requests'}}',
+						url: '{{page_path 'requests'}}'
+					},
+					{
+						name: '{{dc 'project_details'}}',
+						url: ''
+					}
+				]
+			};
+
+			const highlightedLinksConfigs = [
 				{
-					name: '{{t 'my_requests'}}',
-					url: '{{page_path 'requests'}}'
-				},
-				{
-					name: '{{dc 'project_details'}}',
+					name: '{{dc 'contact_us'}}',
+					svgId: '#contact',
 					url: ''
 				}
-			]
-		};
+			];
 
-		const highlightedLinksConfigs = [
-			{
-				name: '{{dc 'contact_us'}}',
-				svgId: '#contact',
-				url: ''
-			}
-		];
+			const userTags = window.HelpCenter.user.tags;
 
-		const userTags = window.HelpCenter.user.tags;
-
-		if (Liferay.hasCreateTicketPermission(userTags)) {
-			highlightedLinksConfigs.unshift(
-				{
-					name: '{{dc 'submit_a_ticket'}}',
-					svgId: '#ticket',
-					url: '{{page_path 'new_request'}}'
-				}
-			);
-		}
-
-		const highlightedLinks = {
-			className: 'highlighted',
-			configs: highlightedLinksConfigs
-		};
-
-		const locale = {
-			currentLocale: {
-				name: {{json_stringify current_locale.name}},
-				url: {{json_stringify current_locale.url}}
-			},
-			alternativeLocales: [
-				{{#each alternative_locales}}
+			if (Liferay.hasCreateTicketPermission(userTags)) {
+				highlightedLinksConfigs.unshift(
 					{
-						name: {{json_stringify name}},
-						url: {{json_stringify url}}
+						name: '{{dc 'submit_a_ticket'}}',
+						svgId: '#ticket',
+						url: '{{page_path 'new_request'}}'
+					}
+				);
+			}
+
+			const highlightedLinks = {
+				className: 'highlighted',
+				configs: highlightedLinksConfigs
+			};
+
+			const locale = {
+				currentLocale: {
+					name: {{json_stringify current_locale.name}},
+					url: {{json_stringify current_locale.url}}
+				},
+				alternativeLocales: [
+					{{#each alternative_locales}}
+						{
+							name: {{json_stringify name}},
+							url: {{json_stringify url}}
+						},
+					{{/each}}
+				]
+			};
+
+			Liferay.render(
+				Liferay.MegaMenu,
+				{
+					accountLinks: accountLinks,
+					cardMenuItems: {
+						className: 'card-menu',
+						configs: [
+							{
+								name: 'DXP 7.1',
+								svgId: '#dxp-logo',
+								url: ''
+							},
+							{
+								name: '{{dc 'dxp_cloud'}}',
+								svgId: '#dxp-cloud-logo',
+								url: ''
+							},
+							{
+								name: 'DXP 7.0',
+								svgId: '#7-0-logo',
+								url: ''
+							},
+							{
+								name: '{{dc 'commerce'}}',
+								svgId: '#commerce-logo',
+								url: ''
+							},
+							{
+								name: '{{dc 'analytics_cloud'}}',
+								svgId: '#analytics-cloud-logo',
+								url: 'https://analytics.liferay.com'
+							},
+							{
+								name: '{{dc 'portal'}} 6.2',
+								svgId: '#6-2-logo',
+								url: ''
+							},
+							{
+								name: '{{dc 'portal'}} 6.1',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								name: '{{dc 'portal'}} 6.0',
+								svgId: '#6-0-logo',
+								url: ''
+							}
+						]
 					},
-				{{/each}}
-			]
-		};
-
-		Liferay.render(
-			Liferay.MegaMenu,
-			{
-				accountLinks: accountLinks,
-				cardMenuItems: {
-					className: 'card-menu',
-					configs: [
-						{
-							name: 'DXP 7.1',
-							svgId: '#dxp-logo',
-							url: ''
-						},
-						{
-							name: '{{dc 'dxp_cloud'}}',
-							svgId: '#dxp-cloud-logo',
-							url: ''
-						},
-						{
-							name: 'DXP 7.0',
-							svgId: '#7-0-logo',
-							url: ''
-						},
-						{
-							name: '{{dc 'commerce'}}',
-							svgId: '#commerce-logo',
-							url: ''
-						},
-						{
-							name: '{{dc 'analytics_cloud'}}',
-							svgId: '#analytics-cloud-logo',
-							url: 'https://analytics.liferay.com'
-						},
-						{
-							name: '{{dc 'portal'}} 6.2',
-							svgId: '#6-2-logo',
-							url: ''
-						},
-						{
-							name: '{{dc 'portal'}} 6.1',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							name: '{{dc 'portal'}} 6.0',
-							svgId: '#6-0-logo',
-							url: ''
-						}
-					]
+					highlightedLinks: highlightedLinks,
+					locale: locale,
+					name: '{{dc 'products'}}'
 				},
-				highlightedLinks: highlightedLinks,
-				locale: locale,
-				name: '{{dc 'products'}}'
-			},
-			document.getElementById('products')
-		);
+				document.getElementById('products')
+			);
 
-		Liferay.render(
-			Liferay.MegaMenu,
-			{
-				accountLinks: accountLinks,
-				cardMenuItems: {
-					className: 'card-menu',
-					configs: []
+			Liferay.render(
+				Liferay.MegaMenu,
+				{
+					accountLinks: accountLinks,
+					cardMenuItems: {
+						className: 'card-menu',
+						configs: []
+					},
+					highlightedLinks: highlightedLinks,
+					locale: locale,
+					name: '{{dc 'resources'}}'
 				},
-				highlightedLinks: highlightedLinks,
-				locale: locale,
-				name: '{{dc 'resources'}}'
-			},
-			document.getElementById('resources')
-		);
+				document.getElementById('resources')
+			);
 
-		Liferay.render(
-			Liferay.MegaMenu,
-			{
-				accountLinks: accountLinks,
-				cardMenuItems: {
-					className: 'card-menu',
-					configs: []
+			Liferay.render(
+				Liferay.MegaMenu,
+				{
+					accountLinks: accountLinks,
+					cardMenuItems: {
+						className: 'card-menu',
+						configs: []
+					},
+					highlightedLinks: highlightedLinks,
+					locale: locale,
+					name: '{{dc 'security'}}'
 				},
-				highlightedLinks: highlightedLinks,
-				locale: locale,
-				name: '{{dc 'security'}}'
-			},
-			document.getElementById('security')
-		);
+				document.getElementById('security')
+			);
 
-		Liferay.render(
-			Liferay.MegaMenu,
-			{
-				accountLinks: accountLinks,
-				cardMenuItems: {
-					className: 'card-menu',
-					configs: []
+			Liferay.render(
+				Liferay.MegaMenu,
+				{
+					accountLinks: accountLinks,
+					cardMenuItems: {
+						className: 'card-menu',
+						configs: []
+					},
+					highlightedLinks: highlightedLinks,
+					locale: locale,
+					name: '{{dc 'support'}}'
 				},
-				highlightedLinks: highlightedLinks,
-				locale: locale,
-				name: '{{dc 'support'}}'
-			},
-			document.getElementById('support')
-		);
+				document.getElementById('support')
+			);
 
-		const onNavScroll = function() {
-			const header = document.getElementById('header');
+			const onNavScroll = function() {
+				const header = document.getElementById('header');
 
-			if (window.scrollY >= 64) {
-				header.classList.add('scroll-shadow');
-			}
-			else {
-				header.classList.remove('scroll-shadow');
-			}
-		};
+				if (window.scrollY >= 64) {
+					header.classList.add('scroll-shadow');
+				}
+				else {
+					header.classList.remove('scroll-shadow');
+				}
+			};
 
-		window.addEventListener(
-			'scroll',
-			Liferay.throttle(onNavScroll, 100)
-		);
-	});
-</script> --}}
+			window.addEventListener(
+				'scroll',
+				Liferay.throttle(onNavScroll, 100)
+			);
+		});
+	</script>
+--}}
