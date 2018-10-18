@@ -87,7 +87,7 @@ class ArticlesList extends preact.Component {
 											{item.name}
 										</a>
 									</li>
-								)
+								);
 							}
 						)}
 					</ul>
@@ -120,7 +120,7 @@ class DocSideNav extends preact.Component {
 	}
 
 	componentDidMount() {
-		const {sectionId, locale} = this.props;
+		const {locale, sectionId} = this.props;
 
 		apiHelpers
 			.getSectionBySectionId(sectionId, locale)
@@ -170,7 +170,7 @@ class DocSideNav extends preact.Component {
 			{
 				expandedItemId: parseInt(event.target.id)
 			}
-		)
+		);
 	}
 
 	render({currentArticleId, locale}, {expandedItemId, items, loading}) {
@@ -203,7 +203,7 @@ class DocSideNav extends preact.Component {
 									locale={locale}
 								/>
 							</li>
-						)
+						);
 					}
 				)}
 			</ul>
