@@ -34,4 +34,4 @@ Zendesk apps tools (ZAT) allows the capability to set up local theme preview. To
 - [Browser support list](http://browserl.ist/?q=>0.25%25%2C+ie+11%2C+not+op_mini+all).
 
 ## Project Documentation
-Project documentation is in the [documentation folder](theme/documentation).
+Project documentation is in the [documentation folder](/documentation).
