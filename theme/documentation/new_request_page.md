@@ -1,4 +1,4 @@
-# New Request Page
+# New request page
 
 This page allows the user to create a ticket with Zendesk. It will display either a create ticket form or an error message based on the user's permission.
 
@@ -11,13 +11,13 @@ This page allows the user to create a ticket with Zendesk. It will display eithe
 - A user can be a **Watcher** for an organization. In this role, the user belongs to a particular organization but cannot create tickets for that organization.
 - This role is also reflected as a tag on the user's organization. IT will follow the format of `osb_${orgID}_watcher`.
 
-## Create Ticket Form
-### Organization Drop-down
+## Create ticket form
+### Organization drop-down
 - For a user belonging to a single organization, there will not be an **Organization** drop-down.
 - For a user belonging to multiple organizations, there will be an **Organization** drop-down. All organizations which this user belongs to, will show up in the drop-down minus the organization that the user is a **Watcher** for.
 - The user selection for **Organization** will determine what values are populated in the **Product** drop-down.
 
-### Product Drop-down
+### Product drop-down
 - The **Product** drop-down values are determined by the provisioned products that the selected **Organization** have.
 - The provisioned product options appear on each of the user's organization tags. The values of these tags are cross referenced with the **Organization** selected and the total available **Products** to determine what should be displayed for the user.
 - To help reduce the length of the drop-down options, _Nested Fields_ are used to group different versions of a product in a single option.
