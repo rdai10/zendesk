@@ -162,7 +162,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						{{dc 'products'}}
 					</h5>
 
-					<div class="header-menu" id="products"></div>
+					<div class="header-menu" id="megaMenuProducts"></div>
 				</div>
 
 				<div class="list-item">
@@ -170,7 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						{{dc 'resources'}}
 					</h5>
 
-					<div class="header-menu" id="resources"></div>
+					<div class="header-menu" id="megaMenuResources"></div>
 				</div>
 
 				<div class="list-item">
@@ -178,7 +178,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						{{dc 'security'}}
 					</h5>
 
-					<div class="header-menu" id="security"></div>
+					<div class="header-menu" id="megaMenuSecurity"></div>
 				</div>
 
 				<div class="list-item">
@@ -186,7 +186,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						{{dc 'support'}}
 					</h5>
 
-					<div class="header-menu" id="support"></div>
+					<div class="header-menu" id="megaMenuSupport"></div>
 				</div>
 			</div>
 
@@ -316,7 +316,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				locale: locale,
 				name: '{{dc 'products'}}'
 			},
-			document.getElementById('products')
+			document.getElementById('megaMenuProducts')
 		);
 
 		Liferay.render(
@@ -331,7 +331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				locale: locale,
 				name: '{{dc 'resources'}}'
 			},
-			document.getElementById('resources')
+			document.getElementById('megaMenuResources')
 		);
 
 		Liferay.render(
@@ -346,7 +346,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				locale: locale,
 				name: '{{dc 'security'}}'
 			},
-			document.getElementById('security')
+			document.getElementById('megaMenuSecurity')
 		);
 
 		Liferay.render(
@@ -361,7 +361,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				locale: locale,
 				name: '{{dc 'support'}}'
 			},
-			document.getElementById('support')
+			document.getElementById('megaMenuSupport')
 		);
 
 		const onNavScroll = function() {
