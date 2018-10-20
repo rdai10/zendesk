@@ -97,6 +97,7 @@
 	"version": "1.2.1",
 	"dependencies": {
 		"classnames": "^2.2.6",
-		"es6-promise": "^4.2.5"
+		"es6-promise": "^4.2.5",
+		"liferay-help-center-megamenu": "github:rdai10/liferay-help-center-megamenu#v1.0.2"
 	}
 }

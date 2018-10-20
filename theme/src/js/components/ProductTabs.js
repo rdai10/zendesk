@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import getCN from 'classnames';
 
-import CardMenu from './CardMenu';
+import {CardMenu} from 'liferay-help-center-megamenu';
 
 const TabContent = ({content}) => (
 	<section aria-labelledby={content.ariaLabelledby} class="col-md-9" role="tabpanel">

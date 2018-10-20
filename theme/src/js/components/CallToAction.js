@@ -1,7 +1,7 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
-import Card from './Card';
+import {Card} from 'liferay-help-center-megamenu';
 
 const ActionItem = ({config}) => {
 	const {disclaimer, iconId, link, message, name} = config;
