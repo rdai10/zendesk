@@ -1,4 +1,29 @@
 .homepage {
+	.announcements {
+		.announcement-body {
+			margin-bottom: 3.5rem;
+			margin-left: 3rem;
+		}
+
+		.announcement-heading {
+			align-items: center;
+			display: flex;
+		}
+
+		.announcement-icon {
+			height: 2rem;
+			margin-right: 1rem;
+			width: 2rem;
+		}
+
+		.cta {
+			border: 1px solid $color-border;
+			border-radius: $border-radius;
+			box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
+			padding: $padding-medium $padding-default $padding-default;
+		}
+	}
+
 	.banner {
 		align-items: center;
 		display: flex;

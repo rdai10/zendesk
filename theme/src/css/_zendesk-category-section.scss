@@ -1,7 +1,6 @@
+.announcement-body,
 .categories-main,
 .section-content {
-	margin-bottom: 6rem;
-
 	.article-list {
 		margin: 0;
 		padding-left: 0;
@@ -23,6 +22,11 @@
 		color: $color-default;
 		margin-bottom: $margin-default;
 	}
+}
+
+.categories-main,
+.section-content {
+	margin-bottom: 6rem;
 }
 
 .products-landing,
