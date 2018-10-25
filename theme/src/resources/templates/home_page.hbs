@@ -228,64 +228,39 @@
 			{{dc 'mega_menu-announcements'}}
 		</h2>
 
-		<div class="col-md-5">
-			<h3 class="announcement-heading">
-				<svg class="announcement-icon lexicon-icon-announcement">
-					<use xlink:href="#announcement" />
-				</svg>
+		<div class="col-md-10 row">
+			{{#each categories}}
+				{{#is name 'Announcements'}}
+					{{#each sections}}
+						<div class="announcement col-md-6">
+							<h3 class="announcement-heading">
+								<svg class="announcement-icon lexicon-icon-announcement">
+									<use xlink:href="#announcement" />
+								</svg>
+								{{name}}
+							</h3>
 
-				{{dc 'homepage-product_releases'}}
-			</h3>
+							<div class="announcement-body secondary-font">
+								<ul class="article-list">
+									{{#each articles}}
+										<li class="article-list-item">
+											<a class="secondary-text-color" href={{url}}>{{title}}</a>
+										</li>
+									{{/each}}
+								</ul>
 
-			<div class="announcement-body">
-				<ul class="article-list">
-					<li class="article-list-item">
-						title
-					</li>
+								<a class="secondary-font semibold view-all" href="{{url}}">
+									{{dc 'view_all'}}
 
-					<li class="article-list-item">
-						title
-					</li>
-				</ul>
-
-				<a class="secondary-font semibold view-all" href="/hc/sections/360002099871">
-					{{dc 'view_all'}}
-
-					<svg class="lexicon-icon lexicon-icon-arrow-right" >
-						<use xlink:href="#arrow-right" />
-					</svg>
-				</a>
-			</div>
-		</div>
-
-		<div class="col-md-5">
-			<h3 class="announcement-heading">
-				<svg class="announcement-icon lexicon-icon-announcement">
-					<use xlink:href="#announcement" />
-				</svg>
-
-				{{dc 'homepage-fix_pack_updates'}}
-			</h3>
-
-			<div class="announcement-body">
-				<ul class="article-list">
-					<li class="article-list-item">
-						title
-					</li>
-
-					<li class="article-list-item">
-						title
-					</li>
-				</ul>
-
-				<a class="secondary-font semibold view-all" href="/hc/sections/360002102352">
-					{{dc 'view_all'}}
-
-					<svg class="lexicon-icon lexicon-icon-arrow-right" >
-						<use xlink:href="#arrow-right" />
-					</svg>
-				</a>
-			</div>
+									<svg class="lexicon-icon lexicon-icon-arrow-right" >
+										<use xlink:href="#arrow-right" />
+									</svg>
+								</a>
+							</div>
+						</div>
+					{{/each}}
+				{{/is}}
+			{{/each}}
 		</div>
 
 		<div class="col-md-2">
@@ -298,66 +273,6 @@
 
 				<a class="btn btn-outline-primary btn-sm" href="https://discover.liferay.com/subscribe-to-liferay-notifications ">
 					{{dc 'homepage-announcement_subscribe_button'}}
-				</a>
-			</div>
-		</div>
-
-		<div class="col-md-5">
-			<h3 class="announcement-heading">
-				<svg class="announcement-icon lexicon-icon-announcement">
-					<use xlink:href="#announcement" />
-				</svg>
-
-				{{dc 'homepage-security_updates'}}
-			</h3>
-
-			<div class="announcement-body">
-				<ul class="article-list">
-					<li class="article-list-item">
-						title
-					</li>
-
-					<li class="article-list-item">
-						title
-					</li>
-				</ul>
-
-				<a class="secondary-font semibold view-all" href="/hc/sections/360002099951">
-					{{dc 'view_all'}}
-
-					<svg class="lexicon-icon lexicon-icon-arrow-right" >
-						<use xlink:href="#arrow-right" />
-					</svg>
-				</a>
-			</div>
-		</div>
-
-		<div class="col-md-5">
-			<h3 class="announcement-heading">
-				<svg class="announcement-icon lexicon-icon-announcement">
-					<use xlink:href="#announcement" />
-				</svg>
-
-				{{dc 'section-system_update'}}
-			</h3>
-
-			<div class="announcement-body">
-				<ul class="article-list">
-					<li class="article-list-item">
-						title
-					</li>
-
-					<li class="article-list-item">
-						title
-					</li>
-				</ul>
-
-				<a class="secondary-font semibold view-all" href="/hc/sections/360002100031">
-					{{dc 'view_all'}}
-
-					<svg class="lexicon-icon lexicon-icon-arrow-right" >
-						<use xlink:href="#arrow-right" />
-					</svg>
 				</a>
 			</div>
 		</div>
