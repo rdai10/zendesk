@@ -1,47 +1,118 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
+import Card from './Card';
+
+const ActionItem = ({config}) => {
+	const {disclaimer, iconId, link, message, name} = config;
+
+	return (
+		<div class="action-item row">
+			<div class="col-4 name">
+				{iconId && (
+					<svg class="lexicon-icon lexicon-icon-ticket icon">
+						<use xlinkHref={iconId} />
+					</svg>
+				)}
+
+				<a class="link semibold" href={link}>
+					{name}
+				</a>
+			</div>
+
+			<div class="col-7 message">
+				{message && (
+					<div class="secondary-text secondary-text-color">
+						{message}
+					</div>
+				)}
+
+				{disclaimer && (
+					<div class="disclaimer small">
+						<svg className="lexicon-icon lexicon-icon-info-circle">
+							<use xlinkHref="#info-circle" />
+						</svg>
+						{' '}
+						{disclaimer}
+					</div>
+				)}
+			</div>
+		</div>
+	);
+};
+
+ActionItem.propTypes = {
+	config: PropTypes.shape(
+		{
+			disclaimer: PropTypes.string,
+			iconId: PropTypes.string,
+			link: PropTypes.string.isRequired,
+			message: PropTypes.string,
+			name: PropTypes.string.isRequired,
+		}
+	)
+}
+
 const CallToAction = (
 	{
+		actionItems,
 		className,
-		iconId,
-		link,
-		message,
-		name,
+		promotions,
 		sectionHeading
 	}
 ) => (
 	<div className={className}>
 		{sectionHeading && (
-			<h2>
+			<h2 class="col-md-12">
 				{sectionHeading}
 			</h2>
 		)}
 
-		{iconId && (
-			<svg class="lexicon-icon lexicon-icon-ticket icon">
-				<use xlinkHref={iconId} />
-			</svg>
+		{actionItems && (
+			<div class="col-md-7">
+				{actionItems.map(
+					actionItem => <ActionItem config={actionItem} />
+				)}
+			</div>
 		)}
 
-		<a class="link" href={link}>
-			{name}
-		</a>
-
-		{message && (
-			<span class="message secondary-text secondary-text-color">
-				{message}
-			</span>
+		{promotions && (
+			<div class="col-md-5">
+				{promotions.map(
+					promotion => (
+						<Card
+							description={promotion.description} 
+							name={promotion.name}
+							type="product" 
+						/>
+					)
+				)}
+			</div>
 		)}
 	</div>
 );
 
 CallToAction.propTypes = {
+	actionItems: PropTypes.arrayOf(
+		PropTypes.shape(
+			{
+				disclaimer: PropTypes.string,
+				iconId: PropTypes.string,
+				link: PropTypes.string.isRequired,
+				message: PropTypes.string,
+				name: PropTypes.string.isRequired,
+			}
+		)
+	).isRequired,
 	className: PropTypes.string,
-	iconId: PropTypes.string,
-	link: PropTypes.string.isRequired,
-	message: PropTypes.string,
-	name: PropTypes.string.isRequired,
+	promotions: PropTypes.arrayOf(
+		PropTypes.shape(
+			{
+				description: PropTypes.string,
+				name: PropTypes.string
+			}
+		)
+	),
 	sectionHeading: PropTypes.string
 };
 

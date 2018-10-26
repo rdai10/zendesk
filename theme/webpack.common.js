@@ -87,6 +87,7 @@ module.exports = {
 			]),
 			purifyOptions: {
 				whitelist: [
+					'action-item',
 					'*alert*',
 					'*article-content*',
 					'button-unstyled',

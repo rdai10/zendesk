@@ -7,19 +7,28 @@
 		margin-bottom: $margin-default;
 	}
 
-	.icon {
-		height: 2rem;
-		width: 2rem;
-	}
+	.action-item {
+		padding-bottom: $padding-default;
+		padding-top: 1.25rem;
 
-	.link {
-		padding-left: $padding-medium;
-		padding-right: $padding-default;
-	}
+		.disclaimer {
+			padding-top: $padding-medium;
+		}
 
-	@include media-breakpoint-down(xs) {
-		.message {
-			display: block;
+		.icon {
+			background-color: $color-grey;
+			border-radius: 50%;
+			height: 2rem;
+			width: 2rem;
+		}
+	
+		.link {
+			padding-left: $padding-medium;
+			padding-right: $padding-default;
+		}
+		
+		.name {
+			display: flex;
 		}
 	}
 }
