@@ -48,10 +48,10 @@ ActionItem.propTypes = {
 			iconId: PropTypes.string,
 			link: PropTypes.string.isRequired,
 			message: PropTypes.string,
-			name: PropTypes.string.isRequired,
+			name: PropTypes.string.isRequired
 		}
 	)
-}
+};
 
 const CallToAction = (
 	{
@@ -81,9 +81,9 @@ const CallToAction = (
 				{promotions.map(
 					promotion => (
 						<Card
-							description={promotion.description} 
+							description={promotion.description}
 							name={promotion.name}
-							type="product" 
+							type="product"
 						/>
 					)
 				)}
@@ -100,7 +100,7 @@ CallToAction.propTypes = {
 				iconId: PropTypes.string,
 				link: PropTypes.string.isRequired,
 				message: PropTypes.string,
-				name: PropTypes.string.isRequired,
+				name: PropTypes.string.isRequired
 			}
 		)
 	).isRequired,

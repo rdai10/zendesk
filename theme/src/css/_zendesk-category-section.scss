@@ -59,14 +59,14 @@
 		&:focus {
 			box-shadow: none;
 		}
-		
+
 		&:hover,
 		&.active {
 			background-color: $color-active;
 			border-radius: $border-radius;
 			color: $color-primary-focus;
 		}
-		
+
 		&.active {
 			font-weight: $font-weight-semi-bold;
 		}
