@@ -36,6 +36,44 @@ module.exports = merge(
 					},
 					{
 						dir: 'dist/templates',
+						files: ['header.hbs'],
+						rules: [
+							{
+								replace: '360000872531',
+								search: '360000874031'
+							},
+							{
+								replace: '360000813091',
+								search: '360000860332'
+							},
+							{
+								replace: '360000867932',
+								search: '360000874051'
+							},
+							{
+								replace: '360000867952',
+								search: '360000869132'
+							},
+							{
+								replace: '360000872551',
+								search: '360000869112'
+							},
+							{
+								replace: '360000867972',
+								search: '360000869172'
+							},
+							{
+								replace: '360000872571',
+								search: '360000869192'
+							},
+							{
+								replace: '360000867992',
+								search: '360000869212'
+							}
+						]
+					},
+					{
+						dir: 'dist/templates',
 						files: ['home_page.hbs'],
 						rules: [
 							{
