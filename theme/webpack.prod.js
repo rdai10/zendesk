@@ -73,6 +73,10 @@ module.exports = merge(
 							{
 								replace: 'customer.liferay.com/project-details',
 								search: 'customer-upgrade.liferay.com/web/customer'
+							},
+							{
+								replace: '360017784212',
+								search: '360019000351'
 							}
 						]
 					},
