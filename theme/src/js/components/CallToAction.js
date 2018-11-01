@@ -84,6 +84,7 @@ const CallToAction = (
 							description={promotion.description}
 							name={promotion.name}
 							type="product"
+							url={promotion.url}
 						/>
 					)
 				)}
@@ -109,7 +110,8 @@ CallToAction.propTypes = {
 		PropTypes.shape(
 			{
 				description: PropTypes.string,
-				name: PropTypes.string
+				name: PropTypes.string,
+				url: PropTypes.string
 			}
 		)
 	),
