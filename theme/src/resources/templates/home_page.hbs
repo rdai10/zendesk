@@ -223,7 +223,7 @@
 		</div>
 	</section>
 
-	<section class="announcements row">
+	<section class="announcements d-none row">
 		<h2 class="col-md-12">
 			{{dc 'mega_menu-announcements'}}
 		</h2>
@@ -294,9 +294,16 @@
 	};
 
 	$(function() {
+
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasCreateTicketPermission(userTags)) {
+			const announcementsSection = document.querySelector('.announcements');
+
+			if (announcementsSection) {
+				announcementsSection.classList.remove('d-none');
+			}
+
 			Liferay.render(
 				Liferay.CallToAction,
 				{
