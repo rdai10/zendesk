@@ -157,7 +157,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 
 			<div class="col-5 header-content header-menu-list secondary-text-color">
-				<div class="list-item">
+				<div class="d-none list-item">
 					<h5>
 						{{dc 'products'}}
 					</h5>
@@ -165,7 +165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="header-menu" id="megaMenuProducts"></div>
 				</div>
 
-				<div class="list-item">
+				<div class="d-none list-item">
 					<h5>
 						{{dc 'resources'}}
 					</h5>
@@ -173,7 +173,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="header-menu" id="megaMenuResources"></div>
 				</div>
 
-				<div class="list-item">
+				<div class="d-none list-item">
 					<h5>
 						{{dc 'security'}}
 					</h5>
@@ -181,7 +181,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="header-menu" id="megaMenuSecurity"></div>
 				</div>
 
-				<div class="list-item">
+				<div class="d-none list-item">
 					<h5>
 						{{dc 'support'}}
 					</h5>
@@ -209,151 +209,163 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 	$(function() {
-		const accountLinks = {
-			className: 'account-links',
-			configs: [
-				{
-					name: '{{t 'my_requests'}}',
-					url: '{{page_path 'requests'}}'
-				},
-				{
-					name: '{{dc 'project_details'}}',
-					url: 'https://customer-upgrade.liferay.com/web/customer'
-				}
-			]
-		};
+		const userTags = window.HelpCenter.user.tags;
 
-		const highlightedLinks = {
-			className: 'highlighted',
-			configs: [
-				{
-						name: '{{dc 'submit_a_ticket'}}',
-						svgId: '#ticket',
-						url: '{{page_path 'new_request'}}'
-				},
-				{
-					name: '{{dc 'mega_menu-contact_us'}}',
-					svgId: '#contact',
-					url: '/hc/articles/360019000351'
-				}
-			]
-		};
+		if (Liferay.hasCreateTicketPermission(userTags)) {
+			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
 
-		const locale = {
-			currentLocale: {
-				name: {{json_stringify current_locale.name}},
-				url: {{json_stringify current_locale.url}}
-			},
-			alternativeLocales: [
-				{{#each alternative_locales}}
+			menuItems.forEach(
+				function(item) {
+					item.classList.remove('d-none');
+				}
+			)
+
+			const accountLinks = {
+				className: 'account-links',
+				configs: [
 					{
-						name: {{json_stringify name}},
-						url: {{json_stringify url}}
+						name: '{{t 'my_requests'}}',
+						url: '{{page_path 'requests'}}'
 					},
-				{{/each}}
-			]
-		};
+					{
+						name: '{{dc 'project_details'}}',
+						url: 'https://customer-upgrade.liferay.com/web/customer'
+					}
+				]
+			};
 
-		Liferay.render(
-			Liferay.MegaMenu,
-			{
-				accountLinks: accountLinks,
-				cardMenuItems: {
-					className: 'card-menu',
-					configs: [
-						{
-							name: '{{dc 'mega_menu-dxp_7_1'}}',
-							svgId: '#dxp-logo',
-							url: '/hc/categories/360000874031'
-						},
-						{
-							name: '{{dc 'mega_menu-dxp_cloud'}}',
-							svgId: '#dxp-cloud-logo',
-							url: '/hc/categories/360000860332'
-						},
-						{
-							name: '{{dc 'mega_menu-dxp_7_0'}}',
-							svgId: '#7-0-logo',
-							url: '/hc/categories/360000874051'
-						},
-						{
-							name: '{{dc 'mega_menu-commerce'}}',
-							svgId: '#commerce-logo',
-							url: '/hc/categories/360000869132'
-						},
-						{
-							name: '{{dc 'mega_menu-analytics_cloud'}}',
-							svgId: '#analytics-cloud-logo',
-							url: '/hc/categories/360000869112'
-						},
-						{
-							name: '{{dc 'mega_menu-portal_6_2'}}',
-							svgId: '#6-2-logo',
-							url: '/hc/categories/360000869172'
-						},
-						{
-							name: '{{dc 'mega_menu-portal_6_1'}}',
-							svgId: '#6-1-logo',
-							url: '/hc/categories/360000869192'
-						},
-						{
-							name: '{{dc 'mega_menu-portal_6_0'}}',
-							svgId: '#6-0-logo',
-							url: '/hc/categories/360000869212'
-						}
-					]
-				},
-				highlightedLinks: highlightedLinks,
-				locale: locale,
-				name: '{{dc 'products'}}'
-			},
-			document.getElementById('megaMenuProducts')
-		);
+			const highlightedLinks = {
+				className: 'highlighted',
+				configs: [
+					{
+							name: '{{dc 'submit_a_ticket'}}',
+							svgId: '#ticket',
+							url: '{{page_path 'new_request'}}'
+					},
+					{
+						name: '{{dc 'mega_menu-contact_us'}}',
+						svgId: '#contact',
+						url: '/hc/articles/360019000351'
+					}
+				]
+			};
 
-		Liferay.render(
-			Liferay.MegaMenu,
-			{
-				accountLinks: accountLinks,
-				cardMenuItems: {
-					className: 'card-menu',
-					configs: []
+			const locale = {
+				currentLocale: {
+					name: {{json_stringify current_locale.name}},
+					url: {{json_stringify current_locale.url}}
 				},
-				highlightedLinks: highlightedLinks,
-				locale: locale,
-				name: '{{dc 'resources'}}'
-			},
-			document.getElementById('megaMenuResources')
-		);
+				alternativeLocales: [
+					{{#each alternative_locales}}
+						{
+							name: {{json_stringify name}},
+							url: {{json_stringify url}}
+						},
+					{{/each}}
+				]
+			};
 
-		Liferay.render(
-			Liferay.MegaMenu,
-			{
-				accountLinks: accountLinks,
-				cardMenuItems: {
-					className: 'card-menu',
-					configs: []
+			Liferay.render(
+				Liferay.MegaMenu,
+				{
+					accountLinks: accountLinks,
+					cardMenuItems: {
+						className: 'card-menu',
+						configs: [
+							{
+								name: '{{dc 'mega_menu-dxp_7_1'}}',
+								svgId: '#dxp-logo',
+								url: '/hc/categories/360000874031'
+							},
+							{
+								name: '{{dc 'mega_menu-dxp_cloud'}}',
+								svgId: '#dxp-cloud-logo',
+								url: '/hc/categories/360000860332'
+							},
+							{
+								name: '{{dc 'mega_menu-dxp_7_0'}}',
+								svgId: '#7-0-logo',
+								url: '/hc/categories/360000874051'
+							},
+							{
+								name: '{{dc 'mega_menu-commerce'}}',
+								svgId: '#commerce-logo',
+								url: '/hc/categories/360000869132'
+							},
+							{
+								name: '{{dc 'mega_menu-analytics_cloud'}}',
+								svgId: '#analytics-cloud-logo',
+								url: '/hc/categories/360000869112'
+							},
+							{
+								name: '{{dc 'mega_menu-portal_6_2'}}',
+								svgId: '#6-2-logo',
+								url: '/hc/categories/360000869172'
+							},
+							{
+								name: '{{dc 'mega_menu-portal_6_1'}}',
+								svgId: '#6-1-logo',
+								url: '/hc/categories/360000869192'
+							},
+							{
+								name: '{{dc 'mega_menu-portal_6_0'}}',
+								svgId: '#6-0-logo',
+								url: '/hc/categories/360000869212'
+							}
+						]
+					},
+					highlightedLinks: highlightedLinks,
+					locale: locale,
+					name: '{{dc 'products'}}'
 				},
-				highlightedLinks: highlightedLinks,
-				locale: locale,
-				name: '{{dc 'security'}}'
-			},
-			document.getElementById('megaMenuSecurity')
-		);
+				document.getElementById('megaMenuProducts')
+			);
 
-		Liferay.render(
-			Liferay.MegaMenu,
-			{
-				accountLinks: accountLinks,
-				cardMenuItems: {
-					className: 'card-menu',
-					configs: []
+			Liferay.render(
+				Liferay.MegaMenu,
+				{
+					accountLinks: accountLinks,
+					cardMenuItems: {
+						className: 'card-menu',
+						configs: []
+					},
+					highlightedLinks: highlightedLinks,
+					locale: locale,
+					name: '{{dc 'resources'}}'
 				},
-				highlightedLinks: highlightedLinks,
-				locale: locale,
-				name: '{{dc 'support'}}'
-			},
-			document.getElementById('megaMenuSupport')
-		);
+				document.getElementById('megaMenuResources')
+			);
+
+			Liferay.render(
+				Liferay.MegaMenu,
+				{
+					accountLinks: accountLinks,
+					cardMenuItems: {
+						className: 'card-menu',
+						configs: []
+					},
+					highlightedLinks: highlightedLinks,
+					locale: locale,
+					name: '{{dc 'security'}}'
+				},
+				document.getElementById('megaMenuSecurity')
+			);
+
+			Liferay.render(
+				Liferay.MegaMenu,
+				{
+					accountLinks: accountLinks,
+					cardMenuItems: {
+						className: 'card-menu',
+						configs: []
+					},
+					highlightedLinks: highlightedLinks,
+					locale: locale,
+					name: '{{dc 'support'}}'
+				},
+				document.getElementById('megaMenuSupport')
+			);
+		}
 
 		const onNavScroll = function() {
 			const header = document.getElementById('header');
