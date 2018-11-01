@@ -223,29 +223,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			]
 		};
 
-		const highlightedLinksConfigs = [
-			{
-				name: '{{dc 'contact_us'}}',
-				svgId: '#contact',
-				url: ''
-			}
-		];
-
-		const userTags = window.HelpCenter.user.tags;
-
-		if (Liferay.hasCreateTicketPermission(userTags)) {
-			highlightedLinksConfigs.unshift(
-				{
-					name: '{{dc 'submit_a_ticket'}}',
-					svgId: '#ticket',
-					url: '{{page_path 'new_request'}}'
-				}
-			);
-		}
-
 		const highlightedLinks = {
 			className: 'highlighted',
-			configs: highlightedLinksConfigs
+			configs: [
+				{
+						name: '{{dc 'submit_a_ticket'}}',
+						svgId: '#ticket',
+						url: '{{page_path 'new_request'}}'
+				},
+				{
+					name: '{{dc 'contact_us'}}',
+					svgId: '#contact',
+					url: ''
+				}
+			]
 		};
 
 		const locale = {
