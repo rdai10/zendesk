@@ -69,6 +69,10 @@ module.exports = merge(
 							{
 								replace: '360000867992',
 								search: '360000869212'
+							},
+							{
+								replace: 'customer.liferay.com/project-details',
+								search: 'customer-upgrade.liferay.com/web/customer'
 							}
 						]
 					},
@@ -125,6 +129,16 @@ module.exports = merge(
 							{
 								replace: '360006076471',
 								search: '360006041192'
+							}
+						]
+					},
+					{
+						dir: 'dist/templates',
+						files: ['request_page.hbs'],
+						rules: [
+							{
+								replace: 'https://customer.liferay.com/project-details',
+								search: 'https://customer-upgrade.liferay.com/web/customer/project-details'
 							}
 						]
 					},
