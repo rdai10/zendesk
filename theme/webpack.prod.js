@@ -72,7 +72,7 @@ module.exports = merge(
 							},
 							{
 								replace: 'customer.liferay.com/project-details',
-								search: 'customer-upgrade.liferay.com/web/customer'
+								search: 'customer-uat.liferay.com/web/customer'
 							},
 							{
 								replace: '360017784212',
@@ -186,7 +186,7 @@ module.exports = merge(
 						rules: [
 							{
 								replace: 'https://customer.liferay.com/project-details',
-								search: 'https://customer-upgrade.liferay.com/web/customer/project-details'
+								search: 'https://customer-uat.liferay.com/web/customer/project-details'
 							}
 						]
 					},
