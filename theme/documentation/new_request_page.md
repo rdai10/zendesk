@@ -5,11 +5,11 @@ This page allows the user to create a ticket with Zendesk. It will display eithe
 ## Permissions
 - Only a user with the **Customer** or **Partner** roles are allowed to see the create ticket form.
 - The permitted roles must belong to at least **one** organization to see the create ticket form.
-- The user's role will be reflected as a tag on the user's organization. It will follow the format of `osb_360081104051_customer` or `osb_${orgID}_${roleType}`
+- The user's role will be reflected as a tag on the user's organization. It will follow the format of `osb_customer` or `osb_partner`.
 
 ### Watcher role
 - A user can be a **Watcher** for an organization. In this role, the user belongs to a particular organization but cannot create tickets for that organization.
-- This role is also reflected as a tag on the user's organization. IT will follow the format of `osb_${orgID}_watcher`.
+- This role is also reflected as a tag on the user's organization. It will follow the format of `osb_${orgID}_watcher`.
 
 ## Create ticket form
 ### Organization drop-down
