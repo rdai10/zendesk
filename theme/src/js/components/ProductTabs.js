@@ -5,10 +5,10 @@ import getCN from 'classnames';
 
 import {CardMenu} from 'liferay-help-center-megamenu';
 
-const TabContent = ({content}) => (
-	<section aria-labelledby={content.ariaLabelledby} class="col-md-9" role="tabpanel">
+const TabContent = ({cardMenuClassName, content, layoutClassName}) => (
+	<section aria-labelledby={content.ariaLabelledby} class={layoutClassName} role="tabpanel">
 		<CardMenu
-			className="products-landing-tab-content"
+			className={cardMenuClassName}
 			configs={content.configs}
 			type="product"
 		/>
@@ -16,6 +16,7 @@ const TabContent = ({content}) => (
 );
 
 TabContent.PropTypes = {
+	cardMenuClassName: PropTypes.string,
 	content: PropTypes.objectOf(
 		PropTypes.shape(
 			{
@@ -23,7 +24,8 @@ TabContent.PropTypes = {
 				configs: PropTypes.object
 			}
 		)
-	)
+	),
+	layoutClassName: PropTypes.string
 };
 
 class TabList extends preact.Component {
@@ -35,14 +37,8 @@ class TabList extends preact.Component {
 
 		this.state = {
 			activeId: 'tab-0',
-			content: {}
+			content: this.setContent('tab-0')
 		};
-
-		this.setState(
-			{
-				content: this.setContent('tab-0')
-			}
-		);
 	}
 
 	handleClick(event) {
@@ -63,33 +59,45 @@ class TabList extends preact.Component {
 	render({tabList}, {activeId, content}) {
 		return (
 			<div class="row">
-				<div class="col-md-3 products-landing-tablist">
-					<ul class="nav nav-stacked" role="tablist">
-						{tabList.map(
-							tab => {
-								const className = getCN(
-									{
-										'active': tab.id === activeId
-									},
-									'btn',
-									'btn-unstyled',
-									'nav-link'
-								);
+				{tabList && (
+					<div class="col-md-3 products-landing-tablist">
+						<ul class="nav nav-stacked" role="tablist">
+							{tabList.map(
+								tab => {
+									const className = getCN(
+										{
+											'active': tab.id === activeId
+										},
+										'btn',
+										'btn-unstyled',
+										'nav-link'
+									);
 
-								return (
-									<li class="nav-item" key={tab.id} role="presentation">
-										<button class={className} id={tab.id} onClick={this.handleClick} role="tab" type="button">
-											{tab.name}
-										</button>
-									</li>
-								);
-							}
-						)}
-					</ul>
-				</div>
+									return (
+										<li class="nav-item" key={tab.id} role="presentation">
+											<button class={className} id={tab.id} onClick={this.handleClick} role="tab" type="button">
+												{tab.name}
+											</button>
+										</li>
+									);
+								}
+							)}
+						</ul>
+					</div>
+				)}
 
 				<TabContent
+					cardMenuClassName={
+						tabList ? 
+							'products-landing-tab-content' :
+							'products-landing'
+						}
 					content={content}
+					layoutClassName={
+						tabList ? 
+							'col-md-9' :
+							'col-md-12'
+						}
 				/>
 			</div>
 		);
@@ -110,7 +118,7 @@ TabList.PropTypes = {
 	).isRequired
 };
 
-const ProductTabs = ({productItems}) => {
+const ProductTabs = ({kbPermission, productItems}) => {
 	const contentArray = productItems.map(
 		(item, index) => (
 			{
@@ -120,14 +128,18 @@ const ProductTabs = ({productItems}) => {
 		)
 	);
 
-	const tabList = productItems.map(
-		(item, index) => (
-			{
-				id: `tab-${index}`,
-				name: item.name
-			}
-		)
-	);
+	let tabList;
+
+	if (productItems.some(item => item.name)) {
+		tabList = productItems.map(
+			(item, index) => (
+				{
+					id: `tab-${index}`,
+					name: item.name
+				}
+			)
+		);
+	}
 
 	return <TabList
 		contentArray={contentArray}
@@ -136,6 +148,7 @@ const ProductTabs = ({productItems}) => {
 };
 
 ProductTabs.PropTypes = {
+	kbPermission: PropTypes.bool.isRequired,
 	productItems: PropTypes.arrayOf(
 		PropTypes.objectOf(
 			PropTypes.shape(

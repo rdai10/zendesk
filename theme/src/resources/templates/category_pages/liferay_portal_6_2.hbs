@@ -25,6 +25,213 @@
 </div>
 
 <script>
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		Liferay.render(
+			Liferay.ProductTabs,
+			{
+				kbPermission: Liferay.hasKBPermission(userTags),
+				productItems: [
+					{
+						name: '{{dc '7_1-top_resources_tab'}}',
+						configs: [
+							{
+								description: '{{dc '6_2-latest_release_card_description'}}',
+								name: '{{dc '7_1-latest_release_card'}}',
+								svgId: '#dxp-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-compatibility_matrix_card_description'}}',
+								name: '{{dc 'mega_menu-compatibility_matrix'}}',
+								svgId: '#dxp-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-fix_packs_card_description'}}',
+								name: '{{dc '7_1-fix_packs_card'}}',
+								svgId: '#dxp-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-activation_keys_card_description'}}',
+								name: '{{dc 'mega_menu-activation_keys'}}',
+								svgId: '#dxp-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-security_advisories_card_description'}}',
+								name: '{{dc 'mega_menu-security_advisories'}}',
+								svgId: '#dxp-logo',
+								url: ''
+							}
+						]
+					},
+					{
+						name: '{{dc 'mega_menu-downloads'}}',
+						configs: [
+							{
+								description: '{{dc '6_2-latest_release_card_description'}}',
+								name: '{{dc '7_1-latest_release_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-fix_packs_card_description'}}',
+								name: '{{dc '7_1-fix_packs_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-service_packs_archive_card_description'}}',
+								name: '{{dc '7_1-service_packs_archive_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-security_advisories_card_description'}}',
+								name: '{{dc 'mega_menu-security_advisories'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-patching_tool_card_description'}}',
+								name: '{{dc '7_1-patching_tool_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							}
+						]
+					},
+					{
+						name: '{{dc 'mega_menu-documentation'}}',
+						configs: [
+							{
+								description: '{{dc '7_1-help_topics_card_description'}}',
+								name: '{{dc '7_1-help_topics_card'}}',
+								svgId: '#6-2-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-admin_guide_card_description'}}',
+								name: '{{dc '7_1-admin_guide_card'}}',
+								svgId: '#6-2-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-deployment_guide_card_description'}}',
+								name: '{{dc '7_1-deployment_guide_card'}}',
+								svgId: '#6-2-logo',
+								url: ''
+							},
+							{
+								description: `{{dc '7_1-developer_tutorials_card_description'}}`,
+								name: '{{dc '7_1-developer_tutorials_card'}}',
+								svgId: '#6-2-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-developer_reference_card_description'}}',
+								name: '{{dc '7_1-developer_reference_card'}}',
+								svgId: '#6-2-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-admin_reference_card_description'}}',
+								name: '{{dc '7_1-admin_reference_card'}}',
+								svgId: '#6-2-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-whitepapers_card_description'}}',
+								name: '{{dc '7_1-whitepapers_card'}}',
+								svgId: '#6-2-logo',
+								url: ''
+							}
+						]
+					},
+					{
+						name: '{{dc '7_1-support_information_tab'}}',
+						configs: [
+							{
+								description: '{{dc '6_2-compatibility_matrix_card_description'}}',
+								name: '{{dc 'mega_menu-compatibility_matrix'}}',
+								svgId: '#6-0-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-service_life_card_description'}}',
+								name: '{{dc 'mega_menu-service_life'}}',
+								svgId: '#6-0-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-fix_delivery_method_card_description'}}',
+								name: '{{dc 'mega_menu-fix_delivery_method'}}',
+								svgId: '#6-0-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-support_coverage_card_description'}}',
+								name: '{{dc 'mega_menu-support_coverage'}}',
+								svgId: '#6-0-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-support_faqs_card_description'}}',
+								name: '{{dc 'mega_menu-support_faqs'}}',
+								svgId: '#6-0-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-service_levels_card_description'}}',
+								name: '{{dc 'mega_menu-service_levels'}}',
+								svgId: '#6-0-logo',
+								url: ''
+							}
+						]
+					},
+					{
+						name: '{{dc '6_2-other_products_tab'}}',
+						configs: [
+							{
+								description: '{{dc '6_2-liferay_connected_services_card_description'}}',
+								name: '{{dc '7_1-liferay_connected_services_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-developer_studio_card_description'}}',
+								name: '{{dc '6_2-developer_studio_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '7_1-liferay_sync_card_description'}}',
+								name: '{{dc '7_1-liferay_sync_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-liferay_faces_card_description'}}',
+								name: '{{dc '6_2-liferay_faces_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							},
+							{
+								description: '{{dc '6_2-mobile_sdk_card_description'}}',
+								name: '{{dc '6_2-mobile_sdk_card'}}',
+								svgId: '#6-1-logo',
+								url: ''
+							}
+						]
+					}
+				]
+			},
+			document.getElementById('portal62ProductPage')
+		);
+	});
+
 	Liferay.render(
 		Liferay.Alert,
 		{
@@ -32,207 +239,5 @@
 			leadingText: '{{dc '6_2-info'}}'
 		},
 		document.getElementById('portal62ProductPageAlert')
-	);
-
-	Liferay.render(
-		Liferay.ProductTabs,
-		{
-			productItems: [
-				{
-					name: '{{dc '7_1-top_resources_tab'}}',
-					configs: [
-						{
-							description: '{{dc '6_2-latest_release_card_description'}}',
-							name: '{{dc '7_1-latest_release_card'}}',
-							svgId: '#dxp-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-compatibility_matrix_card_description'}}',
-							name: '{{dc 'mega_menu-compatibility_matrix'}}',
-							svgId: '#dxp-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-fix_packs_card_description'}}',
-							name: '{{dc '7_1-fix_packs_card'}}',
-							svgId: '#dxp-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-activation_keys_card_description'}}',
-							name: '{{dc 'mega_menu-activation_keys'}}',
-							svgId: '#dxp-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-security_advisories_card_description'}}',
-							name: '{{dc 'mega_menu-security_advisories'}}',
-							svgId: '#dxp-logo',
-							url: ''
-						}
-					]
-				},
-				{
-					name: '{{dc 'mega_menu-downloads'}}',
-					configs: [
-						{
-							description: '{{dc '6_2-latest_release_card_description'}}',
-							name: '{{dc '7_1-latest_release_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-fix_packs_card_description'}}',
-							name: '{{dc '7_1-fix_packs_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-service_packs_archive_card_description'}}',
-							name: '{{dc '7_1-service_packs_archive_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-security_advisories_card_description'}}',
-							name: '{{dc 'mega_menu-security_advisories'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-patching_tool_card_description'}}',
-							name: '{{dc '7_1-patching_tool_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						}
-					]
-				},
-				{
-					name: '{{dc 'mega_menu-documentation'}}',
-					configs: [
-						{
-							description: '{{dc '7_1-help_topics_card_description'}}',
-							name: '{{dc '7_1-help_topics_card'}}',
-							svgId: '#6-2-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-admin_guide_card_description'}}',
-							name: '{{dc '7_1-admin_guide_card'}}',
-							svgId: '#6-2-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-deployment_guide_card_description'}}',
-							name: '{{dc '7_1-deployment_guide_card'}}',
-							svgId: '#6-2-logo',
-							url: ''
-						},
-						{
-							description: `{{dc '7_1-developer_tutorials_card_description'}}`,
-							name: '{{dc '7_1-developer_tutorials_card'}}',
-							svgId: '#6-2-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-developer_reference_card_description'}}',
-							name: '{{dc '7_1-developer_reference_card'}}',
-							svgId: '#6-2-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-admin_reference_card_description'}}',
-							name: '{{dc '7_1-admin_reference_card'}}',
-							svgId: '#6-2-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-whitepapers_card_description'}}',
-							name: '{{dc '7_1-whitepapers_card'}}',
-							svgId: '#6-2-logo',
-							url: ''
-						}
-					]
-				},
-				{
-					name: '{{dc '7_1-support_information_tab'}}',
-					configs: [
-						{
-							description: '{{dc '6_2-compatibility_matrix_card_description'}}',
-							name: '{{dc 'mega_menu-compatibility_matrix'}}',
-							svgId: '#6-0-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-service_life_card_description'}}',
-							name: '{{dc 'mega_menu-service_life'}}',
-							svgId: '#6-0-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-fix_delivery_method_card_description'}}',
-							name: '{{dc 'mega_menu-fix_delivery_method'}}',
-							svgId: '#6-0-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-support_coverage_card_description'}}',
-							name: '{{dc 'mega_menu-support_coverage'}}',
-							svgId: '#6-0-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-support_faqs_card_description'}}',
-							name: '{{dc 'mega_menu-support_faqs'}}',
-							svgId: '#6-0-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-service_levels_card_description'}}',
-							name: '{{dc 'mega_menu-service_levels'}}',
-							svgId: '#6-0-logo',
-							url: ''
-						}
-					]
-				},
-				{
-					name: '{{dc '6_2-other_products_tab'}}',
-					configs: [
-						{
-							description: '{{dc '6_2-liferay_connected_services_card_description'}}',
-							name: '{{dc '7_1-liferay_connected_services_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-developer_studio_card_description'}}',
-							name: '{{dc '6_2-developer_studio_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '7_1-liferay_sync_card_description'}}',
-							name: '{{dc '7_1-liferay_sync_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-liferay_faces_card_description'}}',
-							name: '{{dc '6_2-liferay_faces_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						},
-						{
-							description: '{{dc '6_2-mobile_sdk_card_description'}}',
-							name: '{{dc '6_2-mobile_sdk_card'}}',
-							svgId: '#6-1-logo',
-							url: ''
-						}
-					]
-				}
-			]
-		},
-		document.getElementById('portal62ProductPage')
 	);
 </script>

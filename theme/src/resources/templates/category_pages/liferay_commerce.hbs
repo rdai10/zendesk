@@ -23,49 +23,57 @@
 </div>
 
 <script>
-	Liferay.render(
-		Liferay.CardMenu,
-		{
-			className: 'products-landing',
-			configs: [
-				{
-					description: '{{dc 'commerce-latest_release_card_description'}}',
-					name: '{{dc '7_1-latest_release_card'}}',
-					svgId: '#dxp-logo',
-					url: ''
-				},
-				{
-					description: '{{dc 'commerce-compatibility_matrix_card_description'}}',
-					name: '{{dc 'mega_menu-compatibility_matrix'}}',
-					svgId: '#dxp-logo',
-					url: ''
-				},
-				{
-					description: 'Reference existing known issues for Liferay Analytics Cloud.',
-					name: '{{dc 'known_issues'}}',
-					svgId: '#known-issues',
-					url: ''
-				},
-				{
-					description: '{{dc 'commerce-service_life_description'}}',
-					name: '{{dc 'mega_menu-service_life'}}',
-					svgId: '#dxp-logo',
-					url: ''
-				},
-				{
-					description: '{{dc 'commerce-admin_guide_card_description'}}',
-					name: '{{dc '7_1-admin_guide_card'}}',
-					svgId: '#admin-guide',
-					url: ''
-				},
-  			{
-					description: '{{dc 'commerce-support_coverage_card_description'}}',
-					name: '{{dc 'mega_menu-support_coverage'}}',
-					svgId: '#support-coverage',
-					url: ''
-				}
-			]
-		},
-		document.getElementById('commerceProductPage')
-	);
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		Liferay.render(
+			Liferay.ProductTabs,
+			{
+				kbPermission: Liferay.hasKBPermission(userTags),
+				productItems: [
+					{
+						configs: [
+							{
+								description: '{{dc 'commerce-latest_release_card_description'}}',
+								name: '{{dc '7_1-latest_release_card'}}',
+								svgId: '#dxp-logo',
+								url: ''
+							},
+							{
+								description: '{{dc 'commerce-compatibility_matrix_card_description'}}',
+								name: '{{dc 'mega_menu-compatibility_matrix'}}',
+								svgId: '#dxp-logo',
+								url: ''
+							},
+							{
+								description: 'Reference existing known issues for Liferay Analytics Cloud.',
+								name: '{{dc 'known_issues'}}',
+								svgId: '#known-issues',
+								url: ''
+							},
+							{
+								description: '{{dc 'commerce-service_life_description'}}',
+								name: '{{dc 'mega_menu-service_life'}}',
+								svgId: '#dxp-logo',
+								url: ''
+							},
+							{
+								description: '{{dc 'commerce-admin_guide_card_description'}}',
+								name: '{{dc '7_1-admin_guide_card'}}',
+								svgId: '#admin-guide',
+								url: ''
+							},
+							{
+								description: '{{dc 'commerce-support_coverage_card_description'}}',
+								name: '{{dc 'mega_menu-support_coverage'}}',
+								svgId: '#support-coverage',
+								url: ''
+							}
+						]
+					}
+				]
+			},
+			document.getElementById('commerceProductPage')
+		);
+	});
 </script>

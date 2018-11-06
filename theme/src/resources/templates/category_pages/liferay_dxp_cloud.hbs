@@ -23,25 +23,33 @@
 </div>
 
 <script>
-	Liferay.render(
-		Liferay.CardMenu,
-		{
-			className: 'products-landing',
-			configs: [
-				{
-					description: '{{dc 'dxp_cloud-admin_guide_card_description'}}',
-					name: '{{dc '7_1-admin_guide_card'}}',
-					svgId: '#admin-guide',
-					url: ''
-				},
-				{
-					description: '{{dc 'dxp_cloud-support_coverage_card_description'}}',
-					name: '{{dc 'mega_menu-support_coverage'}}',
-					svgId: '#support-coverage',
-					url: ''
-				}
-			]
-		},
-		document.getElementById('dxpCloudProductPage')
-	);
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		Liferay.render(
+			Liferay.ProductTabs,
+			{
+				kbPermission: Liferay.hasKBPermission(userTags),
+				productItems: [
+					{
+						configs: [
+							{
+								description: '{{dc 'dxp_cloud-documentation_card_description'}}',
+								name: '{{dc 'mega_menu-documentation'}}',
+								svgId: '#getting-started',
+								url: '/hc/categories/360000813091'
+							},
+							{
+								description: '{{dc 'dxp_cloud-_knowledge_base_card_description'}}',
+								name: '{{dc 'mega_menu-knowledge_base'}}',
+								svgId: '#feature-requests',
+								url: '/hc/categories/360001132872'
+							}
+						]
+					}
+				]
+			},
+			document.getElementById('dxpCloudProductPage')
+		);
+	});
 </script>

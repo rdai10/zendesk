@@ -8,12 +8,13 @@ import './vendor/zendesk-watcher-customization';
 export {default as render} from './helpers/preact-renderer';
 export {
 	hasCreateTicketPermission,
+	hasKBPermission,
 	hasWatcherPermission
 } from './helpers/user-permissions';
 
 export {default as throttle} from 'lodash.throttle';
 
-export {CardMenu, MegaMenu} from 'liferay-help-center-megamenu';
+export {MegaMenu} from 'liferay-help-center-megamenu';
 
 export {default as Alert} from './components/Alert';
 export {default as CallToAction} from './components/CallToAction';
