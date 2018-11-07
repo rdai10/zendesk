@@ -86,19 +86,17 @@ class TabList extends preact.Component {
 					</div>
 				)}
 
-				<TabContent
-					cardMenuClassName={
-						tabList ? 
-							'products-landing-tab-content' :
-							'products-landing'
+				{content && (
+					<TabContent
+						cardMenuClassName={
+							tabList
+								? 'products-landing-tab-content'
+								: 'products-landing'
 						}
-					content={content}
-					layoutClassName={
-						tabList ? 
-							'col-md-9' :
-							'col-md-12'
-						}
-				/>
+						content={content}
+						layoutClassName={tabList ? 'col-md-9' : 'col-md-12'}
+					/>
+				)}
 			</div>
 		);
 	}
@@ -118,8 +116,15 @@ TabList.PropTypes = {
 	).isRequired
 };
 
-const ProductTabs = ({kbPermission, productItems}) => {
-	const contentArray = productItems.map(
+const ProductTabs = ({fullAccess, productItems}) => {
+	const displayData = productItems.filter(
+		item =>
+			fullAccess
+				? item.tabAccess === 'kb' || item.tabAccess === 'all'
+				: item.tabAccess === 'nonkb' || item.tabAccess === 'all'
+	);
+
+	const contentArray = displayData.map(
 		(item, index) => (
 			{
 				ariaLabelledby: `tab-${index}`,
@@ -130,8 +135,8 @@ const ProductTabs = ({kbPermission, productItems}) => {
 
 	let tabList;
 
-	if (productItems.some(item => item.name)) {
-		tabList = productItems.map(
+	if (displayData.some(item => item.name)) {
+		tabList = displayData.map(
 			(item, index) => (
 				{
 					id: `tab-${index}`,
@@ -148,13 +153,14 @@ const ProductTabs = ({kbPermission, productItems}) => {
 };
 
 ProductTabs.PropTypes = {
-	kbPermission: PropTypes.bool.isRequired,
+	fullAccess: PropTypes.bool.isRequired,
 	productItems: PropTypes.arrayOf(
 		PropTypes.objectOf(
 			PropTypes.shape(
 				{
 					configs: PropTypes.object,
-					name: PropTypes.string
+					name: PropTypes.string,
+					tabAccess: PropTypes.oneOf(['all', 'kb', 'nonkb'])
 				}
 			)
 		)

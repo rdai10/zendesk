@@ -29,7 +29,7 @@
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
-				kbPermission: Liferay.hasKBPermission(userTags),
+				fullAccess: Liferay.hasKBPermission(userTags),
 				productItems: [
 					{
 						configs: [
@@ -45,7 +45,8 @@
 								svgId: '#feature-requests',
 								url: '/hc/categories/360001132872'
 							}
-						]
+						],
+						tabAccess: 'all'
 					}
 				]
 			},

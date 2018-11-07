@@ -31,7 +31,7 @@
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
-				kbPermission: Liferay.hasKBPermission(userTags),
+				fullAccess: Liferay.hasKBPermission(userTags),
 				productItems: [
 					{
 						name: '{{dc '7_1-top_resources_tab'}}',
@@ -66,7 +66,8 @@
 								svgId: '#dxp-logo',
 								url: ''
 							}
-						]
+						],
+						tabAccess: 'kb'
 					},
 					{
 						name: '{{dc 'mega_menu-downloads'}}',
@@ -101,7 +102,8 @@
 								svgId: '#6-1-logo',
 								url: ''
 							}
-						]
+						],
+						tabAccess: 'kb'
 					},
 					{
 						name: '{{dc 'mega_menu-documentation'}}',
@@ -148,7 +150,8 @@
 								svgId: '#6-2-logo',
 								url: ''
 							}
-						]
+						],
+						tabAccess: 'all'
 					},
 					{
 						name: '{{dc '7_1-support_information_tab'}}',
@@ -189,7 +192,8 @@
 								svgId: '#6-0-logo',
 								url: ''
 							}
-						]
+						],
+						tabAccess: 'kb'
 					},
 					{
 						name: '{{dc '6_2-other_products_tab'}}',
@@ -224,7 +228,8 @@
 								svgId: '#6-1-logo',
 								url: ''
 							}
-						]
+						],
+						tabAccess: 'kb'
 					}
 				]
 			},
