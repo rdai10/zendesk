@@ -30,7 +30,7 @@ const ActionItem = ({config}) => {
 				{disclaimer && (
 					<div class="disclaimer small">
 						<svg className="lexicon-icon lexicon-icon-info-circle">
-							<use xlinkHref="#info-circle" />
+							<use xlinkHref="#info" />
 						</svg>
 						{' '}
 						{disclaimer}
