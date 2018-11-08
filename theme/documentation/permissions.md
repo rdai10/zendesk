@@ -3,7 +3,7 @@
 Front end permissioning are determined by the user tags on the Zendesk `HelpCenter` object.
 
 ## KB Tag
-- A limited support user has access to view Knowledge Base Articles, Official Documentations, and the mega menu.
+- A limited support user has access to view Knowledge Base Articles, Official Documentations, and product landing pages.
 - This role does not allow the user to create or view tickets.
 - It is reflected as tag on the user's organization. It follows the format of `osb_kb`.
 

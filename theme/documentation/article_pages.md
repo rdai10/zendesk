@@ -1,6 +1,6 @@
 # Article pages
 
-We are using the [multiple templates](https://support.zendesk.com/hc/en-us/articles/360001948367) feature for articles.
+Liferay Help Center is using the [multiple templates](https://support.zendesk.com/hc/en-us/articles/360001948367) feature for articles.
 
 ## How this works
 When a content writer creates an article, depending on the type of that article (knowledge base article, official documentation article, or general information article). The writer can go into *article settings* > *template* in the article interface and select the template that best represents the target audience of the content.
