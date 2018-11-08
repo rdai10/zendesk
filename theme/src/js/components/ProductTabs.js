@@ -51,7 +51,7 @@ class TabList extends preact.Component {
 	}
 
 	setContent(id) {
-		return this.props.contentArray.find(
+		return this.props.allContent.find(
 			content => content.ariaLabelledby === id
 		);
 	}
@@ -103,15 +103,13 @@ class TabList extends preact.Component {
 }
 
 TabList.PropTypes = {
-	contentArray: PropTypes.array.isRequired,
+	allContent: PropTypes.array.isRequired,
 	tabList: PropTypes.arrayOf(
-		PropTypes.objectOf(
-			PropTypes.shape(
-				{
-					id: PropTypes.string,
-					name: PropTypes.string
-				}
-			)
+		PropTypes.shape(
+			{
+				id: PropTypes.string,
+				name: PropTypes.string
+			}
 		)
 	).isRequired
 };
@@ -124,7 +122,7 @@ const ProductTabs = ({fullAccess, productItems}) => {
 				: item.tabAccess === 'nonkb' || item.tabAccess === 'all'
 	);
 
-	const contentArray = displayData.map(
+	const allContent = displayData.map(
 		(item, index) => (
 			{
 				ariaLabelledby: `tab-${index}`,
@@ -147,7 +145,7 @@ const ProductTabs = ({fullAccess, productItems}) => {
 	}
 
 	return <TabList
-		contentArray={contentArray}
+		allContent={allContent}
 		tabList={tabList}
 	/>;
 };
@@ -155,14 +153,12 @@ const ProductTabs = ({fullAccess, productItems}) => {
 ProductTabs.PropTypes = {
 	fullAccess: PropTypes.bool.isRequired,
 	productItems: PropTypes.arrayOf(
-		PropTypes.objectOf(
-			PropTypes.shape(
-				{
-					configs: PropTypes.object,
-					name: PropTypes.string,
-					tabAccess: PropTypes.oneOf(['all', 'kb', 'nonkb'])
-				}
-			)
+		PropTypes.shape(
+			{
+				configs: PropTypes.object,
+				name: PropTypes.string,
+				tabAccess: PropTypes.oneOf(['all', 'kb', 'nonkb'])
+			}
 		)
 	).isRequired
 };
