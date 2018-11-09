@@ -10,7 +10,7 @@ export function hasCreateTicketPermission(userTags) {
 export function hasKBPermission(userTags) {
 	return (
 		userTags && userTags.includes('osb_kb')
-	)
+	);
 }
 
 export function hasWatcherPermission(userTags, id, callback) {

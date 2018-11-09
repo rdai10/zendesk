@@ -89,9 +89,7 @@ class TabList extends preact.Component {
 				{content && (
 					<TabContent
 						cardMenuClassName={
-							tabList
-								? 'products-landing-tab-content'
-								: 'products-landing'
+							tabList ? 'products-landing-tab-content' : 'products-landing'
 						}
 						content={content}
 						layoutClassName={tabList ? 'col-md-9' : 'col-md-12'}
@@ -117,9 +115,7 @@ TabList.PropTypes = {
 const ProductTabs = ({fullAccess, productItems}) => {
 	const displayData = productItems.filter(
 		item =>
-			fullAccess
-				? item.tabAccess === 'kb' || item.tabAccess === 'all'
-				: item.tabAccess === 'nonkb' || item.tabAccess === 'all'
+			fullAccess ? item.tabAccess === 'kb' || item.tabAccess === 'all' : item.tabAccess === 'nonkb' || item.tabAccess === 'all'
 	);
 
 	const allContent = displayData.map(
