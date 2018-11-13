@@ -33,26 +33,26 @@ class TabList extends preact.Component {
 		super(props);
 
 		this.handleClick = this.handleClick.bind(this);
-		this.setContent = this.setContent.bind(this);
+		this.getContent = this.getContent.bind(this);
 
 		this.state = {
 			activeId: 'tab-0',
-			content: this.setContent('tab-0')
+			content: this.getContent('tab-0')
 		};
+	}
+
+	getContent(id) {
+		return this.props.allContent.find(
+			content => content.ariaLabelledby === id
+		);
 	}
 
 	handleClick(event) {
 		this.setState(
 			{
 				activeId: event.target.id,
-				content: this.setContent(event.target.id)
+				content: this.getContent(event.target.id)
 			}
-		);
-	}
-
-	setContent(id) {
-		return this.props.allContent.find(
-			content => content.ariaLabelledby === id
 		);
 	}
 
