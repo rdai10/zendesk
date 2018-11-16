@@ -9,7 +9,7 @@ export function hasCreateTicketPermission(userTags) {
 
 export function hasKBPermission(userTags) {
 	return (
-		userTags && userTags.includes('osb_kb')
+		userTags && userTags.some(tag => tag === 'osb_kb')
 	);
 }
 
