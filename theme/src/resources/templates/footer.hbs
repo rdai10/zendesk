@@ -93,19 +93,15 @@
 
 		<div class="col-2 semibold">
 			{{#if alternative_locales}}
-				<div class="dropdown language-selector" aria-haspopup="true">
-					<a class="dropdown-toggle">
-						{{current_locale.name}}
-					</a>
+				<div aria-haspopup="true" class="dropdown language-selector">
+					<a class="dropdown-toggle">{{current_locale.name}}</a>
 					<span class="dropdown-menu dropdown-menu-end" role="menu">
 						{{#each alternative_locales}}
-						<a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-							{{name}}
-						</a>
+							<a dir="{{direction}}" href="{{url}}" rel="nofollow" role="menuitem">{{name}}</a>
 						{{/each}}
 					</span>
 				</div>
 			{{/if}}
-			</div>
+		</div>
 	</div>
 </footer>
