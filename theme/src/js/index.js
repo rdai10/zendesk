@@ -11,6 +11,7 @@ export {
 	hasKBPermission,
 	hasWatcherPermission
 } from './helpers/user-permissions';
+export {addLocaleParamToURI} from './helpers/locale-conversion';
 
 export {default as throttle} from 'lodash.throttle';
 

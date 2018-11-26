@@ -461,6 +461,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				}
 			);
 
+			const documentElementLang = document.documentElement.lang;
+
 			const accountLinks = {
 				className: 'account-links',
 				configs: [
@@ -470,7 +472,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					},
 					{
 						name: '{{dc 'project_details'}}',
-						url: 'https://customer-uat.liferay.com/project-details'
+						url: Liferay.addLocaleParamToURI(documentElementLang, 'https://customer-uat.liferay.com', 'project-details')
 					}
 				]
 			};
@@ -573,7 +575,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								description: '{{dc 'mega_menu-downloads_description'}}',
 								name: '{{dc 'mega_menu-downloads'}}',
 								svgId: '#downloads',
-								url: 'https://customer-uat.liferay.com/downloads'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'https://customer-uat.liferay.com', 'downloads')
 							},
 							{
 								description: '{{dc 'mega_menu-knowledge_base_description'}}',
@@ -603,7 +605,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								description: '{{dc 'mega_menu-activation_keys_description'}}',
 								name: '{{dc 'mega_menu-activation_keys'}}',
 								svgId: '#server-activation',
-								url: 'https://customer-uat.liferay.com/activation-key'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'https://customer-uat.liferay.com', 'activation-key')
 							}
 						]
 					},
