@@ -71,8 +71,8 @@ module.exports = merge(
 								search: '360000869212'
 							},
 							{
-								replace: 'customer.liferay.com/project-details',
-								search: 'customer-uat.liferay.com/group/customer'
+								replace: 'customer',
+								search: 'customer-uat'
 							},
 							{
 								replace: '360017784212',
