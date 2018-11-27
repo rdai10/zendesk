@@ -1,17 +1,23 @@
 function convertToLiferayLocale(locale) {
-	if (locale === 'en-US') {
-		return 'en_US';
-	} else if (locale === 'es') {
-		return 'es_ES';
-	} else if (locale === 'ja') {
-		return 'ja_JP';
-	} else if (locale === 'pt') {
-		return 'pt_BR';
-	} else if (locale === 'zh-CN') {
-		return 'zh_CN';
-	} else {
-		return '';
+	let retVal = '';
+
+	if (locale == 'en-US') {
+		retVal = 'en_US';
 	}
+	else if (locale == 'es') {
+		retVal = 'es_ES';
+	}
+	else if (locale == 'ja') {
+		retVal = 'ja_JP';
+	}
+	else if (locale == 'pt') {
+		retVal = 'pt_BR';
+	}
+	else if (locale == 'zh-CN') {
+		retVal = 'zh_CN';
+	}
+
+	return retVal;
 }
 
 export function addLocaleParamToURI(locale, url, urn) {
