@@ -69,4 +69,16 @@
 			}
 		}
 	}
+
+	.getting-started {
+		margin-bottom: 2.875rem;
+
+		.lexicon-icon-arrow-right {
+			margin-left: $margin-small;
+		}
+
+		.lexicon-icon-info {
+			margin-right: $margin-medium;
+		}
+	}
 }
