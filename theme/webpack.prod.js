@@ -95,7 +95,7 @@ module.exports = merge(
 								search: '360018999331'
 							},
 							{
-								replace: '360015772992',
+								replace: '360018875952',
 								search: '360018999691'
 							},
 							{
@@ -185,7 +185,7 @@ module.exports = merge(
 						files: ['request_page.hbs'],
 						rules: [
 							{
-								replace: 'https://customer.liferay.com/project-details',
+								replace: 'https://customer.liferay.com/group/customer/project-details',
 								search: 'https://customer-uat.liferay.com/group/customer/project-details'
 							}
 						]
