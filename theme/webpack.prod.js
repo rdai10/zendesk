@@ -185,7 +185,7 @@ module.exports = merge(
 						files: ['request_page.hbs'],
 						rules: [
 							{
-								replace: 'https://customer.liferay.com/group/customer/project-details',
+								replace: 'https://customer.liferay.com/project-details',
 								search: 'https://customer-uat.liferay.com/group/customer/project-details'
 							}
 						]
