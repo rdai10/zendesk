@@ -33,14 +33,6 @@
 		display: flex;
 		min-height: 26.5rem;
 
-		.display {
-			margin-bottom: $margin-medium;
-
-			@include media-breakpoint-down(sm) {
-				margin-top: 6rem;
-			}
-		}
-
 		.banner-img-container {
 			.img {
 				margin-top: 3.125rem;
@@ -50,6 +42,26 @@
 
 			@include media-breakpoint-down(sm) {
 				display: none;
+			}
+		}
+
+		.display {
+			margin-bottom: $margin-medium;
+
+			@include media-breakpoint-down(sm) {
+				margin-top: 6rem;
+			}
+		}
+
+		.getting-started {
+			margin-bottom: 2.875rem;
+
+			.lexicon-icon-arrow-right {
+				margin-left: $margin-small;
+			}
+
+			.lexicon-icon-info {
+				margin-right: $margin-medium;
 			}
 		}
 	}
@@ -67,18 +79,6 @@
 			p {
 				margin-bottom: $margin-default;
 			}
-		}
-	}
-
-	.getting-started {
-		margin-bottom: 2.875rem;
-
-		.lexicon-icon-arrow-right {
-			margin-left: $margin-small;
-		}
-
-		.lexicon-icon-info {
-			margin-right: $margin-medium;
 		}
 	}
 }
