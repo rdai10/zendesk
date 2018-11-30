@@ -88,7 +88,7 @@ module.exports = merge(
 							},
 							{
 								replace: '360016700231',
-								search: '360018999331'
+								search: /360018999331/g
 							},
 							{
 								replace: '360018875952',
