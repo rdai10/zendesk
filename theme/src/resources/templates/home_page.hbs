@@ -237,14 +237,14 @@
 		</div>
 	</section>
 
-	<section class="announcements d-none row">
-		<h2 class="col-md-12">
-			{{dc 'mega_menu-announcements'}}
-		</h2>
+	{{#each categories}}
+		{{#is name 'Announcements'}}
+			<section class="announcements d-none row">
+				<h2 class="col-md-12">
+					{{dc 'mega_menu-announcements'}}
+				</h2>
 
-		<div class="col-md-10 row">
-			{{#each categories}}
-				{{#is name 'Announcements'}}
+				<div class="col-md-10 row">
 					{{#each sections}}
 						<div class="announcement col-md-6">
 							<h3 class="announcement-heading">
@@ -287,24 +287,24 @@
 							</div>
 						</div>
 					{{/each}}
-				{{/is}}
-			{{/each}}
-		</div>
+				</div>
 
-		<div class="col-md-2">
-			<div class="cta">
-				<h5>{{dc 'homepage-announcement_subscribe_heading'}}</h5>
+				<div class="col-md-2">
+					<div class="cta">
+						<h5>{{dc 'homepage-announcement_subscribe_heading'}}</h5>
 
-				<p class="secondary-font secondary-text-color">
-					{{dc 'homepage-announcement_subscribe_description'}}
-				</p>
+						<p class="secondary-font secondary-text-color">
+							{{dc 'homepage-announcement_subscribe_description'}}
+						</p>
 
-				<a class="btn btn-outline-primary btn-sm" href="https://discover.liferay.com/subscribe-to-liferay-notifications">
-					{{dc 'homepage-announcement_subscribe_button'}}
-				</a>
-			</div>
-		</div>
-	</section>
+						<a class="btn btn-outline-primary btn-sm" href="https://discover.liferay.com/subscribe-to-liferay-notifications">
+							{{dc 'homepage-announcement_subscribe_button'}}
+						</a>
+					</div>
+				</div>
+			</section>
+		{{/is}}
+	{{/each}}
 
 	<section id="stillNeedHelp"></section>
 </div>
