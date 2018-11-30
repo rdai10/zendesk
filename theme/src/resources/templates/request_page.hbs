@@ -291,7 +291,7 @@
 					<use xlink:href="#paperclip" />
 				</svg>
 
-				<a href="https://customer-uat.liferay.com/group/customer/project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId={{request.id}}">
+				<a href="" id="largeFileAttachmentAnchor">
 					{{dc 'ticket_view-file_attachment'}}
 
 					<svg class="lexicon-icon lexicon-icon-arrow-right">
@@ -304,17 +304,25 @@
 </div>
 
 <script>
-	const toggleLargeFileAttachment = function() {
-		const largeFileAttachment = document.querySelector('.large-file-attachment');
-
-		if (largeFileAttachment){
-			largeFileAttachment.classList.toggle('d-none');
-		}
-	}
-
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
 
-		Liferay.hasWatcherPermission(userTags, {{request.id}}, toggleLargeFileAttachment)
+		const toggleLargeFileAttachment = function() {
+			const largeFileAttachment = document.querySelector('.large-file-attachment');
+
+			if (largeFileAttachment){
+				largeFileAttachment.classList.toggle('d-none');
+			}
+
+			const largeFileAttachmentLink = Liferay.addLocaleParamToURI(document.documentElement.lang, 'https://customer-uat.liferay.com', 'group/customer/project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId={{request.id}}');
+
+			const largeFileAttachmentAnchor = document.getElementById('largeFileAttachmentAnchor');
+
+			if (largeFileAttachmentAnchor){
+				largeFileAttachmentAnchor.href = largeFileAttachmentLink;
+			}
+		}
+
+		Liferay.hasWatcherPermission(userTags, {{request.id}}, toggleLargeFileAttachment);
 	});
 </script>
