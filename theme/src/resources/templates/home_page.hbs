@@ -238,7 +238,7 @@
 	</section>
 
 	{{#each categories}}
-		{{#is name 'Announcements'}}
+		{{#is id 360000892252}}
 			<section class="announcements d-none row">
 				<h2 class="col-md-12">
 					{{dc 'mega_menu-announcements'}}
@@ -249,19 +249,19 @@
 						<div class="announcement col-md-6">
 							<h3 class="announcement-heading">
 								<svg class="announcement-icon">
-									{{#is name 'Fix Pack Update'}}
+									{{#is id 360002102352}}
 										<use xlink:href="#fixpack-updates" />
 									{{/is}}
 
-									{{#is name 'Product Release'}}
+									{{#is id 360002099871}}
 										<use xlink:href="#product-release" />
 									{{/is}}
 
-									{{#is name 'Security Alert'}}
+									{{#is id 360002099951}}
 										<use xlink:href="#security-alert" />
 									{{/is}}
 
-									{{#is name 'System Update'}}
+									{{#is id 360002102472}}
 										<use xlink:href="#announcement" />
 									{{/is}}
 								</svg>
