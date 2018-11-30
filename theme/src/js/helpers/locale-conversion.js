@@ -20,6 +20,8 @@ function convertToLiferayLocale(locale) {
 	return retVal;
 }
 
-export function addLocaleParamToURI(locale, url, urn) {
-	return url + '/' + convertToLiferayLocale(locale) + '/' + urn;
+export function addLocaleParamToURI(locale, urn) {
+	const url = process.env.NODE_ENV === 'production' ? 'https://customer.liferay.com/' : 'https://customer-uat.liferay.com/';
+
+	return url + convertToLiferayLocale(locale) + '/' + urn;
 }

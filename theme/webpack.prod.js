@@ -71,10 +71,6 @@ module.exports = merge(
 								search: '360000869212'
 							},
 							{
-								replace: 'customer',
-								search: 'customer-uat'
-							},
-							{
 								replace: '360017784212',
 								search: '360019000351'
 							},
@@ -177,16 +173,6 @@ module.exports = merge(
 							{
 								replace: '360006076471',
 								search: '360006041192'
-							}
-						]
-					},
-					{
-						dir: 'dist/templates',
-						files: ['request_page.hbs'],
-						rules: [
-							{
-								replace: 'https://customer.liferay.com/project-details',
-								search: 'https://customer-uat.liferay.com/group/customer/project-details'
 							}
 						]
 					},
