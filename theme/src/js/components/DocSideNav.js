@@ -44,9 +44,30 @@ class ArticlesList extends preact.Component {
 		apiHelpers.getArticlesBySectionId(id, locale)
 			.then(
 				({data}) => {
+					/* Check if number of articles returned exceed pagination limit of 30 items */
+
+					if (data.count > 30) {
+						apiHelpers.getArticlesByPerPageCount(id, locale, data.count)
+							.then(
+								({data}) => {
+									this.setState(
+										{
+											items: data.articles
+										}
+									);
+								}
+							)
+					}
+					else {
+						this.setState(
+							{
+								items: data.articles
+							}
+						);
+					}
+
 					this.setState(
 						{
-							items: data.articles,
 							loading: false
 						}
 					);

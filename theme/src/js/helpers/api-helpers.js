@@ -8,6 +8,12 @@ const httpRequest = axios.create(
 	}
 );
 
+export function getArticlesByPerPageCount(id, locale, count) {
+	return httpRequest.get(
+		'help_center/' + locale + '/sections/' + id + '/articles.json?per_page=' + count
+	);
+}
+
 export function getArticlesBySectionId(id, locale) {
 	return httpRequest.get(
 		'help_center/' + locale + '/sections/' + id + '/articles.json'
