@@ -10,28 +10,26 @@ const httpRequest = axios.create(
 
 export function getArticlesByPerPageCount(id, locale, count) {
 	return httpRequest.get(
-		'help_center/' + locale + '/sections/' + id + '/articles.json?per_page=' + count
+		`help_center/${locale}/sections/${id}/articles.json?per_page=${count}`
 	);
 }
 
 export function getArticlesBySectionId(id, locale) {
 	return httpRequest.get(
-		'help_center/' + locale + '/sections/' + id + '/articles.json'
+		`help_center/${locale}/sections/${id}/articles.json`
 	);
 }
 
 export function getRequestById(id) {
-	return httpRequest.get('requests/' + id);
+	return httpRequest.get(`requests/${id}`);
 }
 
 export function getSectionBySectionId(id, locale) {
-	return httpRequest.get(
-		'help_center/' + locale + '/sections/' + id + '.json'
-	);
+	return httpRequest.get(`help_center/${locale}/sections/${id}.json`);
 }
 
 export function getSectionsByCategoryId(id, locale) {
 	return httpRequest.get(
-		'help_center/' + locale + '/categories/' + id + '/sections.json'
+		`help_center/${locale}/categories/${id}/sections.json`
 	);
 }
