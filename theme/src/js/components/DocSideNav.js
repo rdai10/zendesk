@@ -44,6 +44,7 @@ class ArticlesList extends preact.Component {
 		apiHelpers.getArticlesBySectionId(id, locale)
 			.then(
 				({data}) => {
+
 					/* Check if number of articles returned exceed pagination limit of 30 items per page */
 
 					if (data.count > 30) {
@@ -56,7 +57,7 @@ class ArticlesList extends preact.Component {
 										}
 									);
 								}
-							)
+							);
 					}
 					else {
 						this.setState(
@@ -97,7 +98,7 @@ class ArticlesList extends preact.Component {
 							item => {
 								const className = getCN(
 									{
-										'active': item.id === parseInt(currentArticleId)
+										'active': item.id === parseInt(currentArticleId, 10)
 									},
 									'nav-item'
 								);
@@ -134,7 +135,7 @@ class DocSideNav extends preact.Component {
 		this.handleClick = this.handleClick.bind(this);
 
 		this.state = {
-			expandedItemId: parseInt(this.props.sectionId),
+			expandedItemId: parseInt(this.props.sectionId, 10),
 			items: [],
 			loading: true
 		};
@@ -189,7 +190,7 @@ class DocSideNav extends preact.Component {
 	handleClick(event) {
 		this.setState(
 			{
-				expandedItemId: parseInt(event.target.id)
+				expandedItemId: parseInt(event.target.id, 10)
 			}
 		);
 	}
