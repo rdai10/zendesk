@@ -117,6 +117,12 @@
 		color: $color-body;
 	}
 
+	.active > a {
+		border-left: 2.5px solid $color-primary-focus;
+		color: $color-primary-focus;
+		font-weight: $font-weight-semi-bold;
+	}
+
 	.nav-item {
 		&:first-child {
 			margin-top: $margin-small;
@@ -168,12 +174,6 @@
 
 				&:last-child {
 					margin-bottom: 0;
-				}
-
-				&.active > a {
-					border-left: 2.5px solid $color-primary-focus;
-					color: $color-primary-focus;
-					font-weight: $font-weight-semi-bold;
 				}
 
 				> a {
