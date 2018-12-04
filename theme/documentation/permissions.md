@@ -3,18 +3,18 @@
 Front end permissions are determined by the user tags on the Zendesk `HelpCenter` object.
 
 ## KB Tag
-- A limited support user, an employee, a customer, a partner, or a watcher will have the KB tag.
-- The KB tag will allow access to view Knowledge Base Articles, Official Documentation, product landing pages, the mega menu, announcements, and CTAs (calls to actions) through this tag.
-- Trial users will not have the KB tag.
-- This role does not allow the user to create or view tickets.
-- It is reflected as tag on the user's organization. It follows the format of `osb_kb`.
+- A limited support user, an employee, a customer, a partner, or a watcher, will have the **KB** tag.
+- The **KB** tag will allow users access to view Knowledge Base Articles, Official Documentation, product landing pages, the mega menu, announcements, and CTAs (calls to actions).
+- Trial users will not have the **KB** tag.
+- Users with the **KB** tag are not allowed to create or view tickets.
+- The **KB** tag is reflected as a tag on the user's organization; it follows the format of `osb_kb`.
 
 ## Customer/Partner Tag
-- Users with either the **Customer** or **Partner** role have permissions to create tickets. They can view and create tickets for the organization in which they are a customer or partner of. (For more details, see the *[new request page documentation](./new_request_page.md)*)
-- Either of these two tags will allow user access to Official Documentation.
-- The  **Customer** or **Partner** role will be reflected as a tag on the user's organization. It follows the format of `osb_customer` or `osb_partner`.
+- Users with either the **Customer** or **Partner** role, have permissions to create tickets. They can view and create tickets for the organization in which they are a customer or partner. (For more details, see the *[new request page documentation](./new_request_page.md)*)
+- Either, the **Customer** or **Partner** tag, will allow users access to Official Documentation.
+- The **Customer** or **Partner** role will be reflected as a tag on the user's organization; it follows the format of `osb_customer` or `osb_partner`.
 
 ## Watcher Tag
 - A user can be a **Watcher** for an organization without being a **Customer** or a **Partner**.
-- In this role, the user belongs to a particular organization but cannot create tickets for that organization.
-- This role is reflected as a tag on the user's organization. It follows the format of `osb_${orgID}_watcher`.
+- Users with the **Watcher** role belong to a particular organization, but are not allowed to create tickets for that organization.
+- The **Watcher** role is reflected as a tag on the user's organization; it follows the format of `osb_${orgID}_watcher`.
