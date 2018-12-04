@@ -451,7 +451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
 
-		if (Liferay.hasCreateTicketPermission(userTags)) {
+		if (Liferay.hasKBPermission(userTags)) {
 			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
 
 			Array.prototype.forEach.call(

@@ -324,7 +324,7 @@
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
 
-		if (Liferay.hasCreateTicketPermission(userTags)) {
+		if (Liferay.hasKBPermission(userTags)) {
 			const announcementsSection = document.querySelector('.announcements');
 
 			if (announcementsSection) {

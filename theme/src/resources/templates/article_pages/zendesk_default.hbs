@@ -70,7 +70,7 @@
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
 
-		if (Liferay.hasCreateTicketPermission(userTags)) {
+		if (Liferay.hasKBPermission(userTags)) {
 			Liferay.render(
 				Liferay.CallToAction,
 				{
