@@ -115,6 +115,7 @@
 
 	a {
 		color: $color-body;
+		text-decoration: none;
 	}
 
 	.active > a {
@@ -162,10 +163,6 @@
 	.sidenav-tree {
 		max-height: 75vh;
 		overflow: auto;
-
-		a {
-			text-decoration: none;
-		}
 
 		.nav-nested {
 			.nav > li {
