@@ -81,7 +81,7 @@ function assignOrgs(orgs) {
 		) {
 			$('.request_organization_id a.nesty-input').text(key);
 			$('#request_organization_id option').each(function(option) {
-				if ($(this).val() === key) {
+				if ($(this).val() === value) {
 					$(this).attr('selected', true);
 				} else {
 					$(this).attr('selected', false);
