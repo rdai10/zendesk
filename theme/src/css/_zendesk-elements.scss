@@ -135,7 +135,6 @@ textarea,
 	input[type="search"] {
 		background-image: clay-icon(search, $color-primary);
 		background-repeat: no-repeat;
-		box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
 
 		&:focus {
 			background-image: clay-icon(times, $color-default);
@@ -148,6 +147,7 @@ textarea,
 	input[type="search"] {
 		background-position: right 1.5rem center;
 		background-size: 1rem;
+		box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
 		height: $input-height-lg;
 		padding-left: $padding-default;
 		padding-right: 2.8rem;
@@ -155,7 +155,7 @@ textarea,
 }
 
 .search-nav {
-	max-width: 232px;
+	width: 232px;
 
 	input[type="search"] {
 		background-position: right 0.7rem center;
