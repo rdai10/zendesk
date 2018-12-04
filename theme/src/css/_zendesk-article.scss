@@ -118,8 +118,6 @@
 	}
 
 	.nav-item {
-		padding: $padding-small $padding-default;
-
 		&:first-child {
 			margin-top: $margin-small;
 		}
@@ -142,16 +140,25 @@
 		}
 	}
 
+	.sidenav-item {
+		display: block;
+		padding: $padding-small $padding-default;
+
+		&:focus {
+			background-color: $color-grey-focus;
+		}
+
+		&:hover {
+			background-color: $color-grey-hover;
+		}
+	}
+
 	.sidenav-tree {
 		max-height: 75vh;
 		overflow: auto;
 
 		a {
 			text-decoration: none;
-		}
-
-		.nav-item {
-			padding: 0;
 		}
 
 		.nav-nested {
@@ -177,14 +184,6 @@
 		}
 
 		.sidenav-item {
-			&:focus {
-				background-color: $color-grey-focus;
-			}
-
-			&:hover {
-				background-color: $color-grey-hover;
-			}
-
 			&.btn-unstyled {
 				padding: $padding-small $padding-default;
 				width: 100%;
