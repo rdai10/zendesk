@@ -1,10 +1,11 @@
 .need-help {
 	border-top: 1px solid $color-divider;
-	padding-bottom: 7.25rem;
-	padding-top: 6rem;
+	padding-bottom: 4rem;
+	padding-top: 4rem;
 
 	h2 {
 		margin-bottom: $margin-default;
+		margin-top: 0;
 	}
 
 	.action-item {
