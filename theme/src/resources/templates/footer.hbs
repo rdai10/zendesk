@@ -1,4 +1,4 @@
-<footer class="container-fluid container-fluid-max-xl footer small">
+<footer class="container-fluid container-fluid-max-xl footer secondary-font">
 	<div class="row">
 		<div class="col-sm-3">
 			<svg alt="{{help_center.name}}" class="liferay-logo">
@@ -7,9 +7,9 @@
 		</div>
 
 		<div class="col-sm-2">
-			<h5>
+			<h4>
 				{{dc 'mega_menu-resources'}}
-			</h5>
+			</h4>
 
 			<ul class="footer-links">
 				<li>
@@ -28,9 +28,9 @@
 		</div>
 
 		<div class="col-sm-2">
-			<h5>
+			<h4>
 				{{dc 'footer-subscription'}}
-			</h5>
+			</h4>
 
 			<ul class="footer-links">
 				<li>
@@ -46,9 +46,9 @@
 		</div>
 
 		<div class="col-sm-2">
-			<h5>
+			<h4>
 				{{dc 'footer-related_sites'}}
-			</h5>
+			</h4>
 
 			<ul class="footer-links">
 				<li>
@@ -90,13 +90,17 @@
 	</div>
 
 	<div class="copyright row secondary-text-color small">
-		<div class="col-10">
+		<div class="col-9">
 			&copy; 2018 Liferay Inc. {{dc 'all_rights_reserved'}}
 		</div>
 
-		<div class="col-2 semibold">
+		<div class="col-3 language-selector semibold">
 			{{#if alternative_locales}}
 				<div aria-haspopup="true" class="dropdown language-selector">
+					<svg class="lexicon-icon lexicon-icon-language">
+						<use xlink:href="#language"></use>
+					</svg>
+
 					<a class="dropdown-toggle">{{current_locale.name}}</a>
 					<span class="dropdown-menu dropdown-menu-end" role="menu">
 						{{#each alternative_locales}}

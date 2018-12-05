@@ -7,6 +7,11 @@
 		padding-bottom: 3.5rem;
 		padding-top: $padding-default;
 		text-transform: uppercase;
+
+		.lexicon-icon-language {
+			margin-right: 0.5rem;
+			margin-top: 0.175rem;
+		}
 	}
 
 	.footer-links {
@@ -23,11 +28,7 @@
 		}
 	}
 
-	.liferay-logo {
-		height: 64px;
-		width: 118px;
-	}
-
+	.language-selector,
 	.social-links {
 		display: flex;
 		justify-content: flex-end;
@@ -54,5 +55,10 @@
 				color: $color-default;
 			}
 		}
+	}
+
+	.liferay-logo {
+		height: 64px;
+		width: 118px;
 	}
 }
