@@ -185,16 +185,6 @@
 			padding: 1.375rem $padding-md;
 			position: relative;
 
-			&:after {
-				border-bottom: 2px solid $color-primary-focus;
-				content: "";
-				left: 50%;
-				position: absolute;
-				right: 50%;
-				top: calc(100% - 2px);
-				transition: all 0.3s ease;
-			}
-
 			&:hover {
 				color: $color-body;
 				cursor: pointer;
@@ -203,12 +193,6 @@
 					box-shadow: 0 4px 15px 0 rgba(9, 16, 24, 0.03), 0 20px 40px 0 rgba(9, 16, 29, 0.09);
 					display: block;
 				}
-			}
-
-			&:hover:after {
-				left: 0;
-				right: 0;
-				transition: all 0.3s ease;
 			}
 		}
 	}
