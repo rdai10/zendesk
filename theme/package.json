@@ -17,6 +17,11 @@
 		"ie 11",
 		"not op_mini all"
 	],
+	"dependencies": {
+		"classnames": "^2.2.6",
+		"es6-promise": "^4.2.5",
+		"liferay-help-center-megamenu": "github:rdai10/liferay-help-center-megamenu#v1.1.5"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.1.2",
 		"@babel/preset-env": "^7.1.0",
@@ -85,7 +90,9 @@
 		}
 	},
 	"jest": {
-		"snapshotSerializers": ["jest-serializer-html-string"]
+		"snapshotSerializers": [
+			"jest-serializer-html-string"
+		]
 	},
 	"name": "liferay-zendesk-theme",
 	"prettier": {
@@ -102,10 +109,5 @@
 		"test": "jest",
 		"zip": "zip -r Liferay-Help-Center.zip dist -x *.zat*"
 	},
-	"version": "1.3.2",
-	"dependencies": {
-		"classnames": "^2.2.6",
-		"es6-promise": "^4.2.5",
-		"liferay-help-center-megamenu": "github:rdai10/liferay-help-center-megamenu#v1.0.4"
-	}
+	"version": "1.3.2"
 }
