@@ -263,6 +263,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<symbol id="lock" viewBox="0 0 512 512">
 		<path class="lexicon-icon-outline" d="M364.8,223.9H352v-96.1c0-127.4-192-128.1-192,0v96.1h-19.2c-28.2,0-44.8,23-44.8,51.2v153.7c0,28.2,16.6,51.2,44.8,51.2h224c28.2,0,51.2-23,51.2-51.2V275.1C416,246.9,393,223.9,364.8,223.9z M192,127.8c0-84,128-84.7,128,0v96.1H192V127.8z M288,416h-64v-96.1h64V416z"/>
 	</symbol>
+	<symbol id="menu-caret" viewBox="0 0 16 16">
+		<path d="M4.17 6.536l3.419 3.565a.568.568 0 0 0 .822 0l3.419-3.565c.364-.382.104-1.036-.412-1.036H4.582c-.516.004-.776.654-.412 1.036z" fill="currentColor"/>
+	</symbol>
 	<symbol id="mobile-sdk" viewBox="0 0 32 32">
 		<path fill="#fff" d="M0 0h32v32H0z"/>
 		<path d="M16.001 0L2.5 8v16l13.501 8L29.5 24V8" fill="#208DBF"/>
@@ -439,6 +442,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="d-none list-item">
 					<h5>
 						{{dc 'products'}}
+
+						<svg class="lexicon-icon lexicon-icon-menu-caret">
+							<use xlink:href="#menu-caret" />
+						</svg>
 					</h5>
 
 					<div class="header-menu" id="megaMenuProducts"></div>
@@ -447,6 +454,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="d-none list-item">
 					<h5>
 						{{dc 'mega_menu-resources'}}
+
+						<svg class="lexicon-icon lexicon-icon-menu-caret">
+							<use xlink:href="#menu-caret" />
+						</svg>
 					</h5>
 
 					<div class="header-menu" id="megaMenuResources"></div>
@@ -455,6 +466,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="d-none list-item">
 					<h5>
 						{{dc 'security'}}
+
+						<svg class="lexicon-icon lexicon-icon-menu-caret">
+							<use xlink:href="#menu-caret" />
+						</svg>
 					</h5>
 
 					<div class="header-menu" id="megaMenuSecurity"></div>
@@ -463,6 +478,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				<div class="d-none list-item">
 					<h5>
 						{{dc 'support'}}
+
+						<svg class="lexicon-icon lexicon-icon-menu-caret">
+							<use xlink:href="#menu-caret" />
+						</svg>
 					</h5>
 
 					<div class="header-menu" id="megaMenuSupport"></div>
@@ -499,6 +518,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				menuItems,
 				function(item) {
 					item.classList.remove('d-none');
+
+					item.addEventListener('click', function(event) {
+						item.classList.toggle('active');
+					});
 				}
 			);
 
