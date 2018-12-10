@@ -305,19 +305,19 @@
 
 <script>
 	$(function() {
-		const toggleLargeFileAttachment = function() {
+		const toggleLargeFileAttachment = function(data) {
 			const largeFileAttachmentWrapper = document.querySelector('.large-file-attachment-wrapper');
 
-			if (largeFileAttachmentWrapper) {
+			if (largeFileAttachmentWrapper && data.request.status != 'closed') {
 				largeFileAttachmentWrapper.classList.toggle('d-none');
-			}
 
-			const largeFileAttachmentLink = Liferay.addLocaleParamToURI(document.documentElement.lang, 'project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId={{request.id}}');
+				const largeFileAttachmentLink = Liferay.addLocaleParamToURI(document.documentElement.lang, 'project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId={{request.id}}');
 
-			const largeFileAttachment = document.getElementById('largeFileAttachment');
+				const largeFileAttachment = document.getElementById('largeFileAttachment');
 
-			if (largeFileAttachment) {
-				largeFileAttachment.href = largeFileAttachmentLink;
+				if (largeFileAttachment) {
+					largeFileAttachment.href = largeFileAttachmentLink;
+				}
 			}
 		}
 

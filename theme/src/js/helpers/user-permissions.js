@@ -22,7 +22,7 @@ export function hasWatcherPermission(userTags, id, callback) {
 				);
 
 				if (!orgWatcherArray.length) {
-					callback();
+					callback(data);
 				}
 			}
 		)
