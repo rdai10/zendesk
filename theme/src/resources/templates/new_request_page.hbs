@@ -272,7 +272,9 @@
 
 			$(orgSelectField).change(
 				function() {
-					productNestyInput.textContent = '-';
+					if (productNestyInput) {
+						productNestyInput.textContent = '-';
+					}
 				}
 			);
 		}
