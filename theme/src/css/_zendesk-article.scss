@@ -20,6 +20,23 @@
 }
 
 .article-content {
+	a {
+		> h2,
+		> h3,
+		> h4 {
+			color: $color-body;
+
+			&::before {
+				content: ""; 
+				display: block; 
+				padding-top: 4.5rem; 
+				margin-top: -4.5rem; 
+				pointer-events: none;
+				visibility: hidden; 
+			}
+		}
+	}
+
 	code,
 	pre {
 		border-radius: $border-radius;
