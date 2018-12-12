@@ -39,7 +39,7 @@
 				function(tag) {
 					return 'prd_' + tag;
 				}
-			)
+			);
 		}
 
 		function mapInputValuesFromField(field) {
@@ -270,13 +270,13 @@
 		if (orgSelectField) {
 			const productNestyInput = document.querySelector('.request_custom_fields_360006041192 .nesty-input');
 
-			$(orgSelectField).change(
-				function() {
-					if (productNestyInput) {
+			if (productNestyInput) {
+				$(orgSelectField).change(
+					function() {
 						productNestyInput.textContent = '-';
 					}
-				}
-			);
+				);
+			}
 		}
 	});
 </script>
