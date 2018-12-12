@@ -94,14 +94,18 @@
 			&copy; 2018 Liferay Inc. {{dc 'all_rights_reserved'}}
 		</div>
 
-		<div class="col-3 language-selector semibold">
+		<div class="col-3 footer-language-selector semibold">
 			{{#if alternative_locales}}
-				<div aria-haspopup="true" class="dropdown language-selector">
-					<svg class="lexicon-icon lexicon-icon-language">
-						<use xlink:href="#language"></use>
-					</svg>
+				<div class="dropdown language-selector">
+					{{! IE 11 does not handle classList on SVG, wrap it in an anchor to avoid issues with hc_enduser script }}
+					<a aria-haspopup="true" class="dropdown-toggle">
+						<svg class="lexicon-icon lexicon-icon-language">
+							<use xlink:href="#language"></use>
+						</svg>
 
-					<a class="dropdown-toggle">{{current_locale.name}}</a>
+						{{current_locale.name}}
+					</a>
+
 					<span class="dropdown-menu dropdown-menu-end" role="menu">
 						{{#each alternative_locales}}
 							<a dir="{{direction}}" href="{{url}}" rel="nofollow" role="menuitem">{{name}}</a>
