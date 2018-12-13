@@ -98,6 +98,7 @@ module.exports = {
 					'nesty-input',
 					'notification-dismiss',
 					'notification-notice',
+					'*panel*',
 					'products-landing',
 					'products-landing-tab-content',
 					'products-landing-tablist',
