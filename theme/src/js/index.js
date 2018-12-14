@@ -5,6 +5,8 @@ import '../css/main.scss';
 import './vendor/zendesk-default-script';
 import './vendor/zendesk-watcher-customization';
 
+import './helpers/article-accordion';
+
 export {default as render} from './helpers/preact-renderer';
 export {
 	hasCreateTicketPermission,
