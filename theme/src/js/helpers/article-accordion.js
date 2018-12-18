@@ -1,7 +1,8 @@
 $(function() {
 	const articlePanels = document.querySelectorAll('.article-body .panel');
 
-	articlePanels.forEach(
+	Array.prototype.forEach.call(
+		articlePanels,
 		panel => {
 			panel.addEventListener(
 				'click',
