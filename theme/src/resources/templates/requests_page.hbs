@@ -12,11 +12,13 @@
 	<nav class="navbar navbar-collapse-absolute navbar-expand-md navbar-underline navigation-bar navigation-bar-light">
 		<ul class="navbar-nav">
 			{{#each filters}}
-				<li {{#if selected}}aria-selected="true"{{/if}} class="nav-item">
-					<a class="{{#if selected}}active{{/if}} nav-link" {{#unless selected}}href="{{url}}"{{/unless}}>
-						<span class="navbar-text-truncate">{{name}}</span>
-					</a>
-				</li>
+				{{#isnt identifier 'ccd'}}
+					<li {{#if selected}}aria-selected="true"{{/if}} class="{{identifier}} nav-item">
+						<a class="{{#if selected}}active{{/if}} nav-link" {{#unless selected}}href="{{url}}"{{/unless}}>
+							<span class="navbar-text-truncate">{{name}}</span>
+						</a>
+					</li>
+				{{/isnt}}
 			{{/each}}
 		</ul>
 	</nav>
