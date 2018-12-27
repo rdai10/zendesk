@@ -1,7 +1,7 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
-import {getArticlesBySearchQuery, getSectionBySectionId} from '../helpers/api-helpers';
+import {getArticlesBySearch, getSectionBySectionId} from '../helpers/api-helpers';
 
 import LoadingIndicator from './LoadingIndicator';
 import Pagination from './Pagination';
@@ -96,7 +96,7 @@ class SearchResults extends preact.Component {
 		const {queryString} = this.props;
 
 		if (queryString) {
-			getArticlesBySearchQuery(queryString, ARTICLES_PER_PAGE)
+			getArticlesBySearch(queryString, ARTICLES_PER_PAGE)
 				.then(
 					({data}) => {
 						if (!data.results.length) {
@@ -134,7 +134,7 @@ class SearchResults extends preact.Component {
 	handlePaginationClick(currentPage) {
 		const {queryString} = this.props;
 
-		getArticlesBySearchQuery(queryString, ARTICLES_PER_PAGE, currentPage)
+		getArticlesBySearch(queryString, ARTICLES_PER_PAGE, currentPage)
 			.then(
 				({data}) => {
 					this.setState(

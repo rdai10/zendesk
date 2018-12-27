@@ -1,4 +1,4 @@
-export const getArticlesBySearchQuery = jest.fn(() =>
+export const getArticlesBySearch = jest.fn(() =>
 	Promise.resolve({
 		count: 1,
 		next_page: null,

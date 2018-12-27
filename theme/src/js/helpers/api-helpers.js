@@ -9,15 +9,21 @@ const httpRequest = axios.create(
 );
 
 /**
- * Returns a promise of Articles that matches the query string
+ * Returns a promise of Articles that matches the query string with an option to search by label name
  * @param {string} queryString The query string
  * @param {number} count The number of articles per page
  * @param {number} page The number of page to query
- * @returns {Promise} Promise object of articles that matches the query string whose size is determined by the count per page passed in
+ * @param {string} label The labels to search for
+ * @returns {Promise} Promise object of articles that matches the query string and/or optionally, the label name; whose size is determined by the count per page passed in
  */
-export function getArticlesBySearchQuery(queryString, count, page) {
+export function getArticlesBySearch(
+	queryString,
+	count = '',
+	page = '',
+	label = ''
+) {
 	return httpRequest.get(
-		`help_center/articles/search.json?query=${queryString}&per_page=${count}&page=${page}`
+		`help_center/articles/search.json?query=${queryString}&label_names=${label}&per_page=${count}&page=${page}`
 	);
 }
 
