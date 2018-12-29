@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 
 import getCN from 'classnames';
 
-import * as apiHelpers from '../helpers/api-helpers';
+import {
+	getArticlesBySectionId,
+	getSectionsByCategoryId,
+	getSectionBySectionId
+} from '../helpers/api-helpers';
+
 import LoadingIndicator from './LoadingIndicator';
 
 class ArticlesList extends preact.Component {
@@ -41,14 +46,14 @@ class ArticlesList extends preact.Component {
 			}
 		);
 
-		apiHelpers.getArticlesBySectionId(id, locale)
+		getArticlesBySectionId(id, locale)
 			.then(
 				({data}) => {
 
 					/* Check if number of articles returned exceed pagination limit of 30 items per page */
 
 					if (data.count > 30) {
-						apiHelpers.getArticlesByPerPageCount(id, locale, data.count)
+						getArticlesBySectionId(id, locale, data.count)
 							.then(
 								({data}) => {
 									this.setState(
@@ -144,12 +149,11 @@ class DocSideNav extends preact.Component {
 	componentDidMount() {
 		const {locale, sectionId} = this.props;
 
-		apiHelpers
-			.getSectionBySectionId(sectionId, locale)
+		getSectionBySectionId(sectionId, locale)
 			.then(
 				({data}) => {
 					return (
-						apiHelpers.getSectionsByCategoryId(
+						getSectionsByCategoryId(
 							data.section.category_id,
 							locale
 						)
