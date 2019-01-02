@@ -20,23 +20,25 @@ const ActionItem = ({config}) => {
 				</a>
 			</div>
 
-			<div class="col-7 message">
-				{message && (
-					<div class="secondary-text secondary-text-color">
-						{message}
-					</div>
-				)}
+			{(disclaimer || message) && (
+				<div class="col-7 message">
+					{message && (
+						<div class="secondary-text secondary-text-color">
+							{message}
+						</div>
+					)}
 
-				{disclaimer && (
-					<div class="disclaimer small">
-						<svg className="lexicon-icon lexicon-icon-info-circle">
-							<use xlinkHref="#info" />
-						</svg>
-						{' '}
-						{disclaimer}
-					</div>
-				)}
-			</div>
+					{disclaimer && (
+						<div class="disclaimer small">
+							<svg className="lexicon-icon lexicon-icon-info-circle">
+								<use xlinkHref="#info" />
+							</svg>
+							{' '}
+							{disclaimer}
+						</div>
+					)}
+				</div>
+			)}
 		</div>
 	);
 };
@@ -110,8 +112,8 @@ CallToAction.propTypes = {
 		PropTypes.shape(
 			{
 				description: PropTypes.string,
-				name: PropTypes.string,
-				url: PropTypes.string
+				name: PropTypes.string.isRequired,
+				url: PropTypes.string.isRequired
 			}
 		)
 	),
