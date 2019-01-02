@@ -10,9 +10,9 @@ const httpRequest = axios.create(
 
 /**
  * Returns a promise of Articles under a Section
- * @param {string} id - The section id
- * @param {string} locale - The user's current locale
- * @param {number} count - The number of Articles in the Section
+ * @param {string} id The section id
+ * @param {string} locale The user's current locale
+ * @param {number} count The number of Articles in the Section
  * @returns {Promise} Promise object of Articles under a Section whose id is passed into the function
  */
 export function getArticlesBySectionId(id, locale, count) {
@@ -25,7 +25,7 @@ export function getArticlesBySectionId(id, locale, count) {
 
 /**
  * Returns a promise of the Request object
- * @param {string} id - The request id or ticket id
+ * @param {string} id The request id or ticket id
  * @returns {Promise} Promise object of a Request or Ticket by its id
  */
 export function getRequestById(id) {
@@ -34,8 +34,8 @@ export function getRequestById(id) {
 
 /**
  * Returns a promise of the Section object
- * @param {string} id - The section id
- * @param {string} locale - The user's current locale
+ * @param {string} id The section id
+ * @param {string} locale The user's current locale
  * @returns {Promise} Promise object of a section by its id
  */
 export function getSectionBySectionId(id, locale) {
@@ -44,8 +44,8 @@ export function getSectionBySectionId(id, locale) {
 
 /**
  * Returns a promise of Sections under a Category
- * @param {string} id - The category id
- * @param {string} locale - The user's current locale
+ * @param {string} id The category id
+ * @param {string} locale The user's current locale
  * @returns {Promise} Promise object of Sections under a Category whose id is passed into the function
  */
 export function getSectionsByCategoryId(id, locale) {
