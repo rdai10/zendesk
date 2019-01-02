@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CallToAction renders correctly 1`] = `
+<div>
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 1</a>
+      </div>
+    </div>
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 2</a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CallToAction renders with a message 1`] = `
+<div>
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item</a>
+      </div>
+      <div class="col-7 message">
+        <div class="secondary-text secondary-text-color">Message</div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CallToAction renders with an icon 1`] = `
+<div>
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <svg class="lexicon-icon lexicon-icon-ticket icon">
+          <use xlink:href="#ticket"></use>
+        </svg>
+        <a class="link semibold" href="/">Action Item</a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CallToAction renders with class name 1`] = `
+<div class="class-name">
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 1</a>
+      </div>
+    </div>
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 2</a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CallToAction renders with disclaimer text 1`] = `
+<div>
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item</a>
+      </div>
+      <div class="col-7 message">
+        <div class="disclaimer small">
+          <svg class="lexicon-icon lexicon-icon-info-circle">
+            <use xlink:href="#info"></use>
+          </svg>This is a disclaimer.</div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CallToAction renders with promotions 1`] = `
+<div>
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 1</a>
+      </div>
+    </div>
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 2</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="product-card">
+      <a class="autofit-row autofit-row-center" href="/">
+        <div class="autofit-col autofit-col-expand">
+          <h4 class="title">Promotion Name
+            <svg class="lexicon-icon lexicon-icon-arrow-right">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </h4>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CallToAction renders with promotions containing description 1`] = `
+<div>
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 1</a>
+      </div>
+    </div>
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 2</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="product-card">
+      <a class="autofit-row autofit-row-center" href="/">
+        <div class="autofit-col autofit-col-expand">
+          <h4 class="title">Promotion Name
+            <svg class="lexicon-icon lexicon-icon-arrow-right">
+              <use xlink:href="#arrow-right"></use>
+            </svg>
+          </h4>
+          <p class="description">Promotion Description</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CallToAction renders with section heading 1`] = `
+<div>
+  <h2 class="col-md-12">Section Heading</h2>
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 1</a>
+      </div>
+    </div>
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 2</a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CallToAction renders with section heading 2`] = `
+<div>
+  <h2 class="col-md-12">Section Heading</h2>
+  <div class="col-md-7">
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 1</a>
+      </div>
+    </div>
+    <div class="action-item row">
+      <div class="col-4 name">
+        <a class="link semibold" href="/">Action Item 2</a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

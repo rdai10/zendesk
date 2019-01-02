@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductTabs renders correctly non KB tabs and all access tabs 1`] = `
+<div class="row">
+  <div class="col-md-3 products-landing-tablist">
+    <ul class="nav nav-stacked" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="active btn btn-unstyled nav-link" id="tab-0" role="tab"
+        type="button">Tab All</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="btn btn-unstyled nav-link" id="tab-1" role="tab" type="button">Tab Non KB</button>
+      </li>
+    </ul>
+  </div>
+  <section aria-labelledby="tab-0" class="col-md-9" role="tabpanel">
+    <div class="products-landing-tab-content">
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center" href="/">
+          <div class="autofit-col">
+            <svg class="icon">
+              <use xlink:href="#ticket"></use>
+            </svg>
+          </div>
+          <div class="autofit-col autofit-col-expand">
+            <h4 class="title">Card with All Configs
+              <svg class="lexicon-icon lexicon-icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </h4>
+            <p class="description">Card Description</p>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center" href="/">
+          <div class="autofit-col">
+            <svg class="icon">
+              <use xlink:href="#ticket"></use>
+            </svg>
+          </div>
+          <div class="autofit-col autofit-col-expand">
+            <h4 class="title">Card with No Description
+              <svg class="lexicon-icon lexicon-icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </h4>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center" href="/">
+          <div class="autofit-col autofit-col-expand">
+            <h4 class="title">Card with no Icon
+              <svg class="lexicon-icon lexicon-icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </h4>
+            <p class="description">Card Description</p>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center">
+          <div class="autofit-col">
+            <svg class="icon">
+              <use xlink:href="#ticket"></use>
+            </svg>
+          </div>
+          <div class="autofit-col autofit-col-expand">
+            <h4 class="title">Card with no URL
+              <svg class="lexicon-icon lexicon-icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </h4>
+            <p class="description">Card Description</p>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center" href="/">
+          <div class="autofit-col">
+            <svg class="icon">
+              <use xlink:href="#ticket"></use>
+            </svg>
+          </div>
+          <div class="autofit-col autofit-col-expand">
+            <p class="description">Card with No Name</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`ProductTabs renders correctly with KB tabs and all access tabs 1`] = `
+<div class="row">
+  <div class="col-md-3 products-landing-tablist">
+    <ul class="nav nav-stacked" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="active btn btn-unstyled nav-link" id="tab-0" role="tab"
+        type="button">Tab All</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="btn btn-unstyled nav-link" id="tab-1" role="tab" type="button">Tab KB</button>
+      </li>
+    </ul>
+  </div>
+  <section aria-labelledby="tab-0" class="col-md-9" role="tabpanel">
+    <div class="products-landing-tab-content">
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center" href="/">
+          <div class="autofit-col">
+            <svg class="icon">
+              <use xlink:href="#ticket"></use>
+            </svg>
+          </div>
+          <div class="autofit-col autofit-col-expand">
+            <h4 class="title">Card with All Configs
+              <svg class="lexicon-icon lexicon-icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </h4>
+            <p class="description">Card Description</p>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center" href="/">
+          <div class="autofit-col">
+            <svg class="icon">
+              <use xlink:href="#ticket"></use>
+            </svg>
+          </div>
+          <div class="autofit-col autofit-col-expand">
+            <h4 class="title">Card with No Description
+              <svg class="lexicon-icon lexicon-icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </h4>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center" href="/">
+          <div class="autofit-col autofit-col-expand">
+            <h4 class="title">Card with no Icon
+              <svg class="lexicon-icon lexicon-icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </h4>
+            <p class="description">Card Description</p>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center">
+          <div class="autofit-col">
+            <svg class="icon">
+              <use xlink:href="#ticket"></use>
+            </svg>
+          </div>
+          <div class="autofit-col autofit-col-expand">
+            <h4 class="title">Card with no URL
+              <svg class="lexicon-icon lexicon-icon-arrow-right">
+                <use xlink:href="#arrow-right"></use>
+              </svg>
+            </h4>
+            <p class="description">Card Description</p>
+          </div>
+        </a>
+      </div>
+      <div class="product-card">
+        <a class="autofit-row autofit-row-center" href="/">
+          <div class="autofit-col">
+            <svg class="icon">
+              <use xlink:href="#ticket"></use>
+            </svg>
+          </div>
+          <div class="autofit-col autofit-col-expand">
+            <p class="description">Card with No Name</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+`;
