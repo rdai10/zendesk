@@ -1,5 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Alert renders correctly 1`] = `"<div class=\\"alert alert-info\\" role=\\"alert\\"><span class=\\"alert-indicator\\"><svg class=\\"lexicon-icon lexicon-icon-info-circle\\"><use xlink:href=\\"#info-circle\\"></use></svg></span><strong class=\\"lead\\"></strong>Alert</div>"`;
+exports[`Alert renders correctly 1`] = `
+<div class="alert alert-info" role="alert">
+  <span class="alert-indicator">
+    <svg class="lexicon-icon lexicon-icon-info-circle">
+      <use xlink:href="#info-circle"></use>
+    </svg>
+  </span>
+  <strong class="lead"></strong>Alert</div>
+`;
 
-exports[`Alert renders with leading text 1`] = `"<div class=\\"alert alert-info\\" role=\\"alert\\"><span class=\\"alert-indicator\\"><svg class=\\"lexicon-icon lexicon-icon-info-circle\\"><use xlink:href=\\"#info-circle\\"></use></svg></span><strong class=\\"lead\\">Leading Text</strong>Alert</div>"`;
+exports[`Alert renders with leading text 1`] = `
+<div class="alert alert-info" role="alert">
+  <span class="alert-indicator">
+    <svg class="lexicon-icon lexicon-icon-info-circle">
+      <use xlink:href="#info-circle"></use>
+    </svg>
+  </span>
+  <strong class="lead">Leading Text</strong>Alert</div>
+`;
