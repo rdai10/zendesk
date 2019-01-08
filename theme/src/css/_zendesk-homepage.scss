@@ -24,7 +24,7 @@
 			border: 1px solid $color-border;
 			border-radius: $border-radius;
 			box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
-			padding: $padding-medium $padding-default $padding-default;
+			padding: $padding-md $padding-default $padding-default;
 		}
 	}
 
@@ -46,7 +46,7 @@
 		}
 
 		.display {
-			margin-bottom: $margin-medium;
+			margin-bottom: $margin-md;
 
 			@include media-breakpoint-down(sm) {
 				margin-top: 6rem;
@@ -57,7 +57,7 @@
 			margin-bottom: 2.875rem;
 
 			.lexicon-icon-arrow-right {
-				margin-left: $margin-small;
+				margin-left: $margin-sm;
 			}
 
 			.lexicon-icon-info {
@@ -71,7 +71,7 @@
 		margin-top: 6rem;
 
 		h2 {
-			margin-bottom: $margin-small;
+			margin-bottom: $margin-sm;
 		}
 
 		.topic {

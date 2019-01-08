@@ -41,7 +41,7 @@
 	}
 
 	.comment-body {
-		padding-top: $padding-medium;
+		padding-top: $padding-md;
 
 		p {
 			margin: 0 0 1rem;
@@ -130,7 +130,7 @@
 
 	#request_description_hint {
 		color: $secondary-text-color;
-		font-size: $small-font-size;
+		font-size: $font-size-sm;
 		margin-top: 0.25rem;
 	}
 
@@ -139,7 +139,7 @@
 		float: right;
 
 		.request-submit-comment {
-			margin-left: $margin-medium;
+			margin-left: $margin-md;
 		}
 	}
 
@@ -160,7 +160,7 @@
 	}
 
 	.autofit-padded > .autofit-col {
-		padding-top: $padding-medium;
+		padding-top: $padding-md;
 	}
 }
 
@@ -256,7 +256,7 @@
 		background-repeat: no-repeat;
 		background-size: 1em auto;
 		color: $color-info;
-		font-size: $normal-font-size;
+		font-size: $font-size-default;
 		font-weight: $font-weight-semi-bold;
 		padding-left: 2rem;
 	}

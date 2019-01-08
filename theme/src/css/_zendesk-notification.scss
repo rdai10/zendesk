@@ -18,7 +18,7 @@
 		ul {
 			list-style: none;
 			margin: 0;
-			padding-left: $padding-medium;
+			padding-left: $padding-md;
 		}
 	}
 }
@@ -41,8 +41,8 @@
 	font-family: inherit;
 	font-weight: $font-weight-normal;
 	line-height: $line-height-base;
-	margin-bottom: $margin-medium;
-	margin-top: $margin-medium;
+	margin-bottom: $margin-md;
+	margin-top: $margin-md;
 	padding: $input-padding-y $input-padding-x;
 	position: relative;
 	top: 0;

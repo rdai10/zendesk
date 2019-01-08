@@ -59,7 +59,7 @@
 				.nav-card {
 					display: inline-block;
 					margin-bottom: 0.25rem;
-					padding: 1.25rem $padding-default $padding-medium;
+					padding: 1.25rem $padding-default $padding-md;
 					width: 50%;
 
 					&:hover {
@@ -97,7 +97,7 @@
 					}
 
 					.available-languages {
-						padding: 0 $padding-medium;
+						padding: 0 $padding-md;
 
 						a {
 							color: $secondary-text-color;
@@ -112,10 +112,10 @@
 				}
 
 				.account-links {
-					padding: $padding-default $padding-medium 2.5rem;
+					padding: $padding-default $padding-md 2.5rem;
 
 					.nav-card {
-						padding: $padding-small $padding-default;
+						padding: $padding-sm $padding-default;
 
 						.title {
 							font-weight: $font-weight-normal;
@@ -124,12 +124,12 @@
 				}
 
 				.highlighted {
-					padding: 0 $padding-medium;
+					padding: 0 $padding-md;
 
 					svg {
 						background-color: $color-grey;
 						border-radius: 50%;
-						margin: $margin-medium;
+						margin: $margin-md;
 					}
 
 					.title {
@@ -141,7 +141,7 @@
 					padding: 0 $padding-default;
 
 					.nav-card {
-						padding: $padding-medium;
+						padding: $padding-md;
 
 						svg {
 							width: 0.875rem;
@@ -165,7 +165,7 @@
 		}
 
 		.list-item {
-			padding: 1.375rem $padding-medium;
+			padding: 1.375rem $padding-md;
 			position: relative;
 
 			&:after {
@@ -197,7 +197,7 @@
 	}
 
 	.user {
-		padding-left: $padding-medium;
+		padding-left: $padding-md;
 
 		.btn.dropdown-toggle {
 			padding: 0;

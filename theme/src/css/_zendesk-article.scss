@@ -51,7 +51,7 @@
 	pre {
 		background-color: $color-body;
 		color: $pre-text-color;
-		padding: $padding-medium 1.25rem;
+		padding: $padding-md 1.25rem;
 
 		code {
 			background-color: inherit;
@@ -93,7 +93,7 @@
 
 	.article-votes {
 		.article-votes-controls {
-			padding: $padding-medium 0;
+			padding: $padding-md 0;
 		}
 
 		.article-votes-question {
@@ -102,7 +102,7 @@
 		}
 
 		.article-vote {
-			margin-right: $margin-medium;
+			margin-right: $margin-md;
 			width: 6rem;
 
 			&:after {
@@ -143,11 +143,11 @@
 
 	.nav-item {
 		&:first-child {
-			margin-top: $margin-small;
+			margin-top: $margin-sm;
 		}
 
 		&:last-child {
-			margin-bottom: $margin-small;
+			margin-bottom: $margin-sm;
 		}
 	}
 
@@ -166,7 +166,7 @@
 
 	.sidenav-item {
 		display: block;
-		padding: $padding-small $padding-default;
+		padding: $padding-sm $padding-default;
 
 		&:focus {
 			background-color: $color-grey-focus;
@@ -192,14 +192,14 @@
 
 				> a {
 					display: block;
-					padding: $padding-small 0 $padding-small 2.25rem;
+					padding: $padding-sm 0 $padding-sm 2.25rem;
 				}
 			}
 		}
 
 		.sidenav-item {
 			&.btn-unstyled {
-				padding: $padding-small $padding-default;
+				padding: $padding-sm $padding-default;
 				width: 100%;
 
 				&:focus,
