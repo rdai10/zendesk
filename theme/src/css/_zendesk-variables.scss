@@ -40,16 +40,15 @@ $font-family-base: "Source Sans Pro", "Source Serif Pro", -apple-system,
 $font-weight-light: 200 !default;
 $font-weight-semi-bold: 600 !default;
 
-$font-size-default: 1rem !default; // 16px
-$font-size-md: 0.875rem !default; // 14px
-$font-size-sm: 0.75rem !default; // 12px
+$normal-font-size: 1rem !default; // 16px
+$small-font-size: 0.75rem !default; // 12px
 
 $h1-font-size: 2rem !default; // 32px
 $h2-font-size: 1.5rem !default; // 24px
-$h3-font-size: $font-size-default !default; // 16px
-$h4-font-size: $font-size-default !default; // 16px
+$h3-font-size: $normal-font-size !default; // 16px
+$h4-font-size: $normal-font-size !default; // 16px
 $h5-font-size: 0.875rem !default; // 14px
-$h6-font-size: $font-size-sm !default; // 12px
+$h6-font-size: $small-font-size !default; // 12px
 
 $line-height-sm: 1.333 !default; // 18px
 

@@ -130,7 +130,7 @@
 
 	#request_description_hint {
 		color: $secondary-text-color;
-		font-size: $font-size-sm;
+		font-size: $small-font-size;
 		margin-top: 0.25rem;
 	}
 
@@ -256,7 +256,7 @@
 		background-repeat: no-repeat;
 		background-size: 1em auto;
 		color: $color-info;
-		font-size: $font-size-default;
+		font-size: $normal-font-size;
 		font-weight: $font-weight-semi-bold;
 		padding-left: 2rem;
 	}
