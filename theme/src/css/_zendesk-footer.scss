@@ -8,6 +8,10 @@
 		padding-top: $padding-default;
 		text-transform: uppercase;
 
+		.footer-language-selector {
+			text-transform: none;
+		}
+
 		.lexicon-icon-language {
 			margin-right: 0.5rem;
 			margin-top: 0.175rem;
