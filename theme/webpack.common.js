@@ -104,6 +104,7 @@ module.exports = {
 					'products-landing-tablist',
 					'*request_description_hint*',
 					'*search-result-description*',
+					'*search-results-list*',
 					'sidenav-fallback',
 					'sidenav-tree',
 					'status-label-answered',

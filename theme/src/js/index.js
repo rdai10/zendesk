@@ -22,3 +22,4 @@ export {default as Alert} from './components/Alert';
 export {default as CallToAction} from './components/CallToAction';
 export {default as DocSideNav} from './components/DocSideNav';
 export {default as ProductTabs} from './components/ProductTabs';
+export {default as SearchResults} from './components/SearchResults';

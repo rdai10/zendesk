@@ -47,10 +47,13 @@ export function getRequestById(id) {
  * Returns a promise of the Section object
  * @param {string} id The section id
  * @param {string} locale The user's current locale
+ * @param {string} resourceNames The comma separated name(s) of the resource to be side loaded within the Promise object
  * @returns {Promise} Promise object of a section by its id
  */
-export function getSectionBySectionId(id, locale) {
-	return httpRequest.get(`help_center/${locale}/sections/${id}.json`);
+export function getSectionBySectionId(id, locale, resourceNames = '') {
+	return httpRequest.get(
+		`help_center/${locale}/sections/${id}.json?include=${resourceNames}`
+	);
 }
 
 /**

@@ -21,43 +21,33 @@
 		</header>
 
 		<section>
-			{{#if article_results}}
-				<ul class="search-results-list">
-					{{#each article_results}}
-						<li class="search-result">
-							<a class="search-result-link" href="{{url}}">{{title}}</a>
+			<div id="searchResultsBody"></div>
 
-							<h5 class="search-result-description">
-								{{text}}
-							</h5>
+			<div class="no-results" id="noResults">
+				<img alt="{{t 'oops'}}" class="img" src="{{asset 'telescope_scene.svg'}}" />
 
-							<ol class="breadcrumbs">
-								{{#each path_steps}}
-									<li title="{{name}}">
-										<a href="{{url}}">{{name}}</a>
-									</li>
-								{{/each}}
-							</ol>
-						</li>
-					{{/each}}
-				</ul>
-			{{else}}
-				<div class="no-results">
-					<img alt="{{t 'oops'}}" class="img" src="{{asset 'telescope_scene.svg'}}" />
+				<div class="no-results-msg">
+					<h4>
+						{{dc 'sorry_we_searched_far_into_outer_space_but_couldnt_find'}} "{{query}}"
+					</h4>
 
-					<div class="no-results-msg">
-						<h4>
-							{{dc 'sorry_we_searched_far_into_outer_space_but_couldnt_find'}} "{{query}}"
-						</h4>
-
-						{{#link 'help_center' class="secondary-font"}}
-							{{t 'browse_knowledge_base'}}
-						{{/link}}
-					</div>
+					{{#link 'help_center' class="secondary-font"}}
+						{{t 'browse_knowledge_base'}}
+					{{/link}}
 				</div>
-			{{/if}}
+			</div>
 		</section>
 
 		{{pagination}}
 	</div>
 </div>
+
+<script>
+	Liferay.render(
+		Liferay.SearchResults,
+		{
+			queryString: '{{query}}'
+		},
+		document.getElementById('searchResultsBody')
+	);
+</script>

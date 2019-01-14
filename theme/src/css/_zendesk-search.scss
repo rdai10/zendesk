@@ -9,8 +9,12 @@
 	}
 
 	.no-results {
-		display: flex;
+		display: none;
 		margin-bottom: 10rem;
+
+		&.show {
+			display: flex;
+		}
 
 		.no-results-msg {
 			padding-left: $padding-default;
