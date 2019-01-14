@@ -9,6 +9,17 @@ const httpRequest = axios.create(
 );
 
 /**
+ * Returns a promise of Articles that matches the query string
+ * @param {string} queryString The query string
+ * @returns {Promise} Promise object of 10 Articles per page that matches the query string
+ */
+export function getArticlesBySearchQuery(queryString) {
+	return httpRequest.get(
+		`help_center/articles/search.json?query=${queryString}&per_page=10`
+	);
+}
+
+/**
  * Returns a promise of Articles under a Section
  * @param {string} id The section id
  * @param {string} locale The user's current locale
