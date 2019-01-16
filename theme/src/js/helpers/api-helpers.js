@@ -11,11 +11,13 @@ const httpRequest = axios.create(
 /**
  * Returns a promise of Articles that matches the query string
  * @param {string} queryString The query string
- * @returns {Promise} Promise object of 10 Articles per page that matches the query string
+ * @param {number} count The number of articles per page
+ * @param {number} page The number of page to query
+ * @returns {Promise} Promise object of articles that matches the query string whose size is determined by the count per page passed in
  */
-export function getArticlesBySearchQuery(queryString) {
+export function getArticlesBySearchQuery(queryString, count, page) {
 	return httpRequest.get(
-		`help_center/articles/search.json?query=${queryString}&per_page=10`
+		`help_center/articles/search.json?query=${queryString}&per_page=${count}&page=${page}`
 	);
 }
 

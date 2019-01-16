@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import {getArticlesBySearchQuery, getSectionBySectionId} from '../helpers/api-helpers';
 
 import LoadingIndicator from './LoadingIndicator';
+import Pagination from './Pagination';
+
+const ARTICLES_PER_PAGE = 10;
 
 class SearchResultBreadCrumb extends preact.Component {
 	constructor(props) {
@@ -87,11 +90,13 @@ class SearchResults extends preact.Component {
 	constructor(props) {
 		super(props);
 
+		this.handlePaginationClick = this.handlePaginationClick.bind(this);
 		this.showNoResultsMsg = this.showNoResultsMsg.bind(this);
 
 		this.state = {
 			loading: true,
-			results: []
+			results: [],
+			totalPage: 0
 		};
 	}
 
@@ -99,7 +104,7 @@ class SearchResults extends preact.Component {
 		const {queryString} = this.props;
 
 		if (queryString) {
-			getArticlesBySearchQuery(queryString)
+			getArticlesBySearchQuery(queryString, ARTICLES_PER_PAGE)
 				.then(
 					({data}) => {
 						if (!data.results.length) {
@@ -109,7 +114,8 @@ class SearchResults extends preact.Component {
 						this.setState(
 							{
 								loading: false,
-								results: data.results
+								results: data.results,
+								totalPage: data.page_count
 							}
 						);
 					}
@@ -141,6 +147,24 @@ class SearchResults extends preact.Component {
 		}
 	}
 
+	handlePaginationClick(queryString, ARTICLES_PER_PAGE) {
+		const {currentPage} = this.state;
+
+		getArticlesBySearchQuery(queryString, ARTICLES_PER_PAGE, currentPage)
+			.then(
+				({data}) => data.results
+			)
+			.catch(
+				(err) => {
+					if (process.env.NODE_ENV === 'development') {
+						console.log(err);
+					}
+
+					return '';
+				}
+			);
+	}
+
 	showNoResultsMsg() {
 		const noResults = document.getElementById(
 			'noResults'
@@ -149,7 +173,7 @@ class SearchResults extends preact.Component {
 		noResults.classList.add('show');
 	}
 
-	render({locale}, {loading, results}) {
+	render({locale, queryString}, {loading, results, totalPage}) {
 		return (
 			<div>
 				{!loading && !!results.length && (
@@ -171,6 +195,15 @@ class SearchResults extends preact.Component {
 						)}
 					</ul>
 				)}
+
+				{!loading &&
+					totalPage > 1 && (
+						<Pagination
+							onClick={this.handlePaginationClick(queryString, ARTICLES_PER_PAGE)}
+							perPage={ARTICLES_PER_PAGE}
+							total={totalPage}
+						/>
+					)}
 
 				{loading && <LoadingIndicator />}
 			</div>

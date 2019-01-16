@@ -20,7 +20,9 @@
 	"dependencies": {
 		"classnames": "^2.2.6",
 		"es6-promise": "^4.2.5",
-		"liferay-help-center-megamenu": "github:rdai10/liferay-help-center-megamenu#v1.1.5"
+		"liferay-help-center-megamenu": "github:rdai10/liferay-help-center-megamenu#v1.1.5",
+		"lodash.throttle": "^4.1.1",
+		"lodash.times": "^4.3.2"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.1.2",
@@ -39,7 +41,6 @@
 		"glob-all": "^3.1.0",
 		"jest": "^23.6.0",
 		"jest-serializer-html-string": "^1.0.1",
-		"lodash.throttle": "^4.1.1",
 		"mini-css-extract-plugin": "^0.4.0",
 		"node-sass": "^4.9.3",
 		"optimize-css-assets-webpack-plugin": "^4.0.1",
