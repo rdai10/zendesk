@@ -12,7 +12,7 @@ class SearchResultBreadCrumb extends preact.Component {
 		this.state = {
 			breadcrumb: [],
 			loading: true
-		}
+		};
 	}
 
 	componentDidMount() {
@@ -30,14 +30,14 @@ class SearchResultBreadCrumb extends preact.Component {
 							name: data.section.name,
 							url: data.section.html_url
 						}
-					]
+					];
 
 					this.setState(
 						{
-							loading: false,
-							breadcrumb: breadcrumbData
+							breadcrumb: breadcrumbData,
+							loading: false
 						}
-					)
+					);
 				}
 			)
 			.catch(
@@ -56,7 +56,7 @@ class SearchResultBreadCrumb extends preact.Component {
 	}
 
 	render() {
-		const {loading, breadcrumb} = this.state;
+		const {breadcrumb, loading} = this.state;
 
 		return (
 			<div>
@@ -74,7 +74,7 @@ class SearchResultBreadCrumb extends preact.Component {
 
 				{loading && <LoadingIndicator />}
 			</div>
-		)
+		);
 	}
 }
 
@@ -92,7 +92,7 @@ class SearchResults extends preact.Component {
 		this.state = {
 			loading: true,
 			results: []
-		}
+		};
 	}
 
 	componentDidMount() {
@@ -100,43 +100,44 @@ class SearchResults extends preact.Component {
 
 		if (queryString) {
 			getArticlesBySearchQuery(queryString)
-			.then(
-				({data}) => {
-					if (!data.results.length) {
+				.then(
+					({data}) => {
+						if (!data.results.length) {
+							this.showNoResultsMsg();
+						}
+
+						this.setState(
+							{
+								loading: false,
+								results: data.results
+							}
+						);
+					}
+				)
+				.catch(
+					(err) => {
 						this.showNoResultsMsg();
-					}
 
-					this.setState(
-						{
-							loading: false,
-							results: data.results
+						this.setState(
+							{
+								loading: false
+							}
+						);
+
+						if (process.env.NODE_ENV === 'development') {
+							console.log(err);
 						}
-					)
-				}
-			)
-			.catch(
-				(err) => {
-					this.showNoResultsMsg();
-
-					this.setState(
-						{
-							loading: false
-						}
-					)
-
-					if (process.env.NODE_ENV === 'development') {
-						console.log(err);
 					}
-				}
-			);
-		} else {
+				);
+		}
+		else {
 			this.showNoResultsMsg();
 
 			this.setState(
 				{
 					loading: false
 				}
-			)
+			);
 		}
 	}
 
@@ -160,12 +161,8 @@ class SearchResults extends preact.Component {
 								<li key={index} class="search-result">
 									<a class="search-result-link" href={result.html_url}>{result.title}</a>
 
-									<h5
-										class="search-result-description"
-										dangerouslySetInnerHTML={{
-											__html: result.snippet
-										}}
-									/>
+									<h5 class="search-result-description"
+										dangerouslySetInnerHTML={{__html: result.snippet}} />
 
 									<SearchResultBreadCrumb
 										id={result.section_id}
@@ -179,7 +176,7 @@ class SearchResults extends preact.Component {
 
 				{loading && <LoadingIndicator />}
 			</div>
-		)
+		);
 	}
 }
 
