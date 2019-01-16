@@ -11,6 +11,10 @@ import {
 
 import LoadingIndicator from './LoadingIndicator';
 
+/* Zendesk API pagination limit 30 items per page */
+
+const PAGINATION_LIMIT = 30;
+
 class ArticlesList extends preact.Component {
 	constructor(props) {
 		super(props);
@@ -49,10 +53,7 @@ class ArticlesList extends preact.Component {
 		getArticlesBySectionId(id, locale)
 			.then(
 				({data}) => {
-
-					/* Check if number of articles returned exceed pagination limit of 30 items per page */
-
-					if (data.count > 30) {
+					if (data.count > PAGINATION_LIMIT) {
 						getArticlesBySectionId(id, locale, data.count)
 							.then(
 								({data}) => {
