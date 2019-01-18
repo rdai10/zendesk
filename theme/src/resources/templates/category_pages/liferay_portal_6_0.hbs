@@ -18,8 +18,6 @@
 			{{/if}}
 		</div>
 
-		<div class="col-md-12" id="portal60ProductPageAlert"></div>
-
 		<div class="col-md-12" id="portal60ProductPage"></div>
 	</div>
 </div>
@@ -31,6 +29,10 @@
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
+				alert: {
+					children: '{{dc '6_0-info_banner'}}',
+					leadingText: '{{dc '6_2-info'}}'
+				},
 				fullAccess: Liferay.hasKBPermission(userTags),
 				productItems: [
 					{
@@ -67,13 +69,4 @@
 			document.getElementById('portal60ProductPage')
 		);
 	});
-
-	Liferay.render(
-		Liferay.Alert,
-		{
-			children: '{{dc '6_0-info_banner'}}',
-			leadingText: '{{dc '6_2-info'}}'
-		},
-		document.getElementById('portal60ProductPageAlert')
-	);
 </script>

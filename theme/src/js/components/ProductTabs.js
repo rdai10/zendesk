@@ -5,6 +5,8 @@ import getCN from 'classnames';
 
 import {CardMenu} from 'liferay-help-center-megamenu';
 
+import Alert from './Alert';
+
 const TabContent = ({cardMenuClassName, content, layoutClassName}) => (
 	<section aria-labelledby={content.ariaLabelledby} class={layoutClassName} role="tabpanel">
 		<CardMenu
@@ -56,9 +58,18 @@ class TabList extends preact.Component {
 		);
 	}
 
-	render({tabList}, {activeId, content}) {
+	render({alert, tabList}, {activeId, content}) {
 		return (
 			<div class="row">
+				{alert.children && (
+					<div class="col-md-12">
+						<Alert
+							children={alert.children}
+							leadingText={alert.leadingText}
+						/>
+					</div>
+				)}
+
 				{tabList && (
 					<div class="col-md-3 products-landing-tablist">
 						<ul class="nav nav-stacked" role="tablist">
@@ -101,6 +112,14 @@ class TabList extends preact.Component {
 }
 
 TabList.PropTypes = {
+	alert: PropTypes.shape(
+		{
+			children: PropTypes.node.isRequired,
+			leadingText: PropTypes.string,
+			linkText: PropTypes.string,
+			url: PropTypes.string
+		}
+	),
 	allContent: PropTypes.array.isRequired,
 	tabList: PropTypes.arrayOf(
 		PropTypes.shape(
@@ -112,7 +131,7 @@ TabList.PropTypes = {
 	).isRequired
 };
 
-const ProductTabs = ({fullAccess, productItems}) => {
+const ProductTabs = ({alert, fullAccess, productItems}) => {
 	const displayData = productItems.filter(
 		item =>
 			fullAccess ? item.tabAccess === 'kb' || item.tabAccess === 'all' : item.tabAccess === 'nonkb' || item.tabAccess === 'all'
@@ -141,12 +160,21 @@ const ProductTabs = ({fullAccess, productItems}) => {
 	}
 
 	return <TabList
+		alert={alert}
 		allContent={allContent}
 		tabList={tabList}
 	/>;
 };
 
 ProductTabs.PropTypes = {
+	alert: PropTypes.shape(
+		{
+			children: PropTypes.node.isRequired,
+			leadingText: PropTypes.string,
+			linkText: PropTypes.string,
+			url: PropTypes.string
+		}
+	),
 	fullAccess: PropTypes.bool.isRequired,
 	productItems: PropTypes.arrayOf(
 		PropTypes.shape(
