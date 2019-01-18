@@ -59,12 +59,25 @@ class TabList extends preact.Component {
 	}
 
 	render({alert, tabList}, {activeId, content}) {
+		const alertBody =
+			alert && alert.children ? (
+				<span>
+					{alert.children}{' '}
+					{alert.linkText &&
+						alert.url && (
+							<a href={alert.url} title={alert.linkText}>
+								{alert.linkText}
+							</a>
+						)}
+				</span>
+			) : null;
+
 		return (
 			<div class="row">
-				{alert.children && (
+				{alertBody && (
 					<div class="col-md-12">
 						<Alert
-							children={alert.children}
+							children={alertBody}
 							leadingText={alert.leadingText}
 						/>
 					</div>
