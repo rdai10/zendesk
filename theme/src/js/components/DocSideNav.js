@@ -5,8 +5,8 @@ import getCN from 'classnames';
 
 import {
 	getArticlesBySectionId,
-	getSectionsByCategoryId,
-	getSectionBySectionId
+	getSectionBySectionId,
+	getSectionsByCategoryId
 } from '../helpers/api-helpers';
 
 import LoadingIndicator from './LoadingIndicator';

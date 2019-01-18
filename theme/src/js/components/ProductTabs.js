@@ -59,8 +59,7 @@ class TabList extends preact.Component {
 	}
 
 	render({alert, tabList}, {activeId, content}) {
-		const alertBody =
-			alert && alert.children ? (
+		const alertBody = alert && alert.children ? (
 				<span>
 					{alert.children}{' '}
 					{alert.linkText &&
@@ -146,8 +145,7 @@ TabList.PropTypes = {
 
 const ProductTabs = ({alert, fullAccess, productItems}) => {
 	const displayData = productItems.filter(
-		item =>
-			fullAccess ? item.tabAccess === 'kb' || item.tabAccess === 'all' : item.tabAccess === 'nonkb' || item.tabAccess === 'all'
+		item => fullAccess ? item.tabAccess === 'kb' || item.tabAccess === 'all' : item.tabAccess === 'nonkb' || item.tabAccess === 'all'
 	);
 
 	const allContent = displayData.map(
