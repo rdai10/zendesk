@@ -6,8 +6,7 @@ exports[`Alert renders correctly 1`] = `
     <svg class="lexicon-icon lexicon-icon-info-circle">
       <use xlink:href="#info-circle"></use>
     </svg>
-  </span>
-  <strong class="lead"></strong>Alert</div>
+  </span>Alert</div>
 `;
 
 exports[`Alert renders with leading text 1`] = `
