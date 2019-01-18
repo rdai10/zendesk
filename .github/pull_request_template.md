@@ -1,3 +1,5 @@
+_Please send pull requests to `dev` branch._
+
 ### Description
 Please explain the changes you made.  Include any relevant motivation, context and JIRA tickets.
 
@@ -6,3 +8,4 @@ Please explain the changes you made.  Include any relevant motivation, context a
 - [ ] Include tests for new features and functionality.
 - [ ] Update README/documentation, when applicable.
 - [ ] All tests, new and existing, pass without errors.
+- [ ] Checked browser compatibility, especially IE11.
