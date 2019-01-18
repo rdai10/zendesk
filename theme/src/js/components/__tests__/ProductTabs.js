@@ -33,7 +33,6 @@ describe('ProductTabs', () => {
 					svgId: '#ticket',
 					url: '/'
 				}
-
 			],
 			name: 'Tab All',
 			tabAccess: 'all'
@@ -74,6 +73,42 @@ describe('ProductTabs', () => {
 
 	it('renders correctly non KB tabs and all access tabs', () => {
 		const tree = render(<ProductTabs productItems={productItems} />);
+
+		expect(tree).toMatchSnapshot();
+	});
+
+	it('renders with simple text Alert', () => {
+		const tree = render(
+			<ProductTabs
+				alert={{children: 'Alert'}}
+				fullAccess
+				productItems={productItems}
+			/>
+		);
+
+		expect(tree).toMatchSnapshot();
+	});
+
+	it('renders with simple text Alert with leading text', () => {
+		const tree = render(
+			<ProductTabs
+				alert={{children: 'Alert', leadingText: 'Lead'}}
+				fullAccess
+				productItems={productItems}
+			/>
+		);
+
+		expect(tree).toMatchSnapshot();
+	});
+
+	it('renders with text and link in Alert', () => {
+		const tree = render(
+			<ProductTabs
+				alert={{children: 'Alert', linkText: 'Link', url: '/'}}
+				fullAccess
+				productItems={productItems}
+			/>
+		);
 
 		expect(tree).toMatchSnapshot();
 	});
