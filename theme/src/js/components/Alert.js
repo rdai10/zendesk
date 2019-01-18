@@ -9,7 +9,7 @@ const Alert = ({children, leadingText}) => (
 			</svg>
 		</span>
 
-		<strong class="lead">{leadingText}</strong>
+		{leadingText && <strong class="lead">{leadingText}</strong>}
 		{children}
 	</div>
 );
