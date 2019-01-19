@@ -149,9 +149,7 @@ class SearchResults extends preact.Component {
 		noResults.classList.add('show');
 	}
 
-	render() {
-		const {loading, results} = this.state;
-
+	render({locale}, {loading, results}) {
 		return (
 			<div>
 				{!loading && !!results.length && (
@@ -166,7 +164,7 @@ class SearchResults extends preact.Component {
 
 									<SearchResultBreadCrumb
 										id={result.section_id}
-										locale={result.locale}
+										locale={locale}
 									/>
 								</li>
 							)
@@ -181,6 +179,7 @@ class SearchResults extends preact.Component {
 }
 
 SearchResults.PropTypes = {
+	locale: PropTypes.string.isRequired,
 	queryString: PropTypes.string.isRequired
 };
 
