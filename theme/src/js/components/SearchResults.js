@@ -122,14 +122,6 @@ class SearchResults extends preact.Component {
 				)
 				.catch(
 					(err) => {
-						this.showNoResultsMsg();
-
-						this.setState(
-							{
-								loading: false
-							}
-						);
-
 						if (process.env.NODE_ENV === 'development') {
 							console.log(err);
 						}
