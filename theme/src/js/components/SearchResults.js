@@ -13,8 +13,7 @@ class SearchResultBreadCrumb extends preact.Component {
 		super(props);
 
 		this.state = {
-			breadcrumb: [],
-			loading: true
+			breadcrumb: []
 		};
 	}
 
@@ -37,20 +36,13 @@ class SearchResultBreadCrumb extends preact.Component {
 
 					this.setState(
 						{
-							breadcrumb: breadcrumbData,
-							loading: false
+							breadcrumb: breadcrumbData
 						}
 					);
 				}
 			)
 			.catch(
 				(err) => {
-					this.setState(
-						{
-							loading: false
-						}
-					);
-
 					if (process.env.NODE_ENV === 'development') {
 						console.log(err);
 					}
@@ -59,11 +51,11 @@ class SearchResultBreadCrumb extends preact.Component {
 	}
 
 	render() {
-		const {breadcrumb, loading} = this.state;
+		const {breadcrumb} = this.state;
 
 		return (
 			<div>
-				{!loading && breadcrumb.length && (
+				{breadcrumb.length && (
 					<ol class="breadcrumbs">
 						{breadcrumb.map(
 							(data, index) => (
@@ -74,8 +66,6 @@ class SearchResultBreadCrumb extends preact.Component {
 						)}
 					</ol>
 				)}
-
-				{loading && <LoadingIndicator />}
 			</div>
 		);
 	}
