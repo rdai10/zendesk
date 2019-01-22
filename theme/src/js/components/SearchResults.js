@@ -129,12 +129,18 @@ class SearchResults extends preact.Component {
 		}
 	}
 
-	handlePaginationClick(queryString, ARTICLES_PER_PAGE) {
-		const {currentPage} = this.state;
+	handlePaginationClick(currentPage) {
+		const {queryString} = this.props;
 
 		getArticlesBySearchQuery(queryString, ARTICLES_PER_PAGE, currentPage)
 			.then(
-				({data}) => data.results
+				({data}) => {
+					this.setState(
+						{
+							results: data.results
+						}
+					);
+				}
 			)
 			.catch(
 				(err) => {
@@ -142,7 +148,11 @@ class SearchResults extends preact.Component {
 						console.log(err);
 					}
 
-					return '';
+					this.setState(
+						{
+							loading: true
+						}
+					);
 				}
 			);
 	}
@@ -155,7 +165,7 @@ class SearchResults extends preact.Component {
 		noResults.classList.add('show');
 	}
 
-	render({locale, queryString}, {loading, results, totalPage}) {
+	render({locale}, {loading, results, totalPage}) {
 		return (
 			<div>
 				{!loading && !!results.length && (
@@ -181,7 +191,7 @@ class SearchResults extends preact.Component {
 				{!loading &&
 					totalPage > 1 && (
 						<Pagination
-							onClick={this.handlePaginationClick(queryString, ARTICLES_PER_PAGE)}
+							onClick={this.handlePaginationClick}
 							perPage={ARTICLES_PER_PAGE}
 							total={totalPage}
 						/>

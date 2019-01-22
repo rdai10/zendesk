@@ -22,14 +22,14 @@ class PaginationItem extends preact.Component {
 		return (
 			<ul>
 				{items.map(item => (
-					<li class={`pagination-${item.position}`}>
-						{item.position !== 'current' && (
-							<button class="btn-unstyled" onClick={this.handleClick} type="button" value={item.value}>
+					<li class={item.current ? 'pagination-current' : ''}>
+						{!item.current && (
+							<button class="btn-unstyled" onClick={this.handleClick} type="button" value={item.page}>
 								{item.value}
 							</button>
 						)}
 
-						{item.position === 'current' && (
+						{item.current && (
 							<span>{item.value}</span>
 						)}
 					</li>
@@ -42,15 +42,8 @@ class PaginationItem extends preact.Component {
 PaginationItem.PropTypes = {
 	items: PropTypes.shape(
 		{
-			position: PropTypes.oneOfType(
-				[
-					PropTypes.number,
-					PropTypes.oneOf(
-						['current', 'first', 'last', 'next', 'prev']
-					)
-				]
-			),
-			url: PropTypes.string,
+			current: PropTypes.bool,
+			page: PropTypes.number.isRequired,
 			value: PropTypes.oneOfType(
 				[PropTypes.number, PropTypes.string]
 			).isRequired
@@ -73,11 +66,15 @@ class Pagination extends preact.Component {
 	}
 
 	handleClick(page) {
+		const {onClick} = this.props;
+
 		this.setState(
 			{
 				currentPage: parseInt(page)
 			}
 		)
+
+		onClick(page);
 	}
 
 	setBuffers() {
@@ -105,6 +102,7 @@ class Pagination extends preact.Component {
 	}
 
 	setPages() {
+		const {total} = this.props;
 		const {currentPage} = this.state;
 
 		const {prevPageBuffer, nextPageBuffer} = this.setBuffers();
@@ -116,8 +114,8 @@ class Pagination extends preact.Component {
 			const value = startPage + i;
 
 			return {
-				position: value === currentPage ? 'current' : value,
-				url: '/',
+				current: value === currentPage ? true : false,
+				page: value,
 				value: value
 			};
 		});
@@ -125,13 +123,11 @@ class Pagination extends preact.Component {
 		if (prevPageBuffer) {
 			pages.unshift(
 				{
-					position: 'first',
-					url: '/',
+					page: 1,
 					value: '«'
 				},
 				{
-					position: 'prev',
-					url: '/',
+					page: (currentPage - 1),
 					value: '‹'
 				}
 			);
@@ -140,13 +136,11 @@ class Pagination extends preact.Component {
 		if (nextPageBuffer) {
 			pages.push(
 				{
-					position: 'next',
-					url: '/',
+					page: (currentPage + 1),
 					value: '›'
 				},
 				{
-					position: 'last',
-					url: '/',
+					page: total,
 					value: '»'
 				}
 			);
