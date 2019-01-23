@@ -56,13 +56,61 @@ class Pagination extends preact.Component {
 	constructor(props) {
 		super(props);
 
+		this.getPages = this.getPages.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 		this.setBuffers = this.setBuffers.bind(this);
-		this.setPages = this.setPages.bind(this);
 
 		this.state = {
 			currentPage: 1
 		};
+	}
+
+	getPages() {
+		const {total} = this.props;
+		const {currentPage} = this.state;
+
+		const {prevPageBuffer, nextPageBuffer} = this.setBuffers();
+
+		const startPage = currentPage - prevPageBuffer;
+		const totalPages = nextPageBuffer + prevPageBuffer + 1;
+
+		const pages = times(totalPages, i => {
+			const value = startPage + i;
+
+			return {
+				current: value === currentPage,
+				page: value,
+				value: value
+			};
+		});
+
+		if (prevPageBuffer) {
+			pages.unshift(
+				{
+					page: 1,
+					value: '«'
+				},
+				{
+					page: (currentPage - 1),
+					value: '‹'
+				}
+			);
+		}
+
+		if (nextPageBuffer) {
+			pages.push(
+				{
+					page: (currentPage + 1),
+					value: '›'
+				},
+				{
+					page: total,
+					value: '»'
+				}
+			);
+		}
+
+		return pages;
 	}
 
 	handleClick(page) {
@@ -101,58 +149,10 @@ class Pagination extends preact.Component {
 		return {prevPageBuffer, nextPageBuffer};
 	}
 
-	setPages() {
-		const {total} = this.props;
-		const {currentPage} = this.state;
-
-		const {prevPageBuffer, nextPageBuffer} = this.setBuffers();
-
-		const startPage = currentPage - prevPageBuffer;
-		const totalPages = nextPageBuffer + prevPageBuffer + 1;
-
-		const pages = times(totalPages, i => {
-			const value = startPage + i;
-
-			return {
-				current: value === currentPage ? true : false,
-				page: value,
-				value: value
-			};
-		});
-
-		if (prevPageBuffer) {
-			pages.unshift(
-				{
-					page: 1,
-					value: '«'
-				},
-				{
-					page: (currentPage - 1),
-					value: '‹'
-				}
-			);
-		}
-
-		if (nextPageBuffer) {
-			pages.push(
-				{
-					page: (currentPage + 1),
-					value: '›'
-				},
-				{
-					page: total,
-					value: '»'
-				}
-			);
-		}
-
-		return pages;
-	}
-
 	render() {
 		return (
 			<nav class="pagination">
-				<PaginationItem items={this.setPages()} onClick={this.handleClick} />
+				<PaginationItem items={this.getPages()} onClick={this.handleClick} />
 			</nav>
 		);
 	}
