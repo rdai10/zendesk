@@ -23,12 +23,12 @@ class PaginationItem extends preact.Component {
 			<li class={page.current ? 'pagination-current' : ''}>
 				{!page.current && (
 					<button class="btn-unstyled" onClick={this.handleClick} type="button" value={page.number}>
-						{page.value}
+						{page.label}
 					</button>
 				)}
 
 				{page.current && (
-					<span>{page.value}</span>
+					<span>{page.label}</span>
 				)}
 			</li>
 		);
@@ -40,10 +40,10 @@ PaginationItem.PropTypes = {
 	page: PropTypes.shape(
 		{
 			current: PropTypes.bool,
-			number: PropTypes.number.isRequired,
-			value: PropTypes.oneOfType(
+			label: PropTypes.oneOfType(
 				[PropTypes.number, PropTypes.string]
-			).isRequired
+			).isRequired,
+			number: PropTypes.number.isRequired
 		}
 	)
 };
@@ -75,23 +75,22 @@ class Pagination extends preact.Component {
 			i => {
 				const value = startPage + i;
 
-				return {
-					current: value === currentPage,
-					number: value,
-					value: value
-				};
-			}
-		);
+			return {
+				current: value === currentPage,
+				label: value,
+				number: value
+			};
+		});
 
 		if (prevPageBuffer) {
 			pages.unshift(
 				{
-					number: 1,
-					value: '«'
+					label: '«',
+					number: 1
 				},
 				{
-					number: (currentPage - 1),
-					value: '‹'
+					label: '‹',
+					number: (currentPage - 1)
 				}
 			);
 		}
@@ -99,12 +98,12 @@ class Pagination extends preact.Component {
 		if (nextPageBuffer) {
 			pages.push(
 				{
-					number: (currentPage + 1),
-					value: '›'
+					label: '›',
+					number: (currentPage + 1)
 				},
 				{
-					number: total,
-					value: '»'
+					label: '»',
+					number: total
 				}
 			);
 		}
