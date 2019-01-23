@@ -12,23 +12,23 @@ class PaginationItem extends preact.Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
-	handleClick(event) {
-		const {onClick} = this.props;
+	handleClick() {
+		const {onClick, number} = this.props;
 
-		onClick(event.currentTarget.value);
+		onClick(number);
 	}
 
-	render({page}) {
+	render({active, label, number}) {
 		return (
-			<li class={page.current ? 'pagination-current' : ''}>
-				{!page.current && (
-					<button class="btn-unstyled" onClick={this.handleClick} type="button" value={page.number}>
-						{page.label}
+			<li class={active ? 'pagination-current' : ''}>
+				{!active && (
+					<button class="btn-unstyled" onClick={this.handleClick} type="button" value={number}>
+						{label}
 					</button>
 				)}
 
-				{page.current && (
-					<span>{page.label}</span>
+				{active && (
+					<span>{label}</span>
 				)}
 			</li>
 		);
@@ -36,16 +36,12 @@ class PaginationItem extends preact.Component {
 }
 
 PaginationItem.PropTypes = {
+	active: PropTypes.bool,
+	label: PropTypes.oneOfType(
+		[PropTypes.number, PropTypes.string]
+		),
 	onClick: PropTypes.func.isRequired,
-	page: PropTypes.shape(
-		{
-			current: PropTypes.bool,
-			label: PropTypes.oneOfType(
-				[PropTypes.number, PropTypes.string]
-			).isRequired,
-			number: PropTypes.number.isRequired
-		}
-	)
+	number: PropTypes.number
 };
 
 class Pagination extends preact.Component {
@@ -73,27 +69,14 @@ class Pagination extends preact.Component {
 		const pages = times(
 			totalPages,
 			i => {
-				const value = startPage + i;
+				const pageNumber = startPage + i;
 
-			return {
-				current: value === currentPage,
-				label: value,
-				number: value
-			};
-		});
-
-		if (prevPageBuffer) {
-			pages.unshift(
-				{
-					label: '«',
-					number: 1
-				},
-				{
-					label: '‹',
-					number: (currentPage - 1)
-				}
-			);
-		}
+				return {
+					label: pageNumber,
+					number: pageNumber
+				};
+			}
+		);
 
 		if (nextPageBuffer) {
 			pages.push(
@@ -108,19 +91,32 @@ class Pagination extends preact.Component {
 			);
 		}
 
+		if (prevPageBuffer) {
+			pages.unshift(
+				{
+					label: '«',
+					number: 1
+				},
+				{
+					label: '‹',
+					number: (currentPage - 1)
+				}
+			);
+		}
+
 		return pages;
 	}
 
-	handleClick(page) {
+	handleClick(activePage) {
 		const {onClick} = this.props;
 
 		this.setState(
 			{
-				currentPage: parseInt(page)
+				currentPage: activePage
 			}
 		);
 
-		onClick(page);
+		onClick(activePage);
 	}
 
 	setBuffers() {
@@ -154,8 +150,10 @@ class Pagination extends preact.Component {
 					{this.getPages().map(
 						page => (
 							<PaginationItem
+								active={this.state.currentPage === page.number}
+								label={page.label}
+								number={page.number}
 								onClick={this.handleClick}
-								page={page}
 							/>
 						)
 					)}
