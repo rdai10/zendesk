@@ -18,38 +18,34 @@ class PaginationItem extends preact.Component {
 		onClick(event.currentTarget.value);
 	}
 
-	render({items}) {
+	render({page}) {
 		return (
-			<ul>
-				{items.map(item => (
-					<li class={item.current ? 'pagination-current' : ''}>
-						{!item.current && (
-							<button class="btn-unstyled" onClick={this.handleClick} type="button" value={item.page}>
-								{item.value}
-							</button>
-						)}
+			<li class={page.current ? 'pagination-current' : ''}>
+				{!page.current && (
+					<button class="btn-unstyled" onClick={this.handleClick} type="button" value={page.number}>
+						{page.value}
+					</button>
+				)}
 
-						{item.current && (
-							<span>{item.value}</span>
-						)}
-					</li>
-				))}
-			</ul>
+				{page.current && (
+					<span>{page.value}</span>
+				)}
+			</li>
 		);
 	}
 }
 
 PaginationItem.PropTypes = {
-	items: PropTypes.shape(
+	onClick: PropTypes.func.isRequired,
+	page: PropTypes.shape(
 		{
 			current: PropTypes.bool,
-			page: PropTypes.number.isRequired,
+			number: PropTypes.number.isRequired,
 			value: PropTypes.oneOfType(
 				[PropTypes.number, PropTypes.string]
 			).isRequired
 		}
-	),
-	onClick: PropTypes.func.isRequired
+	)
 };
 
 class Pagination extends preact.Component {
@@ -79,7 +75,7 @@ class Pagination extends preact.Component {
 
 			return {
 				current: value === currentPage,
-				page: value,
+				number: value,
 				value: value
 			};
 		});
@@ -87,11 +83,11 @@ class Pagination extends preact.Component {
 		if (prevPageBuffer) {
 			pages.unshift(
 				{
-					page: 1,
+					number: 1,
 					value: '«'
 				},
 				{
-					page: (currentPage - 1),
+					number: (currentPage - 1),
 					value: '‹'
 				}
 			);
@@ -100,11 +96,11 @@ class Pagination extends preact.Component {
 		if (nextPageBuffer) {
 			pages.push(
 				{
-					page: (currentPage + 1),
+					number: (currentPage + 1),
 					value: '›'
 				},
 				{
-					page: total,
+					number: total,
 					value: '»'
 				}
 			);
@@ -152,7 +148,14 @@ class Pagination extends preact.Component {
 	render() {
 		return (
 			<nav class="pagination">
-				<PaginationItem items={this.getPages()} onClick={this.handleClick} />
+				<ul>
+					{this.getPages().map(page => (
+						<PaginationItem
+							onClick={this.handleClick}
+							page={page}
+						/>
+					))}
+				</ul>
 			</nav>
 		);
 	}
