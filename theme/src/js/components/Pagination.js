@@ -65,20 +65,23 @@ class Pagination extends preact.Component {
 		const {total} = this.props;
 		const {currentPage} = this.state;
 
-		const {prevPageBuffer, nextPageBuffer} = this.setBuffers();
+		const {nextPageBuffer, prevPageBuffer} = this.setBuffers();
 
 		const startPage = currentPage - prevPageBuffer;
 		const totalPages = nextPageBuffer + prevPageBuffer + 1;
 
-		const pages = times(totalPages, i => {
-			const value = startPage + i;
+		const pages = times(
+			totalPages,
+			i => {
+				const value = startPage + i;
 
-			return {
-				current: value === currentPage,
-				number: value,
-				value: value
-			};
-		});
+				return {
+					current: value === currentPage,
+					number: value,
+					value: value
+				};
+			}
+		);
 
 		if (prevPageBuffer) {
 			pages.unshift(
@@ -116,7 +119,7 @@ class Pagination extends preact.Component {
 			{
 				currentPage: parseInt(page)
 			}
-		)
+		);
 
 		onClick(page);
 	}
@@ -129,32 +132,34 @@ class Pagination extends preact.Component {
 		let prevPageBuffer = 0;
 
 		if (currentPage > 1) {
-			prevPageBuffer =
-				currentPage > PAGE_BUFFER ? PAGE_BUFFER : currentPage - 1;
+			prevPageBuffer = currentPage > PAGE_BUFFER ? PAGE_BUFFER : currentPage - 1;
 
 			if (currentPage === total) {
 				nextPageBuffer = 0;
-			} else {
-				nextPageBuffer =
-					total - currentPage >= PAGE_BUFFER
-						? PAGE_BUFFER
-						: total - currentPage;
+			}
+			else {
+				nextPageBuffer = total - currentPage >= PAGE_BUFFER ? PAGE_BUFFER : total - currentPage;
 			}
 		}
 
-		return {prevPageBuffer, nextPageBuffer};
+		return {
+			nextPageBuffer,
+			prevPageBuffer
+		};
 	}
 
 	render() {
 		return (
 			<nav class="pagination">
 				<ul>
-					{this.getPages().map(page => (
-						<PaginationItem
-							onClick={this.handleClick}
-							page={page}
-						/>
-					))}
+					{this.getPages().map(
+						page => (
+							<PaginationItem
+								onClick={this.handleClick}
+								page={page}
+							/>
+						)
+					)}
 				</ul>
 			</nav>
 		);
