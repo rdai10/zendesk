@@ -23,10 +23,12 @@ class SearchResultBreadCrumb extends preact.Component {
 		getSectionBySectionId(id, locale, 'categories')
 			.then(
 				({data}) => {
+					const [categories] = data.categories;
+
 					const breadcrumbData = [
 						{
-							name: data.categories[0].name,
-							url: data.categories[0].html_url
+							name: categories.name,
+							url: categories.html_url
 						},
 						{
 							name: data.section.name,
@@ -55,7 +57,7 @@ class SearchResultBreadCrumb extends preact.Component {
 
 		return (
 			<div>
-				{breadcrumb.length && (
+				{!!breadcrumb.length && (
 					<ol class="breadcrumbs">
 						{breadcrumb.map(
 							(data, index) => (
