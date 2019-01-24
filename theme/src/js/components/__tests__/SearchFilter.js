@@ -1,21 +1,20 @@
 import preact from 'preact';
 import render from 'preact-render-to-string';
 
-import SearchResults from '../SearchResults';
+import SearchFilter from '../SearchFilter';
 
-describe('SearchResults', () => {
-	const filterOptions = [
+describe('SearchFilter', () => {
+	const options = [
 		{displayName: 'Option 1', value: 'one'},
 		{displayName: 'Option 2', value: 'two'}
 	];
 
 	it('renders correctly', () => {
 		const tree = render(
-			<SearchResults
-				filterLabel="filter"
-				filterOptions={filterOptions}
-				locale="en-us"
-				queryString="Test"
+			<SearchFilter
+				label="Search Filter"
+				onClick={() => console.log('clicked')}
+				options={options}
 			/>
 		);
 
