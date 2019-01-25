@@ -83,9 +83,9 @@ class SearchResults extends preact.Component {
 	constructor(props) {
 		super(props);
 
+		this.displayNoResultsMsg = this.displayNoResultsMsg.bind(this);
 		this.handlePaginationClick = this.handlePaginationClick.bind(this);
 		this.handleSearchFilterClick = this.handleSearchFilterClick.bind(this);
-		this.showNoResultsMsg = this.showNoResultsMsg.bind(this);
 		this.querySearchResults = this.querySearchResults.bind(this);
 
 		this.state = {
@@ -98,6 +98,18 @@ class SearchResults extends preact.Component {
 
 	componentDidMount() {
 		this.querySearchResults();
+	}
+
+	displayNoResultsMsg(bool) {
+		const noResults = document.getElementById(
+			'noResults'
+		);
+
+		if (bool) {
+			noResults.classList.add('show');
+		} else {
+			noResults.classList.remove('show');
+		}
 	}
 
 	handlePaginationClick(currentPage) {
@@ -146,14 +158,6 @@ class SearchResults extends preact.Component {
 		this.querySearchResults(label);
 	}
 
-	showNoResultsMsg() {
-		const noResults = document.getElementById(
-			'noResults'
-		);
-
-		noResults.classList.add('show');
-	}
-
 	querySearchResults(label) {
 		const {queryString} = this.props;
 
@@ -161,16 +165,16 @@ class SearchResults extends preact.Component {
 			getArticlesBySearch(queryString, ARTICLES_PER_PAGE, 1, label)
 				.then(
 					({data}) => {
-						if (!data.results.length) {
-							this.showNoResultsMsg();
-						}
-
 						this.setState(
 							{
 								loading: false,
 								results: data.results,
 								totalPage: data.page_count
 							}
+						);
+
+						this.displayNoResultsMsg(
+							data.results.length ? false : true
 						);
 					}
 				)
@@ -183,7 +187,7 @@ class SearchResults extends preact.Component {
 				);
 		}
 		else {
-			this.showNoResultsMsg();
+			this.displayNoResultsMsg(true);
 
 			this.setState(
 				{
