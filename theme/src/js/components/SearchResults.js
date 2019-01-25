@@ -132,6 +132,8 @@ class SearchResults extends preact.Component {
 					);
 				}
 			);
+
+		window.scroll(0, 0);
 	}
 
 	handleSearchFilterClick(label) {
