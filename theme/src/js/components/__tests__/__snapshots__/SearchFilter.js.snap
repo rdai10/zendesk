@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchFilter renders correctly 1`] = `
+<div class="search-filter">
+  <label class="semibold" htmlFor="productSearchFilter">Search Filter</label>
+  <select class="col-md-3" id="productSearchFilter">
+    <option value="one">Option 1</option>
+    <option value="two">Option 2</option>
+  </select>
+</div>
+`;
