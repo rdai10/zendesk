@@ -5,6 +5,7 @@ import {getArticlesBySearch, getSectionBySectionId} from '../helpers/api-helpers
 
 import LoadingIndicator from './LoadingIndicator';
 import Pagination from './Pagination';
+import SearchFilter from './SearchFilter';
 
 const ARTICLES_PER_PAGE = 10;
 
@@ -83,20 +84,79 @@ class SearchResults extends preact.Component {
 		super(props);
 
 		this.handlePaginationClick = this.handlePaginationClick.bind(this);
+		this.handleSearchFilterClick = this.handleSearchFilterClick.bind(this);
 		this.showNoResultsMsg = this.showNoResultsMsg.bind(this);
+		this.querySearchResults = this.querySearchResults.bind(this);
 
 		this.state = {
 			loading: true,
+			productLabel: '',
 			results: [],
 			totalPage: 0
 		};
 	}
 
 	componentDidMount() {
+		this.querySearchResults();
+	}
+
+	handlePaginationClick(currentPage) {
+		const {queryString} = this.props;
+		const {productLabel} = this.state;
+
+		getArticlesBySearch(
+			queryString,
+			ARTICLES_PER_PAGE,
+			currentPage,
+			productLabel
+		)
+			.then(
+				({data}) => {
+					this.setState(
+						{
+							results: data.results
+						}
+					);
+				}
+			)
+			.catch(
+				(err) => {
+					if (process.env.NODE_ENV === 'development') {
+						console.log(err);
+					}
+
+					this.setState(
+						{
+							loading: true
+						}
+					);
+				}
+			);
+	}
+
+	handleSearchFilterClick(label) {
+		this.setState(
+			{
+				productLabel: label
+			}
+		);
+
+		this.querySearchResults(label);
+	}
+
+	showNoResultsMsg() {
+		const noResults = document.getElementById(
+			'noResults'
+		);
+
+		noResults.classList.add('show');
+	}
+
+	querySearchResults(label) {
 		const {queryString} = this.props;
 
 		if (queryString) {
-			getArticlesBySearch(queryString, ARTICLES_PER_PAGE)
+			getArticlesBySearch(queryString, ARTICLES_PER_PAGE, 1, label)
 				.then(
 					({data}) => {
 						if (!data.results.length) {
@@ -131,45 +191,18 @@ class SearchResults extends preact.Component {
 		}
 	}
 
-	handlePaginationClick(currentPage) {
-		const {queryString} = this.props;
-
-		getArticlesBySearch(queryString, ARTICLES_PER_PAGE, currentPage)
-			.then(
-				({data}) => {
-					this.setState(
-						{
-							results: data.results
-						}
-					);
-				}
-			)
-			.catch(
-				(err) => {
-					if (process.env.NODE_ENV === 'development') {
-						console.log(err);
-					}
-
-					this.setState(
-						{
-							loading: true
-						}
-					);
-				}
-			);
-	}
-
-	showNoResultsMsg() {
-		const noResults = document.getElementById(
-			'noResults'
-		);
-
-		noResults.classList.add('show');
-	}
-
-	render({locale}, {loading, results, totalPage}) {
+	render(
+		{filterLabel, filterOptions, locale},
+		{loading, results, totalPage}
+	) {
 		return (
 			<div>
+				<SearchFilter
+					label={filterLabel}
+					onClick={this.handleSearchFilterClick}
+					options={filterOptions}
+				/>
+
 				{!loading && !!results.length && (
 					<ul class="search-results-list">
 						{results.map(
@@ -206,6 +239,13 @@ class SearchResults extends preact.Component {
 }
 
 SearchResults.PropTypes = {
+	filterLabel: PropTypes.string.isRequired,
+	filterOptions: PropTypes.arrayOf(
+		PropTypes.shape({
+			displayName: PropTypes.string,
+			value: PropTypes.string
+		})
+	).isRequired,
 	locale: PropTypes.string.isRequired,
 	queryString: PropTypes.string.isRequired
 };

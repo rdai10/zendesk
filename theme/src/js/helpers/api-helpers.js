@@ -19,7 +19,7 @@ const httpRequest = axios.create(
 export function getArticlesBySearch(
 	queryString,
 	count = '',
-	page = '',
+	page = 1,
 	label = ''
 ) {
 	return httpRequest.get(

@@ -41,9 +41,46 @@
 </div>
 
 <script>
+	const filterOptions = [
+		{
+			displayName: '{{dc 'search_results-all_products'}}',
+			value: ''
+		},
+		{
+			displayName: '{{dc 'mega_menu-dxp_7_1'}}',
+			value: 'DXP 7.1'
+		},
+		{
+			displayName: '{{dc 'mega_menu-dxp_7_0'}}',
+			value: 'DXP 7.0'
+		},
+		{
+			displayName: '{{dc 'mega_menu-portal_6_2'}}',
+			value: 'Portal 6.2'
+		},
+		{
+			displayName: '{{dc 'mega_menu-portal_6_1'}}',
+			value: 'Portal 6.1'
+		},
+		{
+			displayName: '{{dc 'mega_menu-commerce'}}',
+			value: 'Commerce 1.0'
+		},
+		{
+			displayName: '{{dc 'mega_menu-analytics_cloud'}}',
+			value: 'Analytics Cloud'
+		},
+		{
+			displayName: '{{dc 'mega_menu-dxp_cloud'}}',
+			value: 'DXP Cloud'
+		}
+	];
+
 	Liferay.render(
 		Liferay.SearchResults,
 		{
+			filterLabel: '{{dc 'search_results-filter_by'}}',
+			filterOptions: filterOptions,
 			locale: '{{help_center.locale}}',
 			queryString: '{{query}}'
 		},

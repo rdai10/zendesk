@@ -28,6 +28,21 @@
 		margin-bottom: $margin-md;
 	}
 
+	.search-filter {
+		align-items: baseline;
+		display: flex;
+		margin: $margin-default 0;
+
+		label {
+			font-size: $font-size-default;
+		}
+
+		select {
+			border: 0;
+			margin-left: $margin-md;
+		}
+	}
+
 	.search-result-description {
 		font-weight: $font-weight-normal;
 		margin-bottom: 0;
