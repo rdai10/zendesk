@@ -147,6 +147,7 @@ class SearchResults extends preact.Component {
 	handleSearchFilterClick(label) {
 		this.setState(
 			{
+				loading: true,
 				productLabel: label
 			}
 		);
@@ -183,13 +184,13 @@ class SearchResults extends preact.Component {
 				);
 		}
 		else {
-			this.displayNoResultsMsg(true);
-
 			this.setState(
 				{
 					loading: false
 				}
 			);
+
+			this.displayNoResultsMsg(true);
 		}
 	}
 
