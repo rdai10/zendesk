@@ -106,7 +106,11 @@ class SearchResults extends preact.Component {
 			'noResults'
 		);
 
-		noResults.classList.toggle('show', bool);
+		if (bool) {
+			noResults.classList.add('show');
+		} else {
+			noResults.classList.remove('show');
+		}
 	}
 
 	handlePaginationClick(currentPage) {
