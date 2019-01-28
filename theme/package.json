@@ -21,6 +21,7 @@
 		"classnames": "^2.2.6",
 		"es6-promise": "^4.2.5",
 		"liferay-help-center-megamenu": "github:rdai10/liferay-help-center-megamenu#v1.1.5",
+		"lodash.debounce": "^4.0.8",
 		"lodash.throttle": "^4.1.1",
 		"lodash.times": "^4.3.2"
 	},

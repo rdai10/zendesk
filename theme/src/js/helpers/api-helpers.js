@@ -20,10 +20,11 @@ export function getArticlesBySearch(
 	queryString,
 	count = '',
 	page = 1,
-	label = ''
+	label = '',
+	locale = 'en-us'
 ) {
 	return httpRequest.get(
-		`help_center/articles/search.json?query=${queryString}&label_names=${label}&per_page=${count}&page=${page}`
+		`help_center/articles/search.json?query=${queryString}&label_names=${label}&per_page=${count}&page=${page}&locale=${locale}`
 	);
 }
 
