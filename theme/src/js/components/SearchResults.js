@@ -87,6 +87,7 @@ class SearchResults extends preact.Component {
 		this.handlePaginationClick = this.handlePaginationClick.bind(this);
 		this.handleSearchFilterClick = this.handleSearchFilterClick.bind(this);
 		this.querySearchResults = this.querySearchResults.bind(this);
+		this.updateResultsCount = this.updateResultsCount.bind(this);
 
 		this.state = {
 			loading: true,
@@ -173,6 +174,8 @@ class SearchResults extends preact.Component {
 						this.displayNoResultsMsg(
 							!data.results.length
 						);
+
+						this.updateResultsCount(data.count);
 					}
 				)
 				.catch(
@@ -191,7 +194,16 @@ class SearchResults extends preact.Component {
 			);
 
 			this.displayNoResultsMsg(true);
+			this.updateResultsCount(0);
 		}
+	}
+
+	updateResultsCount(count) {
+		const searchResultsCount = document.getElementById(
+			'searchResultsCount'
+		);
+
+		searchResultsCount.innerHTML= count;
 	}
 
 	render(

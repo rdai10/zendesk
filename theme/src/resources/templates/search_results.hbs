@@ -14,7 +14,7 @@
 	<div class="col-md-8 offset-md-2 search">
 		<header>
 			<h2 class="page-header-description">
-				{{t 'results' query=query count=results_count}}
+				<span id="searchResultsCount"></span> {{t 'results' query=query}}
 			</h2>
 
 			{{search class="search-lg" instant=true submit=false}}
