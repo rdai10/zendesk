@@ -39,10 +39,12 @@ SearchFilter.PropTypes = {
 	label: PropTypes.string,
 	onClick: PropTypes.func.isRequired,
 	options: PropTypes.arrayOf(
-		PropTypes.shape({
-			displayName: PropTypes.string,
-			value: PropTypes.string
-		})
+		PropTypes.shape(
+			{
+				displayName: PropTypes.string,
+				value: PropTypes.string
+			}
+		)
 	).isRequired
 };
 

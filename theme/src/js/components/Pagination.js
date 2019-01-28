@@ -13,7 +13,7 @@ class PaginationItem extends preact.Component {
 	}
 
 	handleClick() {
-		const {onClick, number} = this.props;
+		const {number, onClick} = this.props;
 
 		onClick(number);
 	}
@@ -39,9 +39,9 @@ PaginationItem.PropTypes = {
 	active: PropTypes.bool,
 	label: PropTypes.oneOfType(
 		[PropTypes.number, PropTypes.string]
-		),
-	onClick: PropTypes.func.isRequired,
-	number: PropTypes.number
+	),
+	number: PropTypes.number,
+	onClick: PropTypes.func.isRequired
 };
 
 class Pagination extends preact.Component {

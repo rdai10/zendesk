@@ -105,16 +105,12 @@ class SearchResults extends preact.Component {
 			'noResults'
 		);
 
-		if (bool) {
-			noResults.classList.add('show');
-		} else {
-			noResults.classList.remove('show');
-		}
+		noResults.classList.toggle('show', bool);
 	}
 
 	handlePaginationClick(currentPage) {
-		const {queryString} = this.props;
 		const {productLabel} = this.state;
+		const {queryString} = this.props;
 
 		getArticlesBySearch(
 			queryString,
@@ -174,7 +170,7 @@ class SearchResults extends preact.Component {
 						);
 
 						this.displayNoResultsMsg(
-							data.results.length ? false : true
+							!data.results.length
 						);
 					}
 				)
@@ -247,10 +243,12 @@ class SearchResults extends preact.Component {
 SearchResults.PropTypes = {
 	filterLabel: PropTypes.string.isRequired,
 	filterOptions: PropTypes.arrayOf(
-		PropTypes.shape({
-			displayName: PropTypes.string,
-			value: PropTypes.string
-		})
+		PropTypes.shape(
+			{
+				displayName: PropTypes.string,
+				value: PropTypes.string
+			}
+		)
 	).isRequired,
 	locale: PropTypes.string.isRequired,
 	queryString: PropTypes.string.isRequired

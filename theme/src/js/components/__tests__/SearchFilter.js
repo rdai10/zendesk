@@ -5,8 +5,14 @@ import SearchFilter from '../SearchFilter';
 
 describe('SearchFilter', () => {
 	const options = [
-		{displayName: 'Option 1', value: 'one'},
-		{displayName: 'Option 2', value: 'two'}
+		{
+			displayName: 'Option 1',
+			value: 'one'
+		},
+		{
+			displayName: 'Option 2',
+			value: 'two'
+		}
 	];
 
 	it('renders correctly', () => {
