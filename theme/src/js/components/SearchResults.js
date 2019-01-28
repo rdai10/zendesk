@@ -85,7 +85,7 @@ class SearchResults extends preact.Component {
 
 		this.displayNoResultsMsg = this.displayNoResultsMsg.bind(this);
 		this.handlePaginationClick = this.handlePaginationClick.bind(this);
-		this.handleSearchFilterClick = this.handleSearchFilterClick.bind(this);
+		this.handleSearchFilterChange = this.handleSearchFilterChange.bind(this);
 		this.querySearchResults = this.querySearchResults.bind(this);
 		this.updateResultsCount = this.updateResultsCount.bind(this);
 
@@ -149,7 +149,7 @@ class SearchResults extends preact.Component {
 		window.scroll(0, 0);
 	}
 
-	handleSearchFilterClick(label) {
+	handleSearchFilterChange(label) {
 		this.setState(
 			{
 				loading: true,
@@ -218,7 +218,7 @@ class SearchResults extends preact.Component {
 			<div>
 				<SearchFilter
 					label={filterLabel}
-					onClick={this.handleSearchFilterClick}
+					onChange={this.handleSearchFilterChange}
 					options={filterOptions}
 				/>
 

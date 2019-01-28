@@ -5,13 +5,13 @@ class SearchFilter extends preact.Component {
 	constructor(props) {
 		super(props);
 
-		this.handleClick = this.handleClick.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleClick(event) {
-		const {onClick} = this.props;
+	handleChange(event) {
+		const {onChange} = this.props;
 
-		onClick(event.currentTarget.value);
+		onChange(event.currentTarget.value);
 	}
 
 	render({label, options}) {
@@ -21,7 +21,7 @@ class SearchFilter extends preact.Component {
 					{label}
 				</label>
 
-				<select class="col-md-3" id="productSearchFilter" onClick={this.handleClick}>
+				<select class="col-md-3" id="productSearchFilter" onChange={this.handleChange}>
 					{options.map(
 						(option, index) => (
 							<option key={index} value={option.value}>
@@ -37,7 +37,7 @@ class SearchFilter extends preact.Component {
 
 SearchFilter.PropTypes = {
 	label: PropTypes.string,
-	onClick: PropTypes.func.isRequired,
+	onChange: PropTypes.func.isRequired,
 	options: PropTypes.arrayOf(
 		PropTypes.shape(
 			{
