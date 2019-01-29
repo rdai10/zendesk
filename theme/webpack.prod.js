@@ -188,11 +188,11 @@ module.exports = merge(
 						rules: [
 							{
 								replace: '360011506832',
-								search: '360011314571'
+								search: /360011314571/g
 							},
 							{
 								replace: '360006076471',
-								search: '360006041192'
+								search: /360006041192/g
 							}
 						]
 					},
