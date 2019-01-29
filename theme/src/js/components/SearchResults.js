@@ -108,7 +108,8 @@ class SearchResults extends preact.Component {
 
 		if (bool) {
 			noResults.classList.add('show');
-		} else {
+		}
+		else {
 			noResults.classList.remove('show');
 		}
 	}
@@ -203,11 +204,9 @@ class SearchResults extends preact.Component {
 	}
 
 	updateResultsCount(count) {
-		const searchResultsCount = document.getElementById(
-			'searchResultsCount'
-		);
+		const searchResultsCount = document.getElementById('searchResultsCount');
 
-		searchResultsCount.innerHTML= count;
+		searchResultsCount.innerHTML = count;
 	}
 
 	render(
