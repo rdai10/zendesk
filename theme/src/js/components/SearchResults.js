@@ -115,8 +115,8 @@ class SearchResults extends preact.Component {
 	}
 
 	handlePaginationClick(currentPage) {
-		const {productLabel} = this.state;
 		const {queryString} = this.props;
+		const {productLabel} = this.state;
 
 		getArticlesBySearch(
 			queryString,
