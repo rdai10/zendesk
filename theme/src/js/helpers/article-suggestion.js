@@ -10,7 +10,7 @@ function generateResults(results) {
 					<a href=${result.html_url}>${result.title}</a>
 				</li>`
 		)
-		.reduce((acc, cur) => cur.concat(acc));
+		.join('');
 }
 
 export function displayArticleSuggestion(
