@@ -1,4 +1,4 @@
-# Zendesk Theme for Liferay
+# Zendesk Theme for Liferay [![Build Status](https://travis-ci.org/rdai10/zendesk.svg?branch=master)](https://travis-ci.org/rdai10/zendesk)
 
 ## Getting Started
 1. [Install node](https://nodejs.org/en/).

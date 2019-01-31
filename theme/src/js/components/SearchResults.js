@@ -115,14 +115,15 @@ class SearchResults extends preact.Component {
 	}
 
 	handlePaginationClick(currentPage) {
+		const {locale, queryString} = this.props;
 		const {productLabel} = this.state;
-		const {queryString} = this.props;
 
 		getArticlesBySearch(
 			queryString,
 			ARTICLES_PER_PAGE,
 			currentPage,
-			productLabel
+			productLabel,
+			locale
 		)
 			.then(
 				({data}) => {
@@ -162,10 +163,10 @@ class SearchResults extends preact.Component {
 	}
 
 	querySearchResults(label) {
-		const {queryString} = this.props;
+		const {locale, queryString} = this.props;
 
 		if (queryString) {
-			getArticlesBySearch(queryString, ARTICLES_PER_PAGE, 1, label)
+			getArticlesBySearch(queryString, ARTICLES_PER_PAGE, 1, label, locale)
 				.then(
 					({data}) => {
 						this.setState(
@@ -241,14 +242,13 @@ class SearchResults extends preact.Component {
 					</ul>
 				)}
 
-				{!loading &&
-					totalPage > 1 && (
-						<Pagination
-							onClick={this.handlePaginationClick}
-							perPage={ARTICLES_PER_PAGE}
-							total={totalPage}
-						/>
-					)}
+				{!loading && totalPage > 1 && (
+					<Pagination
+						onClick={this.handlePaginationClick}
+						perPage={ARTICLES_PER_PAGE}
+						total={totalPage}
+					/>
+				)}
 
 				{loading && <LoadingIndicator />}
 			</div>
