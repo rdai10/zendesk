@@ -34,14 +34,13 @@ export function displayArticleSuggestion(
 				let html = '';
 
 				if (results.length) {
-					html = `
-						<div class="custom-suggestion-list">
-							<label>${label}</label>
+					html = `<div class="custom-suggestion-list">
+						<label>${label}</label>
 
-							<ul>
-								${generateResults(results)}
-							</ul>
-						</div>`;
+						<ul>
+							${generateResults(results)}
+						</ul>
+					</div>`;
 				}
 
 				callback(html);

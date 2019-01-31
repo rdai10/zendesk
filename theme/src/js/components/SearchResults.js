@@ -241,14 +241,13 @@ class SearchResults extends preact.Component {
 					</ul>
 				)}
 
-				{!loading &&
-					totalPage > 1 && (
-						<Pagination
-							onClick={this.handlePaginationClick}
-							perPage={ARTICLES_PER_PAGE}
-							total={totalPage}
-						/>
-					)}
+				{!loading && totalPage > 1 && (
+					<Pagination
+						onClick={this.handlePaginationClick}
+						perPage={ARTICLES_PER_PAGE}
+						total={totalPage}
+					/>
+				)}
 
 				{loading && <LoadingIndicator />}
 			</div>

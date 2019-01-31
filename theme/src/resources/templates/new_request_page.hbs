@@ -281,20 +281,6 @@
 			}
 		}
 
-		// Custom article suggestion
-
-		const subjectField = document.getElementById('request_subject');
-
-		const searchProductLabel = {
-			prd_liferay_analytics_cloud: 'Analytics Cloud',
-			prd_liferay_commerce: 'Commerce 1.0',
-			prd_liferay_dxp_7_0: 'DXP 7.0',
-			prd_liferay_dxp_7_1: 'DXP 7.1',
-			prd_liferay_dxp_cloud: 'DXP Cloud',
-			prd_liferay_portal_6_1: 'Portal 6.1',
-			prd_liferay_portal_6_2: 'Portal 6.2'
-		};
-
 		// Append an element to render the article suggestions
 
 		$('.request_subject').append('<div id="articleSuggestionWrapper"></div>');
@@ -307,6 +293,20 @@
 			}
 		}
 
+		// Custom article suggestion
+
+		const searchProductLabel = {
+			prd_liferay_analytics_cloud: 'Analytics Cloud',
+			prd_liferay_commerce: 'Commerce 1.0',
+			prd_liferay_dxp_7_0: 'DXP 7.0',
+			prd_liferay_dxp_7_1: 'DXP 7.1',
+			prd_liferay_dxp_cloud: 'DXP Cloud',
+			prd_liferay_portal_6_1: 'Portal 6.1',
+			prd_liferay_portal_6_2: 'Portal 6.2'
+		};
+
+		const subjectField = document.getElementById('request_subject');
+
 		const onRequestSubjectKeyup = function() {
 			const productLabel = searchProductLabel[productInputField.value] || '';
 
@@ -317,14 +317,16 @@
 					'{{help_center.locale}}',
 					'{{dc 'ticket_view-suggested_articles'}}', setArticleSuggestionInnerHTML
 				);
-			} else {
+			}
+			else {
 				setArticleSuggestionInnerHTML('');
 			}
 		}
 
-		$('#request_subject').keyup(
+		subjectField.addEventListener(
+			'keyup',
 			Liferay.debounce(onRequestSubjectKeyup, 300)
-		)
+		);
 
 		$(productInputField).change(onRequestSubjectKeyup);
 	});
