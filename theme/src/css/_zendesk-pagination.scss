@@ -1,12 +1,7 @@
-%active {
-	background-color: $color-active;
-	color: $color-primary;
-}
-
 .pagination {
 	margin: $pagination-margin-bottom 0;
 
-	a,
+	button,
 	span {
 		color: $color-default;
 		display: block;
@@ -21,16 +16,12 @@
 			border-radius: 10%;
 		}
 
-		&:active {
-			@extend %active;
-		}
-
 		&:hover {
 			background-color: $color-hover;
 		}
 
 		&:focus {
-			background-color: $color-focus;
+			outline: none;
 		}
 	}
 
@@ -42,6 +33,7 @@
 	}
 
 	.pagination-current span {
-		@extend %active;
+		background-color: $color-active;
+		color: $color-primary;
 	}
 }

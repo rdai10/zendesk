@@ -1,17 +1,20 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
-import {getArticlesBySearchQuery, getSectionBySectionId} from '../helpers/api-helpers';
+import {getArticlesBySearch, getSectionBySectionId} from '../helpers/api-helpers';
 
 import LoadingIndicator from './LoadingIndicator';
+import Pagination from './Pagination';
+import SearchFilter from './SearchFilter';
+
+const ARTICLES_PER_PAGE = 10;
 
 class SearchResultBreadCrumb extends preact.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			breadcrumb: [],
-			loading: true
+			breadcrumb: []
 		};
 	}
 
@@ -21,10 +24,12 @@ class SearchResultBreadCrumb extends preact.Component {
 		getSectionBySectionId(id, locale, 'categories')
 			.then(
 				({data}) => {
+					const [categories] = data.categories;
+
 					const breadcrumbData = [
 						{
-							name: data.categories[0].name,
-							url: data.categories[0].html_url
+							name: categories.name,
+							url: categories.html_url
 						},
 						{
 							name: data.section.name,
@@ -34,20 +39,13 @@ class SearchResultBreadCrumb extends preact.Component {
 
 					this.setState(
 						{
-							breadcrumb: breadcrumbData,
-							loading: false
+							breadcrumb: breadcrumbData
 						}
 					);
 				}
 			)
 			.catch(
 				(err) => {
-					this.setState(
-						{
-							loading: false
-						}
-					);
-
 					if (process.env.NODE_ENV === 'development') {
 						console.log(err);
 					}
@@ -56,11 +54,11 @@ class SearchResultBreadCrumb extends preact.Component {
 	}
 
 	render() {
-		const {breadcrumb, loading} = this.state;
+		const {breadcrumb} = this.state;
 
 		return (
 			<div>
-				{!loading && breadcrumb.length && (
+				{!!breadcrumb.length && (
 					<ol class="breadcrumbs">
 						{breadcrumb.map(
 							(data, index) => (
@@ -71,8 +69,6 @@ class SearchResultBreadCrumb extends preact.Component {
 						)}
 					</ol>
 				)}
-
-				{loading && <LoadingIndicator />}
 			</div>
 		);
 	}
@@ -87,43 +83,109 @@ class SearchResults extends preact.Component {
 	constructor(props) {
 		super(props);
 
-		this.showNoResultsMsg = this.showNoResultsMsg.bind(this);
+		this.displayNoResultsMsg = this.displayNoResultsMsg.bind(this);
+		this.handlePaginationClick = this.handlePaginationClick.bind(this);
+		this.handleSearchFilterChange = this.handleSearchFilterChange.bind(this);
+		this.querySearchResults = this.querySearchResults.bind(this);
+		this.updateResultsCount = this.updateResultsCount.bind(this);
 
 		this.state = {
 			loading: true,
-			results: []
+			productLabel: '',
+			results: [],
+			totalPage: 0
 		};
 	}
 
 	componentDidMount() {
-		const {queryString} = this.props;
+		this.querySearchResults();
+	}
+
+	displayNoResultsMsg(bool) {
+		const noResults = document.getElementById(
+			'noResults'
+		);
+
+		if (bool) {
+			noResults.classList.add('show');
+		}
+		else {
+			noResults.classList.remove('show');
+		}
+	}
+
+	handlePaginationClick(currentPage) {
+		const {locale, queryString} = this.props;
+		const {productLabel} = this.state;
+
+		getArticlesBySearch(
+			queryString,
+			ARTICLES_PER_PAGE,
+			currentPage,
+			productLabel,
+			locale
+		)
+			.then(
+				({data}) => {
+					this.setState(
+						{
+							results: data.results
+						}
+					);
+				}
+			)
+			.catch(
+				(err) => {
+					if (process.env.NODE_ENV === 'development') {
+						console.log(err);
+					}
+
+					this.setState(
+						{
+							loading: true
+						}
+					);
+				}
+			);
+
+		window.scroll(0, 0);
+	}
+
+	handleSearchFilterChange(label) {
+		this.setState(
+			{
+				loading: true,
+				productLabel: label
+			}
+		);
+
+		this.querySearchResults(label);
+	}
+
+	querySearchResults(label) {
+		const {locale, queryString} = this.props;
 
 		if (queryString) {
-			getArticlesBySearchQuery(queryString)
+			getArticlesBySearch(queryString, ARTICLES_PER_PAGE, 1, label, locale)
 				.then(
 					({data}) => {
-						if (!data.results.length) {
-							this.showNoResultsMsg();
-						}
-
 						this.setState(
 							{
 								loading: false,
-								results: data.results
+								results: data.results,
+								totalPage: data.page_count
 							}
 						);
+
+						this.displayNoResultsMsg(
+							!data.results.length
+						);
+
+						this.updateResultsCount(data.count);
 					}
 				)
 				.catch(
 					(err) => {
-						this.showNoResultsMsg();
-
-						this.setState(
-							{
-								loading: false
-							}
-						);
-
 						if (process.env.NODE_ENV === 'development') {
 							console.log(err);
 						}
@@ -131,29 +193,35 @@ class SearchResults extends preact.Component {
 				);
 		}
 		else {
-			this.showNoResultsMsg();
-
 			this.setState(
 				{
 					loading: false
 				}
 			);
+
+			this.displayNoResultsMsg(true);
+			this.updateResultsCount(0);
 		}
 	}
 
-	showNoResultsMsg() {
-		const noResults = document.getElementById(
-			'noResults'
-		);
+	updateResultsCount(count) {
+		const searchResultsCount = document.getElementById('searchResultsCount');
 
-		noResults.classList.add('show');
+		searchResultsCount.innerHTML = count;
 	}
 
-	render() {
-		const {loading, results} = this.state;
-
+	render(
+		{filterLabel, filterOptions, locale},
+		{loading, results, totalPage}
+	) {
 		return (
 			<div>
+				<SearchFilter
+					label={filterLabel}
+					onChange={this.handleSearchFilterChange}
+					options={filterOptions}
+				/>
+
 				{!loading && !!results.length && (
 					<ul class="search-results-list">
 						{results.map(
@@ -166,12 +234,20 @@ class SearchResults extends preact.Component {
 
 									<SearchResultBreadCrumb
 										id={result.section_id}
-										locale={result.locale}
+										locale={locale}
 									/>
 								</li>
 							)
 						)}
 					</ul>
+				)}
+
+				{!loading && totalPage > 1 && (
+					<Pagination
+						onClick={this.handlePaginationClick}
+						perPage={ARTICLES_PER_PAGE}
+						total={totalPage}
+					/>
 				)}
 
 				{loading && <LoadingIndicator />}
@@ -181,6 +257,16 @@ class SearchResults extends preact.Component {
 }
 
 SearchResults.PropTypes = {
+	filterLabel: PropTypes.string.isRequired,
+	filterOptions: PropTypes.arrayOf(
+		PropTypes.shape(
+			{
+				displayName: PropTypes.string,
+				value: PropTypes.string
+			}
+		)
+	).isRequired,
+	locale: PropTypes.string.isRequired,
 	queryString: PropTypes.string.isRequired
 };
 

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders correctly 1`] = `
+<nav class="pagination">
+  <ul>
+    <li class="pagination-current">
+      <span>1</span>
+    </li>
+    <li class>
+      <button class="btn-unstyled" type="button" value="2">2</button>
+    </li>
+    <li class>
+      <button class="btn-unstyled" type="button" value="3">3</button>
+    </li>
+    <li class>
+      <button class="btn-unstyled" type="button" value="4">4</button>
+    </li>
+    <li class>
+      <button class="btn-unstyled" type="button" value="5">5</button>
+    </li>
+    <li class>
+      <button class="btn-unstyled" type="button" value="6">6</button>
+    </li>
+    <li class>
+      <button class="btn-unstyled" type="button" value="2">›</button>
+    </li>
+    <li class>
+      <button class="btn-unstyled" type="button" value="100">»</button>
+    </li>
+  </ul>
+</nav>
+`;
