@@ -132,9 +132,9 @@ class Pagination extends preact.Component {
 			if (currentPage === total) {
 				nextPageBuffer = 0;
 			}
-			else {
-				nextPageBuffer = total - currentPage >= PAGE_BUFFER ? PAGE_BUFFER : total - currentPage;
-			}
+		}
+		else {
+			nextPageBuffer = total - currentPage >= PAGE_BUFFER ? PAGE_BUFFER : total - currentPage;
 		}
 
 		return {
@@ -165,7 +165,6 @@ class Pagination extends preact.Component {
 
 Pagination.PropTypes = {
 	onClick: PropTypes.func.isRequired,
-	perPage: PropTypes.number.isRequired,
 	total: PropTypes.number.isRequired
 };
 
