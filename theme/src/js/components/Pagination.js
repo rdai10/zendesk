@@ -165,7 +165,6 @@ class Pagination extends preact.Component {
 
 Pagination.PropTypes = {
 	onClick: PropTypes.func.isRequired,
-	perPage: PropTypes.number.isRequired,
 	total: PropTypes.number.isRequired
 };
 

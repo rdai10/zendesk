@@ -245,7 +245,6 @@ class SearchResults extends preact.Component {
 				{!loading && totalPage > 1 && (
 					<Pagination
 						onClick={this.handlePaginationClick}
-						perPage={ARTICLES_PER_PAGE}
 						total={totalPage}
 					/>
 				)}
