@@ -41,11 +41,13 @@
 	pre {
 		border-radius: $border-radius;
 		font-family: "Roboto Mono", SFMono-Regular, monospace;
+		font-size: $code-font-size;
+		line-height: $code-line-height;
 	}
 
 	code {
-		background-color: $code-text-background-color;
-		padding: 0.25rem;
+		background-color: $color-divider;
+		padding: 0.125rem 0.25rem;
 	}
 
 	pre {
