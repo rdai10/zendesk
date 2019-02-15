@@ -225,8 +225,8 @@ class SearchResults extends preact.Component {
 				{!loading && !!results.length && (
 					<ul class="search-results-list">
 						{results.map(
-							(result, index) => (
-								<li key={index} class="search-result">
+							(result) => (
+								<li key={result.id} class="search-result" id={result.id}>
 									<a class="search-result-link" href={result.html_url}>{result.title}</a>
 
 									<h5 class="search-result-description"
@@ -245,7 +245,6 @@ class SearchResults extends preact.Component {
 				{!loading && totalPage > 1 && (
 					<Pagination
 						onClick={this.handlePaginationClick}
-						perPage={ARTICLES_PER_PAGE}
 						total={totalPage}
 					/>
 				)}

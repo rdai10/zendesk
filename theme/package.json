@@ -26,8 +26,8 @@
 		"lodash.times": "^4.3.2"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.1.2",
-		"@babel/preset-env": "^7.1.0",
+		"@babel/core": "^7.2.2",
+		"@babel/preset-env": "^7.3.1",
 		"autoprefixer": "^8.5.0",
 		"axios": "^0.18.0",
 		"babel-core": "^7.0.0-bridge.0",
@@ -43,7 +43,7 @@
 		"jest": "^23.6.0",
 		"jest-serializer-html-string": "^1.0.1",
 		"mini-css-extract-plugin": "^0.4.0",
-		"node-sass": "^4.9.3",
+		"node-sass": "^4.11.0",
 		"optimize-css-assets-webpack-plugin": "^4.0.1",
 		"postcss-loader": "^2.1.5",
 		"preact": "^8.2.9",
@@ -111,5 +111,5 @@
 		"test": "jest",
 		"zip": "zip -r Liferay-Help-Center.zip dist -x *.zat*"
 	},
-	"version": "2.4.3"
+	"version": "2.4.4"
 }
