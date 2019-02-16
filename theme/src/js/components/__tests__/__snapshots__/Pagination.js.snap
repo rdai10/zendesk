@@ -1,32 +1,322 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Pagination renders a maximum of five pages previous to and after the current page 1`] = `
+<div>
+  <nav
+    aria-label="pagination navigation"
+    class="pagination"
+    role="navigation"
+  >
+    <ul>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page «"
+          class="btn-unstyled"
+          type="button"
+          value="1"
+        >
+          «
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page ‹"
+          class="btn-unstyled"
+          type="button"
+          value="5"
+        >
+          ‹
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 1"
+          class="btn-unstyled"
+          type="button"
+          value="1"
+        >
+          1
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 2"
+          class="btn-unstyled"
+          type="button"
+          value="2"
+        >
+          2
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 3"
+          class="btn-unstyled"
+          type="button"
+          value="3"
+        >
+          3
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 4"
+          class="btn-unstyled"
+          type="button"
+          value="4"
+        >
+          4
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 5"
+          class="btn-unstyled"
+          type="button"
+          value="5"
+        >
+          5
+        </button>
+        
+      </li>
+      <li
+        class="pagination-current"
+      >
+        
+        <span
+          aria-current="true"
+          aria-label="current page, page 6"
+        >
+          6
+        </span>
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 7"
+          class="btn-unstyled"
+          type="button"
+          value="7"
+        >
+          7
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 8"
+          class="btn-unstyled"
+          type="button"
+          value="8"
+        >
+          8
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 9"
+          class="btn-unstyled"
+          type="button"
+          value="9"
+        >
+          9
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 10"
+          class="btn-unstyled"
+          type="button"
+          value="10"
+        >
+          10
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 11"
+          class="btn-unstyled"
+          type="button"
+          value="11"
+        >
+          11
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page ›"
+          class="btn-unstyled"
+          type="button"
+          value="7"
+        >
+          ›
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page »"
+          class="btn-unstyled"
+          type="button"
+          value="100"
+        >
+          »
+        </button>
+        
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
 exports[`Pagination renders correctly 1`] = `
-<nav class="pagination">
-  <ul>
-    <li class="pagination-current">
-      <span>1</span>
-    </li>
-    <li class>
-      <button class="btn-unstyled" type="button" value="2">2</button>
-    </li>
-    <li class>
-      <button class="btn-unstyled" type="button" value="3">3</button>
-    </li>
-    <li class>
-      <button class="btn-unstyled" type="button" value="4">4</button>
-    </li>
-    <li class>
-      <button class="btn-unstyled" type="button" value="5">5</button>
-    </li>
-    <li class>
-      <button class="btn-unstyled" type="button" value="6">6</button>
-    </li>
-    <li class>
-      <button class="btn-unstyled" type="button" value="2">›</button>
-    </li>
-    <li class>
-      <button class="btn-unstyled" type="button" value="100">»</button>
-    </li>
-  </ul>
-</nav>
+<div>
+  <nav
+    aria-label="pagination navigation"
+    class="pagination"
+    role="navigation"
+  >
+    <ul>
+      <li
+        class="pagination-current"
+      >
+        
+        <span
+          aria-current="true"
+          aria-label="current page, page 1"
+        >
+          1
+        </span>
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 2"
+          class="btn-unstyled"
+          type="button"
+          value="2"
+        >
+          2
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 3"
+          class="btn-unstyled"
+          type="button"
+          value="3"
+        >
+          3
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 4"
+          class="btn-unstyled"
+          type="button"
+          value="4"
+        >
+          4
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 5"
+          class="btn-unstyled"
+          type="button"
+          value="5"
+        >
+          5
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page 6"
+          class="btn-unstyled"
+          type="button"
+          value="6"
+        >
+          6
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page ›"
+          class="btn-unstyled"
+          type="button"
+          value="2"
+        >
+          ›
+        </button>
+        
+      </li>
+      <li
+        class=""
+      >
+        <button
+          aria-label="go to page »"
+          class="btn-unstyled"
+          type="button"
+          value="100"
+        >
+          »
+        </button>
+        
+      </li>
+    </ul>
+  </nav>
+</div>
 `;
