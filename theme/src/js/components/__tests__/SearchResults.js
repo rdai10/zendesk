@@ -1,7 +1,9 @@
 import preact from 'preact';
-import render from 'preact-render-to-string';
+import {cleanup, render} from 'preact-testing-library';
 
 import SearchResults from '../SearchResults';
+
+afterEach(cleanup);
 
 describe('SearchResults', () => {
 	const filterOptions = [
@@ -10,7 +12,7 @@ describe('SearchResults', () => {
 	];
 
 	it('renders correctly', () => {
-		const tree = render(
+		const {container} = render(
 			<SearchResults
 				filterLabel="filter"
 				filterOptions={filterOptions}
@@ -19,6 +21,6 @@ describe('SearchResults', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });

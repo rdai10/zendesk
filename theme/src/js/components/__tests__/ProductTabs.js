@@ -1,7 +1,9 @@
 import preact from 'preact';
-import render from 'preact-render-to-string';
+import {cleanup, render} from 'preact-testing-library';
 
 import ProductTabs from '../ProductTabs';
+
+afterEach(cleanup);
 
 describe('ProductTabs', () => {
 	const productItems = [
@@ -64,21 +66,21 @@ describe('ProductTabs', () => {
 	];
 
 	it('renders correctly with KB tabs and all access tabs', () => {
-		const tree = render(
+		const {container} = render(
 			<ProductTabs fullAccess productItems={productItems} />
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders correctly non KB tabs and all access tabs', () => {
-		const tree = render(<ProductTabs productItems={productItems} />);
+		const {container} = render(<ProductTabs productItems={productItems} />);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with simple text Alert', () => {
-		const tree = render(
+		const {container} = render(
 			<ProductTabs
 				alert={{children: 'Alert'}}
 				fullAccess
@@ -86,11 +88,11 @@ describe('ProductTabs', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with simple text Alert with leading text', () => {
-		const tree = render(
+		const {container} = render(
 			<ProductTabs
 				alert={{children: 'Alert', leadingText: 'Lead'}}
 				fullAccess
@@ -98,11 +100,11 @@ describe('ProductTabs', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with text and link in Alert', () => {
-		const tree = render(
+		const {container} = render(
 			<ProductTabs
 				alert={{children: 'Alert', linkText: 'Link', url: '/'}}
 				fullAccess
@@ -110,6 +112,6 @@ describe('ProductTabs', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });

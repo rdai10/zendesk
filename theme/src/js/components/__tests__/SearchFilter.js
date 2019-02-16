@@ -1,7 +1,9 @@
 import preact from 'preact';
-import render from 'preact-render-to-string';
+import {cleanup, render} from 'preact-testing-library';
 
 import SearchFilter from '../SearchFilter';
+
+afterEach(cleanup);
 
 describe('SearchFilter', () => {
 	const options = [
@@ -16,14 +18,14 @@ describe('SearchFilter', () => {
 	];
 
 	it('renders correctly', () => {
-		const tree = render(
+		const {container} = render(
 			<SearchFilter
 				label="Search Filter"
-				onClick={() => console.log('clicked')}
+				onClick={jest.fn()}
 				options={options}
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });
