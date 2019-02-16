@@ -1,20 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Alert renders correctly 1`] = `
-<div class="alert alert-info" role="alert">
-  <span class="alert-indicator">
-    <svg class="lexicon-icon lexicon-icon-info-circle">
-      <use xlink:href="#info-circle"></use>
-    </svg>
-  </span>Alert</div>
+<div>
+  <div
+    class="alert alert-info"
+    role="alert"
+  >
+    <span
+      class="alert-indicator"
+    >
+      <svg
+        class="lexicon-icon lexicon-icon-info-circle"
+        role="img"
+      >
+        <use
+          href="#info-circle"
+        />
+      </svg>
+    </span>
+    Alert
+  </div>
+</div>
 `;
 
 exports[`Alert renders with leading text 1`] = `
-<div class="alert alert-info" role="alert">
-  <span class="alert-indicator">
-    <svg class="lexicon-icon lexicon-icon-info-circle">
-      <use xlink:href="#info-circle"></use>
-    </svg>
-  </span>
-  <strong class="lead">Leading Text</strong>Alert</div>
+<div>
+  <div
+    class="alert alert-info"
+    role="alert"
+  >
+    <span
+      class="alert-indicator"
+    >
+      <svg
+        class="lexicon-icon lexicon-icon-info-circle"
+        role="img"
+      >
+        <use
+          href="#info-circle"
+        />
+      </svg>
+    </span>
+    <strong
+      class="lead"
+    >
+      Leading Text
+    </strong>
+    Alert
+  </div>
+</div>
 `;
