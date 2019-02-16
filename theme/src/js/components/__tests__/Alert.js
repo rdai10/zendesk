@@ -1,18 +1,20 @@
 import preact from 'preact';
-import render from 'preact-render-to-string';
+import {cleanup, render} from 'preact-testing-library';
 
 import Alert from '../Alert';
 
+afterEach(cleanup);
+
 describe('Alert', () => {
 	it('renders correctly', () => {
-		const tree = render(<Alert>Alert</Alert>);
+		const {container} = render(<Alert>Alert</Alert>);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with leading text', () => {
-		const tree = render(<Alert leadingText="Leading Text">Alert</Alert>);
+		const {container} = render(<Alert leadingText="Leading Text">Alert</Alert>);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });

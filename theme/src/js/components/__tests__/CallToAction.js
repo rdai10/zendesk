@@ -1,5 +1,5 @@
 import preact from 'preact';
-import render from 'preact-render-to-string';
+import {render} from 'preact-testing-library';
 
 import CallToAction from '../CallToAction';
 
@@ -16,46 +16,46 @@ describe('CallToAction', () => {
 	];
 
 	it('renders correctly', () => {
-		const tree = render(<CallToAction actionItems={basicActionItems} />);
+		const {container} = render(<CallToAction actionItems={basicActionItems} />);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with class name', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				className="class-name"
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with section heading', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				sectionHeading="Section Heading"
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with section heading', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				sectionHeading="Section Heading"
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with disclaimer text', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={[
 					{
@@ -67,11 +67,11 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with an icon', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={[
 					{
@@ -83,11 +83,11 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with a message', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={[
 					{
@@ -99,11 +99,11 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with promotions', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				promotions={[
@@ -115,11 +115,11 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with promotions containing description', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				promotions={[
@@ -132,6 +132,6 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });

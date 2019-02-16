@@ -1,16 +1,18 @@
 import preact from 'preact';
-import render from 'preact-render-to-string';
+import {cleanup, render} from 'preact-testing-library';
 
 import Pagination from '../Pagination';
 
+afterEach(cleanup);
+
 describe('Pagination', () => {
 	it('renders correctly', () => {
-		const handleOnclick = () => console.log('clicked');
+		const handleClick = jest.fn();
 
-		const tree = render(
-			<Pagination onClick={handleOnclick} perPage={10} total={100} />
+		const {container} = render(
+			<Pagination onClick={handleClick} perPage={10} total={100} />
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });

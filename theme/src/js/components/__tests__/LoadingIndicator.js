@@ -1,12 +1,14 @@
 import preact from 'preact';
-import render from 'preact-render-to-string';
+import {cleanup, render} from 'preact-testing-library';
 
 import LoadingIndicator from '../LoadingIndicator';
 
+afterEach(cleanup);
+
 describe('LoadingIndicator', () => {
 	it('renders correctly', () => {
-		const tree = render(<LoadingIndicator />);
+		const {container} = render(<LoadingIndicator />);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 });
