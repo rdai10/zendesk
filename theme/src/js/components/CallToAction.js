@@ -10,7 +10,7 @@ const ActionItem = ({config}) => {
 		<div class="action-item row">
 			<div class="col-4 name">
 				{iconId && (
-					<svg class="lexicon-icon lexicon-icon-ticket icon">
+					<svg class="lexicon-icon lexicon-icon-ticket icon" role="img">
 						<use xlinkHref={iconId} />
 					</svg>
 				)}
