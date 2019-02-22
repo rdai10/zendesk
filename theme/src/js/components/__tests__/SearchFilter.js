@@ -4,7 +4,7 @@ import {cleanup, fireEvent, render} from 'preact-testing-library';
 import SearchFilter from '../SearchFilter';
 
 const setup = () => {
-	const onChange = jest.fn();
+	const handleOnChange = jest.fn();
 
 	const options = [
 		{
@@ -20,13 +20,13 @@ const setup = () => {
 	const utils = render(
 		<SearchFilter
 			label="Search Filter"
-			onChange={onChange}
+			onChange={handleOnChange}
 			options={options}
 		/>
 	);
 
 	return {
-		onChange,
+		handleOnChange,
 		...utils
 	};
 };
@@ -51,12 +51,12 @@ describe('SearchFilter', () => {
 	});
 
 	it('does something when a new option is selected', () => {
-		const {container, onChange} = setup();
+		const {container, handleOnChange} = setup();
 
 		const filter = container.querySelector('select');
 
 		fireEvent.change(filter, { target: { value: 'Option 2' } });
 
-		expect(onChange).toHaveBeenCalledTimes(1);
+		expect(handleOnChange).toHaveBeenCalledTimes(1);
 	});
 });
