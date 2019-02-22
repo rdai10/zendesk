@@ -1,11 +1,14 @@
 import preact from 'preact';
-import {cleanup, render} from 'preact-testing-library';
+import {
+	cleanup,
+	debounceRenderingOff,
+	fireEvent,
+	render
+} from 'preact-testing-library';
 
 import ProductTabs from '../ProductTabs';
 
-afterEach(cleanup);
-
-describe('ProductTabs', () => {
+const setup = () => {
 	const productItems = [
 		{
 			configs: [
@@ -42,7 +45,7 @@ describe('ProductTabs', () => {
 		{
 			configs: [
 				{
-					description: 'Card Description',
+					description: 'Card Description for KB Access',
 					name: 'Card Name',
 					svgId: '#ticket',
 					url: '/'
@@ -54,7 +57,7 @@ describe('ProductTabs', () => {
 		{
 			configs: [
 				{
-					description: 'Card Description',
+					description: 'Card Description for Non KB Access',
 					name: 'Card Name',
 					svgId: '#ticket',
 					url: '/'
@@ -65,46 +68,45 @@ describe('ProductTabs', () => {
 		}
 	];
 
+	const utils = render(
+		<ProductTabs fullAccess productItems={productItems} />
+	);
+
+	return {
+		productItems,
+		...utils
+	};
+};
+
+afterEach(cleanup);
+
+describe('ProductTabs', () => {
+	const {productItems} = setup();
+
 	it('renders correctly with KB tabs and all access tabs', () => {
-		const {container} = render(
-			<ProductTabs fullAccess productItems={productItems} />
-		);
+		const {container, getByText} = setup();
 
+		const tabAll = getByText('Tab All');
+		const tabKB = getByText('Tab KB');
+
+		expect(tabAll).toBeDefined();
+		expect(tabKB).toBeDefined();
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders correctly non KB tabs and all access tabs', () => {
-		const {container} = render(<ProductTabs productItems={productItems} />);
+	it('renders correctly with non KB tabs and all access tabs', () => {
+		const {container, getByText} = render(<ProductTabs productItems={productItems} />);
 
+		const tabAll = getByText('Tab All');
+		const tabNonKB = getByText('Tab Non KB');
+
+		expect(tabAll).toBeDefined();
+		expect(tabNonKB).toBeDefined();
 		expect(container).toMatchSnapshot();
 	});
 
-	it('renders with simple text Alert', () => {
-		const {container} = render(
-			<ProductTabs
-				alert={{children: 'Alert'}}
-				fullAccess
-				productItems={productItems}
-			/>
-		);
-
-		expect(container).toMatchSnapshot();
-	});
-
-	it('renders with simple text Alert with leading text', () => {
-		const {container} = render(
-			<ProductTabs
-				alert={{children: 'Alert', leadingText: 'Lead'}}
-				fullAccess
-				productItems={productItems}
-			/>
-		);
-
-		expect(container).toMatchSnapshot();
-	});
-
-	it('renders with text and link in Alert', () => {
-		const {container} = render(
+	it('renders Alert with text and link', () => {
+		const {container, getByText} = render(
 			<ProductTabs
 				alert={{children: 'Alert', linkText: 'Link', url: '/'}}
 				fullAccess
@@ -112,6 +114,23 @@ describe('ProductTabs', () => {
 			/>
 		);
 
+		const alert = getByText('Alert');
+		const linkText = getByText('Link');
+
+		expect(alert).toBeDefined();
+		expect(linkText).toBeDefined();
 		expect(container).toMatchSnapshot();
+	});
+
+	it('renders new content when a tab is clicked', () => {
+		debounceRenderingOff();
+
+		const {getByText} = setup();
+
+		fireEvent.click(getByText('Tab KB'));
+
+		const KBCardDescription = getByText('Card Description for KB Access');
+
+		expect(KBCardDescription).toBeDefined();
 	});
 });
