@@ -22,13 +22,13 @@ class PaginationItem extends preact.Component {
 		return (
 			<li class={active ? 'pagination-current' : ''}>
 				{!active && (
-					<button class="btn-unstyled" onClick={this.handleClick} type="button" value={number}>
+					<button aria-label={`go to page ${label}`} class="btn-unstyled" onClick={this.handleClick} type="button" value={number}>
 						{label}
 					</button>
 				)}
 
 				{active && (
-					<span>{label}</span>
+					<span aria-current="true" aria-label={`current page, page ${label}`}>{label}</span>
 				)}
 			</li>
 		);
@@ -145,7 +145,7 @@ class Pagination extends preact.Component {
 
 	render() {
 		return (
-			<nav class="pagination">
+			<nav aria-label="pagination navigation" class="pagination" role="navigation">
 				<ul>
 					{this.getPages().map(
 						page => (

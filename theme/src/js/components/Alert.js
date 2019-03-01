@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const Alert = ({children, leadingText}) => (
 	<div class="alert alert-info" role="alert">
 		<span class="alert-indicator">
-			<svg className="lexicon-icon lexicon-icon-info-circle">
+			<svg className="lexicon-icon lexicon-icon-info-circle" role="img">
 				<use xlinkHref="#info-circle" />
 			</svg>
 		</span>

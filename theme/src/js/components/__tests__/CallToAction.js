@@ -1,7 +1,9 @@
 import preact from 'preact';
-import render from 'preact-render-to-string';
+import {cleanup, render} from 'preact-testing-library';
 
 import CallToAction from '../CallToAction';
+
+afterEach(cleanup);
 
 describe('CallToAction', () => {
 	const basicActionItems = [
@@ -16,46 +18,40 @@ describe('CallToAction', () => {
 	];
 
 	it('renders correctly', () => {
-		const tree = render(<CallToAction actionItems={basicActionItems} />);
+		const {container} = render(
+			<CallToAction actionItems={basicActionItems} />
+		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with class name', () => {
-		const tree = render(
+		const {container} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				className="class-name"
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with section heading', () => {
-		const tree = render(
+		const {container, getByText} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				sectionHeading="Section Heading"
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
-	});
+		const sectionHeading = getByText('Section Heading');
 
-	it('renders with section heading', () => {
-		const tree = render(
-			<CallToAction
-				actionItems={basicActionItems}
-				sectionHeading="Section Heading"
-			/>
-		);
-
-		expect(tree).toMatchSnapshot();
+		expect(sectionHeading).toBeTruthy();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with disclaimer text', () => {
-		const tree = render(
+		const {container, getByText} = render(
 			<CallToAction
 				actionItems={[
 					{
@@ -67,11 +63,14 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		const disclaimer = getByText('This is a disclaimer.');
+
+		expect(disclaimer).toBeTruthy();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with an icon', () => {
-		const tree = render(
+		const {container, getByRole} = render(
 			<CallToAction
 				actionItems={[
 					{
@@ -83,11 +82,14 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		const icon = getByRole('img');
+
+		expect(icon).toBeTruthy();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with a message', () => {
-		const tree = render(
+		const {container, getByText} = render(
 			<CallToAction
 				actionItems={[
 					{
@@ -99,27 +101,39 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		const message = getByText('Message');
+
+		expect(message).toBeTruthy();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with promotions', () => {
-		const tree = render(
+		const {container, getByText} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				promotions={[
 					{
-						name: 'Promotion Name',
+						name: 'Promotion Name 1',
+						url: '/'
+					},
+					{
+						name: 'Promotion Name 2',
 						url: '/'
 					}
 				]}
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		const promotion1 = getByText('Promotion Name 1');
+		const promotion2 = getByText('Promotion Name 2');
+
+		expect(promotion1).toBeTruthy();
+		expect(promotion2).toBeTruthy();
+		expect(container).toMatchSnapshot();
 	});
 
 	it('renders with promotions containing description', () => {
-		const tree = render(
+		const {container, getByText} = render(
 			<CallToAction
 				actionItems={basicActionItems}
 				promotions={[
@@ -132,6 +146,9 @@ describe('CallToAction', () => {
 			/>
 		);
 
-		expect(tree).toMatchSnapshot();
+		const promotionDescription = getByText('Promotion Description');
+
+		expect(promotionDescription).toBeTruthy();
+		expect(container).toMatchSnapshot();
 	});
 });

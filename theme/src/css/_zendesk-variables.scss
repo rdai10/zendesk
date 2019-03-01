@@ -27,7 +27,6 @@ $color-grey-focus: #F0F1F2 !default;
 $color-grey-hover: #F2F4F5 !default;
 $color-white: #FFF !default;
 
-$code-text-background-color: #FDEFF6 !default;
 $pre-text-color: #F8FAFF !default;
 $secondary-text-color: #5B6170 !default;
 
@@ -48,6 +47,8 @@ $h3-font-size: 1rem !default; // 16px
 $h4-font-size: 1rem !default; // 16px
 $h5-font-size: 0.875rem !default; // 14px
 $h6-font-size: $small-font-size !default; // 12px
+
+$code-font-size: 14px !default; // set pixel value to prevent nested <pre> and <code> from scaling down font size
 
 $line-height-sm: 1.333 !default; // 18px
 
@@ -117,6 +118,8 @@ $h1-display-font-size: 3rem !default; // 48px
 $h6-line-height: 16px !default;
 
 $font-size-default: 1rem !default; // 16px
+
+$code-line-height: 24px !default; // set pixel value to prevent nested <pre> and <code> from scaling down line height
 
 $label-sm: (
 	font-size: 0.625rem, // 10px
