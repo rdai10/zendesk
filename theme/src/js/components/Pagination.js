@@ -123,7 +123,7 @@ class Pagination extends preact.Component {
 		const {total} = this.props;
 		const {currentPage} = this.state;
 
-		let nextPageBuffer = PAGE_BUFFER;
+		let nextPageBuffer = total - currentPage >= PAGE_BUFFER ? PAGE_BUFFER : total - currentPage;
 		let prevPageBuffer = 0;
 
 		if (currentPage > 1) {
@@ -132,9 +132,6 @@ class Pagination extends preact.Component {
 			if (currentPage === total) {
 				nextPageBuffer = 0;
 			}
-		}
-		else {
-			nextPageBuffer = total - currentPage >= PAGE_BUFFER ? PAGE_BUFFER : total - currentPage;
 		}
 
 		return {
@@ -150,6 +147,7 @@ class Pagination extends preact.Component {
 					{this.getPages().map(
 						page => (
 							<PaginationItem
+								key={page.label}
 								active={this.state.currentPage === page.number}
 								label={page.label}
 								number={page.number}
