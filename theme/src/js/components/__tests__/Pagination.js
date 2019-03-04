@@ -22,6 +22,7 @@ const setup = () => {
 
 	return {
 		firstPage,
+		handleClick,
 		lastPage,
 		nextPage,
 		prevPage,
@@ -62,9 +63,7 @@ describe('Pagination', () => {
 
 		fireEvent.click(lastPage);
 
-		const page100 = getByText('100');
-
-		expect(page100).toBeTruthy();
+		expect(getByText('100')).toBeTruthy();
 	});
 
 	it('renders only first and prev page controls on last page', () => {
@@ -106,10 +105,39 @@ describe('Pagination', () => {
 	it('renders a maximum of five pages previous to and after the current page', () => {
 		debounceRenderingOff();
 
-		const {container, queryByText} = setup();
+		const {container, getByText} = setup();
 
-		fireEvent.click(queryByText('6'));
+		fireEvent.click(getByText('6'));
 
+		expect(getByText('1')).toBeTruthy();
+		expect(getByText('5')).toBeTruthy();
+		expect(getByText('7')).toBeTruthy();
+		expect(getByText('11')).toBeTruthy();
 		expect(container).toMatchSnapshot();
+	});
+
+	it('should not render page numbers exceeding the total page count on initial load', () => {
+		debounceRenderingOff();
+
+		const {handleClick} = setup();
+
+		const {queryByText} = render(
+			<Pagination onClick={handleClick} perPage={10} total={5} />
+		);
+
+		expect(queryByText('5')).toBeTruthy();
+		expect(queryByText('6')).toBeFalsy();
+	});
+
+	it('should not render page numbers exceeding the total page count after interaction', () => {
+		debounceRenderingOff();
+
+		const {getByText, lastPage, queryByText} = setup();
+
+		fireEvent.click(lastPage);
+		fireEvent.click(getByText('98'));
+
+		expect(getByText('100')).toBeTruthy();
+		expect(queryByText('101')).toBeFalsy();
 	});
 });
