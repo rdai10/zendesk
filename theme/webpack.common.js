@@ -103,6 +103,7 @@ module.exports = {
 					'products-landing',
 					'products-landing-tab-content',
 					'products-landing-tablist',
+					'*request-container*',
 					'*request_description_hint*',
 					'*search-result-description*',
 					'*search-results-list*',
