@@ -17,6 +17,9 @@ This article is to be used as a general purpose article; designed for informatio
 ### Knowledge base article
 This article is to be used to promote knowledge sharing and to provide solutions for customer issues before reaching out to customer support engineer for additional help. It contains a sidebar of **Related Articles** to increase article visibility.
 
+### Fast Track article
+This article is built on top of the **Knowledge Base Articles** designed to be part of Liferay's fast-track publication program of providing a repository of verified solutions that have resolved one or more customer issues. It contains a fast track label at the top of the article, as well as a brief explanation about what fast track articles are at the bottom of the article. Articles published under this template are part of the Knowledge-Centered Service initiative.
+
 ### Zendesk default article
 This article is to be used as the default Zendesk template with custom styling. It displays a navigation on the left side of the article containing all the articles in the current section.
 

@@ -92,6 +92,7 @@ module.exports = {
 					'*article-content*',
 					'button-unstyled',
 					'expanded',
+					'*initiative*',
 					'*loading-animation*',
 					'nav-card',
 					'nav-stacked',
