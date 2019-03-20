@@ -194,6 +194,32 @@
 	.autofit-padded > .autofit-col {
 		padding-top: $padding-md;
 	}
+
+	.satisfaction-box {
+		background-color: $color-grey;
+		border-width: 0;
+
+		h4 {
+			padding-top: $padding-default;
+		}
+
+		input[type="radio"][value="good"] + label:hover {
+			border-color: $color-success;
+			color: $color-success;
+		}
+
+		input[type="radio"][value="bad"] + label:hover {
+			border-color: $color-error;
+			color: $color-error;
+		}
+
+		label[role="button"] {
+			border: 1px solid $color-border;
+			color: initial;
+			font-size: $small-font-size;
+			padding: $btn-padding-y $btn-padding-x;
+		}
+	}
 }
 
 .request-filter {

@@ -1,5 +1,6 @@
 a[role="button"],
-input[type="submit"] {
+input[type="submit"],
+label[role="button"] {
 	@include button-size(
 		$btn-padding-y,
 		$btn-padding-x,
