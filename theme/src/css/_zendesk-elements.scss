@@ -116,6 +116,27 @@ textarea,
 	margin-bottom: $form-group-margin-bottom;
 }
 
+.initiative-blurb {
+	font-style: italic;
+	padding: 3rem 0;
+
+	.leading-text {
+		color: $color-warning;
+		font-weight: $font-weight-semi-bold;
+	}
+}
+
+.initiative-label {
+	background-color: $color-warning-background;
+	color: $color-warning;
+	margin-bottom: 0.5rem;
+	text-transform: uppercase;
+
+	&.label {
+		border-width: 0;
+	}
+}
+
 .label-sm {
 	@include clay-label-size($label-sm);
 }
