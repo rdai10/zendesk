@@ -81,6 +81,11 @@ textarea,
 		background-color: $input-disabled-bg;
 		color: $color-default-disabled;
 	}
+
+	.input-small {
+		font-size: $input-label-font-size;
+		padding: $input-sm-padding-y $input-sm-padding-x;
+	}
 }
 
 input:not([type="submit"]),
