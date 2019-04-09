@@ -5,10 +5,6 @@
 		</div>
 	</div>
 
-	<span class="initiative-label label label-sm" title="{{dc 'article-fast_track'}}">
-		{{dc 'article-fast_track'}}
-	</span>
-
 	{{#with article}}
 		<div class="row">
 			<h1 class="article-title col-md-7" title="{{title}}">
@@ -50,6 +46,10 @@
 					</div>
 				</div>
 
+				<aside class="initiative-blurb">
+					<span class="leading-text">{{dc 'article-fast_track'}}:</span> {{dc 'article-fast_track_disclaimer'}}
+				</aside>
+
 				<section class="article-info">
 					<div class="article-content">
 						<div class="article-body">
@@ -76,10 +76,6 @@
 						</div>
 					</div>
 				</section>
-
-				<aside class="initiative-blurb">
-					<span class="leading-text">{{dc 'article-fast_track'}}:</span> {{dc 'article-fast_track_disclaimer'}}
-				</aside>
 
 				<footer class="article-footer">
 					<div class="article-votes">
