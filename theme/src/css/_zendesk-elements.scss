@@ -134,14 +134,11 @@ textarea,
 }
 
 .initiative-label {
-	background-color: $color-warning-background;
+	border: 1px solid $color-warning-border;
 	color: $color-warning;
-	margin-bottom: 0.5rem;
+	font-weight: $font-weight-normal;
+	margin-left: 0.5rem;
 	text-transform: uppercase;
-
-	&.label {
-		border-width: 0;
-	}
 }
 
 .label-sm {
