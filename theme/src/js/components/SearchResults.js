@@ -1,8 +1,6 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
-import 'core-js/fn/array/includes';
-
 import {
 	getArticlesBySearch,
 	getSectionBySectionId
@@ -235,9 +233,9 @@ class SearchResults extends preact.Component {
 									<div class="search-results-header">
 										<a class="search-result-link semibold" href={result.html_url}>{result.title}</a>
 
-										{result.label_names.includes(
+										{result.label_names.indexOf(
 											'Fast Track'
-										) && (
+										) >= 0 && (
 											<span class="initiative-label label label-sm">
 												{fastTrackLabel}
 											</span>
