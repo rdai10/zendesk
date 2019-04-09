@@ -1,7 +1,12 @@
 import preact from 'preact';
 import PropTypes from 'prop-types';
 
-import {getArticlesBySearch, getSectionBySectionId} from '../helpers/api-helpers';
+import 'core-js/fn/array/includes';
+
+import {
+	getArticlesBySearch,
+	getSectionBySectionId
+} from '../helpers/api-helpers';
 
 import LoadingIndicator from './LoadingIndicator';
 import Pagination from './Pagination';
@@ -211,7 +216,7 @@ class SearchResults extends preact.Component {
 	}
 
 	render(
-		{filterLabel, filterOptions, locale},
+		{fastTrackLabel, filterLabel, filterOptions, locale},
 		{loading, results, totalPage}
 	) {
 		return (
@@ -227,7 +232,17 @@ class SearchResults extends preact.Component {
 						{results.map(
 							(result) => (
 								<li key={result.id} class="search-result" id={result.id}>
-									<a class="search-result-link" href={result.html_url}>{result.title}</a>
+									<div class="search-results-header">
+										<a class="search-result-link semibold" href={result.html_url}>{result.title}</a>
+
+										{result.label_names.includes(
+											'Fast Track'
+										) && (
+											<span class="initiative-label label label-sm">
+												{fastTrackLabel}
+											</span>
+										)}
+									</div>
 
 									<h5 class="search-result-description"
 										dangerouslySetInnerHTML={{__html: result.snippet}} />
@@ -256,6 +271,7 @@ class SearchResults extends preact.Component {
 }
 
 SearchResults.PropTypes = {
+	fastTrackLabel: PropTypes.string.isRequired,
 	filterLabel: PropTypes.string.isRequired,
 	filterOptions: PropTypes.arrayOf(
 		PropTypes.shape(
