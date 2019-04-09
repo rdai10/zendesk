@@ -122,8 +122,10 @@ textarea,
 }
 
 .initiative-blurb {
+	border-left: 2px solid $color-warning-border;
 	font-style: italic;
-	padding: 3rem 0;
+	margin: 1.5rem 0 3rem;
+	padding-left: $padding-default;
 
 	.leading-text {
 		color: $color-warning;
