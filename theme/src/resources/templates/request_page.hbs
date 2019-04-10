@@ -216,7 +216,9 @@
 							{{t 'organization'}}
 						</dt>
 						<dd>
-							{{select 'organization'}}
+							{{select 'organization' class='d-none'}}
+
+							<div id="orgNamePlaceholder"></div>
 						</dd>
 					{{/form}}
 
@@ -324,5 +326,17 @@
 		}
 
 		Liferay.hasWatcherPermission(window.HelpCenter.user.tags, {{request.id}}, toggleLargeFileAttachment);
+
+		const orgNameField = document.getElementById('request_organization_id');
+
+		let orgName = '-';
+
+		if (orgNameField && orgNameField.selectedIndex) {
+			orgName = orgNameField.options[orgNameField.selectedIndex].text;
+		}
+
+		const orgNamePlaceholder = document.getElementById('orgNamePlaceholder');
+
+		orgNamePlaceholder.innerHTML = orgName;
 	});
 </script>
