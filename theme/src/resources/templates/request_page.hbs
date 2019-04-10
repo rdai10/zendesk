@@ -337,6 +337,8 @@
 
 		const orgNamePlaceholder = document.getElementById('orgNamePlaceholder');
 
-		orgNamePlaceholder.innerHTML = orgName;
+		if (orgNamePlaceholder) {
+			orgNamePlaceholder.innerHTML = orgName;
+		}
 	});
 </script>
