@@ -81,6 +81,11 @@ textarea,
 		background-color: $input-disabled-bg;
 		color: $color-default-disabled;
 	}
+
+	.input-small {
+		font-size: $input-label-font-size;
+		padding: $input-sm-padding-y $input-sm-padding-x;
+	}
 }
 
 input:not([type="submit"]),
@@ -117,8 +122,10 @@ textarea,
 }
 
 .initiative-blurb {
+	border-left: 2px solid $color-warning-border;
 	font-style: italic;
-	padding: 3rem 0;
+	margin: 1.5rem 0 3rem;
+	padding-left: $padding-default;
 
 	.leading-text {
 		color: $color-warning;
@@ -127,18 +134,17 @@ textarea,
 }
 
 .initiative-label {
-	background-color: $color-warning-background;
+	border: 1px solid $color-warning-border;
 	color: $color-warning;
-	margin-bottom: 0.5rem;
+	font-weight: $font-weight-normal;
+	margin-left: 0.5rem;
 	text-transform: uppercase;
-
-	&.label {
-		border-width: 0;
-	}
 }
 
 .label-sm {
 	@include clay-label-size($label-sm);
+
+	padding-bottom: 0.25rem;
 }
 
 .lexicon-icon-arrow-right {
