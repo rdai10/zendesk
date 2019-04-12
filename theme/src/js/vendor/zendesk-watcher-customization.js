@@ -138,9 +138,8 @@ function getRequestOrg() {
 		});
 }
 
-// on request page, disable org drop-down and remove comment box if necessary
+// on request page, remove comment box if necessary
 function customizeRequestPage(id) {
-	$('#request_organization_id').attr('disabled', true);
 	var userTags = HelpCenter.user.tags;
 	var watcherOrgs = getUserWatcherTags(userTags);
 
