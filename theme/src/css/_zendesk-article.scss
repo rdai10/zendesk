@@ -9,10 +9,6 @@
 	.avatar {
 		margin-right: $avatar-spacer-right;
 	}
-
-	.author-name {
-		margin: 0;
-	}
 }
 
 .article-body {
@@ -111,6 +107,17 @@
 				content: attr(title);
 			}
 		}
+	}
+}
+
+.article-info {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-bottom: $margin-default;
 	}
 }
 

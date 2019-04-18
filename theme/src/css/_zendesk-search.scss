@@ -24,10 +24,6 @@
 		}
 	}
 
-	.page-header-description {
-		margin-bottom: $margin-md;
-	}
-
 	.search-filter {
 		align-items: baseline;
 		display: flex;
@@ -45,7 +41,6 @@
 
 	.search-result-description {
 		font-weight: $font-weight-normal;
-		margin-bottom: 0;
 
 		em {
 			font-style: initial;
