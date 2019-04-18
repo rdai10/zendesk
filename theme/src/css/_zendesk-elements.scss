@@ -9,6 +9,21 @@ h1 {
 	&.title {
 		margin-bottom: 0.5rem;
 	}
+
+	@include media-breakpoint-down(sm) {
+		font-size: $mobile-font-size;
+		margin-bottom: $margin-default;
+
+		&.display,
+		&.title {
+			margin-bottom: 0;
+		}
+
+		&.display {
+			font-size: $h1-font-size;
+			line-height: 1.5;
+		}
+	}
 }
 
 h1,
