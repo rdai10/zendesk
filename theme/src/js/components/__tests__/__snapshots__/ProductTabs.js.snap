@@ -2,45 +2,39 @@
 
 exports[`ProductTabs renders Alert with text and link 1`] = `
 <div>
-  <div
-    class="row"
-  >
+  <div>
     <div
-      class="col-md-12"
+      class="alert alert-info"
+      role="alert"
     >
-      <div
-        class="alert alert-info"
-        role="alert"
+      <span
+        class="alert-indicator"
       >
-        <span
-          class="alert-indicator"
+        <svg
+          class="lexicon-icon lexicon-icon-info-circle"
+          role="img"
         >
-          <svg
-            class="lexicon-icon lexicon-icon-info-circle"
-            role="img"
-          >
-            <use
-              href="#info-circle"
-            />
-          </svg>
-        </span>
-        
-        <span>
-          Alert 
-          <a
-            href="/"
-            title="Link"
-          >
-            Link
-          </a>
-        </span>
-      </div>
+          <use
+            href="#info-circle"
+          />
+        </svg>
+      </span>
+      
+      <span>
+        Alert 
+        <a
+          href="/"
+          title="Link"
+        >
+          Link
+        </a>
+      </span>
     </div>
     <div
-      class="col-md-3 products-landing-tablist"
+      class="products-landing-tabs"
     >
       <ul
-        class="nav nav-stacked"
+        class="nav nav-underline"
         role="tablist"
       >
         <li
@@ -73,7 +67,6 @@ exports[`ProductTabs renders Alert with text and link 1`] = `
     </div>
     <section
       aria-labelledby="tab-0"
-      class="col-md-9"
       role="tabpanel"
     >
       <div
@@ -266,15 +259,13 @@ exports[`ProductTabs renders Alert with text and link 1`] = `
 
 exports[`ProductTabs renders correctly with KB tabs and all access tabs 1`] = `
 <div>
-  <div
-    class="row"
-  >
+  <div>
     
     <div
-      class="col-md-3 products-landing-tablist"
+      class="products-landing-tabs"
     >
       <ul
-        class="nav nav-stacked"
+        class="nav nav-underline"
         role="tablist"
       >
         <li
@@ -307,7 +298,6 @@ exports[`ProductTabs renders correctly with KB tabs and all access tabs 1`] = `
     </div>
     <section
       aria-labelledby="tab-0"
-      class="col-md-9"
       role="tabpanel"
     >
       <div
@@ -500,15 +490,13 @@ exports[`ProductTabs renders correctly with KB tabs and all access tabs 1`] = `
 
 exports[`ProductTabs renders correctly with non KB tabs and all access tabs 1`] = `
 <div>
-  <div
-    class="row"
-  >
+  <div>
     
     <div
-      class="col-md-3 products-landing-tablist"
+      class="products-landing-tabs"
     >
       <ul
-        class="nav nav-stacked"
+        class="nav nav-underline"
         role="tablist"
       >
         <li
@@ -541,7 +529,6 @@ exports[`ProductTabs renders correctly with non KB tabs and all access tabs 1`] 
     </div>
     <section
       aria-labelledby="tab-0"
-      class="col-md-9"
       role="tabpanel"
     >
       <div
