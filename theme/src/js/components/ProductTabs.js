@@ -7,8 +7,8 @@ import {CardMenu} from 'liferay-help-center-megamenu';
 
 import Alert from './Alert';
 
-const TabContent = ({cardMenuClassName, content, layoutClassName}) => (
-	<section aria-labelledby={content.ariaLabelledby} class={layoutClassName} role="tabpanel">
+const TabContent = ({cardMenuClassName, content}) => (
+	<section aria-labelledby={content.ariaLabelledby} role="tabpanel">
 		<CardMenu
 			className={cardMenuClassName}
 			configs={content.configs}
@@ -26,8 +26,7 @@ TabContent.PropTypes = {
 				configs: PropTypes.object
 			}
 		)
-	),
-	layoutClassName: PropTypes.string
+	)
 };
 
 class TabList extends preact.Component {
@@ -72,19 +71,17 @@ class TabList extends preact.Component {
 			) : null;
 
 		return (
-			<div class="row">
+			<div>
 				{alertBody && (
-					<div class="col-md-12">
-						<Alert
-							children={alertBody}
-							leadingText={alert.leadingText}
-						/>
-					</div>
+					<Alert
+						children={alertBody}
+						leadingText={alert.leadingText}
+					/>
 				)}
 
 				{tabList && (
-					<div class="col-md-3 products-landing-tablist">
-						<ul class="nav nav-stacked" role="tablist">
+					<div class="products-landing-tabs">
+						<ul class="nav nav-underline" role="tablist">
 							{tabList.map(
 								tab => {
 									const className = getCN(
@@ -111,11 +108,8 @@ class TabList extends preact.Component {
 
 				{content && (
 					<TabContent
-						cardMenuClassName={
-							tabList ? 'products-landing-tab-content' : 'products-landing'
-						}
+						cardMenuClassName="products-landing-tab-content"
 						content={content}
-						layoutClassName={tabList ? 'col-md-9' : 'col-md-12'}
 					/>
 				)}
 			</div>
