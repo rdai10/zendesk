@@ -31,5 +31,11 @@
 		.name {
 			display: flex;
 		}
+
+		@include media-breakpoint-down(sm) {
+			.message {
+				display: none;
+			}
+		}
 	}
 }
