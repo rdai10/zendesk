@@ -13,7 +13,7 @@ exports[`CallToAction renders correctly 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -29,7 +29,7 @@ exports[`CallToAction renders correctly 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -60,7 +60,7 @@ exports[`CallToAction renders with a message 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -71,7 +71,7 @@ exports[`CallToAction renders with a message 1`] = `
           </a>
         </div>
         <div
-          class="col-7 message"
+          class="col-md-7 message"
         >
           <div
             class="secondary-text secondary-text-color"
@@ -100,7 +100,7 @@ exports[`CallToAction renders with an icon 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           <svg
             class="lexicon-icon lexicon-icon-ticket icon"
@@ -138,7 +138,7 @@ exports[`CallToAction renders with class name 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -154,7 +154,7 @@ exports[`CallToAction renders with class name 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -185,7 +185,7 @@ exports[`CallToAction renders with disclaimer text 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -196,7 +196,7 @@ exports[`CallToAction renders with disclaimer text 1`] = `
           </a>
         </div>
         <div
-          class="col-7 message"
+          class="col-md-7 message"
         >
           
           <div
@@ -232,7 +232,7 @@ exports[`CallToAction renders with promotions 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -248,7 +248,7 @@ exports[`CallToAction renders with promotions 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -336,7 +336,7 @@ exports[`CallToAction renders with promotions containing description 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -352,7 +352,7 @@ exports[`CallToAction renders with promotions containing description 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -421,7 +421,7 @@ exports[`CallToAction renders with section heading 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
@@ -437,7 +437,7 @@ exports[`CallToAction renders with section heading 1`] = `
         class="action-item row"
       >
         <div
-          class="col-4 name"
+          class="col-md-4 name"
         >
           
           <a
