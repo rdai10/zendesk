@@ -17,7 +17,7 @@ exports[`CallToAction renders correctly 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 1
@@ -33,7 +33,7 @@ exports[`CallToAction renders correctly 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 2
@@ -64,7 +64,7 @@ exports[`CallToAction renders with a message 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item
@@ -111,7 +111,7 @@ exports[`CallToAction renders with an icon 1`] = `
             />
           </svg>
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item
@@ -142,7 +142,7 @@ exports[`CallToAction renders with class name 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 1
@@ -158,7 +158,7 @@ exports[`CallToAction renders with class name 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 2
@@ -189,7 +189,7 @@ exports[`CallToAction renders with disclaimer text 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item
@@ -236,7 +236,7 @@ exports[`CallToAction renders with promotions 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 1
@@ -252,7 +252,7 @@ exports[`CallToAction renders with promotions 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 2
@@ -340,7 +340,7 @@ exports[`CallToAction renders with promotions containing description 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 1
@@ -356,7 +356,7 @@ exports[`CallToAction renders with promotions containing description 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 2
@@ -425,7 +425,7 @@ exports[`CallToAction renders with section heading 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 1
@@ -441,7 +441,7 @@ exports[`CallToAction renders with section heading 1`] = `
         >
           
           <a
-            class="link semibold"
+            class="link semi-bold"
             href="/"
           >
             Action Item 2
