@@ -15,7 +15,7 @@ const ActionItem = ({config}) => {
 					</svg>
 				)}
 
-				<a class="link semibold" href={link}>
+				<a class="link semi-bold" href={link}>
 					{name}
 				</a>
 			</div>

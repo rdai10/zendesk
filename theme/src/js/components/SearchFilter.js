@@ -17,7 +17,7 @@ class SearchFilter extends preact.Component {
 	render({label, options}) {
 		return (
 			<div class="search-filter">
-				<label class="semibold" htmlFor='productSearchFilter'>
+				<label class="semi-bold" htmlFor='productSearchFilter'>
 					{label}
 				</label>
 
