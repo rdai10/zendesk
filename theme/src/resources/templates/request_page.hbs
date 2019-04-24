@@ -20,58 +20,6 @@
 			<section class="request-container-inner">
 				{{satisfaction}}
 
-				{{#if comment_callout}}
-					<div class="request-follow-up">
-						{{comment_callout}}
-					</div>
-				{{/if}}
-
-				{{#form 'comment' class='comment-form' id='requestCommentForm'}}
-					<div class="autofit-padded autofit-row">
-						<div class="autofit-col">
-							<div class="autofit-section">
-								<div class="avatar sticker sticker-circle sticker-primary">
-									<span class="sticker-overlay">{{user_avatar class="sticker-img"}}</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="autofit-col autofit-col-expand comment-container">
-							<div class="autofit-section">
-								{{input class='comment-show-container'}}
-
-								<div class="comment-fields">
-									{{#if help_center.request_ccs_enabled}}
-										<div class="comment-ccs form-field">
-											{{token_field 'ccs' class='ccs-input'}}
-										</div>
-									{{/if}}
-
-									{{textarea 'body' class="form-field"}}
-
-									{{#if upload}}
-										<div class="comment-attachments form-field">
-											{{upload}}
-										</div>
-									{{/if}}
-								</div>
-
-								<div class="comment-form-controls">
-									{{checkbox 'mark_as_solved'}}
-
-									{{#if request.can_be_marked_as_solved}}
-										<a class="btn-outline-primary mark-as-solved" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}" data-solve-translation="{{t 'mark_as_solved'}}" role="button" >
-											{{t 'mark_as_solved'}}
-										</a>
-									{{/if}}
-
-									{{input class="btn btn-primary request-submit-comment" type='submit'}}
-								</div>
-							</div>
-						</div>
-					</div>
-				{{/form}}
-
 				<ul class="comment-list">
 					{{#each comments}}
 						<li class="comment" id="{{anchor}}">
@@ -133,6 +81,58 @@
 				</ul>
 
 				{{pagination}}
+
+				{{#if comment_callout}}
+					<div class="request-follow-up">
+						{{comment_callout}}
+					</div>
+				{{/if}}
+
+				{{#form 'comment' class='comment-form' id='requestCommentForm'}}
+					<div class="autofit-padded autofit-row">
+						<div class="autofit-col">
+							<div class="autofit-section">
+								<div class="avatar sticker sticker-circle sticker-primary">
+									<span class="sticker-overlay">{{user_avatar class="sticker-img"}}</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="autofit-col autofit-col-expand comment-container">
+							<div class="autofit-section">
+								{{input class='comment-show-container'}}
+
+								<div class="comment-fields">
+									{{#if help_center.request_ccs_enabled}}
+										<div class="comment-ccs form-field">
+											{{token_field 'ccs' class='ccs-input'}}
+										</div>
+									{{/if}}
+
+									{{textarea 'body' class="form-field"}}
+
+									{{#if upload}}
+										<div class="comment-attachments form-field">
+											{{upload}}
+										</div>
+									{{/if}}
+								</div>
+
+								<div class="comment-form-controls">
+									{{checkbox 'mark_as_solved'}}
+
+									{{#if request.can_be_marked_as_solved}}
+										<a class="btn-outline-primary mark-as-solved" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}" data-solve-translation="{{t 'mark_as_solved'}}" role="button" >
+											{{t 'mark_as_solved'}}
+										</a>
+									{{/if}}
+
+									{{input class="btn btn-primary request-submit-comment" type='submit'}}
+								</div>
+							</div>
+						</div>
+					</div>
+				{{/form}}
 			</section>
 		</div>
 
