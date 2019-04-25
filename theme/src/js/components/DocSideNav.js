@@ -9,6 +9,10 @@ import {
 	getSectionsByCategoryId
 } from '../helpers/api-helpers';
 
+// An artibuary large number to get all articles in one swoop
+
+const NUMBER_OF_ARTICLES = 300;
+
 class ArticlesList extends preact.Component {
 	constructor(props) {
 		super(props);
@@ -37,9 +41,7 @@ class ArticlesList extends preact.Component {
 	getArticles() {
 		const {id, locale} = this.props;
 
-		// 300 is an artibuary large number to get all articles in one swoop
-
-		getArticlesBySectionId(id, locale, 300)
+		getArticlesBySectionId(id, locale, NUMBER_OF_ARTICLES)
 			.then(
 				({data}) => {
 					this.setState(
