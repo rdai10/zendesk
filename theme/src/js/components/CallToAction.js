@@ -8,20 +8,20 @@ const ActionItem = ({config}) => {
 
 	return (
 		<div class="action-item row">
-			<div class="col-4 name">
+			<div class="col-md-4 name">
 				{iconId && (
 					<svg class="lexicon-icon lexicon-icon-ticket icon" role="img">
 						<use xlinkHref={iconId} />
 					</svg>
 				)}
 
-				<a class="link semibold" href={link}>
+				<a class="link semi-bold" href={link}>
 					{name}
 				</a>
 			</div>
 
 			{(disclaimer || message) && (
-				<div class="col-7 message">
+				<div class="col-md-7 message">
 					{message && (
 						<div class="secondary-text secondary-text-color">
 							{message}

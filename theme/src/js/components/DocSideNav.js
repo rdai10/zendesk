@@ -9,11 +9,9 @@ import {
 	getSectionsByCategoryId
 } from '../helpers/api-helpers';
 
-import LoadingIndicator from './LoadingIndicator';
+// An artibuary large number to get all articles in one swoop
 
-/* Zendesk API pagination limit 30 items per page */
-
-const PAGINATION_LIMIT = 30;
+const NUMBER_OF_ARTICLES = 300;
 
 class ArticlesList extends preact.Component {
 	constructor(props) {
@@ -22,8 +20,7 @@ class ArticlesList extends preact.Component {
 		this.getArticles = this.getArticles.bind(this);
 
 		this.state = {
-			items: [],
-			loading: false
+			items: []
 		};
 	}
 
@@ -44,50 +41,18 @@ class ArticlesList extends preact.Component {
 	getArticles() {
 		const {id, locale} = this.props;
 
-		this.setState(
-			{
-				loading: true
-			}
-		);
-
-		getArticlesBySectionId(id, locale)
+		getArticlesBySectionId(id, locale, NUMBER_OF_ARTICLES)
 			.then(
 				({data}) => {
-					if (data.count > PAGINATION_LIMIT) {
-						getArticlesBySectionId(id, locale, data.count)
-							.then(
-								({data}) => {
-									this.setState(
-										{
-											items: data.articles
-										}
-									);
-								}
-							);
-					}
-					else {
-						this.setState(
-							{
-								items: data.articles
-							}
-						);
-					}
-
 					this.setState(
 						{
-							loading: false
+							items: data.articles
 						}
 					);
 				}
 			)
 			.catch(
 				(err) => {
-					this.setState(
-						{
-							loading: false
-						}
-					);
-
 					if (process.env.NODE_ENV === 'development') {
 						console.log(err);
 					}
@@ -95,10 +60,10 @@ class ArticlesList extends preact.Component {
 			);
 	}
 
-	render({currentArticleId, expanded}, {items, loading}) {
+	render({currentArticleId, expanded}, {items}) {
 		return (
 			<div>
-				{expanded && !loading && (
+				{expanded && (
 					<ul class="nav nav-nested" role="menu">
 						{items.map(
 							item => {
@@ -120,8 +85,6 @@ class ArticlesList extends preact.Component {
 						)}
 					</ul>
 				)}
-
-				{loading && <LoadingIndicator />}
 			</div>
 		);
 	}
@@ -142,8 +105,7 @@ class DocSideNav extends preact.Component {
 
 		this.state = {
 			expandedItemId: parseInt(this.props.sectionId, 10),
-			items: [],
-			loading: true
+			items: []
 		};
 	}
 
@@ -165,8 +127,7 @@ class DocSideNav extends preact.Component {
 				({data}) => {
 					this.setState(
 						{
-							items: data.sections,
-							loading: false
+							items: data.sections
 						}
 					);
 				}
@@ -175,12 +136,6 @@ class DocSideNav extends preact.Component {
 				(err) => {
 					const sidenavFallback = document.getElementById(
 						'sidenavFallback'
-					);
-
-					this.setState(
-						{
-							loading: false
-						}
 					);
 
 					sidenavFallback.classList.add('show');
@@ -200,10 +155,8 @@ class DocSideNav extends preact.Component {
 		);
 	}
 
-	render({currentArticleId, locale}, {expandedItemId, items, loading}) {
-		return loading ? (
-			<LoadingIndicator />
-		) : (
+	render({currentArticleId, locale}, {expandedItemId, items}) {
+		return (
 			<ul class="nav nav-nested">
 				{items.map(
 					item => {

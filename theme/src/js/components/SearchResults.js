@@ -231,7 +231,7 @@ class SearchResults extends preact.Component {
 							(result) => (
 								<li key={result.id} class="search-result" id={result.id}>
 									<div class="search-results-header">
-										<a class="search-result-link semibold" href={result.html_url}>{result.title}</a>
+										<a class="search-result-link semi-bold" href={result.html_url}>{result.title}</a>
 
 										{result.label_names.indexOf(
 											'Fast Track'

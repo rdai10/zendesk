@@ -5,6 +5,25 @@ h1 {
 		font-size: $h1-display-font-size;
 		line-height: 1.17;
 	}
+
+	&.title {
+		margin-bottom: 0.5rem;
+	}
+
+	@include media-breakpoint-down(sm) {
+		font-size: $mobile-font-size;
+		margin-bottom: $margin-default;
+
+		&.display,
+		&.title {
+			margin-bottom: 0;
+		}
+
+		&.display {
+			font-size: $h1-font-size;
+			line-height: 1.5;
+		}
+	}
 }
 
 h1,
@@ -19,7 +38,13 @@ h4,
 h5,
 h6 {
 	font-weight: $font-weight-semi-bold;
-	margin-bottom: $margin-default;
+	margin: 0;
+}
+
+h2 {
+	&.display {
+		margin-bottom: $margin-md;
+	}
 }
 
 h3,
@@ -202,7 +227,7 @@ textarea,
 	color: $secondary-text-color;
 }
 
-.semibold {
+.semi-bold {
 	font-weight: $font-weight-semi-bold;
 }
 

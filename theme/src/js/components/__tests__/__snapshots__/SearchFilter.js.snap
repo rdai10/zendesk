@@ -6,7 +6,7 @@ exports[`SearchFilter renders correctly 1`] = `
     class="search-filter"
   >
     <label
-      class="semibold"
+      class="semi-bold"
       for="productSearchFilter"
     >
       Search Filter

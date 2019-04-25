@@ -49,6 +49,7 @@ $h3-font-size: 1rem !default; // 16px
 $h4-font-size: 1rem !default; // 16px
 $h5-font-size: 0.875rem !default; // 14px
 $h6-font-size: $small-font-size !default; // 12px
+$mobile-font-size: 1.75rem !default; // 28px
 
 $code-font-size: 14px !default; // set pixel value to prevent nested <pre> and <code> from scaling down font size
 
@@ -63,7 +64,6 @@ $autofit-padded-col-padding-y: 1.5rem !default; // 24px
 
 $breadcrumb-active-color: null !default;
 $breadcrumb-divider-color: null !default;
-$breadcrumb-margin-bottom: 3rem !default; // 48px
 
 $body-color: $color-default !default;
 
@@ -142,6 +142,7 @@ $padding-sm: 0.75rem !default; // 12px
 
 $avatar-spacer-right: 1rem !default; // 16px
 
+$breadcrumb-margin-bottom: 2rem !default; // 32px
 $breadcrumb-divider-svg-icon: clay-icon(angle-right, $breadcrumb-divider-color) !default;
 $breadcrumb-divider-svg-icon-height: 0.75em !default;
 $breadcrumb-divider-svg-icon-width: $breadcrumb-divider-svg-icon-height !default;

@@ -9,10 +9,6 @@
 	.avatar {
 		margin-right: $avatar-spacer-right;
 	}
-
-	.author-name {
-		margin: 0;
-	}
 }
 
 .article-body {
@@ -114,6 +110,17 @@
 	}
 }
 
+.article-info {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-bottom: $margin-default;
+	}
+}
+
 .article-relatives {
 	@include media-breakpoint-down(sm) {
 		display: flex;
@@ -130,6 +137,7 @@
 }
 
 .article-sidenav {
+	padding-bottom: 6rem;
 	padding-right: 2.5rem;
 
 	a {

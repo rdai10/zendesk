@@ -2,9 +2,8 @@
 
 exports[`DocSideNav renders correctly 1`] = `
 <div>
-  <span
-    aria-hidden="true"
-    class="loading-animation loading-animation-sm"
+  <ul
+    class="nav nav-nested"
   />
 </div>
 `;
