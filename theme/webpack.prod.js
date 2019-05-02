@@ -1,26 +1,12 @@
 const common = require('./webpack.common.js');
 const merge = require('webpack-merge');
 
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = merge(
 	common,
 	{
 		mode: 'production',
-		optimization: {
-			minimizer: [
-				new OptimizeCssAssetsPlugin(
-					{
-						cssProcessorOptions: {
-							discardComments: {removeAll: true}
-						}
-					}
-				),
-				new UglifyJsPlugin()
-			]
-		},
 		plugins: [
 			new ReplaceInFileWebpackPlugin(
 				[
