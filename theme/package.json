@@ -105,5 +105,5 @@
 		"test": "jest",
 		"zip": "zip -r Liferay-Help-Center.zip dist -x *.zat*"
 	},
-	"version": "2.7.5"
+	"version": "2.7.6"
 }
