@@ -1,42 +1,44 @@
 <html>
-<head>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@zendeskgarden/css-bedrock@7.0.24/dist/index.min.css">
-	<script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"></script>
-</head>
-<body>
-	<div id="largeFileUploader"></div>
-	<script type="text/javascript">
-		var client = ZAFClient.init();
+	<head>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@zendeskgarden/css-bedrock@7.0.24/dist/index.min.css">
+		<script type="text/javascript" src="https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"></script>
+	</head>
 
-		client.on(
-			'app.registered',
-			function() {
-				client.invoke(
-					'resize',
-					{
-							height: '35px',
-							width: '100%'
-					}
-				);
+	<body>
+		<div id="largeFileUploader"></div>
 
-				client.get('ticket.customField:custom_field_360013377572').then(
-					function(data) {
-						var accountEntryId = data['ticket.customField:custom_field_360013377572']
+		<script type="text/javascript">
+			var client = ZAFClient.init();
 
-						if (accountEntryId && accountEntryId !== '') {
-							client.get('ticket.id').then(
-								function(data) {
-									var element = document.getElementById('largeFileUploader');
-									element.innerHTML = '<a href="https://customer.liferay.com/project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId=' + data['ticket.id'] + '" target="_blank">Add Large Files over 20 MB here</a>';
-								}
-							);
+			client.on(
+				'app.registered',
+				function() {
+					client.invoke(
+						'resize',
+						{
+								height: '35px',
+								width: '100%'
 						}
-					}
-				).catch(function(error) {
-					console.log(error.toString());
-				});
-			}
-		);
-	</script>
-</body>
+					);
+
+					client.get('ticket.customField:custom_field_360013377572').then(
+						function(data) {
+							var accountEntryId = data['ticket.customField:custom_field_360013377572']
+
+							if (accountEntryId && accountEntryId !== '') {
+								client.get('ticket.id').then(
+									function(data) {
+										var element = document.getElementById('largeFileUploader');
+										element.innerHTML = '<a href="https://customer.liferay.com/project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId=' + data['ticket.id'] + '" target="_blank">Add Large Files over 20 MB here</a>';
+									}
+								);
+							}
+						}
+					).catch(function(error) {
+						console.log(error.toString());
+					});
+				}
+			);
+		</script>
+	</body>
 </html>
