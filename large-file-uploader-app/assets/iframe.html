@@ -27,10 +27,14 @@
 									var element = document.getElementById('largeFileUploader');
 									element.innerHTML = '<a href="https://customer.liferay.com/project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId=' + data['ticket.id'] + '" target="_blank">Add Large Files over 20 MB here</a>';
 								}
-							)
+							).catch(function(error) {
+								console.log(error.toString());
+							});
 						}
 					}
-				);
+				).catch(function(error) {
+					console.log(error.toString());
+				});
 			}
 		);
 	</script>
