@@ -5,9 +5,12 @@ const path = require('path');
 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+	devtool: 'source-map',
 	entry: './src/js/index.js',
 	module: {
 		rules: [
@@ -39,6 +42,22 @@ module.exports = {
 					}
 				]
 			}
+		]
+	},
+	optimization: {
+		minimizer: [
+			new OptimizeCssAssetsPlugin(
+				{
+					cssProcessorOptions: {
+						discardComments: {removeAll: true}
+					}
+				}
+			),
+			new UglifyJsPlugin(
+				{
+					sourceMap: true
+				}
+			)
 		]
 	},
 	output: {
