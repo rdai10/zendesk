@@ -22,7 +22,7 @@
 					function(data) {
 						var accountEntryId = data['ticket.customField:custom_field_360013377572']
 
-						if( accountEntryId && accountEntryId !== '' ) {
+						if (accountEntryId && accountEntryId !== '') {
 							client.get('ticket.id').then(
 								function(data) {
 									var element = document.getElementById('largeFileUploader');
