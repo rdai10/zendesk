@@ -6,7 +6,7 @@
 	</div>
 
 	{{#with article}}
-		<div class="row">
+		<div class="article-info row">
 			<h1 class="article-title col-md-7" title="{{title}}">
 				{{title}}
 
@@ -20,30 +20,28 @@
 
 		<div class="row">
 			<div class="col-md-7">
-				<section class="article-info">
-					<div class="article-content">
-						<div class="article-body">
-							{{body}}
-						</div>
+				<section class="article-content">
+					<div class="article-body">
+						{{body}}
+					</div>
 
-						<div class="article-attachments">
-							<ul class="attachments">
-								{{#each ../attachments}}
-									<li class="attachment-item">
-										<svg class="lexicon-icon lexicon-icon-paperclip">
-											<use xlink:href="#paperclip" />
-										</svg>
+					<div class="article-attachments">
+						<ul class="attachments">
+							{{#each ../attachments}}
+								<li class="attachment-item">
+									<svg class="lexicon-icon lexicon-icon-paperclip">
+										<use xlink:href="#paperclip" />
+									</svg>
 
-										<a href="{{url}}" target="_blank">{{name}}</a>
+									<a href="{{url}}" target="_blank">{{name}}</a>
 
-										<div class="attachment-meta">
-											<span class="meta-data">{{size}}</span>
-											<a href="{{url}}" target="_blank">{{t 'download'}}</a>
-										</div>
-									</li>
-								{{/each}}
-							</ul>
-						</div>
+									<div class="attachment-meta">
+										<span class="meta-data">{{size}}</span>
+										<a href="{{url}}" target="_blank">{{t 'download'}}</a>
+									</div>
+								</li>
+							{{/each}}
+						</ul>
 					</div>
 				</section>
 
