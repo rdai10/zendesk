@@ -27,12 +27,12 @@
 								const ticket = values[0];
 								const organization = values[1];
 
-								if (organization['ticket.organization'] && organization['ticket.organization'].externalId) {
+								const organizationObj = organization['ticket.organization'];
+
+								if (organizationObj && organizationObj.externalId && organizationObj.id) {
 									const element = document.getElementById('largeFileUploader');
 
-									const ticketId = ticket['ticket.id']; 
-
-									element.innerHTML = '<a href="https://customer.liferay.com/project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId=' + ticketId + '" target="_blank">Add Large Files over 20 MB here</a>';
+									element.innerHTML = '<a href="https://customer.liferay.com/project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId=' + ticket['ticket.id'] + '" target="_blank">Add Large Files over 20 MB here</a>';
 								}
 							}
 						)
