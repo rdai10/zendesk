@@ -33,6 +33,13 @@
 		}
 	}
 
+	h2,
+	h3,
+	h4 {
+		margin-bottom: $margin-default;
+		margin-top: $margin-default;
+	}
+
 	code,
 	pre {
 		border-radius: $border-radius;
@@ -107,17 +114,6 @@
 				content: attr(title);
 			}
 		}
-	}
-}
-
-.article-info {
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		margin-bottom: $margin-default;
 	}
 }
 
@@ -238,6 +234,10 @@
 			}
 		}
 	}
+}
+
+.article-title {
+	margin-bottom: $margin-default;
 }
 
 .meta-group {
