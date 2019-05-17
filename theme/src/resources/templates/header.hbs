@@ -439,7 +439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			</div>
 
 			<div class="col-5 header-content header-menu-list">
-				<div class="d-none list-item">
+				<div class="d-none list-item" id="menuItemProducts">
 					<h5>
 						{{dc 'products'}}
 
@@ -451,7 +451,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="header-menu" id="megaMenuProducts"></div>
 				</div>
 
-				<div class="d-none list-item">
+				<div class="d-none list-item" id="menuItemResources">
 					<h5>
 						{{dc 'mega_menu-resources'}}
 
@@ -463,7 +463,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="header-menu" id="megaMenuResources"></div>
 				</div>
 
-				<div class="d-none list-item">
+				<div class="d-none list-item" id="menuItemSecurity">
 					<h5>
 						{{dc 'security'}}
 
@@ -475,7 +475,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					<div class="header-menu" id="megaMenuSecurity"></div>
 				</div>
 
-				<div class="d-none list-item">
+				<div class="d-none list-item" id="menuItemSupport">
 					<h5>
 						{{dc 'support'}}
 
@@ -512,19 +512,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasKBPermission(userTags)) {
-			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
-
-			Array.prototype.forEach.call(
-				menuItems,
-				function(item) {
-					item.classList.remove('d-none');
-
-					item.addEventListener('click', function(event) {
-						item.classList.toggle('active');
-					});
-				}
-			);
-
 			const documentElementLang = document.documentElement.lang;
 
 			const accountLinks = {
@@ -572,204 +559,227 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				]
 			};
 
-			Liferay.render(
-				Liferay.MegaMenu,
+			const productConfigs = [
 				{
-					accountLinks: accountLinks,
-					cardMenuItems: {
-						className: 'card-menu',
-						configs: [
-							{
-								name: '{{dc 'mega_menu-dxp_7_2'}}',
-								svgId: '#dxp-logo',
-								url: '/hc/categories/360001749972'
-							},
-							{
-								name: '{{dc 'mega_menu-dxp_7_1'}}',
-								svgId: '#7-1-logo',
-								url: '/hc/categories/360000874031'
-							},
-							{
-								name: '{{dc 'mega_menu-dxp_cloud'}}',
-								svgId: '#dxp-cloud-logo',
-								url: '/hc/categories/360000869252'
-							},
-							{
-								name: '{{dc 'mega_menu-dxp_7_0'}}',
-								svgId: '#7-0-logo',
-								url: '/hc/categories/360000874051'
-							},
-							{
-								name: '{{dc 'mega_menu-commerce'}}',
-								svgId: '#commerce-logo',
-								url: '/hc/categories/360000869132'
-							},
-							{
-								name: '{{dc 'mega_menu-analytics_cloud'}}',
-								svgId: '#analytics-cloud-logo',
-								url: '/hc/categories/360000869112'
-							},
-							{
-								name: '{{dc 'mega_menu-portal_6_2'}}',
-								svgId: '#6-2-logo',
-								url: '/hc/categories/360000869172'
-							},
-							{
-								name: '{{dc 'mega_menu-portal_6_1'}}',
-								svgId: '#6-1-logo',
-								url: '/hc/categories/360000869192'
-							}
-						]
-					},
-					highlightedLinks: highlightedLinks,
-					locale: locale,
-					name: '{{dc 'products'}}'
+					name: '{{dc 'mega_menu-dxp_7_2'}}',
+					svgId: '#dxp-logo',
+					url: '/hc/categories/360001749972'
 				},
-				document.getElementById('megaMenuProducts')
-			);
+				{
+					name: '{{dc 'mega_menu-dxp_7_1'}}',
+					svgId: '#7-1-logo',
+					url: '/hc/categories/360000874031'
+				},
+				{
+					name: '{{dc 'mega_menu-dxp_cloud'}}',
+					svgId: '#dxp-cloud-logo',
+					url: '/hc/categories/360000869252'
+				},
+				{
+					name: '{{dc 'mega_menu-dxp_7_0'}}',
+					svgId: '#7-0-logo',
+					url: '/hc/categories/360000874051'
+				},
+				{
+					name: '{{dc 'mega_menu-commerce'}}',
+					svgId: '#commerce-logo',
+					url: '/hc/categories/360000869132'
+				},
+				{
+					name: '{{dc 'mega_menu-analytics_cloud'}}',
+					svgId: '#analytics-cloud-logo',
+					url: '/hc/categories/360000869112'
+				},
+				{
+					name: '{{dc 'mega_menu-portal_6_2'}}',
+					svgId: '#6-2-logo',
+					url: '/hc/categories/360000869172'
+				},
+				{
+					name: '{{dc 'mega_menu-portal_6_1'}}',
+					svgId: '#6-1-logo',
+					url: '/hc/categories/360000869192'
+				}
+			];
 
-			Liferay.render(
-				Liferay.MegaMenu,
+			const resourcesConfigs = [
 				{
-					accountLinks: accountLinks,
-					cardMenuItems: {
-						className: 'card-menu',
-						configs: [
-							{
-								description: '{{dc 'mega_menu-downloads_description'}}',
-								name: '{{dc 'mega_menu-downloads'}}',
-								svgId: '#downloads',
-								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads')
-							},
-							{
-								description: '{{dc 'mega_menu-knowledge_base_description'}}',
-								name: '{{dc 'mega_menu-knowledge_base'}}',
-								svgId: '#knowledge-base',
-								url: '/hc/categories/360000580671'
-							},
-							{
-								description: '{{dc 'mega_menu-documentation_description'}}',
-								name: '{{dc 'mega_menu-documentation'}}',
-								svgId: '#documentation',
-								url: '/hc/categories/360000893891'
-							},
-							{
-								description: '{{dc 'mega_menu-release_notes_description'}}',
-								name: '{{dc 'mega_menu-release_notes_card'}}',
-								svgId: '#fixpack',
-								url: Liferay.addLocaleParamToURI(documentElementLang, 'dxp-release-notes')
-							},
-							{
-								description: '{{dc 'mega_menu-account_support_description'}}',
-								name: '{{dc 'mega_menu-account_support'}}',
-								svgId: '#account-support',
-								url: '/hc/articles/360018414031'
-							},
-							{
-								description: '{{dc 'mega_menu-activation_keys_description'}}',
-								name: '{{dc 'mega_menu-activation_keys'}}',
-								svgId: '#server-activation',
-								url: Liferay.addLocaleParamToURI(documentElementLang, 'activation-key')
-							}
-						]
-					},
-					highlightedLinks: highlightedLinks,
-					locale: locale,
-					name: '{{dc 'mega_menu-resources'}}'
+					description: '{{dc 'mega_menu-downloads_description'}}',
+					name: '{{dc 'mega_menu-downloads'}}',
+					svgId: '#downloads',
+					url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads')
 				},
-				document.getElementById('megaMenuResources')
-			);
+				{
+					description: '{{dc 'mega_menu-knowledge_base_description'}}',
+					name: '{{dc 'mega_menu-knowledge_base'}}',
+					svgId: '#knowledge-base',
+					url: '/hc/categories/360000580671'
+				},
+				{
+					description: '{{dc 'mega_menu-documentation_description'}}',
+					name: '{{dc 'mega_menu-documentation'}}',
+					svgId: '#documentation',
+					url: '/hc/categories/360000893891'
+				},
+				{
+					description: '{{dc 'mega_menu-release_notes_description'}}',
+					name: '{{dc 'mega_menu-release_notes_card'}}',
+					svgId: '#fixpack',
+					url: Liferay.addLocaleParamToURI(documentElementLang, 'dxp-release-notes')
+				},
+				{
+					description: '{{dc 'mega_menu-account_support_description'}}',
+					name: '{{dc 'mega_menu-account_support'}}',
+					svgId: '#account-support',
+					url: '/hc/articles/360018414031'
+				},
+				{
+					description: '{{dc 'mega_menu-activation_keys_description'}}',
+					name: '{{dc 'mega_menu-activation_keys'}}',
+					svgId: '#server-activation',
+					url: Liferay.addLocaleParamToURI(documentElementLang, 'activation-key')
+				}
+			];
 
-			Liferay.render(
-				Liferay.MegaMenu,
+			const securityConfigs = [
 				{
-					accountLinks: accountLinks,
-					cardMenuItems: {
-						className: 'card-menu',
-						configs: [
-							{
-								description: '{{dc 'mega_menu-overview_description'}}',
-								name: '{{dc 'mega_menu-overview'}}',
-								svgId: '#security-overview',
-								url: '/hc/articles/360018999331'
-							},
-							{
-								description: '{{dc 'mega_menu-security_advisories_description'}}',
-								name: '{{dc 'mega_menu-security_advisories'}}',
-								svgId: '#security-advisories',
-								url: '/hc/articles/360018999691'
-							},
-							{
-								description: '{{dc 'mega_menu-reporting_security_issues_description'}}',
-								name: '{{dc 'mega_menu-reporting_security_issues'}}',
-								svgId: '#report-security-issues',
-								url: '/hc/articles/360018999331#Reporting-Security-Issues'
-							},
-							{
-								description: '{{dc 'mega_menu-security_and_disclosure_policy_description'}}',
-								name: '{{dc 'mega_menu-security_and_disclosure_policy'}}',
-								svgId: '#security-policy',
-								url: '/hc/articles/360018999331#Liferay-Security-Policy'
-							}
-						]
-					},
-					highlightedLinks: highlightedLinks,
-					locale: locale,
-					name: '{{dc 'security'}}'
+					description: '{{dc 'mega_menu-overview_description'}}',
+					name: '{{dc 'mega_menu-overview'}}',
+					svgId: '#security-overview',
+					url: '/hc/articles/360018999331'
 				},
-				document.getElementById('megaMenuSecurity')
-			);
+				{
+					description: '{{dc 'mega_menu-security_advisories_description'}}',
+					name: '{{dc 'mega_menu-security_advisories'}}',
+					svgId: '#security-advisories',
+					url: '/hc/articles/360018999691'
+				},
+				{
+					description: '{{dc 'mega_menu-reporting_security_issues_description'}}',
+					name: '{{dc 'mega_menu-reporting_security_issues'}}',
+					svgId: '#report-security-issues',
+					url: '/hc/articles/360018999331#Reporting-Security-Issues'
+				},
+				{
+					description: '{{dc 'mega_menu-security_and_disclosure_policy_description'}}',
+					name: '{{dc 'mega_menu-security_and_disclosure_policy'}}',
+					svgId: '#security-policy',
+					url: '/hc/articles/360018999331#Liferay-Security-Policy'
+				}
+			];
 
-			Liferay.render(
-				Liferay.MegaMenu,
+			const supportConfigs = [
 				{
-					accountLinks: accountLinks,
-					cardMenuItems: {
-						className: 'card-menu',
-						configs: [
-							{
-								description: '{{dc 'mega_menu-compatibility_matrix_description'}}',
-								name: '{{dc 'mega_menu-compatibility_matrix'}}',
-								svgId: '#compatibility-matrix',
-								url: '/hc/sections/360002100591'
-							},
-							{
-								description: "{{dc 'mega_menu-support_coverage_description'}}",
-								name: '{{dc 'mega_menu-support_coverage'}}',
-								svgId: '#support-coverage',
-								url: '/hc/categories/360018692772'
-							},
-							{
-								description: '{{dc 'mega_menu-service_life_description'}}',
-								name: '{{dc 'mega_menu-service_life'}}',
-								svgId: '#service-life',
-								url: '/hc/sections/360002103332'
-							},
-							{
-								description: '{{dc 'mega_menu-support_faqs_description'}}',
-								name: '{{dc 'mega_menu-support_faqs'}}',
-								svgId: '#support-faqs',
-								url: '/hc/articles/360018999191'
-							},
-							{
-								description: '{{dc 'mega_menu-fix_delivery_method_description'}}',
-								name: '{{dc 'mega_menu-fix_delivery_method'}}',
-								svgId: '#fix-delivery-method',
-								url: '/hc/articles/360018693032'
-							},
-							{
-								description: '{{dc 'mega_menu-service_levels_description'}}',
-								name: '{{dc 'mega_menu-service_levels'}}',
-								svgId: '#service-levels',
-								url: '/hc/articles/360018999271'
-							}
-						]
-					},
-					highlightedLinks: highlightedLinks,
-					locale: locale,
-					name: '{{dc 'support'}}'
+					description: '{{dc 'mega_menu-compatibility_matrix_description'}}',
+					name: '{{dc 'mega_menu-compatibility_matrix'}}',
+					svgId: '#compatibility-matrix',
+					url: '/hc/sections/360002100591'
 				},
-				document.getElementById('megaMenuSupport')
+				{
+					description: "{{dc 'mega_menu-support_coverage_description'}}",
+					name: '{{dc 'mega_menu-support_coverage'}}',
+					svgId: '#support-coverage',
+					url: '/hc/categories/360018692772'
+				},
+				{
+					description: '{{dc 'mega_menu-service_life_description'}}',
+					name: '{{dc 'mega_menu-service_life'}}',
+					svgId: '#service-life',
+					url: '/hc/sections/360002103332'
+				},
+				{
+					description: '{{dc 'mega_menu-support_faqs_description'}}',
+					name: '{{dc 'mega_menu-support_faqs'}}',
+					svgId: '#support-faqs',
+					url: '/hc/articles/360018999191'
+				},
+				{
+					description: '{{dc 'mega_menu-fix_delivery_method_description'}}',
+					name: '{{dc 'mega_menu-fix_delivery_method'}}',
+					svgId: '#fix-delivery-method',
+					url: '/hc/articles/360018693032'
+				},
+				{
+					description: '{{dc 'mega_menu-service_levels_description'}}',
+					name: '{{dc 'mega_menu-service_levels'}}',
+					svgId: '#service-levels',
+					url: '/hc/articles/360018999271'
+				}
+			];
+
+			function instantiateMegaMenu(event) {
+				const currentTargetId = event.currentTarget.id;
+
+				var configs = [];
+				var id = '';
+				var name = '';
+
+				if (currentTargetId === 'menuItemProducts') {
+					configs = productConfigs;
+					id = 'megaMenuProducts';
+					name = '{{dc 'products'}}';
+				} else if (currentTargetId === 'menuItemResources') {
+					configs = resourcesConfigs;
+					id = 'megaMenuResources';
+					name = '{{dc 'mega_menu-resources'}}';
+				} else if (currentTargetId === 'menuItemSecurity') {
+					configs = securityConfigs;
+					id = 'megaMenuSecurity';
+					name = '{{dc 'security'}}';
+				} else if (currentTargetId === 'menuItemSupport') {
+					configs = supportConfigs;
+					id = 'megaMenuSupport';
+					name = '{{dc 'support'}}';
+				}
+
+				renderMegaMenu(name, id, configs);
+			}
+
+			function removeActiveClasses() {
+				Array.prototype.forEach.call(
+					menuItems,
+					function(item) {
+						item.classList.remove('active');
+					}
+				);
+			}
+
+			function renderMegaMenu(name, id, configs) {
+				Liferay.render(
+					Liferay.MegaMenu,
+					{
+						accountLinks: accountLinks,
+						cardMenuItems: {
+							className: 'card-menu',
+							configs: configs
+						},
+						highlightedLinks: highlightedLinks,
+						locale: locale,
+						name: name
+					},
+					document.getElementById(id)
+				);
+			}
+
+			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
+
+			Array.prototype.forEach.call(
+				menuItems,
+				function(item) {
+					item.classList.remove('d-none');
+
+					item.addEventListener('click', function(event) {
+						if (!item.classList.contains('active')) {
+							removeActiveClasses();
+
+							item.classList.add('active');
+
+							if (!item.querySelector('.header-menu-content')) {
+								instantiateMegaMenu(event);
+							}
+						}
+					});
+				}
 			);
 		}
 
