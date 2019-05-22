@@ -15,6 +15,10 @@ module.exports = merge(
 						files: ['header.hbs'],
 						rules: [
 							{
+								replace: '360001749912',
+								search: '360001749972'
+							},
+							{
 								replace: '360000872531',
 								search: '360000874031'
 							},
@@ -41,10 +45,6 @@ module.exports = merge(
 							{
 								replace: '360000872571',
 								search: '360000869192'
-							},
-							{
-								replace: '360000867992',
-								search: '360000869212'
 							},
 							{
 								replace: '360017784212',
@@ -127,14 +127,6 @@ module.exports = merge(
 							{
 								replace: '360000872571',
 								search: '360000869192'
-							},
-							{
-								replace: '360000867992',
-								search: '360000869212'
-							},
-							{
-								replace: '360000868012',
-								search: '360000869232'
 							},
 							{
 								replace: '360000892272',
