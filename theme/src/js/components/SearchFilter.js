@@ -21,7 +21,7 @@ class SearchFilter extends preact.Component {
 					{label}
 				</label>
 
-				<select class="col-md-3" id="productSearchFilter" onChange={this.handleChange}>
+				<select class="col-md-3 input-small" id="productSearchFilter" onChange={this.handleChange}>
 					{options.map(
 						(option, index) => (
 							<option key={index} value={option.value}>

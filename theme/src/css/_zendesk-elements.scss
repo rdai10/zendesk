@@ -107,7 +107,7 @@ textarea,
 		color: $color-default-disabled;
 	}
 
-	.input-small {
+	&.input-small {
 		font-size: $input-label-font-size;
 		padding: $input-sm-padding-y $input-sm-padding-x;
 	}
