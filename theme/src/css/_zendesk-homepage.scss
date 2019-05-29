@@ -5,26 +5,39 @@
 		}
 
 		.announcement-body {
-			margin-bottom: 3.5rem;
-			margin-left: 3rem;
+			margin-bottom: 3rem;
+			margin-left: 3.25rem;
+			margin-top: $margin-default;
 		}
 
 		.announcement-heading {
 			align-items: center;
 			display: flex;
+			margin-top: $margin-default;
 		}
 
 		.announcement-icon {
-			height: 2rem;
-			margin-right: 1rem;
-			width: 2rem;
+			height: 2.5rem;
+			margin-right: $margin-sm;
+			width: 2.5rem;
+		}
+
+		.article-list-item a {
+			color: $color-body;
 		}
 
 		.cta {
-			border: 1px solid $color-border;
+			background-color: $color-grey;
 			border-radius: $border-radius;
-			box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
-			padding: $padding-md $padding-default $padding-default;
+			margin-bottom: 4rem;
+			padding: 3rem $padding-default;
+			text-align: center;
+			width: 100%;
+
+			h4 {
+				font-size: 1.25rem;
+				margin-bottom: $margin-default;
+			}
 		}
 	}
 
