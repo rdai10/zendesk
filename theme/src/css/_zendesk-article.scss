@@ -81,7 +81,7 @@
 
 .article-footer {
 	padding-bottom: 6rem;
-	padding-top: 1rem;
+	padding-top: 2.5rem;
 
 	.article-label {
 		background-color: $color-grey;
@@ -108,6 +108,7 @@
 		}
 
 		.article-votes-question {
+			font-size: 1.25rem;
 			font-style: italic;
 			font-weight: $font-weight-semi-bold;
 		}
