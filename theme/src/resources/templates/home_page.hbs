@@ -323,8 +323,6 @@
 			</section>
 		{{/is}}
 	{{/each}}
-
-	<section id="stillNeedHelp"></section>
 </div>
 
 <script>
@@ -348,49 +346,6 @@
 			if (announcementsSection) {
 				announcementsSection.classList.remove('d-none');
 			}
-
-			Liferay.render(
-				Liferay.CallToAction,
-				{
-					actionItems: [
-						{
-							iconId: '#ticket',
-							link: '{{page_path 'new_request'}}',
-							message: "{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}",
-							name: '{{dc 'submit_a_ticket'}}'
-						},
-						{
-							disclaimer: '{{dc 'homepage-contact_us_asterisk_description'}}',
-							iconId: '#contact',
-							link: '/hc/articles/360017784212',
-							message: '{{dc 'homepage-contact_us_description'}}',
-							name: '{{dc 'mega_menu-contact_us'}}'
-						},
-						{
-							disclaimer: '{{dc 'homepage-ask_the_community_asterisk_description'}}',
-							iconId: '#community',
-							link: 'https://community.liferay.com/ ',
-							message: "{{dc 'homepage-ask_the_community_description'}}",
-							name: '{{dc 'homepage-ask_the_community'}}'
-						}
-					],
-					className: 'need-help row',
-					promotions: [
-						{
-							description: '{{dc 'homepage-liferay_university_description'}}',
-							name: '{{dc 'homepage-liferay_university'}}',
-							url: 'https://university.liferay.com/'
-						},
-						{
-							description: '{{dc 'homepage-liferay_global_services_description'}}',
-							name: '{{dc 'homepage-liferay_global_services'}}',
-							url: 'https://www.liferay.com/consulting'
-						}
-					],
-					sectionHeading: '{{dc 'still_need_help'}}'
-				},
-				document.getElementById('stillNeedHelp')
-			);
 		}
 	});
 </script>
