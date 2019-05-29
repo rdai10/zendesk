@@ -12,7 +12,6 @@ const TabContent = ({cardMenuClassName, content}) => (
 		<CardMenu
 			className={cardMenuClassName}
 			configs={content.configs}
-			type="product"
 		/>
 	</section>
 );
