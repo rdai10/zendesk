@@ -266,7 +266,7 @@
 					{{dc 'mega_menu-announcements'}}
 				</h2>
 
-				<div class="col-md-10 row">
+				<div class="col-md-12 row">
 					{{#each sections}}
 						<div class="announcement col-md-6">
 							<h3 class="announcement-heading">
@@ -294,7 +294,7 @@
 								<ul class="article-list">
 									{{#each articles}}
 										<li class="article-list-item">
-											<a class="secondary-text-color" href={{url}}>{{title}}</a>
+											<a href={{url}}>{{title}}</a>
 										</li>
 									{{/each}}
 								</ul>
@@ -311,13 +311,9 @@
 					{{/each}}
 				</div>
 
-				<div class="col-md-2">
+				<div class="col-md-12 row">
 					<div class="cta">
-						<h5>{{dc 'homepage-announcement_subscribe_heading'}}</h5>
-
-						<p class="secondary-font secondary-text-color">
-							{{dc 'homepage-announcement_subscribe_description'}}
-						</p>
+						<h4>{{dc 'homepage-announcement_subscribe_description'}}</h4>
 
 						<a class="btn btn-outline-primary btn-sm" href="https://discover.liferay.com/subscribe-to-liferay-notifications">
 							{{dc 'homepage-announcement_subscribe_button'}}
