@@ -1,9 +1,7 @@
 .search-results {
-	margin-top: 2.5rem;
-
 	.breadcrumbs {
 		margin-bottom: 0;
-		margin-top: 0.25rem;
+		margin-top: 0.5rem;
 	}
 
 	.no-results {
@@ -34,7 +32,6 @@
 		}
 
 		select {
-			border-width: 0;
 			margin-left: $margin-md;
 		}
 	}
@@ -58,7 +55,7 @@
 		padding: 0;
 
 		.search-result {
-			margin-bottom: 2rem;
+			margin-bottom: $margin-default;
 		}
 	}
 }
