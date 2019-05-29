@@ -12,7 +12,7 @@ exports[`SearchFilter renders correctly 1`] = `
       Search Filter
     </label>
     <select
-      class="col-md-3"
+      class="col-md-3 input-small"
       id="productSearchFilter"
     >
       <option
