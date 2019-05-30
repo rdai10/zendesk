@@ -4,300 +4,318 @@
 	}
 </style>
 
-<div class="container-fluid homepage main-content">
-	<div class="col-md-8 justify-content-center offset-md-2 row">
-		<section class="banner">
-			<div class="col-12 col-md-6">
-				<h1 class="display">
+<div class="container-fluid homepage">
+	<div class="row">
+		<section class="banner col-12">
+			<div class="col-md-8 offset-md-2 row">
+				<h1 class="col-md-12 display">
 					{{dc 'how_can_we_help'}}
 				</h1>
 
-				{{search class="search-lg" instant=true submit=false}}
-			</div>
+				{{search class="col-sm-10 search-lg" instant=true submit=false}}
 
-			<div class="banner-img-container col-md-5 offset-md-1">
-				<img alt="{{dc 'how_can_we_help'}}" class="img" src="{{asset 'homepage.svg'}}" />
-			</div>
-		</section>
+				<div class="col-12 quick-links">
+					{{#if signed_in}}
+						<h5>
+							Quick Links: 
+							<a href="" id="quickLinkDownloads" >{{dc 'mega_menu-downloads'}}</a>
+							<a href="" id="quickLinkReleaseNotes">{{dc 'mega_menu-release_notes_card'}}</a>
+							<a href="" id="quickLinkActivationKeys">{{dc 'mega_menu-activation_keys'}}</a>
+						</h5>
+					{{else}}
+						<div class="small-title">
+							Looking for more Support?
 
-		<section class="col-md-12 row">
-			<div class="col-md-3 col-sm-6">
-				<a class="cta-card" href="/hc/requests/new">
-					<svg class="icon">
-						<use xlink:href="#submit-ticket-cta" />
-					</svg>
+							{{#link 'sign_in' class="btn btn-link small-title"}}
+								Sign In
+							{{/link}}
+						</div>
 
-					<h4 class="title">
-						{{dc 'submit_a_ticket'}}
-					</h4>
-				</a>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<a class="cta-card" href="/hc/articles/360017784212">
-					<svg class="icon">
-						<use xlink:href="#contact-cta" />
-					</svg>
-
-					<h4 class="title">
-						{{dc 'mega_menu-contact_us'}}
-					</h4>
-				</a>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<a class="cta-card" href="/hc/requests">
-					<svg class="icon">
-						<use xlink:href="#ticket-cta" />
-					</svg>
-
-					<h4 class="title">
-						View My Tickets
-					</h4>
-				</a>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<a class="cta-card" href="https://customer.liferay.com/en_US/project-details">
-					<svg class="icon">
-						<use xlink:href="#project-details-cta" />
-					</svg>
-
-					<h4 class="title">
-						See Project Details
-					</h4>
-				</a>
+					{{/if}}
+				</div>
 			</div>
 		</section>
 
-		<section class="col-md-12 row suggested-topics">
-			<h2 class="col-md-12">
-				{{dc 'browse_by_product'}}
-			</h2>
-
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360001749972">
-					<div class="autofit-col">
+		<div class="col-md-8 justify-content-center offset-md-2 row">
+			<section class="col-md-12 cta-links row">
+				<div class="col-md-3 col-sm-6">
+					<a class="cta-card" href="/hc/requests/new">
 						<svg class="icon">
-							<use xlink:href="#dxp-logo" />
+							<use xlink:href="#submit-ticket-cta" />
 						</svg>
-					</div>
 
-					<div class="autofit-col autofit-col-expand">
 						<h4 class="title">
-							{{dc 'mega_menu-dxp_7_2'}}
+							{{dc 'submit_a_ticket'}}
 						</h4>
-					</div>
-				</a>
-			</div>
+					</a>
+				</div>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000874031">
-					<div class="autofit-col">
+				<div class="col-md-3 col-sm-6">
+					<a class="cta-card" href="/hc/articles/360017784212">
 						<svg class="icon">
-							<use xlink:href="#7-1-logo" />
+							<use xlink:href="#contact-cta" />
 						</svg>
-					</div>
 
-					<div class="autofit-col autofit-col-expand">
 						<h4 class="title">
-							{{dc 'mega_menu-dxp_7_1'}}
+							{{dc 'mega_menu-contact_us'}}
 						</h4>
-					</div>
-				</a>
-			</div>
+					</a>
+				</div>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869112">
-					<div class="autofit-col">
+				<div class="col-md-3 col-sm-6">
+					<a class="cta-card" href="/hc/requests">
 						<svg class="icon">
-							<use xlink:href="#analytics-cloud-logo" />
+							<use xlink:href="#ticket-cta" />
 						</svg>
-					</div>
 
-					<div class="autofit-col autofit-col-expand">
 						<h4 class="title">
-							{{dc 'mega_menu-analytics_cloud'}}
+							View My Tickets
 						</h4>
-					</div>
-				</a>
-			</div>
+					</a>
+				</div>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869132">
-					<div class="autofit-col">
+				<div class="col-md-3 col-sm-6">
+					<a class="cta-card" href="https://customer.liferay.com/en_US/project-details">
 						<svg class="icon">
-							<use xlink:href="#commerce-logo" />
+							<use xlink:href="#project-details-cta" />
 						</svg>
-					</div>
 
-					<div class="autofit-col autofit-col-expand">
 						<h4 class="title">
-							{{dc 'mega_menu-commerce'}}
+							See Project Details
 						</h4>
-					</div>
-				</a>
-			</div>
+					</a>
+				</div>
+			</section>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869252">
-					<div class="autofit-col">
-						<svg class="icon">
-							<use xlink:href="#dxp-cloud-logo" />
-						</svg>
-					</div>
+			<section class="col-md-12 row suggested-topics">
+				<h2 class="col-md-12">
+					{{dc 'browse_by_product'}}
+				</h2>
 
-					<div class="autofit-col autofit-col-expand">
-						<h4 class="title">
-							{{dc 'mega_menu-dxp_cloud'}}
-						</h4>
-					</div>
-				</a>
-			</div>
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360001749972">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#dxp-logo" />
+							</svg>
+						</div>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000874051">
-					<div class="autofit-col">
-						<svg class="icon">
-							<use xlink:href="#7-0-logo" />
-						</svg>
-					</div>
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-dxp_7_2'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-					<div class="autofit-col autofit-col-expand">
-						<h4 class="title">
-							{{dc 'mega_menu-dxp_7_0'}}
-						</h4>
-					</div>
-				</a>
-			</div>
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000874031">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#7-1-logo" />
+							</svg>
+						</div>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869172">
-					<div class="autofit-col">
-						<svg class="icon">
-							<use xlink:href="#6-2-logo" />
-						</svg>
-					</div>
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-dxp_7_1'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-					<div class="autofit-col autofit-col-expand">
-						<h4 class="title">
-							{{dc 'mega_menu-portal_6_2'}}
-						</h4>
-					</div>
-				</a>
-			</div>
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869112">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#analytics-cloud-logo" />
+							</svg>
+						</div>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869192">
-					<div class="autofit-col">
-						<svg class="icon">
-							<use xlink:href="#6-1-logo" />
-						</svg>
-					</div>
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-analytics_cloud'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-					<div class="autofit-col autofit-col-expand">
-						<h4 class="title">
-							{{dc 'mega_menu-portal_6_1'}}
-						</h4>
-					</div>
-				</a>
-			</div>
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869132">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#commerce-logo" />
+							</svg>
+						</div>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/articles/360028716251">
-					<div class="autofit-col">
-						<svg class="icon">
-							<use xlink:href="#6-0-logo" />
-						</svg>
-					</div>
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-commerce'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-					<div class="autofit-col autofit-col-expand">
-						<h4 class="title">
-							{{dc 'mega_menu-portal_6_0'}}
-						</h4>
-					</div>
-				</a>
-			</div>
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869252">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#dxp-cloud-logo" />
+							</svg>
+						</div>
 
-			<div class="col-md-4">
-				<a class="autofit-row autofit-row-center product-card" href="/hc/articles/360028715551">
-					<div class="autofit-col">
-						<svg class="icon">
-							<use xlink:href="#5-2-logo" />
-						</svg>
-					</div>
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-dxp_cloud'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-					<div class="autofit-col autofit-col-expand">
-						<h4 class="title">
-							{{dc 'mega_menu-portal_5_2'}}
-						</h4>
-					</div>
-				</a>
-			</div>
-		</section>
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000874051">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#7-0-logo" />
+							</svg>
+						</div>
 
-		{{#each categories}}
-			{{#is id 360000892252}}
-				<section class="announcements col-md-12 d-none row">
-					<h2 class="col-md-12">
-						{{dc 'mega_menu-announcements'}}
-					</h2>
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-dxp_7_0'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-					{{#each sections}}
-						<div class="announcement col-md-6">
-							<h3 class="announcement-heading">
-								<svg class="announcement-icon">
-									{{#is id 360002102352}}
-										<use xlink:href="#fixpack-updates" />
-									{{/is}}
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869172">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#6-2-logo" />
+							</svg>
+						</div>
 
-									{{#is id 360002099871}}
-										<use xlink:href="#product-release" />
-									{{/is}}
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-portal_6_2'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-									{{#is id 360002099951}}
-										<use xlink:href="#security-alert" />
-									{{/is}}
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000869192">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#6-1-logo" />
+							</svg>
+						</div>
 
-									{{#is id 360002102472}}
-										<use xlink:href="#announcement" />
-									{{/is}}
-								</svg>
-								{{name}}
-							</h3>
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-portal_6_1'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-							<div class="announcement-body secondary-font">
-								<ul class="article-list">
-									{{#each articles}}
-										<li class="article-list-item">
-											<a href={{url}}>{{title}}</a>
-										</li>
-									{{/each}}
-								</ul>
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/articles/360028716251">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#6-0-logo" />
+							</svg>
+						</div>
 
-								<a class="secondary-font semi-bold view-all" href="{{url}}">
-									{{dc 'view_all'}}
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-portal_6_0'}}
+							</h4>
+						</div>
+					</a>
+				</div>
 
-									<svg class="lexicon-icon lexicon-icon-arrow-right" >
-										<use xlink:href="#arrow-right" />
+				<div class="col-md-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/articles/360028715551">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#5-2-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-portal_5_2'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+			</section>
+
+			{{#each categories}}
+				{{#is id 360000892252}}
+					<section class="announcements col-md-12 d-none row">
+						<h2 class="col-md-12">
+							{{dc 'mega_menu-announcements'}}
+						</h2>
+
+						{{#each sections}}
+							<div class="announcement col-md-6">
+								<h3 class="announcement-heading">
+									<svg class="announcement-icon">
+										{{#is id 360002102352}}
+											<use xlink:href="#fixpack-updates" />
+										{{/is}}
+
+										{{#is id 360002099871}}
+											<use xlink:href="#product-release" />
+										{{/is}}
+
+										{{#is id 360002099951}}
+											<use xlink:href="#security-alert" />
+										{{/is}}
+
+										{{#is id 360002102472}}
+											<use xlink:href="#announcement" />
+										{{/is}}
 									</svg>
+									{{name}}
+								</h3>
+
+								<div class="announcement-body secondary-font">
+									<ul class="article-list">
+										{{#each articles}}
+											<li class="article-list-item">
+												<a href={{url}}>{{title}}</a>
+											</li>
+										{{/each}}
+									</ul>
+
+									<a class="secondary-font semi-bold view-all" href="{{url}}">
+										{{dc 'view_all'}}
+
+										<svg class="lexicon-icon lexicon-icon-arrow-right" >
+											<use xlink:href="#arrow-right" />
+										</svg>
+									</a>
+								</div>
+							</div>
+						{{/each}}
+
+						<div class="col-md-12">
+							<div class="cta">
+								<h4>{{dc 'homepage-announcement_subscribe_description'}}</h4>
+
+								<a class="btn btn-outline-primary btn-sm" href="https://discover.liferay.com/subscribe-to-liferay-notifications">
+									{{dc 'homepage-announcement_subscribe_button'}}
 								</a>
 							</div>
 						</div>
-					{{/each}}
-
-					<div class="col-md-12">
-						<div class="cta">
-							<h4>{{dc 'homepage-announcement_subscribe_description'}}</h4>
-
-							<a class="btn btn-outline-primary btn-sm" href="https://discover.liferay.com/subscribe-to-liferay-notifications">
-								{{dc 'homepage-announcement_subscribe_button'}}
-							</a>
-						</div>
-					</div>
-				</section>
-			{{/is}}
-		{{/each}}
+					</section>
+				{{/is}}
+			{{/each}}
+		</div>
 	</div>
 </div>
 
@@ -322,6 +340,26 @@
 			if (announcementsSection) {
 				announcementsSection.classList.remove('d-none');
 			}
+		}
+
+		const documentElementLang = document.documentElement.lang;
+
+		const quickLinkActivationKeys = document.getElementById('quickLinkActivationKeys');
+
+		if (quickLinkActivationKeys) {
+			quickLinkActivationKeys.href = Liferay.addLocaleParamToURI(documentElementLang, 'activation-key');
+		}
+
+		const quickLinkDownloads = document.getElementById('quickLinkDownloads');
+
+		if (quickLinkDownloads) {
+			quickLinkDownloads.href = Liferay.addLocaleParamToURI(documentElementLang, 'downloads');
+		}
+
+		const quickLinkReleaseNotes = document.getElementById('quickLinkReleaseNotes');
+
+		if (quickLinkReleaseNotes) {
+			quickLinkReleaseNotes.href = Liferay.addLocaleParamToURI(documentElementLang, 'dxp-release-notes');
 		}
 	});
 </script>
