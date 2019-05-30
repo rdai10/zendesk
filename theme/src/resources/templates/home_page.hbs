@@ -37,55 +37,57 @@
 		</section>
 
 		<div class="col-md-8 justify-content-center offset-md-2 row">
-			<section class="col-md-12 cta-links row">
-				<div class="col-md-3 col-sm-6">
-					<a class="cta-card" href="/hc/requests/new">
-						<svg class="icon">
-							<use xlink:href="#submit-ticket-cta" />
-						</svg>
+			{{#if signed_in}}
+				<section class="col-md-12 cta-links row">
+					<div class="col-md-3 col-sm-6">
+						<a class="cta-card" href="/hc/requests/new">
+							<svg class="icon">
+								<use xlink:href="#submit-ticket-cta" />
+							</svg>
 
-						<h4 class="title">
-							{{dc 'submit_a_ticket'}}
-						</h4>
-					</a>
-				</div>
+							<h4 class="title">
+								{{dc 'submit_a_ticket'}}
+							</h4>
+						</a>
+					</div>
 
-				<div class="col-md-3 col-sm-6">
-					<a class="cta-card" href="/hc/articles/360017784212">
-						<svg class="icon">
-							<use xlink:href="#contact-cta" />
-						</svg>
+					<div class="col-md-3 col-sm-6">
+						<a class="cta-card" href="/hc/articles/360017784212">
+							<svg class="icon">
+								<use xlink:href="#contact-cta" />
+							</svg>
 
-						<h4 class="title">
-							{{dc 'mega_menu-contact_us'}}
-						</h4>
-					</a>
-				</div>
+							<h4 class="title">
+								{{dc 'mega_menu-contact_us'}}
+							</h4>
+						</a>
+					</div>
 
-				<div class="col-md-3 col-sm-6">
-					<a class="cta-card" href="/hc/requests">
-						<svg class="icon">
-							<use xlink:href="#ticket-cta" />
-						</svg>
+					<div class="col-md-3 col-sm-6">
+						<a class="cta-card" href="/hc/requests">
+							<svg class="icon">
+								<use xlink:href="#ticket-cta" />
+							</svg>
 
-						<h4 class="title">
-							View My Tickets
-						</h4>
-					</a>
-				</div>
+							<h4 class="title">
+								View My Tickets
+							</h4>
+						</a>
+					</div>
 
-				<div class="col-md-3 col-sm-6">
-					<a class="cta-card" href="https://customer.liferay.com/en_US/project-details">
-						<svg class="icon">
-							<use xlink:href="#project-details-cta" />
-						</svg>
+					<div class="col-md-3 col-sm-6">
+						<a class="cta-card" href="https://customer.liferay.com/en_US/project-details">
+							<svg class="icon">
+								<use xlink:href="#project-details-cta" />
+							</svg>
 
-						<h4 class="title">
-							See Project Details
-						</h4>
-					</a>
-				</div>
-			</section>
+							<h4 class="title">
+								See Project Details
+							</h4>
+						</a>
+					</div>
+				</section>
+			{{/if}}
 
 			<section class="col-md-12 row suggested-topics">
 				<h2 class="col-md-12">
