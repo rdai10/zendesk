@@ -47,7 +47,6 @@
 	background-color: $color-white;
 	display: block;
 	padding: $padding-default;
-	margin-top: -2.25rem;
 	text-align: center;
 
 	@include media-breakpoint-down(sm) {
