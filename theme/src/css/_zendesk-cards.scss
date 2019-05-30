@@ -1,3 +1,4 @@
+.cta-card,
 .nav-card,
 .product-card {
 	border-radius: $border-radius;
@@ -27,6 +28,37 @@
 	}
 }
 
+.cta-card,
+.product-card {
+	border: 1px solid $color-border;
+	box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
+	transition: transform 0.2s ease;
+
+	&:hover {
+		border-bottom: 3px solid $color-primary;
+		box-shadow: 0 6px 11px 0 rgba(9, 16, 29, 0.09);
+		margin-bottom: -3px;
+		text-decoration: none;
+		transform: translateY(-4px);
+	}
+}
+
+.cta-card {
+	background-color: $color-white;
+	display: block;
+	padding: $padding-default;
+	margin-top: -2.25rem;
+	text-align: center;
+
+	@include media-breakpoint-down(sm) {
+		margin-bottom: $margin-default;
+
+		&:hover {
+			margin-bottom: 22px;
+		}
+	}
+}
+
 .nav-card {
 	border-width: 0;
 	flex-basis: 50%;
@@ -37,25 +69,7 @@
 }
 
 .product-card {
-	border: 1px solid $color-border;
-	box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
 	margin-right: $margin-default;
 	margin-top: $margin-default;
 	padding: 1.25rem $padding-default;
-	transition: transform 0.2s ease;
-
-	&:hover {
-		border-bottom: 3px solid $color-primary;
-		box-shadow: 0 6px 11px 0 rgba(9, 16, 29, 0.09);
-		margin-bottom: -3px;
-		text-decoration: none;
-		transform: translateY(-4px);
-	}
-
-	.lexicon-icon-arrow-right {
-		color: $color-primary;
-		height: 2rem;
-		padding: 0.625rem;
-		width: 2rem;
-	}
 }
