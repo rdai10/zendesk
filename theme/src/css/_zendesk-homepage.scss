@@ -70,6 +70,14 @@
 		margin-top: -2.25rem;
 	}
 
+	.product-card {
+		min-height: 90px;
+
+		@include media-breakpoint-down(md) {
+			min-height: auto;
+		}
+	}
+
 	.quick-links {
 		color: $color-white;
 		margin-top: $margin-default;
@@ -98,7 +106,12 @@
 		}
 	}
 
+	.suggested-topics-overflow {
+		padding: 0;
+	}
+
 	.toggle-overflow-topics {
 		margin-top: 2rem;
+		padding-left: 0;
 	}
 }
