@@ -104,7 +104,7 @@
 
 						<div class="autofit-col autofit-col-expand">
 							<h4 class="title">
-								{{dc 'mega_menu-dxp_7_2'}}
+								{{dc 'mega_menu-dxp_7_2'}} (New)
 							</h4>
 						</div>
 					</a>
@@ -238,20 +238,28 @@
 					</a>
 				</div>
 
-				<div class="col-md-4">
-					<a class="autofit-row autofit-row-center product-card" href="/hc/articles/360028715551">
-						<div class="autofit-col">
-							<svg class="icon">
-								<use xlink:href="#5-2-logo" />
-							</svg>
-						</div>
+				<div class="col-md-12 d-none row" id="suggestedTopicsOverflow">
+					<div class="col-md-4">
+						<a class="autofit-row autofit-row-center product-card" href="/hc/articles/360028715551">
+							<div class="autofit-col">
+								<svg class="icon">
+									<use xlink:href="#5-2-logo" />
+								</svg>
+							</div>
 
-						<div class="autofit-col autofit-col-expand">
-							<h4 class="title">
-								{{dc 'mega_menu-portal_5_2'}}
-							</h4>
-						</div>
-					</a>
+							<div class="autofit-col autofit-col-expand">
+								<h4 class="title">
+									{{dc 'mega_menu-portal_5_2'}}
+								</h4>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-12 row">
+					<button class="btn btn-link toggle-overflow-topics" id="toggleOverflowTopics">
+						See More
+					</button>
 				</div>
 			</section>
 
@@ -342,6 +350,25 @@
 			if (announcementsSection) {
 				announcementsSection.classList.remove('d-none');
 			}
+		}
+
+		const toggleOverflowTopics = document.getElementById('toggleOverflowTopics');
+
+		if (toggleOverflowTopics) {
+			toggleOverflowTopics.addEventListener(
+				'click',
+				function(event) {
+					const suggestedTopicsOverflow = document.getElementById('suggestedTopicsOverflow');
+
+					if (suggestedTopicsOverflow) {
+						suggestedTopicsOverflow.classList.toggle('d-none');
+
+						toggleOverflowTopics.innerHTML = 
+							toggleOverflowTopics.innerHTML === 'See More' 
+								? 'See Less' : 'See More';
+					}
+				}
+			);
 		}
 
 		const documentElementLang = document.documentElement.lang;
