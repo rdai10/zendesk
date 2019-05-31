@@ -76,7 +76,7 @@
 					</div>
 
 					<div class="col-md-3 col-sm-6">
-						<a class="cta-card" href="https://customer.liferay.com/en_US/project-details">
+						<a class="cta-card" href="" id="projectDetailsCTA">
 							<svg class="icon">
 								<use xlink:href="#project-details-cta" />
 							</svg>
@@ -345,6 +345,12 @@
 		}
 
 		const documentElementLang = document.documentElement.lang;
+
+		const projectDetailsCTA = document.getElementById('projectDetailsCTA');
+
+		if (projectDetailsCTA) {
+			projectDetailsCTA.href = Liferay.addLocaleParamToURI(documentElementLang, 'project-details');
+		}
 
 		const quickLinkActivationKeys = document.getElementById('quickLinkActivationKeys');
 
