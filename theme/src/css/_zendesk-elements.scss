@@ -235,6 +235,12 @@ textarea,
 	line-height: $line-height-sm;
 }
 
+.small-title {
+	font-size: $small-title-font-size;
+	font-weight: $font-weight-semi-bold;
+	line-height: $small-font-line-height;
+}
+
 .upload-dropzone {
 	color: $secondary-text-color;
 }
