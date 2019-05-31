@@ -118,12 +118,13 @@ $navbar-padding-x: 0 !default;
 /* ---------- Custom variables ---------- */
 
 $h1-display-font-size: 3rem !default; // 48px
+$font-size-default: 1rem !default; // 16px
+$small-title-font-size: 1.25rem !default; // 20px
+
 
 $h6-line-height: 16px !default;
-
-$font-size-default: 1rem !default; // 16px
-
 $code-line-height: 24px !default; // set pixel value to prevent nested <pre> and <code> from scaling down line height
+$small-font-line-height: 1.75rem !default; // 28px
 
 $label-sm: (
 	font-size: 0.625rem, // 10px
