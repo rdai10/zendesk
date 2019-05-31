@@ -49,7 +49,7 @@
 	padding: $padding-default;
 	text-align: center;
 
-	@include media-breakpoint-down(sm) {
+	@include media-breakpoint-down(md) {
 		margin-bottom: $margin-default;
 
 		&:hover {
