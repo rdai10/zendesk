@@ -51,7 +51,7 @@
 		#query {
 			background-color: rgba(255, 255, 255, 0.2);
 			border: 0;
-			border-left: 3px solid #FDCC4A;
+			border-left: 3px solid $color-highlight;
 			color: $color-white;
 
 			&::placeholder {
