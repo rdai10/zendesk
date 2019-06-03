@@ -106,7 +106,7 @@
 
 						<div class="autofit-col autofit-col-expand">
 							<h4 class="title">
-								{{dc 'mega_menu-dxp_7_2'}} ({{dc ' 7_2-new'}})
+								{{dc 'mega_menu-dxp_7_2'}} {{dc '7_2-new'}}
 							</h4>
 						</div>
 					</a>
@@ -352,6 +352,14 @@
 			if (announcementsSection) {
 				announcementsSection.classList.remove('d-none');
 			}
+		}
+
+		const homepage = document.querySelector('.homepage');
+
+		if (homepage) {
+			const header = document.getElementById('header');
+
+			header.classList.add('hide-header');
 		}
 
 		const toggleOverflowTopics = document.getElementById('toggleOverflowTopics');
