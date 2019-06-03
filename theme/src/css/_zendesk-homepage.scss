@@ -45,18 +45,10 @@
 		background-color: $color-brand;
 		background-size: cover;
 		display: block;
-		margin-top: $navbar-height;
 		min-height: 414px;
 		
 		#query {
-			background-color: rgba(255, 255, 255, 0.2);
-			border: 0;
 			border-left: 3px solid $color-highlight;
-			color: $color-white;
-
-			&::placeholder {
-				color: $color-white;
-			}
 		}
 
 		.display {

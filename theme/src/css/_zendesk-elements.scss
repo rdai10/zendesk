@@ -185,27 +185,31 @@ textarea,
 .search-lg,
 .search-nav {
 	input[type="search"] {
+		background-color: rgba(255, 255, 255, 0.2);
+		background-image: clay-icon(search, $color-white);
 		background-repeat: no-repeat;
+		border: 0;
+		color: $color-white;
 
 		&:focus {
+			background-image: clay-icon(times, $color-white);
 			background-size: 0.625rem;
+		}
+
+		&::placeholder {
+			color: $color-white;
 		}
 	}
 }
 
 .search-lg {
 	input[type="search"] {
-		background-image: clay-icon(search, $color-white);
 		background-position: right 1.5rem center;
 		background-size: 1rem;
 		box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
 		height: $input-height-lg;
 		padding-left: $padding-default;
 		padding-right: 2.8rem;
-
-		&:focus {
-			background-image: clay-icon(times, $color-white);
-		}
 	}
 }
 
@@ -213,16 +217,11 @@ textarea,
 	width: 232px;
 
 	input[type="search"] {
-		background-image: clay-icon(search, $color-primary);
 		background-position: right 0.7rem center;
 		background-size: 0.75rem;
 		font-size: $h5-font-size;
 		height: 2.25rem;
 		padding-right: 1.25rem;
-
-		&:focus {
-			background-image: clay-icon(times, $color-default);
-		}
 	}
 }
 
