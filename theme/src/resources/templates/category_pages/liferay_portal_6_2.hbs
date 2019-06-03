@@ -26,6 +26,8 @@
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
 
+		const documentElementLang = document.documentElement.lang;
+
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
@@ -42,7 +44,7 @@
 								description: '{{dc '6_2-latest_release_card_description'}}',
 								name: '{{dc '7_1-latest_release_card'}}',
 								svgId: '#latest-release',
-								url: 'https://customer.liferay.com/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191095'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191095')
 							},
 							{
 								description: '{{dc '6_2-compatibility_matrix_card_description'}}',
@@ -54,7 +56,7 @@
 								description: '{{dc '7_1-fix_packs_card_description'}}',
 								name: '{{dc '7_1-fix_packs_card'}}',
 								svgId: '#fixpack',
-								url: 'https://customer.liferay.com/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191097'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191097')
 							},
 							{
 								description: '{{dc '6_2-activation_keys_card_description'}}',
@@ -84,31 +86,31 @@
 								description: '{{dc '6_2-latest_release_card_description'}}',
 								name: '{{dc '7_1-latest_release_card'}}',
 								svgId: '#latest-release',
-								url: 'https://customer.liferay.com/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191095'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191095')
 							},
 							{
 								description: '{{dc '7_1-fix_packs_card_description'}}',
 								name: '{{dc '7_1-fix_packs_card'}}',
 								svgId: '#fixpack',
-								url: 'https://customer.liferay.com/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191097'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191097')
 							},
 							{
 								description: '{{dc '6_2-service_packs_archive_card_description'}}',
 								name: '{{dc '7_1-service_packs_archive_card'}}',
 								svgId: '#service-pack-archive',
-								url: 'https://customer.liferay.com/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191095'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191095')
 							},
 							{
 								description: '{{dc '6_2-security_advisories_card_description'}}',
 								name: '{{dc 'mega_menu-security_advisories'}}',
 								svgId: '#security-advisories',
-								url: 'https://customer.liferay.com/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191101'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118191027&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191101')
 							},
 							{
 								description: '{{dc '6_2-patching_tool_card_description'}}',
 								name: '{{dc '7_1-patching_tool_card'}}',
 								svgId: '#patching-tool',
-								url: 'https://customer.liferay.com/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_mvcRenderCommandName=%2Fview&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_journalArticleResourcePrimKey=6546467'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_mvcRenderCommandName=%2Fview&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_journalArticleResourcePrimKey=6546467')
 							}
 						],
 						tabAccess: 'kb'
