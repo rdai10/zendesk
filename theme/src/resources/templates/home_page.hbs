@@ -17,17 +17,17 @@
 				<div class="col-12 quick-links">
 					{{#if signed_in}}
 						<h5>
-							Quick Links: 
+							{{dc 'homepage-quick_links'}}: 
 							<a href="" id="quickLinkDownloads" >{{dc 'mega_menu-downloads'}}</a>
 							<a href="" id="quickLinkReleaseNotes">{{dc 'mega_menu-release_notes_card'}}</a>
 							<a href="" id="quickLinkActivationKeys">{{dc 'mega_menu-activation_keys'}}</a>
 						</h5>
 					{{else}}
 						<div class="small-title">
-							Looking for more Support?
+							{{dc 'homepage-looking_for_more_support'}}
 
 							{{#link 'sign_in' class="btn btn-link small-title"}}
-								Sign In
+								{{dc 'homepage-sign_in'}}
 							{{/link}}
 						</div>
 
@@ -70,7 +70,7 @@
 							</svg>
 
 							<h4 class="title">
-								View My Tickets
+								{{dc 'homepage-view_my_tickets'}}
 							</h4>
 						</a>
 					</div>
@@ -82,7 +82,7 @@
 							</svg>
 
 							<h4 class="title">
-								See Project Details
+								{{dc 'homepage-see_project_details'}}
 							</h4>
 						</a>
 					</div>
@@ -104,7 +104,7 @@
 
 						<div class="autofit-col autofit-col-expand">
 							<h4 class="title">
-								{{dc 'mega_menu-dxp_7_2'}} (New)
+								{{dc 'mega_menu-dxp_7_2'}} ({{dc ' 7_2-new'}})
 							</h4>
 						</div>
 					</a>
@@ -258,7 +258,7 @@
 
 				<div class="col-md-12">
 					<button class="btn btn-link toggle-overflow-topics" id="toggleOverflowTopics">
-						See More
+						{{dc 'homepage-see_more'}}
 					</button>
 				</div>
 			</section>
@@ -364,8 +364,8 @@
 						suggestedTopicsOverflow.classList.toggle('d-none');
 
 						toggleOverflowTopics.innerHTML = 
-							toggleOverflowTopics.innerHTML === 'See More' 
-								? 'See Less' : 'See More';
+							toggleOverflowTopics.innerHTML === "{{dc 'homepage-see_more'}}" 
+								? "{{dc 'homepage-see_less'}}" : "{{dc 'homepage-see_more'}}";
 					}
 				}
 			);
