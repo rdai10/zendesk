@@ -487,6 +487,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <script>
+	const NAVBAR_HEIGHT = 56;
+
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
 
@@ -751,7 +753,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		const onNavScroll = function() {
 			const header = document.getElementById('header');
 
-			if (window.scrollY >= 56) {
+			if (window.scrollY >= NAVBAR_HEIGHT) {
 				header.classList.add('scroll-shadow');
 			}
 			else {
