@@ -1,10 +1,10 @@
 @import "functions/_global-functions";
 
-/* ---------- Custom variables ---------- */
+// Custom Variables
 
 @import "_zendesk-variables";
 
-/* ---------- Clay base-variables ---------- */
+// Clay Base-Variables
 
 @import "variables/_bs4-variable-overwrites";
 
@@ -15,7 +15,7 @@
 @import "_variables";
 @import "_mixins";
 
-/* ---------- Clay base ---------- */
+// Clay Base
 
 @import "bootstrap/bootstrap-grid";
 @import "bootstrap/bootstrap-reboot";
@@ -25,7 +25,7 @@
 @import "components/_grid";
 @import "components/_utilities";
 
-/* ---------- Clay components ---------- */
+// Clay Components
 
 @import "bootstrap/_alert";
 @import "bootstrap/_buttons";
@@ -48,7 +48,7 @@
 @import "components/_stickers";
 @import "components/_tables";
 
-/* ---------- Custom components ---------- */
+// Custom Components
 
 @import "_zendesk-article";
 @import "_zendesk-breadcrumb";
