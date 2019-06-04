@@ -38,54 +38,56 @@
 
 		<div class="col-md-8 justify-content-center offset-md-2 row">
 			{{#if signed_in}}
-				<section class="col-md-12 cta-links row">
-					<div class="col-lg-3 col-md-6">
-						<a class="cta-card" href="/hc/requests/new">
-							<svg class="icon">
-								<use xlink:href="#submit-ticket-cta" />
-							</svg>
+				<section class="col-md-12 cta-links">
+					<ul>
+						<li class="col-lg-3 col-md-6">
+							<a class="cta-card" href="/hc/requests/new">
+								<svg class="icon">
+									<use xlink:href="#submit-ticket-cta" />
+								</svg>
 
-							<h4 class="title">
-								{{dc 'submit_a_ticket'}}
-							</h4>
-						</a>
-					</div>
+								<h4 class="title">
+									{{dc 'submit_a_ticket'}}
+								</h4>
+							</a>
+						</li>
 
-					<div class="col-lg-3 col-md-6">
-						<a class="cta-card" href="/hc/articles/360017784212">
-							<svg class="icon">
-								<use xlink:href="#contact-cta" />
-							</svg>
+						<li class="col-lg-3 col-md-6">
+							<a class="cta-card" href="/hc/articles/360017784212">
+								<svg class="icon">
+									<use xlink:href="#contact-cta" />
+								</svg>
 
-							<h4 class="title">
-								{{dc 'mega_menu-contact_us'}}
-							</h4>
-						</a>
-					</div>
+								<h4 class="title">
+									{{dc 'mega_menu-contact_us'}}
+								</h4>
+							</a>
+						</li>
 
-					<div class="col-lg-3 col-md-6">
-						<a class="cta-card" href="/hc/requests">
-							<svg class="icon">
-								<use xlink:href="#ticket-cta" />
-							</svg>
+						<li class="col-lg-3 col-md-6">
+							<a class="cta-card" href="/hc/requests">
+								<svg class="icon">
+									<use xlink:href="#ticket-cta" />
+								</svg>
 
-							<h4 class="title">
-								{{dc 'homepage-view_my_tickets'}}
-							</h4>
-						</a>
-					</div>
+								<h4 class="title">
+									{{dc 'homepage-view_my_tickets'}}
+								</h4>
+							</a>
+						</li>
 
-					<div class="col-lg-3 col-md-6">
-						<a class="cta-card" href="" id="projectDetailsCTA">
-							<svg class="icon">
-								<use xlink:href="#project-details-cta" />
-							</svg>
+						<li class="col-lg-3 col-md-6">
+							<a class="cta-card" href="" id="projectDetailsCTA">
+								<svg class="icon">
+									<use xlink:href="#project-details-cta" />
+								</svg>
 
-							<h4 class="title">
-								{{dc 'homepage-see_project_details'}}
-							</h4>
-						</a>
-					</div>
+								<h4 class="title">
+									{{dc 'homepage-see_project_details'}}
+								</h4>
+							</a>
+						</li>
+					</ul>
 				</section>
 			{{/if}}
 
