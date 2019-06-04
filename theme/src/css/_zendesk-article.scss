@@ -1,3 +1,9 @@
+#docsArticle .article-body {
+	td, th {
+		padding: $padding-sm;
+	}
+}
+
 .article-author,
 .meta-group {
 	display: flex;
