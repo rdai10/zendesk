@@ -38,7 +38,7 @@
 
 		<div class="col-md-8 justify-content-center offset-md-2 row">
 			{{#if signed_in}}
-				<section class="col-md-12 cta-links">
+				<section class="col-md-12 cta-links d-none">
 					<ul>
 						<li class="col-lg-3 col-md-6">
 							<a class="cta-card" href="/hc/requests/new">
@@ -350,6 +350,38 @@
 			if (announcementsSection) {
 				announcementsSection.classList.remove('d-none');
 			}
+
+			const ctaLinksSection = document.querySelector('.cta-links');
+
+			if (ctaLinksSection) {
+				ctaLinksSection.classList.remove('d-none');
+			}
+
+			const documentElementLang = document.documentElement.lang;
+
+			const projectDetailsCTA = document.getElementById('projectDetailsCTA');
+
+			if (projectDetailsCTA) {
+				projectDetailsCTA.href = Liferay.addLocaleParamToURI(documentElementLang, 'project-details');
+			}
+
+			const quickLinkActivationKeys = document.getElementById('quickLinkActivationKeys');
+
+			if (quickLinkActivationKeys) {
+				quickLinkActivationKeys.href = Liferay.addLocaleParamToURI(documentElementLang, 'activation-key');
+			}
+
+			const quickLinkDownloads = document.getElementById('quickLinkDownloads');
+
+			if (quickLinkDownloads) {
+				quickLinkDownloads.href = Liferay.addLocaleParamToURI(documentElementLang, 'downloads');
+			}
+
+			const quickLinkReleaseNotes = document.getElementById('quickLinkReleaseNotes');
+
+			if (quickLinkReleaseNotes) {
+				quickLinkReleaseNotes.href = Liferay.addLocaleParamToURI(documentElementLang, 'dxp-release-notes');
+			}
 		}
 
 		const homepage = document.querySelector('.homepage');
@@ -379,32 +411,6 @@
 					}
 				}
 			);
-		}
-
-		const documentElementLang = document.documentElement.lang;
-
-		const projectDetailsCTA = document.getElementById('projectDetailsCTA');
-
-		if (projectDetailsCTA) {
-			projectDetailsCTA.href = Liferay.addLocaleParamToURI(documentElementLang, 'project-details');
-		}
-
-		const quickLinkActivationKeys = document.getElementById('quickLinkActivationKeys');
-
-		if (quickLinkActivationKeys) {
-			quickLinkActivationKeys.href = Liferay.addLocaleParamToURI(documentElementLang, 'activation-key');
-		}
-
-		const quickLinkDownloads = document.getElementById('quickLinkDownloads');
-
-		if (quickLinkDownloads) {
-			quickLinkDownloads.href = Liferay.addLocaleParamToURI(documentElementLang, 'downloads');
-		}
-
-		const quickLinkReleaseNotes = document.getElementById('quickLinkReleaseNotes');
-
-		if (quickLinkReleaseNotes) {
-			quickLinkReleaseNotes.href = Liferay.addLocaleParamToURI(documentElementLang, 'dxp-release-notes');
 		}
 	});
 </script>
