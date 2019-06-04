@@ -357,7 +357,9 @@
 		if (homepage) {
 			const header = document.getElementById('header');
 
-			header.classList.add('hide-header');
+			if (header) {
+				header.classList.add('hide-header');
+			}
 		}
 
 		const toggleOverflowTopics = document.getElementById('toggleOverflowTopics');
