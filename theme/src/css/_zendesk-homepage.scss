@@ -67,7 +67,25 @@
 	}
 
 	.cta-links {
-		margin-top: -2.25rem;
+		justify-content: center;
+		margin-top: -3rem;
+
+		li {
+			display: flex;
+			flex-direction: column;
+		}
+
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.cta-card {
+			flex-grow: 1;
+		}
 	}
 
 	.product-card {
