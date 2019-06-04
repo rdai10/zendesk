@@ -178,7 +178,6 @@
 		justify-content: center;
 
 		h5 {
-			font-weight: $font-weight-normal;
 			margin-bottom: 0;
 		}
 
@@ -195,14 +194,11 @@
 			}
 
 			&:hover {
-				background-color: $color-grey;
-				color: $color-body;
+				background-color: $color-default;
 				cursor: pointer;
 			}
 
 			&.active {
-				color: $color-primary;
-
 				.lexicon-icon-menu-caret {
 					transform: rotate(180deg);
 				}
