@@ -713,6 +713,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				}
 			];
 
+			function addMenuClickOutsideListener(event) {
+				const body = document.querySelector('body');
+
+				body.removeEventListener('click', handleMenuClickOutside);
+				body.addEventListener('click', handleMenuClickOutside);
+			}
+
+			function checkClickOutside(event, nodelist) {
+				const target = event.target;
+				const containsNode = [];
+
+				if (nodelist) {
+					Array.prototype.forEach.call(
+						nodelist,
+						function(node) {
+							containsNode.push(node.contains(target));
+						}
+					);
+				}
+
+				return !containsNode.some(
+					function(node) {
+						return node === true;
+					}
+				);
+			}
+
+			function checkSelectLanguageToggle() {
+				const languageToggle = document.querySelector('.language');
+
+				let selectLanguage = false;
+
+				if (hasLanguageToggle && !languageToggle) {
+					hasLanguageToggle = false;
+
+					selectLanguage = true;
+				}
+
+				if (!hasLanguageToggle && languageToggle) {
+					hasLanguageToggle = true;
+
+					selectLanguage = true;
+				}
+
+				return selectLanguage;
+			}
+
 			function instantiateMegaMenu(event) {
 				const currentTargetId = event.currentTarget.id;
 
@@ -739,6 +786,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				}
 
 				renderMegaMenu(name, id, configs);
+
+				addMenuClickOutsideListener(event);
+			}
+
+			function handleMenuClickOutside(event) {
+				const headerMenus = document.querySelectorAll('.header-menu');
+
+				if (checkClickOutside(event, menuItems) 
+					&& checkClickOutside(event, headerMenus)
+					&& !checkSelectLanguageToggle()
+				) {
+					removeActiveClasses();
+				}
 			}
 
 			function removeActiveClasses() {
@@ -765,6 +825,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					document.getElementById(id)
 				);
 			}
+
+			let hasLanguageToggle = true;
 
 			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
 
