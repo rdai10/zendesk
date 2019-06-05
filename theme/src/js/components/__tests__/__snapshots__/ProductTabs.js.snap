@@ -97,13 +97,6 @@ exports[`ProductTabs renders Alert with text and link 1`] = `
                 class="title"
               >
                 Card with All Configs
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
@@ -138,13 +131,6 @@ exports[`ProductTabs renders Alert with text and link 1`] = `
                 class="title"
               >
                 Card with No Description
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               
             </div>
@@ -165,13 +151,6 @@ exports[`ProductTabs renders Alert with text and link 1`] = `
                 class="title"
               >
                 Card with no Icon
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
@@ -205,13 +184,6 @@ exports[`ProductTabs renders Alert with text and link 1`] = `
                 class="title"
               >
                 Card with no URL
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
@@ -328,13 +300,6 @@ exports[`ProductTabs renders correctly with KB tabs and all access tabs 1`] = `
                 class="title"
               >
                 Card with All Configs
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
@@ -369,13 +334,6 @@ exports[`ProductTabs renders correctly with KB tabs and all access tabs 1`] = `
                 class="title"
               >
                 Card with No Description
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               
             </div>
@@ -396,13 +354,6 @@ exports[`ProductTabs renders correctly with KB tabs and all access tabs 1`] = `
                 class="title"
               >
                 Card with no Icon
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
@@ -436,13 +387,6 @@ exports[`ProductTabs renders correctly with KB tabs and all access tabs 1`] = `
                 class="title"
               >
                 Card with no URL
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
@@ -559,13 +503,6 @@ exports[`ProductTabs renders correctly with non KB tabs and all access tabs 1`] 
                 class="title"
               >
                 Card with All Configs
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
@@ -600,13 +537,6 @@ exports[`ProductTabs renders correctly with non KB tabs and all access tabs 1`] 
                 class="title"
               >
                 Card with No Description
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               
             </div>
@@ -627,13 +557,6 @@ exports[`ProductTabs renders correctly with non KB tabs and all access tabs 1`] 
                 class="title"
               >
                 Card with no Icon
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
@@ -667,13 +590,6 @@ exports[`ProductTabs renders correctly with non KB tabs and all access tabs 1`] 
                 class="title"
               >
                 Card with no URL
-                <svg
-                  class="lexicon-icon lexicon-icon-arrow-right"
-                >
-                  <use
-                    href="#arrow-right"
-                  />
-                </svg>
               </h4>
               <p
                 class="description"
