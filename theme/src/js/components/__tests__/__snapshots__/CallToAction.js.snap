@@ -279,13 +279,6 @@ exports[`CallToAction renders with promotions 1`] = `
               class="title"
             >
               Promotion Name 1
-              <svg
-                class="lexicon-icon lexicon-icon-arrow-right"
-              >
-                <use
-                  href="#arrow-right"
-                />
-              </svg>
             </h4>
             
           </div>
@@ -306,13 +299,6 @@ exports[`CallToAction renders with promotions 1`] = `
               class="title"
             >
               Promotion Name 2
-              <svg
-                class="lexicon-icon lexicon-icon-arrow-right"
-              >
-                <use
-                  href="#arrow-right"
-                />
-              </svg>
             </h4>
             
           </div>
@@ -383,13 +369,6 @@ exports[`CallToAction renders with promotions containing description 1`] = `
               class="title"
             >
               Promotion Name
-              <svg
-                class="lexicon-icon lexicon-icon-arrow-right"
-              >
-                <use
-                  href="#arrow-right"
-                />
-              </svg>
             </h4>
             <p
               class="description"
