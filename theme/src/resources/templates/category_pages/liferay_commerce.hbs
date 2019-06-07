@@ -26,6 +26,8 @@
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
 
+		const documentElementLang = document.documentElement.lang;
+
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
@@ -37,7 +39,7 @@
 								description: '{{dc 'commerce-latest_release_card_description'}}',
 								name: '{{dc '7_1-latest_release_card'}}',
 								svgId: '#latest-release',
-								url: 'https://customer.liferay.com/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118190997&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191001'
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118190997&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118191001')
 							},
 							{
 								description: '{{dc 'commerce-compatibility_matrix_card_description'}}',
