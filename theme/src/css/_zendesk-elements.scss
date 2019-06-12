@@ -92,8 +92,6 @@ textarea,
 .nesty-input,
 .upload-dropzone {
 	background-clip: border-box;
-	background-color: $input-bg;
-	border: $input-border-width solid $input-border-color;
 	border-radius: $input-border-radius;
 	display: block;
 	font-size: $font-size-base;
@@ -118,7 +116,19 @@ select,
 select.form-control,
 textarea,
 .nesty-input {
-	color: $input-color;
+	background-color: $color-input-grey;
+	border-width: 0;
+	color: $color-default;
+
+	&::placeholder {
+		color: $secondary-text-color;
+	}
+
+	&:active,
+	&:focus {
+		background-color: $color-hover;
+		color: $color-default;
+	}
 
 	&:focus {
 		border-color: $color-primary-focus-border;
