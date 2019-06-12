@@ -109,10 +109,9 @@
 
 	label {
 		color: $input-label-color;
-		font-size: $input-label-font-size;
+		font-size: $font-size-default;
+		font-weight: $font-weight-semi-bold;
 		margin-bottom: $input-label-margin-bottom;
-		max-width: 100%;
-		word-wrap: break-word;
 	}
 
 	footer {
@@ -253,6 +252,12 @@
 }
 
 .request-form {
+	margin-top: $margin-default;
+
+	p {
+		font-size: $font-size-sm;
+	}
+
 	.form-field {
 		> label[for]::after {
 			color: $color-error;
