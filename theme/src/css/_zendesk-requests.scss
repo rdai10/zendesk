@@ -195,6 +195,7 @@
 		border-width: 0;
 
 		h4 {
+			padding-bottom: $padding-sm;
 			padding-top: $padding-default;
 		}
 
@@ -214,6 +215,10 @@
 			font-size: $small-font-size;
 			padding: $btn-padding-y $btn-padding-x;
 		}
+	}
+
+	.satisfaction-link-box {
+		padding-bottom: $padding-sm;
 	}
 }
 
