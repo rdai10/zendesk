@@ -1,10 +1,18 @@
 .search {
 	.search-lg {
 		input[type="search"] {
+			background-color: $color-input-grey;
 			background-image: clay-icon(search, $color-primary);
-			border: 1px solid $color-border;
-			box-shadow: 0 0.5rem 1rem -0.5rem rgba(39, 40, 51, 0.05);
 			color: $color-default;
+
+			&::placeholder {
+				color: $secondary-text-color;
+			}
+
+			&:active,
+			&:focus {
+				background-color: $color-hover;
+			}
 
 			&:focus {
 				background-image: clay-icon(times, $color-default);
@@ -46,6 +54,8 @@
 			}
 	
 			select {
+				background-color: $input-bg;
+				border: $input-border-width solid $input-border-color;
 				margin-left: $margin-md;
 			}
 		}
