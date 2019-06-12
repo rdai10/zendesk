@@ -1,6 +1,6 @@
 .header {
 	background-color: $color-brand;
-	color: $color-white;
+	color: rgba(255, 255, 255, 0.85);
 	left: 0;
 	margin: auto;
 	position: fixed;
@@ -180,6 +180,8 @@
 
 			&:hover,
 			&.active {
+				color: $color-white;
+
 				.lexicon-icon-menu-caret {
 					visibility: visible;
 				}
