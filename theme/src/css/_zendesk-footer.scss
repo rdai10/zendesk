@@ -9,6 +9,10 @@
 
 		.footer-language-selector {
 			text-transform: none;
+
+			@include media-breakpoint-down(sm) {
+				padding-top: $padding-sm;
+			}
 		}
 
 		.lexicon-icon-language {
