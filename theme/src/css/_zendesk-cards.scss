@@ -16,11 +16,6 @@
 		margin-bottom: 0;
 	}
 
-	.icon {
-		height: 2rem;
-		width: 2rem;
-	}
-
 	.title {
 		color: $color-default;
 		margin: 0;
@@ -55,12 +50,19 @@
 			margin-bottom: 22px;
 		}
 	}
+
+	.icon {
+		height: 2.5rem;
+		width: 2.5rem;
+	}
 }
 
 .nav-card,
 .product-card {
 	.icon {
+		height: 2rem;
 		margin-right: $margin-md;
+		width: 2rem;
 	}
 }
 
