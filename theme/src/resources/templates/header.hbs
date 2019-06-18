@@ -740,26 +740,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				);
 			}
 
-			function checkSelectLanguageToggle() {
-				const languageToggle = document.querySelector('.language');
-
-				var selectLanguage = false;
-
-				if (hasLanguageToggle && !languageToggle) {
-					hasLanguageToggle = false;
-
-					selectLanguage = true;
-				}
-
-				if (!hasLanguageToggle && languageToggle) {
-					hasLanguageToggle = true;
-
-					selectLanguage = true;
-				}
-
-				return selectLanguage;
-			}
-
 			function instantiateMegaMenu(event) {
 				const currentTargetId = event.currentTarget.id;
 
@@ -791,13 +771,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			}
 
 			function handleMenuClickOutside(event) {
-				const headerMenus = document.querySelectorAll('.header-menu');
-
-				if (checkClickOutside(event, menuItems)
-					&& checkClickOutside(event, headerMenus)
-					&& !checkSelectLanguageToggle()
-				) {
+				if (checkClickOutside(event, menuItems) && !languageToggleSelected) {
 					removeActiveClasses();
+				} else if (languageToggleSelected) {
+					languageToggleSelected = false;
 				}
 			}
 
@@ -826,9 +803,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				);
 			}
 
-			var hasLanguageToggle = true;
+			function validateCurrentActiveMenu(target) {
+				const targetParentNode = target.parentNode;
+				const activeHeading = targetParentNode && targetParentNode.classList.contains('active');
+
+				const isMenuCaret = target.classList.contains('lexicon-icon-menu-caret');
+				const targetGrandParentNode = isMenuCaret ? target.parentNode.parentNode : null;
+				const activeMenuCaret = targetGrandParentNode && targetGrandParentNode.classList.contains('active');
+
+				const activeMenuItem = target.classList.contains('active');
+
+				return (activeMenuItem || activeHeading || activeMenuCaret);
+			}
+
+			function validateLanguageToggleSelection() {
+				languageToggleSelected = true;
+			}
 
 			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
+
+			var languageToggleSelected = false;
 
 			Array.prototype.forEach.call(
 				menuItems,
@@ -840,7 +834,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						function(event) {
 							const target = event.target;
 
-							if (target.classList.contains('active') || target.parentNode.classList.contains('active')) {
+							if (validateCurrentActiveMenu(target)) {
 								item.classList.remove('active');
 							} else {
 								removeActiveClasses();
@@ -850,6 +844,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								if (!item.querySelector('.header-menu-content')) {
 									instantiateMegaMenu(event);
 								}
+
+								const languageToggle = item.querySelector('#languageToggle');
+
+								languageToggle.removeEventListener('click', validateLanguageToggleSelection);
+								languageToggle.addEventListener('click', validateLanguageToggleSelection);
 							}
 						}
 					);
