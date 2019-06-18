@@ -793,7 +793,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			function handleMenuClickOutside(event) {
 				const headerMenus = document.querySelectorAll('.header-menu');
 
-				if (checkClickOutside(event, menuItems) 
+				if (checkClickOutside(event, menuItems)
 					&& checkClickOutside(event, headerMenus)
 					&& !checkSelectLanguageToggle()
 				) {
@@ -835,17 +835,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				function(item) {
 					item.classList.remove('d-none');
 
-					item.addEventListener('click', function(event) {
-						if (!item.classList.contains('active')) {
-							removeActiveClasses();
+					item.addEventListener(
+						'click',
+						function(event) {
+							const target = event.target;
 
-							item.classList.add('active');
+							if (target.classList.contains('active') || target.parentNode.classList.contains('active')) {
+								item.classList.remove('active');
+							} else {
+								removeActiveClasses();
 
-							if (!item.querySelector('.header-menu-content')) {
-								instantiateMegaMenu(event);
+								item.classList.add('active');
+
+								if (!item.querySelector('.header-menu-content')) {
+									instantiateMegaMenu(event);
+								}
 							}
 						}
-					});
+					);
 				}
 			);
 		}
