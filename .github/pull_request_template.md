@@ -1,5 +1,3 @@
-_Please send pull requests to `dev` branch._
-
 ### Description
 Please explain the changes you made.  Include any relevant motivation, context and JIRA tickets.
 
