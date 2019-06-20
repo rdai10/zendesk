@@ -771,7 +771,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			}
 
 			function handleMenuClickOutside(event) {
-				if (checkClickOutside(event, menuItems) && !languageToggleSelected) {
+				if (!languageToggleSelected && checkClickOutside(event, menuItems)) {
 					removeActiveClasses();
 				} else if (languageToggleSelected) {
 					languageToggleSelected = false;
@@ -805,15 +805,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 			function validateCurrentActiveMenu(target) {
 				const targetParentNode = target.parentNode;
+
 				const activeHeading = targetParentNode && targetParentNode.classList.contains('active');
 
 				const isMenuCaret = target.classList.contains('lexicon-icon-menu-caret');
-				const targetGrandParentNode = isMenuCaret ? target.parentNode.parentNode : null;
+				const targetGrandParentNode = isMenuCaret ? targetParentNode.parentNode : null;
 				const activeMenuCaret = targetGrandParentNode && targetGrandParentNode.classList.contains('active');
 
 				const activeMenuItem = target.classList.contains('active');
 
-				return (activeMenuItem || activeHeading || activeMenuCaret);
+				return (activeHeading || activeMenuCaret || activeMenuItem);
 			}
 
 			function validateLanguageToggleSelection() {
@@ -847,8 +848,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 								const languageToggle = item.querySelector('#languageToggle');
 
-								languageToggle.removeEventListener('click', validateLanguageToggleSelection);
-								languageToggle.addEventListener('click', validateLanguageToggleSelection);
+								if (languageToggle) {
+									languageToggle.removeEventListener('click', validateLanguageToggleSelection);
+									languageToggle.addEventListener('click', validateLanguageToggleSelection);
+								}
 							}
 						}
 					);
