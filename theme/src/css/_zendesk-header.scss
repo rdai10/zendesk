@@ -206,6 +206,7 @@
 			.lexicon-icon-menu-caret {
 				height: $lexicon-icon-height;
 				margin-bottom: 0.05rem;
+				pointer-events: none;
 				width: $lexicon-icon-width;
 				visibility: hidden;
 			}

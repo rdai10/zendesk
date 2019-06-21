@@ -808,13 +808,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				const activeHeading = targetParentNode && targetParentNode.classList.contains('active');
 
-				const isMenuCaret = target.classList.contains('lexicon-icon-menu-caret');
-				const targetGrandParentNode = isMenuCaret ? targetParentNode.parentNode : null;
-				const activeMenuCaret = targetGrandParentNode && targetGrandParentNode.classList.contains('active');
-
 				const activeMenuItem = target.classList.contains('active');
 
-				return (activeHeading || activeMenuCaret || activeMenuItem);
+				return (activeHeading || activeMenuItem);
 			}
 
 			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
