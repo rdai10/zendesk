@@ -516,9 +516,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <script>
-	const NAVBAR_HEIGHT = 56;
-
 	$(function() {
+		const NAVBAR_HEIGHT = 56;
+
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasKBPermission(userTags)) {
@@ -817,10 +817,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				return (activeHeading || activeMenuCaret || activeMenuItem);
 			}
 
-			function validateLanguageToggleSelection() {
-				languageToggleSelected = true;
-			}
-
 			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
 
 			var languageToggleSelected = false;
@@ -849,6 +845,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								const languageToggle = item.querySelector('#languageToggle');
 
 								if (languageToggle) {
+									var validateLanguageToggleSelection = function() {
+										languageToggleSelected = true;
+									}
+
 									languageToggle.removeEventListener('click', validateLanguageToggleSelection);
 									languageToggle.addEventListener('click', validateLanguageToggleSelection);
 								}
