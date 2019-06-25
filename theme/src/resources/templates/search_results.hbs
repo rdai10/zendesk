@@ -87,7 +87,7 @@
 			filterLabel: '{{dc 'search_results-filter_by'}}',
 			filterOptions: filterOptions,
 			locale: '{{help_center.locale}}',
-			queryString: '{{query}}'
+			queryString: encodeURIComponent('{{query}}')
 		},
 		document.getElementById('searchResults')
 	);
