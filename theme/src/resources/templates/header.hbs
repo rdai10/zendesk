@@ -516,9 +516,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </header>
 
 <script>
-	const NAVBAR_HEIGHT = 56;
-
 	$(function() {
+		const NAVBAR_HEIGHT = 56;
+
+		var languageToggleSelected = false;
+
+		const menuItems = document.querySelectorAll('.header-menu-list .list-item');
+
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasKBPermission(userTags)) {
@@ -716,19 +720,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			function addMenuClickOutsideListener(event) {
 				const body = document.querySelector('body');
 
-				body.removeEventListener('click', handleMenuClickOutside);
-				body.addEventListener('click', handleMenuClickOutside);
+				if (body) {
+					body.removeEventListener('click', handleMenuClickOutside);
+					body.addEventListener('click', handleMenuClickOutside);
+				}
 			}
 
 			function checkClickOutside(event, nodelist) {
-				const target = event.target;
 				const containsNode = [];
 
 				if (nodelist) {
 					Array.prototype.forEach.call(
 						nodelist,
 						function(node) {
-							containsNode.push(node.contains(target));
+							containsNode.push(node.contains(event.target));
 						}
 					);
 				}
@@ -738,26 +743,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						return node === true;
 					}
 				);
-			}
-
-			function checkSelectLanguageToggle() {
-				const languageToggle = document.querySelector('.language');
-
-				var selectLanguage = false;
-
-				if (hasLanguageToggle && !languageToggle) {
-					hasLanguageToggle = false;
-
-					selectLanguage = true;
-				}
-
-				if (!hasLanguageToggle && languageToggle) {
-					hasLanguageToggle = true;
-
-					selectLanguage = true;
-				}
-
-				return selectLanguage;
 			}
 
 			function instantiateMegaMenu(event) {
@@ -791,13 +776,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			}
 
 			function handleMenuClickOutside(event) {
-				const headerMenus = document.querySelectorAll('.header-menu');
-
-				if (checkClickOutside(event, menuItems) 
-					&& checkClickOutside(event, headerMenus)
-					&& !checkSelectLanguageToggle()
-				) {
+				if (!languageToggleSelected && checkClickOutside(event, menuItems)) {
 					removeActiveClasses();
+				} else if (languageToggleSelected) {
+					languageToggleSelected = false;
 				}
 			}
 
@@ -826,26 +808,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				);
 			}
 
-			var hasLanguageToggle = true;
+			function validateCurrentActiveMenu(target) {
+				const targetParentNode = target.parentNode;
 
-			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
+				const activeHeading = targetParentNode && targetParentNode.classList.contains('active');
+
+				const activeMenuItem = target.classList.contains('active');
+
+				return (activeHeading || activeMenuItem);
+			}
 
 			Array.prototype.forEach.call(
 				menuItems,
 				function(item) {
 					item.classList.remove('d-none');
 
-					item.addEventListener('click', function(event) {
-						if (!item.classList.contains('active')) {
-							removeActiveClasses();
+					item.addEventListener(
+						'click',
+						function(event) {
+							if (validateCurrentActiveMenu(event.target)) {
+								item.classList.remove('active');
+							} else {
+								removeActiveClasses();
 
-							item.classList.add('active');
+								item.classList.add('active');
 
-							if (!item.querySelector('.header-menu-content')) {
-								instantiateMegaMenu(event);
+								if (!item.querySelector('.header-menu-content')) {
+									instantiateMegaMenu(event);
+								}
+
+								const languageToggle = item.querySelector('#languageToggle');
+
+								if (languageToggle) {
+									var validateLanguageToggleSelection = function() {
+										languageToggleSelected = true;
+									}
+
+									languageToggle.removeEventListener('click', validateLanguageToggleSelection);
+									languageToggle.addEventListener('click', validateLanguageToggleSelection);
+								}
 							}
 						}
-					});
+					);
 				}
 			);
 		}
