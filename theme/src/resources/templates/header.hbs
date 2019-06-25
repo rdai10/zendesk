@@ -519,6 +519,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	$(function() {
 		const NAVBAR_HEIGHT = 56;
 
+		var languageToggleSelected = false;
+
+		const menuItems = document.querySelectorAll('.header-menu-list .list-item');
+
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasKBPermission(userTags)) {
@@ -716,19 +720,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			function addMenuClickOutsideListener(event) {
 				const body = document.querySelector('body');
 
-				body.removeEventListener('click', handleMenuClickOutside);
-				body.addEventListener('click', handleMenuClickOutside);
+				if (body) {
+					body.removeEventListener('click', handleMenuClickOutside);
+					body.addEventListener('click', handleMenuClickOutside);
+				}
 			}
 
 			function checkClickOutside(event, nodelist) {
-				const target = event.target;
 				const containsNode = [];
 
 				if (nodelist) {
 					Array.prototype.forEach.call(
 						nodelist,
 						function(node) {
-							containsNode.push(node.contains(target));
+							containsNode.push(node.contains(event.target));
 						}
 					);
 				}
@@ -813,10 +818,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				return (activeHeading || activeMenuItem);
 			}
 
-			const menuItems = document.querySelectorAll('.header-menu-list .list-item');
-
-			var languageToggleSelected = false;
-
 			Array.prototype.forEach.call(
 				menuItems,
 				function(item) {
@@ -825,9 +826,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					item.addEventListener(
 						'click',
 						function(event) {
-							const target = event.target;
-
-							if (validateCurrentActiveMenu(target)) {
+							if (validateCurrentActiveMenu(event.target)) {
 								item.classList.remove('active');
 							} else {
 								removeActiveClasses();
