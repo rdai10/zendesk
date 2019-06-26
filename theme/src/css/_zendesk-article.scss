@@ -4,6 +4,26 @@
 	}
 }
 
+#docsTOC {
+	.nav-link {
+		padding-left: 0;
+		padding-right: 0;
+
+		&:focus,
+		&.active {
+			color: $color-primary-focus;
+		}
+
+		&:hover {
+			color: $color-primary-hover;
+		}
+
+		&.active {
+			font-weight: $font-weight-semi-bold;
+		}
+	}
+}
+
 .article-author,
 .meta-group {
 	display: flex;
@@ -19,6 +39,11 @@
 
 .article-body {
 	color: $color-body;
+
+	p + a[id] {
+		margin-top: -3.5rem;
+		padding-top: 3.5rem;
+	}
 }
 
 .article-content {
@@ -269,4 +294,9 @@
 		line-height: $line-height-sm;
 		padding-bottom: $padding-default;
 	}
+}
+
+.toc-heading {
+	padding-bottom: 0.5rem;
+	padding-top: $padding-default;
 }

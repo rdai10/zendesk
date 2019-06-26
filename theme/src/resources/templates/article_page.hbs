@@ -64,6 +64,8 @@
 					</div>
 				</footer>
 			</div>
+
+			<div class="col-md-2" id="docsTOC"></div>
 		</div>
 	{{/with}}
 
@@ -128,5 +130,14 @@
 			sectionId: '{{section.id}}'
 		},
 		document.getElementById('sidenavTree')
+	);
+
+	Liferay.render(
+		Liferay.DocsTOC,
+		{
+			headings: document.querySelectorAll('.article-body h2'),
+			title: '{{dc 'article-on_this_page'}}'
+		},
+		document.getElementById('docsTOC')
 	);
 </script>

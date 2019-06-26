@@ -23,5 +23,6 @@ export {MegaMenu} from 'liferay-help-center-megamenu';
 
 export {default as CallToAction} from './components/CallToAction';
 export {default as DocSideNav} from './components/DocSideNav';
+export {default as DocsTOC} from './components/DocTOC';
 export {default as ProductTabs} from './components/ProductTabs';
 export {default as SearchResults} from './components/SearchResults';
