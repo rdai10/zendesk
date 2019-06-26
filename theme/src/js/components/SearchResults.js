@@ -231,15 +231,17 @@ class SearchResults extends preact.Component {
 							(result) => (
 								<li key={result.id} class="search-result" id={result.id}>
 									<div class="search-results-header">
-										<a class="search-result-link semi-bold" href={result.html_url}>{result.title}</a>
+										<a class="search-result-link semi-bold" href={result.html_url}>
+											{result.title}
 
-										{result.label_names.indexOf(
-											'Fast Track'
-										) >= 0 && (
-											<span class="initiative-label label label-sm">
-												{fastTrackLabel}
-											</span>
-										)}
+											{result.label_names.indexOf(
+												'Fast Track'
+											) >= 0 && (
+												<span class="initiative-label label label-sm">
+													{fastTrackLabel}
+												</span>
+											)}
+										</a>
 									</div>
 
 									<h5 class="search-result-description"

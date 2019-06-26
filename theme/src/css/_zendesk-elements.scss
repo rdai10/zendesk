@@ -171,8 +171,10 @@ textarea,
 .initiative-label {
 	border: 1px solid $color-warning-border;
 	color: $color-warning;
+	display: inline-block;
 	font-weight: $font-weight-normal;
 	margin-left: 0.5rem;
+	text-decoration: none;
 	text-transform: uppercase;
 }
 
