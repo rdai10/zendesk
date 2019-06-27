@@ -131,7 +131,7 @@ module.exports = {
 					'status-label-answered',
 					'*submenu*',
 					'*suggestion-list*',
-					'*toc-heading*',
+					'*toc-body*',
 					'upload-dropzone'
 				]
 			}

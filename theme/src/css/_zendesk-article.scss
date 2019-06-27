@@ -296,7 +296,17 @@
 	}
 }
 
-.toc-heading {
-	padding-bottom: 0.5rem;
-	padding-top: $padding-default;
+.toc-body {
+	&.fixed {
+		position: fixed;
+
+		.toc-heading {
+			padding-top: 0;
+		}
+	}
+
+	.toc-heading {
+		padding-bottom: 0.5rem;
+		padding-top: $padding-default;
+	}
 }

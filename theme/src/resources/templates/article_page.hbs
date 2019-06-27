@@ -132,12 +132,16 @@
 		document.getElementById('sidenavTree')
 	);
 
-	Liferay.render(
-		Liferay.DocsTOC,
-		{
-			headings: document.querySelectorAll('.article-body h2'),
-			title: '{{dc 'article-on_this_page'}}'
-		},
-		document.getElementById('docsTOC')
-	);
+	const headingsNodeList = document.querySelectorAll('.article-body h2');
+
+	if (headingsNodeList.length > 0) {
+		Liferay.render(
+			Liferay.DocsTOC,
+			{
+				headings: headingsNodeList,
+				title: '{{dc 'article-on_this_page'}}'
+			},
+			document.getElementById('docsTOC')
+		);
+	}
 </script>
