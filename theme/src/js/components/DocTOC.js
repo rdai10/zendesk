@@ -3,22 +3,18 @@ import PropTypes from 'prop-types';
 
 import * as throttle from 'lodash.throttle';
 
-// Due to the css hack to offset the hash anchor to be below the nav, this offset needs to be included in the calculation.
-
-const HEADING_OFFSET = 71;
+const HEADING_OFFSET = 72;
 
 class DocTOC extends preact.Component {
 	constructor(props) {
 		super(props);
 
 		this.calculateActiveId = this.calculateActiveId.bind(this);
-		this.getContent = this.getContent.bind(this);
 		this.handleOnScroll = this.handleOnScroll.bind(this);
 		this.throttleEvent = this.throttleEvent.bind(this);
 
 		this.state = {
 			activeId: '',
-			content: this.getContent(this.props.headings),
 			sticky: false
 		}
 	}
@@ -35,15 +31,15 @@ class DocTOC extends preact.Component {
 	}
 
 	calculateActiveId(currentPosition) {
-		const {content} = this.state;
+		const {content} = this.props;
 
 		let activeIndex = -1;
 
 		content.some(
 			(item, index) => {
 				if (
-					currentPosition !== item.offsetTop &&
-					currentPosition < (item.offsetTop - HEADING_OFFSET)
+					currentPosition !== item.top &&
+					currentPosition < (item.top - HEADING_OFFSET)
 				) {
 					activeIndex = index - 1;
 
@@ -53,28 +49,6 @@ class DocTOC extends preact.Component {
 		);
 
 		return activeIndex > -1 ? content[activeIndex].id : '';
-	}
-
-	getContent(nodeList) {
-		let content = [];
-
-		if (nodeList) {
-			Array.prototype.forEach.call(
-				nodeList,
-				node => {
-					content.push(
-						{
-							href: node.parentNode.href,
-							id: node.parentNode.id,
-							offsetTop: node.offsetTop,
-							title: node.innerText
-						}
-					);
-				}
-			);
-		}
-
-		return content;
 	}
 
 	handleOnScroll() {
@@ -103,7 +77,7 @@ class DocTOC extends preact.Component {
 		return this.throttled;
 	}
 
-	render({title}, {activeId, content, sticky}) {
+	render({content, title}, {activeId, sticky}) {
 		return (
 			<div class={`${sticky ? 'fixed' : ''} toc-body`}>
 				<h5 class="toc-heading">{title}</h5>
@@ -118,7 +92,7 @@ class DocTOC extends preact.Component {
 											activeId === item.id ? 'active' : ''
 										} nav-link secondary-text-color`}
 										id={`toc-${item.id}`}
-										href={item.href}
+										href={`#${item.id}`}
 									>
 										{item.title}
 									</a>

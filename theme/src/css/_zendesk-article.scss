@@ -299,10 +299,7 @@
 .toc-body {
 	&.fixed {
 		position: fixed;
-
-		.toc-heading {
-			padding-top: 0;
-		}
+		top: $navbar-height;
 	}
 
 	.toc-heading {

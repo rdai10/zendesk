@@ -132,16 +132,33 @@
 		document.getElementById('sidenavTree')
 	);
 
-	const headingsNodeList = document.querySelectorAll('.article-body h2');
+	window.onload = function() {
+		const headingsNodeList = document.querySelectorAll('.article-body h2');
 
-	if (headingsNodeList.length > 0) {
-		Liferay.render(
-			Liferay.DocsTOC,
-			{
-				headings: headingsNodeList,
-				title: '{{dc 'article-on_this_page'}}'
-			},
-			document.getElementById('docsTOC')
-		);
+		if (headingsNodeList.length > 0) {
+			const content = [];
+
+			Array.prototype.forEach.call(
+				headingsNodeList,
+				function(node) {
+					content.push(
+						{
+							id: node.parentNode.id,
+							title: node.innerText,
+							top: node.getBoundingClientRect().top
+						}
+					);
+				}
+			);
+
+			Liferay.render(
+				Liferay.DocsTOC,
+				{
+					content: content,
+					title: '{{dc 'article-on_this_page'}}'
+				},
+				document.getElementById('docsTOC')
+			);
+		}
 	}
 </script>
