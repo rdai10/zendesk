@@ -135,7 +135,9 @@
 	window.onload = function() {
 		const headingsNodeList = document.querySelectorAll('.article-body h2');
 
-		if (headingsNodeList.length > 0) {
+		const articleContent = document.querySelector('.article-content');
+
+		if (headingsNodeList.length > 0 && articleContent) {
 			const content = [];
 
 			Array.prototype.forEach.call(
@@ -151,14 +153,12 @@
 				}
 			);
 
-			const footer = document.querySelector('footer.article-footer');
-
 			Liferay.render(
 				Liferay.DocsTOC,
 				{
 					content: content,
-					edge: footer ? 
-						footer.getBoundingClientRect().top : null,
+					initialTargetBoundingRect: articleContent.getBoundingClientRect(),
+					targetNode: articleContent, 
 					title: '{{dc 'article-on_this_page'}}'
 				},
 				document.getElementById('docsTOC')

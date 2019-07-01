@@ -17,7 +17,7 @@ class DocTOC extends preact.Component {
 		this.state = {
 			activeId: '',
 			sticky: false
-		}
+		};
 	}
 
 	componentWillMount() {
@@ -53,28 +53,31 @@ class DocTOC extends preact.Component {
 	}
 
 	determineStickiness(currentPosition) {
-		const {edge} = this.props;
+		const {
+			initialTargetBoundingRect: {bottom}
+		} = this.props;
 
 		const toc = document.querySelector('.toc-body');
-		const tocHeight = toc.getBoundingClientRect().height;
+		const tocHeight = toc ? toc.getBoundingClientRect().height : 0;
 
-		let showAsSticky = true;
-
-		if (edge) {
-			showAsSticky = currentPosition + tocHeight < edge ? true : false;
-		}
-
-		return showAsSticky;
+		return currentPosition + tocHeight < bottom ? true : false;
 	}
 
 	handleOnScroll() {
-		const scrollPosition = Math.floor(window.scrollY);
+		const {
+			initialTargetBoundingRect: {top},
+			targetNode
+		} = this.props;
 
-		if (scrollPosition !== 0) {
+		const currentTop = targetNode.getBoundingClientRect().top;
+
+		const currentScrollPosition = Math.abs(currentTop - top);
+
+		if (currentTop !== top) {
 			this.setState(
 				{
-					activeId: this.calculateActiveId(scrollPosition),
-					sticky: this.determineStickiness(scrollPosition)
+					activeId: this.calculateActiveId(currentScrollPosition),
+					sticky: this.determineStickiness(currentScrollPosition)
 				}
 			);
 		} else {
@@ -118,7 +121,7 @@ class DocTOC extends preact.Component {
 					)}
 				</ul>
 			</div>
-		)
+		);
 	}
 }
 
@@ -132,7 +135,19 @@ DocTOC.PropTypes = {
 			}
 		)
 	).isRequired,
-	edge: PropTypes.number.isRequired,
+	initialTargetBoundingRect: PropTypes.shape(
+		{
+			bottom: PropTypes.number,
+			height: PropTypes.number,
+			left: PropTypes.number,
+			right: PropTypes.number,
+			top: PropTypes.number,
+			width: PropTypes.number,
+			x: PropTypes.number,
+			y: PropTypes.number
+		}
+	).isRequired,
+	targetNode: PropTypes.node.isRequired,
 	title: PropTypes.string.isRequired
 };
 
