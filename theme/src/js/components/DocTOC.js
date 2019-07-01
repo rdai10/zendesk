@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 import * as throttle from 'lodash.throttle';
 
-const HEADING_OFFSET = 72;
+const OFFSET = 72;
 
 class DocTOC extends preact.Component {
 	constructor(props) {
 		super(props);
 
 		this.calculateActiveId = this.calculateActiveId.bind(this);
+		this.determineStickiness = this.determineStickiness.bind(this);
 		this.handleOnScroll = this.handleOnScroll.bind(this);
 		this.throttleEvent = this.throttleEvent.bind(this);
 
@@ -39,7 +40,7 @@ class DocTOC extends preact.Component {
 			(item, index) => {
 				if (
 					currentPosition !== item.top &&
-					currentPosition < (item.top - HEADING_OFFSET)
+					currentPosition < (item.top - OFFSET)
 				) {
 					activeIndex = index - 1;
 
@@ -51,6 +52,21 @@ class DocTOC extends preact.Component {
 		return activeIndex > -1 ? content[activeIndex].id : '';
 	}
 
+	determineStickiness(currentPosition) {
+		const {edge} = this.props;
+
+		const toc = document.querySelector('.toc-body');
+		const tocHeight = toc.getBoundingClientRect().height;
+
+		let showAsSticky = true;
+
+		if (edge) {
+			showAsSticky = currentPosition + tocHeight < edge ? true : false;
+		}
+
+		return showAsSticky;
+	}
+
 	handleOnScroll() {
 		const scrollPosition = Math.floor(window.scrollY);
 
@@ -58,7 +74,7 @@ class DocTOC extends preact.Component {
 			this.setState(
 				{
 					activeId: this.calculateActiveId(scrollPosition),
-					sticky: true
+					sticky: this.determineStickiness(scrollPosition)
 				}
 			);
 		} else {
@@ -107,7 +123,16 @@ class DocTOC extends preact.Component {
 }
 
 DocTOC.PropTypes = {
-	headings: PropTypes.node.isRequired,
+	content: PropTypes.arrayOf(
+		PropTypes.shape(
+			{
+				id: PropTypes.string,
+				title: PropTypes.string,
+				top: PropTypes.number
+			}
+		)
+	).isRequired,
+	edge: PropTypes.number.isRequired,
 	title: PropTypes.string.isRequired
 };
 

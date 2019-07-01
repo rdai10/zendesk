@@ -298,6 +298,7 @@
 
 .toc-body {
 	&.fixed {
+		max-width: 16.66667%;
 		position: fixed;
 		top: $navbar-height;
 	}

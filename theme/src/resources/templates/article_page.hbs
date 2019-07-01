@@ -151,10 +151,14 @@
 				}
 			);
 
+			const footer = document.querySelector('footer.article-footer');
+
 			Liferay.render(
 				Liferay.DocsTOC,
 				{
 					content: content,
+					edge: footer ? 
+						footer.getBoundingClientRect().top : null,
 					title: '{{dc 'article-on_this_page'}}'
 				},
 				document.getElementById('docsTOC')
