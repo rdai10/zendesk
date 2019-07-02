@@ -36,15 +36,13 @@ class DocTOC extends preact.Component {
 
 		let activeIndex = -1;
 
-		content.some(
+		content.forEach(
 			(item, index) => {
 				if (
-					currentPosition !== item.top &&
-					currentPosition < (item.top - OFFSET)
+					currentPosition === item.top ||
+					currentPosition > item.top - OFFSET
 				) {
-					activeIndex = index - 1;
-
-					return true;
+					activeIndex = index;
 				}
 			}
 		);

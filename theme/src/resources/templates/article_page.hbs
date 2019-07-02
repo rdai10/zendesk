@@ -133,11 +133,11 @@
 	);
 
 	window.onload = function() {
-		const headingsNodeList = document.querySelectorAll('.article-body h2');
-
 		const articleContent = document.querySelector('.article-content');
 
-		if (headingsNodeList.length > 0 && articleContent) {
+		const headingsNodeList = document.querySelectorAll('.article-body h2');
+
+		if (articleContent && headingsNodeList.length > 0) {
 			const content = [];
 
 			Array.prototype.forEach.call(
