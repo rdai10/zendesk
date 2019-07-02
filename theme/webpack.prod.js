@@ -151,6 +151,10 @@ module.exports = merge(
 							{
 								replace: '360002102452',
 								search: '360002102472'
+							},
+							{
+								replace: '360001862992',
+								search: '360001865811'
 							}
 						]
 					},

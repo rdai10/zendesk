@@ -12,6 +12,7 @@ export {default as render} from './helpers/preact-renderer';
 export {displayArticleSuggestion} from './helpers/article-suggestion';
 export {addLocaleParamToURI} from './helpers/locale-conversion';
 export {
+	hasCreateTicketPermission,
 	hasKBPermission,
 	hasWatcherPermission
 } from './helpers/user-permissions';
