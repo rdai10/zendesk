@@ -64,6 +64,8 @@
 					</div>
 				</footer>
 			</div>
+
+			<div class="col-md-2" id="docsTOC"></div>
 		</div>
 	{{/with}}
 
@@ -129,4 +131,38 @@
 		},
 		document.getElementById('sidenavTree')
 	);
+
+	window.onload = function() {
+		const articleContent = document.querySelector('.article-content');
+
+		const headingsNodeList = document.querySelectorAll('.article-body h2');
+
+		if (articleContent && headingsNodeList.length) {
+			const content = [];
+
+			Array.prototype.forEach.call(
+				headingsNodeList,
+				function(node) {
+					content.push(
+						{
+							id: node.parentNode.id,
+							title: node.innerText,
+							top: node.getBoundingClientRect().top
+						}
+					);
+				}
+			);
+
+			Liferay.render(
+				Liferay.DocsTOC,
+				{
+					content: content,
+					initialTargetBoundingRect: articleContent.getBoundingClientRect(),
+					targetNode: articleContent, 
+					title: '{{dc 'article-on_this_page'}}'
+				},
+				document.getElementById('docsTOC')
+			);
+		}
+	}
 </script>
