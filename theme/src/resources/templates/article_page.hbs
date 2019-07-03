@@ -145,7 +145,7 @@
 				function(node) {
 					content.push(
 						{
-							id: node.parentNode.id,
+							id: node.parentNode.id || node.id,
 							title: node.innerText,
 							top: node.getBoundingClientRect().top
 						}

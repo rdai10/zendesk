@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import * as throttle from 'lodash.throttle';
 
-const OFFSET = 72;
+const OFFSET = 80;
 
 class DocTOC extends preact.Component {
 	constructor(props) {
