@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import * as throttle from 'lodash.throttle';
 
-const OFFSET = 72;
+const OFFSET = 80;
 
 class DocTOC extends preact.Component {
 	constructor(props) {
@@ -95,7 +95,7 @@ class DocTOC extends preact.Component {
 	}
 
 	render({content, title}, {activeId, sticky}) {
-		return (
+		return !!content.length && (
 			<div class={`${sticky ? 'fixed' : ''} toc-body`}>
 				<h5 class="toc-heading">{title}</h5>
 

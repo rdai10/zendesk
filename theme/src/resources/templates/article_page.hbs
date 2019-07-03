@@ -143,13 +143,17 @@
 			Array.prototype.forEach.call(
 				headingsNodeList,
 				function(node) {
-					content.push(
-						{
-							id: node.parentNode.id,
-							title: node.innerText,
-							top: node.getBoundingClientRect().top
-						}
-					);
+					const nodeId = node.parentNode.id || node.id;
+
+					if (nodeId) {
+						content.push(
+							{
+								id: nodeId,
+								title: node.innerText,
+								top: node.getBoundingClientRect().top
+							}
+						);
+					}
 				}
 			);
 
