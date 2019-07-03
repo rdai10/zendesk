@@ -95,7 +95,7 @@ class DocTOC extends preact.Component {
 	}
 
 	render({content, title}, {activeId, sticky}) {
-		return (
+		return !!content.length && (
 			<div class={`${sticky ? 'fixed' : ''} toc-body`}>
 				<h5 class="toc-heading">{title}</h5>
 
