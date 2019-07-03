@@ -24,8 +24,8 @@
 
 .cta-card,
 .product-card {
-	border: 1px solid $color-border;
-	box-shadow: 0 6px 15px -7px rgba(9, 16, 29, 0.05);
+	border: 1px solid rgba(9, 16, 24, .12);
+	box-shadow: 0 6px 15px -6px rgba(9, 16, 29, 0.06);
 	transition: transform 0.2s ease;
 
 	&:hover {
