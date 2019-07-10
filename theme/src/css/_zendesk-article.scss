@@ -22,6 +22,10 @@
 			font-weight: $font-weight-semi-bold;
 		}
 	}
+
+	@include media-breakpoint-down(sm) {
+		display: none;
+	}
 }
 
 .article-author,
@@ -174,6 +178,36 @@
 		font-weight: $font-weight-semi-bold;
 	}
 
+	.collapsible-sidebar {
+		cursor: pointer;
+		display: none;
+		height: $navbar-height;
+
+		.lexicon-icon-menu-hamburger {
+			height: 1rem;
+			margin: 1.25rem;
+			width: 1rem;
+		}
+
+		@include media-breakpoint-down(sm) {
+			display: block;
+
+			& + .sidenav-content {
+				display: none;
+			}
+
+			&[aria-expanded="true"] {
+				& + .sidenav-content {
+					display: block;
+				}
+			}
+
+			.lexicon-icon-menu-hamburger {
+				display: inline-block;
+			}
+		}
+	}
+
 	.nav-item {
 		&:first-child {
 			margin-top: $margin-sm;
@@ -260,6 +294,11 @@
 				}
 			}
 		}
+	}
+
+	@include media-breakpoint-down(sm) {
+		padding-bottom: $padding-default;
+		padding-right: $padding-md;
 	}
 }
 
