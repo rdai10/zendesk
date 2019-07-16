@@ -11,7 +11,9 @@ Front end permissions are determined by the user tags on the Zendesk `HelpCenter
 
 ## Customer/Partner Tag
 - Users with either the **Customer** or **Partner** role, have permissions to create tickets. They can view and create tickets for the organization in which they are a customer or partner. (For more details, see the *[new request page documentation](./new_request_page.md)*)
-- Either, the **Customer** or **Partner** tag, will allow users access to Official Documentation and Developer Services; Developer Services are only available if they are available to the user's Organization.
+- Either, the **Customer** or **Partner** tag, will allow users access to Official Documentation and Developer Services.
+  - Developer Services is a product that is only available if it is enabled for the user's Organization.
+  - To enable Developer Services, an administrator needs to add the `developer_services` tag on the Organization and add the Organization to the user segment.
 - The **Customer** or **Partner** role will be reflected as a tag on the user's organization; it follows the format of `osb_customer` or `osb_partner`.
 
 ## Watcher Tag
