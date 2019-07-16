@@ -16,7 +16,7 @@
 
 				<div class="col-12 quick-links">
 					{{#if signed_in}}
-						<h5>
+						<h5 class="d-none">
 							{{dc 'homepage-quick_links'}}: 
 							<a href="" id="quickLinkDownloads" >{{dc 'mega_menu-downloads'}}</a>
 							<a href="" id="quickLinkReleaseNotes">{{dc 'mega_menu-release_notes_card'}}</a>
@@ -379,6 +379,12 @@
 
 			if (ctaLinksSection) {
 				ctaLinksSection.classList.remove('d-none');
+			}
+
+			const quickLinks = document.querySelector('.quick-links h5');
+
+			if (quickLinks) {
+				quickLinks.classList.remove('d-none');
 			}
 
 			const documentElementLang = document.documentElement.lang;
