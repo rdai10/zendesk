@@ -48,10 +48,13 @@
 }
 
 .article-content {
-	a {
-		> h2,
-		> h3,
-		> h4 {
+	h2,
+	h3,
+	h4 {
+		margin-bottom: $margin-default;
+		margin-top: $margin-default;
+
+		a {
 			color: $color-body;
 
 			&::before {
@@ -63,13 +66,6 @@
 				visibility: hidden;
 			}
 		}
-	}
-
-	h2,
-	h3,
-	h4 {
-		margin-bottom: $margin-default;
-		margin-top: $margin-default;
 	}
 
 	code,
