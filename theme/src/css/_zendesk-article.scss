@@ -183,6 +183,11 @@
 		display: none;
 		height: $navbar-height;
 
+		h4 {
+			display: inline;
+			vertical-align: middle;
+		}
+
 		.lexicon-icon-menu-hamburger {
 			height: 1rem;
 			margin: 1.25rem;
