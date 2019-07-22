@@ -52,6 +52,10 @@
 		.site-name {
 			color: $color-white;
 			margin: 0;
+
+			@include media-breakpoint-down(sm) {
+				display: none;
+			}
 		}
 	}
 

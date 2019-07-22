@@ -9,24 +9,34 @@
 		<div class="row" id="docsArticle">
 			<div class="article-sidenav col-md-3 secondary-font">
 				<div class="sidenav">
-					<div class="sidenav-tree" id="sidenavTree"></div>
+					<div class="collapsible-sidebar">
+						<svg aria-label="Documentation Navigation Menu" class="lexicon-icon lexicon-icon-menu-hamburger" role="button" title="Documentation Navigation Menu">
+							<use xlink:href="#menu-hamburger" />
+						</svg>
 
-					<div class="sidenav-fallback" id="sidenavFallback">
-						{{#with ../section}}
-							<ul class="nav nav-nested">
-								{{#each articles}}
-									<li class="nav-item">
-										<a class="{{#is id ../id}}active semi-bold{{/is}} sidenav-item" href="{{url}}">{{title}}</a>
-									</li>
-								{{/each}}
-							</ul>
+						<h4>{{dc 'mega_menu-documentation'}}</h4>
+					</div>
 
-							{{#if more_articles}}
-								<div class="nav-item">
-									<a class="semi-bold sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
-								</div>
-							{{/if}}
-						{{/with}}
+					<div class="sidenav-content">
+						<div class="sidenav-tree" id="sidenavTree"></div>
+
+						<div class="sidenav-fallback" id="sidenavFallback">
+							{{#with ../section}}
+								<ul class="nav nav-nested">
+									{{#each articles}}
+										<li class="nav-item">
+											<a class="{{#is id ../id}}active semi-bold{{/is}} sidenav-item" href="{{url}}">{{title}}</a>
+										</li>
+									{{/each}}
+								</ul>
+
+								{{#if more_articles}}
+									<div class="nav-item">
+										<a class="semi-bold sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
+									</div>
+								{{/if}}
+							{{/with}}
+						</div>
 					</div>
 				</div>
 			</div>
