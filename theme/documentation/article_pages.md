@@ -32,4 +32,4 @@ This template contains a navigation on the left side that allows the user access
 
 When a user clicks on a section relevant to their needs, a list of articles organized under that section appear. The current article is always expanded and highlighted.
 
-This template also contains a Table of Contents on the right hand panel that will highlight the current active heading as the user scrolls down the page.
+This template also contains a Table of Contents on the right hand panel highlighting the currently selected heading as the user scrolls down the page.
