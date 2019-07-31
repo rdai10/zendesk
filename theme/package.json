@@ -62,6 +62,7 @@
 		"env": {
 			"browser": true,
 			"es6": true,
+			"jest": true,
 			"node": true
 		},
 		"extends": [
@@ -79,6 +80,7 @@
 				2,
 				"tab"
 			],
+			"no-unused-vars": 0,
 			"prefer-const": 2,
 			"prettier/prettier": 2,
 			"quotes": [
@@ -93,6 +95,8 @@
 	"name": "liferay-zendesk-theme",
 	"prettier": {
 		"bracketSpacing": false,
+		"endOfLine": "lf",
+		"jsxSingleQuote": true,
 		"singleQuote": true,
 		"tabWidth": 4,
 		"useTabs": true
@@ -101,7 +105,7 @@
 	"scripts": {
 		"build": "webpack --config webpack.prod.js",
 		"build:dev": "webpack --mode=development --config webpack.common.js --watch",
-		"format": "prettier --write 'src/js/**/*.js'",
+		"format": "prettier --write '*.md' 'documentation/*.md' 'src/js/**/*.js'",
 		"test": "jest",
 		"zip": "zip -r Liferay-Help-Center.zip dist -x *.zat*"
 	},
