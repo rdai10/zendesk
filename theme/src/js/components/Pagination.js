@@ -22,13 +22,24 @@ class PaginationItem extends preact.Component {
 		return (
 			<li class={active ? 'pagination-current' : ''}>
 				{!active && (
-					<button aria-label={`go to page ${label}`} class="btn-unstyled" onClick={this.handleClick} type="button" value={number}>
+					<button
+						aria-label={`go to page ${label}`}
+						class='btn-unstyled'
+						onClick={this.handleClick}
+						type='button'
+						value={number}
+					>
 						{label}
 					</button>
 				)}
 
 				{active && (
-					<span aria-current="true" aria-label={`current page, page ${label}`}>{label}</span>
+					<span
+						aria-current='true'
+						aria-label={`current page, page ${label}`}
+					>
+						{label}
+					</span>
 				)}
 			</li>
 		);
@@ -37,9 +48,7 @@ class PaginationItem extends preact.Component {
 
 PaginationItem.PropTypes = {
 	active: PropTypes.bool,
-	label: PropTypes.oneOfType(
-		[PropTypes.number, PropTypes.string]
-	),
+	label: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 	number: PropTypes.number,
 	onClick: PropTypes.func.isRequired
 };
@@ -66,23 +75,20 @@ class Pagination extends preact.Component {
 		const startPage = currentPage - prevPageBuffer;
 		const totalPages = nextPageBuffer + prevPageBuffer + 1;
 
-		const pages = times(
-			totalPages,
-			i => {
-				const pageNumber = startPage + i;
+		const pages = times(totalPages, i => {
+			const pageNumber = startPage + i;
 
-				return {
-					label: pageNumber,
-					number: pageNumber
-				};
-			}
-		);
+			return {
+				label: pageNumber,
+				number: pageNumber
+			};
+		});
 
 		if (nextPageBuffer) {
 			pages.push(
 				{
 					label: '›',
-					number: (currentPage + 1)
+					number: currentPage + 1
 				},
 				{
 					label: '»',
@@ -99,7 +105,7 @@ class Pagination extends preact.Component {
 				},
 				{
 					label: '‹',
-					number: (currentPage - 1)
+					number: currentPage - 1
 				}
 			);
 		}
@@ -110,11 +116,9 @@ class Pagination extends preact.Component {
 	handleClick(activePage) {
 		const {onClick} = this.props;
 
-		this.setState(
-			{
-				currentPage: activePage
-			}
-		);
+		this.setState({
+			currentPage: activePage
+		});
 
 		onClick(activePage);
 	}
@@ -123,11 +127,15 @@ class Pagination extends preact.Component {
 		const {total} = this.props;
 		const {currentPage} = this.state;
 
-		let nextPageBuffer = total - currentPage >= PAGE_BUFFER ? PAGE_BUFFER : total - currentPage;
+		let nextPageBuffer =
+			total - currentPage >= PAGE_BUFFER
+				? PAGE_BUFFER
+				: total - currentPage;
 		let prevPageBuffer = 0;
 
 		if (currentPage > 1) {
-			prevPageBuffer = currentPage > PAGE_BUFFER ? PAGE_BUFFER : currentPage - 1;
+			prevPageBuffer =
+				currentPage > PAGE_BUFFER ? PAGE_BUFFER : currentPage - 1;
 
 			if (currentPage === total) {
 				nextPageBuffer = 0;
@@ -142,19 +150,21 @@ class Pagination extends preact.Component {
 
 	render() {
 		return (
-			<nav aria-label="pagination navigation" class="pagination" role="navigation">
+			<nav
+				aria-label='pagination navigation'
+				class='pagination'
+				role='navigation'
+			>
 				<ul>
-					{this.getPages().map(
-						page => (
-							<PaginationItem
-								key={page.label}
-								active={this.state.currentPage === page.number}
-								label={page.label}
-								number={page.number}
-								onClick={this.handleClick}
-							/>
-						)
-					)}
+					{this.getPages().map(page => (
+						<PaginationItem
+							key={page.label}
+							active={this.state.currentPage === page.number}
+							label={page.label}
+							number={page.number}
+							onClick={this.handleClick}
+						/>
+					))}
 				</ul>
 			</nav>
 		);

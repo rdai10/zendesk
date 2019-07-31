@@ -16,7 +16,9 @@ describe('Alert', () => {
 	});
 
 	it('renders with leading text', () => {
-		const {container, getByText} = render(<Alert leadingText="Leading Text">Alert</Alert>);
+		const {container, getByText} = render(
+			<Alert leadingText='Leading Text'>Alert</Alert>
+		);
 
 		const alert = getByText('Alert');
 		const leadingText = getByText('Leading Text');

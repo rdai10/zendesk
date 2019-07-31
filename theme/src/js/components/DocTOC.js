@@ -36,16 +36,14 @@ class DocTOC extends preact.Component {
 
 		let activeIndex = -1;
 
-		content.forEach(
-			(item, index) => {
-				if (
-					currentPosition === item.top ||
-					currentPosition > item.top - OFFSET
-				) {
-					activeIndex = index;
-				}
+		content.forEach((item, index) => {
+			if (
+				currentPosition === item.top ||
+				currentPosition > item.top - OFFSET
+			) {
+				activeIndex = index;
 			}
-		);
+		});
 
 		return activeIndex > -1 ? content[activeIndex].id : '';
 	}
@@ -72,19 +70,15 @@ class DocTOC extends preact.Component {
 		const currentScrollPosition = Math.abs(currentTop - top);
 
 		if (currentTop !== top) {
-			this.setState(
-				{
-					activeId: this.calculateActiveId(currentScrollPosition),
-					sticky: this.determineStickiness(currentScrollPosition)
-				}
-			);
+			this.setState({
+				activeId: this.calculateActiveId(currentScrollPosition),
+				sticky: this.determineStickiness(currentScrollPosition)
+			});
 		} else {
-			this.setState(
-				{
-					activeId: '',
-					sticky: false
-				}
-			);
+			this.setState({
+				activeId: '',
+				sticky: false
+			});
 		}
 	}
 
@@ -95,15 +89,15 @@ class DocTOC extends preact.Component {
 	}
 
 	render({content, title}, {activeId, sticky}) {
-		return !!content.length && (
-			<div class={`${sticky ? 'fixed' : ''} toc-body`}>
-				<h5 class="toc-heading">{title}</h5>
+		return (
+			!!content.length && (
+				<div class={`${sticky ? 'fixed' : ''} toc-body`}>
+					<h5 class='toc-heading'>{title}</h5>
 
-				<ul class="nav nav-stacked secondary-font">
-					{content.map(
-						item => {
+					<ul class='nav nav-stacked secondary-font'>
+						{content.map(item => {
 							return (
-								<li key={item.id} class="nav-item">
+								<li key={item.id} class='nav-item'>
 									<a
 										class={`${
 											activeId === item.id ? 'active' : ''
@@ -115,36 +109,32 @@ class DocTOC extends preact.Component {
 									</a>
 								</li>
 							);
-						}
-					)}
-				</ul>
-			</div>
+						})}
+					</ul>
+				</div>
+			)
 		);
 	}
 }
 
 DocTOC.PropTypes = {
 	content: PropTypes.arrayOf(
-		PropTypes.shape(
-			{
-				id: PropTypes.string,
-				title: PropTypes.string,
-				top: PropTypes.number
-			}
-		)
+		PropTypes.shape({
+			id: PropTypes.string,
+			title: PropTypes.string,
+			top: PropTypes.number
+		})
 	).isRequired,
-	initialTargetBoundingRect: PropTypes.shape(
-		{
-			bottom: PropTypes.number,
-			height: PropTypes.number,
-			left: PropTypes.number,
-			right: PropTypes.number,
-			top: PropTypes.number,
-			width: PropTypes.number,
-			x: PropTypes.number,
-			y: PropTypes.number
-		}
-	).isRequired,
+	initialTargetBoundingRect: PropTypes.shape({
+		bottom: PropTypes.number,
+		height: PropTypes.number,
+		left: PropTypes.number,
+		right: PropTypes.number,
+		top: PropTypes.number,
+		width: PropTypes.number,
+		x: PropTypes.number,
+		y: PropTypes.number
+	}).isRequired,
 	targetNode: PropTypes.node.isRequired,
 	title: PropTypes.string.isRequired
 };

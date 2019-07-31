@@ -95,7 +95,9 @@ describe('ProductTabs', () => {
 	});
 
 	it('renders correctly with non KB tabs and all access tabs', () => {
-		const {container, getByText} = render(<ProductTabs productItems={productItems} />);
+		const {container, getByText} = render(
+			<ProductTabs productItems={productItems} />
+		);
 
 		const tabAll = getByText('Tab All');
 		const tabNonKB = getByText('Tab Non KB');

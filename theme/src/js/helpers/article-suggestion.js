@@ -27,30 +27,26 @@ export function displayArticleSuggestion(
 		productLabel,
 		locale
 	)
-		.then(
-			({data}) => {
-				const results = data.results;
+		.then(({data}) => {
+			const results = data.results;
 
-				let html = '';
+			let html = '';
 
-				if (results.length) {
-					html = `<div class="custom-suggestion-list">
+			if (results.length) {
+				html = `<div class="custom-suggestion-list">
 						<label>${label}</label>
 
 						<ul>
 							${generateResults(results)}
 						</ul>
 					</div>`;
-				}
+			}
 
-				callback(html);
+			callback(html);
+		})
+		.catch(err => {
+			if (process.env.NODE_ENV === 'development') {
+				console.log(err);
 			}
-		)
-		.catch(
-			err => {
-				if (process.env.NODE_ENV === 'development') {
-					console.log(err);
-				}
-			}
-		);
+		});
 }

@@ -14,10 +14,10 @@ describe('SearchResults', () => {
 	it('renders correctly', () => {
 		const {container} = render(
 			<SearchResults
-				filterLabel="filter"
+				filterLabel='filter'
 				filterOptions={filterOptions}
-				locale="en-us"
-				queryString="Test"
+				locale='en-us'
+				queryString='Test'
 			/>
 		);
 

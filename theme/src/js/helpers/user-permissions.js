@@ -18,9 +18,7 @@ export function hasCreateTicketPermission(userTags) {
  * @returns {boolean} Boolean value of whether or not the KB tag exists
  */
 export function hasKBPermission(userTags) {
-	return (
-		userTags && userTags.some(tag => tag === 'osb_kb')
-	);
+	return userTags && userTags.some(tag => tag === 'osb_kb');
 }
 
 /**
@@ -32,22 +30,18 @@ export function hasKBPermission(userTags) {
  */
 export function hasWatcherPermission(userTags, id, callback) {
 	getRequestById(id)
-		.then(
-			({data}) => {
-				const orgWatcherArray = userTags.filter(
-					tag => tag.match(data.request.organization_id)
-				);
+		.then(({data}) => {
+			const orgWatcherArray = userTags.filter(tag =>
+				tag.match(data.request.organization_id)
+			);
 
-				if (!orgWatcherArray.length) {
-					callback(data);
-				}
+			if (!orgWatcherArray.length) {
+				callback(data);
 			}
-		)
-		.catch(
-			err => {
-				if (process.env.NODE_ENV === 'development') {
-					console.log(err);
-				}
+		})
+		.catch(err => {
+			if (process.env.NODE_ENV === 'development') {
+				console.log(err);
 			}
-		);
+		});
 }
