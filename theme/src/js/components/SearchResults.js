@@ -25,35 +25,29 @@ class SearchResultBreadCrumb extends preact.Component {
 		const {id, locale} = this.props;
 
 		getSectionBySectionId(id, locale, 'categories')
-			.then(
-				({data}) => {
-					const [categories] = data.categories;
+			.then(({data}) => {
+				const [categories] = data.categories;
 
-					const breadcrumbData = [
-						{
-							name: categories.name,
-							url: categories.html_url
-						},
-						{
-							name: data.section.name,
-							url: data.section.html_url
-						}
-					];
-
-					this.setState(
-						{
-							breadcrumb: breadcrumbData
-						}
-					);
-				}
-			)
-			.catch(
-				(err) => {
-					if (process.env.NODE_ENV === 'development') {
-						console.log(err);
+				const breadcrumbData = [
+					{
+						name: categories.name,
+						url: categories.html_url
+					},
+					{
+						name: data.section.name,
+						url: data.section.html_url
 					}
+				];
+
+				this.setState({
+					breadcrumb: breadcrumbData
+				});
+			})
+			.catch(err => {
+				if (process.env.NODE_ENV === 'development') {
+					console.log(err);
 				}
-			);
+			});
 	}
 
 	render() {
@@ -62,14 +56,12 @@ class SearchResultBreadCrumb extends preact.Component {
 		return (
 			<div>
 				{!!breadcrumb.length && (
-					<ol class="breadcrumbs">
-						{breadcrumb.map(
-							(data, index) => (
-								<li key={index} title={data.name}>
-									<a href={data.url}>{data.name}</a>
-								</li>
-							)
-						)}
+					<ol class='breadcrumbs'>
+						{breadcrumb.map((data, index) => (
+							<li key={index} title={data.name}>
+								<a href={data.url}>{data.name}</a>
+							</li>
+						))}
 					</ol>
 				)}
 			</div>
@@ -88,7 +80,9 @@ class SearchResults extends preact.Component {
 
 		this.displayNoResultsMsg = this.displayNoResultsMsg.bind(this);
 		this.handlePaginationClick = this.handlePaginationClick.bind(this);
-		this.handleSearchFilterChange = this.handleSearchFilterChange.bind(this);
+		this.handleSearchFilterChange = this.handleSearchFilterChange.bind(
+			this
+		);
 		this.querySearchResults = this.querySearchResults.bind(this);
 		this.updateResultsCount = this.updateResultsCount.bind(this);
 
@@ -105,14 +99,11 @@ class SearchResults extends preact.Component {
 	}
 
 	displayNoResultsMsg(bool) {
-		const noResults = document.getElementById(
-			'noResults'
-		);
+		const noResults = document.getElementById('noResults');
 
 		if (bool) {
 			noResults.classList.add('show');
-		}
-		else {
+		} else {
 			noResults.classList.remove('show');
 		}
 	}
@@ -128,39 +119,29 @@ class SearchResults extends preact.Component {
 			productLabel,
 			locale
 		)
-			.then(
-				({data}) => {
-					this.setState(
-						{
-							results: data.results
-						}
-					);
+			.then(({data}) => {
+				this.setState({
+					results: data.results
+				});
+			})
+			.catch(err => {
+				if (process.env.NODE_ENV === 'development') {
+					console.log(err);
 				}
-			)
-			.catch(
-				(err) => {
-					if (process.env.NODE_ENV === 'development') {
-						console.log(err);
-					}
 
-					this.setState(
-						{
-							loading: true
-						}
-					);
-				}
-			);
+				this.setState({
+					loading: true
+				});
+			});
 
 		window.scroll(0, 0);
 	}
 
 	handleSearchFilterChange(label) {
-		this.setState(
-			{
-				loading: true,
-				productLabel: label
-			}
-		);
+		this.setState({
+			loading: true,
+			productLabel: label
+		});
 
 		this.querySearchResults(label);
 	}
@@ -169,38 +150,33 @@ class SearchResults extends preact.Component {
 		const {locale, queryString} = this.props;
 
 		if (queryString) {
-			getArticlesBySearch(queryString, ARTICLES_PER_PAGE, 1, label, locale)
-				.then(
-					({data}) => {
-						this.setState(
-							{
-								loading: false,
-								results: data.results,
-								totalPage: data.page_count
-							}
-						);
+			getArticlesBySearch(
+				queryString,
+				ARTICLES_PER_PAGE,
+				1,
+				label,
+				locale
+			)
+				.then(({data}) => {
+					this.setState({
+						loading: false,
+						results: data.results,
+						totalPage: data.page_count
+					});
 
-						this.displayNoResultsMsg(
-							!data.results.length
-						);
+					this.displayNoResultsMsg(!data.results.length);
 
-						this.updateResultsCount(data.count);
+					this.updateResultsCount(data.count);
+				})
+				.catch(err => {
+					if (process.env.NODE_ENV === 'development') {
+						console.log(err);
 					}
-				)
-				.catch(
-					(err) => {
-						if (process.env.NODE_ENV === 'development') {
-							console.log(err);
-						}
-					}
-				);
-		}
-		else {
-			this.setState(
-				{
-					loading: false
-				}
-			);
+				});
+		} else {
+			this.setState({
+				loading: false
+			});
 
 			this.displayNoResultsMsg(true);
 			this.updateResultsCount(0);
@@ -208,7 +184,9 @@ class SearchResults extends preact.Component {
 	}
 
 	updateResultsCount(count) {
-		const searchResultsCount = document.getElementById('searchResultsCount');
+		const searchResultsCount = document.getElementById(
+			'searchResultsCount'
+		);
 
 		searchResultsCount.innerHTML = count;
 	}
@@ -226,34 +204,43 @@ class SearchResults extends preact.Component {
 				/>
 
 				{!loading && !!results.length && (
-					<ul class="search-results-list">
-						{results.map(
-							(result) => (
-								<li key={result.id} class="search-result" id={result.id}>
-									<div class="search-results-header">
-										<a class="search-result-link semi-bold" href={result.html_url}>
-											{result.title}
+					<ul class='search-results-list'>
+						{results.map(result => (
+							<li
+								key={result.id}
+								class='search-result'
+								id={result.id}
+							>
+								<div class='search-results-header'>
+									<a
+										class='search-result-link semi-bold'
+										href={result.html_url}
+									>
+										{result.title}
 
-											{result.label_names.indexOf(
-												'Fast Track'
-											) >= 0 && (
-												<span class="initiative-label label label-sm">
-													{fastTrackLabel}
-												</span>
-											)}
-										</a>
-									</div>
+										{result.label_names.indexOf(
+											'Fast Track'
+										) >= 0 && (
+											<span class='initiative-label label label-sm'>
+												{fastTrackLabel}
+											</span>
+										)}
+									</a>
+								</div>
 
-									<h5 class="search-result-description"
-										dangerouslySetInnerHTML={{__html: result.snippet}} />
+								<h5
+									class='search-result-description'
+									dangerouslySetInnerHTML={{
+										__html: result.snippet
+									}}
+								/>
 
-									<SearchResultBreadCrumb
-										id={result.section_id}
-										locale={locale}
-									/>
-								</li>
-							)
-						)}
+								<SearchResultBreadCrumb
+									id={result.section_id}
+									locale={locale}
+								/>
+							</li>
+						))}
 					</ul>
 				)}
 
@@ -274,12 +261,10 @@ SearchResults.PropTypes = {
 	fastTrackLabel: PropTypes.string.isRequired,
 	filterLabel: PropTypes.string.isRequired,
 	filterOptions: PropTypes.arrayOf(
-		PropTypes.shape(
-			{
-				displayName: PropTypes.string,
-				value: PropTypes.string
-			}
-		)
+		PropTypes.shape({
+			displayName: PropTypes.string,
+			value: PropTypes.string
+		})
 	).isRequired,
 	locale: PropTypes.string.isRequired,
 	queryString: PropTypes.string.isRequired

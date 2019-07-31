@@ -7,33 +7,35 @@ const ActionItem = ({config}) => {
 	const {disclaimer, iconId, link, message, name} = config;
 
 	return (
-		<div class="action-item row">
-			<div class="col-md-4 name">
+		<div class='action-item row'>
+			<div class='col-md-4 name'>
 				{iconId && (
-					<svg class="lexicon-icon lexicon-icon-ticket icon" role="img">
+					<svg
+						class='lexicon-icon lexicon-icon-ticket icon'
+						role='img'
+					>
 						<use xlinkHref={iconId} />
 					</svg>
 				)}
 
-				<a class="link semi-bold" href={link}>
+				<a class='link semi-bold' href={link}>
 					{name}
 				</a>
 			</div>
 
 			{(disclaimer || message) && (
-				<div class="col-md-7 message">
+				<div class='col-md-7 message'>
 					{message && (
-						<div class="secondary-text secondary-text-color">
+						<div class='secondary-text secondary-text-color'>
 							{message}
 						</div>
 					)}
 
 					{disclaimer && (
-						<div class="disclaimer small">
-							<svg className="lexicon-icon lexicon-icon-info-circle">
-								<use xlinkHref="#info" />
-							</svg>
-							{' '}
+						<div class='disclaimer small'>
+							<svg className='lexicon-icon lexicon-icon-info-circle'>
+								<use xlinkHref='#info' />
+							</svg>{' '}
 							{disclaimer}
 						</div>
 					)}
@@ -44,52 +46,37 @@ const ActionItem = ({config}) => {
 };
 
 ActionItem.propTypes = {
-	config: PropTypes.shape(
-		{
-			disclaimer: PropTypes.string,
-			iconId: PropTypes.string,
-			link: PropTypes.string.isRequired,
-			message: PropTypes.string,
-			name: PropTypes.string.isRequired
-		}
-	)
+	config: PropTypes.shape({
+		disclaimer: PropTypes.string,
+		iconId: PropTypes.string,
+		link: PropTypes.string.isRequired,
+		message: PropTypes.string,
+		name: PropTypes.string.isRequired
+	})
 };
 
-const CallToAction = (
-	{
-		actionItems,
-		className,
-		promotions,
-		sectionHeading
-	}
-) => (
+const CallToAction = ({actionItems, className, promotions, sectionHeading}) => (
 	<div className={className}>
-		{sectionHeading && (
-			<h2 class="col-md-12">
-				{sectionHeading}
-			</h2>
-		)}
+		{sectionHeading && <h2 class='col-md-12'>{sectionHeading}</h2>}
 
 		{actionItems && (
-			<div class="col-md-7">
-				{actionItems.map(
-					actionItem => <ActionItem config={actionItem} />
-				)}
+			<div class='col-md-7'>
+				{actionItems.map(actionItem => (
+					<ActionItem config={actionItem} />
+				))}
 			</div>
 		)}
 
 		{promotions && (
-			<div class="col-md-5">
-				{promotions.map(
-					promotion => (
-						<Card
-							description={promotion.description}
-							name={promotion.name}
-							type="product"
-							url={promotion.url}
-						/>
-					)
-				)}
+			<div class='col-md-5'>
+				{promotions.map(promotion => (
+					<Card
+						description={promotion.description}
+						name={promotion.name}
+						type='product'
+						url={promotion.url}
+					/>
+				))}
 			</div>
 		)}
 	</div>
@@ -97,25 +84,21 @@ const CallToAction = (
 
 CallToAction.propTypes = {
 	actionItems: PropTypes.arrayOf(
-		PropTypes.shape(
-			{
-				disclaimer: PropTypes.string,
-				iconId: PropTypes.string,
-				link: PropTypes.string.isRequired,
-				message: PropTypes.string,
-				name: PropTypes.string.isRequired
-			}
-		)
+		PropTypes.shape({
+			disclaimer: PropTypes.string,
+			iconId: PropTypes.string,
+			link: PropTypes.string.isRequired,
+			message: PropTypes.string,
+			name: PropTypes.string.isRequired
+		})
 	).isRequired,
 	className: PropTypes.string,
 	promotions: PropTypes.arrayOf(
-		PropTypes.shape(
-			{
-				description: PropTypes.string,
-				name: PropTypes.string.isRequired,
-				url: PropTypes.string.isRequired
-			}
-		)
+		PropTypes.shape({
+			description: PropTypes.string,
+			name: PropTypes.string.isRequired,
+			url: PropTypes.string.isRequired
+		})
 	),
 	sectionHeading: PropTypes.string
 };

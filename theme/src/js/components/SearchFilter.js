@@ -16,19 +16,21 @@ class SearchFilter extends preact.Component {
 
 	render({label, options}) {
 		return (
-			<div class="search-filter">
-				<label class="semi-bold" htmlFor='productSearchFilter'>
+			<div class='search-filter'>
+				<label class='semi-bold' htmlFor='productSearchFilter'>
 					{label}
 				</label>
 
-				<select class="col-md-3 input-small" id="productSearchFilter" onChange={this.handleChange}>
-					{options.map(
-						(option, index) => (
-							<option key={index} value={option.value}>
-								{option.displayName}
-							</option>
-						)
-					)}
+				<select
+					class='col-md-3 input-small'
+					id='productSearchFilter'
+					onChange={this.handleChange}
+				>
+					{options.map((option, index) => (
+						<option key={index} value={option.value}>
+							{option.displayName}
+						</option>
+					))}
 				</select>
 			</div>
 		);
@@ -39,12 +41,10 @@ SearchFilter.PropTypes = {
 	label: PropTypes.string,
 	onChange: PropTypes.func.isRequired,
 	options: PropTypes.arrayOf(
-		PropTypes.shape(
-			{
-				displayName: PropTypes.string,
-				value: PropTypes.string
-			}
-		)
+		PropTypes.shape({
+			displayName: PropTypes.string,
+			value: PropTypes.string
+		})
 	).isRequired
 };
 

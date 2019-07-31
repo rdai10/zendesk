@@ -42,47 +42,50 @@ class ArticlesList extends preact.Component {
 		const {id, locale} = this.props;
 
 		getArticlesBySectionId(id, locale, NUMBER_OF_ARTICLES)
-			.then(
-				({data}) => {
-					this.setState(
-						{
-							items: data.articles
-						}
-					);
+			.then(({data}) => {
+				this.setState({
+					items: data.articles
+				});
+			})
+			.catch(err => {
+				if (process.env.NODE_ENV === 'development') {
+					console.log(err);
 				}
-			)
-			.catch(
-				(err) => {
-					if (process.env.NODE_ENV === 'development') {
-						console.log(err);
-					}
-				}
-			);
+			});
 	}
 
 	render({currentArticleId, expanded}, {items}) {
 		return (
 			<div>
 				{expanded && (
-					<ul class="nav nav-nested" role="menu">
-						{items.map(
-							item => {
-								const className = getCN(
-									{
-										'active': item.id === parseInt(currentArticleId, 10)
-									},
-									'nav-item'
-								);
+					<ul class='nav nav-nested' role='menu'>
+						{items.map(item => {
+							const className = getCN(
+								{
+									active:
+										item.id ===
+										parseInt(currentArticleId, 10)
+								},
+								'nav-item'
+							);
 
-								return (
-									<li class={className} key={item.id} id={item.id} role="none">
-										<a class="sidenav-item" href={item.html_url} role="menuitem">
-											{item.name}
-										</a>
-									</li>
-								);
-							}
-						)}
+							return (
+								<li
+									class={className}
+									key={item.id}
+									id={item.id}
+									role='none'
+								>
+									<a
+										class='sidenav-item'
+										href={item.html_url}
+										role='menuitem'
+									>
+										{item.name}
+									</a>
+								</li>
+							);
+						})}
 					</ul>
 				)}
 			</div>
@@ -113,79 +116,71 @@ class DocSideNav extends preact.Component {
 		const {locale, sectionId} = this.props;
 
 		getSectionBySectionId(sectionId, locale)
-			.then(
-				({data}) => {
-					return (
-						getSectionsByCategoryId(
-							data.section.category_id,
-							locale
-						)
-					);
-				}
-			)
-			.then(
-				({data}) => {
-					this.setState(
-						{
-							items: data.sections
-						}
-					);
-				}
-			)
-			.catch(
-				(err) => {
-					const sidenavFallback = document.getElementById(
-						'sidenavFallback'
-					);
+			.then(({data}) => {
+				return getSectionsByCategoryId(
+					data.section.category_id,
+					locale
+				);
+			})
+			.then(({data}) => {
+				this.setState({
+					items: data.sections
+				});
+			})
+			.catch(err => {
+				const sidenavFallback = document.getElementById(
+					'sidenavFallback'
+				);
 
-					sidenavFallback.classList.add('show');
+				sidenavFallback.classList.add('show');
 
-					if (process.env.NODE_ENV === 'development') {
-						console.log(err);
-					}
+				if (process.env.NODE_ENV === 'development') {
+					console.log(err);
 				}
-			);
+			});
 	}
 
 	handleClick(event) {
-		this.setState(
-			{
-				expandedItemId: parseInt(event.target.id, 10)
-			}
-		);
+		this.setState({
+			expandedItemId: parseInt(event.target.id, 10)
+		});
 	}
 
 	render({currentArticleId, locale}, {expandedItemId, items}) {
 		return (
-			<ul class="nav nav-nested">
-				{items.map(
-					item => {
-						const expanded = expandedItemId === item.id;
+			<ul class='nav nav-nested'>
+				{items.map(item => {
+					const expanded = expandedItemId === item.id;
 
-						const className = getCN(
-							{
-								'expanded': expanded
-							},
-							'btn-unstyled',
-							'sidenav-item'
-						);
+					const className = getCN(
+						{
+							expanded: expanded
+						},
+						'btn-unstyled',
+						'sidenav-item'
+					);
 
-						return (
-							<li class="nav-item" key={item.id}>
-								<button aria-haspopup="true" class={className} id={item.id} onClick={this.handleClick} type="button">
-									{item.name}
-								</button>
+					return (
+						<li class='nav-item' key={item.id}>
+							<button
+								aria-haspopup='true'
+								class={className}
+								id={item.id}
+								onClick={this.handleClick}
+								type='button'
+							>
+								{item.name}
+							</button>
 
-								<ArticlesList
-									currentArticleId={currentArticleId}
-									expanded={expanded}
-									id={item.id}
-									locale={locale}
-								/>
-							</li>
-						);
-					}
-				)}
+							<ArticlesList
+								currentArticleId={currentArticleId}
+								expanded={expanded}
+								id={item.id}
+								locale={locale}
+							/>
+						</li>
+					);
+				})}
 			</ul>
 		);
 	}

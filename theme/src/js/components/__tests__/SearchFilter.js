@@ -19,7 +19,7 @@ const setup = () => {
 
 	const utils = render(
 		<SearchFilter
-			label="Search Filter"
+			label='Search Filter'
 			onChange={handleOnChange}
 			options={options}
 		/>
@@ -55,7 +55,7 @@ describe('SearchFilter', () => {
 
 		const filter = container.querySelector('select');
 
-		fireEvent.change(filter, { target: { value: 'Option 2' } });
+		fireEvent.change(filter, {target: {value: 'Option 2'}});
 
 		expect(handleOnChange).toHaveBeenCalledTimes(1);
 	});

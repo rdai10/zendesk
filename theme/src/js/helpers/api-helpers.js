@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-const baseURL = process.env.NODE_ENV === 'production' ? 'https://help.liferay.com/api/v2/' : 'https://liferaysupport1528999723.zendesk.com/api/v2/';
+const baseURL =
+	process.env.NODE_ENV === 'production'
+		? 'https://help.liferay.com/api/v2/'
+		: 'https://liferaysupport1528999723.zendesk.com/api/v2/';
 
-const httpRequest = axios.create(
-	{
-		baseURL: baseURL
-	}
-);
+const httpRequest = axios.create({
+	baseURL: baseURL
+});
 
 /**
  * Returns a promise of Articles that matches the query string with an option to search by label name

@@ -29,7 +29,7 @@ describe('CallToAction', () => {
 		const {container} = render(
 			<CallToAction
 				actionItems={basicActionItems}
-				className="class-name"
+				className='class-name'
 			/>
 		);
 
@@ -40,7 +40,7 @@ describe('CallToAction', () => {
 		const {container, getByText} = render(
 			<CallToAction
 				actionItems={basicActionItems}
-				sectionHeading="Section Heading"
+				sectionHeading='Section Heading'
 			/>
 		);
 

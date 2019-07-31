@@ -2,18 +2,14 @@ import preact from 'preact';
 import PropTypes from 'prop-types';
 
 const Alert = ({children, leadingText}) => (
-	<div class="alert alert-info" role="alert">
-		<span class="alert-indicator">
-			<svg className="lexicon-icon lexicon-icon-info-circle" role="img">
-				<use xlinkHref="#info-circle" />
+	<div class='alert alert-info' role='alert'>
+		<span class='alert-indicator'>
+			<svg className='lexicon-icon lexicon-icon-info-circle' role='img'>
+				<use xlinkHref='#info-circle' />
 			</svg>
 		</span>
 
-		{leadingText && (
-			<strong class="lead">
-				{leadingText}
-			</strong>
-		)}
+		{leadingText && <strong class='lead'>{leadingText}</strong>}
 		{children}
 	</div>
 );
