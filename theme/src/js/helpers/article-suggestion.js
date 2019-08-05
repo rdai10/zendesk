@@ -7,7 +7,7 @@ function generateResults(results) {
 		.map(
 			result =>
 				`<li>
-					<a href=${result.html_url}>${result.title}</a>
+					<a href=${result.html_url} target="_blank">${result.title}</a>
 				</li>`
 		)
 		.join('');
