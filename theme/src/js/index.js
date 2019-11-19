@@ -22,6 +22,7 @@ export {default as throttle} from 'lodash.throttle';
 
 export {MegaMenu} from 'liferay-help-center-megamenu';
 
+export {default as Alert} from './components/Alert';
 export {default as CallToAction} from './components/CallToAction';
 export {default as DocSideNav} from './components/DocSideNav';
 export {default as DocsTOC} from './components/DocTOC';
