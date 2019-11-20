@@ -78,3 +78,12 @@ export function getSectionsByCategoryId(id, locale) {
 		`help_center/${locale}/categories/${id}/sections.json`
 	);
 }
+
+/**
+ * Returns a promise of the Request result
+ * @param {string} endpoint The request endpoint
+ * @returns {Promise} Promise object resulted from the Request
+ */
+export function makeGETRequest(endpoint) {
+	return axios.get(endpoint);
+}

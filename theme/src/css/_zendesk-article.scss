@@ -1,5 +1,6 @@
 #docsArticle .article-body {
-	td, th {
+	td,
+	th {
 		padding: $padding-sm;
 	}
 }
@@ -26,6 +27,10 @@
 	@include media-breakpoint-down(sm) {
 		display: none;
 	}
+}
+
+#systemStatusBanner {
+	margin-top: $margin-md;
 }
 
 .article-author,
@@ -62,7 +67,7 @@
 			color: $color-body;
 
 			&::before {
-				content: "";
+				content: '';
 				display: block;
 				margin-top: -4.5rem;
 				padding-top: 4.5rem;
@@ -75,7 +80,7 @@
 	code,
 	pre {
 		border-radius: $border-radius;
-		font-family: "Roboto Mono", SFMono-Regular, monospace;
+		font-family: 'Roboto Mono', SFMono-Regular, monospace;
 		font-size: $code-font-size;
 		line-height: $code-line-height;
 	}
@@ -201,7 +206,7 @@
 				display: none;
 			}
 
-			&[aria-expanded="true"] {
+			&[aria-expanded='true'] {
 				& + .sidenav-content {
 					display: block;
 				}
@@ -277,10 +282,7 @@
 				&:focus,
 				&.expanded,
 				&.expanded:hover {
-					background-image: clay-icon(
-						angle-down,
-						$color-body
-					);
+					background-image: clay-icon(angle-down, $color-body);
 					font-weight: $font-weight-semi-bold;
 				}
 
@@ -292,10 +294,7 @@
 				}
 
 				&:hover {
-					background-image: clay-icon(
-						angle-right,
-						$color-body
-					);
+					background-image: clay-icon(angle-right, $color-body);
 				}
 			}
 		}

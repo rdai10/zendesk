@@ -9,6 +9,7 @@ import './helpers/article-accordion';
 
 export {default as render} from './helpers/preact-renderer';
 
+export {makeGETRequest} from './helpers/api-helpers';
 export {displayArticleSuggestion} from './helpers/article-suggestion';
 export {addLocaleParamToURI} from './helpers/locale-conversion';
 export {
@@ -22,6 +23,7 @@ export {default as throttle} from 'lodash.throttle';
 
 export {MegaMenu} from 'liferay-help-center-megamenu';
 
+export {default as Alert} from './components/Alert';
 export {default as CallToAction} from './components/CallToAction';
 export {default as DocSideNav} from './components/DocSideNav';
 export {default as DocsTOC} from './components/DocTOC';

@@ -131,6 +131,7 @@ module.exports = {
 					'status-label-answered',
 					'*submenu*',
 					'*suggestion-list*',
+					'#systemStatusBanner',
 					'*toc-body*',
 					'upload-dropzone'
 				]
