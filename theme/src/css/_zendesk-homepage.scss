@@ -5,7 +5,6 @@
 		}
 
 		.announcement-body {
-			margin-bottom: 3rem;
 			margin-left: 3.25rem;
 			margin-top: $margin-default;
 		}
@@ -24,19 +23,6 @@
 
 		.article-list-item a {
 			color: $color-body;
-		}
-
-		.cta {
-			background-color: $color-grey;
-			border-radius: $border-radius;
-			margin-bottom: 4rem;
-			padding: 3rem $padding-default;
-			text-align: center;
-			width: 100%;
-
-			.btn-outline-primary {
-				margin-top: $margin-default;
-			}
 		}
 	}
 

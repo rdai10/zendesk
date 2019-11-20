@@ -152,6 +152,20 @@ textarea,
 	height: auto;
 }
 
+.cta {
+	background-color: $color-grey;
+	border-radius: $border-radius;
+	margin-bottom: 4rem;
+	margin-top: 3rem;
+	padding: 3rem $padding-default;
+	text-align: center;
+	width: 100%;
+
+	.btn-outline-primary {
+		margin-top: $margin-default;
+	}
+}
+
 .form-field {
 	margin-bottom: $form-group-margin-bottom;
 }

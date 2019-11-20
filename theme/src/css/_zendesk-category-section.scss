@@ -49,6 +49,8 @@
 	margin-top: 2.25rem;
 
 	.nav-link {
+		padding: 0.5rem $padding-default;
+
 		&:focus {
 			box-shadow: none;
 		}
