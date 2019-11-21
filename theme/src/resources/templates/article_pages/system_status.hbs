@@ -8,72 +8,72 @@
 	</div>
 
 	{{#with article}}
-	<div class="row">
-		<div class="article-sidenav col-md-3 secondary-font">
-			<div class="sidenav">
-				<div class="collapsible-sidebar">
-					<svg aria-label="Documentation Navigation Menu" class="lexicon-icon lexicon-icon-menu-hamburger"
-						role="button" title="Documentation Navigation Menu">
-						<use xlink:href="#menu-hamburger" />
+		<div class="row">
+			<div class="article-sidenav col-md-3 secondary-font">
+				<div class="sidenav">
+					<div class="collapsible-sidebar">
+						<svg aria-label="Documentation Navigation Menu" class="lexicon-icon lexicon-icon-menu-hamburger"
+							role="button" title="Documentation Navigation Menu">
+							<use xlink:href="#menu-hamburger" />
+						</svg>
+
+						<h4>{{dc 'mega_menu-documentation'}}</h4>
+					</div>
+
+					<div class="sidenav-content">
+						{{#with ../section}}
+							<ul class="nav nav-nested">
+								{{#each articles}}
+								<li class="{{#is id ../../id}}active semi-bold{{/is}} nav-item">
+									<a class="sidenav-item" href="{{url}}">{{title}}</a>
+								</li>
+								{{/each}}
+							</ul>
+
+							{{#if more_articles}}
+								<div class="nav-item">
+									<a class="sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
+								</div>
+							{{/if}}
+						{{/with}}
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-7">
+				<h1 class="article-title" title="{{title}}">
+					{{title}}
+
+					{{#if internal}}
+					<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+						<use xlink:href="#lock" />
 					</svg>
-
-					<h4>{{dc 'mega_menu-documentation'}}</h4>
-				</div>
-
-				<div class="sidenav-content">
-					{{#with ../section}}
-					<ul class="nav nav-nested">
-						{{#each articles}}
-						<li class="{{#is id ../../id}}active semi-bold{{/is}} nav-item">
-							<a class="sidenav-item" href="{{url}}">{{title}}</a>
-						</li>
-						{{/each}}
-					</ul>
-
-					{{#if more_articles}}
-					<div class="nav-item">
-						<a class="sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
-					</div>
 					{{/if}}
-					{{/with}}
+				</h1>
+
+				<div class="article-content">
+					<section class="article-body">
+						{{body}}
+					</section>
 				</div>
-			</div>
-		</div>
 
-		<div class="col-md-7">
-			<h1 class="article-title" title="{{title}}">
-				{{title}}
+				<footer class="article-footer">
+					<div class="article-votes">
+						<span class="article-votes-question small-title">{{t 'was_this_article_helpful'}}</span>
 
-				{{#if internal}}
-				<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
-					<use xlink:href="#lock" />
-				</svg>
-				{{/if}}
-			</h1>
+						<div class="article-votes-controls" role='radiogroup'>
+							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-md btn-outline-primary'}}
 
-			<div class="article-content">
-				<section class="article-body">
-					{{body}}
-				</section>
-			</div>
+							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-md btn-outline-primary'}}
+						</div>
 
-			<footer class="article-footer">
-				<div class="article-votes">
-					<span class="article-votes-question small-title">{{t 'was_this_article_helpful'}}</span>
-
-					<div class="article-votes-controls" role='radiogroup'>
-						{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-md btn-outline-primary'}}
-
-						{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-md btn-outline-primary'}}
+						<small class="article-votes-count">
+							{{vote 'label' class='article-vote-label'}}
+						</small>
 					</div>
-
-					<small class="article-votes-count">
-						{{vote 'label' class='article-vote-label'}}
-					</small>
-				</div>
-			</footer>
+				</footer>
+			</div>
 		</div>
-	</div>
 	{{/with}}
 
 	<section id="stillNeedHelp"></section>
