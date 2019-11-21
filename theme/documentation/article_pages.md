@@ -27,7 +27,7 @@ This article is built on top of the **Knowledge Base Articles** designed to be p
 
 ### System Status article
 
-This is a one-off article template based on the Zendesk default article to display a system outage warning at the top of the page for DXP cloud.
+This is a one-off article template used to display a system outage warning at the top of the page for DXP cloud. This is based on Zendesk's default article.
 
 ### Zendesk default article
 
