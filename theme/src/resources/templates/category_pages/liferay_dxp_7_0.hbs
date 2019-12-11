@@ -31,6 +31,9 @@
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
+				alert: {
+					children: '{{dc '7_0-end_of_life_banner'}}'
+				},
 				fullAccess: Liferay.hasKBPermission(userTags),
 				productItems: [
 					{
