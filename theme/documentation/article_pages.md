@@ -19,7 +19,7 @@ This article is to be used as a general purpose article; designed for informatio
 
 ### Knowledge base article
 
-This article is to be used to promote knowledge sharing and to provide solutions for customer issues before reaching out to customer support engineer for additional help. It is very similar to the General Article template with the addition of content author underneath the heading. 
+This article is to be used to promote knowledge sharing and to provide solutions for customer issues before reaching out to customer support engineer for additional help. It is very similar to the General Article template with the addition of the content author underneath the heading.
 
 ### Fast Track article
 
