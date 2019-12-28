@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PurifyCSSPlugin = require('purifycss-webpack');
+const ReplaceInFileWebpackPlugin = require('replace-in-file-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -46,27 +47,27 @@ module.exports = {
 	},
 	optimization: {
 		minimizer: [
-			new OptimizeCssAssetsPlugin(
-				{
-					cssProcessorOptions: {
-						discardComments: {removeAll: true}
-					}
+			new OptimizeCssAssetsPlugin({
+				cssProcessorOptions: {
+					discardComments: {removeAll: true}
 				}
-			),
-			new UglifyJsPlugin(
-				{
-					sourceMap: true
-				}
-			)
+			}),
+			new UglifyJsPlugin({
+				sourceMap: true
+			})
 		]
 	},
 	output: {
-		filename: 'script.js',
+		filename: 'script.[hash].js',
 		library: 'Liferay',
 		libraryTarget: 'window'
 	},
 	plugins: [
 		new CopyWebpackPlugin([
+			{
+				from: 'src/js/script.js',
+				to: ''
+			},
 			{
 				from: 'src/resources/.zat',
 				to: ''
@@ -136,6 +137,19 @@ module.exports = {
 					'upload-dropzone'
 				]
 			}
-		})
+		}),
+		new ReplaceInFileWebpackPlugin([
+			{
+				dir: 'dist/templates',
+				files: ['document_head.hbs'],
+				rules: [
+					{
+						search: '@@OUTPUT@@',
+						replace: () =>
+							path.basename(glob.sync('dist/script.*.js')[0])
+					}
+				]
+			}
+		])
 	]
 };
