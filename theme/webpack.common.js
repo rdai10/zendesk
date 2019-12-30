@@ -3,6 +3,7 @@ const clayCss = require('clay-css');
 const glob = require('glob-all');
 const path = require('path');
 
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -63,6 +64,7 @@ module.exports = {
 		libraryTarget: 'window'
 	},
 	plugins: [
+		new CleanWebpackPlugin(),
 		new CopyWebpackPlugin([
 			{
 				from: 'src/js/script.js',
