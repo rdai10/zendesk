@@ -18,6 +18,8 @@ export {
 	hasWatcherPermission
 } from './helpers/user-permissions';
 
+export {default as searchDriver} from './helpers/search-driver';
+
 export {default as debounce} from 'lodash.debounce';
 export {default as throttle} from 'lodash.throttle';
 
@@ -28,5 +30,4 @@ export {default as CallToAction} from './components/CallToAction';
 export {default as DocSideNav} from './components/DocSideNav';
 export {default as DocsTOC} from './components/DocTOC';
 export {default as ProductTabs} from './components/ProductTabs';
-export {default as SearchUI} from './components/SearchUI';
 export {default as SearchResults} from './components/SearchResults';
