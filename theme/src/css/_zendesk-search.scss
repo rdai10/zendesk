@@ -1,4 +1,22 @@
 .search {
+	.no-results {
+		display: none;
+		margin-bottom: 10rem;
+
+		&.show {
+			display: flex;
+		}
+
+		.no-results-msg {
+			padding-left: $padding-default;
+
+			h4 {
+				margin-bottom: $margin-default;
+				margin-top: 0.25rem;
+			}
+		}
+	}
+
 	.search-lg {
 		input[type="search"] {
 			background-color: $color-input-grey;
@@ -25,25 +43,7 @@
 			margin-bottom: 0;
 			margin-top: 0.5rem;
 		}
-	
-		.no-results {
-			display: none;
-			margin-bottom: 10rem;
-	
-			&.show {
-				display: flex;
-			}
-	
-			.no-results-msg {
-				padding-left: $padding-default;
-	
-				h4 {
-					margin-bottom: $margin-default;
-					margin-top: 0.25rem;
-				}
-			}
-		}
-	
+
 		.search-filter {
 			align-items: baseline;
 			display: flex;

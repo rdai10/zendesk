@@ -9,6 +9,7 @@ import {
 import LoadingIndicator from './LoadingIndicator';
 import Pagination from './Pagination';
 import SearchFilter from './SearchFilter';
+import SearchInput from './SearchInput';
 
 const ARTICLES_PER_PAGE = 10;
 
@@ -192,66 +193,82 @@ class SearchResults extends preact.Component {
 	}
 
 	render(
-		{fastTrackLabel, filterLabel, filterOptions, locale},
+		{
+			fastTrackLabel,
+			filterLabel,
+			filterOptions,
+			inputPlaceholder,
+			locale,
+			queryString,
+			resultsMsg
+		},
 		{loading, results, totalPage}
 	) {
 		return (
 			<div>
-				<SearchFilter
-					label={filterLabel}
-					onChange={this.handleSearchFilterChange}
-					options={filterOptions}
+				<SearchInput
+					inputPlaceholder={inputPlaceholder}
+					queryString={queryString}
+					resultsMsg={resultsMsg}
 				/>
 
-				{!loading && !!results.length && (
-					<ul class='search-results-list'>
-						{results.map(result => (
-							<li
-								key={result.id}
-								class='search-result'
-								id={result.id}
-							>
-								<div class='search-results-header'>
-									<a
-										class='search-result-link semi-bold'
-										href={result.html_url}
-									>
-										{result.title}
-
-										{result.label_names.indexOf(
-											'Fast Track'
-										) >= 0 && (
-											<span class='initiative-label label label-sm'>
-												{fastTrackLabel}
-											</span>
-										)}
-									</a>
-								</div>
-
-								<h5
-									class='search-result-description'
-									dangerouslySetInnerHTML={{
-										__html: result.snippet
-									}}
-								/>
-
-								<SearchResultBreadCrumb
-									id={result.section_id}
-									locale={locale}
-								/>
-							</li>
-						))}
-					</ul>
-				)}
-
-				{!loading && totalPage > 1 && (
-					<Pagination
-						onClick={this.handlePaginationClick}
-						total={totalPage}
+				<section class='search-results'>
+					<SearchFilter
+						label={filterLabel}
+						onChange={this.handleSearchFilterChange}
+						options={filterOptions}
 					/>
-				)}
 
-				{loading && <LoadingIndicator />}
+					{!loading && !!results.length && (
+						<ul class='search-results-list'>
+							{results.map(result => (
+								<li
+									key={result.id}
+									class='search-result'
+									id={result.id}
+								>
+									<div class='search-results-header'>
+										<a
+											class='search-result-link semi-bold'
+											href={result.html_url}
+										>
+											{result.title}
+
+											{result.label_names.indexOf(
+												'Fast Track'
+											) >= 0 && (
+												<span class='initiative-label label label-sm'>
+													{fastTrackLabel}
+												</span>
+											)}
+										</a>
+									</div>
+
+									<h5
+										class='search-result-description'
+										dangerouslySetInnerHTML={{
+											__html: result.snippet
+										}}
+									/>
+
+									<SearchResultBreadCrumb
+										id={result.section_id}
+										locale={locale}
+									/>
+								</li>
+							))}
+						</ul>
+					)}
+
+					{!loading && totalPage > 1 && (
+						<Pagination
+							onClick={this.handlePaginationClick}
+							total={totalPage}
+						/>
+					)}
+
+					{loading && <LoadingIndicator />}
+				</section>
 			</div>
 		);
 	}
@@ -267,7 +284,8 @@ SearchResults.PropTypes = {
 		})
 	).isRequired,
 	locale: PropTypes.string.isRequired,
-	queryString: PropTypes.string.isRequired
+	queryString: PropTypes.string.isRequired,
+	resultsMsg: PropTypes.string.isRequired
 };
 
 export default SearchResults;
