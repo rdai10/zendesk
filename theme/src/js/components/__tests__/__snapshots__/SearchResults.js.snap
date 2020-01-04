@@ -3,36 +3,64 @@
 exports[`SearchResults renders correctly 1`] = `
 <div>
   <div>
-    <div
-      class="search-filter"
+    <header>
+      <h2
+        class="display"
+      >
+        <span
+          id="searchResultsCount"
+        >
+          0
+        </span>
+         
+      </h2>
+      <div
+        class="search-lg"
+      >
+        <input
+          aria-label="Search"
+          autocomplete="off"
+          id="query"
+          name="query"
+          placeholder=""
+          type="search"
+        />
+      </div>
+    </header>
+    <section
+      class="search-results"
     >
-      <label
-        class="semi-bold"
-        for="productSearchFilter"
+      <div
+        class="search-filter"
       >
-        filter
-      </label>
-      <select
-        class="col-md-3 input-small"
-        id="productSearchFilter"
-      >
-        <option
-          value="one"
+        <label
+          class="semi-bold"
+          for="productSearchFilter"
         >
-          Option 1
-        </option>
-        <option
-          value="two"
+          filter
+        </label>
+        <select
+          class="col-md-3 input-small"
+          id="productSearchFilter"
         >
-          Option 2
-        </option>
-      </select>
-    </div>
-    
-    <span
-      aria-hidden="true"
-      class="loading-animation loading-animation-sm"
-    />
+          <option
+            value="one"
+          >
+            Option 1
+          </option>
+          <option
+            value="two"
+          >
+            Option 2
+          </option>
+        </select>
+      </div>
+      
+      <span
+        aria-hidden="true"
+        class="loading-animation loading-animation-sm"
+      />
+    </section>
   </div>
 </div>
 `;
