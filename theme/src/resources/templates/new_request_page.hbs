@@ -105,9 +105,9 @@
 				function(index, item) {
 					var id = item.id;
 
-					// Check for Nested Fields whose id is null
+					// Set Nested Field id to match its label value
 
-					if (id === 'null') {
+					if (!id.startsWith('prd')) {
 						id = 'prd_' + item.innerText.toLowerCase().replace(' ', '_');
 					}
 
