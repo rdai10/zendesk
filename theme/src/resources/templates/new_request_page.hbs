@@ -107,7 +107,7 @@
 
 					// Set Nested Field id to match its label value
 
-					if (!id.startsWith('prd')) {
+					if (id.search('prd') === -1) {
 						id = 'prd_' + item.innerText.toLowerCase().replace(' ', '_');
 					}
 
