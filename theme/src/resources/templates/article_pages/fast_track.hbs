@@ -4,6 +4,21 @@
 	#resolution *:not(h2) {
 		display: none;
 	}
+
+	#resolution h2:after {
+		content: "Dolor sit amet, consectetur adipiscing elit. Phasellus augue ligula, congue ornare sagittis ut, cursus vel tellus. Pellentesque posuere magna felis.";
+		display: block;
+		filter: blur(4px);
+		font-size: 1rem;
+		font-weight: normal;
+		line-height: 1.5rem;
+		opacity: 0.6;
+		padding-top: 0.5rem;
+	}
+
+	.article-body .gate-signin-prompt {
+		display: block;
+	}
   </style>
 {{/is}}
 
@@ -62,6 +77,19 @@
 				<section class="article-content">
 					<div class="article-body">
 						{{body}}
+
+						<div class="gate-signin-prompt">
+							<div class="small-title">
+								{{dc 'article-exclusive_content'}}
+							</div>
+							<div class="gate-prompt-description">
+								{{dc 'article-exclusive_content_help_center_description'}}
+							</div>
+
+							{{#link 'sign_in' class="btn btn-primary btn-sm"}}
+								{{dc 'homepage-sign_in'}}
+							{{/link}}
+						</div>
 					</div>
 
 					<div class="article-attachments">

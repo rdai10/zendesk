@@ -57,6 +57,8 @@
 }
 
 .article-content {
+	padding-bottom: 2.5rem;
+
 	h2,
 	h3,
 	h4 {
@@ -113,7 +115,6 @@
 
 .article-footer {
 	padding-bottom: 4rem;
-	padding-top: 2.5rem;
 
 	.article-label {
 		background-color: $color-grey;
@@ -309,6 +310,19 @@
 
 .article-title {
 	margin-bottom: $margin-default;
+}
+
+.gate-signin-prompt {
+	background-color: $color-grey;
+	border-radius: $border-radius;
+	display: none;
+	margin-top: -0.5rem;
+	padding: 3rem;
+	text-align: center;
+
+	.gate-prompt-description {
+		margin: 0.5rem 0 $margin-md;
+	}
 }
 
 .meta-group {
