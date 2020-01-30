@@ -156,3 +156,27 @@
 		}
 	});
 </script>
+
+{{#is signed_in false}}
+  <script>
+	  const additionalInformationNode = document.getElementById('additionalInformation');
+
+	  if (additionalInformationNode) {
+		  additionalInformationNode.remove();
+	  }
+
+	  const resolutionNode = document.getElementById('resolution');
+
+	  if (resolutionNode) {
+		  const resolutionChildren = resolutionNode.children;
+
+		 Array.from(resolutionChildren).forEach(
+			 child => {
+				 if (child.tagName !== 'H2') {
+					 child.remove();
+				 }
+			 }
+		 )
+	  }
+  </script>
+{{/is}}
