@@ -112,21 +112,23 @@
 					</div>
 				</section>
 
-				<footer class="article-footer">
-					<div class="article-votes">
-						<span class="article-votes-question small-title">{{t 'was_this_article_helpful'}}</span>
+				{{#is ../signed_in true}}
+					<footer class="article-footer">
+						<div class="article-votes">
+							<span class="article-votes-question small-title">{{t 'was_this_article_helpful'}}</span>
 
-						<div class="article-votes-controls" role='radiogroup'>
-							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-md btn-outline-primary'}}
+							<div class="article-votes-controls" role='radiogroup'>
+								{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-md btn-outline-primary'}}
 
-							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-md btn-outline-primary'}}
+								{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-md btn-outline-primary'}}
+							</div>
+
+							<small class="article-votes-count">
+								{{vote 'label' class='article-vote-label'}}
+							</small>
 						</div>
-
-						<small class="article-votes-count">
-							{{vote 'label' class='article-vote-label'}}
-						</small>
-					</div>
-				</footer>
+					</footer>
+				{{/is}}
 			</div>
 		</div>
 	{{/with}}
