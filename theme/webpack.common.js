@@ -112,6 +112,7 @@ module.exports = {
 					'button-unstyled',
 					'expanded',
 					'*gate-signin-prompt*',
+					'*gated*',
 					'*initiative*',
 					'*loading-animation*',
 					'nav-card',
