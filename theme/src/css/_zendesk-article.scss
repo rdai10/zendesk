@@ -332,8 +332,19 @@
 	padding: 3rem;
 	text-align: center;
 
+	.external-link-prompt {
+		display: block;
+		font-size: $h5-font-size;
+		margin-top: 0.625rem;
+	}
+
 	.gate-prompt-description {
 		margin: 0.5rem 0 $margin-md;
+	}
+
+	.icon {
+		height: 0.625rem;
+		width: 0.625rem;
 	}
 }
 
