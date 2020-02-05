@@ -58,13 +58,27 @@
 							<div class="small-title">
 								{{dc 'article-exclusive_content'}}
 							</div>
-							<div class="gate-prompt-description">
-								{{dc 'article-exclusive_content_subscription_description'}}
-							</div>
 
-							{{#link 'sign_in' class="btn btn-primary btn-sm"}}
-								{{dc 'homepage-sign_in'}}
-							{{/link}}
+							{{#is ../signed_in false}}
+								<div class="gate-prompt-description login-required">
+									{{dc 'article-exclusive_content_subscription_description'}}
+								</div>
+
+								{{#link 'sign_in' class="btn btn-primary btn-sm"}}
+									{{dc 'homepage-sign_in'}}
+								{{/link}}
+							{{else}}
+								<div class="gate-prompt-description subscription-required">
+									{{dc 'article-exclusive_content_requirement'}}
+
+									<a class="external-link-prompt" href="https://www.liferay.com/subscription-services">
+										{{dc 'article-exclusive_content_cta'}}
+										<svg class="icon">
+											<use xlink:href="#external-link" />
+										</svg>
+									</a>
+								</div>							
+							{{/is}}
 						</div>
 					</div>
 
