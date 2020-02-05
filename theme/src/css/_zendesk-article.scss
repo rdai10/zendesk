@@ -32,13 +32,13 @@
 // Gated content
 
 #resolution.gated h2:after {
-	content: "Dolor sit amet, consectetur adipiscing elit. Phasellus augue ligula, congue ornare sagittis ut, cursus vel tellus. Pellentesque posuere magna felis.";
+	content: "Dolor sit amet, consectetur adipiscing elit. Phasellus augue ligula, congue ornare sagittis ut, cursus vel tellus. Dolor sit amet, consectetur adipiscing elit. Phasellus augue ligula.";
 	display: block;
-	filter: blur(4px);
+	filter: blur(3px);
 	font-size: 1rem;
 	font-weight: normal;
 	line-height: 1.5rem;
-	opacity: 0.6;
+	opacity: 0.5;
 	padding-top: 0.5rem;
 }
 
