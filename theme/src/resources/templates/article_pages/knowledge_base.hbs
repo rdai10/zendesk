@@ -177,7 +177,7 @@
 			const additionalInformationNode = document.getElementById('additionalInformation');
 
 			if (additionalInformationNode) {
-			  additionalInformationNode.remove();
+			  additionalInformationNode.parentNode.removeChild(additionalInformationNode);
 	  		}
 
 	  		const resolutionNode = document.getElementById('resolution');
@@ -188,7 +188,7 @@
 				 Array.from(resolutionChildren).forEach(
 					child => {
 					if (child.tagName !== 'H2') {
-						child.remove();
+						child.parentNode.removeChild(child);
 					}
 			 	})
 
