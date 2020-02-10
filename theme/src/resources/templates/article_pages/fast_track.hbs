@@ -189,15 +189,15 @@
 	  		if (resolutionNode) {
 				const resolutionChildren = resolutionNode.children;
 
-				Array.from(resolutionChildren).forEach(
-					function(child) {
-						if (child.tagName !== 'H2') {
-							child.parentNode.removeChild(child);
-						}
-					}
-				)
+				for (let i = 0; i < resolutionChildren.length; i++) {
+					const child = resolutionChildren.item(i);
 
-				 resolutionNode.classList.add('gated');
+					if (child.tagName !== 'H2') {
+						child.parentNode.removeChild(child);
+					}
+				}
+
+				resolutionNode.classList.add('gated');
 	  		}
 
 			const gateSigninPrompt = document.querySelector('.gate-signin-prompt');
