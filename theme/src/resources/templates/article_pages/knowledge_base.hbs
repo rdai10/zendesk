@@ -185,12 +185,13 @@
 	  		if (resolutionNode) {
 				const resolutionChildren = resolutionNode.children;
 
-				 Array.from(resolutionChildren).forEach(
-					child => {
-					if (child.tagName !== 'H2') {
-						child.parentNode.removeChild(child);
+				Array.from(resolutionChildren).forEach(
+					function(child) {
+						if (child.tagName !== 'H2') {
+							child.parentNode.removeChild(child);
+						}
 					}
-			 	})
+				)
 
 				 resolutionNode.classList.add('gated');
 	  		}
