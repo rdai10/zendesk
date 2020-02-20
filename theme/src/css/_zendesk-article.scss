@@ -29,19 +29,6 @@
 	}
 }
 
-// Gated content
-
-#resolution.gated h2:after {
-	content: "Dolor sit amet, consectetur adipiscing elit. Phasellus augue ligula, congue ornare sagittis ut, cursus vel tellus. Dolor sit amet, consectetur adipiscing elit. Phasellus augue ligula.";
-	display: block;
-	filter: blur(3px);
-	font-size: 1rem;
-	font-weight: normal;
-	line-height: 1.5rem;
-	opacity: 0.5;
-	padding-top: 0.5rem;
-}
-
 #systemStatusBanner {
 	margin-top: $margin-md;
 }
@@ -328,9 +315,9 @@
 .gate-signin-prompt {
 	background-color: $color-grey;
 	border-radius: $border-radius;
+	border-top: 2px solid $secondary-text-color;
 	margin-top: -0.5rem;
 	padding: 3rem;
-	text-align: center;
 
 	.external-link-prompt {
 		display: block;
