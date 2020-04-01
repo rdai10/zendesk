@@ -27,10 +27,21 @@
 		const userTags = window.HelpCenter.user.tags;
 
 		const documentElementLang = document.documentElement.lang;
+		
+		var alertChildren = null;
+  
+		if ('{{help_center.locale}}' === 'ja') {
+			alertChildren = {
+					children: '{{dc 'commerce-japanese_banner_description'}}',
+					linkText: '{{dc 'commerce-japanese_banner_cta'}}',
+  				url: "/hc/ja/categories/360002946411"
+				};
+  }
 
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
+				alert: alertChildren,
 				fullAccess: Liferay.hasKBPermission(userTags),
 				productItems: [
 					{
