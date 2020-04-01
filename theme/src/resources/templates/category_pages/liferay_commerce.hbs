@@ -26,11 +26,20 @@
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
 
-		const documentElementLang = document.documentElement.lang;
-
+		 var alertChildren = null;
+  
+		if ('{{help_center.locale}}' === 'ja') {
+			alertChildren = {
+					children: '{{dc 'commerce-japanese_banner_description'}}',
+					linkText: '{{dc 'commerce-japanese_banner_cta'}}',
+  				url: "hc/articles/360016295472"
+				};
+  }
+  
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
+  				alert: alertChildren,
 				fullAccess: Liferay.hasKBPermission(userTags),
 				productItems: [
 					{
