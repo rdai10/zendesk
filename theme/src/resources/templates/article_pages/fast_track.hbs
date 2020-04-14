@@ -82,7 +82,7 @@
 						</div>
 					</div>
 
-					<div class="article-attachments">
+					<div class="article-attachments d-none">
 						<ul class="attachments">
 							{{#each ../attachments}}
 								<li class="attachment-item">
@@ -129,6 +129,12 @@
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasKBPermission(userTags)) {
+			const articleAttachments = document.querySelector('.article-attachments');
+
+			if (articleAttachments) {
+				articleAttachments.classList.remove('d-none');
+			}
+
 			const articleFooter = document.querySelector('.article-footer');
 
 			if (articleFooter) {
