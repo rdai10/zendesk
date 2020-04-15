@@ -51,10 +51,37 @@
 				<div class="article-content">
 					<section class="article-body">
 						{{body}}
+
+						<div class="d-none gate-signin-prompt">
+							<div class="small-title">
+								{{dc 'article-exclusive_content'}}
+							</div>
+
+							{{#is ../signed_in false}}
+								<div class="gate-prompt-description login-required">
+									{{dc 'article-exclusive_content_subscription_description'}}
+								</div>
+
+								{{#link 'sign_in' class="btn btn-primary btn-sm"}}
+									{{dc 'homepage-sign_in'}}
+								{{/link}}
+							{{else}}
+								<div class="gate-prompt-description subscription-required">
+									{{dc 'article-exclusive_content_requirement'}}
+
+									<a class="external-link-prompt" href="https://www.liferay.com/subscription-services">
+										{{dc 'article-exclusive_content_cta'}}
+										<svg class="icon">
+											<use xlink:href="#external-link" />
+										</svg>
+									</a>
+								</div>							
+							{{/is}}
+						</div>
 					</section>
 				</div>
 
-				<footer class="article-footer">
+				<footer class="article-footer d-none">
 					<div class="article-votes">
 						<span class="article-votes-question small-title">{{t 'was_this_article_helpful'}}</span>
 
@@ -81,6 +108,12 @@
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasKBPermission(userTags)) {
+			const articleFooter = document.querySelector('.article-footer');
+
+			if (articleFooter) {
+				articleFooter.classList.remove('d-none');
+			}
+
 			Liferay.render(
 				Liferay.CallToAction,
 				{
@@ -123,6 +156,34 @@
 				},
 				document.getElementById('stillNeedHelp')
 			);
+		} else {
+			const additionalInformationNode = document.getElementById('additionalInformation');
+
+			if (additionalInformationNode) {
+			  additionalInformationNode.parentNode.removeChild(additionalInformationNode);
+	  		}
+
+	  		const resolutionNode = document.getElementById('resolution');
+
+	  		if (resolutionNode) {
+				const resolutionChildren = resolutionNode.children;
+
+				for (let i = 0; i < resolutionChildren.length; i++) {
+					const child = resolutionChildren.item(i);
+
+					if (child.tagName !== 'H2') {
+						child.parentNode.removeChild(child);
+					}
+				}
+
+				resolutionNode.classList.add('gated');
+	  		}
+
+			const gateSigninPrompt = document.querySelector('.gate-signin-prompt');
+
+			if (gateSigninPrompt) {
+				gateSigninPrompt.classList.remove('d-none');
+			}
 		}
 	});
 </script>
