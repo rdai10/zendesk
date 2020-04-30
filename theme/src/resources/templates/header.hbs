@@ -583,11 +583,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		if (Liferay.hasKBPermission(userTags)) {
 			// Display Notification
 
-			const headerNotification = document.querySelector('.header-notification');
-
 			if (sessionStorage.getItem('showSecurityNotification') === null) {
 				sessionStorage.setItem('showSecurityNotification', true);
 			}
+
+			const headerNotification = document.querySelector('.header-notification');
 
 			if (headerNotification && sessionStorage.getItem('showSecurityNotification') === 'true') {
 				headerNotification.classList.remove('d-none');
