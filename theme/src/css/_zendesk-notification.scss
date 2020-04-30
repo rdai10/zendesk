@@ -2,8 +2,8 @@
 	margin-right: 0.3125rem;
 }
 
-.header-notification,
-.notification {
+.notification,
+.site-wide-notification {
 	@include border-radius(0);
 
 	border-width: 0 0 1px;
@@ -14,30 +14,6 @@
 		&:before {
 			line-height: 1.125rem;
 		}
-	}
-}
-
-.header-notification {
-	display: flex;
-	justify-content: space-between;
-	padding: $padding-md;
-
-	a,
-	.notification-title {
-		font-weight: $font-weight-semi-bold;
-	}
-
-	button {
-		padding: $padding-default;
-	}
-
-	.icon {
-		vertical-align: top;
-	}
-
-	.notification-content {
-		display: inline-block;
-		padding-left: $padding-default;
 	}
 }
 
@@ -89,5 +65,29 @@
 		&:before {
 			color: $color-info;
 		}
+	}
+}
+
+.site-wide-notification {
+	display: flex;
+	justify-content: space-between;
+	padding: $padding-md;
+
+	a,
+	.notification-title {
+		font-weight: $font-weight-semi-bold;
+	}
+
+	button {
+		padding: $padding-default;
+	}
+
+	.icon {
+		vertical-align: top;
+	}
+
+	.notification-content {
+		display: inline-block;
+		padding-left: $padding-default;
 	}
 }
