@@ -440,6 +440,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </svg>
 
 <header class="header" id="header">
+	{{#if signed_in}}
+		<div class="d-none site-wide-notification notification-error" id="siteWideNotification">
+			<div>
+				<svg class="icon" fill="none" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6562 2.34375C12.1465 0.831299 10.1377 0 8 0C5.8623 0 3.85352 0.831299 2.34375 2.34375C0.831055 3.85315 0 5.86255 0 8C0 10.1375 0.831055 12.1469 2.34375 13.6562C3.85645 15.1687 5.8623 16 8 16C10.1377 16 12.1465 15.1687 13.6562 13.6562C15.1689 12.1438 16 10.1375 16 8C16 5.86255 15.1689 3.85315 13.6562 2.34375ZM9 12C9 12.5531 8.55273 13 8 13C7.44727 13 7 12.5531 7 12V7C7 6.4469 7.44727 6 8 6C8.55273 6 9 6.4469 9 7V12ZM7 4C7 4.5531 7.44727 5 8 5C8.55273 5 9 4.5531 9 4C9 3.4469 8.55273 3 8 3C7.44727 3 7 3.4469 7 4Z" fill="#DA1414"/>
+				</svg>
+
+				<div class="notification-content">
+					<div class="notification-title">
+						{{dc 'security_alerts'}}
+					</div>
+				 
+					<div>
+						{{dc 'lsv_658_description'}}
+
+						<a href="/hc/articles/360020526952">
+							{{dc 'view_details'}}
+						</a>
+					</div>
+
+					<div>
+						{{dc 'lsv_675_description'}}
+
+						<a href="/hc/articles/360020526952">
+							{{dc 'view_details'}}
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<button class="btn btn-unstyled" id="closeNotification" type="button">
+				<svg fill="none" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+					<g clip-path="url(#clip0)">
+						<path d="M9.40877 8.00326L15.6963 1.71576C16.6369 0.775132 15.1713 -0.584243 14.2838 0.303257L7.99627 6.58763L1.70565 0.303257C0.768148 -0.637368 -0.594352 0.828257 0.293148 1.71576L6.58065 8.00326L0.290023 14.2908C-0.613102 15.1939 0.783773 16.622 1.70252 15.7033L7.99315 9.41576L14.2838 15.7033C15.1869 16.6064 16.6025 15.1939 15.6963 14.2908L9.40877 8.00326Z" fill="#DA1414"/>
+					</g>
+					<defs>
+						<clipPath id="clip0">
+							<path d="M0 0H16V16H0V0Z" fill="white"/>
+						</clipPath>
+					</defs>
+				</svg>
+			</button>
+		</div>
+	{{/if}}
+
 	<div class="container-fluid container-fluid-max-xl">
 		<div class="header-inner row">
 			<div class="col-3 header-content">
