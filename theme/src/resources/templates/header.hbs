@@ -588,6 +588,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			if (siteWideNotification) {
 				// TODO: abstract site wide notification into its own module after LHC-2273
 
+				const initialBannerHeight = 414;
+				const initialMainContentOffset = 56;
+
 				if (sessionStorage.getItem('showSiteWideNotification') === null) {
 					sessionStorage.setItem('showSiteWideNotification', 'true');
 				}
@@ -597,16 +600,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 					// Layout Updates
 
+					const notificationHeight = siteWideNotification.offsetHeight;
+
 					const banner = document.querySelector('.homepage .banner');
 
 					if (banner) {
-						banner.setAttribute("style", "min-height: 505px;padding-top: 6rem;");
+						const newBannerStyle = 'min-height: ' + (initialBannerHeight + notificationHeight) + 'px; padding-top: ' + notificationHeight + 'px;';
+
+						banner.setAttribute("style", newBannerStyle);
 					}
 
 					const mainContent = document.querySelector('.main-content');
 
 					if (mainContent) {
-						mainContent.setAttribute("style", "margin-top: 9.5rem;")
+						const newContentStyle = 'margin-top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
+
+						mainContent.setAttribute("style", newContentStyle);
 					}
 
 					// Closing Notification
@@ -617,6 +626,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						closeNotification.addEventListener('click',
 						function(event) {
 							siteWideNotification.classList.add('d-none');
+
+							// Layout Updates
+
+							if (banner) {
+								banner.setAttribute("style", 'min-height: ' + initialBannerHeight + 'px;');
+							}
+
+							if (mainContent) {
+								mainContent.setAttribute("style", 'margin-top: ' + initialMainContentOffset + 'px;');
+							}
 
 							sessionStorage.setItem('showSiteWideNotification', 'false');
 						})
