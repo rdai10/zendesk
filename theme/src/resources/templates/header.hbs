@@ -619,16 +619,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					}
 
 					const megaMenu = document.querySelectorAll('.header-menu');
+					const newMegaMenuStyle = 'top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
 
-					if (megaMenu) {
-						const newMegaMenuStyle = 'top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
-
-						megaMenu.forEach(
-							function(menu) {
-								menu.setAttribute('style', newMegaMenuStyle);
-							}
-						)
-					}
+					megaMenu.forEach(
+						function(menu) {
+							menu.setAttribute('style', newMegaMenuStyle);
+						}
+					)
 
 					// Closing Notification
 
@@ -648,14 +645,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							if (mainContent) {
 								mainContent.setAttribute('style', 'margin-top: ' + initialMainContentOffset + 'px;');
 							}
-
-							if (megaMenu) {
-								megaMenu.forEach(
-									function(menu) {
-										menu.setAttribute('style', 'top: ' + initialMainContentOffset + 'px;');
-									}
-								)
-							}
+							
+							megaMenu.forEach(
+								function(menu) {
+									menu.setAttribute('style', 'top: ' + initialMainContentOffset + 'px;');
+								}
+							)
 
 							sessionStorage.setItem('showSiteWideNotification', 'false');
 						})
