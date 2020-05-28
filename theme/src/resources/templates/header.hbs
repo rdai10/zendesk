@@ -618,6 +618,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						mainContent.setAttribute("style", newContentStyle);
 					}
 
+					const megaMenu = document.querySelectorAll('.header-menu');
+
+					if (megaMenu) {
+						const newMegaMenuStyle = 'top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
+
+						megaMenu.forEach(
+							function(menu) {
+								menu.setAttribute("style", newMegaMenuStyle);
+							}
+						)
+					}
+
 					// Closing Notification
 
 					const closeNotification = document.getElementById('closeNotification');
@@ -635,6 +647,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 							if (mainContent) {
 								mainContent.setAttribute("style", 'margin-top: ' + initialMainContentOffset + 'px;');
+							}
+
+							if (megaMenu) {
+								megaMenu.forEach(
+									function(menu) {
+										menu.setAttribute("style", 'top: ' + initialMainContentOffset + 'px;');
+									}
+								)
 							}
 
 							sessionStorage.setItem('showSiteWideNotification', 'false');
