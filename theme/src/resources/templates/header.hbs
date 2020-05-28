@@ -607,7 +607,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					if (banner) {
 						const newBannerStyle = 'min-height: ' + (initialBannerHeight + notificationHeight) + 'px; padding-top: ' + notificationHeight + 'px;';
 
-						banner.setAttribute("style", newBannerStyle);
+						banner.setAttribute('style', newBannerStyle);
 					}
 
 					const mainContent = document.querySelector('.main-content');
@@ -615,7 +615,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					if (mainContent) {
 						const newContentStyle = 'margin-top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
 
-						mainContent.setAttribute("style", newContentStyle);
+						mainContent.setAttribute('style', newContentStyle);
 					}
 
 					const megaMenu = document.querySelectorAll('.header-menu');
@@ -625,7 +625,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 						megaMenu.forEach(
 							function(menu) {
-								menu.setAttribute("style", newMegaMenuStyle);
+								menu.setAttribute('style', newMegaMenuStyle);
 							}
 						)
 					}
@@ -642,17 +642,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							// Layout Updates
 
 							if (banner) {
-								banner.setAttribute("style", 'min-height: ' + initialBannerHeight + 'px;');
+								banner.setAttribute('style', 'min-height: ' + initialBannerHeight + 'px;');
 							}
 
 							if (mainContent) {
-								mainContent.setAttribute("style", 'margin-top: ' + initialMainContentOffset + 'px;');
+								mainContent.setAttribute('style', 'margin-top: ' + initialMainContentOffset + 'px;');
 							}
 
 							if (megaMenu) {
 								megaMenu.forEach(
 									function(menu) {
-										menu.setAttribute("style", 'top: ' + initialMainContentOffset + 'px;');
+										menu.setAttribute('style', 'top: ' + initialMainContentOffset + 'px;');
 									}
 								)
 							}
