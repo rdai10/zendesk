@@ -11,11 +11,6 @@ export {default as render} from './helpers/preact-renderer';
 
 export {makeGETRequest} from './helpers/api-helpers';
 export {displayArticleSuggestion} from './helpers/article-suggestion';
-export {
-	gateArticle,
-	showArticleAttachments,
-	showArticleFooter
-} from './helpers/gated-content';
 export {addLocaleParamToURI} from './helpers/locale-conversion';
 export {
 	hasCreateTicketPermission,
