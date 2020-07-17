@@ -267,7 +267,7 @@
 		font-size: $font-size-sm;
 	}
 
-	.form-field {
+	.form-field.required {
 		> label[for]::after {
 			color: $color-error;
 			content: " *";
