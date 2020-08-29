@@ -5,29 +5,18 @@ shopt -s globstar nullglob
 
 function add_product_page_tempate {
 	pushd src/resources/templates/category_pages/ >/dev/null
-		declare -a portal_products
+	 
+	# Zendesk currently only allows for a max of 10 templates
+	count=$(find . -type f | wc -l)
 
-		for name in liferay_portal*
-		do
-			portal_products+=("$name")
-		done
+	if [ "$count" == 10 ]; then
+		local portal_products=(liferay_portal*)
+		mv "${portal_products[0]}" liferay_"$1".hbs
+	else
+		local dxp_products=(liferay_dxp*)
+		cp "${dxp_products[0]}" liferay_"$1".hbs
+	fi
 
-		declare -a dxp_products
-
-		for name in liferay_dxp*
-		do
-			dxp_products+=("$name")
-		done
-
-		count=$(find . -type f | wc -l)
-
-		# Zendesk currently only allows for a max of 10 templates
-
-		if [ "$count" == 10 ]; then
-			mv "${portal_products[0]}" liferay_"$1".hbs
-		else
-			cp "${dxp_products[0]}" liferay_"$1".hbs
-		fi
 	popd >/dev/null
 }
 
