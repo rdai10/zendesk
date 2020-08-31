@@ -104,7 +104,7 @@
 	"private": true,
 	"scripts": {
 		"build": "webpack --config webpack.prod.js",
-		"build:dev": "webpack --mode=development --config webpack.common.js --watch",
+		"build:dev": "webpack --mode=development --config webpack.common.js",
 		"format": "prettier --write '*.md' 'documentation/*.md' 'src/js/**/*.js'",
 		"test": "jest",
 		"zip": "zip -r Liferay-Help-Center.zip dist -x *.zat*"
