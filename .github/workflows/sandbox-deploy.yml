@@ -1,0 +1,24 @@
+name: Sandbox Deploy
+on:
+  push:
+    branches:
+      - sandbox
+jobs:
+  build_and_deploy:
+    container: node:13
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies and Build
+        run: |
+          npm ci
+          npm run build:dev --if-present
+        working-directory: ./theme
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: sandbox-deploy
+          publish_dir: ./theme/dist
