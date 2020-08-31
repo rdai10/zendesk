@@ -8,11 +8,14 @@ jobs:
     container: node:13
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
       - uses: actions/checkout@v2
+        with:
+          ref: sandbox
 
       - name: Install Dependencies and Build
         run: |
-          npm ci
+          npm ci &&
           npm run build:dev --if-present
         working-directory: ./theme
 
