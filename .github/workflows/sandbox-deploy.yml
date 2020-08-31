@@ -13,10 +13,12 @@ jobs:
         with:
           ref: sandbox
 
-      - name: Install Dependencies and Build
-        run: |
-          npm ci
-          npm run build:dev
+      - name: Install Dependencies
+        run: npm ci
+        working-directory: ./theme
+
+      - name: Build
+        run: npm run build:dev
         working-directory: ./theme
 
       - name: Deploy
