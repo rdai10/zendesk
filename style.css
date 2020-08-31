@@ -6465,7 +6465,7 @@ textarea,.upload-dropzone {
 
 .request-form .form-field.required > label[for]::after {
   color: #DA1414;
-  content: " *";
+  content: ' *';
 }
 
 .request-form .suggestion-list {
