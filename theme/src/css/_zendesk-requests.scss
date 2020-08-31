@@ -275,7 +275,7 @@
 		&.required {
 			> label[for]::after {
 				color: $color-error;
-				content: ' *';
+				content: " *";
 			}
 		}
 	}

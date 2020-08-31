@@ -131,6 +131,7 @@ module.exports = {
 					'sidenav-fallback',
 					'sidenav-tree',
 					'status-label-answered',
+					'string',
 					'*submenu*',
 					'*suggestion-list*',
 					'#systemStatusBanner',
