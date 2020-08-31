@@ -6463,9 +6463,13 @@ textarea,.upload-dropzone {
   font-size: 0.875rem;
 }
 
+.request-form .form-field.string p {
+  color: #5B6170;
+}
+
 .request-form .form-field.required > label[for]::after {
   color: #DA1414;
-  content: ' *';
+  content: " *";
 }
 
 .request-form .suggestion-list {
