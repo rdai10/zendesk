@@ -267,10 +267,16 @@
 		font-size: $font-size-sm;
 	}
 
-	.form-field.required {
-		> label[for]::after {
-			color: $color-error;
-			content: " *";
+	.form-field {
+		&.string p {
+			color: $secondary-text-color;
+		}
+
+		&.required {
+			> label[for]::after {
+				color: $color-error;
+				content: ' *';
+			}
 		}
 	}
 
