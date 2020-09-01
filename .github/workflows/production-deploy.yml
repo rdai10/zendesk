@@ -1,0 +1,29 @@
+name: Production Deploy
+on:
+  push:
+    branches:
+      - release
+jobs:
+  build_and_deploy:
+    container: node:13
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: release
+
+      - name: Install Dependencies
+        run: npm ci
+        working-directory: ./theme
+
+      - name: Build
+        run: npm run build
+        working-directory: ./theme
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: release-deploy
+          publish_dir: ./theme/dist
