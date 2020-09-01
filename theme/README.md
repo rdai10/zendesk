@@ -55,6 +55,8 @@ To go into the theme workbench interface, sign into _Zendesk Guid_ as an admin, 
 -   For uploading to production, enter the branch name, `release-deploy`, in the second field.
 -   Click _Import_ to complete process.
 
+Once a theme has been imported via github, it can be easily updated by clicking on the three-dot icon on the Live Theme and select _Update from Github_. Simply keep the theme settings checkbox checked and click on _Update_.
+
 ## Browser Support
 
 -   [Browser support list](http://browserl.ist/?q=>0.25%25%2C+ie+11%2C+not+op_mini+all).
