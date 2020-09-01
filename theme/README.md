@@ -36,10 +36,29 @@ Ruby's official site has a clear [instruction page](https://www.ruby-lang.org/en
 -   `npm run format` to format files.
 -   `npm run zip` to zip the theme files, which can be imported into Zendesk.
 
+## Release Theme on Zendesk
+
+There are two ways to release a new theme on Zendesk. Either by uploading a zipped theme or import the theme via github.
+
+To go into the theme workbench interface, sign into _Zendesk Guid_ as an admin, then go into _Custom Design_.
+
+### Upload Zip
+
+-   Click on _Add Theme_ and select _Import Theme_.
+-   Choose the zipped file and upload.
+
+### Import from Github
+
+-   Click on _Add Theme_ and select _Add from Github_
+-   Enter `rdai10/zendesk` in the first field.
+-   For uploading to sandbox, enter the branch name `sandbox-deploy` in the second field.
+-   For uploading to production, enter the branch name `release-deploy` in the second field.
+-   Click _Import_ to complete process.
+
 ## Browser Support
 
 -   [Browser support list](http://browserl.ist/?q=>0.25%25%2C+ie+11%2C+not+op_mini+all).
 
 ## Project Documentation
 
-Project documentation is in the [documentation folder](/documentation).
+See more information relating to the project, go to [documentation folder](/documentation).
