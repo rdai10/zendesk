@@ -9,10 +9,6 @@
 	cursor: not-allowed;
 }
 
-#request_organization_id_hint {
-	margin-top: $padding-sm;
-}
-
 .attachment-meta {
 	padding-left: $lexicon-icon-width;
 }
@@ -125,12 +121,6 @@
 
 	textarea {
 		height: $input-textarea-height;
-	}
-
-	#request_description_hint {
-		color: $secondary-text-color;
-		font-size: $small-font-size;
-		margin-top: 0.25rem;
 	}
 
 	.comment-form-controls {
@@ -267,16 +257,18 @@
 		font-size: $font-size-sm;
 	}
 
-	.form-field {
-		&.string p {
-			color: $secondary-text-color;
-		}
+	#request_description_hint,
+	#request_organization_id_hint,
+	.form-field.string p {
+		color: $secondary-text-color;
+		font-size: $small-font-size;
+		margin-top: $padding-sm;
+	}
 
-		&.required {
-			> label[for]::after {
-				color: $color-error;
-				content: " *";
-			}
+	.form-field.required {
+		> label[for]::after {
+			color: $color-error;
+			content: " *";
 		}
 	}
 
