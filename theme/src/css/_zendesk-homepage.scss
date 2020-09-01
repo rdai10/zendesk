@@ -103,7 +103,18 @@
 	}
 
 	.suggested-topics-overflow {
+		display: flex;
 		padding: 0;
+	}
+
+	.title-label {
+		background-color: $color-success-background;
+		border-radius: $border-radius;
+		color: $color-success;
+		font-size: $small-font-size;
+		font-weight: $font-weight-semi-bold;
+		padding: $btn-padding-y-sm $btn-padding-y;
+		text-transform: uppercase;
 	}
 
 	.toggle-overflow-topics {
