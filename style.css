@@ -6329,12 +6329,6 @@ textarea,.upload-dropzone {
   height: 150px;
 }
 
-.comment-form #request_description_hint,.request-form #request_description_hint {
-  color: #5B6170;
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-}
-
 .comment-form .comment-form-controls,.request-form .comment-form-controls {
   display: flex;
   float: right;
@@ -6463,8 +6457,10 @@ textarea,.upload-dropzone {
   font-size: 0.875rem;
 }
 
-.request-form .form-field.string p {
+.request-form #request_description_hint,.request-form .form-field.string p {
   color: #5B6170;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
 }
 
 .request-form .form-field.required > label[for]::after {
