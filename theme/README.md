@@ -38,7 +38,7 @@ Ruby's official site has a clear [instruction page](https://www.ruby-lang.org/en
 
 ## Release Theme on Zendesk
 
-There are two ways to release a new theme on Zendesk. Either by uploading a zipped theme or import the theme via github.
+There are two ways to release a new theme on Zendesk. Either by uploading a zipped theme or by importing the theme via github.
 
 To go into the theme workbench interface, sign into _Zendesk Guid_ as an admin, then go into _Custom Design_.
 
@@ -49,10 +49,10 @@ To go into the theme workbench interface, sign into _Zendesk Guid_ as an admin, 
 
 ### Import from Github
 
--   Click on _Add Theme_ and select _Add from Github_
+-   Click on _Add Theme_ and select _Add from Github_.
 -   Enter `rdai10/zendesk` in the first field.
--   For uploading to sandbox, enter the branch name `sandbox-deploy` in the second field.
--   For uploading to production, enter the branch name `release-deploy` in the second field.
+-   For uploading to sandbox, enter the branch name, `sandbox-deploy`, in the second field.
+-   For uploading to production, enter the branch name, `release-deploy`, in the second field.
 -   Click _Import_ to complete process.
 
 ## Browser Support
@@ -61,4 +61,4 @@ To go into the theme workbench interface, sign into _Zendesk Guid_ as an admin, 
 
 ## Project Documentation
 
-See more information relating to the project, go to [documentation folder](/documentation).
+More information regarding the project can be found in the [documentation folder](/documentation).
