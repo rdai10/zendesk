@@ -1,0 +1,344 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="d-none justify-content-sm-center row watcher-message">
+		<h1 class="col-sm-6">
+			{{dc 'we_are_sorry_but_you_do_not_have_access_to_submit_a_support_ticket'}}
+		</h1>
+	</div>
+
+	<div class="d-none">
+		<div class="row">
+			<div class="col-sm-12">
+				{{breadcrumbs}}
+			</div>
+		</div>
+
+		<div class="justify-content-sm-center row">
+			<div class="col-sm-6">
+				<h1>
+					{{t 'submit_a_request'}}
+				</h1>
+
+				<div class="request-form">
+					{{request_form}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	// In the DOM, ids represent a field whereas class of the same name is the wrapper for the corresponding field
+
+	$(function() {
+		// When a user does not belong to any organizations they cannot create tickets
+
+		if (!HelpCenter.user.organizations.length) {
+			return;
+		}
+
+		function addPrefixToOrgTags(tags) {
+			return tags.map(
+				function(tag) {
+					return 'prd_' + tag;
+				}
+			);
+		}
+
+		function mapInputValuesFromField(field) {
+			const dataset = JSON.parse(field.dataset.tagger);
+
+			const inputValues = dataset.map(
+				function(input) {
+					var val = input.value;
+
+					if (val === undefined) {
+						val = 'prd_' + input.label.toLowerCase().replace(' ', '_');
+					}
+
+					return val;
+				}
+			);
+
+			inputValues.shift();
+
+			return inputValues;
+		}
+
+		function matchProductComponents(product) {
+			var productMatch = productComponentsMapping.filter(
+				function(value) {
+					return product.match(value.product);
+				}
+			);
+
+			// Match again if more than one match was found
+
+			if (productMatch.length > 1) {
+				productMatch = productMatch.filter(
+					function(value) {
+						return ('prd_' + value.product) === product;
+					}
+				);
+			}
+
+			return productMatch[0];
+		}
+
+		function matchValueToTags(value, tags) {
+			return tags.some(
+				function(tag) {
+					return (value === tag);
+				}
+			);
+		}
+
+		function removeDropdownOptions(options, target) {
+			options.forEach(
+				function(option) {
+					target.children().remove('li#' + option);
+				}
+			);
+		}
+
+		function removeNestedDropdownOptions(option, target) {
+			target.children().each(
+				function(index, item) {
+					var id = item.id;
+
+					// Set Nested Field id to match its label value
+
+					if (id.indexOf('prd') === -1) {
+						id = 'prd_' + item.innerText.toLowerCase().replace(' ', '_');
+					}
+
+					if (id === option) {
+						$(item).hide();
+					}
+				}
+			);
+		}
+
+		const productComponentsMapping = [
+			{
+				components: [
+					'elasticsearch',
+					'learning_to_rank',
+					'monitoring',
+					'security'
+				],
+				product: 'enterprise_search'
+			},
+			{
+				components: [
+					'activation_key_project_administration',
+					'apis_integrations_and_extension_points',
+					'commerce_insights',
+					'configuration_and_settings',
+					'connector_to_punchout2go',
+					'connector_to_salesforce',
+					'digital_merchandise_management',
+					'digital_store_management',
+					'shopping_experience'
+				],
+				product: 'liferay_commerce'
+			},
+			{
+				components: [
+					'activation_key_project_administration',
+					'apio_architect',
+					'application_display_templates',
+					'audience_targeting',
+					'authentication',
+					'caching_clustering',
+					'calendar',
+					'collaboration_suite',
+					'deployment_environments',
+					'document_management',
+					'dynamic_data_mapping_data_lists',
+					'forms',
+					'liferay_api',
+					'localization',
+					'performance',
+					'portal_configuration',
+					'recycle_bin',
+					'reporting',
+					'search_indexing',
+					'search_engine_optimization_analytics',
+					'security',
+					'site_management',
+					'social_networking',
+					'staging_export_import',
+					'ui_infrastructure_accessibility',
+					'upgrade',
+					'user_membership_role_management',
+					'web_content',
+					'workflow_workflow_forms'
+				],
+				product: 'liferay_dxp'
+			},
+			{
+				components: [
+					'backup_recovery',
+					'connectivity',
+					'networking',
+					'system_availability',
+					'vpn'
+				],
+				product: 'liferay_dxp_cloud'
+			},
+			{
+				components: [
+					'activation_key_project_administration',
+					'authentication',
+					'caching_clustering',
+					'calendar',
+					'collaboration_suite',
+					'deployment_environments',
+					'document_management',
+					'liferay_api',
+					'liferay_sync',
+					'localization',
+					'patch_management',
+					'portal_developer_tools',
+					'search_indexing',
+					'security',
+					'staging_export_import',
+					'ui_infrastructure_accessibility',
+					'upgrade',
+					'user_membership_role_management',
+					'web_content',
+					'workflow_workflow_forms'
+				],
+				product: 'liferay_portal'
+			}
+		];
+
+		const componentInputField = document.getElementById('request_custom_fields_360011506832');
+		const productInputField = document.getElementById('request_custom_fields_360006076471');
+
+		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
+
+		// When a user belongs to only one organization
+
+		var currentOrgTags = HelpCenter.user.organizations[0].tags;
+
+		$('.nesty-panel').on(
+			'DOMNodeInserted',
+			function(event) {
+				const currentTarget = $(event.target);
+
+				// When a user belongs to multiple organizations, retrieve tags from the currently selected organization
+
+				if (currentOrgId) {
+					const currentOrg = HelpCenter.user.organizations.filter(
+						function(org) {
+							return org.name === currentOrgId.text;
+						}
+					)[0];
+
+					currentOrgTags = currentOrg.tags;
+				}
+
+				const prefixedOrgTags = addPrefixToOrgTags(currentOrgTags);
+
+				const productInputValues = mapInputValuesFromField(productInputField);
+
+				const removeProductDropdowns = productInputValues.filter(
+					function(value) {
+						return !matchValueToTags(value, prefixedOrgTags);
+					}
+				);
+
+				removeProductDropdowns.forEach(
+					function(option) {
+						removeNestedDropdownOptions(option, currentTarget);
+					}
+				);
+
+				const currentProduct = productInputField.value;
+
+				if (currentProduct) {
+					const match = matchProductComponents(currentProduct);
+
+					if (match) {
+						const componentOptions = match.components;
+
+						const componentInputValues = mapInputValuesFromField(componentInputField);
+
+						const removeComponentDropdowns = componentInputValues.filter(
+							function(value) {
+								return !matchValueToTags(value, componentOptions);
+							}
+						);
+
+						removeDropdownOptions(removeComponentDropdowns, currentTarget);
+					}
+				}
+			}
+		);
+
+		const orgSelectField = document.getElementById('request_organization_id');
+
+		if (orgSelectField) {
+			const productNestyInput = document.querySelector('.request_custom_fields_360006076471 .nesty-input');
+
+			if (productNestyInput) {
+				$(orgSelectField).change(
+					function() {
+						productNestyInput.textContent = '-';
+					}
+				);
+			}
+		}
+
+		// Append an element to render the article suggestions
+
+		$('.request_subject').append('<div id="articleSuggestionWrapper"></div>');
+
+		const setArticleSuggestionInnerHTML = function(html) {
+			const articleSuggestionWrapper = document.getElementById('articleSuggestionWrapper');
+
+			if (articleSuggestionWrapper) {
+				articleSuggestionWrapper.innerHTML = html;
+			}
+		}
+
+		// Custom article suggestion
+
+		const searchProductLabel = {
+			prd_liferay_analytics_cloud: 'Analytics Cloud',
+			prd_liferay_commerce: 'Commerce 1.0',
+			prd_liferay_dxp_7_0: 'DXP 7.0',
+			prd_liferay_dxp_7_1: 'DXP 7.1',
+			prd_liferay_dxp_7_2: 'DXP 7.2',
+			prd_liferay_dxp_cloud: 'DXP Cloud',
+			prd_liferay_portal_6_1: 'Portal 6.1',
+			prd_liferay_portal_6_2: 'Portal 6.2'
+		};
+
+		const subjectField = document.getElementById('request_subject');
+
+		const onRequestSubjectKeyup = function() {
+			const productLabel = searchProductLabel[productInputField.value] || '';
+
+			if (subjectField.value) {
+				Liferay.displayArticleSuggestion(
+					subjectField.value,
+					productLabel,
+					'{{help_center.locale}}',
+					'{{dc 'ticket_view-suggested_articles'}}', setArticleSuggestionInnerHTML
+				);
+			}
+			else {
+				setArticleSuggestionInnerHTML('');
+			}
+		}
+
+		subjectField.addEventListener(
+			'keyup',
+			Liferay.debounce(onRequestSubjectKeyup, 300)
+		);
+
+		$(productInputField).change(onRequestSubjectKeyup);
+	});
+</script>

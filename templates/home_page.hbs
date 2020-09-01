@@ -1,0 +1,446 @@
+<style>
+	.search-nav {
+		display: none;
+	}
+</style>
+
+<div class="container-fluid homepage">
+	<div class="row">
+		<section class="banner col-12">
+			<div class="col-md-8 offset-md-2 row">
+				<h1 class="col-md-12 display">
+					{{dc 'how_can_we_help'}}
+				</h1>
+
+				{{search class="col-sm-10 search-lg" instant=true submit=false}}
+
+				<div class="col-12 quick-links">
+					{{#if signed_in}}
+						<h5 class="d-none">
+							{{dc 'homepage-quick_links'}}: 
+							<a href="" id="quickLinkDownloads" >{{dc 'mega_menu-downloads'}}</a>
+							<a href="" id="quickLinkReleaseNotes">{{dc 'mega_menu-release_notes_card'}}</a>
+							<a href="" id="quickLinkActivationKeys">{{dc 'mega_menu-activation_keys'}}</a>
+							<a class="d-none" href="/hc/categories/360001862992" id="quickLinkDeveloperServices">{{dc 'developer_services-page_heading'}}</a>
+						</h5>
+					{{else}}
+						<div class="small-title">
+							{{dc 'homepage-looking_for_more_support'}}
+
+							{{#link 'sign_in' class="btn btn-link small-title"}}
+								{{dc 'homepage-sign_in'}}
+							{{/link}}
+						</div>
+
+					{{/if}}
+				</div>
+			</div>
+		</section>
+
+		<div class="col-md-8 justify-content-center offset-md-2 row">
+			{{#if signed_in}}
+				<section class="col-md-12 cta-links d-none">
+					<ul>
+						<li class="col-lg-3 col-md-6">
+							<a class="cta-card" href="/hc/requests/new">
+								<svg class="icon">
+									<use xlink:href="#submit-ticket-cta" />
+								</svg>
+
+								<h4 class="title">
+									{{dc 'submit_a_ticket'}}
+								</h4>
+							</a>
+						</li>
+
+						<li class="col-lg-3 col-md-6">
+							<a class="cta-card" href="/hc/articles/360017784212">
+								<svg class="icon">
+									<use xlink:href="#contact-cta" />
+								</svg>
+
+								<h4 class="title">
+									{{dc 'mega_menu-contact_us'}}
+								</h4>
+							</a>
+						</li>
+
+						<li class="col-lg-3 col-md-6">
+							<a class="cta-card" href="/hc/requests">
+								<svg class="icon">
+									<use xlink:href="#ticket-cta" />
+								</svg>
+
+								<h4 class="title">
+									{{dc 'homepage-view_my_tickets'}}
+								</h4>
+							</a>
+						</li>
+
+						<li class="col-lg-3 col-md-6">
+							<a class="cta-card" href="" id="projectDetailsCTA">
+								<svg class="icon">
+									<use xlink:href="#project-details-cta" />
+								</svg>
+
+								<h4 class="title">
+									{{dc 'homepage-see_project_details'}}
+								</h4>
+							</a>
+						</li>
+					</ul>
+				</section>
+			{{/if}}
+
+			<section class="col-md-12 row suggested-topics">
+				<h2 class="col-md-12">
+					{{dc 'browse_by_product'}}
+				</h2>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360001749912">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#dxp-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-dxp_7_2'}} {{dc '7_2-new'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000872531">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#7-1-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-dxp_7_1'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000872551">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#analytics-cloud-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-analytics_cloud'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000867952">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#commerce-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-commerce'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000868032">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#dxp-cloud-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-dxp_cloud'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000867932">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#7-0-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-dxp_7_0'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000867972">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#6-2-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-portal_6_2'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/categories/360000872571">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#6-1-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-portal_6_1'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-lg-4">
+					<a class="autofit-row autofit-row-center product-card" href="/hc/articles/360028716251">
+						<div class="autofit-col">
+							<svg class="icon">
+								<use xlink:href="#6-0-logo" />
+							</svg>
+						</div>
+
+						<div class="autofit-col autofit-col-expand">
+							<h4 class="title">
+								{{dc 'mega_menu-portal_6_0'}}
+							</h4>
+						</div>
+					</a>
+				</div>
+
+				<div class="col-md-12 d-none suggested-topics-overflow" id="suggestedTopicsOverflow">
+					<div class="col-lg-4">
+						<a class="autofit-row autofit-row-center product-card" href="/hc/articles/360028715551">
+							<div class="autofit-col">
+								<svg class="icon">
+									<use xlink:href="#5-2-logo" />
+								</svg>
+							</div>
+
+							<div class="autofit-col autofit-col-expand">
+								<h4 class="title">
+									{{dc 'mega_menu-portal_5_2'}}
+								</h4>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-12">
+					<button class="btn btn-link toggle-overflow-topics" id="toggleOverflowTopics">{{dc 'homepage-see_more'}}</button>
+				</div>
+			</section>
+
+			{{#each categories}}
+				{{#is id 360000892272}}
+					<section class="announcements col-md-12 d-none row">
+						<h2 class="col-md-12">
+							{{dc 'mega_menu-announcements'}}
+						</h2>
+
+						{{#each sections}}
+							<div class="announcement col-md-6">
+								<h3 class="announcement-heading">
+									<svg class="announcement-icon">
+										{{#is id 360002099931}}
+											<use xlink:href="#fixpack-updates" />
+										{{/is}}
+
+										{{#is id 360002099851}}
+											<use xlink:href="#product-release" />
+										{{/is}}
+
+										{{#is id 360002102392}}
+											<use xlink:href="#security-alert" />
+										{{/is}}
+
+										{{#is id 360002102452}}
+											<use xlink:href="#announcement" />
+										{{/is}}
+									</svg>
+									{{name}}
+								</h3>
+
+								<div class="announcement-body secondary-font">
+									<ul class="article-list">
+										{{#each articles}}
+											<li class="article-list-item">
+												<a href={{url}}>{{title}}</a>
+											</li>
+										{{/each}}
+									</ul>
+
+									<a class="secondary-font semi-bold view-all" href="{{url}}">
+										{{dc 'view_all'}}
+
+										<svg class="lexicon-icon lexicon-icon-arrow-right" >
+											<use xlink:href="#arrow-right" />
+										</svg>
+									</a>
+								</div>
+							</div>
+						{{/each}}
+
+						<div class="col-md-12">
+							<div class="cta">
+								<h4>{{dc 'homepage-announcement_subscribe_description'}}</h4>
+
+								<a class="btn btn-outline-primary btn-sm" href="https://discover.liferay.com/subscribe-to-liferay-notifications">
+									{{dc 'homepage-announcement_subscribe_button'}}
+								</a>
+							</div>
+						</div>
+					</section>
+				{{/is}}
+			{{/each}}
+		</div>
+	</div>
+</div>
+
+<script>
+	window.zESettings = {
+		webWidget: {
+			contactOptions: {
+				contactFormLabel: {
+					'*': 'Submit a Ticket'
+				},
+				enabled: true
+			}
+		}
+	};
+
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		const quickLinkDeveloperServices = document.getElementById('quickLinkDeveloperServices');
+
+		if (quickLinkDeveloperServices && Liferay.hasCreateTicketPermission(userTags)) {
+			const userOrgs = window.HelpCenter.user.organizations;
+
+			const allTags = userOrgs.reduce(
+				function(accu, org) {
+					return accu.concat(org.tags)
+				}, 
+				[]
+			);
+
+			const devServicesTag = allTags.some(
+				function(tag) {
+					return tag === 'developer_services'
+				}
+			);
+
+			if (devServicesTag) {
+				quickLinkDeveloperServices.classList.remove('d-none');
+			}
+		}
+
+		if (Liferay.hasKBPermission(userTags)) {
+			const announcementsSection = document.querySelector('.announcements');
+
+			if (announcementsSection) {
+				announcementsSection.classList.remove('d-none');
+			}
+
+			const ctaLinksSection = document.querySelector('.cta-links');
+
+			if (ctaLinksSection) {
+				ctaLinksSection.classList.remove('d-none');
+			}
+
+			const quickLinks = document.querySelector('.quick-links h5');
+
+			if (quickLinks) {
+				quickLinks.classList.remove('d-none');
+			}
+
+			const documentElementLang = document.documentElement.lang;
+
+			const projectDetailsCTA = document.getElementById('projectDetailsCTA');
+
+			if (projectDetailsCTA) {
+				projectDetailsCTA.href = Liferay.addLocaleParamToURI(documentElementLang, 'project-details');
+			}
+
+			const quickLinkActivationKeys = document.getElementById('quickLinkActivationKeys');
+
+			if (quickLinkActivationKeys) {
+				quickLinkActivationKeys.href = Liferay.addLocaleParamToURI(documentElementLang, 'activation-key');
+			}
+
+			const quickLinkDownloads = document.getElementById('quickLinkDownloads');
+
+			if (quickLinkDownloads) {
+				quickLinkDownloads.href = Liferay.addLocaleParamToURI(documentElementLang, 'downloads');
+			}
+
+			const quickLinkReleaseNotes = document.getElementById('quickLinkReleaseNotes');
+
+			if (quickLinkReleaseNotes) {
+				quickLinkReleaseNotes.href = Liferay.addLocaleParamToURI(documentElementLang, 'dxp-release-notes');
+			}
+		}
+
+		const homepage = document.querySelector('.homepage');
+
+		if (homepage) {
+			const header = document.getElementById('header');
+
+			if (header) {
+				header.classList.add('hide-header');
+			}
+		}
+
+		const toggleOverflowTopics = document.getElementById('toggleOverflowTopics');
+
+		if (toggleOverflowTopics) {
+			toggleOverflowTopics.addEventListener(
+				'click',
+				function(event) {
+					const suggestedTopicsOverflow = document.getElementById('suggestedTopicsOverflow');
+
+					if (suggestedTopicsOverflow) {
+						suggestedTopicsOverflow.classList.toggle('d-none');
+
+						toggleOverflowTopics.innerHTML = 
+							toggleOverflowTopics.innerHTML === "{{dc 'homepage-see_more'}}" 
+								? "{{dc 'homepage-see_less'}}" : "{{dc 'homepage-see_more'}}";
+					}
+				}
+			);
+		}
+	});
+</script>

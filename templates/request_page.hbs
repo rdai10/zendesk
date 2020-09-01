@@ -1,0 +1,348 @@
+<style>
+	.search-nav {
+		display: none;
+	}
+</style>
+
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-sm-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	<div class="individual-request row">
+		<div class="col-sm-8 request-container">
+			<h2 class="request-subject">
+				{{request.subject}}
+			</h2>
+
+			<section class="request-container-inner">
+				{{satisfaction}}
+
+				{{#if comment_callout}}
+					<div class="request-follow-up">
+						{{comment_callout}}
+					</div>
+				{{/if}}
+
+				{{#form 'comment' class='comment-form' id='requestCommentForm'}}
+					<div class="autofit-padded autofit-row">
+						<div class="autofit-col">
+							<div class="autofit-section">
+								<div class="avatar sticker sticker-circle sticker-primary">
+									<span class="sticker-overlay">{{user_avatar class="sticker-img"}}</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="autofit-col autofit-col-expand comment-container">
+							<div class="autofit-section">
+								{{input class='comment-show-container'}}
+
+								<div class="comment-fields">
+									{{#if help_center.request_ccs_enabled}}
+										<div class="comment-ccs form-field">
+											{{token_field 'ccs' class='ccs-input'}}
+										</div>
+									{{/if}}
+
+									{{textarea 'body' class="form-field"}}
+
+									{{#if upload}}
+										<div class="comment-attachments form-field">
+											{{upload}}
+										</div>
+
+										<div class="secondary-font secondary-text-color">
+											{{dc 'ticket_view-_large_file_uploader_ticket_details'}}
+										</div>
+									{{/if}}
+								</div>
+
+								<div class="comment-form-controls">
+									{{checkbox 'mark_as_solved'}}
+
+									{{#if request.can_be_marked_as_solved}}
+										<a class="btn-outline-primary mark-as-solved" data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}" data-solve-translation="{{t 'mark_as_solved'}}" role="button" >
+											{{t 'mark_as_solved'}}
+										</a>
+									{{/if}}
+
+									{{input class="btn btn-primary request-submit-comment" type='submit'}}
+								</div>
+							</div>
+						</div>
+					</div>
+				{{/form}}
+
+				<ul class="comment-list">
+					{{#each comments}}
+						<li class="comment" id="{{anchor}}">
+							<div class="autofit-padded autofit-row">
+								<div class="autofit-col">
+									<div class="autofit-section">
+										<div class="avatar sticker sticker-circle sticker-primary">
+											<span class="sticker-overlay">
+												{{#link 'user_profile' id=author.id}}
+													<img alt="{{dc 'avatar'}}" class="sticker-img" src="{{author.avatar_url}}" />
+												{{/link}}
+											</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="autofit-col autofit-col-expand">
+									<div class="autofit-section">
+										<div class="comment-meta">
+											<div class="comment-author" title="{{author.name}}">
+												{{#link 'user_profile' id=author.id}}
+													{{author.name}}
+												{{/link}}
+											</div>
+
+											<div class="meta-data secondary-text-color small">
+												{{date created_at timeago=true}}
+											</div>
+										</div>
+
+										<div class="comment-body">
+											{{body}}
+										</div>
+
+										{{#if attachments}}
+											<ul class="attachments">
+												{{#each attachments}}
+													<li class="attachment-item">
+														<svg class="lexicon-icon lexicon-icon-paperclip">
+															<use xlink:href="#paperclip" />
+														</svg>
+
+														<a href="{{url}}" rel="noopener noreferrer" target="_blank">{{name}}</a>
+
+														<div class="attachment-meta">
+															<span class="meta-data">{{size}}</span>
+
+															<a href="{{url}}" rel="noopener noreferrer" target="_blank">{{t 'download'}}</a>
+														</div>
+													</li>
+												{{/each}}
+											</ul>
+										{{/if}}
+									</div>
+								</div>
+							</div>
+						</li>
+					{{/each}}
+				</ul>
+
+				{{pagination}}
+			</section>
+		</div>
+
+		<div class="col-sm-4 request-sidebar">
+			<section class="collapsible-sidebar sidebar-container">
+				{{#if request.followup_source_id}}
+					<dl class="request-details">
+						<dt>
+							{{t 'followup'}}
+						</dt>
+						<dd>
+							{{link 'request' id=request.followup_source_id}}
+						</dd>
+					</dl>
+				{{/if}}
+
+				<dl class="request-details">
+					<dt>
+						{{t 'id'}}
+					</dt>
+					<dd>
+						#{{request.id}}
+					</dd>
+
+					<dt>
+						{{t 'status'}}
+					</dt>
+					<dd>
+						<span class="label status-label status-label-{{request.status}}" title="{{request.status_description}}">{{request.status_name}}</span>
+					</dd>
+
+					<dt>
+						{{t 'requester'}}
+					</dt>
+					<dd>
+						{{request.requester.name}}
+					</dd>
+
+					<dt>
+						{{t 'created'}}
+					</dt>
+					<dd>
+						{{date request.created_at}}
+					</dd>
+
+					<dt>
+						{{t 'last_activity'}}
+					</dt>
+					<dd>
+						{{date request.updated_at}}
+					</dd>
+
+					{{#if collaborators}}
+						<dt>
+							{{t 'ccs'}}
+						</dt>
+						<dd>
+							<ul class="request-collaborators">
+								{{#each collaborators}}
+									<li title={{name}}>
+										{{name}}
+									</li>
+								{{/each}}
+							</ul>
+						</dd>
+					{{/if}}
+				</dl>
+
+				<dl class="request-details">
+					{{#if assignee}}
+						<dt>
+							{{t 'assignee'}}
+						</dt>
+						<dd>
+							{{assignee.name}}
+						</dd>
+					{{/if}}
+
+					{{#form 'organization' id='request-organization'}}
+						<dt>
+							{{t 'organization'}}
+						</dt>
+						<dd>
+							{{select 'organization' class='d-none'}}
+
+							<div id="orgNamePlaceholder"></div>
+						</dd>
+					{{/form}}
+
+					{{#if group}}
+						<dt>
+							{{t 'group'}}
+						</dt>
+						<dd>
+							{{group.name}}
+						</dd>
+					{{/if}}
+
+					{{#if request.type}}
+						<dt>
+							{{t 'type'}}
+						</dt>
+						<dd>
+							{{request.type_name}}
+
+							{{#is request.type 'task'}}
+								{{t 'task_due_date' due_date=request.due_date}}
+							{{/is}}
+						</dd>
+					{{/if}}
+
+					{{#if request.priority}}
+						<dt>
+							{{t 'priority'}}
+						</dt>
+						<dd>
+							{{request.priority_name}}
+						</dd>
+					{{/if}}
+
+					{{#each custom_fields}}
+						<dt>
+							{{title}}
+						</dt>
+						<dd>
+							{{value}}
+						</dd>
+					{{/each}}
+				</dl>
+
+				{{#if attachments}}
+					<dl class="request-attachments request-details">
+						<dt>
+							{{t 'attachments_heading'}}
+						</dt>
+						<dd>
+							<ul class="attachments">
+								{{#each attachments}}
+									<li class="attachment-item">
+										<svg class="lexicon-icon lexicon-icon-paperclip">
+											<use xlink:href="#paperclip" />
+										</svg>
+
+										<a href="{{url}}" rel="noopener noreferrer" target="_blank">{{name}}</a>
+
+										<div class="attachment-meta meta-group">
+											<span class="attachment-meta-item meta-data">{{size}}</span>
+											<a class="attachment-meta-item meta-data" href="{{url}}" rel="noopener noreferrer" target="_blank">{{t 'download'}}</a>
+										</div>
+									</li>
+								{{/each}}
+							</ul>
+						</dd>
+					</dl>
+				{{/if}}
+			</section>
+
+			<section class="d-none large-file-attachment-wrapper sidebar-container">
+				<svg class="lexicon-icon lexicon-icon-paperclip">
+					<use xlink:href="#paperclip" />
+				</svg>
+
+				<a href="" id="largeFileAttachment">
+					{{dc 'ticket_view-file_attachment'}}
+
+					<svg class="lexicon-icon lexicon-icon-arrow-right">
+						<use xlink:href="#arrow-right" />
+					</svg>
+				</a>
+			</section>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		const toggleLargeFileAttachment = function(data) {
+			const largeFileAttachmentWrapper = document.querySelector('.large-file-attachment-wrapper');
+
+			if (largeFileAttachmentWrapper && data.request.status != 'closed') {
+				largeFileAttachmentWrapper.classList.toggle('d-none');
+
+				const largeFileAttachmentLink = Liferay.addLocaleParamToURI(document.documentElement.lang, 'project-details?p_p_id=com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_mvcRenderCommandName=%2Fadd_ticket_attachment&_com_liferay_osb_customer_account_entry_details_web_AccountEntryDetailsPortlet_zendeskTicketId={{request.id}}');
+
+				const largeFileAttachment = document.getElementById('largeFileAttachment');
+
+				if (largeFileAttachment) {
+					largeFileAttachment.href = largeFileAttachmentLink;
+				}
+			}
+		}
+
+		Liferay.hasWatcherPermission(window.HelpCenter.user.tags, {{request.id}}, toggleLargeFileAttachment);
+
+		const orgNameField = document.getElementById('request_organization_id');
+
+		let orgName = '-';
+
+		if (orgNameField && orgNameField.selectedIndex > -1) {
+			orgName = orgNameField.options[orgNameField.selectedIndex].text;
+		}
+
+		const orgNamePlaceholder = document.getElementById('orgNamePlaceholder');
+
+		if (orgNamePlaceholder) {
+			orgNamePlaceholder.innerHTML = orgName;
+		}
+	});
+</script>

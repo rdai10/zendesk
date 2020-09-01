@@ -1,0 +1,60 @@
+{
+	"name": "Liferay Help Center Theme",
+	"author": "Liferay",
+	"version": "2.8.0",
+	"api_version": 1,
+	"default_locale": "en-us",
+	"settings": [
+		{
+			"label": "colors_group_label",
+			"variables": [
+				{
+					"identifier": "brand_color",
+					"type": "color",
+					"description": "brand_color_description",
+					"label": "brand_color_label",
+					"value": "#0B5FFF"
+				},
+				{
+					"identifier": "brand_text_color",
+					"type": "color",
+					"description": "brand_text_color_description",
+					"label": "brand_text_color_label",
+					"value": "#09101D"
+				},
+				{
+					"identifier": "text_color",
+					"type": "color",
+					"description": "text_color_description",
+					"label": "text_color_label",
+					"value": "#2A303E"
+				},
+				{
+					"identifier": "link_color",
+					"type": "color",
+					"description": "link_color_description",
+					"label": "link_color_label",
+					"value": "#0B5FFF"
+				},
+				{
+					"identifier": "background_color",
+					"type": "color",
+					"description": "background_color_description",
+					"label": "background_color_label",
+					"value": "#FFFFFF"
+				}
+			]
+		},
+		{
+			"label": "brand_group_label",
+			"variables": [
+				{
+					"identifier": "favicon",
+					"type": "file",
+					"description": "favicon_description",
+					"label": "favicon_label"
+				}
+			]
+		}
+	]
+}

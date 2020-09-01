@@ -1,0 +1,182 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-sm-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	{{#with article}}
+		<div class="row" id="docsArticle">
+			<div class="article-sidenav col-md-3 secondary-font">
+				<div class="sidenav">
+					<div class="collapsible-sidebar">
+						<svg aria-label="Documentation Navigation Menu" class="lexicon-icon lexicon-icon-menu-hamburger" role="button" title="Documentation Navigation Menu">
+							<use xlink:href="#menu-hamburger" />
+						</svg>
+
+						<h4>{{dc 'mega_menu-documentation'}}</h4>
+					</div>
+
+					<div class="sidenav-content">
+						<div class="sidenav-tree" id="sidenavTree"></div>
+
+						<div class="sidenav-fallback" id="sidenavFallback">
+							{{#with ../section}}
+								<ul class="nav nav-nested">
+									{{#each articles}}
+										<li class="nav-item">
+											<a class="{{#is id ../id}}active semi-bold{{/is}} sidenav-item" href="{{url}}">{{title}}</a>
+										</li>
+									{{/each}}
+								</ul>
+
+								{{#if more_articles}}
+									<div class="nav-item">
+										<a class="semi-bold sidenav-item" href="{{url}}">{{t 'see_more'}}</a>
+									</div>
+								{{/if}}
+							{{/with}}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-7">
+				<h1 class="article-title" title="{{title}}">
+					{{title}}
+
+					{{#if internal}}
+						<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+							<use xlink:href="#lock" />
+						</svg>
+					{{/if}}
+				</h1>
+
+				<div class="article-content">
+					<section class="article-body">
+						{{body}}
+					</section>
+				</div>
+
+				<footer class="article-footer">
+					<div class="article-votes">
+						<span class="article-votes-question small-title">{{t 'was_this_article_helpful'}}</span>
+
+						<div class="article-votes-controls" role='radiogroup'>
+							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-md btn-outline-primary'}}
+
+							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-md btn-outline-primary'}}
+						</div>
+
+						<small class="article-votes-count">
+							{{vote 'label' class='article-vote-label'}}
+						</small>
+					</div>
+				</footer>
+			</div>
+
+			<div class="col-md-2" id="docsTOC"></div>
+		</div>
+	{{/with}}
+
+	<section id="stillNeedHelp"></section>
+</div>
+
+<script>
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		if (Liferay.hasKBPermission(userTags)) {
+			Liferay.render(
+				Liferay.CallToAction,
+				{
+					actionItems: [
+						{
+							iconId: '#submit-ticket',
+							link: '{{page_path 'new_request'}}',
+							message: "{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}",
+							name: '{{dc 'submit_a_ticket'}}'
+						},
+						{
+							disclaimer: '{{dc 'homepage-contact_us_asterisk_description'}}',
+							iconId: '#contact',
+							link: '/hc/articles/360017784212',
+							message: '{{dc 'homepage-contact_us_description'}}',
+							name: '{{dc 'mega_menu-contact_us'}}'
+						},
+						{
+							disclaimer: '{{dc 'homepage-ask_the_community_asterisk_description'}}',
+							iconId: '#community',
+							link: 'https://community.liferay.com/ ',
+							message: "{{dc 'homepage-ask_the_community_description'}}",
+							name: '{{dc 'homepage-ask_the_community'}}'
+						}
+					],
+					className: 'need-help row',
+					promotions: [
+						{
+							description: '{{dc 'homepage-liferay_university_description'}}',
+							name: '{{dc 'homepage-liferay_university'}}',
+							url: 'https://university.liferay.com/'
+						},
+						{
+							description: '{{dc 'homepage-liferay_global_services_description'}}',
+							name: '{{dc 'homepage-liferay_global_services'}}',
+							url: 'https://www.liferay.com/consulting'
+						}
+					],
+					sectionHeading: '{{dc 'still_need_help'}}'
+				},
+				document.getElementById('stillNeedHelp')
+			);
+		}
+	});
+
+	Liferay.render(
+		Liferay.DocSideNav,
+		{
+			currentArticleId: '{{article.id}}',
+			locale: document.documentElement.lang.toLowerCase(),
+			sectionId: '{{section.id}}'
+		},
+		document.getElementById('sidenavTree')
+	);
+
+	window.onload = function() {
+		const articleContent = document.querySelector('.article-content');
+
+		const headingsNodeList = document.querySelectorAll('.article-body h2');
+
+		if (articleContent && headingsNodeList.length) {
+			const content = [];
+
+			Array.prototype.forEach.call(
+				headingsNodeList,
+				function(node) {
+					const nodeId = node.parentNode.id || node.id;
+
+					if (nodeId) {
+						content.push(
+							{
+								id: nodeId,
+								title: node.innerText,
+								top: node.getBoundingClientRect().top
+							}
+						);
+					}
+				}
+			);
+
+			Liferay.render(
+				Liferay.DocsTOC,
+				{
+					content: content,
+					initialTargetBoundingRect: articleContent.getBoundingClientRect(),
+					targetNode: articleContent, 
+					title: '{{dc 'article-on_this_page'}}'
+				},
+				document.getElementById('docsTOC')
+			);
+		}
+	}
+</script>

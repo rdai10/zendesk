@@ -1,0 +1,181 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-sm-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	{{#with article}}
+		<div class="row">
+			<h1 class="article-title col-md-7" title="{{title}}">
+				{{title}}
+
+				{{#if internal}}
+					<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+						<use xlink:href="#lock" />
+					</svg>
+				{{/if}}
+			</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-md-7">
+				<div class="article-author">
+					<div class="avatar sticker sticker-circle sticker-lg sticker-primary">
+						<span class="sticker-overlay">
+							<img alt="Avatar" class="sticker-img" src="{{author.avatar_url}}" />
+						</span>
+					</div>
+
+					<div class="article-meta">
+						{{#link 'user_profile' id=author.id}}
+							<h4 class="author-name">
+								{{author.name}}
+							</h4>
+						{{/link}}
+
+						<ul class="meta-group secondary-font secondary-text-color">
+							<li class="meta-data">
+								{{#is created_at edited_at}}
+									{{date created_at timeago=true}}
+								{{else}}
+									{{t 'updated'}} {{date edited_at timeago=true}}
+								{{/is}}
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<aside class="initiative-blurb">
+					<span class="leading-text">{{dc 'article-fast_track'}}:</span> {{dc 'article-fast_track_disclaimer'}}
+				</aside>
+
+				<section class="article-content">
+					<div class="article-body">
+						{{body}}
+
+						<div class="d-none gate-signin-prompt">
+							<div class="small-title">
+								{{dc 'article-exclusive_content'}}
+							</div>
+
+							{{#is ../signed_in false}}
+								<div class="gate-prompt-description login-required">
+									{{dc 'article-exclusive_content_subscription_description'}}
+								</div>
+
+								{{#link 'sign_in' class="btn btn-primary btn-sm"}}
+									{{dc 'homepage-sign_in'}}
+								{{/link}}
+							{{else}}
+								<div class="gate-prompt-description subscription-required">
+									{{dc 'article-exclusive_content_requirement'}}
+
+									<a class="external-link-prompt" href="https://www.liferay.com/subscription-services">
+										{{dc 'article-exclusive_content_cta'}}
+										<svg class="icon">
+											<use xlink:href="#external-link" />
+										</svg>
+									</a>
+								</div>							
+							{{/is}}
+						</div>
+					</div>
+
+					<div class="article-attachments d-none">
+						<ul class="attachments">
+							{{#each ../attachments}}
+								<li class="attachment-item">
+									<svg class="lexicon-icon lexicon-icon-paperclip">
+										<use xlink:href="#paperclip" />
+									</svg>
+
+									<a href="{{url}}" rel="noopener noreferrer" target="_blank">{{name}}</a>
+
+									<div class="attachment-meta">
+										<span class="meta-data">{{size}}</span>
+										<a href="{{url}}" rel="noopener noreferrer" target="_blank">{{t 'download'}}</a>
+									</div>
+								</li>
+							{{/each}}
+						</ul>
+					</div>
+				</section>
+
+				<footer class="article-footer d-none">
+					<div class="article-votes">
+						<span class="article-votes-question small-title">{{t 'was_this_article_helpful'}}</span>
+
+						<div class="article-votes-controls" role='radiogroup'>
+							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-md btn-outline-primary'}}
+
+							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-md btn-outline-primary'}}
+						</div>
+
+						<small class="article-votes-count">
+							{{vote 'label' class='article-vote-label'}}
+						</small>
+					</div>
+				</footer>
+			</div>
+		</div>
+	{{/with}}
+
+	<section id="stillNeedHelp"></section>
+</div>
+
+<script>
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		if (Liferay.hasKBPermission(userTags)) {
+			Liferay.showArticleAttachments();
+			Liferay.showArticleFooter();
+
+			Liferay.render(
+				Liferay.CallToAction,
+				{
+					actionItems: [
+						{
+							iconId: '#submit-ticket',
+							link: '{{page_path 'new_request'}}',
+							message: "{{dc 'let_us_know_if_you_cant_find_a_solution_to_your_issue'}}",
+							name: '{{dc 'submit_a_ticket'}}'
+						},
+						{
+							disclaimer: '{{dc 'homepage-contact_us_asterisk_description'}}',
+							iconId: '#contact',
+							link: '/hc/articles/360017784212',
+							message: '{{dc 'homepage-contact_us_description'}}',
+							name: '{{dc 'mega_menu-contact_us'}}'
+						},
+						{
+							disclaimer: '{{dc 'homepage-ask_the_community_asterisk_description'}}',
+							iconId: '#community',
+							link: 'https://community.liferay.com/ ',
+							message: "{{dc 'homepage-ask_the_community_description'}}",
+							name: '{{dc 'homepage-ask_the_community'}}'
+						}
+					],
+					className: 'need-help row',
+					promotions: [
+						{
+							description: '{{dc 'homepage-liferay_university_description'}}',
+							name: '{{dc 'homepage-liferay_university'}}',
+							url: 'https://university.liferay.com/'
+						},
+						{
+							description: '{{dc 'homepage-liferay_global_services_description'}}',
+							name: '{{dc 'homepage-liferay_global_services'}}',
+							url: 'https://www.liferay.com/consulting'
+						}
+					],
+					sectionHeading: '{{dc 'still_need_help'}}'
+				},
+				document.getElementById('stillNeedHelp')
+			);
+		} else {
+			Liferay.gateArticle();
+		}
+	});
+</script>

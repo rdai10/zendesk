@@ -1,0 +1,69 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	<div class="categories-main row">
+		<div class="category-heading col-12">
+			<h1 class="title">
+				{{category.name}}
+			</h1>
+
+			{{#if category.description}}
+				<p class="secondary-font secondary-text-color">
+					{{category.description}}
+				</p>
+			{{/if}}
+		</div>
+
+		{{#if sections}}
+			{{#each sections}}
+				<div class="col-md-6 section">
+					<a href="{{url}}">
+						<h2 class="section-name">
+							{{name}}
+
+							{{#if internal}}
+								<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+									<use xlink:href="#lock" />
+								</svg>
+							{{/if}}
+						</h2>
+					</a>
+
+					{{#if articles}}
+						<ul class="article-list">
+							{{#each articles}}
+								<li class="article-list-item {{#if promoted}}promoted{{/if}}">
+									<a href="{{url}}">{{title}}</a>
+								</li>
+							{{/each}}
+						</ul>
+
+						{{#if more_articles}}
+							<a class="secondary-font semi-bold view-all" href="{{url}}">
+								{{dc 'view_all'}}
+
+								<svg class="lexicon-icon lexicon-icon-arrow-right" >
+									<use xlink:href="#arrow-right" />
+								</svg>
+							</a>
+						{{/if}}
+					{{else}}
+						<p class="secondary-font secondary-text-color">
+							{{dc 'no_articles_in_section'}}
+						</p>
+					{{/if}}
+				</div>
+			{{/each}}
+		{{else}}
+			<div class="col-12">
+				<p class="secondary-font secondary-text-color">
+					{{dc 'no_section_in_category'}}
+				</p>
+			</div>
+		{{/if}}
+	</div>
+</div>

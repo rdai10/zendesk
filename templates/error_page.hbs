@@ -1,0 +1,25 @@
+<div class="container-fluid container-fluid-max-xl error main-content">
+	<img alt="{{t 'oops'}}" class="img" src="{{asset '404.svg'}}" />
+
+	<h1>
+		{{t 'oops'}}...
+
+		{{#is error 'unauthorized'}}
+			{{#link 'sign_in' class="btn btn-primary"}}
+				Sign In
+			{{/link}}
+		{{/is}}
+
+		{{#is error 'forbidden'}}
+			{{t 'not_authorized'}}
+		{{/is}}
+
+		{{#is error 'not_found'}}
+			{{t 'nonexistent_page'}}
+		{{/is}}
+	</h1>
+
+	{{#link 'help_center'}}
+		{{t 'back_to_homepage'}}
+	{{/link}}
+</div>

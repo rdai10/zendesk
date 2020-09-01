@@ -1,0 +1,56 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	<div class="categories-main row">
+		<div class="category-heading col-md-8 offset-md-2">
+			<h1>
+				{{dc 'analytics_cloud-page_heading'}}
+			</h1>
+
+			{{#if category.description}}
+				<div class="secondary-font secondary-text-color">
+					{{category.description}}
+				</div>
+			{{/if}}
+		</div>
+
+		<div class="col-md-8 offset-md-2" id="analyticsCloudProductPage"></div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		Liferay.render(
+			Liferay.ProductTabs,
+			{
+				fullAccess: Liferay.hasKBPermission(userTags),
+				productItems: [
+					{
+						configs: [
+							{
+								description: '{{dc 'analytics_cloud-admin_guide_card_description'}}',
+								name: '{{dc '7_1-admin_guide_card'}}',
+								svgId: '#admin-guide',
+								url: 'https://learn.liferay.com/analytics-cloud/latest/en/index.html'
+							},
+							{
+								description: '{{dc 'analytics_cloud-support_coverage_card_description'}}',
+								name: '{{dc 'mega_menu-support_coverage'}}',
+								svgId: '#support-coverage',
+								url: '/hc/articles/360016141611'
+							}
+						],
+						tabAccess: 'all'
+					}
+				]
+			},
+			document.getElementById('analyticsCloudProductPage')
+		);
+	});
+</script>

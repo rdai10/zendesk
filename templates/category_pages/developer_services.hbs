@@ -1,0 +1,68 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	<div class="categories-main row">
+		<div class="category-heading col-md-8 offset-md-2">
+			<h1>
+				{{dc 'developer_services-page_heading'}}
+			</h1>
+
+			{{#if category.description}}
+				<div class="secondary-font secondary-text-color">
+					{{category.description}}
+				</div>
+			{{/if}}
+		</div>
+
+		<div class="col-md-8 offset-md-2" id="developerServicesProductPage"></div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		Liferay.render(
+			Liferay.ProductTabs,
+			{
+				fullAccess: Liferay.hasKBPermission(userTags),
+				productItems: [
+					{
+						configs: [
+							{
+								description: '{{dc 'developer_services-code_samples_card_description'}}',
+								name: '{{dc 'developer_services-code_samples_card'}}',
+								svgId: '#developer-tutorials',
+								url: '/hc/categories/360003236571'
+							},
+							{
+								description: '{{dc 'developer_services-documentation_card_description'}}',
+								name: '{{dc 'developer_services-tutorials_card'}}',
+								svgId: '#documentation',
+								url: '/hc/categories/360003236551'
+							},
+							{
+								description: '{{dc 'developer_services-whitepapers_card_description'}}',
+								name: '{{dc '7_1-whitepapers_card'}}',
+								svgId: '#knowledge-base',
+								url: '/hc/categories/360003210572'
+							},
+							{
+								description: '{{dc 'developer_services-faq_card_description'}}',
+								name: '{{dc 'developer_services-faq_card'}}',
+								svgId: '#support-faqs',
+								url: '/hc/articles/360040168092'
+							}
+						],
+						tabAccess: 'all'
+					}
+				]
+			},
+			document.getElementById('developerServicesProductPage')
+		);
+	});
+</script>

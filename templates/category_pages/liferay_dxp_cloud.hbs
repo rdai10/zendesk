@@ -1,0 +1,79 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	<div class="categories-main row">
+		<div class="category-heading col-md-8 offset-md-2">
+			<h1>
+				{{dc 'dxp_cloud-page_heading'}}
+			</h1>
+
+			{{#if category.description}}
+				<div class="secondary-font secondary-text-color">
+					{{category.description}}
+				</div>
+			{{/if}}
+		</div>
+
+		<div class="col-md-8 offset-md-2" id="dxpCloudProductPage"></div>
+
+		<div class="col-md-8 offset-md-2">
+			<div class="cta landing-page-cta">
+				<h4>{{dc 'dxp_cloud-announcements_banner_description'}}</h4>
+
+				<a class="btn btn-outline-primary btn-sm"
+					href="https://discover.liferay.com/subscribe-to-liferay-dxp-cloud-updates">
+					{{dc 'homepage-announcement_subscribe_button'}}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		Liferay.render(
+			Liferay.ProductTabs,
+			{
+				fullAccess: Liferay.hasKBPermission(userTags),
+				productItems: [
+					{
+						configs: [
+							{
+								description: '{{dc 'dxp_cloud-admin_guide_card_description'}}',
+								name: '{{dc 'mega_menu-documentation'}}',
+								svgId: '#getting-started',
+								url: 'https://learn.liferay.com/dxp-cloud/latest/en/index.html'
+							},
+							{
+								description: '{{dc 'dxp_cloud-_knowledge_base_card_description'}}',
+								name: '{{dc 'mega_menu-knowledge_base'}}',
+								svgId: '#feature-requests',
+								url: '/hc/categories/360001132872'
+							},
+							{
+								description: '{{dc 'dxp_cloud-product_support_card_description'}}',
+								name: '{{dc 'category-product_support'}}',
+								svgId: '#support-coverage',
+								url: '/hc/articles/360030208451'
+							},
+							{
+								description: '{{dc 'dxp_cloud-announcements_card_description'}}',
+								name: '{{dc 'mega_menu-announcements'}}',
+								svgId: '#announcements',
+								url: '/hc/categories/360001192512'
+							}
+						],
+						tabAccess: 'all'
+					}
+				]
+			},
+			document.getElementById('dxpCloudProductPage')
+		);
+	});
+</script>
