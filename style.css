@@ -6220,10 +6220,6 @@ textarea,.upload-dropzone {
   cursor: not-allowed;
 }
 
-#request_organization_id_hint {
-  margin-top: 0.75rem;
-}
-
 .attachment-meta {
   padding-left: 1rem;
 }
@@ -6457,10 +6453,10 @@ textarea,.upload-dropzone {
   font-size: 0.875rem;
 }
 
-.request-form #request_description_hint,.request-form .form-field.string p {
+.request-form #request_description_hint,.request-form #request_organization_id_hint,.request-form .form-field.string p {
   color: #5B6170;
   font-size: 0.75rem;
-  margin-top: 0.25rem;
+  margin-top: 0.75rem;
 }
 
 .request-form .form-field.required > label[for]::after {
