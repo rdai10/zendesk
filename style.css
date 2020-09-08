@@ -6466,7 +6466,7 @@ textarea,.upload-dropzone {
 
 .request-form #request_description_hint,.request-form #request_organization_id_hint,.request-form .form-field.string p {
   color: #5B6170;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   margin-top: 0.75rem;
 }
 
