@@ -280,8 +280,8 @@
 			if (productNestyInput) {
 				$(orgSelectField).change(
 					function() {
+						productInputField.value = '';
 						productNestyInput.textContent = '-';
-						productNestyInput.value = '';
 					}
 				);
 			}
