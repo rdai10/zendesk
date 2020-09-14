@@ -22,8 +22,8 @@ module.exports = merge(common, {
 				files: ['header.hbs'],
 				rules: [
 					{
-						replace: '360001749912',
-						search: '360001749972'
+						replace: '360004183251',
+						search: '360004198932'
 					},
 					{
 						replace: '360000872531',
@@ -132,8 +132,8 @@ module.exports = merge(common, {
 						search: '360000892252'
 					},
 					{
-						replace: '360001749912',
-						search: '360001749972'
+						replace: '360004183251',
+						search: '360004198932'
 					},
 					{
 						replace: '360002099931',
