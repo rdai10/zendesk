@@ -4949,6 +4949,8 @@ th {
   background-color: #F5F7FA;
   border-radius: 0.25rem;
   border-top: 2px solid #5B6170;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
   margin-top: -0.5rem;
   padding: 3rem;
 }
