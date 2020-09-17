@@ -316,6 +316,8 @@
 	background-color: $color-grey;
 	border-radius: $border-radius;
 	border-top: 2px solid $secondary-text-color;
+	border-top-left-radius: inherit;
+	border-top-right-radius: inherit;
 	margin-top: -0.5rem;
 	padding: 3rem;
 
