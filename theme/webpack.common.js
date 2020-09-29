@@ -46,18 +46,14 @@ module.exports = {
 	},
 	optimization: {
 		minimizer: [
-			new OptimizeCssAssetsPlugin(
-				{
-					cssProcessorOptions: {
-						discardComments: {removeAll: true}
-					}
+			new OptimizeCssAssetsPlugin({
+				cssProcessorOptions: {
+					discardComments: {removeAll: true}
 				}
-			),
-			new UglifyJsPlugin(
-				{
-					sourceMap: true
-				}
-			)
+			}),
+			new UglifyJsPlugin({
+				sourceMap: true
+			})
 		]
 	},
 	output: {
