@@ -1,0 +1,113 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	<div class="categories-main row">
+		<div class="category-heading col-md-8 offset-md-2">
+			<h1>
+				{{dc '7_3-page_heading'}}
+			</h1>
+
+			{{#if category.description}}
+				<div class="secondary-font secondary-text-color">
+					{{category.description}}
+				</div>
+			{{/if}}
+		</div>
+
+		<div class="col-md-8 offset-md-2" id="dxp72ProductPage"></div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		const userTags = window.HelpCenter.user.tags;
+
+		const documentElementLang = document.documentElement.lang;
+
+		Liferay.render(
+			Liferay.ProductTabs,
+			{
+				fullAccess: Liferay.hasKBPermission(userTags),
+				productItems: [
+					{
+						name: '{{dc '7_1-top_resources_tab'}}',
+						configs: [
+							{
+								description: '{{dc '7_3-latest_release_card_description'}}',
+								name: '{{dc '7_1-latest_release_card'}}',
+								svgId: '#latest-release',
+								url: Liferay.addLocaleParamToURI(documentElementLang, '/downloads?p_p_id=com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_productAssetCategoryId=118681159&_com_liferay_osb_customer_downloads_display_web_DownloadsDisplayPortlet_fileTypeAssetCategoryId=118681163')
+							},
+							{
+								description: '{{dc '7_3-compatibility_matrix_card_description'}}',
+								name: '{{dc 'mega_menu-compatibility_matrix'}}',
+								svgId: '#compatibility-matrix',
+								url: '/hc/articles/360049238151'
+							},
+							{
+								description: '{{dc '7_1-activation_keys_card_description'}}',
+								name: '{{dc 'mega_menu-activation_keys'}}',
+								svgId: '#server-activation',
+								url: Liferay.addLocaleParamToURI(documentElementLang, 'activation-key')
+							},
+							{
+								description: '{{dc '7_3-product_documentation_card_description'}}',
+								name: '{{dc '7_3-product_documentation'}}',
+								svgId: '#getting-started',
+								url: 'https://learn.liferay.com/dxp/7.x/en/index.html'
+							},
+							{
+								description: '{{dc '7_1-account_support_card_description'}}',
+								name: '{{dc 'mega_menu-account_support'}}',
+								svgId: '#account-support',
+								url: '/hc/articles/360018414031'
+							}
+						],
+						tabAccess: 'kb'
+					},
+					{
+						name: '{{dc '7_1-components_tab'}}',
+						configs: [
+							{
+								description: '{{dc '7_1-liferay_connected_services_card_description'}}',
+								name: '{{dc '7_1-liferay_connected_services_card'}}',
+								svgId: '#connected-services',
+								url: '/hc/articles/360018230712'
+							},
+							{
+								description: '{{dc '7_1-mobile_experience_platform_card_description'}}',
+								name: '{{dc '7_1-mobile_experience_platform_card'}}',
+								svgId: '#mobile-sdk',
+								url: '/hc/articles/360018231572'
+							},
+							{
+								description: '{{dc '7_1-developer_tools_and_frameworks_card_description'}}',
+								name: '{{dc '7_1-developer_tools_and_frameworks_card'}}',
+								svgId: '#developer-tools-frameworks',
+								url: '/hc/articles/360014587631'
+							},
+							{
+								description: '{{dc '7_1-liferay_sync_card_description'}}',
+								name: '{{dc '7_1-liferay_sync_card'}}',
+								svgId: '#sync',
+								url: '/hc/articles/360014400632'
+							},
+							{
+								description: '{{dc '7_1-liferay_enterprise_search_card_description'}}',
+								name: '{{dc '7_1-liferay_enterprise_search_card'}}',
+								svgId: '#enterprise-search',
+								url: '/hc/articles/360014400932'
+							}
+						],
+						tabAccess: 'kb'
+					}
+				]
+			},
+			document.getElementById('dxp72ProductPage')
+		);
+	});
+</script>
