@@ -49,6 +49,16 @@ To go into the theme workbench interface, sign into _Zendesk Guid_ as an admin, 
 
 ### Import from Github
 
+#### Sandbox Theme
+
+-   On the `sandbox` branch, pull the latest changes from `master` and push to origin. It will trigger a github action that will build the theme and push the output to the `sandbox-deployed` branch.
+
+#### Production Theme
+
+-   The process is the same for building the production theme. Update the manifest to a newer version and push all merged updates to the `release` branch. It will trigger a build action to commit the theme output to the `release-deployed` branch.
+
+#### Import On Zendesk
+
 -   Click on _Add Theme_ and select _Add from Github_.
 -   Enter `rdai10/zendesk` in the first field.
 -   For uploading to sandbox, enter the branch name, `sandbox-deploy`, in the second field.
