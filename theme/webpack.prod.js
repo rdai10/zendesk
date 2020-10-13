@@ -96,6 +96,10 @@ module.exports = merge(common, {
 					{
 						replace: '360016510271',
 						search: '360018999271'
+					},
+					{
+						replace: '360001749912',
+						search: '360001749972'
 					}
 				]
 			},
@@ -154,6 +158,10 @@ module.exports = merge(common, {
 					{
 						replace: '360001862992',
 						search: '360001865811'
+					},
+					{
+						replace: '360001749912',
+						search: '360001749972'
 					}
 				]
 			},
