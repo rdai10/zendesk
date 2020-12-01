@@ -104,7 +104,9 @@ $(document).ready(function() {
 
 		var userNav = document.getElementById('user-nav');
 
-		setExpanded(userNav);
+		if (userNav) {
+			setExpanded(userNav);
+		}
 	});
 
 	$('.share a').click(function(event) {
