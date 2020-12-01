@@ -131,6 +131,7 @@ module.exports = {
 					'*submenu*',
 					'*suggestion-list*',
 					'#systemStatusBanner',
+					'*textarea*',
 					'*toc-body*',
 					'upload-dropzone'
 				]
