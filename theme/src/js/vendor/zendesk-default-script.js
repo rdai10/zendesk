@@ -70,7 +70,7 @@ $(document).ready(function() {
 	});
 
 	var requestCommentTextarea = requestContainer.find(
-		'.comment-container textarea'
+		'.comment-container #hc-wysiwyg'
 	);
 
 	requestCommentTextarea.on('keyup', function() {
