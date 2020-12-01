@@ -943,7 +943,7 @@ button:focus {
   outline: 5px auto -webkit-focus-ring-color;
 }
 
-input,button,select {
+input,button,select,textarea {
   margin: 0;
   font-family: inherit;
   font-size: inherit;
@@ -974,6 +974,11 @@ input[type="radio"],input[type="checkbox"] {
 
 input[type="date"],input[type="time"],input[type="datetime-local"],input[type="month"] {
   -webkit-appearance: listbox;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
 }
 
 [type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button {
@@ -2516,6 +2521,14 @@ select.form-control:not([multiple]):not([size]) {
 
 select.form-control:not([multiple]):not([size])::-ms-expand {
   display: none;
+}
+
+textarea.form-control {
+  height: 150px;
+}
+
+textarea.form-control-plaintext {
+  height: 150px;
 }
 
 .form-control-file {
@@ -5391,7 +5404,7 @@ input[type="search"] {
   box-sizing: border-box;
 }
 
-input:not([type="submit"]),select,.nesty-input,.upload-dropzone {
+input:not([type="submit"]),select,textarea,.nesty-input,.upload-dropzone {
   background-clip: border-box;
   border-radius: 0.25rem;
   display: block;
@@ -5401,44 +5414,44 @@ input:not([type="submit"]),select,.nesty-input,.upload-dropzone {
   width: 100%;
 }
 
-input:not([type="submit"]):disabled,input:not([type="submit"])[readonly],select:disabled,select[readonly],.nesty-input:disabled,.nesty-input[readonly],.upload-dropzone:disabled,.upload-dropzone[readonly] {
+input:not([type="submit"]):disabled,input:not([type="submit"])[readonly],select:disabled,select[readonly],textarea:disabled,textarea[readonly],.nesty-input:disabled,.nesty-input[readonly],.upload-dropzone:disabled,.upload-dropzone[readonly] {
   background-color: #E9EBF0;
   color: #A3A9BA;
 }
 
-input:not([type="submit"]).input-small,select.input-small,.nesty-input.input-small,.upload-dropzone.input-small {
+input:not([type="submit"]).input-small,select.input-small,textarea.input-small,.nesty-input.input-small,.upload-dropzone.input-small {
   font-size: 0.875rem;
   padding: 0.375rem 0.75rem;
 }
 
-input:not([type="submit"]),select,select.form-control,.nesty-input {
+input:not([type="submit"]),select,select.form-control,textarea,.nesty-input {
   background-color: #F3F4F5;
   border-width: 0;
   color: #09101D;
 }
 
-input:not([type="submit"])::-webkit-input-placeholder,select::-webkit-input-placeholder,select.form-control::-webkit-input-placeholder,.nesty-input::-webkit-input-placeholder {
+input:not([type="submit"])::-webkit-input-placeholder,select::-webkit-input-placeholder,select.form-control::-webkit-input-placeholder,textarea::-webkit-input-placeholder,.nesty-input::-webkit-input-placeholder {
   color: #5B6170;
 }
 
-input:not([type="submit"]):-ms-input-placeholder,select:-ms-input-placeholder,select.form-control:-ms-input-placeholder,.nesty-input:-ms-input-placeholder {
+input:not([type="submit"]):-ms-input-placeholder,select:-ms-input-placeholder,select.form-control:-ms-input-placeholder,textarea:-ms-input-placeholder,.nesty-input:-ms-input-placeholder {
   color: #5B6170;
 }
 
-input:not([type="submit"])::-ms-input-placeholder,select::-ms-input-placeholder,select.form-control::-ms-input-placeholder,.nesty-input::-ms-input-placeholder {
+input:not([type="submit"])::-ms-input-placeholder,select::-ms-input-placeholder,select.form-control::-ms-input-placeholder,textarea::-ms-input-placeholder,.nesty-input::-ms-input-placeholder {
   color: #5B6170;
 }
 
-input:not([type="submit"])::placeholder,select::placeholder,select.form-control::placeholder,.nesty-input::placeholder {
+input:not([type="submit"])::placeholder,select::placeholder,select.form-control::placeholder,textarea::placeholder,.nesty-input::placeholder {
   color: #5B6170;
 }
 
-input:not([type="submit"]):active,input:not([type="submit"]):focus,select:active,select:focus,select.form-control:active,select.form-control:focus,.nesty-input:active,.nesty-input:focus {
+input:not([type="submit"]):active,input:not([type="submit"]):focus,select:active,select:focus,select.form-control:active,select.form-control:focus,textarea:active,textarea:focus,.nesty-input:active,.nesty-input:focus {
   background-color: #F0F5FF;
   color: #09101D;
 }
 
-input:not([type="submit"]):focus,select:focus,select.form-control:focus,.nesty-input:focus {
+input:not([type="submit"]):focus,select:focus,select.form-control:focus,textarea:focus,.nesty-input:focus {
   border-color: #71A2FF;
   box-shadow: none;
 }
@@ -5452,7 +5465,7 @@ main {
   border-bottom: 1px solid #E9EBF0;
 }
 
-.upload-dropzone {
+textarea,.upload-dropzone {
   height: auto;
 }
 
@@ -6323,6 +6336,10 @@ main {
 .comment-form footer,.request-form footer {
   margin-bottom: 6rem;
   margin-top: 3rem;
+}
+
+.comment-form textarea,.request-form textarea {
+  height: 150px;
 }
 
 .comment-form .comment-attachments,.request-form .comment-attachments {

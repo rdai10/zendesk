@@ -8935,7 +8935,7 @@ $(document).ready(function () {
     requestCommentSubmitButton.prop('disabled', true);
     $(this).attr('data-disabled', true).closest('form').submit();
   });
-  var requestCommentTextarea = requestContainer.find('.comment-container textarea');
+  var requestCommentTextarea = requestContainer.find('.comment-container #hc-wysiwyg');
   requestCommentTextarea.on('keyup', function () {
     var text = requestMarkAsSolvedButton.data('solve-translation');
     var hasText = requestCommentTextarea.val() !== '';
