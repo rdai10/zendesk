@@ -8959,7 +8959,10 @@ $(document).ready(function () {
   $('.header .icon-menu').on('click', function (event) {
     event.stopPropagation();
     var userNav = document.getElementById('user-nav');
-    setExpanded(userNav);
+
+    if (userNav) {
+      setExpanded(userNav);
+    }
   });
   $('.share a').click(function (event) {
     event.preventDefault();
