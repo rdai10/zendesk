@@ -6141,6 +6141,7 @@ textarea,.upload-dropzone {
 }
 
 .site-wide-notification {
+  align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -6148,10 +6149,6 @@ textarea,.upload-dropzone {
 
 .site-wide-notification a,.site-wide-notification .notification-title {
   font-weight: 600;
-}
-
-.site-wide-notification button {
-  padding: 1rem;
 }
 
 .site-wide-notification .icon {
