@@ -69,6 +69,7 @@
 }
 
 .site-wide-notification {
+	align-items: center;
 	display: flex;
 	justify-content: space-between;
 	padding: $padding-md;
@@ -76,10 +77,6 @@
 	a,
 	.notification-title {
 		font-weight: $font-weight-semi-bold;
-	}
-
-	button {
-		padding: $padding-md;
 	}
 
 	.icon {
