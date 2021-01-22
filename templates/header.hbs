@@ -458,16 +458,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	{{#if signed_in}}
 		<!-- Site Wide Notification -->
 
-		<div class="d-none notification-error site-wide-notification" id="">
+		<div class="d-none notification-error site-wide-notification" id="siteWideNotification">
 			<div>
 				<svg class="icon" fill="none" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" clip-rule="evenodd" d="M13.6562 2.34375C12.1465 0.831299 10.1377 0 8 0C5.8623 0 3.85352 0.831299 2.34375 2.34375C0.831055 3.85315 0 5.86255 0 8C0 10.1375 0.831055 12.1469 2.34375 13.6562C3.85645 15.1687 5.8623 16 8 16C10.1377 16 12.1465 15.1687 13.6562 13.6562C15.1689 12.1438 16 10.1375 16 8C16 5.86255 15.1689 3.85315 13.6562 2.34375ZM9 12C9 12.5531 8.55273 13 8 13C7.44727 13 7 12.5531 7 12V7C7 6.4469 7.44727 6 8 6C8.55273 6 9 6.4469 9 7V12ZM7 4C7 4.5531 7.44727 5 8 5C8.55273 5 9 4.5531 9 4C9 3.4469 8.55273 3 8 3C7.44727 3 7 3.4469 7 4Z" fill="#DA1414"/>
 				</svg>
 
 				<div class="notification-content">
-					<div class="notification-title">
-						{{dc 'security_alerts'}}
-					</div>
+					<!--
+						<div class="notification-title">
+							{{dc 'security_alerts'}}
+						</div>
+					-->
 				 
 					<div>
 						{{dc 'dxp_cloud_banner_pre'}}
