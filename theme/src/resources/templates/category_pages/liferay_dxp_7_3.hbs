@@ -28,12 +28,9 @@
 
 		const documentElementLang = document.documentElement.lang;
 
-		var alertChildren = null;
-
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
-				alert: alertChildren,
 				fullAccess: Liferay.hasKBPermission(userTags),
 				productItems: [
 					{
