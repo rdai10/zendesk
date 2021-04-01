@@ -465,13 +465,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</svg>
 
 				<div class="notification-content">
-					{{!-- <div class="notification-title">
-						{{dc 'security_alerts'}}
-					</div> --}}
-				 
-					<div>
-						Due to internal system downtimes, responses from Customer Support may be delayed. For urgent issues, please reach out to us via <a href="/articles/360017784212">phone support</a>. Thank you for your understanding!
+					<div class="generic-notification">
+						{{dc 'internal_system_downtime_banner'}} 
+						
+						<a href="/hc/articles/360017784212">
+							{{dc 'phone_support'}}
+						</a>
 					</div>
+
+					{{!-- <div class="specialized-notification">
+						<div class="notification-title">
+							{{dc 'security_alerts'}}
+						</div>
+					</div> --}}
 				</div>
 			</div>
 
