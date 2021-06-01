@@ -25,10 +25,23 @@
 <script>
 	$(function() {
 		const userTags = window.HelpCenter.user.tags;
+		
+		const documentElementLang = document.documentElement.lang;
+		
+		var alertChildren = null; 
+  
+		if ('{{help_center.locale}}' === 'ja') {
+			alertChildren = {
+				children: '{{dc 'analytics_cloud-jp_banner'}}',
+				linkText: '{{dc 'analytics_cloud-jp_banner_cta'}}',
+  				url: "/hc/ja/articles/360059296312"
+			};
+ 		}
 
 		Liferay.render(
 			Liferay.ProductTabs,
 			{
+				alert: alertChildren,
 				fullAccess: Liferay.hasKBPermission(userTags),
 				productItems: [
 					{
