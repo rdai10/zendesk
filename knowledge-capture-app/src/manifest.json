@@ -1,0 +1,23 @@
+{
+	"author": {
+		"name": "Liferay",
+		"email": "is-lrsd@liferay.com",
+		"url": ""
+	},
+	"defaultLocale": "en",
+	"frameworkVersion": "2.0",
+	"location": {
+		"support": {
+			"ticket_sidebar": {
+				"size": {
+					"height": "600px",
+					"width": "100%"
+				},
+				"url": "assets/main.html"
+			}
+		}
+	},
+	"name": "Knowledge Capture App",
+	"private": true,
+	"version": "1.0"
+}
