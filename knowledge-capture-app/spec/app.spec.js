@@ -1,7 +1,10 @@
 /* eslint-env jest, browser */
 import App from '../src/javascript/modules/app';
-import { CLIENT, ORGANIZATIONS } from './mocks/mock';
+import { CLIENT, SEARCH } from './mocks/mock';
 import createRangePolyfill from './polyfills/createRange';
+
+const DOCUMENT_BODY =
+	'<section data-main><img class="loader" src="spinner.gif"/></section>';
 
 jest.mock('../src/javascript/lib/i18n', () => {
 	return {
@@ -20,8 +23,8 @@ describe('Example App', () => {
 
 	describe('Initialization Failure', () => {
 		beforeEach((done) => {
-			document.body.innerHTML =
-				'<section data-main><img class="loader" src="spinner.gif"/></section>';
+			document.body.innerHTML = DOCUMENT_BODY;
+
 			CLIENT.request = jest
 				.fn()
 				.mockReturnValueOnce(Promise.reject(new Error('a fake error')));
@@ -41,15 +44,15 @@ describe('Example App', () => {
 
 	describe('Initialization Success', () => {
 		beforeEach((done) => {
-			document.body.innerHTML =
-				'<section data-main><img class="loader" src="spinner.gif"/></section>';
+			document.body.innerHTML = DOCUMENT_BODY;
+
 			CLIENT.request = jest
 				.fn()
-				.mockReturnValueOnce(Promise.resolve(ORGANIZATIONS));
+				.mockReturnValueOnce(Promise.resolve(SEARCH));
+
 			CLIENT.invoke = jest.fn().mockReturnValue(Promise.resolve({}));
 
 			app = new App(CLIENT, {});
-
 			app.initializePromise.then(() => {
 				done();
 			});
@@ -58,18 +61,12 @@ describe('Example App', () => {
 		it('should render main stage with data', () => {
 			expect(document.querySelector('.example-app')).not.toBe(null);
 			expect(document.querySelector('h1').textContent).toBe(
-				'Hi Sample User, this is a sample app'
-			);
-			expect(document.querySelector('h2').textContent).toBe(
-				'default.organizations:'
+				'This is a sample app'
 			);
 		});
 
-		it('should retrieve the organizations data', () => {
-			expect(app.states.organizations).toEqual([
-				{ name: 'Organization A' },
-				{ name: 'Organization B' },
-			]);
+		it('should retrieve the search data', () => {
+			expect(app.states.searchResults[0].name).toEqual('Article Name 1');
 		});
 	});
 });

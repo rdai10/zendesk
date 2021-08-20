@@ -45,7 +45,7 @@
 		"watch": "webpack --watch --mode=development",
 		"build:dev": "webpack --mode=development",
 		"build": "webpack -p --mode=production",
-		"start": "zat server -p ./dist --unattended"
+		"start": "bundler exec zat server -p ./dist --unattended"
 	},
 	"version": "1.0.0"
 }
