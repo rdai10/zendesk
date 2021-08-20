@@ -1,14 +1,16 @@
-/**
- *  Example app
- **/
-
 import I18n from '../lib/i18n';
-import { resizeContainer, render } from '../lib/helpers';
+import { render } from '../lib/helpers';
 import getDefaultTemplate from '../../templates/default';
 
-const MAX_HEIGHT = 620;
+const API_BASE_URL =
+	process.env.NODE_ENV === 'production'
+		? 'https://help.liferay.com/api/v2/help_center'
+		: 'https://liferaysupport1528999723.zendesk.com/api/v2/help_center';
+const RESULTS_COUNT = 25;
+
 const API_ENDPOINTS = {
-	organizations: '/api/v2/organizations.json',
+	search: (queryString, locale = 'en-US') =>
+		`${API_BASE_URL}/articles/search.json?query=${queryString}&per_page=${RESULTS_COUNT}&page=1&locale=${locale}`,
 };
 
 class App {
@@ -19,7 +21,7 @@ class App {
 		this.states = {};
 
 		// this.initializePromise is only used in testing
-		// indicate app initilization(including all async operations) is complete
+		// indicates app initilization(including all async operations) is complete
 		this.initializePromise = this.init();
 	}
 
@@ -28,30 +30,34 @@ class App {
 	 */
 	async init() {
 		const currentUser = (await this._client.get('currentUser')).currentUser;
-		this.states.currentUserName = currentUser.name;
+		const ticketSubject = await this._client.get('ticket.subject');
+
+		this.states.locale = currentUser.locale;
+		this.states.ticketSubject = ticketSubject;
 
 		I18n.loadTranslations(currentUser.locale);
 
-		const organizations = await this._client
-			.request(API_ENDPOINTS.organizations)
-			.catch(this._handleError.bind(this));
+		let search = { results: '' };
 
-		if (organizations) {
-			this.states.organizations = organizations.organizations;
-
-			// render application markup
-			render('.loader', getDefaultTemplate(this.states));
-
-			return resizeContainer(this._client, MAX_HEIGHT);
+		try {
+			search = await this._client.request(
+				API_ENDPOINTS.search(ticketSubject)
+			);
+		} catch (e) {
+			this._handleError.call(this, e);
 		}
+
+		this.states.searchResults = search.results;
+
+		render('.loader', getDefaultTemplate(this.states));
 	}
 
 	/**
-	 * Handle error
+	 * Handles error
 	 * @param {Object} error error object
 	 */
 	_handleError(error) {
-		console.log('An error is handled here: ', error.message);
+		console.error('An error is handled here: ', error.message);
 	}
 }
 
