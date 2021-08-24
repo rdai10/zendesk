@@ -40,7 +40,7 @@ class App {
 
 		I18n.loadTranslations(currentUser.locale);
 
-		let search = { results: '' };
+		let search = { results: [] };
 
 		try {
 			search = await this._client.request(
