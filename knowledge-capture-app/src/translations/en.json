@@ -5,7 +5,15 @@
 		"long_description": "Custom Knowledge Capture App to replace the default Zendesk Knowledge Capture App with federated search capaibilities.",
 		"installation_instructions": "https://developer.zendesk.com/documentation/apps/getting-started/uploading-and-installing-a-private-app/#uploading-and-installing-a-private-app-in-zendesk-support"
 	},
+	"chinese": "Chinese (CN)",
+	"english": "English",
 	"error": "Error",
+	"japanese": "Japanese",
+	"language selector": "Language Selector",
 	"last edited": "Last edited",
+	"portuguese": "Portuguese",
+	"search input": "Search Input",
+	"spanish": "Spanish",
+	"results": "results",
 	"something went wrong": "Something went wrong."
 }
