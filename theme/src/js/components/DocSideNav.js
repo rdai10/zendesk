@@ -49,7 +49,7 @@ class ArticlesList extends preact.Component {
 			})
 			.catch(err => {
 				if (process.env.NODE_ENV === 'development') {
-					console.log(err);
+					console.error(err);
 				}
 			});
 	}
@@ -135,7 +135,7 @@ class DocSideNav extends preact.Component {
 				sidenavFallback.classList.add('show');
 
 				if (process.env.NODE_ENV === 'development') {
-					console.log(err);
+					console.error(err);
 				}
 			});
 	}

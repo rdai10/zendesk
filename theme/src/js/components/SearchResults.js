@@ -45,7 +45,7 @@ class SearchResultBreadCrumb extends preact.Component {
 			})
 			.catch(err => {
 				if (process.env.NODE_ENV === 'development') {
-					console.log(err);
+					console.error(err);
 				}
 			});
 	}
@@ -126,7 +126,7 @@ class SearchResults extends preact.Component {
 			})
 			.catch(err => {
 				if (process.env.NODE_ENV === 'development') {
-					console.log(err);
+					console.error(err);
 				}
 
 				this.setState({
@@ -170,7 +170,7 @@ class SearchResults extends preact.Component {
 				})
 				.catch(err => {
 					if (process.env.NODE_ENV === 'development') {
-						console.log(err);
+						console.error(err);
 					}
 				});
 		} else {
