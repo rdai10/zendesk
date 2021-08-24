@@ -7,17 +7,17 @@
 
 	<% _.forEach(htmlWebpackPlugin.options.vendorCss, function(css) { %>
 		<link href="<%= css %>" rel="stylesheet">
-		<% }); %>
+	<% }); %>
 </head>
 
 <body>
-	<section data-main class="main">
+	<section class="main">
 		<img class="loader" src="spinner.gif" />
 	</section>
 
 	<% _.forEach(htmlWebpackPlugin.options.vendorJs, function(js) { %>
 		<script type="text/javascript" src="<%= js %>"></script>
-		<% }); %>
+	<% }); %>
 </body>
 
 </html>
