@@ -1,6 +1,9 @@
+import React, { StrictMode } from 'react';
+import ReactDOM from 'react-dom';
+
+import Main from './Main';
+
 import I18n from '../lib/i18n';
-import { render } from '../lib/helpers';
-import getDefaultTemplate from '../../templates/default';
 
 const API_BASE_URL =
 	process.env.NODE_ENV === 'production'
@@ -49,7 +52,12 @@ class App {
 
 		this.states.searchResults = search.results;
 
-		render('.loader', getDefaultTemplate(this.states));
+		ReactDOM.render(
+			<StrictMode>
+				<Main data={this.states} />
+			</StrictMode>,
+			document.querySelector('.main')
+		);
 	}
 
 	/**
