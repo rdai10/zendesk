@@ -24,8 +24,8 @@ export default class ErrorBoundary extends Component {
 	render() {
 		return this.state.hasError ? (
 			<Alert type="error">
-				<Title>{I18n.t('Error')}</Title>
-				{I18n.t('Something went wrong')}
+				<Title>{I18n.t('error')}</Title>
+				{I18n.t('something went wrong')}
 			</Alert>
 		) : (
 			this.props.children

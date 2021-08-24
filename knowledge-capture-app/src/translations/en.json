@@ -4,5 +4,8 @@
 		"short_description": "Knowledge Capture with Federated Search",
 		"long_description": "Custom Knowledge Capture App to replace the default Zendesk Knowledge Capture App with federated search capaibilities.",
 		"installation_instructions": "https://developer.zendesk.com/documentation/apps/getting-started/uploading-and-installing-a-private-app/#uploading-and-installing-a-private-app-in-zendesk-support"
-	}
+	},
+	"error": "Error",
+	"last edited": "Last edited",
+	"something went wrong": "Something went wrong."
 }

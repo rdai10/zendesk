@@ -24,6 +24,7 @@
 		"@zendeskgarden/css-utilities": "^3.0.1",
 		"@zendeskgarden/react-notifications": "^8.39.0",
 		"@zendeskgarden/react-theming": "^8.39.0",
+		"@zendeskgarden/react-typography": "^8.39.0",
 		"babel-jest": "^27.0.6",
 		"babel-loader": "^8.2.2",
 		"clean-webpack-plugin": "^0.1.19",
@@ -54,6 +55,5 @@
 		"build": "webpack -p --mode=production",
 		"start": "bundler exec zat server -p ./dist --unattended"
 	},
-	"version": "1.0.0",
-	"dependencies": {}
+	"version": "1.0.0"
 }

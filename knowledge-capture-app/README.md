@@ -23,7 +23,7 @@ To serve the app to your Zendesk instance with `?zat=true`, run
 
 ```
 yarn run watch
-zat server -p dist
+yarn run start
 ```
 
 ### Building
