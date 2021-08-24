@@ -4,7 +4,7 @@
 
 ### Dependencies
 
--   [Node.js](https://nodejs.org/en/) >= 6.11.5
+-   [Node.js](https://nodejs.org/en/) >= 12
 -   [Ruby](https://www.ruby-lang.org/) >= 2.0.x
 
 ### Initial Setup

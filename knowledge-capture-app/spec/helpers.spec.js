@@ -1,4 +1,5 @@
 /* eslint-env jest */
+
 import {
 	resizeContainer,
 	templatingLoop,
