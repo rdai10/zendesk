@@ -12,7 +12,7 @@ import { SM } from '@zendeskgarden/react-typography';
 
 import i18n from '../lib/i18n';
 
-export default function SearchFilters({ resultsDisplayed }) {
+export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
 	const languages = [
 		{ label: i18n.t('english'), value: 'en-US' },
 		{ label: i18n.t('spanish'), value: 'es' },
@@ -27,7 +27,8 @@ export default function SearchFilters({ resultsDisplayed }) {
 		const currentValue = languages.find((lang) => lang.value === val);
 
 		setSelectedItem(currentValue);
-		// pass data up
+
+		updateLanguage(val);
 	}
 
 	return (

@@ -1,20 +1,10 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
-import Main from './Main';
-
 import I18n from '../lib/i18n';
+import { API_ENDPOINTS } from '../lib/utility';
 
-const API_BASE_URL =
-	process.env.NODE_ENV === 'production'
-		? 'https://help.liferay.com/api/v2/help_center'
-		: 'https://liferaysupport1528999723.zendesk.com/api/v2/help_center';
-const RESULTS_COUNT = 25;
-
-const API_ENDPOINTS = {
-	search: (queryString, locale = 'en-US') =>
-		`${API_BASE_URL}/articles/search.json?query=${queryString}&per_page=${RESULTS_COUNT}&page=1&locale=${locale}`,
-};
+import Main from './Main';
 
 class App {
 	constructor(client, appData) {
