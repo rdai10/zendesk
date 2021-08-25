@@ -65,7 +65,11 @@ class App {
 	 * @param {Object} error error object
 	 */
 	_handleError(error) {
-		console.error('An error is handled here: ', error.message);
+		console.error(
+			'Promise rejected with the following status: ',
+			error.status,
+			error.statusText
+		);
 	}
 }
 
