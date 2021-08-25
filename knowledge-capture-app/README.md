@@ -1,5 +1,9 @@
 # Knowledge Capture App
 
+🚧 🚧
+
+This knowledge capture app is meant to replace the existing Zendesk Knowledge Capture app with the added feature of using Liferay's homegrown federated search.
+
 ## Getting Started
 
 ### Dependencies
