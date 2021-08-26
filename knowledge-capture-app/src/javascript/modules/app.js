@@ -26,7 +26,7 @@ class App {
 		const ticketSubject = await this._client.get('ticket.subject');
 
 		this.states.locale = currentUser.locale;
-		this.states.ticketSubject = ticketSubject;
+		this.states.ticketSubject = ticketSubject['ticket.subject'] || '';
 
 		I18n.loadTranslations(currentUser.locale);
 
