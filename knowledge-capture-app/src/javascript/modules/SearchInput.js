@@ -4,7 +4,7 @@ import { Col, Grid, Row } from '@zendeskgarden/react-grid';
 
 import i18n from '../lib/i18n';
 
-export default function SearchInput({ placeholder, updateKeyword, updater }) {
+export default function SearchInput({ placeholder, updateKeyword }) {
 	return (
 		<Grid>
 			<Row>
