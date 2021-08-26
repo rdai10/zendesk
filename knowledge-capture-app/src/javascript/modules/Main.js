@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../context/Global';
-import { DEFAULT_LOCALE } from '../lib/constants';
 import { API_ENDPOINTS } from '../lib/utility';
+import NoResults from './NoResults';
 import SearchFilters from './SearchFilters';
 import SearchInput from './SearchInput';
 import SearchResults from './SearchResults';
@@ -50,7 +50,7 @@ export default function Main({ data }) {
 			{!!search ? (
 				<SearchResults results={search.results} />
 			) : (
-				<>No results</>
+				<NoResults />
 			)}
 		</>
 	);
