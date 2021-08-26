@@ -1,9 +1,9 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
-
+import { GlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
 import { API_ENDPOINTS } from '../lib/utility';
-
+import ErrorBoundary from './ErrorBoundary';
 import Main from './Main';
 
 class App {
@@ -44,7 +44,11 @@ class App {
 
 		ReactDOM.render(
 			<StrictMode>
-				<Main data={this.states} />
+				<ErrorBoundary>
+					<GlobalContext.Provider value={{ client: this._client }}>
+						<Main data={this.states} />
+					</GlobalContext.Provider>
+				</ErrorBoundary>
 			</StrictMode>,
 			document.querySelector('.main')
 		);
@@ -56,7 +60,7 @@ class App {
 	 */
 	_handleError(error) {
 		console.error(
-			'Promise rejected with the following status: ',
+			'Query for Search Results returned with the following error: ',
 			error.status,
 			error.statusText
 		);
