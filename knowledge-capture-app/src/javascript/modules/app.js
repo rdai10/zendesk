@@ -32,7 +32,7 @@ class App {
 
 		I18n.loadTranslations(currentUser.locale);
 
-		let search = { results: [] };
+		let search = null;
 
 		try {
 			search = await this._client.request(
@@ -42,7 +42,7 @@ class App {
 			this._handleError.call(this, e);
 		}
 
-		this.states.searchResults = search.results;
+		this.states.searchData = search;
 
 		ReactDOM.render(
 			<StrictMode>

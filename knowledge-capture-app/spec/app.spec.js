@@ -67,7 +67,7 @@ describe('Example App', () => {
 		});
 
 		it('should retrieve the search data', () => {
-			expect(app.states.searchResults[0].name).toEqual('Article Name 1');
+			expect(app.states.searchData.results[0].name).toEqual('Article Name 1');
 		});
 	});
 });

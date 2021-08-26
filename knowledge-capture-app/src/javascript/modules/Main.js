@@ -9,13 +9,15 @@ import SearchResults from './SearchResults';
 export default function Main({ data }) {
 	const { client } = useGlobalContext();
 
+	const { searchData, ticketSubject } = data;
+
 	const [keyword, setKeyword] = useState(data.ticketSubject);
 	const [language, setLanguage] = useState('');
-	const [searchResults, setSearchResults] = useState(data.searchResults);
+	const [search, setSearch] = useState(searchData);
 
 	useEffect(async () => {
 		if (language) {
-			let search = { results: [] };
+			let search = null;
 
 			try {
 				search = await client.request(
@@ -29,24 +31,27 @@ export default function Main({ data }) {
 				);
 			}
 
-			setSearchResults(search.results);
+			setSearch(search);
 		}
 	}, [language]);
 
 	return (
 		<>
 			<SearchInput
-				placeholder={data.ticketSubject}
+				placeholder={ticketSubject}
 				updateKeyword={setKeyword}
-				updater={setSearchResults}
 			/>
 
 			<SearchFilters
-				resultsDisplayed={searchResults.length}
+				resultsDisplayed={search ? search.results.length : 0}
 				updateLanguage={setLanguage}
 			/>
 
-			<SearchResults results={searchResults} />
+			{!!search ? (
+				<SearchResults results={search.results} />
+			) : (
+				<>No results</>
+			)}
 		</>
 	);
 }
