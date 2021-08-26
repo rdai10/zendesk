@@ -14,11 +14,11 @@ import i18n from '../lib/i18n';
 
 export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
 	const languages = [
-		{ label: i18n.t('english'), value: 'en-US' },
+		{ label: i18n.t('english'), value: 'en-us' },
 		{ label: i18n.t('spanish'), value: 'es' },
 		{ label: i18n.t('japanese'), value: 'ja' },
 		{ label: i18n.t('portuguese'), value: 'pt' },
-		{ label: i18n.t('chinese'), value: 'zh-CN' },
+		{ label: i18n.t('chinese'), value: 'zh-cn' },
 	];
 
 	const [selectedItem, setSelectedItem] = useState(languages[0]);
