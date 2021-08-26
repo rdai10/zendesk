@@ -9,34 +9,34 @@ import { displayDateInMDYFormat } from '../lib/utility';
 export default function SearchResults({ results }) {
 	return (
 		<Grid>
-			<Row>
-				{results.map((result) => (
-					<Result key={result.id} result={result} />
-				))}
-			</Row>
+			{results.map((result) => (
+				<Result key={result.id} result={result} />
+			))}
 		</Grid>
 	);
 }
 
 function Result({ result }) {
 	return (
-		<Col>
-			<Well>
-				<Title>
-					<MD isBold>{result.name}</MD>
-				</Title>
+		<Row>
+			<Col>
+				<Well>
+					<Title>
+						<MD isBold>{result.name}</MD>
+					</Title>
 
-				<SM>
-					<Ellipsis>
-						{/* <Paragraph size="small">breadcrumb</Paragraph> */}
-					</Ellipsis>
+					<SM>
+						<Ellipsis>
+							{/* <Paragraph size="small">breadcrumb</Paragraph> */}
+						</Ellipsis>
 
-					<Paragraph size="small">
-						{I18n.t('last edited')}{' '}
-						{displayDateInMDYFormat(result.edited_at)}
-					</Paragraph>
-				</SM>
-			</Well>
-		</Col>
+						<Paragraph size="small">
+							{I18n.t('last edited')}{' '}
+							{displayDateInMDYFormat(result.edited_at)}
+						</Paragraph>
+					</SM>
+				</Well>
+			</Col>
+		</Row>
 	);
 }
