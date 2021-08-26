@@ -1,14 +1,23 @@
-import { cleanup, render } from '@testing-library/react';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
 
-import { SEARCH } from './mocks/mock';
+import { CLIENT, SEARCH } from './mocks/mock';
+import { GlobalContext } from '../src/javascript/context/Global';
 import SearchResults from '../src/javascript/modules/SearchResults';
 
 function renderSearchResults() {
-	return render(<SearchResults results={SEARCH.results} />);
+	return render(
+		<GlobalContext.Provider value={{ client: CLIENT }}>
+			<SearchResults results={SEARCH.results} />
+		</GlobalContext.Provider>
+	);
 }
 
 describe('Search Results', () => {
+	beforeEach(() => {
+		CLIENT.invoke = jest.fn();
+	});
+
 	afterEach(cleanup);
 
 	it('renders', () => {
@@ -27,5 +36,19 @@ describe('Search Results', () => {
 		const { getByText } = renderSearchResults();
 
 		getByText('Last edited December 5, 2020');
+	});
+
+	it('renders the Link article button', () => {
+		const { getByText } = renderSearchResults();
+
+		getByText('Link article');
+	});
+
+	it('renders the Linked tag when the Link article button is clicked', () => {
+		const { getByText } = renderSearchResults();
+
+		fireEvent.click(getByText('Link article'));
+
+		getByText('Linked');
 	});
 });
