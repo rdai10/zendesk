@@ -23,10 +23,12 @@ class App {
 	 */
 	async init() {
 		const currentUser = (await this._client.get('currentUser')).currentUser;
-		const ticketSubject = await this._client.get('ticket.subject');
+
+		let ticketSubject = await this._client.get('ticket.subject');
+		ticketSubject = ticketSubject['ticket.subject'] || '';
 
 		this.states.locale = currentUser.locale;
-		this.states.ticketSubject = ticketSubject['ticket.subject'] || '';
+		this.states.ticketSubject = ticketSubject;
 
 		I18n.loadTranslations(currentUser.locale);
 
