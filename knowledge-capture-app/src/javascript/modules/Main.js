@@ -9,6 +9,7 @@ import SearchResults from './SearchResults';
 export default function Main({ data }) {
 	const { client } = useGlobalContext();
 
+	const [keyword, setKeyword] = useState(data.ticketSubject);
 	const [language, setLanguage] = useState('');
 	const [searchResults, setSearchResults] = useState(data.searchResults);
 
@@ -18,7 +19,7 @@ export default function Main({ data }) {
 
 			try {
 				search = await client.request(
-					API_ENDPOINTS.search(data.ticketSubject, language)
+					API_ENDPOINTS.search(keyword, language)
 				);
 			} catch (error) {
 				console.error(
@@ -34,7 +35,11 @@ export default function Main({ data }) {
 
 	return (
 		<>
-			<SearchInput updater={setSearchResults} />
+			<SearchInput
+				placeholder={data.ticketSubject}
+				updateKeyword={setKeyword}
+				updater={setSearchResults}
+			/>
 
 			<SearchFilters
 				resultsDisplayed={searchResults.length}
