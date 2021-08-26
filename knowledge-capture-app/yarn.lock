@@ -1477,6 +1477,14 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
 
+"@zendeskgarden/container-buttongroup@^0.3.8":
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-buttongroup/-/container-buttongroup-0.3.10.tgz#353af95a8ca4badf96024b04d9f3241ea1aad8e8"
+  integrity sha512-4n2CRD1pRbhndYn9yf3zp4x/3JBmHvnWtlrAbFYz1X/ZE55UR/AaHzRLIOVlP9ZyeLdrRb0Ot4zXg0/vV6l9Fg==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@zendeskgarden/container-selection" "^1.3.10"
+
 "@zendeskgarden/container-field@^1.3.6":
   version "1.3.8"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-field/-/container-field-1.3.8.tgz#b92572527a45d3b9c58c8951f47996d0ea93376c"
@@ -1492,6 +1500,14 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
 
+"@zendeskgarden/container-keyboardfocus@^0.4.7":
+  version "0.4.9"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-keyboardfocus/-/container-keyboardfocus-0.4.9.tgz#93325273dfc38d8965e4a7adb8a48306d8a3a388"
+  integrity sha512-xXjOa982bgCqAErr0NyfY+AGHOotAbuEMC5NSMcl5hbDrBC+tSOgyDGzsr33Lh4yIGbCaiJoFmmUkpwZuSCcOw==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@zendeskgarden/container-utilities" "^0.5.6"
+
 "@zendeskgarden/container-scrollregion@^0.1.0":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-scrollregion/-/container-scrollregion-0.1.1.tgz#da83b054ba38ba79e6b9d84bdd88e64cd54bfc42"
@@ -1502,7 +1518,7 @@
     prop-types "^15.7.2"
     react-merge-refs "^1.1.0"
 
-"@zendeskgarden/container-selection@^1.3.8":
+"@zendeskgarden/container-selection@^1.3.10", "@zendeskgarden/container-selection@^1.3.8":
   version "1.3.10"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-1.3.10.tgz#501c1e2cf7ecda1a4b186fb81dee5fa1f9680978"
   integrity sha512-umSNGgPEuL/Gr9w5uPLLR8PONCO7wS+TJo+5Wrn2MDSqIlDAXYD4AZ6c1kWv0uT4Dlab8B07wNP+nLntqDklYw==
@@ -1632,6 +1648,16 @@
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.5.tgz#b51a50046f42a11b8d1bfec46e100b02fd6fc1d9"
   integrity sha512-vX7vDJVQoyYFUshYXXX5QE2fL9M6K2bnxTeB2IVyEIaGRYEi20xjoY6cuO1uAQ7RaIRGCSyZFKgWW+/IrlQMKg==
 
+"@zendeskgarden/react-buttons@^8.39.0":
+  version "8.39.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-buttons/-/react-buttons-8.39.0.tgz#8064581de16fc5a287fd05cedc7821a83d0ced33"
+  integrity sha512-kAQW46UMOIM0QBgHM7AjxD7N4rn/ru9+04PwvYPFA9oaOcXXAa1G3QqKbWveD7XkKn4UwAwTshdiQQ/dDuqslw==
+  dependencies:
+    "@zendeskgarden/container-buttongroup" "^0.3.8"
+    "@zendeskgarden/container-keyboardfocus" "^0.4.7"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
+
 "@zendeskgarden/react-dropdowns@^8.39.0":
   version "8.39.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-dropdowns/-/react-dropdowns-8.39.0.tgz#e8e5871eea58d89635e2e59aa58c4430d93f3cb3"
@@ -1674,6 +1700,15 @@
     prop-types "^15.5.7"
     react-transition-group "^4.4.2"
     react-uid "^2.3.1"
+
+"@zendeskgarden/react-tags@^8.39.0":
+  version "8.39.0"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tags/-/react-tags-8.39.0.tgz#7fbcfddf79a66ed999426979c16ff5f4f9a29ded"
+  integrity sha512-4XhPcleV9OFt1kC9cJ0sRXUwxdaWfkroAR5quGF8xPTMvVgWfR6PX3NMN+IEjqoITlJ90locE3mxaSki2XedBw==
+  dependencies:
+    "@zendeskgarden/container-utilities" "^0.5.5"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
 
 "@zendeskgarden/react-theming@^8.39.0":
   version "8.39.0"
