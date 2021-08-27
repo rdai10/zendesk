@@ -1,5 +1,6 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from '@zendeskgarden/react-theming';
 import { GlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
 import { API_ENDPOINTS } from '../lib/utility';
@@ -48,7 +49,9 @@ class App {
 			<StrictMode>
 				<ErrorBoundary>
 					<GlobalContext.Provider value={{ client: this._client }}>
-						<Main data={this.states} />
+						<ThemeProvider>
+							<Main data={this.states} />
+						</ThemeProvider>
 					</GlobalContext.Provider>
 				</ErrorBoundary>
 			</StrictMode>,

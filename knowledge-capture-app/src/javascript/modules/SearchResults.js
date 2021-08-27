@@ -54,7 +54,7 @@ function Result({ categories, sections, result }) {
 			<Col>
 				<Well>
 					<Title>
-						<MD isBold>{result.name}</MD>
+						<h3>{result.name}</h3>
 					</Title>
 
 					<SM>
