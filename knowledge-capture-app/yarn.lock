@@ -1477,6 +1477,13 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.1.tgz#5c85d662f76fa1d34575766c5dcd6615abcd30d8"
   integrity sha512-FZdkNBDqBRHKQ2MEbSC17xnPFOhZxeJ2YGSfr2BKf3sujG49Qe3bB+rGCwQfIaA7WHnGeGkSijX4FuBCdrzW/g==
 
+"@zendeskgarden/container-breadcrumb@^0.4.6":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-breadcrumb/-/container-breadcrumb-0.4.8.tgz#8d2cff973489b3d0cd1d47b9981363a6c8625070"
+  integrity sha512-mJEi/pB4z8oMV8LxrKI7n+8odrVKov/7zrG+WhLL7WCNdYCuMnPl/2Xb/qUmiG/oyLczlPUYzd6ac6TUF/43RA==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
 "@zendeskgarden/container-buttongroup@^0.3.8":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-buttongroup/-/container-buttongroup-0.3.10.tgz#353af95a8ca4badf96024b04d9f3241ea1aad8e8"
@@ -1647,6 +1654,15 @@
   version "6.4.5"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.5.tgz#b51a50046f42a11b8d1bfec46e100b02fd6fc1d9"
   integrity sha512-vX7vDJVQoyYFUshYXXX5QE2fL9M6K2bnxTeB2IVyEIaGRYEi20xjoY6cuO1uAQ7RaIRGCSyZFKgWW+/IrlQMKg==
+
+"@zendeskgarden/react-breadcrumbs@^8.39.1":
+  version "8.39.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-breadcrumbs/-/react-breadcrumbs-8.39.1.tgz#0bd50feb7e35ac704d9e297bf821fc723d41a72e"
+  integrity sha512-ctO9Wfh6lWqdt0BR2Gv6A3ZpJr2U48U5LMjBVck8OKY+FIHAh71OaP6xG/gT2IIrUN84rsu6+PgkAK4ioxIPZQ==
+  dependencies:
+    "@zendeskgarden/container-breadcrumb" "^0.4.6"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
 
 "@zendeskgarden/react-buttons@^8.39.0":
   version "8.39.0"

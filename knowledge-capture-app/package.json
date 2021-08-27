@@ -23,6 +23,7 @@
 		"@zendeskgarden/css-tags": "^4.0.4",
 		"@zendeskgarden/css-tooltips": "^4.0.4",
 		"@zendeskgarden/css-utilities": "^3.0.1",
+		"@zendeskgarden/react-breadcrumbs": "^8.39.1",
 		"@zendeskgarden/react-buttons": "^8.39.0",
 		"@zendeskgarden/react-dropdowns": "^8.39.0",
 		"@zendeskgarden/react-forms": "^8.39.0",

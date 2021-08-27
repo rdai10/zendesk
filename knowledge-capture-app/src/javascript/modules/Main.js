@@ -48,7 +48,11 @@ export default function Main({ data }) {
 			/>
 
 			{!!search ? (
-				<SearchResults results={search.results} />
+				<SearchResults
+					categories={search.categories}
+					results={search.results}
+					sections={search.sections}
+				/>
 			) : (
 				<NoResults />
 			)}
