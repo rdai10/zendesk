@@ -8,7 +8,11 @@ import SearchResults from '../src/javascript/modules/SearchResults';
 function renderSearchResults() {
 	return render(
 		<GlobalContext.Provider value={{ client: CLIENT }}>
-			<SearchResults results={SEARCH.results} />
+			<SearchResults
+				categories={SEARCH.categories}
+				results={SEARCH.results}
+				sections={SEARCH.sections}
+			/>
 		</GlobalContext.Provider>
 	);
 }
@@ -30,6 +34,13 @@ describe('Search Results', () => {
 		const { getByText } = renderSearchResults();
 
 		getByText('Article Name 1');
+	});
+
+	it('renders the breadcrumb correctly', () => {
+		const { getByText } = renderSearchResults();
+
+		getByText('Category Name 1');
+		getByText('Section Name 1');
 	});
 
 	it('renders the last edited date for the search results', () => {

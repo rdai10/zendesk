@@ -31,7 +31,7 @@ export const SEARCH = {
 	results: [
 		{
 			id: 360032695971,
-			url: 'url',
+			url: 'url.json',
 			html_url: 'url',
 			author_id: 123,
 			comments_disabled: false,
@@ -56,6 +56,56 @@ export const SEARCH = {
 			body: 'Article Body',
 			snippet: 'Article Snippet',
 			result_type: 'article',
+		},
+	],
+	sections: [
+		{
+			id: 234,
+			url: 'url.json',
+			html_url: 'url',
+			category_id: 345,
+			position: 0,
+			sorting: 'manual',
+			created_at: '2018-08-29T15:03:52Z',
+			updated_at: '2020-08-04T19:11:11Z',
+			name: 'Section Name 1',
+			description: '',
+			locale: 'en-us',
+			source_locale: 'en-us',
+			outdated: false,
+			parent_section_id: null,
+			theme_template: 'section_page',
+		},
+	],
+	categories: [
+		{
+			id: 345,
+			url: 'url.json',
+			html_url: 'url',
+			position: 0,
+			created_at: '2018-08-29T14:48:54Z',
+			updated_at: '2020-08-04T19:11:11Z',
+			name: 'Category Name 1',
+			description: '',
+			locale: 'en-us',
+			source_locale: 'en-us',
+			outdated: false,
+		},
+	],
+	users: [
+		{
+			id: 100,
+			name: 'Test User 1',
+			photo: {
+				content_url: 'gravatar/png',
+			},
+		},
+		{
+			id: 200,
+			name: 'Test User 2',
+			photo: {
+				content_url: 'gravatar/png',
+			},
 		},
 	],
 };

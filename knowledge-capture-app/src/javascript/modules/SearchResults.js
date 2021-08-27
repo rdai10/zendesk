@@ -3,25 +3,42 @@ import { Button } from '@zendeskgarden/react-buttons';
 import { Col, Grid, Row } from '@zendeskgarden/react-grid';
 import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
 import { Tag } from '@zendeskgarden/react-tags';
-import { Ellipsis, MD, SM } from '@zendeskgarden/react-typography';
+import { MD, SM, Span } from '@zendeskgarden/react-typography';
 import { useGlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
 import { displayDateInMDYFormat } from '../lib/utility';
+import ResultsBreadcrumb from './ResultsBreadcrumb';
 
-export default function SearchResults({ results }) {
+export default function SearchResults({ categories, results, sections }) {
 	return (
 		<Grid>
 			{results.map((result) => (
-				<Result key={result.id} result={result} />
+				<Result
+					categories={categories}
+					key={result.id}
+					result={result}
+					sections={sections}
+				/>
 			))}
 		</Grid>
 	);
 }
 
-function Result({ result }) {
+function Result({ categories, sections, result }) {
 	const { client } = useGlobalContext();
 
 	const [linked, setLinked] = useState(false);
+
+	const section = getSection(result.section_id);
+	const category = getCategory(section ? section.category_id : null);
+
+	function getCategory(id) {
+		return categories.find((category) => category.id === id);
+	}
+
+	function getSection(id) {
+		return sections.find((section) => section.id === id);
+	}
 
 	function handleClick() {
 		client.invoke(
@@ -41,9 +58,12 @@ function Result({ result }) {
 					</Title>
 
 					<SM>
-						<Ellipsis>
-							{/* <Paragraph size="small">breadcrumb</Paragraph> */}
-						</Ellipsis>
+						{!!category && !!section && (
+							<ResultsBreadcrumb
+								category={category.name}
+								section={section.name}
+							/>
+						)}
 
 						<Paragraph size="small">
 							{I18n.t('last edited')}{' '}
@@ -54,7 +74,7 @@ function Result({ result }) {
 					<Row alignItems="center">
 						<Col>
 							<Button isLink size="small" onClick={handleClick}>
-								{I18n.t('link article')}
+								<Span isBold>{I18n.t('link article')}</Span>
 							</Button>
 						</Col>
 
