@@ -42,7 +42,10 @@ export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
 				<Col>
 					<SM>
 						<Dropdown
-							downshiftProps={{ itemToString: () => {} }}
+							downshiftProps={{
+								itemToString: (language) =>
+									language && language.label,
+							}}
 							onSelect={handleSelect}
 							selectedItem={selectedItem}
 						>
