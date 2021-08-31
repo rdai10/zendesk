@@ -47,7 +47,7 @@ export default function Main({ data }) {
 				updateLanguage={setLanguage}
 			/>
 
-			{!!search ? (
+			{!!search && search.results.length > 0 ? (
 				<SearchResults
 					categories={search.categories}
 					results={search.results}
