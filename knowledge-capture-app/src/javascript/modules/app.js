@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@zendeskgarden/react-theming';
 import { GlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
-import { API_ENDPOINTS } from '../lib/utility';
 import ErrorBoundary from './ErrorBoundary';
 import Main from './Main';
+import { DEFAULT_LOCALE } from '../lib/constants';
 
 class App {
 	constructor(client, appData) {
@@ -23,27 +23,29 @@ class App {
 	 * Initialize module, render main template
 	 */
 	async init() {
-		const currentUser = (await this._client.get('currentUser')).currentUser;
-
-		let ticketSubject = await this._client.get('ticket.subject');
-		ticketSubject = ticketSubject['ticket.subject'] || '';
-
-		this.states.locale = currentUser.locale;
-		this.states.ticketSubject = ticketSubject;
-
-		I18n.loadTranslations(currentUser.locale);
-
-		let search = null;
+		let currentUser = null;
 
 		try {
-			search = await this._client.request(
-				API_ENDPOINTS.search(ticketSubject)
-			);
+			currentUser = (await this._client.get('currentUser')).currentUser;
 		} catch (e) {
-			this._handleError.call(this, e);
+			this._handleError.call(this, e, 'current user');
 		}
 
-		this.states.searchData = search;
+		let ticketSubject = '';
+
+		try {
+			ticketSubject = await this._client.get('ticket.subject');
+			ticketSubject = ticketSubject['ticket.subject'];
+		} catch (e) {
+			this._handleError.call(this, e, 'ticket subject');
+		}
+
+		this.states.currentUser = currentUser;
+		this.states.ticketSubject = ticketSubject;
+
+		const locale = currentUser.locale ? currentUser.locale : DEFAULT_LOCALE;
+
+		I18n.loadTranslations(locale);
 
 		ReactDOM.render(
 			<StrictMode>
@@ -63,9 +65,9 @@ class App {
 	 * Handles error
 	 * @param {Object} error error object
 	 */
-	_handleError(error) {
+	_handleError(error, name) {
 		console.error(
-			'Query for Search Results returned with the following error: ',
+			`Retriving ${name} returned with the following error: `,
 			error.status,
 			error.statusText
 		);
