@@ -43,7 +43,7 @@ function Result({ categories, sections, result }) {
 	function handleClick() {
 		client.invoke(
 			'ticket.editor.insert',
-			`<a href=${result.html_url} rel="noopener noreferrer" target="_blank" >${result.name}</a>`
+			`<a href=${result.html_url}?source=search rel="noopener noreferrer" target="_blank" >${result.name}</a>`
 		);
 
 		setLinked(true);
