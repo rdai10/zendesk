@@ -2,7 +2,7 @@ import { API_BASE_URL, DEFAULT_LOCALE, RESULTS_COUNT } from './constants';
 
 export const API_ENDPOINTS = {
 	search: (queryString, locale = DEFAULT_LOCALE) =>
-		`${API_BASE_URL}/articles/search.json?query=${queryString}&per_page=${RESULTS_COUNT}&page=1&locale=${locale}&include=sections%2Ccategories%2Cusers`,
+		`${API_BASE_URL}/articles/search.json?query=${queryString}&per_page=${RESULTS_COUNT}&page=1&locale=${locale}&include=sections,categories,users`,
 };
 
 /**
