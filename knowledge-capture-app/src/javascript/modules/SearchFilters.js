@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import {
 	Dropdown,
 	Field,
@@ -40,32 +41,41 @@ export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
 					</SM>
 				</Col>
 				<Col>
-					<SM>
-						<Dropdown
-							downshiftProps={{
-								itemToString: (language) =>
-									language && language.label,
-							}}
-							onSelect={handleSelect}
-							selectedItem={selectedItem}
-						>
-							<Field>
-								<Label hidden>
-									{i18n.t('language selector')}
-								</Label>
-								<Select isCompact>{selectedItem.label}</Select>
-							</Field>
-							<Menu>
-								{languages.map(({ label, value }) => (
-									<Item key={value} value={value}>
-										{label}
-									</Item>
-								))}
-							</Menu>
-						</Dropdown>
-					</SM>
+					<LanguageFilter
+						handler={handleSelect}
+						languages={languages}
+						selectedItem={selectedItem}
+					/>
 				</Col>
 			</Row>
 		</Grid>
 	);
 }
+
+const LanguageDropDown = ({ className, handler, languages, selectedItem }) => (
+	<Dropdown
+		downshiftProps={{
+			itemToString: (language) => language && language.label,
+		}}
+		onSelect={handler}
+		selectedItem={selectedItem}
+	>
+		<Field>
+			<Label hidden>{i18n.t('language selector')}</Label>
+			<Select className={className} isCompact>
+				{selectedItem.label}
+			</Select>
+		</Field>
+		<Menu>
+			{languages.map(({ label, value }) => (
+				<Item key={value} value={value}>
+					{label}
+				</Item>
+			))}
+		</Menu>
+	</Dropdown>
+);
+
+const LanguageFilter = styled(LanguageDropDown)`
+	border-width: 0;
+`;

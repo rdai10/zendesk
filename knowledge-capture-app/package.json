@@ -35,6 +35,7 @@
 		"@zendeskgarden/svg-icons": "^6.30.2",
 		"babel-jest": "^27.0.6",
 		"babel-loader": "^8.2.2",
+		"babel-plugin-styled-components": "^1.13.2",
 		"clean-webpack-plugin": "^0.1.19",
 		"copy-webpack-plugin": "^4.5.2",
 		"core-js": "^3.16.2",
