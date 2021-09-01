@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import { Button } from '@zendeskgarden/react-buttons';
+import styled from 'styled-components';
 import { Col, Grid, Row } from '@zendeskgarden/react-grid';
 import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
-import { Tag } from '@zendeskgarden/react-tags';
-import { MD, SM, Span } from '@zendeskgarden/react-typography';
+import { DEFAULT_THEME } from '@zendeskgarden/react-theming';
+import { SM } from '@zendeskgarden/react-typography';
 import { useGlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
 import { displayDateInMDYFormat } from '../lib/utility';
-import ResultsBreadcrumb from './ResultsBreadcrumb';
+import LinkArticle from './LinkArticle';
+import ResultBreadcrumb from './ResultBreadcrumb';
 
 export default function SearchResults({ categories, results, sections }) {
 	return (
@@ -53,41 +54,45 @@ function Result({ categories, sections, result }) {
 		<Row>
 			<Col>
 				<Well>
-					<Title>
-						<h3>{result.name}</h3>
-					</Title>
+					<ResultTitle title={result.name} />
 
 					<SM>
 						{!!category && !!section && (
-							<ResultsBreadcrumb
+							<ResultBreadcrumb
 								category={category.name}
 								section={section.name}
 							/>
 						)}
 
-						<Paragraph size="small">
-							{I18n.t('last edited')}{' '}
-							{displayDateInMDYFormat(result.edited_at)}
-						</Paragraph>
+						<ModificationInformation date={result.edited_at} />
 					</SM>
 
-					<Row alignItems="center">
-						<Col>
-							<Button isLink size="small" onClick={handleClick}>
-								<Span isBold>{I18n.t('link article')}</Span>
-							</Button>
-						</Col>
-
-						{linked && (
-							<Col textAlign="end">
-								<Tag hue="blue">
-									<span>{I18n.t('linked')}</span>
-								</Tag>
-							</Col>
-						)}
-					</Row>
+					<LinkArticle linked={linked} handler={handleClick} />
 				</Well>
 			</Col>
 		</Row>
 	);
 }
+
+const EditedAt = ({ className, date }) => (
+	<Paragraph className={className} size="small">
+		{I18n.t('last edited')} {displayDateInMDYFormat(date)}
+	</Paragraph>
+);
+
+const ModificationInformation = styled(EditedAt)`
+	color: ${DEFAULT_THEME.palette.grey[600]};
+	margin-top: ${DEFAULT_THEME.space.xxs};
+`;
+
+const WellTitle = ({ className, title }) => (
+	<Title className={className}>
+		<h3>{title}</h3>
+	</Title>
+);
+
+const ResultTitle = styled(WellTitle)`
+	h3 {
+		font-size: ${DEFAULT_THEME.lineHeights.sm};
+	}
+`;

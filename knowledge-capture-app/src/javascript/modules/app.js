@@ -1,11 +1,12 @@
+import { ThemeProvider } from '@zendeskgarden/react-theming';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from '@zendeskgarden/react-theming';
 import { GlobalContext } from '../context/Global';
+import { DEFAULT_LOCALE } from '../lib/constants';
 import I18n from '../lib/i18n';
 import ErrorBoundary from './ErrorBoundary';
 import Main from './Main';
-import { DEFAULT_LOCALE } from '../lib/constants';
+import { Theme } from './Theme';
 
 class App {
 	constructor(client, appData) {
@@ -51,7 +52,7 @@ class App {
 			<StrictMode>
 				<ErrorBoundary>
 					<GlobalContext.Provider value={{ client: this._client }}>
-						<ThemeProvider>
+						<ThemeProvider theme={Theme}>
 							<Main data={this.states} />
 						</ThemeProvider>
 					</GlobalContext.Provider>
