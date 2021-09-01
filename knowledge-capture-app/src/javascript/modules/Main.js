@@ -18,16 +18,18 @@ export default function Main({ data }) {
 	useEffect(async () => {
 		let search = null;
 
-		try {
-			search = await client.request(
-				API_ENDPOINTS.search(keyword, language)
-			);
-		} catch (error) {
-			console.error(
-				'Query for Search Results returned with the following error: ',
-				error.status,
-				error.statusText
-			);
+		if (keyword !== '') {
+			try {
+				search = await client.request(
+					API_ENDPOINTS.search(keyword, language)
+				);
+			} catch (error) {
+				console.error(
+					'Query for Search Results returned with the following error: ',
+					error.status,
+					error.statusText
+				);
+			}
 		}
 
 		setSearch(search);
