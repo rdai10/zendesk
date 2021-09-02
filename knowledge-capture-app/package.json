@@ -31,6 +31,7 @@
 		"@zendeskgarden/react-notifications": "^8.39.0",
 		"@zendeskgarden/react-tags": "^8.39.0",
 		"@zendeskgarden/react-theming": "^8.39.0",
+		"@zendeskgarden/react-tooltips": "^8.40.0",
 		"@zendeskgarden/react-typography": "^8.39.0",
 		"@zendeskgarden/svg-icons": "^6.30.2",
 		"babel-jest": "^27.0.6",
