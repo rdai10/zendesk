@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Span } from '@zendeskgarden/react-typography';
-import { DEFAULT_THEME } from '@zendeskgarden/react-theming';
 
 const Breadcrumb = ({ category, className, section }) => (
 	<ul className={className}>
@@ -16,9 +15,9 @@ const Breadcrumb = ({ category, className, section }) => (
 
 const StyledBreadCrumb = styled(Breadcrumb)`
 	align-items: center;
-	color: ${DEFAULT_THEME.palette.grey[600]};
+	color: ${(p) => p.theme.palette.grey[600]};
 	display: flex;
-	font-size: ${DEFAULT_THEME.fontSizes.sm};
+	font-size: ${(p) => p.theme.fontSizes.sm};
 	margin-top: 6px;
 
 	li {
@@ -28,7 +27,7 @@ const StyledBreadCrumb = styled(Breadcrumb)`
 
 		+ li::before {
 			content: '>';
-			margin: 0 ${DEFAULT_THEME.space.xxs};
+			margin: 0 ${(p) => p.theme.space.xxs};
 		}
 	}
 `;
