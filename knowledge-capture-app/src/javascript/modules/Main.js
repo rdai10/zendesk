@@ -46,7 +46,11 @@ export default function Main({ data }) {
 		<>
 			{!showAddArticle && (
 				<Grid>
-					<SearchInput updateKeyword={setKeyword} value={keyword} />
+					<SearchInput
+						clickHandler={handleShowAdd}
+						updateKeyword={setKeyword}
+						value={keyword}
+					/>
 
 					<SearchFilters
 						resultsDisplayed={search ? search.results.length : 0}

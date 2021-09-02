@@ -34,12 +34,12 @@ export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
 
 	return (
 		<Row alignItems="center">
-			<Col>
+			<Col size="4">
 				<SM>
 					{resultsDisplayed} {i18n.t('results')}
 				</SM>
 			</Col>
-			<Col>
+			<Col size="8">
 				<LanguageFilter
 					handler={handleSelect}
 					languages={languages}
