@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Col, Grid, Row } from '@zendeskgarden/react-grid';
+import { Col, Row } from '@zendeskgarden/react-grid';
 import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
 import { SM } from '@zendeskgarden/react-typography';
 import { useGlobalContext } from '../context/Global';
@@ -11,7 +11,7 @@ import ResultBreadcrumb from './ResultBreadcrumb';
 
 export default function SearchResults({ categories, results, sections }) {
 	return (
-		<Grid>
+		<>
 			{results.map((result) => (
 				<Result
 					categories={categories}
@@ -20,7 +20,7 @@ export default function SearchResults({ categories, results, sections }) {
 					sections={sections}
 				/>
 			))}
-		</Grid>
+		</>
 	);
 }
 

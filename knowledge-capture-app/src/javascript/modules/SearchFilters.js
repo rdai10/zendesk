@@ -8,7 +8,7 @@ import {
 	Select,
 	Label,
 } from '@zendeskgarden/react-dropdowns';
-import { Col, Grid, Row } from '@zendeskgarden/react-grid';
+import { Col, Row } from '@zendeskgarden/react-grid';
 import { SM } from '@zendeskgarden/react-typography';
 
 import i18n from '../lib/i18n';
@@ -33,22 +33,20 @@ export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
 	}
 
 	return (
-		<Grid>
-			<Row alignItems="center">
-				<Col>
-					<SM>
-						{resultsDisplayed} {i18n.t('results')}
-					</SM>
-				</Col>
-				<Col>
-					<LanguageFilter
-						handler={handleSelect}
-						languages={languages}
-						selectedItem={selectedItem}
-					/>
-				</Col>
-			</Row>
-		</Grid>
+		<Row alignItems="center">
+			<Col>
+				<SM>
+					{resultsDisplayed} {i18n.t('results')}
+				</SM>
+			</Col>
+			<Col>
+				<LanguageFilter
+					handler={handleSelect}
+					languages={languages}
+					selectedItem={selectedItem}
+				/>
+			</Col>
+		</Row>
 	);
 }
 
