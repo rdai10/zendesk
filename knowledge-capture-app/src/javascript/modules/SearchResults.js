@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Col, Grid, Row } from '@zendeskgarden/react-grid';
 import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
-import { DEFAULT_THEME } from '@zendeskgarden/react-theming';
 import { SM } from '@zendeskgarden/react-typography';
 import { useGlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
@@ -81,8 +80,8 @@ const EditedAt = ({ className, date }) => (
 );
 
 const ModificationInformation = styled(EditedAt)`
-	color: ${DEFAULT_THEME.palette.grey[600]};
-	margin-top: ${DEFAULT_THEME.space.xxs};
+	color: ${(p) => p.theme.palette.grey[600]};
+	margin-top: ${(p) => p.theme.space.xxs};
 `;
 
 const WellTitle = ({ className, title }) => (
@@ -93,6 +92,6 @@ const WellTitle = ({ className, title }) => (
 
 const ResultTitle = styled(WellTitle)`
 	h3 {
-		font-size: ${DEFAULT_THEME.lineHeights.sm};
+		font-size: ${(p) => p.theme.lineHeights.sm};
 	}
 `;
