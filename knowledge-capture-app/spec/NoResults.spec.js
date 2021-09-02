@@ -17,4 +17,10 @@ describe('Search Filters', () => {
 
 		getByText('No search results available.');
 	});
+
+	it('displays link to create new knowledge base article', () => {
+		const { getByText } = render(<NoResults />);
+
+		getByText('Create new knowledge.');
+	});
 });
