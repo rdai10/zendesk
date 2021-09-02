@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Grid } from '@zendeskgarden/react-grid';
 import { useGlobalContext } from '../context/Global';
 import { DEFAULT_LOCALE } from '../lib/constants';
 import { API_ENDPOINTS } from '../lib/utility';
@@ -44,7 +45,7 @@ export default function Main({ data }) {
 	return (
 		<>
 			{!showAddArticle && (
-				<>
+				<Grid>
 					<SearchInput updateKeyword={setKeyword} value={keyword} />
 
 					<SearchFilters
@@ -64,7 +65,7 @@ export default function Main({ data }) {
 						(search && search.results.length === 0)) && (
 						<NoResults clickHandler={handleShowAdd} />
 					)}
-				</>
+				</Grid>
 			)}
 
 			{showAddArticle && <NewArticle />}
