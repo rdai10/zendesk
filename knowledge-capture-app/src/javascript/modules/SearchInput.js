@@ -10,15 +10,30 @@ import { XL } from '@zendeskgarden/react-typography';
 
 import i18n from '../lib/i18n';
 
-const AddButton = () => (
-	<Tooltip content={i18n.t('create knowledge')} placement="auto" size="small">
-		<Button aria-label={i18n.t('create knowledge')}>
-			<XL>+</XL>
-		</Button>
-	</Tooltip>
-);
+const AddButton = ({ clickHandler }) => {
+	function handleOnClick() {
+		if (clickHandler) {
+			clickHandler(true);
+		}
+	}
 
-export default function SearchInput({ updateKeyword, value }) {
+	return (
+		<Tooltip
+			content={i18n.t('create knowledge')}
+			placement="start"
+			size="small"
+		>
+			<Button
+				aria-label={i18n.t('create knowledge')}
+				onClick={handleOnClick}
+			>
+				<XL>+</XL>
+			</Button>
+		</Tooltip>
+	);
+};
+
+export default function SearchInput({ clickHandler, updateKeyword, value }) {
 	const [currentValue, setCurrentValue] = useState(value);
 
 	function handleOnChange(event) {
@@ -32,7 +47,7 @@ export default function SearchInput({ updateKeyword, value }) {
 	}
 
 	return (
-		<Row justifyContent="between" wrap="nowrap">
+		<Row justifyContent="center" wrap="nowrap">
 			<Col>
 				<Field>
 					<Label hidden>{i18n.t('search input')}</Label>
@@ -55,7 +70,7 @@ export default function SearchInput({ updateKeyword, value }) {
 			</Col>
 
 			<Col>
-				<AddButton />
+				<AddButton clickHandler={clickHandler} />
 			</Col>
 		</Row>
 	);
