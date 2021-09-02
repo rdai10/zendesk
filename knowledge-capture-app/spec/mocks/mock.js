@@ -4,14 +4,39 @@ export const CLIENT = {
 		if (prop === 'currentUser') {
 			return Promise.resolve({
 				currentUser: {
-					locale: 'en',
+					id: 123,
+					email: 'user@liferay.com',
 					name: 'Sample User',
+					locale: 'en-US',
+					isSystemUser: false,
+					notes: '',
+					details: '',
+					alias: '',
+					signature: '',
+					externalId: null,
+					role: 'admin',
+					avatarUrl: '/avatar/url',
+					timeZone: {
+						name: 'Pacific Time (US & Canada)',
+						translatedName: 'Pacific Time (US & Canada)',
+						ianaName: 'America/Los_Angeles',
+						offset: -420,
+						formattedOffset: 'GMT-07:00',
+					},
+					tags: [],
+					groups: [
+						{
+							id: 234,
+							name: 'Admin',
+						},
+					],
+					identities: [],
+					organizations: [],
 				},
 			});
 		}
 		if (prop === 'ticket.subject') {
 			return Promise.resolve({
-				errors: {},
 				'ticket.subject': 'Sample Subject',
 			});
 		}

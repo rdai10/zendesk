@@ -1,18 +1,21 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
-
+import { ThemeProvider } from '@zendeskgarden/react-theming';
 import { CLIENT, SEARCH } from './mocks/mock';
 import { GlobalContext } from '../src/javascript/context/Global';
 import SearchResults from '../src/javascript/modules/SearchResults';
+import { Theme } from '../src/javascript/modules/Theme';
 
 function renderSearchResults() {
 	return render(
 		<GlobalContext.Provider value={{ client: CLIENT }}>
-			<SearchResults
-				categories={SEARCH.categories}
-				results={SEARCH.results}
-				sections={SEARCH.sections}
-			/>
+			<ThemeProvider theme={Theme}>
+				<SearchResults
+					categories={SEARCH.categories}
+					results={SEARCH.results}
+					sections={SEARCH.sections}
+				/>
+			</ThemeProvider>
 		</GlobalContext.Provider>
 	);
 }

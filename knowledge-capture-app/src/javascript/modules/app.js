@@ -1,6 +1,6 @@
-import { ThemeProvider } from '@zendeskgarden/react-theming';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+import { ThemeProvider } from '@zendeskgarden/react-theming';
 import { GlobalContext } from '../context/Global';
 import { DEFAULT_LOCALE } from '../lib/constants';
 import I18n from '../lib/i18n';
