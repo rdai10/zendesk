@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useGlobalContext } from '../context/Global';
 import { DEFAULT_LOCALE } from '../lib/constants';
 import { API_ENDPOINTS } from '../lib/utility';
+import NewArticle from './NewArticle';
 import NoResults from './NoResults';
 import SearchFilters from './SearchFilters';
 import SearchInput from './SearchInput';
@@ -14,6 +15,7 @@ export default function Main({ data }) {
 	const [keyword, setKeyword] = useState(ticketSubject);
 	const [language, setLanguage] = useState(DEFAULT_LOCALE);
 	const [search, setSearch] = useState(null);
+	const [showAddArticle, setShowAddArticle] = useState(false);
 
 	useEffect(async () => {
 		let search = null;
@@ -35,26 +37,37 @@ export default function Main({ data }) {
 		setSearch(search);
 	}, [keyword, language]);
 
+	function handleShowAdd(val) {
+		setShowAddArticle(val);
+	}
+
 	return (
 		<>
-			<SearchInput updateKeyword={setKeyword} value={keyword} />
+			{!showAddArticle && (
+				<>
+					<SearchInput updateKeyword={setKeyword} value={keyword} />
 
-			<SearchFilters
-				resultsDisplayed={search ? search.results.length : 0}
-				updateLanguage={setLanguage}
-			/>
+					<SearchFilters
+						resultsDisplayed={search ? search.results.length : 0}
+						updateLanguage={setLanguage}
+					/>
 
-			{search && search.results.length > 0 && (
-				<SearchResults
-					categories={search.categories}
-					results={search.results}
-					sections={search.sections}
-				/>
+					{search && search.results.length > 0 && (
+						<SearchResults
+							categories={search.categories}
+							results={search.results}
+							sections={search.sections}
+						/>
+					)}
+
+					{(keyword === '' ||
+						(search && search.results.length === 0)) && (
+						<NoResults clickHandler={handleShowAdd} />
+					)}
+				</>
 			)}
 
-			{(keyword === '' || (search && search.results.length === 0)) && (
-				<NoResults />
-			)}
+			{showAddArticle && <NewArticle />}
 		</>
 	);
 }
