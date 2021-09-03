@@ -35,11 +35,25 @@ export const CLIENT = {
 				},
 			});
 		}
+
+		if (prop === 'ticket.brand.id') {
+			return Promise.resolve({
+				'ticket.brand.id': 987654321,
+			});
+		}
+
+		if (prop === 'ticket.id') {
+			return Promise.resolve({
+				'ticket.id': 123456,
+			});
+		}
+
 		if (prop === 'ticket.subject') {
 			return Promise.resolve({
 				'ticket.subject': 'Sample Subject',
 			});
 		}
+
 		return Promise.resolve({
 			[prop]: null,
 		});

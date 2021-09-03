@@ -24,27 +24,33 @@ class App {
 	 * Initialize module, render main template
 	 */
 	async init() {
+		let brandId = '';
 		let currentUser = null;
-
-		try {
-			currentUser = (await this._client.get('currentUser')).currentUser;
-		} catch (e) {
-			this._handleError.call(this, e, 'current user');
-		}
-
+		let ticketId = '';
 		let ticketSubject = '';
 
 		try {
-			ticketSubject = await this._client.get('ticket.subject');
-			ticketSubject = ticketSubject['ticket.subject'];
+			const [user, brand, ticket, subject] = await Promise.all([
+				this._client.get('currentUser'),
+				this._client.get('ticket.brand.id'),
+				this._client.get('ticket.id'),
+				this._client.get('ticket.subject'),
+			]);
+
+			brandId = brand['ticket.brand.id'];
+			currentUser = user.currentUser;
+			ticketId = ticket['ticket.id'];
+			ticketSubject = subject['ticket.subject'];
 		} catch (e) {
-			this._handleError.call(this, e, 'ticket subject');
+			this._handleError.call(this, e);
 		}
 
+		this.states.brandId = brandId;
 		this.states.currentUser = currentUser;
+		this.states.ticketId = ticketId;
 		this.states.ticketSubject = ticketSubject;
 
-		const locale = currentUser.locale ? currentUser.locale : DEFAULT_LOCALE;
+		const locale = currentUser ? currentUser.locale : DEFAULT_LOCALE;
 
 		I18n.loadTranslations(locale);
 
@@ -66,9 +72,9 @@ class App {
 	 * Handles error
 	 * @param {Object} error error object
 	 */
-	_handleError(error, name) {
+	_handleError(error) {
 		console.error(
-			`Retriving ${name} returned with the following error: `,
+			`Retriving data returned with the following error: `,
 			error.status,
 			error.statusText
 		);
