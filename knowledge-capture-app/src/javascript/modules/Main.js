@@ -72,7 +72,7 @@ export default function Main({ data }) {
 				</Grid>
 			)}
 
-			{showAddArticle && <NewArticle />}
+			{showAddArticle && <NewArticle clickHandler={handleShowAdd} />}
 		</>
 	);
 }

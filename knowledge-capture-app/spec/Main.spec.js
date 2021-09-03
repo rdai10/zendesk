@@ -56,4 +56,32 @@ describe('Main', () => {
 			getByText('Create Knowledge');
 		});
 	});
+
+	describe('workflow to return to previous page from new article page', () => {
+		it('returns to the no results page correctly', () => {
+			const { getAllByDisplayValue, getByDisplayValue, getByText } =
+				renderMain();
+
+			fireEvent.change(getByDisplayValue('Test subject'), {
+				target: { value: '' },
+			});
+			fireEvent.keyDown(getAllByDisplayValue('')[0], { keyCode: 13 });
+			fireEvent.click(getByText('Create new knowledge.'));
+
+			fireEvent.click(getByText('X'));
+
+			getByText('No search results available.');
+			getByText('Create new knowledge.');
+		});
+
+		it('returns to the main search results page correctly', () => {
+			const { getByText } = renderMain();
+
+			fireEvent.click(getByText('+'));
+
+			fireEvent.click(getByText('X'));
+
+			getByText('Language Selector');
+		});
+	});
 });

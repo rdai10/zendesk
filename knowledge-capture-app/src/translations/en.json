@@ -6,6 +6,7 @@
 		"installation_instructions": "https://developer.zendesk.com/documentation/apps/getting-started/uploading-and-installing-a-private-app/#uploading-and-installing-a-private-app-in-zendesk-support"
 	},
 	"chinese": "Chinese (CN)",
+	"choose a template": "Choose a template:",
 	"create knowledge": "Create Knowledge",
 	"create new knowledge": "Create new knowledge.",
 	"english": "English",
