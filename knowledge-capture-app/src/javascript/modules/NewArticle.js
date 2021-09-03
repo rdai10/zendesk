@@ -4,7 +4,7 @@ import { Button } from '@zendeskgarden/react-buttons';
 import { Col, Grid, Row } from '@zendeskgarden/react-grid';
 import i18n from '../lib/i18n';
 
-export default function NewArticle({ clickHandler }) {
+export default function NewArticle({ brandId, clickHandler, ticketId }) {
 	return (
 		<Grid>
 			<PageHeading clickHandler={clickHandler} />
