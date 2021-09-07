@@ -45,12 +45,13 @@ class App {
 			this._handleError.call(this, e);
 		}
 
+		const locale = currentUser ? currentUser.locale : DEFAULT_LOCALE;
+
 		this.states.brandId = brandId;
 		this.states.currentUser = currentUser;
+		this.states.locale = locale;
 		this.states.ticketId = ticketId;
 		this.states.ticketSubject = ticketSubject;
-
-		const locale = currentUser ? currentUser.locale : DEFAULT_LOCALE;
 
 		I18n.loadTranslations(locale);
 

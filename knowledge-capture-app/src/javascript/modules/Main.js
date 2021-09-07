@@ -11,7 +11,7 @@ import SearchResults from './SearchResults';
 
 export default function Main({ data }) {
 	const { client } = useGlobalContext();
-	const { brandId, ticketId, ticketSubject } = data;
+	const { brandId, locale, ticketId, ticketSubject } = data;
 
 	const [keyword, setKeyword] = useState(ticketSubject);
 	const [language, setLanguage] = useState(DEFAULT_LOCALE);
@@ -76,6 +76,7 @@ export default function Main({ data }) {
 				<NewArticle
 					brandId={brandId}
 					clickHandler={handleShowAdd}
+					locale={locale}
 					ticketId={ticketId}
 				/>
 			)}
