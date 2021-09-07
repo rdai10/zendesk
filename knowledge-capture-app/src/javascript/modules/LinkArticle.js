@@ -7,17 +7,6 @@ import { Span } from '@zendeskgarden/react-typography';
 
 import I18n from '../lib/i18n';
 
-const LinkButton = ({ className, handler }) => (
-	<Button className={className} isLink size="small" onClick={handler}>
-		<Span isBold>{I18n.t('link article')}</Span>
-	</Button>
-);
-
-const StyledLinkButton = styled(LinkButton)`
-	font-size: ${(p) => p.theme.fontSizes.sm};
-	margin-top: ${(p) => p.theme.space.xs};
-`;
-
 export default function LinkArticle({ linked, handler }) {
 	return (
 		<Row alignItems="center">
@@ -35,3 +24,14 @@ export default function LinkArticle({ linked, handler }) {
 		</Row>
 	);
 }
+
+const LinkButton = ({ className, handler }) => (
+	<Button className={className} isLink size="small" onClick={handler}>
+		<Span isBold>{I18n.t('link article')}</Span>
+	</Button>
+);
+
+const StyledLinkButton = styled(LinkButton)`
+	font-size: ${(p) => p.theme.fontSizes.sm};
+	margin-top: ${(p) => p.theme.space.xs};
+`;

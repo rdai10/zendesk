@@ -10,35 +10,6 @@ import { XL } from '@zendeskgarden/react-typography';
 
 import i18n from '../lib/i18n';
 
-const AddButton = ({ className, clickHandler }) => {
-	function handleOnClick() {
-		if (clickHandler) {
-			clickHandler(true);
-		}
-	}
-
-	return (
-		<Tooltip
-			content={i18n.t('create knowledge')}
-			placement="start"
-			size="small"
-		>
-			<Button
-				aria-label={i18n.t('create knowledge')}
-				className={className}
-				onClick={handleOnClick}
-			>
-				<XL>+</XL>
-			</Button>
-		</Tooltip>
-	);
-};
-
-const AddArticleButton = styled(AddButton)`
-	padding: 0;
-	width: ${(p) => p.theme.space.xl};
-`;
-
 export default function SearchInput({ clickHandler, updateKeyword, value }) {
 	const [currentValue, setCurrentValue] = useState(value);
 
@@ -81,3 +52,32 @@ export default function SearchInput({ clickHandler, updateKeyword, value }) {
 		</Row>
 	);
 }
+
+const AddButton = ({ className, clickHandler }) => {
+	function handleOnClick() {
+		if (clickHandler) {
+			clickHandler(true);
+		}
+	}
+
+	return (
+		<Tooltip
+			content={i18n.t('create knowledge')}
+			placement="start"
+			size="small"
+		>
+			<Button
+				aria-label={i18n.t('create knowledge')}
+				className={className}
+				onClick={handleOnClick}
+			>
+				<XL>+</XL>
+			</Button>
+		</Tooltip>
+	);
+};
+
+const AddArticleButton = styled(AddButton)`
+	padding: 0;
+	width: ${(p) => p.theme.space.xl};
+`;
