@@ -2,6 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Span } from '@zendeskgarden/react-typography';
 
+export default function ResultBreadcrumb({ category, section }) {
+	return <StyledBreadCrumb category={category} section={section} />;
+}
+
 const Breadcrumb = ({ category, className, section }) => (
 	<ul className={className}>
 		<li>
@@ -31,7 +35,3 @@ const StyledBreadCrumb = styled(Breadcrumb)`
 		}
 	}
 `;
-
-export default function ResultBreadcrumb({ category, section }) {
-	return <StyledBreadCrumb category={category} section={section} />;
-}

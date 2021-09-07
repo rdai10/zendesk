@@ -79,16 +79,16 @@ const EditedAt = ({ className, date }) => (
 	</Paragraph>
 );
 
-const ModificationInformation = styled(EditedAt)`
-	color: ${(p) => p.theme.palette.grey[600]};
-	margin-top: ${(p) => p.theme.space.xxs};
-`;
-
 const WellTitle = ({ className, title }) => (
 	<Title className={className}>
 		<h3>{title}</h3>
 	</Title>
 );
+
+const ModificationInformation = styled(EditedAt)`
+	color: ${(p) => p.theme.palette.grey[600]};
+	margin-top: ${(p) => p.theme.space.xxs};
+`;
 
 const ResultTitle = styled(WellTitle)`
 	h3 {
