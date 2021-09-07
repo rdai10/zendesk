@@ -24,8 +24,8 @@ export default function SearchInput({ clickHandler, updateKeyword, value }) {
 	}
 
 	return (
-		<Row justifyContent="center" wrap="nowrap">
-			<Col>
+		<Row justifyContent="center">
+			<Col size="10">
 				<Field>
 					<Label hidden>{i18n.t('search input')}</Label>
 
@@ -46,7 +46,7 @@ export default function SearchInput({ clickHandler, updateKeyword, value }) {
 				</Field>
 			</Col>
 
-			<Col>
+			<Col size="2">
 				<AddArticleButton clickHandler={clickHandler} />
 			</Col>
 		</Row>
@@ -78,6 +78,7 @@ const AddButton = ({ className, clickHandler }) => {
 };
 
 const AddArticleButton = styled(AddButton)`
+	margin-left: -10px;
 	padding: 0;
 	width: ${(p) => p.theme.space.xl};
 `;
