@@ -11,16 +11,18 @@ import ResultBreadcrumb from './ResultBreadcrumb';
 
 export default function SearchResults({ categories, results, sections }) {
 	return (
-		<>
-			{results.map((result) => (
-				<Result
-					categories={categories}
-					key={result.id}
-					result={result}
-					sections={sections}
-				/>
-			))}
-		</>
+		<Row wrap="nowrap">
+			<Col>
+				{results.map((result) => (
+					<Result
+						categories={categories}
+						key={result.id}
+						result={result}
+						sections={sections}
+					/>
+				))}
+			</Col>
+		</Row>
 	);
 }
 
@@ -50,26 +52,22 @@ function Result({ categories, sections, result }) {
 	}
 
 	return (
-		<Row>
-			<Col>
-				<Well>
-					<ResultTitle title={result.name} />
+		<Well>
+			<ResultTitle title={result.name} />
 
-					<SM>
-						{!!category && !!section && (
-							<ResultBreadcrumb
-								category={category.name}
-								section={section.name}
-							/>
-						)}
+			<SM>
+				{!!category && !!section && (
+					<ResultBreadcrumb
+						category={category.name}
+						section={section.name}
+					/>
+				)}
 
-						<ModificationInformation date={result.edited_at} />
-					</SM>
+				<ModificationInformation date={result.edited_at} />
+			</SM>
 
-					<LinkArticle linked={linked} handler={handleClick} />
-				</Well>
-			</Col>
-		</Row>
+			<LinkArticle linked={linked} handler={handleClick} />
+		</Well>
 	);
 }
 
