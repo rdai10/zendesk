@@ -17,4 +17,4 @@ export const DXPC_FAST_TRACK_ID =
 	process.env.NODE_ENV === 'production' ? '360041188851' : '360027863431';
 
 export const FAST_TRACK_ID =
-	process.env.NODE_ENV === 'production' ? '360024794552' : '360038699972';
+	process.env.NODE_ENV === 'production' ? '360024794552' : '4408854935693';
