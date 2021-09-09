@@ -17,7 +17,7 @@ export default function NewArticle({ clickHandler, locale, ticketId }) {
 
 const Body = ({ className, locale, ticketId }) => {
 	const generateArticleURL = (templateId) =>
-		`${BASE_URL}/knowledge/articles/new/${locale}?template_id=${templateId}&ticket_id=${ticketId}`;
+		`${BASE_URL}/knowledge/articles/new/${locale.toLowerCase()}?template_id=${templateId}&ticket_id=${ticketId}`;
 
 	return (
 		<Row className={className}>
