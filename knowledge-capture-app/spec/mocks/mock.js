@@ -36,12 +36,6 @@ export const CLIENT = {
 			});
 		}
 
-		if (prop === 'ticket.brand.id') {
-			return Promise.resolve({
-				'ticket.brand.id': 987654321,
-			});
-		}
-
 		if (prop === 'ticket.id') {
 			return Promise.resolve({
 				'ticket.id': 123456,

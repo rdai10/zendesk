@@ -61,7 +61,6 @@ describe('Example App', () => {
 		});
 
 		it('should retrieve the search data', () => {
-			expect(app.states.brandId).toEqual(987654321);
 			expect(app.states.currentUser.name).toEqual('Sample User');
 			expect(app.states.ticketId).toEqual(123456);
 			expect(app.states.ticketSubject).toEqual('Sample Subject');
