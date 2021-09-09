@@ -24,20 +24,17 @@ class App {
 	 * Initialize module, render main template
 	 */
 	async init() {
-		let brandId = '';
 		let currentUser = null;
 		let ticketId = '';
 		let ticketSubject = '';
 
 		try {
-			const [user, brand, ticket, subject] = await Promise.all([
+			const [user, ticket, subject] = await Promise.all([
 				this._client.get('currentUser'),
-				this._client.get('ticket.brand.id'),
 				this._client.get('ticket.id'),
 				this._client.get('ticket.subject'),
 			]);
 
-			brandId = brand['ticket.brand.id'];
 			currentUser = user.currentUser;
 			ticketId = ticket['ticket.id'];
 			ticketSubject = subject['ticket.subject'];
@@ -47,7 +44,6 @@ class App {
 
 		const locale = currentUser ? currentUser.locale : DEFAULT_LOCALE;
 
-		this.states.brandId = brandId;
 		this.states.currentUser = currentUser;
 		this.states.locale = locale;
 		this.states.ticketId = ticketId;

@@ -5,28 +5,19 @@ import { Col, Grid, Row } from '@zendeskgarden/react-grid';
 import i18n from '../lib/i18n';
 import { BASE_URL, DXPC_FAST_TRACK_ID, FAST_TRACK_ID } from '../lib/constants';
 
-export default function NewArticle({
-	brandId,
-	clickHandler,
-	locale,
-	ticketId,
-}) {
+export default function NewArticle({ clickHandler, locale, ticketId }) {
 	return (
 		<Grid>
 			<PageHeading clickHandler={clickHandler} />
 
-			<ArticleTemplates
-				brandId={brandId}
-				locale={locale}
-				ticketId={ticketId}
-			/>
+			<ArticleTemplates locale={locale} ticketId={ticketId} />
 		</Grid>
 	);
 }
 
-const Body = ({ brandId, className, locale, ticketId }) => {
+const Body = ({ className, locale, ticketId }) => {
 	const generateArticleURL = (templateId) =>
-		`${BASE_URL}/knowledge/articles/new/${locale}?template_id=${templateId}&brand_id=${brandId}&ticket_id=${ticketId}`;
+		`${BASE_URL}/knowledge/articles/new/${locale}?template_id=${templateId}&ticket_id=${ticketId}`;
 
 	return (
 		<Row className={className}>
