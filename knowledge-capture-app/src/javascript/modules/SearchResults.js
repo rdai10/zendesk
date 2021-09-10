@@ -5,6 +5,11 @@ import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
 import { SM } from '@zendeskgarden/react-typography';
 import { useGlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
+import {
+	MAX_RECOMMENDED_HEIGHT,
+	MAX_RECOMMENDED_WIDTH,
+	MODAL,
+} from '../lib/constants';
 import { displayDateInMDYFormat } from '../lib/utility';
 import LinkArticle from './LinkArticle';
 import ResultBreadcrumb from './ResultBreadcrumb';
@@ -42,7 +47,7 @@ function Result({ categories, sections, result }) {
 		return sections.find((section) => section.id === id);
 	}
 
-	function handleClick() {
+	function handleLinkArticle() {
 		client.invoke(
 			'ticket.editor.insert',
 			`<a href=${result.html_url}?source=search rel="noopener noreferrer" target="_blank" >${result.name}</a>`
@@ -51,8 +56,27 @@ function Result({ categories, sections, result }) {
 		setLinked(true);
 	}
 
+	async function handleOpenModal() {
+		try {
+			const modalContext = await client.invoke('instances.create', {
+				location: MODAL,
+				size: {
+					height: MAX_RECOMMENDED_HEIGHT,
+					width: MAX_RECOMMENDED_WIDTH,
+				},
+				url: 'assets/main.html',
+			});
+
+			const [modal] = modalContext['instances.create'];
+
+			console.log(modal.instanceGuid);
+		} catch (e) {
+			console.error(e);
+		}
+	}
+
 	return (
-		<Well>
+		<Well onClick={handleOpenModal}>
 			<ResultTitle title={result.name} />
 
 			<SM>
@@ -66,7 +90,7 @@ function Result({ categories, sections, result }) {
 				<ModificationInformation date={result.edited_at} />
 			</SM>
 
-			<LinkArticle linked={linked} handler={handleClick} />
+			<LinkArticle linked={linked} handler={handleLinkArticle} />
 		</Well>
 	);
 }

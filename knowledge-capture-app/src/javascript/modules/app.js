@@ -2,7 +2,7 @@ import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@zendeskgarden/react-theming';
 import { GlobalContext } from '../context/Global';
-import { DEFAULT_LOCALE } from '../lib/constants';
+import { DEFAULT_LOCALE, MODAL } from '../lib/constants';
 import I18n from '../lib/i18n';
 import ErrorBoundary from './ErrorBoundary';
 import Main from './Main';
@@ -17,13 +17,25 @@ class App {
 
 		// this.initializePromise is only used in testing
 		// indicates app initilization(including all async operations) is complete
-		this.initializePromise = this.init();
+		this.initializePromise = this.init(this._appData.context.location);
 	}
 
 	/**
 	 * Initialize module, render main template
 	 */
-	async init() {
+	async init(location) {
+		if (location) {
+			location === MODAL ? this._initModal() : this._initTicketSidebar();
+		} else {
+			this._initTicketSidebar();
+		}
+	}
+
+	_initModal() {
+		console.log('modal');
+	}
+
+	async _initTicketSidebar() {
 		let currentUser = null;
 		let ticketId = '';
 		let ticketSubject = '';
