@@ -47,7 +47,9 @@ function Result({ categories, sections, result }) {
 		return sections.find((section) => section.id === id);
 	}
 
-	function handleLinkArticle() {
+	function handleLinkArticle(event) {
+		event.stopPropagation();
+
 		insertResult();
 
 		setLinked(true);
