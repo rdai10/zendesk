@@ -48,10 +48,7 @@ function Result({ categories, sections, result }) {
 	}
 
 	function handleLinkArticle() {
-		client.invoke(
-			'ticket.editor.insert',
-			`<a href=${result.html_url}?source=search rel="noopener noreferrer" target="_blank" >${result.name}</a>`
-		);
+		insertResult();
 
 		setLinked(true);
 	}
@@ -73,6 +70,13 @@ function Result({ categories, sections, result }) {
 		} catch (e) {
 			console.error(e);
 		}
+	}
+
+	function insertResult() {
+		client.invoke(
+			'ticket.editor.insert',
+			`<a href=${result.html_url}?source=search rel="noopener noreferrer" target="_blank" >${result.name}</a>`
+		);
 	}
 
 	return (
