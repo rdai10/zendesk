@@ -5,12 +5,19 @@ import { CLIENT } from './mocks/mock';
 import { GlobalContext } from '../src/javascript/context/Global';
 import Main from '../src/javascript/modules/Main';
 import { Theme } from '../src/javascript/modules/Theme';
+import { DEFAULT_LOCALE } from '../src/javascript/lib/constants';
 
 function renderMain() {
 	return render(
 		<GlobalContext.Provider value={{ client: CLIENT }}>
 			<ThemeProvider theme={Theme}>
-				<Main data={{ ticketSubject: 'Test subject' }} />
+				<Main
+					data={{
+						locale: DEFAULT_LOCALE,
+						ticketId: '123456',
+						ticketSubject: 'Test subject',
+					}}
+				/>
 			</ThemeProvider>
 		</GlobalContext.Provider>
 	);

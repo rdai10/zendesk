@@ -17,13 +17,19 @@ class App {
 
 		// this.initializePromise is only used in testing
 		// indicates app initilization(including all async operations) is complete
-		this.initializePromise = this.init(this._appData.context.location);
+		this.initializePromise = this.init();
 	}
 
 	/**
 	 * Initialize module, render main template
 	 */
-	async init(location) {
+	async init() {
+		const context = this._appData.context;
+
+		this.states.ticketId = context.ticketId;
+
+		const location = context.location;
+
 		if (location) {
 			location === MODAL ? this._initModal() : this._initTicketSidebar();
 		} else {
@@ -37,18 +43,15 @@ class App {
 
 	async _initTicketSidebar() {
 		let currentUser = null;
-		let ticketId = '';
 		let ticketSubject = '';
 
 		try {
-			const [user, ticket, subject] = await Promise.all([
+			const [user, subject] = await Promise.all([
 				this._client.get('currentUser'),
-				this._client.get('ticket.id'),
 				this._client.get('ticket.subject'),
 			]);
 
 			currentUser = user.currentUser;
-			ticketId = ticket['ticket.id'];
 			ticketSubject = subject['ticket.subject'];
 		} catch (e) {
 			this._handleError.call(this, e);
@@ -58,7 +61,6 @@ class App {
 
 		this.states.currentUser = currentUser;
 		this.states.locale = locale;
-		this.states.ticketId = ticketId;
 		this.states.ticketSubject = ticketSubject;
 
 		I18n.loadTranslations(locale);
