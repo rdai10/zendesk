@@ -1,3 +1,14 @@
+export const APP_DATA = {
+	context: {
+		account: { subdomain: 'SampleSubdomain' },
+		host: 'zendesk',
+		instanceGuid: 'instance-guid',
+		location: 'ticket_sidebar',
+		product: 'support',
+		ticketId: 123456,
+	},
+};
+
 export const CLIENT = {
 	_origin: 'zendesk.com',
 	get: (prop) => {
@@ -33,12 +44,6 @@ export const CLIENT = {
 					identities: [],
 					organizations: [],
 				},
-			});
-		}
-
-		if (prop === 'ticket.id') {
-			return Promise.resolve({
-				'ticket.id': 123456,
 			});
 		}
 

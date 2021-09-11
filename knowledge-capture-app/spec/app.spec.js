@@ -6,7 +6,7 @@ import 'regenerator-runtime/runtime';
 import { cleanup } from '@testing-library/react';
 
 import App from '../src/javascript/modules/app';
-import { CLIENT } from './mocks/mock';
+import { APP_DATA, CLIENT } from './mocks/mock';
 import createRangePolyfill from './polyfills/createRange';
 
 const DOCUMENT_BODY =
@@ -54,7 +54,7 @@ describe('Example App', () => {
 		beforeEach((done) => {
 			document.body.innerHTML = DOCUMENT_BODY;
 
-			app = new App(CLIENT, {});
+			app = new App(CLIENT, APP_DATA);
 			app.initializePromise.then(() => {
 				done();
 			});
