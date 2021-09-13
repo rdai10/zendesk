@@ -24,11 +24,7 @@ class App {
 	 * Initialize module, render main template
 	 */
 	async init() {
-		const context = this._appData.context;
-
-		this.states.ticketId = context.ticketId;
-
-		const location = context.location;
+		const { location } = this._appData.context;
 
 		if (location) {
 			location === MODAL ? this._initModal() : this._initTicketSidebar();
@@ -62,6 +58,8 @@ class App {
 		this.states.currentUser = currentUser;
 		this.states.locale = locale;
 		this.states.ticketSubject = ticketSubject;
+
+		this.states.ticketId = this._appData.context.ticketId;
 
 		I18n.loadTranslations(locale);
 
