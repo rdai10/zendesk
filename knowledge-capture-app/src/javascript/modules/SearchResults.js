@@ -67,8 +67,15 @@ function Result({ categories, sections, result }) {
 			});
 
 			const [modal] = modalContext['instances.create'];
+			const modalInstance = client.instance(modal.instanceGuid);
 
-			console.log(modal.instanceGuid);
+			client.on('modalReady', () => {
+				modalInstance.trigger('transferModalData', result);
+			});
+
+			modalInstance.on('modal.close', () =>
+				modalInstance.invoke('destroy')
+			);
 		} catch (e) {
 			console.error(e);
 		}

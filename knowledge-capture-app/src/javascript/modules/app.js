@@ -2,7 +2,7 @@ import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from '@zendeskgarden/react-theming';
 import { GlobalContext } from '../context/Global';
-import { DEFAULT_LOCALE, MODAL } from '../lib/constants';
+import { DEFAULT_LOCALE, MODAL, TICKET_SIDEBAR } from '../lib/constants';
 import I18n from '../lib/i18n';
 import ErrorBoundary from './ErrorBoundary';
 import Main from './Main';
@@ -23,7 +23,7 @@ class App {
 	/**
 	 * Initialize module, render main template
 	 */
-	async init() {
+	init() {
 		const { location } = this._appData.context;
 
 		if (location) {
@@ -33,8 +33,16 @@ class App {
 		}
 	}
 
-	_initModal() {
-		console.log('modal');
+	async _initModal() {
+		const appInstances = await this._getAppInstances();
+
+		const ticketSidebar = this._client.instance(
+			appInstances[TICKET_SIDEBAR]
+		);
+
+		ticketSidebar.trigger('modalReady');
+
+		this._client.on('transferModalData', (data) => console.log(data));
 	}
 
 	async _initTicketSidebar() {
@@ -63,18 +71,19 @@ class App {
 
 		I18n.loadTranslations(locale);
 
-		ReactDOM.render(
-			<StrictMode>
-				<ErrorBoundary>
-					<GlobalContext.Provider value={{ client: this._client }}>
-						<ThemeProvider theme={Theme}>
-							<Main data={this.states} />
-						</ThemeProvider>
-					</GlobalContext.Provider>
-				</ErrorBoundary>
-			</StrictMode>,
-			document.querySelector('.main')
+		this._renderTicketSideBar();
+	}
+
+	async _getAppInstances() {
+		const instanceData = await this._client.get('instances');
+		const appInstances = {};
+
+		Object.values(instanceData.instances).forEach(
+			(instance) =>
+				(appInstances[instance.location] = instance.instanceGuid)
 		);
+
+		return appInstances;
 	}
 
 	/**
@@ -86,6 +95,21 @@ class App {
 			`Retriving data returned with the following error: `,
 			error.status,
 			error.statusText
+		);
+	}
+
+	_renderTicketSideBar() {
+		ReactDOM.render(
+			<StrictMode>
+				<ErrorBoundary>
+					<GlobalContext.Provider value={{ client: this._client }}>
+						<ThemeProvider theme={Theme}>
+							<Main data={this.states} />
+						</ThemeProvider>
+					</GlobalContext.Provider>
+				</ErrorBoundary>
+			</StrictMode>,
+			document.querySelector('.main')
 		);
 	}
 }
