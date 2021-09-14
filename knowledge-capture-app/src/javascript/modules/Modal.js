@@ -19,6 +19,8 @@ const ModalContent = ({ className, data }) => {
 	return (
 		<Grid className={className}>
 			<article>
+				<h1 dangerouslySetInnerHTML={{ __html: data.title }} />
+
 				<div dangerouslySetInnerHTML={{ __html: data.body }} />
 			</article>
 
@@ -46,11 +48,80 @@ const StyledModalContent = styled(ModalContent)`
 
 	article {
 		border-bottom: 1px solid ${(p) => p.theme.palette.grey[300]};
+		flex: 1;
+		line-height: ${(p) => p.theme.lineHeights.lg};
 		margin-bottom: ${(p) => p.theme.space.xs};
 		overflow-y: auto;
+		padding: 0 4.375rem;
+
+		h1,
+		h2,
+		h3,
+		h4 {
+			margin-bottom: ${(p) => p.theme.space.sm};
+		}
+
+		h1 {
+			color: ${(p) => p.theme.palette.grey[800]};
+			font-size: ${(p) => p.theme.fontSizes.xl};
+			font-weight: ${(p) => p.theme.fontWeights.semibold};
+			line-height: ${(p) => p.theme.lineHeights.xl};
+			padding-bottom: ${(p) => p.theme.space.sm};
+		}
+
+		h2 {
+			font-size: ${(p) => p.theme.fontSizes.xl};
+		}
+
+		h3 {
+			font-size: ${(p) => p.theme.fontSizes.lg};
+			font-weight: ${(p) => p.theme.fontWeights.semibold};
+		}
+
+		h4 {
+			font-size: 1.1rem;
+		}
+
+		p {
+			margin: ${(p) => p.theme.space.sm} 0;
+		}
+
+		pre {
+			background: ${(p) => p.theme.palette.grey[100]};
+			border: 1px solid ${(p) => p.theme.palette.grey[300]};
+			border-radius: ${(p) => p.theme.borderRadii.md};
+			padding: ${(p) => p.theme.space.xs} ${(p) => p.theme.space.sm};
+			overflow: auto;
+			white-space: pre;
+		}
+
+		ul {
+			list-style-type: disc;
+			padding-left: ${(p) => p.theme.space.lg};
+		}
+
+		.article-siblings {
+			display: flex;
+			justify-content: space-between;
+			margin: ${(p) => p.theme.space.sm} 0;
+		}
 	}
 
 	footer {
 		padding: ${(p) => p.theme.space.xs};
+
+		a {
+			color: ${(p) => p.theme.palette.grey[600]};
+			font-size: ${(p) => p.theme.fontSizes.sm};
+			font-weight: ${(p) => p.theme.fontWeights.semibold};
+		}
+
+		button {
+			font-size: ${(p) => p.theme.fontSizes.sm};
+
+			span {
+				font-weight: ${(p) => p.theme.fontWeights.regular};
+			}
+		}
 	}
 `;
