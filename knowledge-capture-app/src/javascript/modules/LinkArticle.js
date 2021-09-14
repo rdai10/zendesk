@@ -11,7 +11,7 @@ export default function LinkArticle({ linked, handler }) {
 	return (
 		<Row alignItems="center">
 			<Col>
-				<StyledLinkButton handler={handler} />
+				<StyledLinkButton isLink handler={handler} />
 			</Col>
 
 			{linked && (
@@ -25,8 +25,13 @@ export default function LinkArticle({ linked, handler }) {
 	);
 }
 
-const LinkButton = ({ className, handler }) => (
-	<Button className={className} isLink size="small" onClick={handler}>
+export const LinkButton = ({ className, handler, ...otherProps }) => (
+	<Button
+		className={className}
+		size="small"
+		onClick={handler}
+		{...otherProps}
+	>
 		<Span isBold>{I18n.t('link article')}</Span>
 	</Button>
 );
