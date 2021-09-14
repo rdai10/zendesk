@@ -1,3 +1,7 @@
+html {
+	overflow: auto;
+}
+
 .loader {
 	left: 50%;
 	position: absolute;

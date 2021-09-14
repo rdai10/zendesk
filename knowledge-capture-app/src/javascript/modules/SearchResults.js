@@ -5,11 +5,7 @@ import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
 import { SM } from '@zendeskgarden/react-typography';
 import { useGlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
-import {
-	MAX_RECOMMENDED_HEIGHT,
-	MAX_RECOMMENDED_WIDTH,
-	MODAL,
-} from '../lib/constants';
+import { MAX_RECOMMENDED_HEIGHT, MODAL } from '../lib/constants';
 import { displayDateInMDYFormat } from '../lib/utility';
 import LinkArticle from './LinkArticle';
 import ResultBreadcrumb from './ResultBreadcrumb';
@@ -61,7 +57,7 @@ function Result({ categories, sections, result }) {
 				location: MODAL,
 				size: {
 					height: MAX_RECOMMENDED_HEIGHT,
-					width: MAX_RECOMMENDED_WIDTH,
+					width: '740px',
 				},
 				url: 'assets/main.html',
 			});
