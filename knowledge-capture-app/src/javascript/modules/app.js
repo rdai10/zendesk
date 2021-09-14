@@ -6,6 +6,7 @@ import { DEFAULT_LOCALE, MODAL, TICKET_SIDEBAR } from '../lib/constants';
 import I18n from '../lib/i18n';
 import ErrorBoundary from './ErrorBoundary';
 import Main from './Main';
+import Modal from './Modal';
 import { Theme } from './Theme';
 
 class App {
@@ -42,7 +43,7 @@ class App {
 
 		ticketSidebar.trigger('modalReady');
 
-		this._client.on('transferModalData', (data) => console.log(data));
+		this._client.on('transferModalData', (data) => this._renderModal(data));
 	}
 
 	async _initTicketSidebar() {
@@ -76,14 +77,12 @@ class App {
 
 	async _getAppInstances() {
 		const instanceData = await this._client.get('instances');
-		const appInstances = {};
 
-		Object.values(instanceData.instances).forEach(
-			(instance) =>
-				(appInstances[instance.location] = instance.instanceGuid)
+		return Object.fromEntries(
+			Object.entries(instanceData.instances).map(
+				([uuid, { location }]) => [location, uuid]
+			)
 		);
-
-		return appInstances;
 	}
 
 	/**
@@ -95,6 +94,21 @@ class App {
 			`Retriving data returned with the following error: `,
 			error.status,
 			error.statusText
+		);
+	}
+
+	_renderModal(data) {
+		ReactDOM.render(
+			<StrictMode>
+				<ErrorBoundary>
+					<GlobalContext.Provider value={{ client: this._client }}>
+						<ThemeProvider theme={Theme}>
+							<Modal data={data} />
+						</ThemeProvider>
+					</GlobalContext.Provider>
+				</ErrorBoundary>
+			</StrictMode>,
+			document.querySelector('.main')
 		);
 	}
 
