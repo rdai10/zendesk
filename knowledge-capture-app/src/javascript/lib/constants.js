@@ -14,6 +14,7 @@ export const RESULTS_COUNT = 25;
 // app location
 
 export const MODAL = 'modal';
+export const TICKET_SIDEBAR = 'ticket_sidebar';
 
 // modal dimensions
 export const MAX_RECOMMENDED_HEIGHT = '80vh';
