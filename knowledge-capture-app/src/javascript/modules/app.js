@@ -36,10 +36,11 @@ class App {
 
 	async _initModal() {
 		const appInstances = await this._getAppInstances();
-
 		const ticketSidebar = this._client.instance(
 			appInstances[TICKET_SIDEBAR]
 		);
+
+		this.states.ticketSidebar = ticketSidebar;
 
 		ticketSidebar.trigger('modalReady');
 
@@ -101,7 +102,12 @@ class App {
 		ReactDOM.render(
 			<StrictMode>
 				<ErrorBoundary>
-					<GlobalContext.Provider value={{ client: this._client }}>
+					<GlobalContext.Provider
+						value={{
+							client: this._client,
+							ticketSidebar: this.states.ticketSidebar,
+						}}
+					>
 						<ThemeProvider theme={Theme}>
 							<Modal data={data} />
 						</ThemeProvider>

@@ -2,18 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { Anchor } from '@zendeskgarden/react-buttons';
 import { Col, Grid, Row } from '@zendeskgarden/react-grid';
+import { useGlobalContext } from '../context/Global';
 import i18n from '../lib/i18n';
+import { insertResult } from '../lib/utility';
 import { LinkButton } from './LinkArticle';
 
 export default function Modal({ data }) {
-	console.log(data);
-
 	return <StyledModalContent data={data} />;
 }
 
 const ModalContent = ({ className, data }) => {
-	function handleLinkButton() {
-		console.log('link btn');
+	const { client, ticketSidebar } = useGlobalContext();
+
+	function handleLinkArticle() {
+		client.invoke('destroy');
+
+		insertResult(ticketSidebar, data.name, data.html_url);
 	}
 
 	return (
@@ -33,7 +37,7 @@ const ModalContent = ({ className, data }) => {
 					</Col>
 
 					<Col textAlign="end">
-						<LinkButton handler={handleLinkButton} />
+						<LinkButton handler={handleLinkArticle} />
 					</Col>
 				</Row>
 			</footer>
