@@ -68,12 +68,10 @@ function Result({ categories, sections, result }) {
 			client.on('modalReady', () => {
 				modalInstance.trigger('transferModalData', result);
 			});
-
-			modalInstance.on('modal.close', () =>
-				modalInstance.invoke('destroy')
-			);
 		} catch (e) {
-			console.error(e);
+			console.error(
+				`Creating a new instance of modal threw the following error: ${e}`
+			);
 		}
 	}
 
