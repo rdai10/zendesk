@@ -7381,7 +7381,7 @@ function (_preact$Component) {
         });
       }).catch(function (err) {
         if (true) {
-          console.log(err);
+          console.error(err);
         }
       });
     }
@@ -7463,7 +7463,7 @@ function (_preact$Component2) {
         sidenavFallback.classList.add('show');
 
         if (true) {
-          console.log(err);
+          console.error(err);
         }
       });
     }
@@ -8317,7 +8317,7 @@ function (_preact$Component) {
         });
       }).catch(function (err) {
         if (true) {
-          console.log(err);
+          console.error(err);
         }
       });
     }
@@ -8404,7 +8404,7 @@ function (_preact$Component2) {
         });
       }).catch(function (err) {
         if (true) {
-          console.log(err);
+          console.error(err);
         }
 
         _this4.setState({
@@ -8446,7 +8446,7 @@ function (_preact$Component2) {
           _this5.updateResultsCount(data.count);
         }).catch(function (err) {
           if (true) {
-            console.log(err);
+            console.error(err);
           }
         });
       } else {
@@ -8671,7 +8671,7 @@ function displayArticleSuggestion(queryString, productLabel, locale, label, call
     callback(html);
   }).catch(function (err) {
     if (true) {
-      console.log(err);
+      console.error(err);
     }
   });
 }
@@ -8790,7 +8790,7 @@ function hasWatcherPermission(userTags, id, callback) {
     }
   }).catch(function (err) {
     if (true) {
-      console.log(err);
+      console.error(err);
     }
   });
 }
