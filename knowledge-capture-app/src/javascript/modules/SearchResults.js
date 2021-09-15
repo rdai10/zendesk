@@ -6,7 +6,7 @@ import { SM } from '@zendeskgarden/react-typography';
 import { useGlobalContext } from '../context/Global';
 import I18n from '../lib/i18n';
 import { MAX_RECOMMENDED_HEIGHT, MODAL } from '../lib/constants';
-import { displayDateInMDYFormat } from '../lib/utility';
+import { displayDateInMDYFormat, insertResult } from '../lib/utility';
 import LinkArticle from './LinkArticle';
 import ResultBreadcrumb from './ResultBreadcrumb';
 
@@ -46,7 +46,7 @@ function Result({ categories, sections, result }) {
 	function handleLinkArticle(event) {
 		event.stopPropagation();
 
-		insertResult();
+		insertResult(client, result.name, result.html_url);
 
 		setLinked(true);
 	}
@@ -75,13 +75,6 @@ function Result({ categories, sections, result }) {
 		} catch (e) {
 			console.error(e);
 		}
-	}
-
-	function insertResult() {
-		client.invoke(
-			'ticket.editor.insert',
-			`<a href=${result.html_url}?source=search rel="noopener noreferrer" target="_blank" >${result.name}</a>`
-		);
 	}
 
 	return (
