@@ -12,7 +12,7 @@ import ResultBreadcrumb from './ResultBreadcrumb';
 
 export default function SearchResults({ categories, results, sections }) {
 	return (
-		<Row wrap="nowrap">
+		<Row id="primaryResults" wrap="nowrap">
 			<Col>
 				{results.map((result) => (
 					<Result

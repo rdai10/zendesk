@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { Grid } from '@zendeskgarden/react-grid';
 import { useGlobalContext } from '../context/Global';
 import { DEFAULT_LOCALE } from '../lib/constants';
@@ -10,6 +11,10 @@ import SearchInput from './SearchInput';
 import SearchResults from './SearchResults';
 
 export default function Main({ data }) {
+	return <AppView data={data} />;
+}
+
+function View({ className, data }) {
 	const { client } = useGlobalContext();
 	const { locale, ticketId, ticketSubject } = data;
 
@@ -43,9 +48,9 @@ export default function Main({ data }) {
 	}
 
 	return (
-		<>
+		<div className={className}>
 			{!showAddArticle && (
-				<Grid>
+				<Grid id="primaryView">
 					<SearchInput
 						clickHandler={handleShowAdd}
 						updateKeyword={setKeyword}
@@ -79,6 +84,19 @@ export default function Main({ data }) {
 					ticketId={ticketId}
 				/>
 			)}
-		</>
+		</div>
 	);
 }
+
+const AppView = styled(View)`
+	#primaryResults {
+		flex: 1;
+		overflow-y: auto;
+	}
+
+	#primaryView {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
+	}
+`;
