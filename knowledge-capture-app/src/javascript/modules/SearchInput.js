@@ -78,7 +78,6 @@ const AddButton = ({ className, clickHandler }) => {
 };
 
 const AddArticleButton = styled(AddButton)`
-	margin-left: -10px;
 	padding: 0;
 	width: ${(p) => p.theme.space.xl};
 `;
