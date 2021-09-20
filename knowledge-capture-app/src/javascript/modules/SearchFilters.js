@@ -25,11 +25,9 @@ export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
 	const [selectedItem, setSelectedItem] = useState(languages[0]);
 
 	function handleSelect(val) {
-		const currentValue = languages.find((lang) => lang.value === val);
+		setSelectedItem(val);
 
-		setSelectedItem(currentValue);
-
-		updateLanguage(val);
+		updateLanguage(val.value);
 	}
 
 	return (
@@ -65,9 +63,9 @@ const LanguageDropDown = ({ className, handler, languages, selectedItem }) => (
 			</Select>
 		</Field>
 		<Menu>
-			{languages.map(({ label, value }) => (
-				<Item key={value} value={value}>
-					{label}
+			{languages.map((language) => (
+				<Item key={language.value} value={language}>
+					{language.label}
 				</Item>
 			))}
 		</Menu>
