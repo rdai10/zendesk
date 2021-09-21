@@ -5,7 +5,7 @@ export const BASE_URL =
 
 export const API_BASE_URL = `${BASE_URL}/api/v2/help_center`;
 
-export const DEFAULT_LOCALE = 'en-US';
+export const DEFAULT_LOCALE = 'en-us';
 
 export const NEW_ARTICLE_URL = `${BASE_URL}/knowledge/articles/new`;
 

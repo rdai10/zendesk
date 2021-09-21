@@ -13,7 +13,11 @@ import { SM } from '@zendeskgarden/react-typography';
 
 import i18n from '../lib/i18n';
 
-export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
+export default function SearchFilters({
+	resultsDisplayed,
+	selectedLanguage,
+	updateLanguage,
+}) {
 	const languages = [
 		{ label: i18n.t('english'), value: 'en-us' },
 		{ label: i18n.t('spanish'), value: 'es' },
@@ -22,7 +26,9 @@ export default function SearchFilters({ resultsDisplayed, updateLanguage }) {
 		{ label: i18n.t('chinese'), value: 'zh-cn' },
 	];
 
-	const [selectedItem, setSelectedItem] = useState(languages[0]);
+	const [selectedItem, setSelectedItem] = useState(
+		languages.find(({ value }) => value === selectedLanguage)
+	);
 
 	function handleSelect(val) {
 		setSelectedItem(val);
