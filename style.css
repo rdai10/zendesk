@@ -5183,6 +5183,16 @@ input[type="submit"] {
 
 .sidebar-cta h5 {
   color: #5B6170;
+  margin: 1rem 0;
+}
+
+.sidebar-cta h5,.sidebar-cta .btn-outline-primary {
+  font-weight: normal;
+}
+
+.sidebar-cta .icon {
+  height: 2rem;
+  width: 2rem;
 }
 
 .cta-card,.nav-card,.product-card {
