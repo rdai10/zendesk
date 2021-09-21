@@ -5175,6 +5175,16 @@ input[type="submit"] {
   }
 }
 
+.sidebar-cta {
+  background-color: #F5F7FA;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+}
+
+.sidebar-cta h5 {
+  color: #5B6170;
+}
+
 .cta-card,.nav-card,.product-card {
   border-radius: 0.25rem;
 }

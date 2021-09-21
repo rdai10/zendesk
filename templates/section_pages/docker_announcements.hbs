@@ -1,0 +1,69 @@
+<div class="container-fluid container-fluid-max-xl main-content">
+	<div class="row">
+		<div class="col-12">
+			{{breadcrumbs}}
+		</div>
+	</div>
+
+	<section class="row section-content">
+		<div class="col-md-6">
+			{{#with section}}
+				<header class="section-name">
+					<h1 class="title">
+						{{name}}
+
+						{{#if internal}}
+							<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+								<use xlink:href="#lock" />
+							</svg>
+						{{/if}}
+					</h1>
+
+					{{#if description}}
+						<p class="secondary-font secondary-text-color">
+							{{description}}
+						</p>
+					{{/if}}
+				</header>
+
+				{{#if articles}}
+					<ul class="article-list">
+						{{#each articles}}
+							<li class="article-list-item {{#if promoted}}promoted{{/if}}">
+								<a class="article-list-link" href="{{url}}">{{title}}</a>
+							</li>
+						{{/each}}
+					</ul>
+				{{else}}
+					<p class="secondary-font secondary-text-color">
+						{{dc 'no_articles_in_section'}}
+					</p>
+				{{/if}}
+			{{/with}}
+
+			{{pagination}}
+		</div>
+
+		<div class="col-md-6">
+			<aside class="sidebar-cta">
+				<svg aria-label="Subscribe Img" class="lexicon-icon" role="img" title="Subscribe">
+					<use xlink:href="#announcements" />
+				</svg>
+
+				<h2>
+					{{dc 'announcements_docker_subscribe_heading'}}
+				</h2>
+
+				<h5>{{dc 'announcements_docker_subscribe_text'}}</h5>
+
+				<a class="btn btn-primary" href="" type="button">
+					<svg aria-label="Subscribe Button Img" class="lexicon-icon lexicon-icon-envelope-closed" role="img" title="Subscribe Button">
+						<use xlink:href="#envelope-closed" />
+					</svg>
+
+					{{dc 'homepage-announcement_subscribe_button'}}
+				</a>
+			</aside>
+		</div>
+	</section>
+</div>
