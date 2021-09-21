@@ -59,6 +59,7 @@ function View({ className, data }) {
 
 					<SearchFilters
 						resultsDisplayed={search ? search.results.length : 0}
+						selectedLanguage={language}
 						updateLanguage={setLanguage}
 					/>
 

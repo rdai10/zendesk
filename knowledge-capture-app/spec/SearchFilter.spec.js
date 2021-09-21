@@ -1,11 +1,18 @@
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import React from 'react';
+import { DEFAULT_LOCALE } from '../src/javascript/lib/constants';
 
 import SearchFilters from '../src/javascript/modules/SearchFilters';
 import { SEARCH } from './mocks/mock';
 
 function renderSearchFilters() {
-	return render(<SearchFilters resultsDisplayed={SEARCH.results.length} />);
+	return render(
+		<SearchFilters
+			resultsDisplayed={SEARCH.results.length}
+			selectedLanguage={DEFAULT_LOCALE}
+			updateLanguage={jest.fn()}
+		/>
+	);
 }
 
 describe('Search Filters', () => {
