@@ -4,7 +4,7 @@ The new release script, located in the root directory of the theme folder, will 
 
 ## Automated Tasks
 
-- Running the script will automatically generate a new landing page template for the product. A content creator can then go into the template to update its content.
+-   Running the script will automatically generate a new landing page template for the product. A content creator can then go into the template to update its content.
 
 ## Running Script
 

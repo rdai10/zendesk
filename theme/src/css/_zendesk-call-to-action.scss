@@ -39,3 +39,24 @@
 		}
 	}
 }
+
+.sidebar-cta {
+	background-color: $color-grey;
+	border-radius: $border-radius;
+	padding: $padding-default;
+
+	.icon {
+		height: 2rem;
+		width: 2rem;
+	}
+
+	.sidebar-content {
+		color: $secondary-text-color;
+		font-weight: normal;
+		margin: $margin-md 0;
+	}
+
+	.sidebar-heading {
+		margin-top: $margin-md;
+	}
+}
