@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Anchor, Button } from '@zendeskgarden/react-buttons';
-import { Col, Grid, Row } from '@zendeskgarden/react-grid';
+import {Anchor, Button} from '@zendeskgarden/react-buttons';
+import {Col, Grid, Row} from '@zendeskgarden/react-grid';
+import XIcon from '@zendeskgarden/svg-icons/src/16/x-stroke.svg';
 import i18n from '../lib/i18n';
-import { BASE_URL, DXPC_FAST_TRACK_ID, FAST_TRACK_ID } from '../lib/constants';
+import {BASE_URL, DXPC_FAST_TRACK_ID, FAST_TRACK_ID} from '../lib/constants';
 
-export default function NewArticle({ clickHandler, locale, ticketId }) {
+export default function NewArticle({clickHandler, locale, ticketId}) {
 	return (
 		<Grid>
 			<PageHeading clickHandler={clickHandler} />
@@ -15,7 +16,7 @@ export default function NewArticle({ clickHandler, locale, ticketId }) {
 	);
 }
 
-const Body = ({ className, locale, ticketId }) => {
+const Body = ({className, locale, ticketId}) => {
 	const generateArticleURL = (templateId) =>
 		`${BASE_URL}/knowledge/articles/new/${locale.toLowerCase()}?template_id=${templateId}&ticket_id=${ticketId}`;
 
@@ -40,7 +41,7 @@ const Body = ({ className, locale, ticketId }) => {
 	);
 };
 
-const CloseButton = ({ className, clickHandler }) => {
+const CloseButton = ({className, clickHandler}) => {
 	function handleClick() {
 		if (clickHandler) {
 			clickHandler(false);
@@ -49,24 +50,24 @@ const CloseButton = ({ className, clickHandler }) => {
 
 	return (
 		<Button className={className} isBasic onClick={handleClick}>
-			X
+			<XIcon />
 		</Button>
 	);
 };
 
-const Heading = ({ className, clickHandler }) => (
-	<Row alignItems="center">
+const Heading = ({className, clickHandler}) => (
+	<Row alignItems="center"  className={className}>
 		<Col size="10">
-			<h3 className={className}>{i18n.t('create knowledge')}</h3>
+			<h3>{i18n.t('create knowledge')}</h3>
 		</Col>
 
-		<Col size="2">
+		<Col id="prev" size="2">
 			<StyledCloseButton clickHandler={clickHandler} />
 		</Col>
 	</Row>
 );
 
-const Template = ({ title, url }) => (
+const Template = ({title, url}) => (
 	<li>
 		<Anchor href={url} target="_blank">
 			{title}
@@ -90,9 +91,15 @@ const ArticleTemplates = styled(Body)`
 `;
 
 const PageHeading = styled(Heading)`
-	font-size: ${(p) => p.theme.fontSizes.lg};
-	font-weight: ${(p) => p.theme.fontWeights.semibold};
-	line-height: ${(p) => p.theme.lineHeights.xl};
+	h3 {
+		font-size: ${(p) => p.theme.fontSizes.lg};
+		font-weight: ${(p) => p.theme.fontWeights.semibold};
+		line-height: ${(p) => p.theme.lineHeights.xl};
+	}
+
+	#prev {
+		padding: 0;
+	}
 `;
 
 const StyledCloseButton = styled(CloseButton)`
