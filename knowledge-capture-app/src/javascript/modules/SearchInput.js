@@ -40,7 +40,7 @@ export default function SearchInput({clickHandler, updateKeyword, value}) {
 					<Label hidden>{i18n.t('search input')}</Label>
 
 					<InputGroup>
-						<Input
+						<AdjustedInput
 							onChange={handleOnChange}
 							onKeyDown={handleOnKeyDown}
 							value={currentValue}
@@ -88,4 +88,11 @@ const AddButton = ({className, clickHandler}) => {
 const AddArticleButton = styled(AddButton)`
 	padding: 0;
 	width: ${(p) => p.theme.space.xl};
+`;
+
+/* On linux Mozilla Firefox, the input height is calculated by the browser to be > 40px, causing the input group to be misaligned between the input and the button. Reducing the padding, coupled with the component style min-height: 40px, ensures that parts of the input group will always be aligned.
+*/
+const AdjustedInput = styled(Input)`
+	padding-bottom: 9px;
+	padding-top: 9px;
 `;
