@@ -5,6 +5,7 @@ import {Field, Input, InputGroup, Label} from '@zendeskgarden/react-forms';
 import {Col, Row} from '@zendeskgarden/react-grid';
 import {Tooltip} from '@zendeskgarden/react-tooltips';
 import {XL} from '@zendeskgarden/react-typography';
+import PlusIcon from '@zendeskgarden/svg-icons/src/16/plus-stroke.svg';
 import SearchIcon from '@zendeskgarden/svg-icons/src/16/search-stroke.svg';
 import XIcon from '@zendeskgarden/svg-icons/src/16/x-stroke.svg';
 
@@ -76,7 +77,9 @@ const AddButton = ({className, clickHandler}) => {
 				className={className}
 				onClick={handleOnClick}
 			>
-				<XL>+</XL>
+				<XL>
+					<PlusIcon />
+				</XL>
 			</Button>
 		</Tooltip>
 	);

@@ -28,6 +28,6 @@ const Wrapper = ({ className, children }) => (
 );
 
 const NoResultsMsg = styled(Wrapper)`
-	position: absolute;
+	position: fixed;
 	top: 50%;
 `;
