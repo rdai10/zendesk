@@ -5,8 +5,8 @@ import { Field, Input, InputGroup, Label } from '@zendeskgarden/react-forms';
 import { Col, Row } from '@zendeskgarden/react-grid';
 import { Tooltip } from '@zendeskgarden/react-tooltips';
 import { XL } from '@zendeskgarden/react-typography';
-// import { ReactComponent as SearchIcon } from '@zendeskgarden/svg-icons/src/16/search-stroke.svg';
-// import { ReactComponent as XIcon } from '@zendeskgarden/svg-icons/src/16/x-stroke.svg';
+import SearchIcon from '@zendeskgarden/svg-icons/src/16/search-stroke.svg';
+import XIcon from '@zendeskgarden/svg-icons/src/16/x-stroke.svg';
 
 import i18n from '../lib/i18n';
 
@@ -36,11 +36,11 @@ export default function SearchInput({ clickHandler, updateKeyword, value }) {
 							value={currentValue}
 						/>
 						<Button focusInset isNeutral>
-							{/* {currentValue === '' ? (
+							{currentValue === '' ? (
 									<SearchIcon />
 								) : (
 									<XIcon />
-								)} */}
+								)}
 						</Button>
 					</InputGroup>
 				</Field>
