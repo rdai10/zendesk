@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { Button } from '@zendeskgarden/react-buttons';
-import { Field, Input, InputGroup, Label } from '@zendeskgarden/react-forms';
-import { Col, Row } from '@zendeskgarden/react-grid';
-import { Tooltip } from '@zendeskgarden/react-tooltips';
-import { XL } from '@zendeskgarden/react-typography';
+import {Button} from '@zendeskgarden/react-buttons';
+import {Field, Input, InputGroup, Label} from '@zendeskgarden/react-forms';
+import {Col, Row} from '@zendeskgarden/react-grid';
+import {Tooltip} from '@zendeskgarden/react-tooltips';
+import {XL} from '@zendeskgarden/react-typography';
 import SearchIcon from '@zendeskgarden/svg-icons/src/16/search-stroke.svg';
 import XIcon from '@zendeskgarden/svg-icons/src/16/x-stroke.svg';
 
 import i18n from '../lib/i18n';
 
-export default function SearchInput({ clickHandler, updateKeyword, value }) {
+export default function SearchInput({clickHandler, updateKeyword, value}) {
 	const [currentValue, setCurrentValue] = useState(value);
 
 	function handleOnChange(event) {
 		setCurrentValue(event.currentTarget.value);
+	}
+
+	function handleOnClick(event) {
+		const {currentTarget} = event;
+		const inputValue = currentTarget.previousSibling.value;
+
+		if (inputValue !== '') {
+			setCurrentValue('');
+		}
 	}
 
 	function handleOnKeyDown(event) {
@@ -35,12 +44,8 @@ export default function SearchInput({ clickHandler, updateKeyword, value }) {
 							onKeyDown={handleOnKeyDown}
 							value={currentValue}
 						/>
-						<Button focusInset isNeutral>
-							{currentValue === '' ? (
-									<SearchIcon />
-								) : (
-									<XIcon />
-								)}
+						<Button focusInset isNeutral onClick={handleOnClick}>
+							{currentValue === '' ? <SearchIcon /> : <XIcon />}
 						</Button>
 					</InputGroup>
 				</Field>
@@ -53,7 +58,7 @@ export default function SearchInput({ clickHandler, updateKeyword, value }) {
 	);
 }
 
-const AddButton = ({ className, clickHandler }) => {
+const AddButton = ({className, clickHandler}) => {
 	function handleOnClick() {
 		if (clickHandler) {
 			clickHandler(true);
