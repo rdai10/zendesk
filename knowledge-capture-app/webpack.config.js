@@ -27,53 +27,42 @@ const zendeskGardenJsDelivrUrl = (function () {
 
 const externalAssets = {
 	css: [zendeskGardenJsDelivrUrl],
-	js: ['https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js'],
+	js: ['https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js']
 };
 
 module.exports = {
 	entry: {
-		app: [
-			'./src/javascript/locations/ticket_sidebar.js',
-			'./src/index.css',
-		],
+		app: ['./src/javascript/locations/ticket_sidebar.js', './src/index.css']
 	},
 	output: {
 		filename: '[name].js',
-		path: path.resolve(__dirname, 'dist/assets'),
+		path: path.resolve(__dirname, 'dist/assets')
 	},
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
-				use: { loader: 'babel-loader' },
+				use: {loader: 'babel-loader'}
 			},
 			{
 				type: 'javascript/auto',
 				test: /\.json$/,
 				include: path.resolve(__dirname, './src/translations'),
-				use: './webpack/translations-loader',
+				use: './webpack/translations-loader'
 			},
 			{
 				test: /\.(sa|sc|c)ss$/,
 				use: [
 					MiniCssExtractPlugin.loader,
-					{ loader: 'css-loader', options: { url: false } },
-					'postcss-loader',
-				],
+					{loader: 'css-loader', options: {url: false}},
+					'postcss-loader'
+				]
 			},
 			{
 				test: /\.svg$/,
-				use: [
-					'babel-loader',
-					{
-						loader: 'react-svg-loader',
-						options: {
-							jsx: true, // outputs JSX tags
-						},
-					},
-				],
-			},
-		],
+				use: ['@svgr/webpack']
+			}
+		]
 	},
 	plugins: [
 		// Empties the dist folder
@@ -81,16 +70,16 @@ module.exports = {
 
 		// Copy over static assets
 		new CopyWebpackPlugin([
-			{ from: 'src/manifest.json', to: '../', flatten: true },
-			{ from: 'src/images/*', to: '.', flatten: true },
+			{from: 'src/manifest.json', to: '../', flatten: true},
+			{from: 'src/images/*', to: '.', flatten: true}
 		]),
 
 		new MiniCssExtractPlugin({
-			filename: '[name].css',
+			filename: '[name].css'
 		}),
 
 		new TranslationsPlugin({
-			path: path.resolve(__dirname, './src/translations'),
+			path: path.resolve(__dirname, './src/translations')
 		}),
 
 		new HtmlWebpackPlugin({
@@ -99,7 +88,7 @@ module.exports = {
 			vendorCss: externalAssets.css.filter((path) => !!path),
 			vendorJs: externalAssets.js,
 			template: './src/templates/main.html',
-			filename: 'main.html',
-		}),
-	],
+			filename: 'main.html'
+		})
+	]
 };
