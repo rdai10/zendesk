@@ -20,6 +20,6 @@ jobs:
       - name: Build and zip
         run: |
           npm run build
-          apt-get install zip
+          apt-get update && apt-get install zip
           npm run zip
         working-directory: ./theme
