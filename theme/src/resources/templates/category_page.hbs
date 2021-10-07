@@ -22,22 +22,22 @@
 			{{#each sections}}
 				<div class="col-md-6 section">
 					<a href="{{url}}">
-						<h2 class="section-name">
-							{{name}}
-
-							{{#if internal}}
-								<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
-									<use xlink:href="#lock" />
-								</svg>
-							{{/if}}
-						</h2>
+						<h2 class="section-name">{{name}}</h2>
 					</a>
 
 					{{#if articles}}
 						<ul class="article-list">
 							{{#each articles}}
 								<li class="article-list-item {{#if promoted}}promoted{{/if}}">
-									<a href="{{url}}">{{title}}</a>
+									<a href="{{url}}">
+										{{title}}
+
+										{{#if internal}}
+											<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+												<use xlink:href="#lock" />
+											</svg>
+										{{/if}}
+									</a>
 								</li>
 							{{/each}}
 						</ul>
