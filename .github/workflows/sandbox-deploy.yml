@@ -18,7 +18,7 @@ jobs:
         working-directory: ./theme
 
       - name: Build
-        run: npm build:dev
+        run: npm run build:dev
         working-directory: ./theme
 
       - name: Deploy
