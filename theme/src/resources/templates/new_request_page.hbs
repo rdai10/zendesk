@@ -227,15 +227,15 @@
 
 				const prefixedOrgTags = addPrefixToOrgTags(currentOrgTags);
 
-				const productInputValues = mapInputValuesFromField(productInputField);
+				const allProducts = mapInputValuesFromField(productInputField);
 
-				const removeProductDropdowns = productInputValues.filter(
+				const filteredOutProducts = allProducts.filter(
 					function(value) {
 						return !matchValueToTags(value, prefixedOrgTags);
 					}
 				);
 
-				removeProductDropdowns.forEach(
+				filteredOutProducts.forEach(
 					function(option) {
 						removeNestedDropdownOptions(option, currentTarget);
 					}
@@ -249,15 +249,15 @@
 					if (match) {
 						const componentOptions = match.components;
 
-						const componentInputValues = mapInputValuesFromField(componentInputField);
+						const allComponents = mapInputValuesFromField(componentInputField);
 
-						const removeComponentDropdowns = componentInputValues.filter(
+						const filteredOutComponents = allComponents.filter(
 							function(value) {
 								return !matchValueToTags(value, componentOptions);
 							}
 						);
 
-						removeDropdownOptions(removeComponentDropdowns, currentTarget);
+						removeDropdownOptions(filteredOutComponents, currentTarget);
 					}
 				}
 			}
