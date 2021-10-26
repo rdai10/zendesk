@@ -145,7 +145,6 @@
 			{
 				components: [
 					'activation_key_project_administration',
-					'app_builder',
 					'authentication',
 					'caching_clustering',
 					'calendar',
@@ -156,6 +155,7 @@
 					'document_management',
 					'forms',
 					'liferay_api',
+					'liferay_objects',
 					'localization',
 					'performance',
 					'publication_and_staging',
@@ -227,17 +227,25 @@
 
 				const prefixedOrgTags = addPrefixToOrgTags(currentOrgTags);
 
-				const productInputValues = mapInputValuesFromField(productInputField);
+				const allProducts = mapInputValuesFromField(productInputField);
 
-				const removeProductDropdowns = productInputValues.filter(
+				const filteredOutProducts = allProducts.filter(
 					function(value) {
 						return !matchValueToTags(value, prefixedOrgTags);
 					}
 				);
 
-				removeProductDropdowns.forEach(
+				// ISSUP-4450 Allow DXP customers to open Commerce or Liferay Enterprise Search tickets
+
+				const isDXPCustomer = prefixedOrgTags.includes('prd_liferay_dxp');
+
+				filteredOutProducts.forEach(
 					function(option) {
-						removeNestedDropdownOptions(option, currentTarget);
+						const reservedProducts = isDXPCustomer && (option === 'prd_liferay_commerce' || option === 'prd_enterprise_search') 
+
+						if (!reservedProducts) {
+							removeNestedDropdownOptions(option, currentTarget);
+						}
 					}
 				);
 
@@ -249,15 +257,15 @@
 					if (match) {
 						const componentOptions = match.components;
 
-						const componentInputValues = mapInputValuesFromField(componentInputField);
+						const allComponents = mapInputValuesFromField(componentInputField);
 
-						const removeComponentDropdowns = componentInputValues.filter(
+						const filteredOutComponents = allComponents.filter(
 							function(value) {
 								return !matchValueToTags(value, componentOptions);
 							}
 						);
 
-						removeDropdownOptions(removeComponentDropdowns, currentTarget);
+						removeDropdownOptions(filteredOutComponents, currentTarget);
 					}
 				}
 			}
