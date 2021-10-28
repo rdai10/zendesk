@@ -27,7 +27,7 @@ export function displayArticleSuggestion(
 		productLabel,
 		locale
 	)
-		.then(({data}) => {
+		.then(data => {
 			const results = data.results;
 
 			let html = '';

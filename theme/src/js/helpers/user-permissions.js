@@ -30,7 +30,7 @@ export function hasKBPermission(userTags) {
  */
 export function hasWatcherPermission(userTags, id, callback) {
 	getRequestById(id)
-		.then(({data}) => {
+		.then(data => {
 			const orgWatcherArray = userTags.filter(tag =>
 				tag.match(data.request.organization_id)
 			);
