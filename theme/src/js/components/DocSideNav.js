@@ -42,7 +42,7 @@ class ArticlesList extends preact.Component {
 		const {id, locale} = this.props;
 
 		getArticlesBySectionId(id, locale, NUMBER_OF_ARTICLES)
-			.then(({data}) => {
+			.then(data => {
 				this.setState({
 					items: data.articles
 				});
@@ -116,13 +116,13 @@ class DocSideNav extends preact.Component {
 		const {locale, sectionId} = this.props;
 
 		getSectionBySectionId(sectionId, locale)
-			.then(({data}) => {
+			.then(data => {
 				return getSectionsByCategoryId(
 					data.section.category_id,
 					locale
 				);
 			})
-			.then(({data}) => {
+			.then(data => {
 				this.setState({
 					items: data.sections
 				});

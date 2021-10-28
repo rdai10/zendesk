@@ -29,7 +29,6 @@
 		"@babel/core": "^7.2.2",
 		"@babel/preset-env": "^7.3.1",
 		"autoprefixer": "^8.5.0",
-		"axios": "^0.21.4",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-loader": "^8.0.4",
 		"babel-plugin-transform-react-jsx": "^6.24.1",
@@ -91,6 +90,14 @@
 				}
 			]
 		}
+	},
+	"jest": {
+		"setupFilesAfterEnv": [
+			"<rootDir>/test/setup.js"
+		],
+		"testPathIgnorePatterns": [
+			"<rootDir>/vendor/bundle/"
+		]
 	},
 	"name": "liferay-zendesk-theme",
 	"prettier": {

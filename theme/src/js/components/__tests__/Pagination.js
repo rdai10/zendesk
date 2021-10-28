@@ -36,6 +36,7 @@ describe('Pagination', () => {
 	it('renders correctly', () => {
 		const {container} = setup();
 
+		expect(container).toBeTruthy();
 		expect(container).toMatchSnapshot();
 	});
 
