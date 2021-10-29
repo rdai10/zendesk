@@ -17,6 +17,7 @@ export {
 	showArticleFooter
 } from './helpers/gated-content';
 export {addLocaleParamToURI} from './helpers/locale-conversion';
+export {showSiteWideNotification} from './helpers/site-wide-notification';
 export {
 	hasCreateTicketPermission,
 	hasKBPermission,
