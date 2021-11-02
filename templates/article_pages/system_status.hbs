@@ -132,7 +132,7 @@
 	Liferay.makeGETRequest(
 		'https://2fpdbpm5f67c.statuspage.io/api/v2/components.json'
 	)
-		.then(({ data }) => {
+		.then(data => {
 			const componentOutage = data.components.some(component => component.status === 'major_outage');
 
 			if (componentOutage) {
