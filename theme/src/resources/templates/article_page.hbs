@@ -150,6 +150,7 @@
 		if (articleContent && headingsNodeList.length) {
 			const content = [];
 
+			// IE 11 compatible
 			Array.prototype.forEach.call(
 				headingsNodeList,
 				function(node) {

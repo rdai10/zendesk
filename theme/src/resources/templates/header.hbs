@@ -837,6 +837,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				const containsNode = [];
 
 				if (nodelist) {
+					// IE 11 compatible
 					Array.prototype.forEach.call(
 						nodelist,
 						function(node) {
@@ -891,6 +892,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			}
 
 			function removeActiveClasses() {
+				// IE 11 compatible
 				Array.prototype.forEach.call(
 					menuItems,
 					function(item) {
@@ -925,6 +927,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				return (activeHeading || activeMenuItem);
 			}
 
+			// IE 11 compatible
 			Array.prototype.forEach.call(
 				menuItems,
 				function(item) {

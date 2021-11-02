@@ -41,6 +41,7 @@ export function showSiteWideNotification() {
 		const newMegaMenuStyle =
 			'top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
 
+		// IE 11 compatible
 		Array.prototype.forEach.call(megaMenu, function(menu) {
 			menu.setAttribute('style', newMegaMenuStyle);
 		});
