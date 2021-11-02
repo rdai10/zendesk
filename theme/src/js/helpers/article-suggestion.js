@@ -13,7 +13,7 @@ function generateResults(results) {
 		.join('');
 }
 
-export function displayArticleSuggestion(
+export default function displayArticleSuggestion(
 	queryString,
 	productLabel,
 	locale,

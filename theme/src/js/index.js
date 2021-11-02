@@ -10,14 +10,18 @@ import './helpers/article-accordion';
 export {default as render} from './helpers/preact-renderer';
 
 export {makeGETRequest} from './helpers/api-helpers';
-export {displayArticleSuggestion} from './helpers/article-suggestion';
+export {
+	default as displayArticleSuggestion
+} from './helpers/article-suggestion';
 export {
 	gateArticle,
 	showArticleAttachments,
 	showArticleFooter
 } from './helpers/gated-content';
-export {addLocaleParamToURI} from './helpers/locale-conversion';
-export {showSiteWideNotification} from './helpers/site-wide-notification';
+export {default as addLocaleParamToURI} from './helpers/locale-conversion';
+export {
+	default as showSiteWideNotification
+} from './helpers/site-wide-notification';
 export {
 	hasCreateTicketPermission,
 	hasKBPermission,

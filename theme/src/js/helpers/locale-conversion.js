@@ -16,7 +16,7 @@ function convertToLiferayLocale(locale) {
 	return retVal;
 }
 
-export function addLocaleParamToURI(locale, urn) {
+export default function addLocaleParamToURI(locale, urn) {
 	const url =
 		process.env.NODE_ENV === 'production'
 			? 'https://customer.liferay.com/'
