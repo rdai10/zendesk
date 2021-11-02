@@ -1192,10 +1192,6 @@ ul.autofit-row {
   margin-top: -0.21429em;
 }
 
-.inline-item-after {
-  margin-left: 0.5rem;
-}
-
 .page-header {
   background-color: #e9ecef;
 }
@@ -2820,10 +2816,6 @@ button.label {
 
 .label-item-expand a {
   flex-direction: column;
-}
-
-.label-item-after {
-  margin-left: 0.5em;
 }
 
 .label-lg {
