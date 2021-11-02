@@ -1,7 +1,7 @@
-const initialBannerHeight = 414;
-const initialMainContentOffset = 56;
+const INITIAL_BANNER_HEIGHT = 414;
+const INITIAL_MAIN_CONTENT_OFFSET = 56;
 
-export function showSiteWideNotification() {
+export default function showSiteWideNotification() {
 	if (sessionStorage.getItem('showSiteWideNotification') === null) {
 		sessionStorage.setItem('showSiteWideNotification', 'true');
 	}
@@ -18,7 +18,7 @@ export function showSiteWideNotification() {
 		if (banner) {
 			const newBannerStyle =
 				'min-height: ' +
-				(initialBannerHeight + notificationHeight) +
+				(INITIAL_BANNER_HEIGHT + notificationHeight) +
 				'px; padding-top: ' +
 				notificationHeight +
 				'px;';
@@ -31,7 +31,7 @@ export function showSiteWideNotification() {
 		if (mainContent) {
 			const newContentStyle =
 				'margin-top: ' +
-				(initialMainContentOffset + notificationHeight) +
+				(INITIAL_MAIN_CONTENT_OFFSET + notificationHeight) +
 				'px;';
 
 			mainContent.setAttribute('style', newContentStyle);
@@ -39,7 +39,9 @@ export function showSiteWideNotification() {
 
 		const megaMenu = document.querySelectorAll('.header-menu');
 		const newMegaMenuStyle =
-			'top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
+			'top: ' +
+			(INITIAL_MAIN_CONTENT_OFFSET + notificationHeight) +
+			'px;';
 
 		// IE 11 compatible
 		Array.prototype.forEach.call(megaMenu, function(menu) {
@@ -59,21 +61,21 @@ export function showSiteWideNotification() {
 				if (banner) {
 					banner.setAttribute(
 						'style',
-						'min-height: ' + initialBannerHeight + 'px;'
+						'min-height: ' + INITIAL_BANNER_HEIGHT + 'px;'
 					);
 				}
 
 				if (mainContent) {
 					mainContent.setAttribute(
 						'style',
-						'margin-top: ' + initialMainContentOffset + 'px;'
+						'margin-top: ' + INITIAL_MAIN_CONTENT_OFFSET + 'px;'
 					);
 				}
 
 				Array.prototype.forEach.call(megaMenu, function(menu) {
 					menu.setAttribute(
 						'style',
-						'top: ' + initialMainContentOffset + 'px;'
+						'top: ' + INITIAL_MAIN_CONTENT_OFFSET + 'px;'
 					);
 				});
 
