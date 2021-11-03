@@ -29,7 +29,7 @@
 <script>
 	// In the DOM, ids represent a field whereas class of the same name is the wrapper for the corresponding field
 
-	$(function() {
+	domLoaded(function() {
 		// When a user does not belong to any organization, they cannot create tickets
 
 		if (!HelpCenter.user.organizations.length) {
