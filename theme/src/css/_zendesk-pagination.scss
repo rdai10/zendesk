@@ -3,7 +3,7 @@
 
 	a,
 	button,
-	span {
+	.pagination-current span {
 		color: $color-default;
 		display: block;
 		line-height: $pagination-line-height;
