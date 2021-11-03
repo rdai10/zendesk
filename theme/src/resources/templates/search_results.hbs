@@ -88,15 +88,17 @@
 		}
 	];
 
-	Liferay.render(
-		Liferay.SearchResults,
-		{
-			fastTrackLabel: '{{dc 'article-fast_track'}}',
-			filterLabel: '{{dc 'search_results-filter_by'}}',
-			filterOptions: filterOptions,
-			locale: '{{help_center.locale}}',
-			queryString: encodeURIComponent('{{query}}')
-		},
-		document.getElementById('searchResults')
-	);
+	domLoaded(function() {
+		Liferay.render(
+			Liferay.SearchResults,
+			{
+				fastTrackLabel: '{{dc 'article-fast_track'}}',
+				filterLabel: '{{dc 'search_results-filter_by'}}',
+				filterOptions: filterOptions,
+				locale: '{{help_center.locale}}',
+				queryString: encodeURIComponent('{{query}}')
+			},
+			document.getElementById('searchResults')
+		)
+	});
 </script>

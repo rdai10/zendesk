@@ -25,7 +25,7 @@ class SearchResultBreadCrumb extends preact.Component {
 		const {id, locale} = this.props;
 
 		getSectionBySectionId(id, locale, 'categories')
-			.then((data) => {
+			.then(data => {
 				const [categories] = data.categories;
 
 				const breadcrumbData = [
@@ -119,7 +119,7 @@ class SearchResults extends preact.Component {
 			productLabel,
 			locale
 		)
-			.then((data) => {
+			.then(data => {
 				this.setState({
 					results: data.results
 				});
@@ -157,7 +157,7 @@ class SearchResults extends preact.Component {
 				label,
 				locale
 			)
-				.then((data) => {
+				.then(data => {
 					this.setState({
 						loading: false,
 						results: data.results,

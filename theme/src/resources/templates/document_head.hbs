@@ -3,6 +3,16 @@
 
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,400i,600,700|Source+Serif+Pro" rel="stylesheet">
 
+<script defer>
+	function domLoaded(callback) {
+		if (document.readyState !== 'loading') {
+			callback();
+		} else {
+			document.addEventListener('DOMContentLoaded', () => callback());
+		}
+	}
+</script>
+
 <!-- Google Tag Manager -->
 <!-- Support -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

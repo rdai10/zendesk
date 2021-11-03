@@ -83,7 +83,7 @@
 </div>
 
 <script>
-	$(function() {
+	domLoaded(function() {
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasKBPermission(userTags)) {
@@ -130,54 +130,54 @@
 				document.getElementById('stillNeedHelp')
 			);
 		}
-	});
 
-	Liferay.render(
-		Liferay.DocSideNav,
-		{
-			currentArticleId: '{{article.id}}',
-			locale: document.documentElement.lang.toLowerCase(),
-			sectionId: '{{section.id}}'
-		},
-		document.getElementById('sidenavTree')
-	);
+		Liferay.render(
+			Liferay.DocSideNav,
+			{
+				currentArticleId: '{{article.id}}',
+				locale: document.documentElement.lang.toLowerCase(),
+				sectionId: '{{section.id}}'
+			},
+			document.getElementById('sidenavTree')
+		);
 
-	window.onload = function() {
-		const articleContent = document.querySelector('.article-content');
+		window.onload = function() {
+			const articleContent = document.querySelector('.article-content');
 
-		const headingsNodeList = document.querySelectorAll('.article-body h2');
+			const headingsNodeList = document.querySelectorAll('.article-body h2');
 
-		if (articleContent && headingsNodeList.length) {
-			const content = [];
+			if (articleContent && headingsNodeList.length) {
+				const content = [];
 
-			// IE 11 compatible
-			Array.prototype.forEach.call(
-				headingsNodeList,
-				function(node) {
-					const nodeId = node.parentNode.id || node.id;
+				// IE 11 compatible
+				Array.prototype.forEach.call(
+					headingsNodeList,
+					function(node) {
+						const nodeId = node.parentNode.id || node.id;
 
-					if (nodeId) {
-						content.push(
-							{
-								id: nodeId,
-								title: node.innerText,
-								top: node.getBoundingClientRect().top
-							}
-						);
+						if (nodeId) {
+							content.push(
+								{
+									id: nodeId,
+									title: node.innerText,
+									top: node.getBoundingClientRect().top
+								}
+							);
+						}
 					}
-				}
-			);
+				);
 
-			Liferay.render(
-				Liferay.DocsTOC,
-				{
-					content: content,
-					initialTargetBoundingRect: articleContent.getBoundingClientRect(),
-					targetNode: articleContent, 
-					title: '{{dc 'article-on_this_page'}}'
-				},
-				document.getElementById('docsTOC')
-			);
+				Liferay.render(
+					Liferay.DocsTOC,
+					{
+						content: content,
+						initialTargetBoundingRect: articleContent.getBoundingClientRect(),
+						targetNode: articleContent, 
+						title: '{{dc 'article-on_this_page'}}'
+					},
+					document.getElementById('docsTOC')
+				);
+			}
 		}
-	}
+	});
 </script>

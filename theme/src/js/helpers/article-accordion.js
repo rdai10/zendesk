@@ -1,4 +1,4 @@
-$(function() {
+domLoaded(function() {
 	const articlePanels = document.querySelectorAll('.article-body .panel');
 
 	// IE 11 compatible
