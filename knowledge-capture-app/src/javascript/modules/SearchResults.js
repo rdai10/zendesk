@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import { Col, Row } from '@zendeskgarden/react-grid';
-import { Well, Title, Paragraph } from '@zendeskgarden/react-notifications';
-import { SM } from '@zendeskgarden/react-typography';
-import { useGlobalContext } from '../context/Global';
+import {Col, Row} from '@zendeskgarden/react-grid';
+import {Well, Title, Paragraph} from '@zendeskgarden/react-notifications';
+import {SM} from '@zendeskgarden/react-typography';
+import {useGlobalContext} from '../context/Global';
 import I18n from '../lib/i18n';
-import { MAX_RECOMMENDED_HEIGHT, MODAL } from '../lib/constants';
-import { displayDateInMDYFormat, insertResult } from '../lib/utility';
+import {MAX_RECOMMENDED_HEIGHT, MODAL} from '../lib/constants';
+import {displayDateInMDYFormat, insertResult} from '../lib/utility';
 import LinkArticle from './LinkArticle';
 import ResultBreadcrumb from './ResultBreadcrumb';
 
-export default function SearchResults({ categories, results, sections }) {
+export default function SearchResults({categories, results, sections}) {
 	return (
 		<Row id="primaryResults" wrap="nowrap">
 			<Col>
@@ -27,8 +27,8 @@ export default function SearchResults({ categories, results, sections }) {
 	);
 }
 
-function Result({ categories, sections, result }) {
-	const { client } = useGlobalContext();
+function Result({categories, sections, result}) {
+	const {ticketSidebar} = useGlobalContext();
 
 	const [linked, setLinked] = useState(false);
 
@@ -46,26 +46,29 @@ function Result({ categories, sections, result }) {
 	function handleLinkArticle(event) {
 		event.stopPropagation();
 
-		insertResult(client, result.name, result.html_url);
+		insertResult(ticketSidebar, result.name, result.html_url);
 
 		setLinked(true);
 	}
 
 	async function handleOpenModal() {
 		try {
-			const modalContext = await client.invoke('instances.create', {
-				location: MODAL,
-				size: {
-					height: MAX_RECOMMENDED_HEIGHT,
-					width: '740px',
-				},
-				url: 'assets/main.html',
-			});
+			const modalContext = await ticketSidebar.invoke(
+				'instances.create',
+				{
+					location: MODAL,
+					size: {
+						height: MAX_RECOMMENDED_HEIGHT,
+						width: '740px'
+					},
+					url: 'assets/main.html'
+				}
+			);
 
 			const [modal] = modalContext['instances.create'];
-			const modalInstance = client.instance(modal.instanceGuid);
+			const modalInstance = ticketSidebar.instance(modal.instanceGuid);
 
-			client.on('modalReady', () => {
+			ticketSidebar.on('modalReady', () => {
 				modalInstance.trigger('transferModalData', result);
 			});
 		} catch (e) {
@@ -95,13 +98,13 @@ function Result({ categories, sections, result }) {
 	);
 }
 
-const EditedAt = ({ className, date }) => (
+const EditedAt = ({className, date}) => (
 	<Paragraph className={className} size="small">
 		{I18n.t('last edited')} {displayDateInMDYFormat(date)}
 	</Paragraph>
 );
 
-const WellTitle = ({ className, title }) => (
+const WellTitle = ({className, title}) => (
 	<Title className={className}>
 		<h3>{title}</h3>
 	</Title>

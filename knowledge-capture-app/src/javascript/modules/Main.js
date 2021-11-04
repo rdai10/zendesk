@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import { Grid } from '@zendeskgarden/react-grid';
-import { useGlobalContext } from '../context/Global';
-import { DEFAULT_LOCALE } from '../lib/constants';
-import { API_ENDPOINTS } from '../lib/utility';
+import {Grid} from '@zendeskgarden/react-grid';
+import {useGlobalContext} from '../context/Global';
+import {DEFAULT_LOCALE} from '../lib/constants';
+import {API_ENDPOINTS} from '../lib/utility';
 import NewArticle from './NewArticle';
 import NoResults from './NoResults';
 import SearchFilters from './SearchFilters';
 import SearchInput from './SearchInput';
 import SearchResults from './SearchResults';
 
-export default function Main({ data }) {
+export default function Main({data}) {
 	return <AppView data={data} />;
 }
 
-function View({ className, data }) {
-	const { client } = useGlobalContext();
-	const { locale, ticketId, ticketSubject } = data;
+function View({className, data}) {
+	const {ticketSidebar} = useGlobalContext();
+
+	const {locale, ticketId, ticketSubject} = data;
 
 	const [keyword, setKeyword] = useState(ticketSubject);
 	const [language, setLanguage] = useState(DEFAULT_LOCALE);
@@ -28,7 +29,7 @@ function View({ className, data }) {
 
 		if (keyword !== '') {
 			try {
-				search = await client.request(
+				search = await ticketSidebar.request(
 					API_ENDPOINTS.search(keyword, language)
 				);
 			} catch (error) {

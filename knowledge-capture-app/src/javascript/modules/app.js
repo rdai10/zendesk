@@ -1,13 +1,13 @@
-import React, { StrictMode } from 'react';
+import React, {StrictMode} from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from '@zendeskgarden/react-theming';
-import { GlobalContext } from '../context/Global';
-import { DEFAULT_LOCALE, MODAL, TICKET_SIDEBAR } from '../lib/constants';
+import {ThemeProvider} from '@zendeskgarden/react-theming';
+import {GlobalContextProvider} from '../context/Global';
+import {DEFAULT_LOCALE, MODAL, TICKET_SIDEBAR} from '../lib/constants';
 import I18n from '../lib/i18n';
 import ErrorBoundary from './ErrorBoundary';
 import Main from './Main';
 import Modal from './Modal';
-import { Theme } from './Theme';
+import {Theme} from './Theme';
 
 class App {
 	constructor(client, appData) {
@@ -25,7 +25,7 @@ class App {
 	 * Initialize module, render main template
 	 */
 	init() {
-		const { location } = this._appData.context;
+		const {location} = this._appData.context;
 
 		if (location) {
 			location === MODAL ? this._initModal() : this._initTicketSidebar();
@@ -54,7 +54,7 @@ class App {
 		try {
 			const [user, subject] = await Promise.all([
 				this._client.get('currentUser'),
-				this._client.get('ticket.subject'),
+				this._client.get('ticket.subject')
 			]);
 
 			currentUser = user.currentUser;
@@ -80,9 +80,10 @@ class App {
 		const instanceData = await this._client.get('instances');
 
 		return Object.fromEntries(
-			Object.entries(instanceData.instances).map(
-				([uuid, { location }]) => [location, uuid]
-			)
+			Object.entries(instanceData.instances).map(([uuid, {location}]) => [
+				location,
+				uuid
+			])
 		);
 	}
 
@@ -102,16 +103,16 @@ class App {
 		ReactDOM.render(
 			<StrictMode>
 				<ErrorBoundary>
-					<GlobalContext.Provider
+					<GlobalContextProvider
 						value={{
-							client: this._client,
-							ticketSidebar: this.states.ticketSidebar,
+							modal: this._client,
+							ticketSidebar: this.states.ticketSidebar
 						}}
 					>
 						<ThemeProvider theme={Theme}>
 							<Modal data={data} />
 						</ThemeProvider>
-					</GlobalContext.Provider>
+					</GlobalContextProvider>
 				</ErrorBoundary>
 			</StrictMode>,
 			document.querySelector('.main')
@@ -122,11 +123,13 @@ class App {
 		ReactDOM.render(
 			<StrictMode>
 				<ErrorBoundary>
-					<GlobalContext.Provider value={{ client: this._client }}>
+					<GlobalContextProvider
+						value={{ticketSidebar: this._client}}
+					>
 						<ThemeProvider theme={Theme}>
 							<Main data={this.states} />
 						</ThemeProvider>
-					</GlobalContext.Provider>
+					</GlobalContextProvider>
 				</ErrorBoundary>
 			</StrictMode>,
 			document.querySelector('.main')

@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Anchor } from '@zendeskgarden/react-buttons';
-import { Col, Grid, Row } from '@zendeskgarden/react-grid';
-import { useGlobalContext } from '../context/Global';
+import {Anchor} from '@zendeskgarden/react-buttons';
+import {Col, Grid, Row} from '@zendeskgarden/react-grid';
+import {useGlobalContext} from '../context/Global';
 import i18n from '../lib/i18n';
-import { insertResult } from '../lib/utility';
-import { LinkButton } from './LinkArticle';
+import {insertResult} from '../lib/utility';
+import {LinkButton} from './LinkArticle';
 
-export default function Modal({ data }) {
+export default function Modal({data}) {
 	return <StyledModalContent data={data} />;
 }
 
-const ModalContent = ({ className, data }) => {
-	const { client, ticketSidebar } = useGlobalContext();
+const ModalContent = ({className, data}) => {
+	const {modal, ticketSidebar} = useGlobalContext();
 
 	function handleLinkArticle() {
-		client.invoke('destroy');
+		modal.invoke('destroy');
 
 		insertResult(ticketSidebar, data.name, data.html_url);
 	}
@@ -23,9 +23,9 @@ const ModalContent = ({ className, data }) => {
 	return (
 		<Grid className={className}>
 			<article>
-				<h1 dangerouslySetInnerHTML={{ __html: data.title }} />
+				<h1 dangerouslySetInnerHTML={{__html: data.title}} />
 
-				<div dangerouslySetInnerHTML={{ __html: data.body }} />
+				<div dangerouslySetInnerHTML={{__html: data.body}} />
 			</article>
 
 			<footer>
