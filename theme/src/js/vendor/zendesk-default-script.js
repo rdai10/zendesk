@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+domLoaded(function() {
 	// Key map
 	var ENTER = 13;
 	var ESCAPE = 27;
@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	var DOWN = 40;
 	var TAB = 9;
 
+	// IE 11 polyfill for Element.closest
 	function closest(element, selector) {
 		if (Element.prototype.closest) {
 			return element.closest(selector);
@@ -25,17 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		} while (element !== null && element.nodeType === 1);
 		return null;
 	}
-
-	// social share popups
-	Array.prototype.forEach.call(
-		document.querySelectorAll('.share a'),
-		function(anchor) {
-			anchor.addEventListener('click', function(e) {
-				e.preventDefault();
-				window.open(this.href, '', 'height = 500, width = 500');
-			});
-		}
-	);
 
 	// In some cases we should preserve focus after page reload
 	function saveFocus() {
@@ -206,25 +196,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		toggle.focus();
 	}
 
-	var burgerMenu = document.querySelector('.header .menu-button');
-	var userMenu = document.querySelector('#user-nav');
-
-	burgerMenu.addEventListener('click', function(e) {
-		e.stopPropagation();
-		toggleNavigation(this, userMenu);
-	});
-
-	userMenu.addEventListener('keyup', function(e) {
-		if (e.keyCode === ESCAPE) {
-			e.stopPropagation();
-			closeNavigation(burgerMenu, this);
-		}
-	});
-
-	if (userMenu.children.length === 0) {
-		burgerMenu.style.display = 'none';
-	}
-
 	// Toggles expanded aria to collapsible elements
 	var collapsible = document.querySelectorAll(
 		'.collapsible-nav, .collapsible-sidebar'
@@ -256,25 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			closest(this, 'form').submit();
 		});
 	}
-
-	// If multibrand search has more than 5 help centers or categories collapse the list
-	var multibrandFilterLists = document.querySelectorAll(
-		'.multibrand-filter-list'
-	);
-	Array.prototype.forEach.call(multibrandFilterLists, function(filter) {
-		if (filter.children.length > 6) {
-			// Display the show more button
-			var trigger = filter.querySelector('.see-all-filters');
-			trigger.setAttribute('aria-hidden', false);
-
-			// Add event handler for click
-			trigger.addEventListener('click', function(e) {
-				e.stopPropagation();
-				trigger.parentNode.removeChild(trigger);
-				filter.classList.remove('multibrand-filter-list--collapsed');
-			});
-		}
-	});
 
 	// If there are any error notifications below an input field, focus that field
 	var notificationElm = document.querySelector('.notification-error');
