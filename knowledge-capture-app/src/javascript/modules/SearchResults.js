@@ -68,6 +68,10 @@ function Result({categories, sections, result}) {
 			const [modal] = modalContext['instances.create'];
 			const modalInstance = ticketSidebar.instance(modal.instanceGuid);
 
+			modalInstance.on('modal.close', () => {
+				// clear modal instance id from ticketSidebar instanceClients
+			});
+
 			ticketSidebar.on('modalReady', () => {
 				modalInstance.trigger('transferModalData', result);
 			});
