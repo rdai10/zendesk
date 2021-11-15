@@ -9,12 +9,17 @@
 	z-index: 5000;
 
 	&.hide-header {
-		background: linear-gradient(107.81deg, #113B87 0.45%, rgba(17, 59, 140, 1) 28.91%, rgba(16, 56, 124, 1) 100%);
+		background: linear-gradient(
+			107.81deg,
+			#113b87 0.45%,
+			rgba(17, 59, 140, 1) 28.91%,
+			rgba(16, 56, 124, 1) 100%
+		);
 	}
 
 	&.scroll-shadow {
 		box-shadow: 0 2px 2px -2px rgba(9, 16, 29, 0.3);
-		
+
 		&.hide-header {
 			background: $color-brand;
 		}
@@ -28,9 +33,7 @@
 		&.user-wrapper {
 			justify-content: flex-end;
 
-			input[type="search"] {
-				
-
+			input[type='search'] {
 				&::placeholder {
 					color: $color-white;
 				}
@@ -202,7 +205,8 @@
 				}
 
 				.header-menu {
-					box-shadow: 0 4px 15px 0 rgba(9, 16, 24, 0.03), 0 20px 40px 0 rgba(9, 16, 29, 0.09);
+					box-shadow: 0 4px 15px 0 rgba(9, 16, 24, 0.03),
+						0 20px 40px 0 rgba(9, 16, 29, 0.09);
 					display: block;
 				}
 			}
@@ -220,13 +224,11 @@
 	.user {
 		padding-left: $padding-md;
 
-		.btn.dropdown-toggle {
-			padding: 0;
-		}
-
-		#user #user-name,
-		.dropdown-toggle:after {
-			display: none;
+		.sign-in {
+			background-color: $color-white;
+			font-size: $h5-font-size;
+			font-weight: $font-weight-semi-bold;
+			padding: $btn-padding-y-sm $btn-padding-x-sm;
 		}
 
 		.user-avatar {
