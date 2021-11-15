@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-1. [Install node](https://nodejs.org/en/).
+1. [Install node v10](https://nodejs.org/en/).
 2. Install all dependencies with `npm install`.
 
 ### Setting up local theme preview
