@@ -30,25 +30,69 @@
 	// In the DOM, ids represent a field whereas class of the same name is the wrapper for the corresponding field
 
 	domLoaded(function() {
+		const userOrganizations = HelpCenter.user.organizations;
+
 		// When a user does not belong to any organization, they cannot create tickets
 
-		if (!HelpCenter.user.organizations.length) {
+		if (!userOrganizations.length) {
 			return;
 		}
 
+		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
+
 		function addPrefixToOrgTags(tags) {
-			return tags.map(
-				function(tag) {
-					return 'prd_' + tag;
+			return tags.map(tag => 'prd_' + tag);
+		}
+
+		function findCurrentOrgTags() {
+			// When a user belongs to multiple organizations, retrieve tags from the currently selected organization
+
+			if (currentOrgId) {
+				const currentOrg = userOrganizations.find(
+					org => org.name === currentOrgId.text
+				);
+
+				return currentOrg?.tags ?? [];
+			}
+
+			// When a user belongs to only one organization, the org field will not be displayed
+
+			return userOrganizations[0].tags;
+		}
+
+		function hideDropdownOptions(options, target) {
+			options.forEach(
+				option => {
+					const node = target.querySelector(`li#${option}`);
+
+					node?.setAttribute('style', 'display: none;');
+				}
+			);
+		}
+
+		function hideNestedDropdownOptions(option, target) {
+			target?.querySelectorAll('li').forEach(
+				(node) => {
+					let id = node.id;
+
+					// Transform the Nested Field id to match its label value so it can be compared
+
+					if (id.indexOf('prd') === -1) {
+						id = 'prd_' + node.innerText.toLowerCase().replace(' ', '_');
+					}
+
+					if (id === option) {
+						node?.setAttribute('style', 'display: none;');
+					}
 				}
 			);
 		}
 
 		function mapInputValuesFromField(field) {
-			const dataset = JSON.parse(field.dataset.tagger);
+			const dataset = JSON.parse(field?.dataset.tagger);
 
 			const inputValues = dataset.map(
-				function(input) {
+				input => {
 					var val = input.value;
 
 					if (val === undefined) {
@@ -66,18 +110,14 @@
 
 		function matchProductComponents(product) {
 			var productMatch = productComponentsMapping.filter(
-				function(value) {
-					return product.match(value.product);
-				}
+				value => product.match(value.product)
 			);
 
 			// Match again if more than one match was found
 
 			if (productMatch.length > 1) {
 				productMatch = productMatch.filter(
-					function(value) {
-						return ('prd_' + value.product) === product;
-					}
+					value => ('prd_' + value.product) === product
 				);
 			}
 
@@ -85,37 +125,7 @@
 		}
 
 		function matchValueToTags(value, tags) {
-			return tags.some(
-				function(tag) {
-					return (value === tag);
-				}
-			);
-		}
-
-		function removeDropdownOptions(options, target) {
-			options.forEach(
-				function(option) {
-					target.children().remove('li#' + option);
-				}
-			);
-		}
-
-		function removeNestedDropdownOptions(option, target) {
-			target.children().each(
-				function(index, item) {
-					var id = item.id;
-
-					// Set Nested Field id to match its label value
-
-					if (id.indexOf('prd') === -1) {
-						id = 'prd_' + item.innerText.toLowerCase().replace(' ', '_');
-					}
-
-					if (id === option) {
-						$(item).hide();
-					}
-				}
-			);
+			return tags.some(tag => value === tag);
 		}
 
 		const productComponentsMapping = [
@@ -203,52 +213,38 @@
 		const componentInputField = document.getElementById('request_custom_fields_360011314571');
 		const productInputField = document.getElementById('request_custom_fields_360006041192');
 
-		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
+		const allComponents = mapInputValuesFromField(componentInputField);
+		const allProducts = mapInputValuesFromField(productInputField);
 
-		// When a user belongs to only one organization
+		const mutationHandler = mutation => {
+			const {addedNodes, target} = mutation;
+			const currentTarget = document.getElementById(target.id);
 
-		var currentOrgTags = HelpCenter.user.organizations[0].tags;
+			// When a nesty-input dropdown is clicked, a new node is inserted to the corresponding nesty-panel.
 
-		$('.nesty-panel').on(
-			'DOMNodeInserted',
-			function(event) {
-				const currentTarget = $(event.target);
+			if (addedNodes.length) {
+				// Product dropdown
 
-				// When a user belongs to multiple organizations, retrieve tags from the currently selected organization
-
-				if (currentOrgId) {
-					const currentOrg = HelpCenter.user.organizations.filter(
-						function(org) {
-							return org.name === currentOrgId.text;
-						}
-					)[0];
-
-					currentOrgTags = currentOrg.tags;
-				}
-
-				const prefixedOrgTags = addPrefixToOrgTags(currentOrgTags);
-
-				const allProducts = mapInputValuesFromField(productInputField);
-
-				const filteredOutProducts = allProducts.filter(
-					function(value) {
-						return !matchValueToTags(value, prefixedOrgTags);
-					}
-				);
+				const prefixedOrgTags = addPrefixToOrgTags(findCurrentOrgTags());
 
 				// ISSUP-4450 Allow DXP customers to open Commerce or Liferay Enterprise Search tickets
 
 				const isDXPCustomer = prefixedOrgTags.includes('prd_liferay_dxp');
+				const filteredOutProducts = allProducts.filter(
+					value => !matchValueToTags(value, prefixedOrgTags)
+				);
 
 				filteredOutProducts.forEach(
-					function(option) {
+					option => {
 						const reservedProducts = isDXPCustomer && (option === 'prd_liferay_commerce' || option === 'prd_enterprise_search') 
 
 						if (!reservedProducts) {
-							removeNestedDropdownOptions(option, currentTarget);
+							hideNestedDropdownOptions(option, currentTarget);
 						}
 					}
 				);
+
+				// Component dropdown
 
 				const currentProduct = productInputField.value;
 
@@ -257,39 +253,46 @@
 
 					if (match) {
 						const componentOptions = match.components;
-
-						const allComponents = mapInputValuesFromField(componentInputField);
-
 						const filteredOutComponents = allComponents.filter(
-							function(value) {
-								return !matchValueToTags(value, componentOptions);
-							}
+							value => !matchValueToTags(value, componentOptions)
 						);
 
-						removeDropdownOptions(filteredOutComponents, currentTarget);
+						hideDropdownOptions(filteredOutComponents, currentTarget);
 					}
 				}
 			}
-		);
+		}
 
-		const orgSelectField = document.getElementById('request_organization_id');
+		const formChangeHandler = function(mutationsList, observer) {
+			for(const mutation of mutationsList) {
+				mutationHandler(mutation);
+			}
+		};
 
-		if (orgSelectField) {
-			const productNestyInput = document.querySelector('.request_custom_fields_360006041192 .nesty-input');
+		const observer = new MutationObserver(formChangeHandler);
 
-			if (productNestyInput) {
-				$(orgSelectField).change(
-					function() {
-						productInputField.value = '';
-						productNestyInput.textContent = '-';
-					}
-				);
+ 		document.querySelectorAll('.nesty-panel').forEach(target => observer.observe(target, {childList: true}));
+
+		const productNestyInput = document.querySelector('.request_custom_fields_360006041192 .nesty-input');
+
+		if (productNestyInput) {
+			const orgSelectField = document.getElementById('request_organization_id');
+
+			if (orgSelectField) {
+				orgSelectField.onchange = function() {
+					productInputField.value = '';
+					productNestyInput.textContent = '-';
+				}
 			}
 		}
 
 		// Append an element to render the article suggestions
 
-		$('.request_subject').append('<div id="articleSuggestionWrapper"></div>');
+		const newElement = document.createElement('div');
+		newElement.id = 'articleSuggestionWrapper';
+
+		const requestSubject = document.querySelector('.request_subject');
+		requestSubject?.appendChild(newElement);
 
 		const setArticleSuggestionInnerHTML = function(html) {
 			const articleSuggestionWrapper = document.getElementById('articleSuggestionWrapper');
@@ -337,6 +340,6 @@
 			Liferay.debounce(onRequestSubjectKeyup, 300)
 		);
 
-		$(productInputField).change(onRequestSubjectKeyup);
+		productInputField.onchange = onRequestSubjectKeyup;
 	});
 </script>
