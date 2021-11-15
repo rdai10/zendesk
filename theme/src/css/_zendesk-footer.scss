@@ -10,7 +10,7 @@
 		.footer-language-selector {
 			text-transform: none;
 
-			@include media-breakpoint-down(sm) {
+			@include media-breakpoint-down(xs) {
 				padding-top: $padding-sm;
 			}
 		}
@@ -33,6 +33,10 @@
 				color: $color-body;
 			}
 		}
+	}
+
+	.language-selector {
+		cursor: pointer;
 	}
 
 	.language-selector,

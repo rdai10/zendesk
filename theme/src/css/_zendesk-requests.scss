@@ -96,11 +96,8 @@
 	}
 }
 
-.meta-data {
-	&:not(:last-child)::after {
-		content: "\00B7";
-		padding-left: $label-spacer-x;
-	}
+.comment-fields {
+	margin-bottom: $margin-md;
 }
 
 .comment-form,
@@ -177,6 +174,13 @@
 	}
 }
 
+.meta-data {
+	&:not(:last-child)::after {
+		content: '\00B7';
+		padding-left: $label-spacer-x;
+	}
+}
+
 .request-container {
 	padding-right: 6rem;
 
@@ -197,17 +201,17 @@
 			padding-top: $padding-default;
 		}
 
-		input[type="radio"][value="good"] + label:hover {
+		input[type='radio'][value='good'] + label:hover {
 			border-color: $color-success;
 			color: $color-success;
 		}
 
-		input[type="radio"][value="bad"] + label:hover {
+		input[type='radio'][value='bad'] + label:hover {
 			border-color: $color-error;
 			color: $color-error;
 		}
 
-		label[role="button"] {
+		label[role='button'] {
 			border: 1px solid $color-border;
 			color: initial;
 			font-size: $small-font-size;
@@ -225,7 +229,7 @@
 		color: $secondary-text-color;
 	}
 
-	input[type="text"] {
+	input[type='text'] {
 		background-image: clay-icon(search, $color-primary);
 		background-position: right 1rem center;
 		background-repeat: no-repeat;
@@ -272,7 +276,7 @@
 	.form-field.required {
 		> label[for]::after {
 			color: $color-error;
-			content: " *";
+			content: ' *';
 		}
 	}
 

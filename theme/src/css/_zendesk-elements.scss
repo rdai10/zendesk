@@ -82,11 +82,11 @@ p {
 	margin-bottom: $margin-default;
 }
 
-input[type="search"] {
+input[type='search'] {
 	box-sizing: border-box;
 }
 
-input:not([type="submit"]),
+input:not([type='submit']),
 select,
 textarea,
 .nesty-input,
@@ -111,7 +111,7 @@ textarea,
 	}
 }
 
-input:not([type="submit"]),
+input:not([type='submit']),
 select,
 select.form-control,
 textarea,
@@ -136,7 +136,7 @@ textarea,
 	}
 }
 
-input:not([type="submit"]),
+input:not([type='submit']),
 select,
 .nesty-input {
 	height: $input-height;
@@ -214,7 +214,7 @@ textarea,
 
 .search-lg,
 .search-nav {
-	input[type="search"] {
+	input[type='search'] {
 		background-color: rgba(255, 255, 255, 0.2);
 		background-image: clay-icon(search, $color-white);
 		background-repeat: no-repeat;
@@ -233,9 +233,9 @@ textarea,
 }
 
 .search-lg {
-	input[type="search"] {
+	input[type='search'] {
 		background-position: right 1.5rem center;
-		background-size: 1rem;	
+		background-size: 1rem;
 		height: $input-height-lg;
 		padding-left: $padding-default;
 		padding-right: 2.8rem;
@@ -245,7 +245,7 @@ textarea,
 .search-nav {
 	width: 232px;
 
-	input[type="search"] {
+	input[type='search'] {
 		background-position: right 0.7rem center;
 		background-size: 0.75rem;
 		font-size: $h5-font-size;

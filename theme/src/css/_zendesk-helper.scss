@@ -1,0 +1,46 @@
+// user avatar and language toggle dropdowns
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-menu {
+	background: $color-white;
+	border: 1px solid $color-divider;
+	border-radius: $border-radius;
+	display: none;
+	left: 0;
+	margin-top: 1px;
+	min-width: 10rem;
+	padding: $padding-sm 0;
+	position: absolute;
+	text-align: left;
+	z-index: 1000;
+
+	&[aria-expanded='true'] {
+		display: block;
+	}
+
+	[role="menuitem"] {
+		color: $color-body;
+		display: block;
+		padding: $padding-xs $padding-md;
+		text-decoration: none;
+		white-space: nowrap;
+
+		&:hover {
+			background-color: $color-grey;
+		}
+	}
+}
+
+.dropdown-menu-end {
+	left: auto;
+	right: 0;
+}
+
+.dropdown-menu-top {
+	bottom: 100%;
+	margin-bottom: 1px;
+}

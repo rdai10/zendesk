@@ -1,3 +1,11 @@
+a[role='button'] {
+	display: inline-block;
+	font-weight: $btn-font-weight;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+
 a[role='button'],
 input[type='submit'],
 label[role='button'] {
@@ -10,40 +18,7 @@ label[role='button'] {
 	);
 }
 
-a[role='button'],
-input[type='submit'],
-.btn-primary {
-	background-color: $color-primary;
-	border: $btn-border-width solid;
-	color: $color-white;
-	font-weight: $font-weight-semi-bold;
-
-	&:focus {
-		background-color: $color-primary-focus;
-	}
-
-	&:hover {
-		background-color: $color-primary-hover;
-		box-shadow: 0 0.125rem 0.375rem 0 rgba(2, 19, 51, 0.36);
-	}
-
-	&[disabled='true'] {
-		background-color: $color-disabled;
-	}
-}
-
-a[role='button'] {
-	display: inline-block;
-	font-weight: $btn-font-weight;
-	text-align: center;
-	vertical-align: middle;
-	white-space: nowrap;
-}
-
-input[type='submit'] {
-	border-color: transparent;
-}
-
+.btn-outline-primary,
 .article-vote,
 .btn-outline-primary {
 	&,
@@ -81,9 +56,11 @@ input[type='submit'] {
 	}
 }
 
+a[role='button'].btn-unstyled,
 .btn-unstyled {
 	background-color: rgba(0, 0, 0, 0.001);
 	border-width: 0;
+	cursor: pointer;
 	font-size: inherit;
 	font-weight: inherit;
 	line-height: inherit;
@@ -92,4 +69,31 @@ input[type='submit'] {
 	text-align: left;
 	text-transform: inherit;
 	vertical-align: baseline;
+}
+
+a[role='button'].btn-primary,
+input[type='submit'],
+.btn-primary {
+	background-color: $color-primary;
+	border: $btn-border-width solid;
+	color: $color-white;
+	cursor: pointer;
+	font-weight: $font-weight-semi-bold;
+
+	&:focus {
+		background-color: $color-primary-focus;
+	}
+
+	&:hover {
+		background-color: $color-primary-hover;
+		box-shadow: 0 0.125rem 0.375rem 0 rgba(2, 19, 51, 0.36);
+	}
+
+	&[disabled='true'] {
+		background-color: $color-disabled;
+	}
+}
+
+input[type='submit'] {
+	border-color: transparent;
 }
