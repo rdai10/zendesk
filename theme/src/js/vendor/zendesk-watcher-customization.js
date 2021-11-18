@@ -1,40 +1,54 @@
-$(document).ready(function() {
+domLoaded(function() {
+	// Checks to see if user is on New Request page or My Requests page
+
 	if (
 		location.pathname.indexOf('/requests/new') > -1 ||
 		location.pathname.match(/\/requests$/)
 	) {
 		getDevOrgs();
-	} else if (location.pathname.match(/\/requests\/\d+/)) {
+	}
+
+	// Checks to see if user is on a specific Request page
+
+	if (location.pathname.match(/\/requests\/\d+/)) {
 		getRequestOrg();
 	}
 });
 
-Array.prototype.subtract = function(arr) {
-	return this.filter(function(el) {
-		return arr.indexOf(el) === -1;
-	});
-};
+function getDefaultOrgId(orgName, allOrgs) {
+	let defaultOrgId = null;
 
-// filter user tags to obtain IDs of tags with the _watcher suffix
+	for (const org in allOrgs) {
+		if (allOrgs[org] === orgName) {
+			defaultOrgId = org;
+			return;
+		}
+	}
+
+	return defaultOrgId;
+}
+
+// filter user tags to obtain IDs of the org with the _watcher suffix
+
 function getUserWatcherTags(userTags) {
 	return userTags
-		.filter(function(tag) {
-			return tag.match(/osb_(\d*)_watcher/);
-		})
-		.map(function(tag) {
-			return tag.split('_')[1];
-		});
+		.filter(tag => tag.match(/osb_(\d*)_watcher/))
+		.map(tag => tag.split('_')[1]);
+}
+
+function removeWatcherOrgs(allOrgs, watcherOrgs) {
+	return allOrgs.filter(org => watcherOrgs.indexOf(org) === -1);
 }
 
 // obtain dev orgs for current user
 function getDevOrgs() {
-	var orgs = {};
-	var orgOptions = $('#request_organization_id option');
+	const orgs = {};
+	const orgOptions = document.querySelectorAll(
+		'#request_organization_id option'
+	);
 
-	if ($(orgOptions).length > 0) {
-		$(orgOptions).each(function(option) {
-			orgs[$(this).val()] = $(this).text();
-		});
+	if (orgOptions.length) {
+		orgOptions.forEach(option => (orgs[option.value] = option.text));
 
 		assignOrgs(orgs);
 	} else if (HelpCenter.user.organizations.length > 0) {
@@ -48,7 +62,7 @@ function getDevOrgs() {
 				assignOrgs(orgs);
 			})
 			.fail(function(error) {
-				console.log(error);
+				console.error(error);
 			});
 	} else {
 		showWatcherMessage();
@@ -56,96 +70,99 @@ function getDevOrgs() {
 }
 
 function assignOrgs(orgs) {
-	var allOrgs = Object.keys(orgs);
-	var userTags = HelpCenter.user.tags;
-	var watcherOrgs = getUserWatcherTags(userTags);
-	var allowedOrgs = allOrgs.subtract(watcherOrgs);
+	const allOrgIds = Object.keys(orgs);
+	const watcherOrgIds = getUserWatcherTags(HelpCenter.user.tags);
+	const allowedOrgIds = removeWatcherOrgs(allOrgIds, watcherOrgIds);
 
-	var allowedOrgsById = {};
-	var allowedOrgsByName = {};
+	const orgField = document.querySelector(
+		'.request_organization_id a.nesty-input'
+	);
+	const orgOptions = document.querySelectorAll(
+		'#request_organization_id option'
+	);
 
-	allowedOrgs.forEach(function(id) {
-		allowedOrgsById[id] = orgs[id];
-		allowedOrgsByName[orgs[id]] = id;
-	});
+	if (orgField) {
+		const firstAllowedOrgId = allowedOrgIds[0];
+		const firstAllowedOrgName = orgs[firstAllowedOrgId];
 
-	var key = Object.keys(allowedOrgsByName)[0];
-	var value = allowedOrgsByName[key];
+		const defaultOrgId = getDefaultOrgId(orgField.text, allOrgIds);
 
-	if (value) {
-		// if the default org is a watched org, select the next dev to be default
-		if (
-			!allowedOrgsByName[
-				$('.request_organization_id a.nesty-input').text()
-			]
-		) {
-			$('.request_organization_id a.nesty-input').text(key);
-			$('#request_organization_id option').each(function(option) {
-				if ($(this).val() === value) {
-					$(this).attr('selected', true);
-				} else {
-					$(this).attr('selected', false);
+		if (firstAllowedOrgId) {
+			// if the default org is a watched org, select the next allowed org to be displayed
+			if (!allowedOrgIds.includes(defaultOrgId)) {
+				orgField.innerText = firstAllowedOrgName;
+
+				orgOptions.forEach(option => {
+					if (option.value === firstAllowedOrgId) {
+						option.setAttribute('selected', true);
+					} else {
+						option.setAttribute('selected', false);
+					}
+				});
+			}
+
+			showForm();
+		} else {
+			showWatcherMessage();
+		}
+
+		orgField.onclick = () => {
+			orgOptions.forEach(option => {
+				const optionId = option.value;
+
+				if (watcherOrgIds.includes(optionId)) {
+					document
+						.getElementById(optionId)
+						?.setAttribute('style', 'display: none;');
 				}
 			});
-		}
-		showForm();
-	} else {
-		showWatcherMessage();
+		};
 	}
-
-	$('.request_organization_id a.nesty-input').on('click', function() {
-		var option = this;
-
-		$('#request_organization_id option').each(function(option) {
-			var id = $(this).val();
-			if (!allowedOrgsById[id]) {
-				$('#' + id).remove();
-			}
-		});
-	});
 }
 
 function showWatcherMessage() {
-	$('.watcher-message')
-		.next('div')
-		.remove();
+	const form = document.querySelector('.request-form-wrapper');
+	const watcherMsg = document.querySelector('.watcher-message');
 
-	$('.watcher-message').removeClass('d-none');
+	form?.remove();
+	watcherMsg?.classList.remove('d-none');
 }
 
 function showForm() {
-	$('.watcher-message')
-		.next('div')
-		.removeClass('d-none');
+	const form = document.querySelector('.request-form-wrapper');
+	const watcherMsg = document.querySelector('.watcher-message');
 
-	$('.watcher-message').remove();
+	form?.classList.remove('d-none');
+	watcherMsg?.remove();
 }
 
 // get org of current request
 function getRequestOrg() {
-	var id = location.pathname.match(/\/requests\/(\d+)/)[1];
+	const requestId = location.pathname.match(/\/requests\/(\d+)/)[1];
+	const watcherOrgs = getUserWatcherTags(HelpCenter.user.tags);
 
-	$.ajax('/api/v2/requests/' + id)
+	$.ajax('/api/v2/requests/' + requestId)
 		.done(function(data) {
 			if (data.request) {
-				var requestOrgId = data.request.organization_id;
+				const requestOrgId = data.request.organization_id;
 
-				customizeRequestPage(requestOrgId);
+				customizeRequestPage(requestOrgId, watcherOrgs);
 			}
 		})
 		.fail(function(error) {
-			console.log(error);
+			console.error(error);
 		});
 }
 
 // on request page, remove comment box if necessary
-function customizeRequestPage(id) {
-	var userTags = HelpCenter.user.tags;
-	var watcherOrgs = getUserWatcherTags(userTags);
+function customizeRequestPage(id, watcherOrgs) {
+	const requestComment = document.querySelector(
+		'.request-container .comment-form'
+	);
 
 	if (watcherOrgs.indexOf(String(id)) > -1) {
-		$('.comment-form').remove();
+		requestComment.remove();
 	} else {
-		$('.request-container .comment-form').css('display', 'flex');
+		requestComment.css('display', 'flex');
 	}
 }

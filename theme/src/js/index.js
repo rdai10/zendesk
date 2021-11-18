@@ -3,7 +3,7 @@ import 'es6-promise/auto';
 import '../css/main.scss';
 
 import './vendor/zendesk-default-script';
-// import './vendor/zendesk-watcher-customization';
+import './vendor/zendesk-watcher-customization';
 
 import './helpers/article-accordion';
 
