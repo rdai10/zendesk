@@ -22,26 +22,23 @@ export function hasKBPermission(userTags) {
 }
 
 /**
- * Executes a callback function if the user is a Watcher for a given request or ticket
+ * Executes a callback function if the user is a Watcher for a given request or
+ * ticket
  * @param {string[]} userTags An array of a user's tags
  * @param {string} id The request id or ticket id
  * @param {function(object)} callback The callback function
- * @returns {function(object)} The callback function when the user has a Watcher tag for the request or ticket passed in
+ * @returns {function(object)} The callback with whether
+ * the user is a Watcher on the Organization for which the current request is
+ * opened for and the ticket request data.
  */
 export function hasWatcherPermission(userTags, id, callback) {
 	getRequestById(id)
 		.then(data => {
-			const orgWatcherArray = userTags.filter(tag =>
+			const orgWatcher = userTags.filter(tag =>
 				tag.match(data.request.organization_id)
 			);
 
-			if (!orgWatcherArray.length) {
-				callback(data);
-			}
+			callback(Boolean(orgWatcher.length), data);
 		})
-		.catch(err => {
-			if (process.env.NODE_ENV === 'development') {
-				console.error(err);
-			}
-		});
+		.catch(err => console.error(err));
 }
