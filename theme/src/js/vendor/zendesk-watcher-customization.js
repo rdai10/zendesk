@@ -1,16 +1,4 @@
 domLoaded(function() {
-	function displayRequestComment(id, watcherOrgs) {
-		const requestComment = document.querySelector(
-			'.request-container .comment-form'
-		);
-
-		if (watcherOrgs.indexOf(String(id)) > -1) {
-			requestComment.remove();
-		} else {
-			requestComment.css('display', 'flex');
-		}
-	}
-
 	function getDefaultOrgId(orgName, allOrgs) {
 		let defaultOrgId = null;
 
@@ -50,21 +38,6 @@ domLoaded(function() {
 		} else {
 			showWatcherMessage();
 		}
-	}
-
-	function getRequestOrg() {
-		const requestId = location.pathname.match(/\/requests\/(\d+)/)[1];
-		const watcherOrgs = getUserWatcherTags(HelpCenter.user.tags);
-
-		Liferay.makeGETRequest('/api/v2/requests/' + requestId)
-			.then(({request}) => {
-				if (request) {
-					const requestOrgId = request.organization_id;
-
-					displayRequestComment(requestOrgId, watcherOrgs);
-				}
-			})
-			.catch(err => console.error(err));
 	}
 
 	// filter user tags to obtain IDs of the org with the _watcher suffix
@@ -153,11 +126,5 @@ domLoaded(function() {
 		location.pathname.match(/\/requests$/)
 	) {
 		getDevOrgs();
-	}
-
-	// Checks to see if user is on a specific Request page
-
-	if (location.pathname.match(/\/requests\/\d+/)) {
-		getRequestOrg();
 	}
 });
