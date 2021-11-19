@@ -32,13 +32,100 @@
 	domLoaded(function() {
 		const userOrganizations = HelpCenter.user.organizations;
 
+		function showForm() {
+			const form = document.querySelector('.request-form-wrapper');
+			const watcherMsg = document.querySelector('.watcher-message');
+
+			form?.classList.remove('d-none');
+			watcherMsg?.remove();
+		}
+
+		function showWatcherMessage() {
+			const form = document.querySelector('.request-form-wrapper');
+			const watcherMsg = document.querySelector('.watcher-message');
+
+			form?.remove();
+			watcherMsg?.classList.remove('d-none');
+		}
+
 		// When a user does not belong to any organization, they cannot create tickets
 
 		if (!userOrganizations.length) {
+			showWatcherMessage();
+
 			return;
 		}
 
-		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
+		const organizationInputField = document.getElementById('request_organization_id'); // select
+		const organizationNestyInput = document.querySelector('.request_organization_id .nesty-input'); // anchor
+		const organizationOptions = organizationInputField?.querySelectorAll('option');
+		const watcherOrgIds = HelpCenter.user.tags
+				.filter(tag => tag.match(/osb_(\d*)_watcher/))
+				.map(tag => tag.split('_')[1]);
+
+		function getNonWatcherOrgIds(allOrgs, watcherOrgs) {
+			return allOrgs.filter(org => watcherOrgs.indexOf(org) === -1);
+		}
+
+		function getSelectedOrganization() {
+			return organizationInputField?.selectedOptions[0];
+		}
+
+		function processWatcherStatus(allOrgs) {
+			const allOrgIds = Object.keys(allOrgs);
+			const nonWatcherOrgIds = getNonWatcherOrgIds(allOrgIds, watcherOrgIds);
+
+			if (!nonWatcherOrgIds.length) {
+				showWatcherMessage();
+			} else {
+				const defaultOrgId = getSelectedOrganization()?.value;
+
+				// In case the default org is a Watcher Org
+				if (defaultOrgId && watcherOrgIds.includes(defaultOrgId)) {
+					organizationOptions.forEach(option => {
+						if (option.value === defaultOrgId) {
+							option.remove();
+
+							return;
+						}
+					})
+
+					organizationNestyInput.innerText = getSelectedOrganization()?.text;
+				}
+
+				showForm();
+			}
+		}
+
+		function removeWatcherOrgOption(target) {
+			target?.querySelectorAll('li')
+				.forEach(option => {
+					if (watcherOrgIds.includes(option.id)) {
+						option.remove();
+
+						return;
+					}
+				})
+		}
+
+		const allUserOrgs = {};
+
+		if (organizationInputField) {
+			organizationOptions.forEach(option => allUserOrgs[option.value] = option.text);		
+		} else if (userOrganizations.length > 0) {
+			// When user belongs to only one organization
+
+			Liferay.makeGETRequest('/api/v2/users/me')
+				.then(({user}) => {
+					if (user) {
+						allUserOrgs[user.organization_id] =
+						userOrganizations[0].name;
+					}
+				})
+				.catch(err => console.error(err));
+		}
+
+		processWatcherStatus(allUserOrgs);
 
 		function addPrefixToOrgTags(tags) {
 			return tags.map(tag => 'prd_' + tag);
@@ -47,9 +134,11 @@
 		function findCurrentOrgTags() {
 			// When a user belongs to multiple organizations, retrieve tags from the currently selected organization
 
-			if (currentOrgId) {
+			if (organizationInputField) {
+				const selectedOrg = getSelectedOrganization();
+
 				const currentOrg = userOrganizations.find(
-					org => org.name === currentOrgId.text
+					org => org.name === selectedOrg?.text
 				);
 
 				return currentOrg?.tags ?? [];
@@ -223,6 +312,10 @@
 			// When a nesty-input dropdown is clicked, a new node is inserted to the corresponding nesty-panel.
 
 			if (addedNodes.length) {
+				// Remove Watcher Org from Org dropdown
+
+				removeWatcherOrgOption(currentTarget);
+
 				// Product dropdown
 
 				const prefixedOrgTags = addPrefixToOrgTags(findCurrentOrgTags());
@@ -273,13 +366,13 @@
 
  		document.querySelectorAll('.nesty-panel').forEach(target => observer.observe(target, {childList: true}));
 
+		// Reset Product field when Organization changes
+
 		const productNestyInput = document.querySelector('.request_custom_fields_360006041192 .nesty-input');
 
 		if (productNestyInput) {
-			const orgSelectField = document.getElementById('request_organization_id');
-
-			if (orgSelectField) {
-				orgSelectField.onchange = function() {
+			if (organizationInputField) {
+				organizationInputField.onchange = function() {
 					productInputField.value = '';
 					productNestyInput.textContent = '-';
 				}
