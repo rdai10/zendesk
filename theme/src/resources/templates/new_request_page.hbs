@@ -111,7 +111,9 @@
 		const allUserOrgs = {};
 
 		if (organizationInputField) {
-			organizationOptions.forEach(option => allUserOrgs[option.value] = option.text);		
+			organizationOptions.forEach(option => allUserOrgs[option.value] = option.text);
+
+			processWatcherStatus(allUserOrgs);	
 		} else if (userOrganizations.length > 0) {
 			// When user belongs to only one organization
 
@@ -121,11 +123,11 @@
 						allUserOrgs[user.organization_id] =
 						userOrganizations[0].name;
 					}
+
+					processWatcherStatus(allUserOrgs);
 				})
 				.catch(err => console.error(err));
 		}
-
-		processWatcherStatus(allUserOrgs);
 
 		function addPrefixToOrgTags(tags) {
 			return tags.map(tag => 'prd_' + tag);
