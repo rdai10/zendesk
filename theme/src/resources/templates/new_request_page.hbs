@@ -78,34 +78,21 @@
 			if (!nonWatcherOrgIds.length) {
 				showWatcherMessage();
 			} else {
-				const defaultOrgId = getSelectedOrganization()?.value;
-
 				// In case the default org is a Watcher Org
-				if (defaultOrgId && watcherOrgIds.includes(defaultOrgId)) {
-					organizationOptions.forEach(option => {
-						if (option.value === defaultOrgId) {
-							option.remove();
+				removeWatcherOrgOption(organizationOptions, 'value');
 
-							return;
-						}
-					})
-
-					organizationNestyInput.innerText = getSelectedOrganization()?.text;
-				}
+				organizationNestyInput.innerText = getSelectedOrganization()?.text;
 
 				showForm();
 			}
 		}
 
-		function removeWatcherOrgOption(target) {
-			target?.querySelectorAll('li')
-				.forEach(option => {
-					if (watcherOrgIds.includes(option.id)) {
-						option.remove();
-
-						return;
-					}
-				})
+		function removeWatcherOrgOption(target, attribute) {
+			target.forEach(option => {
+				if (watcherOrgIds.includes(option[attribute])) {
+					option.remove();
+				}
+			})
 		}
 
 		const allUserOrgs = {};
@@ -316,7 +303,7 @@
 			if (addedNodes.length) {
 				// Remove Watcher Org from Org dropdown
 
-				removeWatcherOrgOption(currentTarget);
+				removeWatcherOrgOption(currentTarget.querySelectorAll('li'), 'id');
 
 				// Product dropdown
 
