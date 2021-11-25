@@ -78,10 +78,15 @@
 			if (!nonWatcherOrgIds.length) {
 				showWatcherMessage();
 			} else {
-				// In case the default org is a Watcher Org
-				removeWatcherOrgOption(organizationOptions, 'value');
+				// When user belongs to multiple orgs
 
-				organizationNestyInput.innerText = getSelectedOrganization()?.text;
+				if (organizationInputField) {
+					// In case the default org is a Watcher Org
+
+					removeWatcherOrgOption(organizationOptions, 'value');
+
+					organizationNestyInput.innerText = getSelectedOrganization()?.text;
+				}
 
 				showForm();
 			}
