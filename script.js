@@ -6872,8 +6872,9 @@ function makeGETRequest(endpoint) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(function () {
-  var articlePanels = document.querySelectorAll('.article-body .panel');
+domLoaded(function () {
+  var articlePanels = document.querySelectorAll('.article-body .panel'); // IE 11 compatible
+
   Array.prototype.forEach.call(articlePanels, function (panel) {
     panel.addEventListener('click', function (event) {
       if (!event.target.classList.contains('panel-body')) {
@@ -6889,12 +6890,12 @@ $(function () {
 /*!**********************************************!*\
   !*** ./src/js/helpers/article-suggestion.js ***!
   \**********************************************/
-/*! exports provided: displayArticleSuggestion */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "displayArticleSuggestion", function() { return displayArticleSuggestion; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return displayArticleSuggestion; });
 /* harmony import */ var _helpers_api_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../helpers/api-helpers */ "./src/js/helpers/api-helpers.js");
 
 var ARTICLES_PER_SUGGESTION = 5;
@@ -6986,12 +6987,12 @@ function showArticleFooter() {
 /*!*********************************************!*\
   !*** ./src/js/helpers/locale-conversion.js ***!
   \*********************************************/
-/*! exports provided: addLocaleParamToURI */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addLocaleParamToURI", function() { return addLocaleParamToURI; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return addLocaleParamToURI; });
 function convertToLiferayLocale(locale) {
   var retVal = '';
 
@@ -7042,14 +7043,14 @@ function preactRenderer(Component) {
 /*!**************************************************!*\
   !*** ./src/js/helpers/site-wide-notification.js ***!
   \**************************************************/
-/*! exports provided: showSiteWideNotification */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showSiteWideNotification", function() { return showSiteWideNotification; });
-var initialBannerHeight = 414;
-var initialMainContentOffset = 56;
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return showSiteWideNotification; });
+var INITIAL_BANNER_HEIGHT = 414;
+var INITIAL_MAIN_CONTENT_OFFSET = 56;
 function showSiteWideNotification() {
   if (sessionStorage.getItem('showSiteWideNotification') === null) {
     sessionStorage.setItem('showSiteWideNotification', 'true');
@@ -7062,19 +7063,20 @@ function showSiteWideNotification() {
     var banner = document.querySelector('.homepage .banner');
 
     if (banner) {
-      var newBannerStyle = 'min-height: ' + (initialBannerHeight + notificationHeight) + 'px; padding-top: ' + notificationHeight + 'px;';
+      var newBannerStyle = 'min-height: ' + (INITIAL_BANNER_HEIGHT + notificationHeight) + 'px; padding-top: ' + notificationHeight + 'px;';
       banner.setAttribute('style', newBannerStyle);
     }
 
     var mainContent = document.querySelector('.main-content');
 
     if (mainContent) {
-      var newContentStyle = 'margin-top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
+      var newContentStyle = 'margin-top: ' + (INITIAL_MAIN_CONTENT_OFFSET + notificationHeight) + 'px;';
       mainContent.setAttribute('style', newContentStyle);
     }
 
     var megaMenu = document.querySelectorAll('.header-menu');
-    var newMegaMenuStyle = 'top: ' + (initialMainContentOffset + notificationHeight) + 'px;';
+    var newMegaMenuStyle = 'top: ' + (INITIAL_MAIN_CONTENT_OFFSET + notificationHeight) + 'px;'; // IE 11 compatible
+
     Array.prototype.forEach.call(megaMenu, function (menu) {
       menu.setAttribute('style', newMegaMenuStyle);
     }); // Closing Notification
@@ -7086,15 +7088,15 @@ function showSiteWideNotification() {
         siteWideNotification.classList.add('d-none'); // Layout Updates
 
         if (banner) {
-          banner.setAttribute('style', 'min-height: ' + initialBannerHeight + 'px;');
+          banner.setAttribute('style', 'min-height: ' + INITIAL_BANNER_HEIGHT + 'px;');
         }
 
         if (mainContent) {
-          mainContent.setAttribute('style', 'margin-top: ' + initialMainContentOffset + 'px;');
+          mainContent.setAttribute('style', 'margin-top: ' + INITIAL_MAIN_CONTENT_OFFSET + 'px;');
         }
 
         Array.prototype.forEach.call(megaMenu, function (menu) {
-          menu.setAttribute('style', 'top: ' + initialMainContentOffset + 'px;');
+          menu.setAttribute('style', 'top: ' + INITIAL_MAIN_CONTENT_OFFSET + 'px;');
         });
         sessionStorage.setItem('showSiteWideNotification', 'false');
       });
@@ -7141,26 +7143,24 @@ function hasKBPermission(userTags) {
   });
 }
 /**
- * Executes a callback function if the user is a Watcher for a given request or ticket
+ * Executes a callback function if the user is a Watcher for a given request or
+ * ticket
  * @param {string[]} userTags An array of a user's tags
  * @param {string} id The request id or ticket id
  * @param {function(object)} callback The callback function
- * @returns {function(object)} The callback function when the user has a Watcher tag for the request or ticket passed in
+ * @returns {function(object)} The callback with whether
+ * the user is a Watcher on the Organization for which the current request is
+ * opened for and the ticket request data.
  */
 
 function hasWatcherPermission(userTags, id, callback) {
   Object(_api_helpers__WEBPACK_IMPORTED_MODULE_0__["getRequestById"])(id).then(function (data) {
-    var orgWatcherArray = userTags.filter(function (tag) {
+    var orgWatcher = userTags.filter(function (tag) {
       return tag.match(data.request.organization_id);
     });
-
-    if (!orgWatcherArray.length) {
-      callback(data);
-    }
+    callback(Boolean(orgWatcher.length), data);
   }).catch(function (err) {
-    if (true) {
-      console.error(err);
-    }
+    return console.error(err);
   });
 }
 
@@ -7181,67 +7181,64 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_main_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_main_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _vendor_zendesk_default_script__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./vendor/zendesk-default-script */ "./src/js/vendor/zendesk-default-script.js");
 /* harmony import */ var _vendor_zendesk_default_script__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_vendor_zendesk_default_script__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _vendor_zendesk_watcher_customization__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vendor/zendesk-watcher-customization */ "./src/js/vendor/zendesk-watcher-customization.js");
-/* harmony import */ var _vendor_zendesk_watcher_customization__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_vendor_zendesk_watcher_customization__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _helpers_article_accordion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers/article-accordion */ "./src/js/helpers/article-accordion.js");
-/* harmony import */ var _helpers_article_accordion__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_helpers_article_accordion__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _helpers_preact_renderer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers/preact-renderer */ "./src/js/helpers/preact-renderer.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _helpers_preact_renderer__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+/* harmony import */ var _helpers_article_accordion__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers/article-accordion */ "./src/js/helpers/article-accordion.js");
+/* harmony import */ var _helpers_article_accordion__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_helpers_article_accordion__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _helpers_preact_renderer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./helpers/preact-renderer */ "./src/js/helpers/preact-renderer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _helpers_preact_renderer__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
-/* harmony import */ var _helpers_api_helpers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helpers/api-helpers */ "./src/js/helpers/api-helpers.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "makeGETRequest", function() { return _helpers_api_helpers__WEBPACK_IMPORTED_MODULE_6__["makeGETRequest"]; });
+/* harmony import */ var _helpers_api_helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./helpers/api-helpers */ "./src/js/helpers/api-helpers.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "makeGETRequest", function() { return _helpers_api_helpers__WEBPACK_IMPORTED_MODULE_5__["makeGETRequest"]; });
 
-/* harmony import */ var _helpers_article_suggestion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./helpers/article-suggestion */ "./src/js/helpers/article-suggestion.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "displayArticleSuggestion", function() { return _helpers_article_suggestion__WEBPACK_IMPORTED_MODULE_7__["displayArticleSuggestion"]; });
+/* harmony import */ var _helpers_article_suggestion__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./helpers/article-suggestion */ "./src/js/helpers/article-suggestion.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "displayArticleSuggestion", function() { return _helpers_article_suggestion__WEBPACK_IMPORTED_MODULE_6__["default"]; });
 
-/* harmony import */ var _helpers_gated_content__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./helpers/gated-content */ "./src/js/helpers/gated-content.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gateArticle", function() { return _helpers_gated_content__WEBPACK_IMPORTED_MODULE_8__["gateArticle"]; });
+/* harmony import */ var _helpers_gated_content__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./helpers/gated-content */ "./src/js/helpers/gated-content.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "gateArticle", function() { return _helpers_gated_content__WEBPACK_IMPORTED_MODULE_7__["gateArticle"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showArticleAttachments", function() { return _helpers_gated_content__WEBPACK_IMPORTED_MODULE_8__["showArticleAttachments"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showArticleAttachments", function() { return _helpers_gated_content__WEBPACK_IMPORTED_MODULE_7__["showArticleAttachments"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showArticleFooter", function() { return _helpers_gated_content__WEBPACK_IMPORTED_MODULE_8__["showArticleFooter"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showArticleFooter", function() { return _helpers_gated_content__WEBPACK_IMPORTED_MODULE_7__["showArticleFooter"]; });
 
-/* harmony import */ var _helpers_locale_conversion__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./helpers/locale-conversion */ "./src/js/helpers/locale-conversion.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "addLocaleParamToURI", function() { return _helpers_locale_conversion__WEBPACK_IMPORTED_MODULE_9__["addLocaleParamToURI"]; });
+/* harmony import */ var _helpers_locale_conversion__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./helpers/locale-conversion */ "./src/js/helpers/locale-conversion.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "addLocaleParamToURI", function() { return _helpers_locale_conversion__WEBPACK_IMPORTED_MODULE_8__["default"]; });
 
-/* harmony import */ var _helpers_site_wide_notification__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./helpers/site-wide-notification */ "./src/js/helpers/site-wide-notification.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showSiteWideNotification", function() { return _helpers_site_wide_notification__WEBPACK_IMPORTED_MODULE_10__["showSiteWideNotification"]; });
+/* harmony import */ var _helpers_site_wide_notification__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./helpers/site-wide-notification */ "./src/js/helpers/site-wide-notification.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "showSiteWideNotification", function() { return _helpers_site_wide_notification__WEBPACK_IMPORTED_MODULE_9__["default"]; });
 
-/* harmony import */ var _helpers_user_permissions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./helpers/user-permissions */ "./src/js/helpers/user-permissions.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hasCreateTicketPermission", function() { return _helpers_user_permissions__WEBPACK_IMPORTED_MODULE_11__["hasCreateTicketPermission"]; });
+/* harmony import */ var _helpers_user_permissions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./helpers/user-permissions */ "./src/js/helpers/user-permissions.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hasCreateTicketPermission", function() { return _helpers_user_permissions__WEBPACK_IMPORTED_MODULE_10__["hasCreateTicketPermission"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hasKBPermission", function() { return _helpers_user_permissions__WEBPACK_IMPORTED_MODULE_11__["hasKBPermission"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hasKBPermission", function() { return _helpers_user_permissions__WEBPACK_IMPORTED_MODULE_10__["hasKBPermission"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hasWatcherPermission", function() { return _helpers_user_permissions__WEBPACK_IMPORTED_MODULE_11__["hasWatcherPermission"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "hasWatcherPermission", function() { return _helpers_user_permissions__WEBPACK_IMPORTED_MODULE_10__["hasWatcherPermission"]; });
 
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
-/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_12__);
-/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return lodash_debounce__WEBPACK_IMPORTED_MODULE_12___default.a; });
-/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! lodash.throttle */ "./node_modules/lodash.throttle/index.js");
-/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "throttle", function() { return lodash_throttle__WEBPACK_IMPORTED_MODULE_13___default.a; });
-/* harmony import */ var liferay_help_center_megamenu__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! liferay-help-center-megamenu */ "./node_modules/liferay-help-center-megamenu/dist/main.js");
-/* harmony import */ var liferay_help_center_megamenu__WEBPACK_IMPORTED_MODULE_14___default = /*#__PURE__*/__webpack_require__.n(liferay_help_center_megamenu__WEBPACK_IMPORTED_MODULE_14__);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MegaMenu", function() { return liferay_help_center_megamenu__WEBPACK_IMPORTED_MODULE_14__["MegaMenu"]; });
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! lodash.debounce */ "./node_modules/lodash.debounce/index.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "debounce", function() { return lodash_debounce__WEBPACK_IMPORTED_MODULE_11___default.a; });
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! lodash.throttle */ "./node_modules/lodash.throttle/index.js");
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony reexport (default from non-harmony) */ __webpack_require__.d(__webpack_exports__, "throttle", function() { return lodash_throttle__WEBPACK_IMPORTED_MODULE_12___default.a; });
+/* harmony import */ var liferay_help_center_megamenu__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! liferay-help-center-megamenu */ "./node_modules/liferay-help-center-megamenu/dist/main.js");
+/* harmony import */ var liferay_help_center_megamenu__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(liferay_help_center_megamenu__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MegaMenu", function() { return liferay_help_center_megamenu__WEBPACK_IMPORTED_MODULE_13__["MegaMenu"]; });
 
-/* harmony import */ var _components_Alert__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/Alert */ "./src/js/components/Alert.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Alert", function() { return _components_Alert__WEBPACK_IMPORTED_MODULE_15__["default"]; });
+/* harmony import */ var _components_Alert__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/Alert */ "./src/js/components/Alert.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Alert", function() { return _components_Alert__WEBPACK_IMPORTED_MODULE_14__["default"]; });
 
-/* harmony import */ var _components_CallToAction__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/CallToAction */ "./src/js/components/CallToAction.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CallToAction", function() { return _components_CallToAction__WEBPACK_IMPORTED_MODULE_16__["default"]; });
+/* harmony import */ var _components_CallToAction__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/CallToAction */ "./src/js/components/CallToAction.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CallToAction", function() { return _components_CallToAction__WEBPACK_IMPORTED_MODULE_15__["default"]; });
 
-/* harmony import */ var _components_DocSideNav__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/DocSideNav */ "./src/js/components/DocSideNav.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DocSideNav", function() { return _components_DocSideNav__WEBPACK_IMPORTED_MODULE_17__["default"]; });
+/* harmony import */ var _components_DocSideNav__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/DocSideNav */ "./src/js/components/DocSideNav.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DocSideNav", function() { return _components_DocSideNav__WEBPACK_IMPORTED_MODULE_16__["default"]; });
 
-/* harmony import */ var _components_DocTOC__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/DocTOC */ "./src/js/components/DocTOC.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DocsTOC", function() { return _components_DocTOC__WEBPACK_IMPORTED_MODULE_18__["default"]; });
+/* harmony import */ var _components_DocTOC__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/DocTOC */ "./src/js/components/DocTOC.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "DocsTOC", function() { return _components_DocTOC__WEBPACK_IMPORTED_MODULE_17__["default"]; });
 
-/* harmony import */ var _components_ProductTabs__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/ProductTabs */ "./src/js/components/ProductTabs.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProductTabs", function() { return _components_ProductTabs__WEBPACK_IMPORTED_MODULE_19__["default"]; });
+/* harmony import */ var _components_ProductTabs__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/ProductTabs */ "./src/js/components/ProductTabs.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ProductTabs", function() { return _components_ProductTabs__WEBPACK_IMPORTED_MODULE_18__["default"]; });
 
-/* harmony import */ var _components_SearchResults__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/SearchResults */ "./src/js/components/SearchResults.js");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchResults", function() { return _components_SearchResults__WEBPACK_IMPORTED_MODULE_20__["default"]; });
-
+/* harmony import */ var _components_SearchResults__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/SearchResults */ "./src/js/components/SearchResults.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "SearchResults", function() { return _components_SearchResults__WEBPACK_IMPORTED_MODULE_19__["default"]; });
 
 
 
@@ -7273,234 +7270,347 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-/*
- * jQuery v1.9.1 included
- */
-$(document).ready(function () {
-  function search() {
-    window.location.search = $.param({
-      organization_id: $('#request-organization-select').val(),
-      query: $('#quick-search').val(),
-      status: $('#request-status-select').val()
-    });
-  }
+domLoaded(function () {
+  // Key map
+  var ENTER = 13;
+  var ESCAPE = 27;
+  var SPACE = 32;
+  var UP = 38;
+  var DOWN = 40;
+  var TAB = 9; // IE 11 polyfill for Element.closest
 
-  function setExpanded(node) {
-    var isExpanded = node.getAttribute('aria-expanded') === 'true';
-    node.setAttribute('aria-expanded', !isExpanded);
-  }
-
-  var commentContainerFormControls = $('.comment-form-controls, .comment-ccs');
-  var commentContainerTextarea = $('.comment-container textarea');
-  commentContainerTextarea.one('focus', function () {
-    commentContainerFormControls.show();
-  });
-
-  if (commentContainerTextarea.val() !== '') {
-    commentContainerFormControls.show();
-  }
-
-  var requestContainer = $('.request-container');
-  var commentContainer = requestContainer.find('.comment-container');
-  var showRequestCommentContainerTrigger = commentContainer.find('.comment-show-container');
-  showRequestCommentContainerTrigger.on('click', function () {
-    commentContainer.find('.comment-fields').show();
-    commentContainer.find('.request-submit-comment').show();
-    showRequestCommentContainerTrigger.hide();
-    commentContainerTextarea.focus();
-  });
-  var requestCommentSubmitButton = commentContainer.find('input[type=submit]');
-  var requestMarkAsSolvedButton = requestContainer.find('.mark-as-solved:not([data-disabled])');
-  requestMarkAsSolvedButton.on('click', function () {
-    $('.request-container .comment-container input[type=checkbox]').attr('checked', true);
-    requestCommentSubmitButton.prop('disabled', true);
-    $(this).attr('data-disabled', true).closest('form').submit();
-  });
-  var requestCommentTextarea = requestContainer.find('.comment-container #hc-wysiwyg');
-  requestCommentTextarea.on('keyup', function () {
-    var text = requestMarkAsSolvedButton.data('solve-translation');
-    var hasText = requestCommentTextarea.val() !== '';
-
-    if (hasText) {
-      text = requestMarkAsSolvedButton.data('solve-and-submit-translation');
+  function closest(element, selector) {
+    if (Element.prototype.closest) {
+      return element.closest(selector);
     }
 
-    requestCommentSubmitButton.prop('disabled', !hasText);
-    requestMarkAsSolvedButton.text(text);
-  });
-
-  if (requestCommentTextarea.val() === '') {
-    requestCommentSubmitButton.prop('disabled', true);
-  }
-
-  $('.collapsible-nav, .collapsible-sidebar').on('click', function (event) {
-    event.stopPropagation();
-    setExpanded(this);
-  });
-  $('.header .icon-menu').on('click', function (event) {
-    event.stopPropagation();
-    var userNav = document.getElementById('user-nav');
-
-    if (userNav) {
-      setExpanded(userNav);
-    }
-  });
-  $('.share a').click(function (event) {
-    event.preventDefault();
-    window.open(this.href, '', 'height=500, width=500');
-  });
-  $('#quick-search').on('keypress', function (event) {
-    if (event.which === 13) {
-      search();
-    }
-  });
-  $('#request-organization select').on('change', function () {
-    this.form.submit();
-  });
-  $('#request-status-select, #request-organization-select').on('change', function () {
-    search();
-  });
-
-  if ($('#user-nav').children().length === 0) {
-    $('.header .icon-menu').hide();
-  }
-});
-
-/***/ }),
-
-/***/ "./src/js/vendor/zendesk-watcher-customization.js":
-/*!********************************************************!*\
-  !*** ./src/js/vendor/zendesk-watcher-customization.js ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  if (location.pathname.indexOf('/requests/new') > -1 || location.pathname.match(/\/requests$/)) {
-    getDevOrgs();
-  } else if (location.pathname.match(/\/requests\/\d+/)) {
-    getRequestOrg();
-  }
-});
-
-Array.prototype.subtract = function (arr) {
-  return this.filter(function (el) {
-    return arr.indexOf(el) === -1;
-  });
-}; // filter user tags to obtain IDs of tags with the _watcher suffix
-
-
-function getUserWatcherTags(userTags) {
-  return userTags.filter(function (tag) {
-    return tag.match(/osb_(\d*)_watcher/);
-  }).map(function (tag) {
-    return tag.split('_')[1];
-  });
-} // obtain dev orgs for current user
-
-
-function getDevOrgs() {
-  var orgs = {};
-  var orgOptions = $('#request_organization_id option');
-
-  if ($(orgOptions).length > 0) {
-    $(orgOptions).each(function (option) {
-      orgs[$(this).val()] = $(this).text();
-    });
-    assignOrgs(orgs);
-  } else if (HelpCenter.user.organizations.length > 0) {
-    $.ajax('/api/v2/users/me').done(function (data) {
-      if (data.user) {
-        orgs[data.user.organization_id] = HelpCenter.user.organizations[0].name;
+    do {
+      if (Element.prototype.matches && element.matches(selector) || Element.prototype.msMatchesSelector && element.msMatchesSelector(selector) || Element.prototype.webkitMatchesSelector && element.webkitMatchesSelector(selector)) {
+        return element;
       }
 
-      assignOrgs(orgs);
-    }).fail(function (error) {
-      console.log(error);
-    });
-  } else {
-    showWatcherMessage();
+      element = element.parentElement || element.parentNode;
+    } while (element !== null && element.nodeType === 1);
+
+    return null;
+  } // In some cases we should preserve focus after page reload
+
+
+  function saveFocus() {
+    var activeElementId = document.activeElement.getAttribute('id');
+    sessionStorage.setItem('returnFocusTo', '#' + activeElementId);
   }
-}
 
-function assignOrgs(orgs) {
-  var allOrgs = Object.keys(orgs);
-  var userTags = HelpCenter.user.tags;
-  var watcherOrgs = getUserWatcherTags(userTags);
-  var allowedOrgs = allOrgs.subtract(watcherOrgs);
-  var allowedOrgsById = {};
-  var allowedOrgsByName = {};
-  allowedOrgs.forEach(function (id) {
-    allowedOrgsById[id] = orgs[id];
-    allowedOrgsByName[orgs[id]] = id;
-  });
-  var key = Object.keys(allowedOrgsByName)[0];
-  var value = allowedOrgsByName[key];
+  var returnFocusTo = sessionStorage.getItem('returnFocusTo');
 
-  if (value) {
-    // if the default org is a watched org, select the next dev to be default
-    if (!allowedOrgsByName[$('.request_organization_id a.nesty-input').text()]) {
-      $('.request_organization_id a.nesty-input').text(key);
-      $('#request_organization_id option').each(function (option) {
-        if ($(this).val() === value) {
-          $(this).attr('selected', true);
-        } else {
-          $(this).attr('selected', false);
-        }
+  if (returnFocusTo) {
+    sessionStorage.removeItem('returnFocusTo');
+    var returnFocusToEl = document.querySelector(returnFocusTo);
+    returnFocusToEl && returnFocusToEl.focus && returnFocusToEl.focus();
+  } // show form controls when the textarea receives focus or backbutton is used and value exists
+
+
+  var commentContainerTextarea = document.querySelector('.comment-container textarea'),
+      commentContainerFormControls = document.querySelector('.comment-form-controls, .comment-ccs');
+
+  if (commentContainerTextarea) {
+    commentContainerTextarea.addEventListener('focus', function focusCommentContainerTextarea() {
+      commentContainerFormControls.style.display = 'block';
+      commentContainerTextarea.removeEventListener('focus', focusCommentContainerTextarea);
+    });
+
+    if (commentContainerTextarea.value !== '') {
+      commentContainerFormControls.style.display = 'block';
+    }
+  } // Expand Request comment form when Add to conversation is clicked
+
+
+  var showRequestCommentContainerTrigger = document.querySelector('.request-container .comment-container .comment-show-container'),
+      requestCommentFields = document.querySelectorAll('.request-container .comment-container .comment-fields'),
+      requestCommentSubmit = document.querySelector('.request-container .comment-container .request-submit-comment');
+
+  if (showRequestCommentContainerTrigger) {
+    showRequestCommentContainerTrigger.addEventListener('click', function () {
+      showRequestCommentContainerTrigger.style.display = 'none';
+      Array.prototype.forEach.call(requestCommentFields, function (e) {
+        e.style.display = 'block';
       });
-    }
+      requestCommentSubmit.style.display = 'inline-block';
 
-    showForm();
-  } else {
-    showWatcherMessage();
+      if (commentContainerTextarea) {
+        commentContainerTextarea.focus();
+      }
+    });
+  } // Mark as solved button
+
+
+  var requestMarkAsSolvedButton = document.querySelector('.request-container .mark-as-solved:not([data-disabled])'),
+      requestMarkAsSolvedCheckbox = document.querySelector('.request-container .comment-container input[type=checkbox]'),
+      requestCommentSubmitButton = document.querySelector('.request-container .comment-container input[type=submit]');
+
+  if (requestMarkAsSolvedButton) {
+    requestMarkAsSolvedButton.addEventListener('click', function () {
+      requestMarkAsSolvedCheckbox.setAttribute('checked', true);
+      requestCommentSubmitButton.disabled = true;
+      this.setAttribute('data-disabled', true); // Element.closest is not supported in IE11
+
+      closest(this, 'form').submit();
+    });
+  } // Change Mark as solved text according to whether comment is filled
+
+
+  var requestCommentTextarea = document.querySelector('.request-container .comment-container textarea');
+  var usesWysiwyg = requestCommentTextarea && requestCommentTextarea.dataset.helper === 'wysiwyg';
+
+  function isEmptyPlaintext(s) {
+    return s.trim() === '';
   }
 
-  $('.request_organization_id a.nesty-input').on('click', function () {
-    var option = this;
-    $('#request_organization_id option').each(function (option) {
-      var id = $(this).val();
+  function isEmptyHtml(xml) {
+    var doc = new DOMParser().parseFromString("<_>".concat(xml, "</_>"), 'text/xml');
+    var img = doc.querySelector('img');
+    return img === null && isEmptyPlaintext(doc.children[0].textContent);
+  }
 
-      if (!allowedOrgsById[id]) {
-        $('#' + id).remove();
+  var isEmpty = usesWysiwyg ? isEmptyHtml : isEmptyPlaintext;
+
+  if (requestCommentTextarea) {
+    requestCommentTextarea.addEventListener('input', function () {
+      if (isEmpty(requestCommentTextarea.value)) {
+        if (requestMarkAsSolvedButton) {
+          requestMarkAsSolvedButton.innerText = requestMarkAsSolvedButton.getAttribute('data-solve-translation');
+        }
+
+        requestCommentSubmitButton.disabled = true;
+      } else {
+        if (requestMarkAsSolvedButton) {
+          requestMarkAsSolvedButton.innerText = requestMarkAsSolvedButton.getAttribute('data-solve-and-submit-translation');
+        }
+
+        requestCommentSubmitButton.disabled = false;
+      }
+    });
+  } // Disable submit button if textarea is empty
+
+
+  if (requestCommentTextarea && isEmpty(requestCommentTextarea.value)) {
+    requestCommentSubmitButton.disabled = true;
+  } // Submit requests filter form on status or organization change in the request list page
+
+
+  Array.prototype.forEach.call(document.querySelectorAll('#request-status-select, #request-organization-select'), function (el) {
+    el.addEventListener('change', function (e) {
+      e.stopPropagation();
+      saveFocus();
+      closest(this, 'form').submit();
+    });
+  }); // Submit requests filter form on search in the request list page
+
+  var quickSearch = document.querySelector('#quick-search');
+  quickSearch && quickSearch.addEventListener('keyup', function (e) {
+    if (e.keyCode === ENTER) {
+      e.stopPropagation();
+      saveFocus();
+      closest(this, 'form').submit();
+    }
+  });
+
+  function toggleNavigation(toggle, menu) {
+    var isExpanded = menu.getAttribute('aria-expanded') === 'true';
+    menu.setAttribute('aria-expanded', !isExpanded);
+    toggle.setAttribute('aria-expanded', !isExpanded);
+  }
+
+  function closeNavigation(toggle, menu) {
+    menu.setAttribute('aria-expanded', false);
+    toggle.setAttribute('aria-expanded', false);
+    toggle.focus();
+  } // Toggles expanded aria to collapsible elements
+
+
+  var collapsible = document.querySelectorAll('.collapsible-nav, .collapsible-sidebar');
+  Array.prototype.forEach.call(collapsible, function (el) {
+    var toggle = el.querySelector('.collapsible-nav-toggle, .collapsible-sidebar-toggle');
+    el.addEventListener('click', function (e) {
+      toggleNavigation(toggle, this);
+    });
+    el.addEventListener('keyup', function (e) {
+      if (e.keyCode === ESCAPE) {
+        closeNavigation(toggle, this);
+      }
+    });
+  }); // Submit organization form in the request page
+
+  var requestOrganisationSelect = document.querySelector('#request-organization select');
+
+  if (requestOrganisationSelect) {
+    requestOrganisationSelect.addEventListener('change', function () {
+      closest(this, 'form').submit();
+    });
+  } // If there are any error notifications below an input field, focus that field
+
+
+  var notificationElm = document.querySelector('.notification-error');
+
+  if (notificationElm && notificationElm.previousElementSibling && typeof notificationElm.previousElementSibling.focus === 'function') {
+    notificationElm.previousElementSibling.focus();
+  } // Dropdowns
+
+
+  function Dropdown(toggle, menu) {
+    this.toggle = toggle;
+    this.menu = menu;
+    this.menuPlacement = {
+      top: menu.classList.contains('dropdown-menu-top'),
+      end: menu.classList.contains('dropdown-menu-end')
+    };
+    this.toggle.addEventListener('click', this.clickHandler.bind(this));
+    this.toggle.addEventListener('keydown', this.toggleKeyHandler.bind(this));
+    this.menu.addEventListener('keydown', this.menuKeyHandler.bind(this));
+  }
+
+  Dropdown.prototype = {
+    get isExpanded() {
+      return this.menu.getAttribute('aria-expanded') === 'true';
+    },
+
+    get menuItems() {
+      return Array.prototype.slice.call(this.menu.querySelectorAll("[role='menuitem']"));
+    },
+
+    dismiss: function dismiss() {
+      if (!this.isExpanded) return;
+      this.menu.setAttribute('aria-expanded', false);
+      this.menu.classList.remove('dropdown-menu-end', 'dropdown-menu-top');
+    },
+    open: function open() {
+      if (this.isExpanded) return;
+      this.menu.setAttribute('aria-expanded', true);
+      this.handleOverflow();
+    },
+    handleOverflow: function handleOverflow() {
+      var rect = this.menu.getBoundingClientRect();
+      var overflow = {
+        right: rect.left < 0 || rect.left + rect.width > window.innerWidth,
+        bottom: rect.top < 0 || rect.top + rect.height > window.innerHeight
+      };
+
+      if (overflow.right || this.menuPlacement.end) {
+        this.menu.classList.add('dropdown-menu-end');
+      }
+
+      if (overflow.bottom || this.menuPlacement.top) {
+        this.menu.classList.add('dropdown-menu-top');
+      }
+
+      if (this.menu.getBoundingClientRect().top < 0) {
+        this.menu.classList.remove('dropdown-menu-top');
+      }
+    },
+    focusNextMenuItem: function focusNextMenuItem(currentItem) {
+      if (!this.menuItems.length) return;
+      var currentIndex = this.menuItems.indexOf(currentItem);
+      var nextIndex = currentIndex === this.menuItems.length - 1 || currentIndex < 0 ? 0 : currentIndex + 1;
+      this.menuItems[nextIndex].focus();
+    },
+    focusPreviousMenuItem: function focusPreviousMenuItem(currentItem) {
+      if (!this.menuItems.length) return;
+      var currentIndex = this.menuItems.indexOf(currentItem);
+      var previousIndex = currentIndex <= 0 ? this.menuItems.length - 1 : currentIndex - 1;
+      this.menuItems[previousIndex].focus();
+    },
+    clickHandler: function clickHandler() {
+      if (this.isExpanded) {
+        this.dismiss();
+      } else {
+        this.open();
+      }
+    },
+    toggleKeyHandler: function toggleKeyHandler(e) {
+      switch (e.keyCode) {
+        case ENTER:
+        case SPACE:
+        case DOWN:
+          e.preventDefault();
+          this.open();
+          this.focusNextMenuItem();
+          break;
+
+        case UP:
+          e.preventDefault();
+          this.open();
+          this.focusPreviousMenuItem();
+          break;
+
+        case ESCAPE:
+          this.dismiss();
+          this.toggle.focus();
+          break;
+      }
+    },
+    menuKeyHandler: function menuKeyHandler(e) {
+      var firstItem = this.menuItems[0];
+      var lastItem = this.menuItems[this.menuItems.length - 1];
+      var currentElement = e.target;
+
+      switch (e.keyCode) {
+        case ESCAPE:
+          this.dismiss();
+          this.toggle.focus();
+          break;
+
+        case DOWN:
+          e.preventDefault();
+          this.focusNextMenuItem(currentElement);
+          break;
+
+        case UP:
+          e.preventDefault();
+          this.focusPreviousMenuItem(currentElement);
+          break;
+
+        case TAB:
+          if (e.shiftKey) {
+            if (currentElement === firstItem) {
+              this.dismiss();
+            } else {
+              e.preventDefault();
+              this.focusPreviousMenuItem(currentElement);
+            }
+          } else if (currentElement === lastItem) {
+            this.dismiss();
+          } else {
+            e.preventDefault();
+            this.focusNextMenuItem(currentElement);
+          }
+
+          break;
+
+        case ENTER:
+        case SPACE:
+          e.preventDefault();
+          currentElement.click();
+          break;
+      }
+    }
+  };
+  var dropdowns = [];
+  var dropdownToggles = Array.prototype.slice.call(document.querySelectorAll('.dropdown-toggle'));
+  dropdownToggles.forEach(function (toggle) {
+    var menu = toggle.nextElementSibling;
+
+    if (menu && menu.classList.contains('dropdown-menu')) {
+      dropdowns.push(new Dropdown(toggle, menu));
+    }
+  });
+  document.addEventListener('click', function (evt) {
+    dropdowns.forEach(function (dropdown) {
+      if (!dropdown.toggle.contains(evt.target)) {
+        dropdown.dismiss();
       }
     });
   });
-}
-
-function showWatcherMessage() {
-  $('.watcher-message').next('div').remove();
-  $('.watcher-message').removeClass('d-none');
-}
-
-function showForm() {
-  $('.watcher-message').next('div').removeClass('d-none');
-  $('.watcher-message').remove();
-} // get org of current request
-
-
-function getRequestOrg() {
-  var id = location.pathname.match(/\/requests\/(\d+)/)[1];
-  $.ajax('/api/v2/requests/' + id).done(function (data) {
-    if (data.request) {
-      var requestOrgId = data.request.organization_id;
-      customizeRequestPage(requestOrgId);
-    }
-  }).fail(function (error) {
-    console.log(error);
-  });
-} // on request page, remove comment box if necessary
-
-
-function customizeRequestPage(id) {
-  var userTags = HelpCenter.user.tags;
-  var watcherOrgs = getUserWatcherTags(userTags);
-
-  if (watcherOrgs.indexOf(String(id)) > -1) {
-    $('.comment-form').remove();
-  } else {
-    $('.request-container .comment-form').css('display', 'flex');
-  }
-}
+});
 
 /***/ })
 

@@ -5,7 +5,7 @@
 		</h1>
 	</div>
 
-	<div class="d-none">
+	<div class="d-none request-form-wrapper">
 		<div class="row">
 			<div class="col-sm-12">
 				{{breadcrumbs}}
@@ -19,7 +19,7 @@
 				</h1>
 
 				<div class="request-form">
-					{{request_form}}
+					{{request_form wysiwyg=true}}
 				</div>
 			</div>
 		</div>
@@ -29,26 +29,153 @@
 <script>
 	// In the DOM, ids represent a field whereas class of the same name is the wrapper for the corresponding field
 
-	$(function() {
+	domLoaded(function() {
+		const userOrganizations = HelpCenter.user.organizations;
+
+		function showForm() {
+			const form = document.querySelector('.request-form-wrapper');
+			const watcherMsg = document.querySelector('.watcher-message');
+
+			form?.classList.remove('d-none');
+			watcherMsg?.remove();
+		}
+
+		function showWatcherMessage() {
+			const form = document.querySelector('.request-form-wrapper');
+			const watcherMsg = document.querySelector('.watcher-message');
+
+			form?.remove();
+			watcherMsg?.classList.remove('d-none');
+		}
+
 		// When a user does not belong to any organization, they cannot create tickets
 
-		if (!HelpCenter.user.organizations.length) {
+		if (!userOrganizations.length) {
+			showWatcherMessage();
+
 			return;
 		}
 
+		const organizationInputField = document.getElementById('request_organization_id'); // select
+		const organizationNestyInput = document.querySelector('.request_organization_id .nesty-input'); // anchor
+		const organizationOptions = organizationInputField?.querySelectorAll('option');
+		const watcherOrgIds = HelpCenter.user.tags
+				.filter(tag => tag.match(/osb_(\d*)_watcher/))
+				.map(tag => tag.split('_')[1]);
+
+		function getNonWatcherOrgIds(allOrgs, watcherOrgs) {
+			return allOrgs.filter(org => watcherOrgs.indexOf(org) === -1);
+		}
+
+		function getSelectedOrganization() {
+			return organizationInputField?.selectedOptions[0];
+		}
+
+		function processWatcherStatus(allOrgs) {
+			const allOrgIds = Object.keys(allOrgs);
+			const nonWatcherOrgIds = getNonWatcherOrgIds(allOrgIds, watcherOrgIds);
+
+			if (!nonWatcherOrgIds.length) {
+				showWatcherMessage();
+			} else {
+				// When user belongs to multiple orgs
+
+				if (organizationInputField) {
+					// In case the default org is a Watcher Org
+
+					removeWatcherOrgOption(organizationOptions, 'value');
+
+					organizationNestyInput.innerText = getSelectedOrganization()?.text;
+				}
+
+				showForm();
+			}
+		}
+
+		function removeWatcherOrgOption(target, attribute) {
+			target.forEach(option => {
+				if (watcherOrgIds.includes(option[attribute])) {
+					option.remove();
+				}
+			})
+		}
+
+		const allUserOrgs = {};
+
+		if (organizationInputField) {
+			organizationOptions.forEach(option => allUserOrgs[option.value] = option.text);
+
+			processWatcherStatus(allUserOrgs);	
+		} else if (userOrganizations.length > 0) {
+			// When user belongs to only one organization
+
+			Liferay.makeGETRequest('/api/v2/users/me')
+				.then(({user}) => {
+					if (user) {
+						allUserOrgs[user.organization_id] =
+						userOrganizations[0].name;
+					}
+
+					processWatcherStatus(allUserOrgs);
+				})
+				.catch(err => console.error(err));
+		}
+
 		function addPrefixToOrgTags(tags) {
-			return tags.map(
-				function(tag) {
-					return 'prd_' + tag;
+			return tags.map(tag => 'prd_' + tag);
+		}
+
+		function findCurrentOrgTags() {
+			// When a user belongs to multiple organizations, retrieve tags from the currently selected organization
+
+			if (organizationInputField) {
+				const selectedOrg = getSelectedOrganization();
+
+				const currentOrg = userOrganizations.find(
+					org => org.name === selectedOrg?.text
+				);
+
+				return currentOrg?.tags ?? [];
+			}
+
+			// When a user belongs to only one organization, the org field will not be displayed
+
+			return userOrganizations[0].tags;
+		}
+
+		function hideDropdownOptions(options, target) {
+			options.forEach(
+				option => {
+					const node = target.querySelector(`li#${option}`);
+
+					node?.setAttribute('style', 'display: none;');
+				}
+			);
+		}
+
+		function hideNestedDropdownOptions(option, target) {
+			target?.querySelectorAll('li').forEach(
+				(node) => {
+					let id = node.id;
+
+					// Transform the Nested Field id to match its label value so it can be compared
+
+					if (id.indexOf('prd') === -1) {
+						id = 'prd_' + node.innerText.toLowerCase().replace(' ', '_');
+					}
+
+					if (id === option) {
+						node?.setAttribute('style', 'display: none;');
+					}
 				}
 			);
 		}
 
 		function mapInputValuesFromField(field) {
-			const dataset = JSON.parse(field.dataset.tagger);
+			const dataset = JSON.parse(field?.dataset.tagger);
 
 			const inputValues = dataset.map(
-				function(input) {
+				input => {
 					var val = input.value;
 
 					if (val === undefined) {
@@ -66,18 +193,14 @@
 
 		function matchProductComponents(product) {
 			var productMatch = productComponentsMapping.filter(
-				function(value) {
-					return product.match(value.product);
-				}
+				value => product.match(value.product)
 			);
 
 			// Match again if more than one match was found
 
 			if (productMatch.length > 1) {
 				productMatch = productMatch.filter(
-					function(value) {
-						return ('prd_' + value.product) === product;
-					}
+					value => ('prd_' + value.product) === product
 				);
 			}
 
@@ -85,37 +208,7 @@
 		}
 
 		function matchValueToTags(value, tags) {
-			return tags.some(
-				function(tag) {
-					return (value === tag);
-				}
-			);
-		}
-
-		function removeDropdownOptions(options, target) {
-			options.forEach(
-				function(option) {
-					target.children().remove('li#' + option);
-				}
-			);
-		}
-
-		function removeNestedDropdownOptions(option, target) {
-			target.children().each(
-				function(index, item) {
-					var id = item.id;
-
-					// Set Nested Field id to match its label value
-
-					if (id.indexOf('prd') === -1) {
-						id = 'prd_' + item.innerText.toLowerCase().replace(' ', '_');
-					}
-
-					if (id === option) {
-						$(item).hide();
-					}
-				}
-			);
+			return tags.some(tag => value === tag);
 		}
 
 		const productComponentsMapping = [
@@ -203,52 +296,42 @@
 		const componentInputField = document.getElementById('request_custom_fields_360011314571');
 		const productInputField = document.getElementById('request_custom_fields_360006041192');
 
-		const currentOrgId = document.querySelector('[aria-describedby="request_organization_id_hint"]');
+		const allComponents = mapInputValuesFromField(componentInputField);
+		const allProducts = mapInputValuesFromField(productInputField);
 
-		// When a user belongs to only one organization
+		const mutationHandler = mutation => {
+			const {addedNodes, target} = mutation;
+			const currentTarget = document.getElementById(target.id);
 
-		var currentOrgTags = HelpCenter.user.organizations[0].tags;
+			// When a nesty-input dropdown is clicked, a new node is inserted to the corresponding nesty-panel.
 
-		$('.nesty-panel').on(
-			'DOMNodeInserted',
-			function(event) {
-				const currentTarget = $(event.target);
+			if (addedNodes.length) {
+				// Remove Watcher Org from Org dropdown
 
-				// When a user belongs to multiple organizations, retrieve tags from the currently selected organization
+				removeWatcherOrgOption(currentTarget.querySelectorAll('li'), 'id');
 
-				if (currentOrgId) {
-					const currentOrg = HelpCenter.user.organizations.filter(
-						function(org) {
-							return org.name === currentOrgId.text;
-						}
-					)[0];
+				// Product dropdown
 
-					currentOrgTags = currentOrg.tags;
-				}
-
-				const prefixedOrgTags = addPrefixToOrgTags(currentOrgTags);
-
-				const allProducts = mapInputValuesFromField(productInputField);
-
-				const filteredOutProducts = allProducts.filter(
-					function(value) {
-						return !matchValueToTags(value, prefixedOrgTags);
-					}
-				);
+				const prefixedOrgTags = addPrefixToOrgTags(findCurrentOrgTags());
 
 				// ISSUP-4450 Allow DXP customers to open Commerce or Liferay Enterprise Search tickets
 
 				const isDXPCustomer = prefixedOrgTags.includes('prd_liferay_dxp');
+				const filteredOutProducts = allProducts.filter(
+					value => !matchValueToTags(value, prefixedOrgTags)
+				);
 
 				filteredOutProducts.forEach(
-					function(option) {
+					option => {
 						const reservedProducts = isDXPCustomer && (option === 'prd_liferay_commerce' || option === 'prd_enterprise_search') 
 
 						if (!reservedProducts) {
-							removeNestedDropdownOptions(option, currentTarget);
+							hideNestedDropdownOptions(option, currentTarget);
 						}
 					}
 				);
+
+				// Component dropdown
 
 				const currentProduct = productInputField.value;
 
@@ -257,39 +340,46 @@
 
 					if (match) {
 						const componentOptions = match.components;
-
-						const allComponents = mapInputValuesFromField(componentInputField);
-
 						const filteredOutComponents = allComponents.filter(
-							function(value) {
-								return !matchValueToTags(value, componentOptions);
-							}
+							value => !matchValueToTags(value, componentOptions)
 						);
 
-						removeDropdownOptions(filteredOutComponents, currentTarget);
+						hideDropdownOptions(filteredOutComponents, currentTarget);
 					}
 				}
 			}
-		);
+		}
 
-		const orgSelectField = document.getElementById('request_organization_id');
+		const formChangeHandler = function(mutationsList, observer) {
+			for(const mutation of mutationsList) {
+				mutationHandler(mutation);
+			}
+		};
 
-		if (orgSelectField) {
-			const productNestyInput = document.querySelector('.request_custom_fields_360006041192 .nesty-input');
+		const observer = new MutationObserver(formChangeHandler);
 
-			if (productNestyInput) {
-				$(orgSelectField).change(
-					function() {
-						productInputField.value = '';
-						productNestyInput.textContent = '-';
-					}
-				);
+ 		document.querySelectorAll('.nesty-panel').forEach(target => observer.observe(target, {childList: true}));
+
+		// Reset Product field when Organization changes
+
+		const productNestyInput = document.querySelector('.request_custom_fields_360006041192 .nesty-input');
+
+		if (productNestyInput) {
+			if (organizationInputField) {
+				organizationInputField.onchange = function() {
+					productInputField.value = '';
+					productNestyInput.textContent = '-';
+				}
 			}
 		}
 
 		// Append an element to render the article suggestions
 
-		$('.request_subject').append('<div id="articleSuggestionWrapper"></div>');
+		const newElement = document.createElement('div');
+		newElement.id = 'articleSuggestionWrapper';
+
+		const requestSubject = document.querySelector('.request_subject');
+		requestSubject?.appendChild(newElement);
 
 		const setArticleSuggestionInnerHTML = function(html) {
 			const articleSuggestionWrapper = document.getElementById('articleSuggestionWrapper');
@@ -337,6 +427,6 @@
 			Liferay.debounce(onRequestSubjectKeyup, 300)
 		);
 
-		$(productInputField).change(onRequestSubjectKeyup);
+		productInputField.onchange = onRequestSubjectKeyup;
 	});
 </script>

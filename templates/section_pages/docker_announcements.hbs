@@ -9,15 +9,7 @@
 		<div class="col-md-6">
 			{{#with section}}
 				<header class="section-name">
-					<h1 class="title">
-						{{name}}
-
-						{{#if internal}}
-							<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
-								<use xlink:href="#lock" />
-							</svg>
-						{{/if}}
-					</h1>
+					<h1 class="title">{{name}}</h1>
 
 					{{#if description}}
 						<p class="secondary-font secondary-text-color">
@@ -30,7 +22,15 @@
 					<ul class="article-list">
 						{{#each articles}}
 							<li class="article-list-item {{#if promoted}}promoted{{/if}}">
-								<a class="article-list-link" href="{{url}}">{{title}}</a>
+								<a class="article-list-link" href="{{url}}">
+									{{title}}
+
+									{{#if internal}}
+										<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
+											<use xlink:href="#lock" />
+										</svg>
+									{{/if}}
+								</a>
 							</li>
 						{{/each}}
 					</ul>
