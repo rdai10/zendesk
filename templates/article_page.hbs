@@ -45,7 +45,7 @@
 				<h1 class="article-title" title="{{title}}">
 					{{title}}
 
-					{{#if internal}}
+					{{#if ../article.internal}}
 						<svg class="lexicon-icon lexicon-icon-lock" title="{{t 'internal'}}">
 							<use xlink:href="#lock" />
 						</svg>
@@ -63,9 +63,9 @@
 						<span class="article-votes-question small-title">{{t 'was_this_article_helpful'}}</span>
 
 						<div class="article-votes-controls" role='radiogroup'>
-							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-md btn-outline-primary'}}
+							{{vote 'up' role='radio' class='article-vote article-vote-up btn btn-md' selected_class='btn-primary'}}
 
-							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-md btn-outline-primary'}}
+							{{vote 'down' role='radio' class='article-vote article-vote-down btn btn-md' selected_class='btn-primary'}}
 						</div>
 
 						<small class="article-votes-count">
@@ -83,7 +83,7 @@
 </div>
 
 <script>
-	$(function() {
+	domLoaded(function() {
 		const userTags = window.HelpCenter.user.tags;
 
 		if (Liferay.hasKBPermission(userTags)) {
@@ -130,53 +130,54 @@
 				document.getElementById('stillNeedHelp')
 			);
 		}
-	});
 
-	Liferay.render(
-		Liferay.DocSideNav,
-		{
-			currentArticleId: '{{article.id}}',
-			locale: document.documentElement.lang.toLowerCase(),
-			sectionId: '{{section.id}}'
-		},
-		document.getElementById('sidenavTree')
-	);
+		Liferay.render(
+			Liferay.DocSideNav,
+			{
+				currentArticleId: '{{article.id}}',
+				locale: document.documentElement.lang.toLowerCase(),
+				sectionId: '{{section.id}}'
+			},
+			document.getElementById('sidenavTree')
+		);
 
-	window.onload = function() {
-		const articleContent = document.querySelector('.article-content');
+		window.onload = function() {
+			const articleContent = document.querySelector('.article-content');
 
-		const headingsNodeList = document.querySelectorAll('.article-body h2');
+			const headingsNodeList = document.querySelectorAll('.article-body h2');
 
-		if (articleContent && headingsNodeList.length) {
-			const content = [];
+			if (articleContent && headingsNodeList.length) {
+				const content = [];
 
-			Array.prototype.forEach.call(
-				headingsNodeList,
-				function(node) {
-					const nodeId = node.parentNode.id || node.id;
+				// IE 11 compatible
+				Array.prototype.forEach.call(
+					headingsNodeList,
+					function(node) {
+						const nodeId = node.parentNode.id || node.id;
 
-					if (nodeId) {
-						content.push(
-							{
-								id: nodeId,
-								title: node.innerText,
-								top: node.getBoundingClientRect().top
-							}
-						);
+						if (nodeId) {
+							content.push(
+								{
+									id: nodeId,
+									title: node.innerText,
+									top: node.getBoundingClientRect().top
+								}
+							);
+						}
 					}
-				}
-			);
+				);
 
-			Liferay.render(
-				Liferay.DocsTOC,
-				{
-					content: content,
-					initialTargetBoundingRect: articleContent.getBoundingClientRect(),
-					targetNode: articleContent, 
-					title: '{{dc 'article-on_this_page'}}'
-				},
-				document.getElementById('docsTOC')
-			);
+				Liferay.render(
+					Liferay.DocsTOC,
+					{
+						content: content,
+						initialTargetBoundingRect: articleContent.getBoundingClientRect(),
+						targetNode: articleContent, 
+						title: '{{dc 'article-on_this_page'}}'
+					},
+					document.getElementById('docsTOC')
+				);
+			}
 		}
-	}
+	});
 </script>

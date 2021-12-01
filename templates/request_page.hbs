@@ -312,7 +312,15 @@
 </div>
 
 <script>
-	$(function() {
+	domLoaded(function() {
+		const removeCommentForm = function () {
+			const requestComment = document.querySelector(
+			'.request-container .comment-form'
+			);
+
+			requestComment.remove();
+		}
+
 		const toggleLargeFileAttachment = function(data) {
 			const largeFileAttachmentWrapper = document.querySelector('.large-file-attachment-wrapper');
 
@@ -329,7 +337,17 @@
 			}
 		}
 
-		Liferay.hasWatcherPermission(window.HelpCenter.user.tags, {{request.id}}, toggleLargeFileAttachment);
+		Liferay.hasWatcherPermission(
+			window.HelpCenter.user.tags,
+			{{request.id}},
+			(isWatcher, requestData) => {
+			if (isWatcher) {
+				removeCommentForm();
+			} else {
+				toggleLargeFileAttachment(requestData);
+			}
+			
+		});
 
 		const orgNameField = document.getElementById('request_organization_id');
 
