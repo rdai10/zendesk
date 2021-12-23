@@ -71,6 +71,10 @@ function Result({categories, sections, result}) {
 			ticketSidebar.on('modalReady', () => {
 				modalInstance.trigger('transferModalData', result);
 			});
+			//The "modalReady" message handler is not getting the message from the dom that it's been removed. The below handles that upon the "modal.close" event
+			modalInstance.on('modal.close', function() {
+				ticketSidebar._messageHandlers.modalReady.pop();
+			});
 		} catch (e) {
 			console.error(
 				`Creating a new instance of modal threw the following error: ${e}`
