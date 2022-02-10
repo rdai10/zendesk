@@ -41,7 +41,7 @@
 		"glob-all": "^3.2.1",
 		"jest": "^24.1.0",
 		"mini-css-extract-plugin": "^0.4.0",
-		"node-sass": "^4.14.1",
+		"node-sass": "^7.0.0",
 		"optimize-css-assets-webpack-plugin": "^4.0.1",
 		"postcss-loader": "^2.1.5",
 		"preact": "^8.2.9",
