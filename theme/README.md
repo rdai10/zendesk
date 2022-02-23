@@ -40,7 +40,7 @@ Ruby's official site has a clear [instruction page](https://www.ruby-lang.org/en
 
 There are two ways to release a new theme on Zendesk. Either by uploading a zipped theme or by importing the theme via github.
 
-To go into the theme workbench interface, sign into _Zendesk Guid_ as an admin, then go into _Custom Design_.
+To go into the theme workbench interface, sign into _Zendesk Guide_ as an admin, then go into _Custom Design_.
 
 ### Upload Zip
 
