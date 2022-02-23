@@ -33,7 +33,7 @@ This page allows the user to create a ticket with Zendesk. It will display eithe
 -   When a chosen **Product** is associated with different components, the **Component** drop-down will appear.
 -   The values of the **Components** drop-down are determined by the **Product** selected and a mapping supplied via JavaScript.
 -   Not all **Products** have **Components**, but the following do:
+    -   Enterprise Search
     -   Liferay Commerce
     -   Liferay DXP
-    -   Liferay DXP Cloud
     -   Liferay Portal
