@@ -51,11 +51,11 @@ To go into the theme workbench interface, sign into _Zendesk Guide_ as an admin,
 
 #### Sandbox Theme
 
--   Pull the latest changes from the `master` branch into the `sandbox` branch. It will trigger a github action that will build the theme and push the output to the `sandbox-deployed` branch.
+-   Pull the latest changes from the `master` branch into the `sandbox` branch. It will trigger a github action that will build the theme and push the output to the `sandbox-deploy` branch.
 
 #### Production Theme
 
--   The process is the same for building the production theme. Update the manifest to a newer version and push all merged updates to the `release` branch. It will trigger a build action to commit the theme to the `release-deployed` branch.
+-   The process is the same for building the production theme. Update the manifest to a newer version and push all merged updates to the `release` branch. It will trigger a build action to commit the theme to the `release-deploy` branch.
 
 #### Import On Zendesk
 
