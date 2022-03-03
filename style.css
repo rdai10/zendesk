@@ -4749,6 +4749,7 @@ th {
 .article-content pre {
   background-color: #2A303E;
   color: #F8FAFF;
+  overflow: auto;
   padding: 1rem 1.25rem;
 }
 
