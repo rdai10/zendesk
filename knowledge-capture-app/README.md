@@ -17,7 +17,7 @@ This project uses bundler 2.2.25 to manage Ruby dependencies. Install [bundler](
 
 In the root directory of this app, run `bundle install`.
 
-To execute Zendesk App Tool [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools) commands, run `bundle exect zat`.
+To execute Zendesk App Tool [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools) commands, run `bundle exec zat`.
 
 Run `yarn install` to install npm dependencies.
 
