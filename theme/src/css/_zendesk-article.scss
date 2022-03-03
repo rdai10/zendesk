@@ -95,6 +95,7 @@
 	pre {
 		background-color: $color-body;
 		color: $pre-text-color;
+		overflow: auto;
 		padding: $padding-md 1.25rem;
 
 		code {
