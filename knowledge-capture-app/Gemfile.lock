@@ -30,7 +30,7 @@ GEM
       nokogiri (>= 1.5.9)
     marcel (1.0.2)
     multipart-post (2.1.1)
-    nokogiri (1.13.3-x86_64-linux)
+    nokogiri (1.13.6-x86_64-linux)
       racc (~> 1.4)
     racc (1.6.0)
     rack (1.6.13)
